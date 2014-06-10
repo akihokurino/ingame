@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  photo_path: MyString
+  device: MyString
+  price: 1
+  maker: MyString
+  release_day: 2014-06-10 21:18:22
+  game_likes_count: 1
+
+two:
+  title: MyString
+  photo_path: MyString
+  device: MyString
+  price: 1
+  maker: MyString
+  release_day: 2014-06-10 21:18:22
+  game_likes_count: 1
