@@ -4,12 +4,12 @@ class Log < ActiveRecord::Base
 	belongs_to :user, counter_cache: true
 
 	validates :game_id,
-		presense: true,
+		presence: true,
 		numericality: true
 	validates :status_id,
-		presense: true,
+		presence: true,
 		numericality: true
 	validates :user_id,
-		presense: true,
+		presence: true,
 		numericality: true
 end

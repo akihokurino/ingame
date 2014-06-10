@@ -3,9 +3,9 @@ class Follow < ActiveRecord::Base
 	belongs_to :to_user, :class_name => "User", :foreign_key => "to_user_id"
 
 	validates :from_user_id,
-		presense: true,
+		presence: true,
 		numericality: true
 	validates :to_user_id,
-		presense: true,
+		presence: true,
 		numericality: true
 end

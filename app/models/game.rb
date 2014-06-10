@@ -4,18 +4,18 @@ class Game < ActiveRecord::Base
 	has_many :posts
 
 	validates :title,
-		presense: true,
+		presence: true,
 		length: {maximum: 255}
 	validates :photo_path,
-		presense: true,
+		presence: true,
 		length: {maximum: 255}
 	validates :device,
-		presense: true,
+		presence: true,
 		length: {maximum: 255}
 	validates :price,
-		presense: true,
+		presence: true,
 		numericality: true
 	validates :maker,
-		presense: true,
+		presence: true,
 		length: {maximum: 255}
 end

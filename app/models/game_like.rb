@@ -3,9 +3,9 @@ class GameLike < ActiveRecord::Base
 	belongs_to :user
 
 	validates :game_id,
-		presense: true,
+		presence: true,
 		numericality: true
 	validates :user_id,
-		presense: true,
+		presence: true,
 		numericality: true
 end

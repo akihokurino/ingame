@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 	has_many :follows
 
 	validates :username,
-		presense: true,
+		presence: true,
 		length: {maximum: 255}
 	validates :introduction,
 		length: {maximum: 255}

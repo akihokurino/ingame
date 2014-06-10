@@ -3,9 +3,9 @@ class PostLike < ActiveRecord::Base
 	belongs_to :user
 
 	validates :post_id,
-		presense: true,
+		presence: true,
 		numericality: true
 	validates :user_id,
-		presense: true,
+		presence: true,
 		numericality: true
 end

@@ -3,11 +3,11 @@ class Post < ActiveRecord::Base
 	belongs_to :game
 
 	validates :user_id,
-		presense: true,
+		presence: true,
 		numericality: true
 	validates :game_id,
-		presense: true,
+		presence: true,
 		numericality: true
 	validates :text,
-		presense: true
+		presence: true
 end
