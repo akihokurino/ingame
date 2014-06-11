@@ -51,3 +51,5 @@ gem 'omniauth-facebook'
 gem 'haml-rails'
 gem "haml"
 
+gem 'nokogiri'
+
