@@ -2,6 +2,7 @@ Ingame::Application.routes.draw do
   resources :users, only: [] do
     collection do
       get "login"
+      get "logout"
     end
   end
   resources :posts, only: ["index"]
