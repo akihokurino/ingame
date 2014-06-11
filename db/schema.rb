@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140611012427) do
+ActiveRecord::Schema.define(version: 20140611125940) do
 
   create_table "follows", force: true do |t|
     t.integer  "from_user_id", limit: 8
@@ -70,6 +70,16 @@ ActiveRecord::Schema.define(version: 20140611012427) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "sessions", force: true do |t|
+    t.string   "session_id", null: false
+    t.text     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true, using: :btree
+  add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
 
   create_table "statuses", force: true do |t|
     t.string   "name",       limit: 50
