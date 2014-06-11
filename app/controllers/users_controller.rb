@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 	skip_before_action :auth, only: [:login]
+
 	def login
 	end
 
