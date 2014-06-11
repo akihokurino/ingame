@@ -1,0 +1,13 @@
+class SessionsController < ApplicationController
+	def callback
+    	auth = request.env["omniauth.auth"]
+    	user = User.find_by_provider_and_uid(auth["provider"], auth["uid"])
+    	if user
+       		session[:current_user] = user
+       		redirect_to posts_path, :notice => "ログインしました。"
+    	else
+       		User.create_with_omniauth(auth)
+       		redirect_to posts_path, :notice => "#{auth["info"]["name"]}さんの#{auth["provider"]}アカウントと接続しました。"
+    	end
+  	end
+end

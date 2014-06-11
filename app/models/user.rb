@@ -12,4 +12,18 @@ class User < ActiveRecord::Base
 		length: {maximum: 255}
 	validates :place,
 		length: {maximum: 255}
+
+	class << self
+		def create_with_omniauth(auth)
+    		create! do |user|
+      			user.provider = auth["provider"]
+      			user.uid = auth["uid"]
+      			if user.provider == "facebook"
+         			user.username = auth["info"]["name"]
+      			else
+         			user.username = auth["info"]["nickname"]
+      			end
+    		end
+  		end
+	end
 end

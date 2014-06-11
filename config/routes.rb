@@ -1,4 +1,15 @@
 Ingame::Application.routes.draw do
+  resources :users, only: [] do
+    collection do
+      get "login"
+    end
+  end
+  resources :posts, only: ["index"]
+
+  match "/auth/:provider/callback", to: "sessions#callback", via: :get
+  match "/logout", to: "sessions#destroy", :as => :logout, via: :get
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

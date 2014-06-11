@@ -11,39 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140610121927) do
+ActiveRecord::Schema.define(version: 20140611012427) do
 
-  create_table "follows", id: false, force: true do |t|
-    t.integer  "id",           limit: 8
+  create_table "follows", force: true do |t|
     t.integer  "from_user_id", limit: 8
     t.integer  "to_user_id",   limit: 8
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "game_likes", id: false, force: true do |t|
-    t.integer  "id",         limit: 8
+  create_table "game_likes", force: true do |t|
     t.integer  "game_id",    limit: 8
     t.integer  "user_id",    limit: 8
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "games", id: false, force: true do |t|
-    t.integer  "id",               limit: 8
+  create_table "games", force: true do |t|
     t.string   "title"
     t.string   "photo_path"
     t.string   "device"
     t.integer  "price"
     t.string   "maker"
     t.datetime "release_day"
-    t.integer  "game_likes_count",           default: 0
+    t.integer  "game_likes_count", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "logs", id: false, force: true do |t|
-    t.integer  "id",         limit: 8
+  create_table "logs", force: true do |t|
     t.integer  "game_id",    limit: 8
     t.integer  "status_id"
     t.integer  "user_id",    limit: 8
@@ -52,24 +48,21 @@ ActiveRecord::Schema.define(version: 20140610121927) do
     t.datetime "updated_at"
   end
 
-  create_table "post_likes", id: false, force: true do |t|
-    t.integer  "id",         limit: 8
+  create_table "post_likes", force: true do |t|
     t.integer  "post_id",    limit: 8
     t.integer  "user_id",    limit: 8
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "post_photos", id: false, force: true do |t|
-    t.integer  "id",         limit: 8
+  create_table "post_photos", force: true do |t|
     t.integer  "post_id",    limit: 8
     t.string   "photo_path"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "posts", id: false, force: true do |t|
-    t.integer  "id",               limit: 8
+  create_table "posts", force: true do |t|
     t.integer  "user_id",          limit: 8
     t.integer  "game_id",          limit: 8
     t.text     "text"
@@ -78,15 +71,13 @@ ActiveRecord::Schema.define(version: 20140610121927) do
     t.datetime "updated_at"
   end
 
-  create_table "statuses", id: false, force: true do |t|
-    t.integer  "id",         limit: 8
+  create_table "statuses", force: true do |t|
     t.string   "name",       limit: 50
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "users", id: false, force: true do |t|
-    t.integer  "id",           limit: 8
+  create_table "users", force: true do |t|
     t.string   "username",     limit: 100
     t.string   "introduction"
     t.integer  "logs_count",   limit: 8,   default: 0
@@ -95,6 +86,8 @@ ActiveRecord::Schema.define(version: 20140610121927) do
     t.string   "place"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "provider"
+    t.string   "uid"
   end
 
 end
