@@ -1,5 +1,5 @@
 Ingame::Application.routes.draw do
-  resources :users, only: [] do
+  resources :users, only: ["edit", "update"] do
     collection do
       get "login"
       get "logout"

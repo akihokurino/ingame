@@ -15,4 +15,6 @@
 /log/*.log
 /tmp
 
+# Ignore another files
 /config/database.yml
+/public/user_photos/*

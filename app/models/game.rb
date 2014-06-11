@@ -23,18 +23,14 @@ class Game < ActiveRecord::Base
 		presence: true,
 		length: {maximum: 255}
 
-	class << self
-		def get_from_amazon(url)
-			result = {}
-			html = open(url){|f| f.read }
-			doc = Nokogiri::HTML.parse(html.toutf8, nil, "UTF-8")
-			doc.css("#btAsinTitle").each do |node|
-				result[:name] = node.children.text
-			end
-			doc.css("#prodImageCell img").each do |node|
-				result[:photo] = node.attributes["src"].value
-			end
-			result
+	def get_from_amazon(url)
+		html = open(url){|f| f.read }
+		doc = Nokogiri::HTML.parse(html.toutf8, nil, "UTF-8")
+		doc.css("#btAsinTitle").each do |node|
+			self[:title] = node.children.text
+		end
+		doc.css("#prodImageCell img").each do |node|
+			self[:photo_path] = node.attributes["src"].value
 		end
 	end
 end
