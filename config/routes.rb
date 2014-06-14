@@ -1,11 +1,12 @@
 Ingame::Application.routes.draw do
-  resources :users, only: ["edit", "update"] do
+  resources :users, only: ["show", "edit", "update"] do
     collection do
       get "login"
       get "logout"
     end
   end
   resources :posts, only: ["index"]
+  resources :logs, only: ["index"]
 
   match "/auth/:provider/callback", to: "sessions#callback", via: :get
   match "/logout", to: "sessions#destroy", :as => :logout, via: :get

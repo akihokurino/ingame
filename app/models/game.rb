@@ -29,6 +29,20 @@ class Game < ActiveRecord::Base
 		doc.css("#btAsinTitle").each do |node|
 			self[:title] = node.children.text
 		end
+		doc.css("#platform-information").each do |node|
+			self[:device] = node.children[2].text
+		end
+		doc.css(".parseasinTitle").each do |node|
+			node.children.each do |node|
+				if node.name == "span"
+					self[:maker] = node.children.text
+					break
+				end
+			end
+		end
+		doc.css("#listPriceValue").each do |node|
+			self[:price] = node.children.text
+		end
 		doc.css("#prodImageCell img").each do |node|
 			self[:photo_path] = node.attributes["src"].value
 		end
