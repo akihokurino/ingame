@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20140611125940) do
     t.string   "device"
     t.integer  "price"
     t.string   "maker"
-    t.datetime "release_day"
+    t.string   "release_day"
     t.integer  "game_likes_count", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"

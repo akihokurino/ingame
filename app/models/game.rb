@@ -17,34 +17,50 @@ class Game < ActiveRecord::Base
 		presence: true,
 		length: {maximum: 255}
 	validates :price,
-		presence: true,
-		numericality: true
+		presence: true
 	validates :maker,
 		presence: true,
 		length: {maximum: 255}
 
-	def get_from_amazon(url)
-		html = open(url){|f| f.read }
-		doc = Nokogiri::HTML.parse(html.toutf8, nil, "UTF-8")
-		doc.css("#btAsinTitle").each do |node|
-			self[:title] = node.children.text
-		end
-		doc.css("#platform-information").each do |node|
-			self[:device] = node.children[2].text
-		end
-		doc.css(".parseasinTitle").each do |node|
-			node.children.each do |node|
-				if node.name == "span"
-					self[:maker] = node.children.text
-					break
+	class << self
+		def get_from_amazon(url)
+			result = {}
+			html = open(url){|f| f.read }
+			doc = Nokogiri::HTML.parse(html.toutf8, nil, "UTF-8")
+			doc.css("#btAsinTitle").each do |node|
+				result[:title] = node.children.text
+			end
+			doc.css("#platform-information").each do |node|
+				result[:device] = node.children[2].text
+			end
+			doc.css(".parseasinTitle").each do |node|
+				node.children.each do |node|
+					if node.name == "span"
+						result[:maker] = node.children.text
+						break
+					end
 				end
 			end
+			doc.css("#listPriceValue").each do |node|
+				result[:price] = node.children.text
+			end
+			doc.css("#prodImageCell img").each do |node|
+				result[:photo_path] = node.attributes["src"].value
+			end
+
+			result
 		end
-		doc.css("#listPriceValue").each do |node|
-			self[:price] = node.children.text
-		end
-		doc.css("#prodImageCell img").each do |node|
-			self[:photo_path] = node.attributes["src"].value
+
+		def find_or_create!(result)
+			if self.exists?(title: result[:title])
+				game = self.find_by(title: result[:title])
+			else
+				result[:release_day] = params[:release_day]
+				self.create!(result)
+				game = self.last
+			end
+
+			game
 		end
 	end
 end

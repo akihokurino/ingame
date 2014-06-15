@@ -5,8 +5,9 @@
 			Ingame
 		= stylesheet_link_tag "application", media: "all"
 		= javascript_include_tag "underscore-min.js"
-		= javascript_include_tag "backbone-min.js"
 		= javascript_include_tag "application"
+		= javascript_include_tag "backbone-min.js"
+		= yield :head
 		= csrf_meta_tags
 	%body
 		= yield

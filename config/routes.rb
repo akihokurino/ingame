@@ -6,7 +6,11 @@ Ingame::Application.routes.draw do
     end
   end
   resources :posts, only: ["index"]
-  resources :logs, only: ["index"]
+  resources :logs, only: ["index", "create"]
+
+  namespace :api do
+    resources :logs, only: ["index", "create", "update", "delete"], format: "json"
+  end
 
   match "/auth/:provider/callback", to: "sessions#callback", via: :get
   match "/logout", to: "sessions#destroy", :as => :logout, via: :get

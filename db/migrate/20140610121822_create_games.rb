@@ -8,7 +8,7 @@ class CreateGames < ActiveRecord::Migration
 			t.string :device, :limit => 255
 			t.integer :price
 			t.string :maker, :limit => 255
-			t.datetime :release_day
+			t.string :release_day
 			t.integer :game_likes_count, :default => 0
 
 			t.timestamps
