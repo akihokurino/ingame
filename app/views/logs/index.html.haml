@@ -6,3 +6,15 @@
 	%input{type: "text", name: "release_day", class: "release_day_input"}
 	%input{type: "textarea", name: "text", class: "text_input"}
 	%input{type: "submit", class: "submit-btn"}
+
+%div.log-list
+
+%script{type: "text/template", id: "log-template"}
+	<p><%- text %></p>
+	<p><%- game.title %></p>
+	<img src=<%- game.photo_path %> />
+	<p><%- game.device %></p>
+	<p><%- game.price %></p>
+	<p><%- game.maker %></p>
+	<p><%- game.release_day %></p>
+	<p><%- game.game_likes_count %></p>

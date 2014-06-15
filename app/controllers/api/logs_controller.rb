@@ -1,5 +1,6 @@
 class Api::LogsController < ApplicationController
 	def index
+		@logs = Log.where(user_id: @current_user[:id]).order("created_at DESC").includes(:game)
 	end
 
 	def create

@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20140611125940) do
     t.string   "title"
     t.string   "photo_path"
     t.string   "device"
-    t.integer  "price"
+    t.string   "price"
     t.string   "maker"
     t.string   "release_day"
     t.integer  "game_likes_count", default: 0

@@ -1,5 +1,14 @@
 (function () {
 	$(function () {
+		var Input = Backbone.Model.extend({
+			urlRoot: "/api/logs",
+			defaults: {
+				"amazon_url": "",
+				"release_day": "",
+				"text": ""
+			}
+		})
+
 		var FormView = Backbone.View.extend({
 			el: $(".log-form"),
 			events: {
@@ -30,19 +39,12 @@
 			}
 		});
 
-		var Input = Backbone.Model.extend({
-			urlRoot: "/api/logs",
-			defaults: {
-				"amazon_url": "",
-				"release_day": "",
-				"text": ""
-			}
-		})
-
 		var Log = Backbone.Model.extend({
 			defaults: {
-				"text": ""
+				"id": "",
+				"text": "",
 				"game": {
+					"id": "",
 					"title": "",
 					"photo_path": "",
 					"device": "",
@@ -57,18 +59,49 @@
 			}
 		})
 
+		var LogView = Backbone.View.extend({
+			tagName: "li",
+			events: {
+				"click .delete": "destroy"
+			},
+			initialize: function(){
+				this.model.on("destroy", this.remove, this);
+				this.model.on("change", this.render, this);
+			},
+			destroy: function(){
+				this.model.destroy();
+			},
+			remove: function(){
+				this.$el.remove();
+			},
+			template: _.template($("#log-template").html()),
+			render: function(){
+				var template = this.template(this.model.toJSON());
+				this.$el.html(template);
+				return this;
+			}
+		});
+
 		var Logs = Backbone.Collection.extend({
 			model: Log,
 			url: "/api/logs"
 		})
 
 		var LogsView = Backbone.View.extend({
-			el: $(".logs-list"),
+			el: $(".log-list"),
 			initialize: function () {
+				var that = this;
 				this.collection = new Logs();
+				this.listenTo(this.collection, "add", this.addLog);
 				this.collection.fetch({
-					success: function () {
-
+					success: function (collection, response, options) {
+						console.log(response);
+						if(response.logs && response.logs.length > 0){
+							for(var i = 0; i < response.logs.length; i++){
+								var log = new Log(response.logs[i]);
+								that.collection.add(log);
+							}
+						}
 					},
 					error: function () {
 						console.log("error");
@@ -76,10 +109,22 @@
 				})
 			},
 			render: function () {
-
+				console.log(this.collection);
+				/*
+				this.collection.each(function(log){
+					var log_view = new LogView({model: log});
+					this.$el.append(log_view.render().el);
+				}, this);
+				return this;
+				*/
+			},
+			addLog: function (log) {
+				var log_view = new LogView({model: log});
+				this.$el.append(log_view.render().el);
 			}
 		})
 
 		var form_view = new FormView();
+		var logs_view = new LogsView();
 	})
 })();

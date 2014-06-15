@@ -14,12 +14,10 @@ class Game < ActiveRecord::Base
 		presence: true,
 		length: {maximum: 255}
 	validates :device,
-		presence: true,
 		length: {maximum: 255}
 	validates :price,
 		presence: true
 	validates :maker,
-		presence: true,
 		length: {maximum: 255}
 
 	class << self
@@ -33,15 +31,10 @@ class Game < ActiveRecord::Base
 			doc.css("#platform-information").each do |node|
 				result[:device] = node.children[2].text
 			end
-			doc.css(".parseasinTitle").each do |node|
-				node.children.each do |node|
-					if node.name == "span"
-						result[:maker] = node.children.text
-						break
-					end
-				end
+			doc.css(".parseasinTitle + a").each do |node|
+				result[:maker] = node.children.text
 			end
-			doc.css("#listPriceValue").each do |node|
+			doc.css("#actualPriceValue .priceLarge").each do |node|
 				result[:price] = node.children.text
 			end
 			doc.css("#prodImageCell img").each do |node|
@@ -55,7 +48,7 @@ class Game < ActiveRecord::Base
 			if self.exists?(title: result[:title])
 				game = self.find_by(title: result[:title])
 			else
-				result[:release_day] = params[:release_day]
+				result[:release_day] = result[:release_day]
 				self.create!(result)
 				game = self.last
 			end
