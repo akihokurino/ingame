@@ -39,7 +39,6 @@
 		var logs = new Logs();
 
 
-
 		//View
 
 		var FormView = Backbone.View.extend({
@@ -64,7 +63,6 @@
 
 				input.save(null, {
 					success: function (model, response, options) {
-						console.log(response);
 						var log = new Log(response.log);
 						logs_view.addLog(log);
 					},
@@ -106,32 +104,38 @@
 				this.listenTo(this.collection, "add", this.addLog);
 				this.collection.fetch({
 					success: function (collection, response, options) {
-						console.log(response);
 						if(response.logs && response.logs.length > 0){
 							for(var i = 0; i < response.logs.length; i++){
 								var log = new Log(response.logs[i]);
 								that.collection.add(log);
 							}
 						}
+						//that.render();
 					},
 					error: function () {
 						console.log("error");
 					}
-				})
+				}, {wait: true})
 			},
 			render: function () {
-				console.log(this.collection);
 				/*
+				console.log(this.collection);
 				this.collection.each(function(log){
-					var log_view = new LogView({model: log});
-					this.$el.append(log_view.render().el);
+					console.log(log);
+					if(log.id){
+						var log_view = new LogView({model: log});
+						this.$el.prepend(log_view.render().el);
+					}
 				}, this);
+
 				return this;
 				*/
 			},
 			addLog: function (log) {
-				var log_view = new LogView({model: log});
-				this.$el.prepend(log_view.render().el);
+				if(log.id){
+					var log_view = new LogView({model: log});
+					this.$el.prepend(log_view.render().el);
+				}
 			}
 		})
 

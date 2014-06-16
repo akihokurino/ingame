@@ -5,3 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+%w(
+	気になった
+	買った
+	遊んでいる
+	遊び終わった
+	積んでる
+).each_with_index do |status, index|
+	Status.create(name: status)
+end
