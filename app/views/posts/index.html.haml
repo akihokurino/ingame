@@ -1,6 +1,29 @@
+= content_for :head do
+	= javascript_include_tag "timeline.js"
+
 = notice
 = debug(@current_user)
 = link_to "ログアウト", logout_users_path
 = link_to "ユーザー情報", user_path(@current_user)
+
+%form.post-form
+	%input{type: "text", placeholder: "つぶやき", class: "text-input"}
+	%select.game-select
+	%input{type: "submit", value: "送信", class: "submit-btn"}
+
+%ul.post-list
+
+%script{type: "text/template", id: "post-template"}
+	<p><%- text %></p>
+	<p><%- post_likes_count %></p>
+	<p><%- game.title %></p>
+	<img src=<%- game.photo_path %> />
+	<p><%- user.username %></p>
+	<img src=<%- user.photo_path %> />
+
+
+%script{type: "text/template", id: "game-template"}
+	<%- title %>
+
 
 

@@ -1,7 +1,6 @@
 (function () {
 	$(function () {
-		// Model
-
+		/* ---------- Model ---------- */
 		var Input = Backbone.Model.extend({
 			urlRoot: "/api/logs",
 			defaults: {
@@ -52,8 +51,7 @@
 		var logs = new Logs();
 
 
-		//View
-
+		/* ---------- View ---------- */
 		var StatusesView = Backbone.View.extend({
 			el: $(".status-select"),
 			initialize: function () {
@@ -97,16 +95,17 @@
 		var FormView = Backbone.View.extend({
 			el: $(".log-form"),
 			events: {
-				"submit": "saveLog",
+				"submit": "saveLog"
 			},
 			initialize: function () {
 				this.collection = logs;
-				this.amazon_url = $(".amazon_url_input");
-				this.release_day = $(".release_day_input");
-				this.text = $(".text_input");
+				this.amazon_url = $(".amazon-url-input");
+				this.release_day = $(".release-day-input");
+				this.text = $(".text-input");
 				this.status = $(".status-select");
 			},
 			saveLog: function (e) {
+				var that = this;
 				e.preventDefault();
 
 				var input = new Input({
@@ -119,7 +118,7 @@
 				input.save(null, {
 					success: function (model, response, options) {
 						var log = new Log(response.log);
-						logs_view.addLog(log);
+						that.collection.add(response.log);
 					},
 					error: function () {
 						console.log("error");

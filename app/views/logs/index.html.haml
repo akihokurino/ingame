@@ -2,13 +2,13 @@
 	= javascript_include_tag "log.js"
 
 %form.log-form
-	%input{type: "text", name: "amazon_url", placeholder: "アマゾンのURLを入力して下さい。", class: "amazon_url_input"}
-	%input{type: "text", name: "release_day", class: "release_day_input"}
-	%input{type: "textarea", name: "text", class: "text_input"}
+	%input{type: "text", name: "amazon_url", placeholder: "アマゾンのURLを入力して下さい。", class: "amazon-url-input"}
+	%input{type: "text", name: "release_day", class: "release-day-input"}
+	%input{type: "textarea", name: "text", class: "text-input"}
 	%select{name: "status", class: "status-select"}
 	%input{type: "submit", class: "submit-btn"}
 
-%div.log-list
+%ul.log-list
 
 %script{type: "text/template", id: "log-template"}
 	<p><%- text %></p>
