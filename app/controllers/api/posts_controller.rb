@@ -1,11 +1,10 @@
 class Api::PostsController < ApplicationController
 	def index
-		@posts = Post.where(user_id: @current_user[:id]).includes(:game).includes(:user)
+		@posts = Post.get_all_posts(@current_user[:id])
 	end
 
 	def create
 		params[:post][:user_id] = @current_user[:id]
-		p post_params
 		Post.create!(post_params)
 		@last_post = Post.last
 	end
