@@ -5,6 +5,7 @@
 	%input{type: "text", name: "amazon_url", placeholder: "アマゾンのURLを入力して下さい。", class: "amazon_url_input"}
 	%input{type: "text", name: "release_day", class: "release_day_input"}
 	%input{type: "textarea", name: "text", class: "text_input"}
+	%select{name: "status", class: "status-select"}
 	%input{type: "submit", class: "submit-btn"}
 
 %div.log-list
@@ -18,3 +19,7 @@
 	<p><%- game.maker %></p>
 	<p><%- game.release_day %></p>
 	<p><%- game.game_likes_count %></p>
+	<p><%- status.name %></p>
+
+%script{type: "text/template", id: "status-template"}
+	<%- name %>

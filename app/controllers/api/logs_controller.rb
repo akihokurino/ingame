@@ -1,6 +1,7 @@
 class Api::LogsController < ApplicationController
 	def index
 		@logs = Log.where(user_id: @current_user[:id]).order("created_at ASC").includes(:game)
+		@statuses = Status.all
 	end
 
 	def create
@@ -11,7 +12,7 @@ class Api::LogsController < ApplicationController
 				game = Game.find_or_create!(result)
 				Log.create!({
 					game_id: game[:id],
-					status_id: 1,
+					status_id: params[:status_id],
 					user_id: @current_user[:id],
 					text: params[:text]
 				})

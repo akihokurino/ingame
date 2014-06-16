@@ -7,7 +7,8 @@
 			defaults: {
 				"amazon_url": "",
 				"release_day": "",
-				"text": ""
+				"text": "",
+				"status_id": ""
 			}
 		})
 
@@ -31,15 +32,67 @@
 			}
 		})
 
+		var Status = Backbone.Model.extend({
+			defaults: {
+				"id": "",
+				"name": ""
+			}
+		})
+
 		var Logs = Backbone.Collection.extend({
 			model: Log,
 			url: "/api/logs"
+		})
+
+		var Statuses = Backbone.Collection.extend({
+			model: Status,
+			url: "/api/statuses"
 		})
 
 		var logs = new Logs();
 
 
 		//View
+
+		var StatusesView = Backbone.View.extend({
+			el: $(".status-select"),
+			initialize: function () {
+				var that = this;
+				this.collection = new Statuses();
+				this.listenTo(this.collection, "add", this.addStatus);
+				this.collection.fetch({
+					success: function (collection, response, options) {
+						console.log(response);
+						if(response.statuses && response.statuses.length > 0){
+							for(var i = 0; i < response.statuses.length; i++){
+								var status = new Status(response.statuses[i]);
+								that.collection.add(status);
+							}
+						}
+					},
+					error: function () {
+						console.log("error");
+					}
+				}, {wait: true})
+			},
+			addStatus: function (status) {
+				if(status.id){
+					var status_view = new StatusView({model: status});
+					this.$el.append(status_view.render().el);
+				}
+			}
+		})
+
+		var StatusView = Backbone.View.extend({
+			tagName: "option",
+			template: _.template($("#status-template").html()),
+			render: function () {
+				var template = this.template(this.model.toJSON());
+				this.$el.html(template);
+				this.$el.attr("value", this.model.id);
+				return this;
+			}
+		})
 
 		var FormView = Backbone.View.extend({
 			el: $(".log-form"),
@@ -51,6 +104,7 @@
 				this.amazon_url = $(".amazon_url_input");
 				this.release_day = $(".release_day_input");
 				this.text = $(".text_input");
+				this.status = $(".status-select");
 			},
 			saveLog: function (e) {
 				e.preventDefault();
@@ -58,7 +112,8 @@
 				var input = new Input({
 					amazon_url: this.amazon_url.val(),
 					release_day: this.release_day.val(),
-					text: this.text.val()
+					text: this.text.val(),
+					status_id: this.status.val()
 				});
 
 				input.save(null, {
@@ -71,30 +126,30 @@
 					}
 				});
 			}
-		});
+		})
 
 		var LogView = Backbone.View.extend({
 			tagName: "li",
 			events: {
 				"click .delete": "destroy"
 			},
-			initialize: function(){
+			initialize: function () {
 				this.model.on("destroy", this.remove, this);
 				this.model.on("change", this.render, this);
 			},
-			destroy: function(){
+			destroy: function () {
 				this.model.destroy();
 			},
-			remove: function(){
+			remove: function () {
 				this.$el.remove();
 			},
 			template: _.template($("#log-template").html()),
-			render: function(){
+			render: function () {
 				var template = this.template(this.model.toJSON());
 				this.$el.html(template);
 				return this;
 			}
-		});
+		})
 
 		var LogsView = Backbone.View.extend({
 			el: $(".log-list"),
@@ -141,5 +196,6 @@
 
 		var form_view = new FormView();
 		var logs_view = new LogsView();
+		var statuses_view = new StatusesView();
 	})
 })();

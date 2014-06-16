@@ -12,5 +12,9 @@ json.logs do |json|
       json.release_day log.game[:release_day]
       json.game_likes_count log.game[:game_likes_count]
     end
+    json.status do |json|
+      json.name log.status.name
+    end
   end
 end
+json.statuses @statuses

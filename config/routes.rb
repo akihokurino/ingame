@@ -10,6 +10,7 @@ Ingame::Application.routes.draw do
 
   namespace :api do
     resources :logs, only: ["index", "create", "update", "delete"], format: "json"
+    resources :statuses, only: ["index"], format: "json"
   end
 
   match "/auth/:provider/callback", to: "sessions#callback", via: :get
