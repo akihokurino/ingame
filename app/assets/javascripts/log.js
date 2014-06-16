@@ -1,5 +1,7 @@
 (function () {
 	$(function () {
+		// Model
+
 		var Input = Backbone.Model.extend({
 			urlRoot: "/api/logs",
 			defaults: {
@@ -8,36 +10,6 @@
 				"text": ""
 			}
 		})
-
-		var FormView = Backbone.View.extend({
-			el: $(".log-form"),
-			events: {
-				"submit": "saveLog",
-			},
-			initialize: function () {
-				this.amazon_url = $(".amazon_url_input");
-				this.release_day = $(".release_day_input");
-				this.text = $(".text_input");
-			},
-			saveLog: function (e) {
-				e.preventDefault();
-
-				var input = new Input({
-					amazon_url: this.amazon_url.val(),
-					release_day: this.release_day.val(),
-					text: this.text.val()
-				});
-
-				input.save(null, {
-					success: function (model, response, options) {
-						console.log(response);
-					},
-					error: function () {
-						console.log("error");
-					}
-				});
-			}
-		});
 
 		var Log = Backbone.Model.extend({
 			defaults: {
@@ -58,6 +30,50 @@
 				}
 			}
 		})
+
+		var Logs = Backbone.Collection.extend({
+			model: Log,
+			url: "/api/logs"
+		})
+
+		var logs = new Logs();
+
+
+
+		//View
+
+		var FormView = Backbone.View.extend({
+			el: $(".log-form"),
+			events: {
+				"submit": "saveLog",
+			},
+			initialize: function () {
+				this.collection = logs;
+				this.amazon_url = $(".amazon_url_input");
+				this.release_day = $(".release_day_input");
+				this.text = $(".text_input");
+			},
+			saveLog: function (e) {
+				e.preventDefault();
+
+				var input = new Input({
+					amazon_url: this.amazon_url.val(),
+					release_day: this.release_day.val(),
+					text: this.text.val()
+				});
+
+				input.save(null, {
+					success: function (model, response, options) {
+						console.log(response);
+						var log = new Log(response.log);
+						logs_view.addLog(log);
+					},
+					error: function () {
+						console.log("error");
+					}
+				});
+			}
+		});
 
 		var LogView = Backbone.View.extend({
 			tagName: "li",
@@ -82,16 +98,11 @@
 			}
 		});
 
-		var Logs = Backbone.Collection.extend({
-			model: Log,
-			url: "/api/logs"
-		})
-
 		var LogsView = Backbone.View.extend({
 			el: $(".log-list"),
 			initialize: function () {
 				var that = this;
-				this.collection = new Logs();
+				this.collection = logs;
 				this.listenTo(this.collection, "add", this.addLog);
 				this.collection.fetch({
 					success: function (collection, response, options) {
@@ -120,7 +131,7 @@
 			},
 			addLog: function (log) {
 				var log_view = new LogView({model: log});
-				this.$el.append(log_view.render().el);
+				this.$el.prepend(log_view.render().el);
 			}
 		})
 
