@@ -133,8 +133,8 @@
 				"click .delete": "destroy"
 			},
 			initialize: function () {
-				this.model.on("destroy", this.remove, this);
-				this.model.on("change", this.render, this);
+				this.listenTo(this.model, "destroy", this.remove);
+				this.listenTo(this.model, "change", this.render);
 			},
 			destroy: function () {
 				this.model.destroy();

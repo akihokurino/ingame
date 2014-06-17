@@ -7,20 +7,13 @@ class Api::LogsController < ApplicationController
 	def create
 		result = Game.get_from_amazon(params[:amazon_url])
 		result[:release_day] = params[:release_day]
-		begin
-			ActiveRecord::Base.transaction do
-				game = Game.find_or_create!(result)
-				Log.create!({
-					game_id: game[:id],
-					status_id: params[:status_id],
-					user_id: @current_user[:id],
-					text: params[:text]
-				})
-				@log = Log.last
-			end
-		rescue
-			raise
-		end
+		@log = Log.create_with(result, params, @current_user)
+	end
+
+	def destroy
+		log = Log.find(params[:id])
+		log.destroy
+		render nothing: true
 	end
 
 	def update
