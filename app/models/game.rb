@@ -28,8 +28,9 @@ class Game < ActiveRecord::Base
 			doc.css("#btAsinTitle").each do |node|
 				result[:title] = node.children.text
 			end
-			doc.css("#platform-information").each do |node|
-				result[:device] = node.children[2].text
+			doc.css("#platform-information .byLinePipe").each do |node|
+				result[:device] = node.next.text
+				#result[:device] = node.children[2].text
 			end
 			doc.css(".parseasinTitle + a").each do |node|
 				result[:maker] = node.children.text
