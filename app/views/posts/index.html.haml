@@ -16,8 +16,10 @@
 %script{type: "text/template", id: "post-template"}
 	<p><%- text %></p>
 	<p><%- post_likes_count %></p>
+	<a href="/games/<%= game.id %>" style="display: block;">
 	<p><%- game.title %></p>
 	<img src=<%- game.photo_path %> />
+	</a>
 	<p><%- user.username %></p>
 	<img src=<%- user.photo_path %> />
 

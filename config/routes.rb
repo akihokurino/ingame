@@ -7,9 +7,10 @@ Ingame::Application.routes.draw do
   end
   resources :posts, only: ["index"]
   resources :logs, only: ["index", "create"]
+  resources :games, only: ["show"]
 
   namespace :api do
-    resources :logs, only: ["index", "create", "update", "delete"], format: "json"
+    resources :logs, only: ["index", "create", "update", "destroy"], format: "json"
     resources :statuses, only: ["index"], format: "json"
     resources :posts, only: ["index", "create", "destroy"], format: "json"
     resources :games, only: ["index"], format: "json"

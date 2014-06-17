@@ -12,6 +12,7 @@
 
 %script{type: "text/template", id: "log-template"}
 	<p><%- text %></p>
+	<a href="/games/<%= game.id %>" style="display: block;">
 	<p><%- game.title %></p>
 	<img src=<%- game.photo_path %> />
 	<p><%- game.device %></p>
@@ -19,6 +20,7 @@
 	<p><%- game.maker %></p>
 	<p><%- game.release_day %></p>
 	<p><%- game.game_likes_count %></p>
+	</a>
 	<p><%- status.name %></p>
 
 %script{type: "text/template", id: "status-template"}
