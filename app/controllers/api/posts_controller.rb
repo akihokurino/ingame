@@ -9,6 +9,12 @@ class Api::PostsController < ApplicationController
 		@last_post = Post.last
 	end
 
+	def destroy
+		post = Post.find(params[:id])
+		post.destroy
+		render :nothing => true
+	end
+
 	private
 	def post_params
 		params.require(:post).permit(:user_id, :game_id, :text)

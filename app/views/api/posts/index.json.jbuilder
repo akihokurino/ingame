@@ -13,5 +13,6 @@ json.posts do |json|
       json.username post.user[:username]
       json.photo_path post.user[:photo_path]
     end
+    json.current_user_id @current_user[:id]
   end
 end

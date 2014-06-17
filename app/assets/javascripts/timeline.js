@@ -25,7 +25,8 @@
 					"id": "",
 					"username": "",
 					"photo_path": ""
-				}
+				},
+				"current_user_id": ""
 			}
 		})
 
