@@ -1,9 +1,7 @@
 class CreatePostPhotos < ActiveRecord::Migration
   	def change
-    	create_table :post_photos, :id => false do |t|
-    		t.integer :id, :limit => 8
-    		t.primary_key :id
-      		t.integer :post_id, :limit => 8
+    	create_table :post_photos do |t|
+      		t.integer :post_id
       		t.string :photo_path
 
       		t.timestamps

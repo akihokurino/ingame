@@ -14,15 +14,15 @@
 ActiveRecord::Schema.define(version: 20140611125940) do
 
   create_table "follows", force: true do |t|
-    t.integer  "from_user_id", limit: 8
-    t.integer  "to_user_id",   limit: 8
+    t.integer  "from_user_id"
+    t.integer  "to_user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "game_likes", force: true do |t|
-    t.integer  "game_id",    limit: 8
-    t.integer  "user_id",    limit: 8
+    t.integer  "game_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -40,33 +40,33 @@ ActiveRecord::Schema.define(version: 20140611125940) do
   end
 
   create_table "logs", force: true do |t|
-    t.integer  "game_id",    limit: 8
+    t.integer  "game_id"
     t.integer  "status_id"
-    t.integer  "user_id",    limit: 8
+    t.integer  "user_id"
     t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "post_likes", force: true do |t|
-    t.integer  "post_id",    limit: 8
-    t.integer  "user_id",    limit: 8
+    t.integer  "post_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "post_photos", force: true do |t|
-    t.integer  "post_id",    limit: 8
+    t.integer  "post_id"
     t.string   "photo_path"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "posts", force: true do |t|
-    t.integer  "user_id",          limit: 8
-    t.integer  "game_id",          limit: 8
+    t.integer  "user_id"
+    t.integer  "game_id"
     t.text     "text"
-    t.integer  "post_likes_count",           default: 0
+    t.integer  "post_likes_count", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -90,8 +90,8 @@ ActiveRecord::Schema.define(version: 20140611125940) do
   create_table "users", force: true do |t|
     t.string   "username",     limit: 100
     t.string   "introduction"
-    t.integer  "logs_count",   limit: 8,   default: 0
-    t.integer  "posts_count",  limit: 8,   default: 0
+    t.integer  "logs_count",               default: 0
+    t.integer  "posts_count",              default: 0
     t.string   "photo_path"
     t.string   "place"
     t.datetime "created_at"

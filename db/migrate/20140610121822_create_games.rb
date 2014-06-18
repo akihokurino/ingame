@@ -1,8 +1,6 @@
 class CreateGames < ActiveRecord::Migration
 	def change
-		create_table :games, :id => false do |t|
-			t.integer :id, :limit => 8
-			t.primary_key :id
+		create_table :games do |t|
 			t.string :title, :limit => 255
 			t.string :photo_path
 			t.string :device, :limit => 255
