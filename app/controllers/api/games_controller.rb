@@ -4,4 +4,13 @@ class Api::GamesController < ApplicationController
 			log.game.select(:id, :title)
 		end
 	end
+
+	def search
+		@results = Game.where("title LIKE ?", "%#{escape_like(params[:search_title])}%")
+	end
+
+	private
+	def escape_like(string)
+	  	string.gsub(/[\\%_]/){|m| "\\#{m}"}
+	end
 end

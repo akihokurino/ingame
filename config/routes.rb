@@ -13,7 +13,11 @@ Ingame::Application.routes.draw do
     resources :logs, only: ["index", "create", "update", "destroy"], format: "json"
     resources :statuses, only: ["index"], format: "json"
     resources :posts, only: ["index", "create", "destroy"], format: "json"
-    resources :games, only: ["index"], format: "json"
+    resources :games, only: ["index"], format: "json" do
+      collection do
+        get "search"
+      end
+    end
   end
 
   match "/auth/:provider/callback", to: "sessions#callback", via: :get

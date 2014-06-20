@@ -1,13 +1,27 @@
 (function () {
 	$(function () {
 		/* ---------- Model ---------- */
+		var SearchInput = Backbone.Model.extend({
+			urlRoot: "/api/games/search",
+			defaults: {
+				"search_title": ""
+			}
+		})
+
+		var Result = Backbone.Model.extend({
+			urlRoot: "/api/logs",
+			defaults: {
+				"title": "",
+				"photo_path": "",
+				"device": "",
+				"maker": ""
+			}
+		})
+
 		var Input = Backbone.Model.extend({
 			urlRoot: "/api/logs",
 			defaults: {
 				"amazon_url": "",
-				"release_day": "",
-				"text": "",
-				"status_id": ""
 			}
 		})
 
@@ -20,9 +34,7 @@
 					"title": "",
 					"photo_path": "",
 					"device": "",
-					"price": "",
 					"maker": "",
-					"release_day": "",
 					"game_like_count": 0
 				},
 				"status": {
@@ -38,6 +50,14 @@
 			}
 		})
 
+
+
+		/* ---------- Collection ---------- */
+		var Results = Backbone.Collection.extend({
+			model: Result,
+			url: "/api/games/search"
+		})
+
 		var Logs = Backbone.Collection.extend({
 			model: Log,
 			url: "/api/logs"
@@ -49,6 +69,8 @@
 		})
 
 		var logs = new Logs();
+		var results = new Results();
+
 
 
 		/* ---------- View ---------- */
@@ -92,6 +114,39 @@
 			}
 		})
 
+		var SearchView = Backbone.View.extend({
+			el: $(".search-form"),
+			events: {
+				"submit": "search"
+			},
+			initialize: function () {
+				this.collection = results;
+				this.search_title = $(".search-title-input");
+			},
+			search: function (e) {
+				var that = this;
+				e.preventDefault();
+
+				var search_title = this.search_title.val();
+
+				this.collection.fetch({
+					data: {search_title: search_title},
+					success: function (model, response, options) {
+						console.log(response.results)
+						if(response.results && response.results.length > 0){
+							for(var i = 0; i < response.results.length; i++){
+								var result = new Result(response.results[i]);
+								that.collection.add(result);
+							}
+						}
+					},
+					error: function () {
+						console.log("error");
+					}
+				})
+			}
+		})
+
 		var FormView = Backbone.View.extend({
 			el: $(".log-form"),
 			events: {
@@ -100,7 +155,6 @@
 			initialize: function () {
 				this.collection = logs;
 				this.amazon_url = $(".amazon-url-input");
-				this.release_day = $(".release-day-input");
 				this.text = $(".text-input");
 				this.status = $(".status-select");
 			},
@@ -127,6 +181,25 @@
 			}
 		})
 
+		var ResultView = Backbone.View.extend({
+			tagName: "li",
+			events: {
+				"click .save-btn": "saveLog"
+			},
+			initialize: function () {
+
+			},
+			remove: function () {
+				this.$el.remove();
+			},
+			template: _.template($("#result-template").html()),
+			render: function () {
+				var template = this.template(this.model.toJSON());
+				this.$el.html(template);
+				return this;
+			}
+		})
+
 		var LogView = Backbone.View.extend({
 			tagName: "li",
 			events: {
@@ -150,6 +223,21 @@
 			}
 		})
 
+		var ResultsView = Backbone.View.extend({
+			el: $(".result-list"),
+			initialize: function () {
+				var that = this;
+				this.collection = results;
+				this.listenTo(this.collection, "add", this.addResult);
+			},
+			addResult: function (result) {
+				if(result.id){
+					var result_view = new ResultView({model: result});
+					this.$el.prepend(result_view.render().el);
+				}
+			}
+		})
+
 		var LogsView = Backbone.View.extend({
 			el: $(".log-list"),
 			initialize: function () {
@@ -164,26 +252,11 @@
 								that.collection.add(log);
 							}
 						}
-						//that.render();
 					},
 					error: function () {
 						console.log("error");
 					}
 				}, {wait: true})
-			},
-			render: function () {
-				/*
-				console.log(this.collection);
-				this.collection.each(function(log){
-					console.log(log);
-					if(log.id){
-						var log_view = new LogView({model: log});
-						this.$el.prepend(log_view.render().el);
-					}
-				}, this);
-
-				return this;
-				*/
 			},
 			addLog: function (log) {
 				if(log.id){
@@ -196,5 +269,7 @@
 		var form_view = new FormView();
 		var logs_view = new LogsView();
 		var statuses_view = new StatusesView();
+		var search_view = new SearchView();
+		var results_view = new ResultsView();
 	})
 })();

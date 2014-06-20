@@ -1,12 +1,16 @@
 = content_for :head do
 	= javascript_include_tag "log.js"
 
+
 %form.log-form
 	%input{type: "text", name: "amazon_url", placeholder: "アマゾンのURLを入力して下さい。", class: "amazon-url-input"}
-	%input{type: "text", name: "release_day", class: "release-day-input"}
-	%input{type: "textarea", name: "text", class: "text-input"}
-	%select{name: "status", class: "status-select"}
 	%input{type: "submit", class: "submit-btn"}
+
+%form.search-form
+	%input{type: "text", name: "search_title", class: "search-title-input"}
+	%input{type: "submit", class: "submit-btn"}
+
+%ul.result-list
 
 %ul.log-list
 
@@ -16,9 +20,7 @@
 	<p><%- game.title %></p>
 	<img src=<%- game.photo_path %> />
 	<p><%- game.device %></p>
-	<p><%- game.price %></p>
 	<p><%- game.maker %></p>
-	<p><%- game.release_day %></p>
 	<p><%- game.game_likes_count %></p>
 	</a>
 	<p><%- status.name %></p>
@@ -26,3 +28,9 @@
 
 %script{type: "text/template", id: "status-template"}
 	<%- name %>
+
+%script{type: "text/template", id: "result-template"}
+	<p><%- title %></p>
+	<img src=<%- photo_path %> />
+	<p><%- device %></p>
+	<p><%- maker %></p>
