@@ -8,13 +8,10 @@
 			}
 		})
 
-		var Result = Backbone.Model.extend({
+		var AmazonInput = Backbone.Model.extend({
 			urlRoot: "/api/logs",
 			defaults: {
-				"title": "",
-				"photo_path": "",
-				"device": "",
-				"maker": ""
+				"amazon_url": "",
 			}
 		})
 
@@ -22,10 +19,20 @@
 			urlRoot: "/api/logs"
 		})
 
-		var Input = Backbone.Model.extend({
+		var Status = Backbone.Model.extend({
+			defaults: {
+				"id": "",
+				"name": ""
+			}
+		})
+
+		var Result = Backbone.Model.extend({
 			urlRoot: "/api/logs",
 			defaults: {
-				"amazon_url": "",
+				"title": "",
+				"photo_path": "",
+				"device": "",
+				"maker": ""
 			}
 		})
 
@@ -47,16 +54,14 @@
 			}
 		})
 
-		var Status = Backbone.Model.extend({
-			defaults: {
-				"id": "",
-				"name": ""
-			}
-		})
-
 
 
 		/* ---------- Collection ---------- */
+		var Statuses = Backbone.Collection.extend({
+			model: Status,
+			url: "/api/statuses"
+		})
+
 		var Results = Backbone.Collection.extend({
 			model: Result,
 			url: "/api/games/search"
@@ -67,10 +72,6 @@
 			url: "/api/logs"
 		})
 
-		var Statuses = Backbone.Collection.extend({
-			model: Status,
-			url: "/api/statuses"
-		})
 
 		var logs = new Logs();
 		var results = new Results();
@@ -78,8 +79,76 @@
 
 
 		/* ---------- View ---------- */
-		var StatusesView = Backbone.View.extend({
-			el: $(".status-select"),
+		var AmazonFormView = Backbone.View.extend({
+			el: $(".log-form"),
+			events: {
+				"submit": "saveLog"
+			},
+			initialize: function () {
+				this.collection = logs;
+				this.amazon_url = $(".amazon-url-input");
+				this.text = $(".text-input");
+				this.status = $(".status-select");
+			},
+			saveLog: function (e) {
+				var that = this;
+				e.preventDefault();
+
+				var amazon_input = new AmazonInput({
+					amazon_url: this.amazon_url.val(),
+					release_day: this.release_day.val(),
+					text: this.text.val(),
+					status_id: this.status.val()
+				});
+
+				amazon_input.save(null, {
+					success: function (model, response, options) {
+						var log = new Log(response.log);
+						that.collection.add(log);
+					},
+					error: function () {
+						console.log("error");
+					}
+				});
+			}
+		})
+
+		var SearchFormView = Backbone.View.extend({
+			el: $(".search-form"),
+			events: {
+				"submit": "search"
+			},
+			initialize: function () {
+				this.collection = results;
+				this.search_title = $(".search-title-input");
+			},
+			search: function (e) {
+				var that = this;
+				e.preventDefault();
+
+				var search_title = this.search_title.val();
+
+				this.collection.reset([]);
+				this.collection.fetch({
+					data: {search_title: search_title},
+					success: function (model, response, options) {
+						console.log(response.results)
+						if(response.results && response.results.length > 0){
+							for(var i = 0; i < response.results.length; i++){
+								var result = new Result(response.results[i]);
+								that.collection.add(result);
+							}
+						}
+					},
+					error: function () {
+						console.log("error");
+					}
+				})
+			}
+		})
+
+		var StatusesSelectView = Backbone.View.extend({
+			tagName: "select",
 			initialize: function () {
 				var that = this;
 				this.collection = new Statuses();
@@ -118,71 +187,18 @@
 			}
 		})
 
-		var SearchView = Backbone.View.extend({
-			el: $(".search-form"),
-			events: {
-				"submit": "search"
-			},
+		var ResultsView = Backbone.View.extend({
+			el: $(".result-list"),
 			initialize: function () {
+				var that = this;
 				this.collection = results;
-				this.search_title = $(".search-title-input");
+				this.listenTo(this.collection, "add", this.addResult);
 			},
-			search: function (e) {
-				var that = this;
-				e.preventDefault();
-
-				var search_title = this.search_title.val();
-
-				this.collection.reset([]);
-				this.collection.fetch({
-					data: {search_title: search_title},
-					success: function (model, response, options) {
-						console.log(response.results)
-						if(response.results && response.results.length > 0){
-							for(var i = 0; i < response.results.length; i++){
-								var result = new Result(response.results[i]);
-								that.collection.add(result);
-							}
-						}
-					},
-					error: function () {
-						console.log("error");
-					}
-				})
-			}
-		})
-
-		var FormView = Backbone.View.extend({
-			el: $(".log-form"),
-			events: {
-				"submit": "saveLog"
-			},
-			initialize: function () {
-				this.collection = logs;
-				this.amazon_url = $(".amazon-url-input");
-				this.text = $(".text-input");
-				this.status = $(".status-select");
-			},
-			saveLog: function (e) {
-				var that = this;
-				e.preventDefault();
-
-				var input = new Input({
-					amazon_url: this.amazon_url.val(),
-					release_day: this.release_day.val(),
-					text: this.text.val(),
-					status_id: this.status.val()
-				});
-
-				input.save(null, {
-					success: function (model, response, options) {
-						var log = new Log(response.log);
-						that.collection.add(response.log);
-					},
-					error: function () {
-						console.log("error");
-					}
-				});
+			addResult: function (result) {
+				if(result.id){
+					var result_view = new ResultView({model: result});
+					this.$el.prepend(result_view.render().el);
+				}
 			}
 		})
 
@@ -212,52 +228,14 @@
 				});
 				regist_game.save(null, {
 					success: function (model, response, options) {
-						console.log(response);
-						that.collection.add(response.log);
+						var log = new Log(response.log)
+						that.collection.add(log);
 						that.remove();
 					},
 					error: function () {
 						console.log("error");
 					}
 				})
-			}
-		})
-
-		var LogView = Backbone.View.extend({
-			tagName: "li",
-			events: {
-				"click .delete": "destroy"
-			},
-			initialize: function () {
-				this.listenTo(this.model, "destroy", this.remove);
-				this.listenTo(this.model, "change", this.render);
-			},
-			destroy: function () {
-				this.model.destroy();
-			},
-			remove: function () {
-				this.$el.remove();
-			},
-			template: _.template($("#log-template").html()),
-			render: function () {
-				var template = this.template(this.model.toJSON());
-				this.$el.html(template);
-				return this;
-			}
-		})
-
-		var ResultsView = Backbone.View.extend({
-			el: $(".result-list"),
-			initialize: function () {
-				var that = this;
-				this.collection = results;
-				this.listenTo(this.collection, "add", this.addResult);
-			},
-			addResult: function (result) {
-				if(result.id){
-					var result_view = new ResultView({model: result});
-					this.$el.prepend(result_view.render().el);
-				}
 			}
 		})
 
@@ -289,10 +267,34 @@
 			}
 		})
 
-		var form_view = new FormView();
+		var LogView = Backbone.View.extend({
+			tagName: "li",
+			events: {
+				"click .delete": "destroy"
+			},
+			initialize: function () {
+				this.listenTo(this.model, "destroy", this.remove);
+				this.listenTo(this.model, "change", this.render);
+			},
+			destroy: function () {
+				this.model.destroy();
+			},
+			remove: function () {
+				this.$el.remove();
+			},
+			template: _.template($("#log-template").html()),
+			render: function () {
+				var template = this.template(this.model.toJSON());
+				this.$el.html(template);
+				return this;
+			}
+		})
+
+
+		var form_view = new AmazonFormView();
+		var statuses_view = new StatusesSelectView();
+		var search_view = new SearchFormView();
 		var logs_view = new LogsView();
-		var statuses_view = new StatusesView();
-		var search_view = new SearchView();
 		var results_view = new ResultsView();
 	})
 })();
