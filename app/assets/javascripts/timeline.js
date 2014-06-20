@@ -1,7 +1,7 @@
 (function () {
 	$(function () {
 		/* ---------- Model ---------- */
-		var Input = Backbone.Model.extend({
+		var PostInput = Backbone.Model.extend({
 			urlRoot: "/api/posts",
 			defaults: {
 				"post": {
@@ -37,6 +37,9 @@
 			}
 		})
 
+
+
+		/* ---------- Collection ---------- */
 		var Posts = Backbone.Collection.extend({
 			model: Post,
 			url: "/api/posts"
@@ -50,8 +53,42 @@
 		var posts = new Posts();
 
 
+
 		/* ---------- View ---------- */
-		var GamesView = Backbone.View.extend({
+		var PostFormView = Backbone.View.extend({
+			el: $(".post-form"),
+			events: {
+				"submit": "savePost"
+			},
+			initialize: function () {
+				this.collection = posts;
+				this.text = $(".text-input");
+				this.game_id = $(".game-select");
+			},
+			savePost: function (e) {
+				e.preventDefault();
+
+				var that = this;
+				var post_input = new PostInput({
+					post: {
+						text: this.text.val(),
+						game_id: this.game_id.val()
+					}
+				});
+
+				post_input.save(null, {
+					success: function (model, response, options) {
+						var post = new Post(response.post);
+						that.collection.add(post);
+					},
+					error: function () {
+						console.log("error");
+					}
+				})
+			}
+		})
+
+		var GamesSelectView = Backbone.View.extend({
 			el: $(".game-select"),
 			initialize: function () {
 				var that = this;
@@ -59,7 +96,6 @@
 				this.listenTo(this.collection, "add", this.addGame);
 				this.collection.fetch({
 					success: function (collection, response, options) {
-						console.log(response);
 						if(response.games && response.games.length > 0){
 							for(var i = 0; i < response.games.length; i++){
 								var game = new Game(response.games[i])
@@ -91,36 +127,31 @@
 			}
 		})
 
-		var FormView = Backbone.View.extend({
-			el: $(".post-form"),
-			events: {
-				"submit": "savePost"
-			},
+		var PostsView = Backbone.View.extend({
+			el: $(".post-list"),
 			initialize: function () {
-				this.collection = posts;
-				this.text = $(".text-input");
-				this.game_id = $(".game-select");
-			},
-			savePost: function (e) {
-				e.preventDefault();
-
 				var that = this;
-				var input = new Input({
-					post: {
-						text: this.text.val(),
-						game_id: this.game_id.val()
-					}
-				});
-
-				input.save(null, {
-					success: function (model, response, options) {
-						var post = new Post(response.post);
-						that.collection.add(response.post);
+				this.collection = posts;
+				this.listenTo(this.collection, "add", this.addPost);
+				this.collection.fetch({
+					success: function (collection, response, options) {
+						if(response.posts && response.posts.length > 0){
+							for(var i = 0; i < response.posts.length; i++){
+								var post = new Post(response.posts[i]);
+								that.collection.add(post);
+							}
+						}
 					},
 					error: function () {
 						console.log("error");
 					}
 				})
+			},
+			addPost: function (post) {
+				if(post.id){
+					var post_view = new PostView({model: post});
+					this.$el.prepend(post_view.render().el);
+				}
 			}
 		})
 
@@ -147,37 +178,9 @@
 			}
 		})
 
-		var PostsView = Backbone.View.extend({
-			el: $(".post-list"),
-			initialize: function () {
-				var that = this;
-				this.collection = posts;
-				this.listenTo(this.collection, "add", this.addPost);
-				this.collection.fetch({
-					success: function (collection, response, options) {
-						console.log(response);
-						if(response.posts && response.posts.length > 0){
-							for(var i = 0; i < response.posts.length; i++){
-								var post = new Post(response.posts[i]);
-								that.collection.add(post);
-							}
-						}
-					},
-					error: function () {
-						console.log("error");
-					}
-				})
-			},
-			addPost: function (post) {
-				if(post.id){
-					var post_view = new PostView({model: post});
-					this.$el.prepend(post_view.render().el);
-				}
-			}
-		})
 
-		var form_view = new FormView();
+		var post_form_view = new PostFormView();
+		var games_select_view = new GamesSelectView();
 		var posts_view = new PostsView();
-		var games_view = new GamesView();
 	})
 })();

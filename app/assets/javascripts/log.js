@@ -291,9 +291,9 @@
 		})
 
 
-		var form_view = new AmazonFormView();
-		var statuses_view = new StatusesSelectView();
-		var search_view = new SearchFormView();
+		var amazon_form_view = new AmazonFormView();
+		var statuses_select_view = new StatusesSelectView();
+		var search_form_view = new SearchFormView();
 		var logs_view = new LogsView();
 		var results_view = new ResultsView();
 	})
