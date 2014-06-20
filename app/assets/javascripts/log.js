@@ -18,6 +18,10 @@
 			}
 		})
 
+		var RegistGame = Backbone.Model.extend({
+			urlRoot: "/api/logs"
+		})
+
 		var Input = Backbone.Model.extend({
 			urlRoot: "/api/logs",
 			defaults: {
@@ -129,6 +133,7 @@
 
 				var search_title = this.search_title.val();
 
+				this.collection.reset([]);
 				this.collection.fetch({
 					data: {search_title: search_title},
 					success: function (model, response, options) {
@@ -184,10 +189,10 @@
 		var ResultView = Backbone.View.extend({
 			tagName: "li",
 			events: {
-				"click .save-btn": "saveLog"
+				"click .regist-btn": "regist"
 			},
 			initialize: function () {
-
+				this.collection = logs;
 			},
 			remove: function () {
 				this.$el.remove();
@@ -197,6 +202,21 @@
 				var template = this.template(this.model.toJSON());
 				this.$el.html(template);
 				return this;
+			},
+			regist: function () {
+				var regist_game = new RegistGame({
+					log: {
+						game_id: this.model.id
+					}
+				});
+				regist_game.save(null, {
+					success: function (model, response, options) {
+						console.log(response);
+					},
+					error: function () {
+						console.log("error");
+					}
+				})
 			}
 		})
 

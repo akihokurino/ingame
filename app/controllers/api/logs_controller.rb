@@ -5,9 +5,14 @@ class Api::LogsController < ApplicationController
 	end
 
 	def create
-		result = Game.get_from_amazon(params[:amazon_url])
-		result[:release_day] = params[:release_day]
-		@log = Log.create_with(result, params, @current_user)
+		if(params[:amazon_url])
+			result = Game.get_from_amazon(params[:amazon_url])
+			@log = Log.create_with(result, @current_user)
+		else
+			params[:log][:user_id] = @current_user[:id]
+			params[:log][:status_id] = 1
+			@log = Log.last if Log.create(log_params)
+		end
 	end
 
 	def destroy
@@ -19,6 +24,8 @@ class Api::LogsController < ApplicationController
 	def update
 	end
 
-	def delete
+	private
+	def log_params
+		params.require(:log).permit(:game_id, :user_id, :status_id)
 	end
 end

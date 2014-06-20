@@ -23,20 +23,27 @@ class Game < ActiveRecord::Base
 			result = {}
 			begin
 				html = open(url){|f| f.read }
-				doc = Nokogiri::HTML.parse(html.toutf8, nil, "UTF-8")
-				doc.css("#btAsinTitle").each do |node|
-					result[:title] = node.children.text
-				end
-				doc.css("#platform-information .byLinePipe").each do |node|
-					result[:device] = node.next.text
-				end
-				doc.css(".parseasinTitle + a").each do |node|
-					result[:maker] = node.children.text
-				end
-				doc.css("#prodImageCell img").each do |node|
-					result[:photo_path] = node.attributes["src"].value
-				end
 			rescue Exception
+				html = open(url, "r:binary").read.encode("utf-8", "euc-jp", invalid: :replace, undef: :replace)
+			end
+
+			begin
+				doc = Nokogiri::HTML.parse(html.toutf8, nil, "UTF-8")
+			rescue Exception
+				doc = Nokogiri::HTML.parse(html, nil)
+			end
+
+			doc.css("#btAsinTitle").each do |node|
+				result[:title] = node.children.text
+			end
+			doc.css("#platform-information .byLinePipe").each do |node|
+				result[:device] = node.next.text
+			end
+			doc.css(".parseasinTitle + a").each do |node|
+				result[:maker] = node.children.text
+			end
+			doc.css("#prodImageCell img").each do |node|
+				result[:photo_path] = node.attributes["src"].value
 			end
 
 			result
