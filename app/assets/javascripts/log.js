@@ -204,6 +204,7 @@
 				return this;
 			},
 			regist: function () {
+				var that = this;
 				var regist_game = new RegistGame({
 					log: {
 						game_id: this.model.id
@@ -212,6 +213,8 @@
 				regist_game.save(null, {
 					success: function (model, response, options) {
 						console.log(response);
+						that.collection.add(response.log);
+						that.remove();
 					},
 					error: function () {
 						console.log("error");
