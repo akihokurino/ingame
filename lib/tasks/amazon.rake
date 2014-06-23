@@ -13,11 +13,13 @@ namespace :amazon do
 			rescue Exception
 				html = open(url, "r:binary").read.encode("utf-8", "euc-jp", invalid: :replace, undef: :replace)
 			end
+
 			begin
 				doc = Nokogiri::HTML.parse(html.toutf8, nil, "UTF-8")
 			rescue
 				doc = Nokogiri::HTML.parse(html, nil)
 			end
+
 			doc.css("#btAsinTitle").each do |node|
 				result[:title] = node.children.text
 			end
@@ -39,12 +41,18 @@ namespace :amazon do
 		end
 
 		def crawl_amazon(url)
-			html = open(url){|f| f.read }
+			begin
+				html = open(url){|f| f.read }
+			rescue Exception
+				return
+			end
+
 			begin
 				doc = Nokogiri::HTML.parse(html.toutf8, nil, "UTF-8")
 			rescue
 				doc = Nokogiri::HTML.parse(html, nil)
 			end
+
 			doc.css(".productTitle a").each do |node|
 				get_detail(node.attributes["href"].value)
 			end
@@ -56,12 +64,18 @@ namespace :amazon do
 		end
 
 		def crawl_amazon2(url)
-			html = open(url){|f| f.read }
+			begin
+				html = open(url){|f| f.read }
+			rescue Exception
+				return
+			end
+
 			begin
 				doc = Nokogiri::HTML.parse(html.toutf8, nil, "UTF-8")
 			rescue
 				doc = Nokogiri::HTML.parse(html, nil)
 			end
+
 			doc.css("h3 a").each do |node|
 				get_detail(node.attributes["href"].value)
 			end
@@ -99,6 +113,6 @@ namespace :amazon do
 		#Xbox 360
 		crawl_amazon("http://www.amazon.co.jp/s/ref=lp_15783231_nr_n_0?rh=n%3A637394%2Cn%3A%21637872%2Cn%3A15783231%2Cn%3A2228406051&bbn=15783231&ie=UTF8&qid=1403178118&rnid=15783231")
 		#PC Game
-		crawl_amazon("http://www.amazon.co.jp/s/ref=sr_nr_n_12?rh=n%3A637394%2Cn%3A%21637872%2Cn%3A689132&bbn=637872&ie=UTF8&qid=1403178151&rnid=637872")
+		#crawl_amazon("http://www.amazon.co.jp/s/ref=sr_nr_n_12?rh=n%3A637394%2Cn%3A%21637872%2Cn%3A689132&bbn=637872&ie=UTF8&qid=1403509187&rnid=637872")
   	end
 end
