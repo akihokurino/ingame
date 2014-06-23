@@ -17,6 +17,11 @@
 	%script{type: "text/template", id: "post-template"}
 		<p><%- text %></p>
 		<p><%- post_likes_count %></p>
+		<% if(!i_liked){ %>
+		<p><span class="like">いいね</span></p>
+		<% } else { %>
+		<p><span class="unlike">いいねを取り消す</span></p>
+		<% } %>
 		<a href="/games/<%= game.id %>" style="display: block;">
 		<p><%- game.title %></p>
 		<img src=<%- game.photo_path %> />

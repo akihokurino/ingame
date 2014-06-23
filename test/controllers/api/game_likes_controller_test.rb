@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PostLikesControllerTest < ActionController::TestCase
+class Api::GameLikesControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true
   # end

@@ -16,6 +16,7 @@
 				"id": "",
 				"text": "",
 				"post_likes_count": "",
+				"i_liked": "",
 				"game": {
 					"id": "",
 					"title": "",
@@ -158,7 +159,9 @@
 		var PostView = Backbone.View.extend({
 			tagName: "li",
 			events: {
-				"click .delete": "destroy"
+				"click .delete": "destroy",
+				"click .like" : "like",
+				"click .unlike": "unlike"
 			},
 			initialize: function () {
 				this.listenTo(this.model, "destroy", this.remove);
@@ -175,6 +178,51 @@
 				var template = this.template(this.model.toJSON());
 				this.$el.html(template);
 				return this;
+			},
+			like: function () {
+				var data = {
+					"post_like": {
+						"post_id": this.model.id,
+						"user_id": null
+					}
+				};
+				var that = this;
+
+				$.ajax({
+					type: "POST",
+  					url: "/api/post_likes",
+  					data: data,
+  					success: function (data) {
+  						if(data){
+  							that.model.set({
+  								"i_liked": true,
+  								"post_likes_count": parseInt(that.model.get("post_likes_count")) + 1
+  							});
+  						}
+  					},
+  					error: function () {
+  						console.log("error");
+  					}
+				})
+			},
+			unlike: function () {
+				var that = this;
+				$.ajax({
+					type: "DELETE",
+					url: "/api/post_likes/" + this.model.id,
+					data: {},
+					success: function (data) {
+						if(data){
+  							that.model.set({
+  								"i_liked": false,
+  								"post_likes_count": parseInt(that.model.get("post_likes_count")) - 1
+  							});
+  						}
+					},
+					error: function () {
+						console.log("error");
+					}
+				})
 			}
 		})
 

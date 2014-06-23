@@ -2,6 +2,7 @@ json.posts do |json|
   json.array!(@posts) do |post|
   	json.id post[:id]
   	json.text post[:text]
+    json.i_liked post.i_liked
     json.post_likes_count post[:post_likes_count]
   	json.game do |json|
       json.id post.game[:id]

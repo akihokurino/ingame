@@ -1,2 +1,0 @@
-class GameLikesController < ApplicationController
-end
