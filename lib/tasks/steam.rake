@@ -3,11 +3,15 @@ namespace :steam do
 	task :get => :environment do
 		require 'open-uri'
 		require 'nokogiri'
+    def get(url)
+      # url開いてソースを文字列で返す。
+      html = open(url){|f| f.read}
+      return html
+    end
 		def search(i)
 			#日本語、リリース日降順、ゲームのみ。約3000件。
 			url = "http://store.steampowered.com/search/?l=japanese&sort_by=Released&sort_order=DESC&category1=998&page=#{i}"
-			html = open(url){|f| f.read}
-			return html
+			return get url
 		end
 		for i in 1..1#1000
 			doc = Nokogiri::HTML.parse(search i)
@@ -20,7 +24,17 @@ namespace :steam do
 				result[:released] = row.css("div.search_released").text
 				result[:price] = ((tmp = row.css("div.search_price").children[-1]) and tmp.text) # なぜか()を外すと動かないぞ。
 				result[:tags] = row.css("div.search_name > p").text.gsub(/ - .*$/, '').gsub(/リリース日:.*$/, '').gsub(/\s/,'').split(",")
-				result[:image] = row.css("div.search_capsule > img")[0].attributes["src"].value.gsub(/\?.*/, "")
+				result[:image] = row.css("div.search_capsule > img")[0].attributes["src"].value.gsub(/\?.*/, "").gsub('capsule_sm_120', 'header')
+
+        # publisher取るためだけに潜るよ・・・
+        game_url = row.attributes["href"].text + "&l=japanese"
+        game_html_lines = get(game_url).split
+        publisher = game_html_lines.grep(/store.steampowered.com\/publisher\//)[0]
+        unless publisher
+          publisher = game_html_lines.grep(/store.steampowered.com\/search\/\?developer/)[0]
+        end
+        result[:publisher] = publisher.gsub(/^[^>]*>/, '').gsub(/<.*$/, '')
+
 				p result
 			end
 		end
