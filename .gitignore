@@ -18,3 +18,6 @@
 # Ignore another files
 /config/database.yml
 /public/user_photos/*
+
+# vim swap file
+.*.swp
