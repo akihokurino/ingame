@@ -1,0 +1,36 @@
+!!!
+%html
+	%head
+		%meta{charset: "UTF-8"}
+		%title Playdy
+		%link{rel: "stylesheet", href: "../css/reset-min.css"}
+		%link{rel: "stylesheet", href: "../css/common.css"}
+		%link{rel: "stylesheet", href: "css/randing.css"}
+	%body
+		#wrapper
+			/	.mainCnt
+			%section.mainCnt
+				%h1.mainCnt__ttl Playdy
+				%p.mainCnt__text ゲーム体験をより豊かに。
+				%ul.mainCnt__entryBtn
+					%li.mainCnt__entryBtn__item
+						%a.mainCnt__entryBtn__item--fb{href: ""}
+							%img{src: "images/mainCnt__entryBox__item--fb.png", width: "302", height: "44", alt: "Facebookでアカウントを作成"}
+					%li.mainCnt__entryBtn__item
+						%a.mainCnt__entryBtn__item--tw{href: ""}
+							%img{src: "images/mainCnt__entryBox__item--tw.png", width: "302", height: "44", alt: "Twitterでアカウントを作成"}
+					%li.mainCnt__entryBtn__item
+						%a.mainCnt__entryBtn__item--mail{href: ""}
+							%img{src: "images/mainCnt__entryBox__item--mail.png", width: "302", height: "44", alt: "メールでアカウントを作成"}
+				.mainCnt__loginBox
+					%p.mainCnt__loginBox__text 今すぐログイン
+					%form.mainCnt__loginBox__inputArea
+						%input.mainCnt__loginBox__inputArea--textarea{type: "text", role: "textarea", placeholder: "メールアドレスまたはユーザー名"}
+						%input.mainCnt__loginBox__inputArea--textarea{type: "password", role: "textarea", placeholder: "パスワード"}
+						%input.mainCnt__loginBox__inputArea--btn{type: "submit", role: "button", value: "ログイン"}
+
+			/	/.mainCnt
+
+			/	.aboutCnt
+			%section.aboutCnt
+			/	/.aboutCnt

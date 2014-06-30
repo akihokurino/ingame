@@ -1,0 +1,111 @@
+@import "compass";
+
+$width: 960px !default;
+
+$support-ie6: false;
+$support-ie7: true;
+$support-ie8: true;
+$support-ie9: true;
+$support-mozilla: true;
+$support-webkit : true;
+$support-opera  : true;
+
+@mixin substitute {
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
+}
+@mixin bgSprite($bpl, $bpt) {
+	background: url(../images/bgSprite.png) no-repeat $bpl $bpt;
+}
+
+/*---   common   ---------------------------*/
+html {
+	min-width: $width;
+	background: url(../images/body_bg.jpg) repeat-x center top;
+}
+body {
+	background: none;
+}
+
+/*---   .mainCnt   ---------------------------*/
+.mainCnt {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 466px;
+	height: 645px;
+	margin: -323px 0 0 -233px;
+	padding: 24px;
+	@include box-sizing(border-box);
+	color: #ffffff;
+	text-align: center;
+	@include bgSprite(left, top);
+
+	@at-root {
+		&__ttl {
+			width: 199px;
+			height: 70px;
+			margin: 0 auto 26px;
+			@include bgSprite(left, -655px);
+			@include substitute;
+		}
+		&__text {
+			margin-bottom: 39px;
+			font-size: 24px;
+		}
+		&__entryBtn {
+			@at-root {
+				&__item {
+					margin-bottom: 22px;
+				}
+			}
+		}
+		&__loginBox {
+			padding-top: 23px;
+			border-top: 1px solid #aececf;
+
+			@at-root {
+				&__text {
+					padding-bottom: 22px;
+					font-size: 18px;
+				}
+				&__inputArea {
+					@at-root {
+						&--textarea, &--btn {
+							display: block;
+						}
+						&--textarea {
+							width: 248px;
+							height: 44px;
+							margin: 0 auto 16px;
+							padding: 4px 0 0 8px;
+							border: 1px solid #707070;
+							@include border-radius(5px);
+							@include box-sizing(border-box);
+							@include appearance(none);
+						}
+						&--btn {
+							width: 240px;
+							height: 44px;
+							margin: 0 auto;
+							border: 1px solid #ffffff;
+							@include border-radius(5px);
+							background: none;
+							color: #ffffff;
+							@include box-sizing(border-box);
+							cursor: pointer;
+							@include appearance(none);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/*---   .aboutCnt   ---------------------------*/
+.aboutCnt {
+	width: 100%;
+	background: #ffffff;
+}
