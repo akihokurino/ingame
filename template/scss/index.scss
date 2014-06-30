@@ -1,0 +1,384 @@
+@import "compass";
+
+$width: 960px !default;
+
+$support-ie6: false;
+$support-ie7: true;
+$support-ie8: true;
+$support-ie9: true;
+$support-mozilla: true;
+$support-webkit : true;
+$support-opera  : true;
+
+@mixin clearfix {
+	&:before, &:after {
+		display: table;
+        content: "";
+	}
+    &:after {
+        clear: both;
+    }
+	@if $support-ie6 or $support-ie7 {
+        *zoom: 1;
+    }
+}
+@mixin substitute {
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
+}
+@mixin iconSprite($pl, $bpl, $bpt) {
+	padding-left: $pl;
+	background: url(../images/iconSprite.png) no-repeat $bpl $bpt;
+}
+@mixin circleBox($size, $color) {
+	width: $size;
+	height: $size;
+	border: 1px solid $color;
+	@include border-radius($size / 2.0);
+	@include box-sizing(border-box);
+}
+
+/*---   .mainCnt   ---------------------------*/
+/*---   .personalClm   ----------*/
+.personalClm {
+	float: left;
+	width: 196px;
+	color: #ffffff;
+	font-size: 10pt;
+	text-align: left;
+
+	/*---   .personalClm__profBox   ---*/
+	@at-root {
+		&__profBox {
+			margin-bottom: 1px;
+			padding: 18px 0 16px;
+			@include box-sizing(border-box);
+			border-bottom: 1px solid #1a1c21;
+			@include box-shadow(0 2px 0px 0px #434852);
+			background: #2a2d34;
+
+			@at-root {
+				&Top {
+					padding-left: 6px;
+					border-bottom: 1px solid #1a1c21;
+					@include box-shadow(0 2px 0px 0px #434852);
+					background: #25272e;
+					@include clearfix;
+				}
+				&__profImgWrap {
+					float: left;
+					margin: 0 10px 10px 0;
+					padding: 5px 5px;
+					@include circleBox(70px, #35eab9);
+				}
+				&__profImg {
+					@include circleBox(58px, none);
+				}
+				&__name {
+					margin: 14px 0 9px;
+					color: #2cd8ba;
+					font-size: 14px;
+				}
+				&__place {
+					margin-bottom: 17px;
+					color: #666666;
+					font-size: 12px;
+
+					@at-root {
+						&--town:after {
+							content: "/";
+						}
+						&--country {
+							margin-left: -7px;
+						}
+					}
+				}
+				&__countBox {
+					padding: 20px 28px 0 16px;
+					color: #ffffff;
+					@include clearfix;
+
+					@at-root {
+						&__item {
+							clear: both;
+							margin-bottom: 26px;
+						}
+						&__ttl {
+							float: left;
+							font-size: 12px;
+						}
+						&__text {
+							font-size: 10px;
+							text-align: right;
+						}
+					}
+				}
+				&__introBox {
+					padding: 0 20px 0 16px;
+					color: #b7b6b6;
+					font-size: 10px;
+					line-height: 1.5;
+					text-align: left;
+				}
+			}
+		}
+		/*---   .personalClm__trendBox   ---*/
+		&__trendBox {
+			margin-bottom: 1px;
+			padding: 8px 16px;
+			@include box-sizing(border-box);
+			border-bottom: 1px solid #1a1c21;
+			@include box-shadow(0 2px 0px 0px #434852);
+			background: #2a2d34;
+			text-align: left;
+			@include clearfix;
+
+			@at-root {
+				&__ttl {
+					margin-bottom: 18px;
+					padding: 5px 0 8px;
+					font-size: 12px;
+					@include iconSprite(30px, 0, -214px);
+				}
+				&__word {
+					float: left;
+					margin: 0 12px 16px 0;
+					padding: 4px 16px;
+					@include border-radius(4px);
+					background: #1ba189;
+					font-size: 10px;
+					text-align: center;
+				}
+			}
+		}
+		/*---   .personalClm__activityBox   ---*/
+		&__activityBox {
+			padding: 13px 14px;
+			@include box-sizing(border-box);
+			background: #2a2d34;
+			text-align: left;
+
+			@at-root {
+				&__ttl {
+					margin-bottom: 26px;
+					padding: 3px 0 1px;
+					@include iconSprite(34px, 0, -253px);
+				}
+				&__playing {
+					margin-bottom: 5px;
+					@include clearfix;
+				}
+				&__played {
+					@include clearfix;
+				}
+				&__playTtl {
+					margin: 0 0 12px 12px;
+					color: #b7b6b6;
+					font-size: 12px;
+				}
+				&__gameImgWrap {
+					float: left;
+					margin-right: 5px;
+					margin-bottom: 16px;
+
+					&:last-child {
+						margin-right: 0;
+					}
+				}
+				&__gameImg {
+					@include circleBox(50px, none);
+				}
+			}
+		}
+	}
+}
+/*---   .timelineClm   ----------*/
+.timelineClm {
+	float: left;
+	width: 62%;
+	text-align: left;
+
+	@at-root {
+		&__entryBox {
+			width: 84%;
+			margin: 27px auto 29px;
+			@include box-sizing(border-box);
+			@include box-shadow(0px 1px 2px 0px rgba(205, 203, 203, 0.75));
+			@include border-radius(3px);
+			background: #ffffff;
+
+			@at-root {
+				&__commentWrap {
+					padding: 26px 23px;
+					@include iconSprite(23px, -116px, 2px);
+				}
+				&__comment {
+					width: 100%;
+					padding-left: 7px;
+					border: none;
+					border-left: 1px solid #6d6d6d;
+					@include box-sizing(border-box);
+					outline: 0;
+					background: none;
+					color: #aab4b2;
+					font-size: 10px;
+					@include appearance(none);
+					resize: none;
+				}
+			}
+		}
+		&__postBox {
+			width: 84%;
+			margin: 0 auto 16px;
+			padding: 2px 10px 11px;
+			@include box-sizing(border-box);
+			@include box-shadow(0px 1px 2px 0px rgba(205, 203, 203, 0.75));
+			@include border-radius(3px);
+			background: #ffffff;
+
+			@at-root {
+				/*---   .timelineClm__postBox__tpoBox   ---*/
+				&__topBox {
+					padding-top: 3px;
+				}
+				&__profImg {
+					float: left;
+					margin-right: 20px;
+
+					&.circleBox {
+						@include circleBox(50px, rgba(255, 255, 255, 0.5));
+					}
+				}
+				&__postArea {
+					padding: 8px 0 0  20px;
+				}
+				&__account {
+					display: inline;
+					margin: 0 6px 10px 0;
+					color: #464646;
+					font-size: 14px;
+				}
+				&__time {
+					color: #666666;
+					font-size: 10px;
+				}
+				&__ttl {
+					margin: 8px 0 14px;
+					color: #22c0a4;
+					font-size: 14px;
+					font-weight: bold;
+				}
+				/*---   .timelineClm__postBox__bottomBox   ---*/
+				&__bottomBox {
+					padding-top: 10px;
+					border-top: 1px solid #c5cdc9;
+					@include clearfix;
+				}
+				&__gameImg {
+					float: left;
+					width: 51px;
+					margin-right: 24px;
+					padding-top: 6px;
+				}
+				&__text {
+					margin-bottom: 14px;
+					color: #7c7c7c;
+					font-size: 10px;
+					line-height: 1.5;
+				}
+				&__commentWrap {
+					float: left;
+					width: 60%;
+					border: 1px solid #ffffff;
+					@include border-radius(3px);
+				}
+				&__comment {
+					width: 100%;
+					height: 26px;
+					@include box-sizing(border-box);
+					padding: 6px 8px;
+					border: none;
+					@include border-radius(5px);
+					@include box-shadow(0px -2px 2px 0px rgba(205, 203, 203, 0.75));
+					background: #faf9f9;
+					font-size: 12px;
+					@include appearance(none);
+					outline: 0;
+				}
+				&__stateBox {
+					float: right;
+				}
+				&__favBtn {
+					display: block;
+					float: left;
+					margin-left: 20px;
+					padding: 6px 0;
+					color: #666666;
+					font-size: 12px;
+				}
+				&__favNum {
+					padding: 4px 0;
+					font-size: 12px;
+					@include iconSprite(26px, 0, -282px);
+				}
+				&__mood {
+					float: right;
+					margin-left: 17px;
+					padding: 3px 30px 3px 0;
+					color: #09f3ca;
+					font-size: 12px;
+					@include iconSprite(0, 50px, -324px);
+				}
+			}
+		}
+	}
+}
+/*---   .friendClm   ----------*/
+.friendClm {
+	float: right;
+	width: 124px;
+	padding: 25px 0;
+	@include box-sizing(border-box);
+	font-size: 12px;
+
+	@at-root {
+		&__user {
+			display: table;
+			width: 100%;
+			margin: 0 0 20px 6px;
+			color: #ffffff;
+			text-decoration: none;
+			@include clearfix;
+
+			@at-root {
+				&__profImg {
+					display: table-cell;
+					@include circleBox(38px, none);
+					background: url(../images/akiho.jpg) no-repeat 0 0;
+					background-size: 38px;
+				}
+				&__name {
+					display: table-cell;
+					width: 45%;
+					text-align: center;
+					vertical-align: middle;
+				}
+				&__log {
+
+					@at-root {
+						&--in {
+							margin-top: 14px;
+							@include circleBox(9px, #0ddbbb);
+							background: #0ddbbb;
+						}
+						&--out {
+							margin-top: 14px;
+							@include circleBox(9px, #0ddbbb);
+						}
+					}
+				}
+			}
+		}
+	}
+}
