@@ -1,13 +1,4 @@
 /*---   common   ---------------------------*/
-html {
-  background: #f1f1f1;
-}
-
-body {
-  min-width: 960px;
-  background: url(../images/friendClm_bg.png) repeat-y right top;
-}
-
 #wrapper {
   line-height: 1.0;
 }
@@ -159,18 +150,4 @@ header:after {
   padding-top: 12px;
   padding-left: 0;
   background: url(../images/iconSprite.png) no-repeat 0 -171px;
-}
-
-/*---   .mainCnt   ---------------------------*/
-.mainCnt {
-  width: 100%;
-  min-width: 960px;
-  *zoom: 1;
-}
-.mainCnt:before, .mainCnt:after {
-  display: table;
-  content: "";
-}
-.mainCnt:after {
-  clear: both;
 }

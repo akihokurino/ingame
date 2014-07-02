@@ -1,0 +1,389 @@
+/*---   common   ---------------------------*/
+body {
+  text-align: center;
+}
+
+.progress {
+  width: 60px;
+  margin: 0 auto;
+  *zoom: 1;
+}
+.progress:before, .progress:after {
+  display: table;
+  content: "";
+}
+.progress:after {
+  clear: both;
+}
+.progress--on {
+  float: left;
+  width: 12px;
+  height: 12px;
+  margin-right: 12px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background: #05c8b3;
+}
+.progress--on:last-child {
+  margin-right: 0;
+}
+
+.progress--off {
+  float: left;
+  width: 12px;
+  height: 12px;
+  margin-right: 12px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background: #b3b7b7;
+}
+.progress--off:last-child {
+  margin-right: 0;
+}
+
+/*---   .step01   ---------------------------*/
+.step01 {
+  padding-top: 38px;
+}
+.step01__ttl {
+  margin-bottom: 32px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.step01__entryBox {
+  position: relative;
+  width: 250px;
+  margin: 0 auto 28px;
+}
+.step01__entryBox__game01, .step01__entryBox__game02, .step01__entryBox__place {
+  display: block;
+  width: 250px;
+  height: 34px;
+  margin: 0 auto 20px;
+  padding-left: 12px;
+  border: 1px solid #a09e9f;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.step01__entryBox__game01--node {
+  position: absolute;
+  top: 10px;
+  right: -42px;
+  color: #e97171;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.step01__entryBox__btn {
+  width: 76px;
+  height: 29px;
+  border: 1px solid #077f72;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background: -moz-linear-gradient(#05c8b3, #07b9a6);
+  background: -webkit-linear-gradient(#05c8b3, #07b9a6);
+  background: linear-gradient(#05c8b3, #07b9a6);
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  outline: 0;
+}
+
+/*---   .step02   ---------------------------*/
+.step02 {
+  padding-top: 38px;
+}
+.step02__ttl {
+  margin-bottom: 23px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.step02__text {
+  margin-bottom: 24px;
+  font-size: 12px;
+}
+
+.step02__friendBox {
+  width: 387px;
+  margin: 0 auto 30px;
+  *zoom: 1;
+}
+.step02__friendBox:before, .step02__friendBox:after {
+  display: table;
+  content: "";
+}
+.step02__friendBox:after {
+  clear: both;
+}
+.step02__friendBox__leftBtn {
+  display: block;
+  position: relative;
+  float: left;
+  width: 34px;
+  height: 34px;
+  margin: 35px 26px 0 0;
+  border: 1px solid #05c8b3;
+  -moz-border-radius: 17px;
+  -webkit-border-radius: 17px;
+  border-radius: 17px;
+}
+.step02__friendBox__leftBtn--tri {
+  display: block;
+  position: absolute;
+  top: 8px;
+  right: 11px;
+  border-top: 9px solid transparent;
+  border-right: 15px solid #05c8b3;
+  border-bottom: 9px solid transparent;
+  border-left: 15px solid transparent;
+}
+
+.step02__friendBox__rightBtn {
+  display: block;
+  position: relative;
+  float: right;
+  width: 34px;
+  height: 34px;
+  margin-top: 35px;
+  border: 1px solid #05c8b3;
+  -moz-border-radius: 17px;
+  -webkit-border-radius: 17px;
+  border-radius: 17px;
+}
+.step02__friendBox__rightBtn--tri {
+  display: block;
+  position: absolute;
+  top: 8px;
+  left: 11px;
+  border-top: 9px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 9px solid transparent;
+  border-left: 15px solid #05c8b3;
+}
+
+.step02__friendBox__listWrap {
+  float: left;
+  width: 266px;
+  *zoom: 1;
+}
+.step02__friendBox__listWrap:before, .step02__friendBox__listWrap:after {
+  display: table;
+  content: "";
+}
+.step02__friendBox__listWrap:after {
+  clear: both;
+}
+
+.step02__friendBox__list {
+  float: left;
+  margin-right: 19px;
+}
+.step02__friendBox__list:last-child {
+  margin-right: 0;
+}
+
+.step02__friendBox__profImg {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 12px;
+  -moz-border-radius: 24px;
+  -webkit-border-radius: 24px;
+  border-radius: 24px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.step02__friendBox__name {
+  margin-bottom: 8px;
+  color: #05aa91;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.step02__friendBox__btn {
+  display: block;
+  width: 76px;
+  height: 21px;
+  padding-top: 1px;
+  border: 1px solid #05c8b3;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #06b4a1;
+  font-size: 12px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.step02__entryBox {
+  width: 250px;
+  margin: 0 auto 28px;
+}
+.step02__entryBox__friend {
+  display: block;
+  width: 250px;
+  height: 34px;
+  margin-bottom: 26px;
+  padding-left: 11px;
+  border: 1px solid #a09e9f;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.step02__entryBox__btn {
+  width: 79px;
+  height: 29px;
+  border: 1px solid #077f72;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background: -moz-linear-gradient(#05c8b3, #07b9a6);
+  background: -webkit-linear-gradient(#05c8b3, #07b9a6);
+  background: linear-gradient(#05c8b3, #07b9a6);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  outline: 0;
+}
+
+/*---   .step03   ---------------------------*/
+.step03 {
+  padding-top: 38px;
+}
+.step03__ttl {
+  margin-bottom: 58px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.step03__uploadBox {
+  width: 360px;
+  margin: 0 auto 23px;
+  *zoom: 1;
+}
+.step03__uploadBox:before, .step03__uploadBox:after {
+  display: table;
+  content: "";
+}
+.step03__uploadBox:after {
+  clear: both;
+}
+.step03__uploadBox__profImg {
+  float: left;
+  -moz-box-shadow: 0 0 5px 0 #c5c5c3;
+  -webkit-box-shadow: 0 0 5px 0 #c5c5c3;
+  box-shadow: 0 0 5px 0 #c5c5c3;
+  -moz-border-radius: 71px;
+  -webkit-border-radius: 71px;
+  border-radius: 71px;
+}
+
+.step03__uploadBox__rightBox {
+  float: right;
+  position: relative;
+  width: 182px;
+}
+
+.step03__uploadBox__btnWrap {
+  margin-bottom: 22px;
+  padding: 20px 0;
+  border-bottom: 1px solid #aaaaaa;
+}
+
+.step03__uploadBox__btn {
+  width: 154px;
+  height: 29px;
+  border: 1px solid #077f72;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background: -moz-linear-gradient(#05c8b3, #07b9a6);
+  background: -webkit-linear-gradient(#05c8b3, #07b9a6);
+  background: linear-gradient(#05c8b3, #07b9a6);
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  outline: 0;
+}
+
+.step03__uploadBox__text {
+  position: absolute;
+  left: 50%;
+  top: 60px;
+  width: 58px;
+  margin-left: -29px;
+  background: #ffffff;
+  color: #908f8f;
+  font-size: 12px;
+}
+
+.step03__uploadBox__camera {
+  color: #08a481;
+  font-size: 14px;
+}
+.step03__uploadBox__camera:hover {
+  text-decoration: none;
+}
+
+.step03__entryBox {
+  width: 250px;
+  margin: 0 auto 28px;
+}
+.step03__entryBox__btn {
+  width: 79px;
+  height: 29px;
+  border: 1px solid #077f72;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background: -moz-linear-gradient(#05c8b3, #07b9a6);
+  background: -webkit-linear-gradient(#05c8b3, #07b9a6);
+  background: linear-gradient(#05c8b3, #07b9a6);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  outline: 0;
+}

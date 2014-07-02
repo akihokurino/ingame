@@ -33,13 +33,6 @@ $support-opera  : true;
 }
 
 /*---   common   ---------------------------*/
-html {
-	background: #f1f1f1;
-}
-body {
-	min-width: $width;
-	background: url(../images/friendClm_bg.png) repeat-y right top;
-}
 #wrapper {
 	line-height: 1.0;
 }
@@ -153,11 +146,4 @@ header {
 			@include iconSprite(0, 0, -171px);
 		}
 	}
-}
-
-/*---   .mainCnt   ---------------------------*/
-.mainCnt {
-	width: 100%;
-	min-width: $width;
-	@include clearfix;
 }

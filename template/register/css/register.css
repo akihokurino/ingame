@@ -1,7 +1,11 @@
 /*---   common   ---------------------------*/
 html {
   min-width: 960px;
-  background: url(../images/body_bg.jpg) repeat-x center top;
+  background: url(../images/body_bg.jpg) no-repeat center top;
+  -moz-background-size: 100%;
+  -o-background-size: 100%;
+  -webkit-background-size: 100%;
+  background-size: 100%;
 }
 
 body {

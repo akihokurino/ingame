@@ -19,7 +19,8 @@ $support-opera  : true;
 /*---   common   ---------------------------*/
 html {
 	min-width: $width;
-	background: url(../images/body_bg.jpg) repeat-x center top;
+	background: url(../images/body_bg.jpg) no-repeat center top;
+	@include background-size(100%);
 }
 body {
 	background: none;

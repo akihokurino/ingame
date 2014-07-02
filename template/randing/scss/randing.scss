@@ -22,7 +22,8 @@ $support-opera  : true;
 /*---   common   ---------------------------*/
 html {
 	min-width: $width;
-	background: url(../images/body_bg.jpg) repeat-x center top;
+	background: url(../images/body_bg.jpg) no-repeat center top;
+	@include background-size(100%);
 }
 body {
 	background: none;
@@ -58,6 +59,72 @@ body {
 			@at-root {
 				&__item {
 					margin-bottom: 22px;
+
+					@at-root {
+						&--fb, &--tw, &--mail {
+							display: block;
+							position: relative;
+							width: 302px;
+							height: 44px;
+							margin: 0 auto;
+							padding: 14px 0 0 66px;
+							@include box-sizing(border-box);
+							font-size: 15px;
+							text-align: left;
+							@include border-radius(5px);
+						}
+						&--fb {
+							color: #ffffff;
+							border: 1px solid #293e66;
+							@include background(linear-gradient(#5678bc, #314b7c));
+
+							&Icon {
+								display: block;
+								position: absolute;
+								top: 0;
+								left: 6px;
+								width: 32px;
+								height: 42px;
+								padding-right: 8px;
+								border-right: 1px solid rgba(0, 0, 0, 0.2);
+								@include bgSprite(0, -734px);
+							}
+						}
+						&--tw {
+							color: #ffffff;
+							border: 1px solid #1c80a8;
+							@include background(linear-gradient(#5fbee4, #2192bd));
+
+							&Icon {
+								display: block;
+								position: absolute;
+								top: 0;
+								left: 6px;
+								width: 32px;
+								height: 42px;
+								padding-right: 8px;
+								border-right: 1px solid rgba(0, 0, 0, 0.2);
+								@include bgSprite(5px, -776px);
+							}
+						}
+						&--mail {
+							color: #403f3f;
+							border: 1px solid #7d7e7e;
+							@include background(linear-gradient(#ffffff, #eaebeb));
+
+							&Icon {
+								display: block;
+								position: absolute;
+								top: 0;
+								left: 6px;
+								width: 32px;
+								height: 42px;
+								padding-right: 8px;
+								border-right: 1px solid rgba(0, 0, 0, 0.2);
+								@include bgSprite(4px, -814px);
+							}
+						}
+					}
 				}
 			}
 		}
@@ -83,6 +150,7 @@ body {
 							border: 1px solid #707070;
 							@include border-radius(5px);
 							@include box-sizing(border-box);
+							line-height: 2.0;
 							@include appearance(none);
 						}
 						&--btn {

@@ -1,4 +1,27 @@
+/*---   common   ---------------------------*/
+html {
+  background: #f1f1f1;
+}
+
+body {
+  min-width: 960px;
+  background: url(../images/friendClm_bg.png) repeat-y right top;
+}
+
 /*---   .mainCnt   ---------------------------*/
+.mainCnt {
+  width: 100%;
+  min-width: 960px;
+  *zoom: 1;
+}
+.mainCnt:before, .mainCnt:after {
+  display: table;
+  content: "";
+}
+.mainCnt:after {
+  clear: both;
+}
+
 /*---   .personalClm   ----------*/
 .personalClm {
   float: left;
