@@ -2,8 +2,6 @@
 	= javascript_include_tag "timeline.js"
 
 %div.timeline-page
-	= notice
-	= debug(@current_user)
 	= link_to "ログアウト", logout_users_path
 	= link_to "ユーザー情報", user_path(@current_user)
 

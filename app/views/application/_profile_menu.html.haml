@@ -1,0 +1,48 @@
+.personalClm
+	%section.personalClm__profBox
+		.personalClm__profBoxTop
+			%figure.personalClm__profBox__profImgWrap.circleBox
+				%img.personalClm__profBox__profImg{src: "images/asuya.jpg", width: "58", height: "58", alt: ""}
+			%h2.personalClm__profBox__name Asuya
+			%p.personalClm__profBox__place
+				%span.personalClm__profBox__place--town Tokyo
+				%span.personalClm__profBox__place--country Japan
+		%ul.personalClm__profBox__countBox
+			%li.personalClm__profBox__countBox__item
+				%h3.personalClm__profBox__countBox__ttl フォロー
+				%p.personalClm__profBox__countBox__text 12
+			%li.personalClm__profBox__countBox__item
+				%h3.personalClm__profBox__countBox__ttl フォロワー
+				%p.personalClm__profBox__countBox__text 18
+			%li.personalClm__profBox__countBox__item
+				%h3.personalClm__profBox__countBox__ttl ゲーム数
+				%p.personalClm__profBox__countBox__text 34
+			%li.personalClm__profBox__countBox__item
+				%h3.personalClm__profBox__countBox__ttl ポスト数
+				%p.personalClm__profBox__countBox__text 567
+		%p.personalClm__profBox__introBox テキスト、テキスト、テキスト、テキスト、テキスト、テキスト、テキスト、テキスト、テキスト、テキスト、テキスト、テキスト、テキスト、テキスト、テキスト、テキスト、テキスト、テキスト、
+	%section.personalClm__trendBox
+		%h3.personalClm__trendBox__ttl トレンド
+		%ul
+			%li.personalClm__trendBox__word 格ゲー
+			%li.personalClm__trendBox__word ゲーム
+			%li.personalClm__trendBox__word 神ゲー
+			%li.personalClm__trendBox__word 神ゲー
+	%section.personalClm__activityBox
+		%h3.personalClm__activityBox__ttl アクティビティ
+		.personalClm__activityBox__playing
+			%h4.personalClm__activityBox__playTtl playing
+			%ul
+				- 3.times do |i|
+					%li.personalClm__activityBox__gameImgWrap
+						%img.personalClm__activityBox__gameImg{src: "images/game01.png", width: "50", height: "50", alt: ""}
+		.personalClm__activityBox__played
+			%h4.personalClm__activityBox__playTtl played
+			%ul
+				- 3.times do |i|
+					%li.personalClm__activityBox__gameImgWrap
+						%img.personalClm__activityBox__gameImg{src: "images/game02.png", width: "50", height: "50", alt: ""}
+			%ul
+				- 3.times do |i|
+					%li.personalClm__activityBox__gameImgWrap
+						%img.personalClm__activityBox__gameImg{src: "images/game03.png", width: "50", height: "50", alt: ""}
