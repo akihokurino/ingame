@@ -1,18 +1,18 @@
 = content_for :head do
 	= javascript_include_tag "log.js"
 
+%div.logs-page
+	%form.log-form
+		%input{type: "text", name: "amazon_url", placeholder: "アマゾンのURLを入力して下さい。", class: "amazon-url-input"}
+		%input{type: "submit", class: "submit-btn"}
 
-%form.log-form
-	%input{type: "text", name: "amazon_url", placeholder: "アマゾンのURLを入力して下さい。", class: "amazon-url-input"}
-	%input{type: "submit", class: "submit-btn"}
+	%form.search-form
+		%input{type: "text", name: "search_title", class: "search-title-input"}
+		%input{type: "submit", class: "submit-btn"}
 
-%form.search-form
-	%input{type: "text", name: "search_title", class: "search-title-input"}
-	%input{type: "submit", class: "submit-btn"}
+	%ul.result-list{style: "float: right; width: 45%"}
 
-%ul.result-list{style: "float: right; width: 45%"}
-
-%ul.log-list{style: "float: left; width: 45%"}
+	%ul.log-list{style: "float: left; width: 45%"}
 
 %script{type: "text/template", id: "log-template"}
 	<p><%- text %></p>

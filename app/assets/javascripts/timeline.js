@@ -200,7 +200,7 @@
 			}
 		})
 
-		var TimelineView = Backbone.View.extend({
+		var AppView = Backbone.View.extend({
 			el: ".timeline-page",
 			initialize: function () {
 				var post_form_view = new PostFormView();
@@ -228,6 +228,6 @@
 			}
 		})
 
-		var timeline = new TimelineView();
+		var app = new AppView();
 	})
 })();

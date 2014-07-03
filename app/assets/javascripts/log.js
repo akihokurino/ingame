@@ -153,20 +153,6 @@
 				var that = this;
 				this.collection = new Statuses();
 				this.listenTo(this.collection, "add", this.addStatus);
-				this.collection.fetch({
-					success: function (collection, response, options) {
-						console.log(response);
-						if(response.statuses && response.statuses.length > 0){
-							for(var i = 0; i < response.statuses.length; i++){
-								var status = new Status(response.statuses[i]);
-								that.collection.add(status);
-							}
-						}
-					},
-					error: function () {
-						console.log("error");
-					}
-				}, {wait: true})
 			},
 			addStatus: function (status) {
 				if(status.id){
@@ -245,19 +231,6 @@
 				var that = this;
 				this.collection = logs;
 				this.listenTo(this.collection, "add", this.addLog);
-				this.collection.fetch({
-					success: function (collection, response, options) {
-						if(response.logs && response.logs.length > 0){
-							for(var i = 0; i < response.logs.length; i++){
-								var log = new Log(response.logs[i]);
-								that.collection.add(log);
-							}
-						}
-					},
-					error: function () {
-						console.log("error");
-					}
-				}, {wait: true})
 			},
 			addLog: function (log) {
 				if(log.id){
@@ -290,11 +263,36 @@
 			}
 		})
 
+		var AppView = Backbone.View.extend({
+			el: ".logs-page",
+			initialize: function () {
+				var amazon_form_view = new AmazonFormView();
+				var statuses_select_view = new StatusesSelectView();
+				var search_form_view = new SearchFormView();
+				var logs_view = new LogsView();
+				var results_view = new ResultsView();
 
-		var amazon_form_view = new AmazonFormView();
-		var statuses_select_view = new StatusesSelectView();
-		var search_form_view = new SearchFormView();
-		var logs_view = new LogsView();
-		var results_view = new ResultsView();
+				$.ajax({
+					type: "GET",
+					url: "/api/logs",
+					data: {},
+					success: function (data) {
+						for(var i = 0; i < data.logs.length; i++){
+							var log = new Log(data.logs[i]);
+							logs_view.collection.add(log);
+						}
+						for(var i = 0; i < data.statuses.length; i++){
+							var status = new Status(data.statuses[i]);
+							statuses_select_view.collection.add(status);
+						}
+					},
+					error: function () {
+						console.log("error");
+					}
+				})
+			}
+		})
+
+		var app = new AppView();
 	})
 })();

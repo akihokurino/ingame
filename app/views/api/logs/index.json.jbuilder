@@ -17,3 +17,5 @@ json.logs do |json|
     end
   end
 end
+
+json.statuses @statuses
