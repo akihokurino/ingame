@@ -1,6 +1,7 @@
 class Api::PostsController < ApplicationController
 	def index
 		@posts = Post.get_all_posts(@current_user[:id])
+		@games = Log.where(user_id: @current_user[:id]).select(:game_id).map { |log| log.game }
 	end
 
 	def create

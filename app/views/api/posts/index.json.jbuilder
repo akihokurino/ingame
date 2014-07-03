@@ -17,3 +17,10 @@ json.posts do |json|
     json.current_user_id @current_user[:id]
   end
 end
+
+json.games do |json|
+  json.array!(@games) do |game|
+    json.id game[:id]
+    json.title game[:title]
+  end
+end

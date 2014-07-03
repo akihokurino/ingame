@@ -8,8 +8,6 @@ gem 'mysql2'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
-# gem 'compass-rails', '~> 1.1.7'
-gem 'sass', '~> 3.3.9'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -46,14 +44,14 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'sass', '~> 3.3.9'
+# gem 'compass-rails', '~> 1.1.7'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
-
 gem 'haml-rails'
-gem "haml"
-
+gem 'haml'
+gem 'backbone-on-rails'
 gem 'nokogiri'
-
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 
