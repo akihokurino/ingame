@@ -1,0 +1,305 @@
+/*---   common   ---------------------------*/
+html {
+  background: #dddcdc;
+}
+
+a {
+  text-decoration: none;
+}
+
+/*---   header   ---------------------------*/
+header {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  height: 46px;
+  padding-top: 11px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.46);
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background: rgba(229, 227, 228, 0.46);
+}
+header .ttl {
+  display: block;
+  margin: 0 auto;
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+  width: 87px;
+  height: 31px;
+  background: url(../images/profile__iconSprite.png) no-repeat 0 0;
+  background-size: 83px 170px;
+}
+header .serch {
+  display: block;
+  position: absolute;
+  top: 7px;
+  left: 11px;
+  width: 28px;
+  height: 28px;
+  background: url(../images/profile__iconSprite.png) no-repeat 0 -35px;
+  background-size: 83px 170px;
+}
+header .profile {
+  display: block;
+  position: absolute;
+  top: 9px;
+  right: 39px;
+  width: 22px;
+  height: 27px;
+  background: url(../images/profile__iconSprite.png) no-repeat 0 -67px;
+  background-size: 83px 170px;
+}
+
+/*---   .personalBox   ---------------------------*/
+.personalBoxWrap {
+  -moz-box-shadow: 0 1px 1px 1px #9b9b9b;
+  -webkit-box-shadow: 0 1px 1px 1px #9b9b9b;
+  box-shadow: 0 1px 1px 1px #9b9b9b;
+  background: url(../images/bg.jpg) repeat top center;
+}
+
+.personalBox {
+  position: relative;
+  padding: 81px 17px 26px 120px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #ffffff;
+}
+.personalBox .name {
+  margin-top: 20px;
+  font-size: 15px;
+  -webkit-text-stroke: 1px white;
+  text-shadow: 2px 2px 1px #888888;
+}
+.personalBox .place {
+  font-size: 12px;
+}
+.personalBox .town:after {
+  content: "/";
+}
+.personalBox .country {
+  margin-left: -5px;
+}
+.personalBox .text {
+  margin-top: 26px;
+  font-size: 12px;
+}
+.personalBox .profImgWrap {
+  position: absolute;
+  top: 80px;
+  left: 26px;
+}
+.personalBox .profImg {
+  border: 1px solid #fffcfc;
+  -moz-border-radius: 44px;
+  -webkit-border-radius: 44px;
+  border-radius: 44px;
+}
+.personalBox .option {
+  position: absolute;
+  top: 60px;
+  right: 25px;
+  width: 25px;
+  height: 25px;
+  background: url(../images/profile__iconSprite.png) no-repeat 0 -99px;
+  background-size: 83px 170px;
+}
+
+/*---   .funcBox   ---------------------------*/
+.funcBox {
+  padding: 9px 0 6px;
+  background: #ffffff;
+}
+.funcBox .countBox {
+  width: 320px;
+  margin: 0 auto 17px;
+  *zoom: 1;
+}
+.funcBox .countBox:before, .funcBox .countBox:after {
+  display: table;
+  content: "";
+}
+.funcBox .countBox:after {
+  clear: both;
+}
+.funcBox .countBox .item {
+  float: left;
+  width: 80px;
+  border-right: 1px solid #a0a0a0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.funcBox .countBox .item:last-child {
+  border: none;
+}
+.funcBox .countBox .follow, .funcBox .countBox .follower, .funcBox .countBox .gameNum, .funcBox .countBox .postNum {
+  display: block;
+  width: 80px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #474646;
+  font-size: 12px;
+  text-align: center;
+}
+.funcBox .countBox .count {
+  display: block;
+  color: #22c0a4;
+  font-size: 18px;
+  -webkit-text-stroke: 1.5px #22c0a4;
+}
+.funcBox .sortBox {
+  width: 312px;
+  margin: 0 auto;
+  border: 1px solid #10b5a3;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  *zoom: 1;
+}
+.funcBox .sortBox:before, .funcBox .sortBox:after {
+  display: table;
+  content: "";
+}
+.funcBox .sortBox:after {
+  clear: both;
+}
+.funcBox .sortBox .item {
+  float: left;
+  width: 104px;
+  border-right: 1px solid #10b5a3;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 12px;
+}
+.funcBox .sortBox .item:last-child {
+  border: none;
+}
+.funcBox .sortBox .playing, .funcBox .sortBox .ready, .funcBox .sortBox .played {
+  display: table-cell;
+  width: 104px;
+  height: 30px;
+  padding-top: 4px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #10ac9b;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 1.1;
+}
+.funcBox .sortBox .playing {
+  border-radius: 3px 0 0 3px;
+}
+.funcBox .sortBox .played {
+  border-radius: 0 3px 3px 0;
+}
+.funcBox .sortBox .current.item {
+  border: none;
+}
+.funcBox .sortBox .current .playing, .funcBox .sortBox .current .ready, .funcBox .sortBox .current .played {
+  background: #10ac9b;
+  color: #ffffff;
+  -webkit-text-stroke: 1px white;
+}
+
+/*---   .gameBox   ---------------------------*/
+.gameBox {
+  padding: 8px 3px 0;
+}
+.gameBox .searchBox {
+  width: 98%;
+  height: 33px;
+  margin: 0 auto 15px;
+  border: 1px solid #b3b2b3;
+  -moz-border-radius: 18px;
+  -webkit-border-radius: 18px;
+  border-radius: 18px;
+  background: #ffffff;
+}
+.gameBox .searchBox input {
+  padding-left: 15px;
+  -moz-border-radius: 18px;
+  -webkit-border-radius: 18px;
+  border-radius: 18px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border: none;
+  width: 100%;
+  height: 33px;
+  background: url(../images/profile__iconSprite.png) no-repeat right -50px top -125px;
+  background-size: 83px 170px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  outline: 0;
+}
+.gameBox .gameList {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  flex-directon: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.gameBox .gameList .item {
+  width: 140px;
+  min-width: 140px;
+  margin: 0 8px 16px;
+  padding: 0 10px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-box-shadow: 0 2px 2px 0 #5a595a;
+  -webkit-box-shadow: 0 2px 2px 0 #5a595a;
+  box-shadow: 0 2px 2px 0 #5a595a;
+  background: #ffffff;
+}
+.gameBox .gameList .gameImg {
+  width: 140px;
+  height: 160px;
+  margin: 0 0 15px -10px;
+  border: 1px solid #2a2d34;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background: url(../images/game.jpg) no-repeat top center;
+}
+.gameBox .gameList .ttl {
+  margin-bottom: 15px;
+  color: #333232;
+  font-size: 12px;
+}
+.gameBox .gameList .stars {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  flex-directon: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  justify-content: center;
+  padding: 10px 0;
+  border-top: 1px solid #dcdcdc;
+}
+.gameBox .gameList .star {
+  width: 14px;
+  height: 12px;
+  background: url(../images/profile__iconSprite.png) no-repeat 0 -158px;
+  background-size: 83px 170px;
+}

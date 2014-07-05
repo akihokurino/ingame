@@ -1,0 +1,157 @@
+@import "function.css.scss";
+//@import "../../scss/function.css.scss";
+
+
+$width: 960px !default;
+
+@mixin bgSprite($bpl, $bpt) {
+	background: url(../images/randing__bgSprite.png) no-repeat $bpl $bpt;
+}
+
+/*---   common   ---------------------------*/
+html {
+	min-width: $width;
+	background: url(../images/common__bodyBg01.jpg) no-repeat center top;
+	@include background-size(100%);
+}
+body {
+	background: none;
+}
+
+/*---   .mainCnt   ---------------------------*/
+.mainCnt {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 466px;
+	height: 645px;
+	margin: -323px 0 0 -233px;
+	padding: 24px;
+	@include box-sizing;
+	color: #ffffff;
+	text-align: center;
+	@include bgSprite(left, top);
+
+	@at-root {
+		&Ttl {
+			width: 199px;
+			height: 70px;
+			margin: 0 auto 26px;
+			@include bgSprite(left, -655px);
+			@include substitute;
+		}
+		&Text {
+			margin-bottom: 39px;
+			font-size: 24px;
+		}
+	}
+	.entryBtn {
+		.item {
+			margin-bottom: 22px;
+
+			.fb, .tw, .mail {
+				display: block;
+				position: relative;
+				width: 302px;
+				height: 44px;
+				margin: 0 auto;
+				padding: 14px 0 0 66px;
+				@include box-sizing;
+				font-size: 15px;
+				text-align: left;
+				@include border-radius(5px);
+			}
+			.fb {
+				color: #ffffff;
+				border: 1px solid #293e66;
+				@include gradient(#5678bc, #314b7c);
+			}
+			.fbIcon {
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 6px;
+				width: 32px;
+				height: 42px;
+				padding-right: 8px;
+				border-right: 1px solid #293e66;
+				@include bgSprite(0, -734px);
+			}
+			.tw {
+				color: #ffffff;
+				border: 1px solid #1c80a8;
+				@include gradient(#5fbee4, #2192bd);
+			}
+			.twIcon {
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 6px;
+				width: 32px;
+				height: 42px;
+				padding-right: 8px;
+				border-right: 1px solid #1a7597;
+				@include bgSprite(5px, -776px);
+			}
+			.mail {
+				color: #403f3f;
+				border: 1px solid #7d7e7e;
+				@include gradient(#ffffff, #eaebeb);
+			}
+			.mailIcon {
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 6px;
+				width: 32px;
+				height: 42px;
+				padding-right: 8px;
+				border-right: 1px solid #7d7e7e;
+				@include bgSprite(4px, -814px);
+			}
+		}
+	}
+	.loginBox {
+		padding-top: 23px;
+		border-top: 1px solid #aececf;
+
+		.text {
+			padding-bottom: 22px;
+			font-size: 18px;
+		}
+		.inputArea {
+			.textarea, .btn {
+				display: block;
+			}
+			.textarea {
+				width: 248px;
+				height: 44px;
+				margin: 0 auto 16px;
+				padding: 4px 0 0 8px;
+				border: 1px solid #707070;
+				@include border-radius(5px);
+				@include box-sizing;
+				line-height: 2.0;
+				@include appearance;
+			}
+			.btn {
+				width: 240px;
+				height: 44px;
+				margin: 0 auto;
+				border: 1px solid #ffffff;
+				@include border-radius(5px);
+				background: none;
+				color: #ffffff;
+				@include box-sizing;
+				cursor: pointer;
+				@include appearance;
+			}
+		}
+	}
+}
+
+/*---   .aboutCnt   ---------------------------*/
+.aboutCnt {
+	width: 100%;
+	background: #ffffff;
+}

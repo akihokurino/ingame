@@ -1,0 +1,30 @@
+!!!
+%html
+	%head
+		%meta{charset: "UTF-8"}
+		%title Playdy
+		%link{rel: "stylesheet", href: "stylesheets/reset-min.css"}
+		%link{rel: "stylesheet", href: "stylesheets/step.css"}
+	%body
+		#wrapper
+			%section.step02
+				%h2.step02Ttl 友達を検索
+				%p.step02Text 友達かも？
+				.friendBox
+					%a.leftBtn{href: ""}
+						%span.tri
+					%ul.listWrap
+						- 3.times do |i|
+							%li.list
+								%img.profImg{src: "images/asuya.jpg", width: "48", height: "48", alt: ""}
+								%p.name asuya
+								%a.btn{href: ""} 友達になる
+					%a.rightBtn{href: ""}
+						%span.tri
+				%form.entryBox
+					%input.friend{type: "text", placeholder: "友達を検索"}
+					%input.btn{type: "submit", value: "スキップ"}
+				%ul.progress
+					%li.progress--off
+					%li.progress--on
+					%li.progress--off

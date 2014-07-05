@@ -1,0 +1,39 @@
+!!!
+%html
+	%head
+		%meta{charset: "UTF-8"}
+		%title Playdy
+		%link{rel: "stylesheet", href: "stylesheets/reset-min.css"}
+		%link{rel: "stylesheet", href: "stylesheets/common.css"}
+		%link{rel: "stylesheet", href: "stylesheets/randing.css"}
+	%body
+		#wrapper
+			/	.mainCnt
+			%section.mainCnt
+				%h1.mainCntTtl Playdy
+				%p.mainCntText ゲーム体験をより豊かに。
+				%ul.entryBtn
+					%li.item
+						%a.fb{href: ""}
+							%span.fbIcon
+							Facebookでアカウントを作成
+					%li.item
+						%a.tw{href: ""}
+							%span.twIcon
+							Twitterでアカウントを作成
+					%li.item
+						%a.mail{href: ""}
+							%span.mailIcon
+							メールでアカウントを作成
+				.loginBox
+					%p.text 今すぐログイン
+					%form.inputArea
+						%input.textarea{type: "text", role: "textarea", placeholder: "メールアドレスまたはユーザー名"}
+						%input.textarea{type: "password", role: "textarea", placeholder: "パスワード"}
+						%input.btn{type: "submit", role: "button", value: "ログイン"}
+
+			/	/.mainCnt
+
+			/	.aboutCnt
+			%section.aboutCnt
+			/	/.aboutCnt

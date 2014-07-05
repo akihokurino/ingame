@@ -1,0 +1,24 @@
+!!!
+%html
+	%head
+		%meta{charset: "UTF-8"}
+		%title Playdy
+		%link{rel: "stylesheet", href: "stylesheets/reset-min.css"}
+		%link{rel: "stylesheet", href: "stylesheets/step.css"}
+	%body
+		#wrapper
+			%section.step03
+				%h2.step03Ttl プロフィール写真を設定
+				.uploadBox
+					%img.profImg{src: "images/step03__profImg.png", width: "141", height: "141", alt: ""}
+					.rightBox
+						%form.btnWrap
+							%input.btn{type: "submit", value: "写真をアップロード"}
+						%p.text または
+						%a.camera{href: ""} Webカメラで写真を撮る
+				%form.entryBox
+					%input.btn{type: "submit", value: "スキップ"}
+				%ul.progress
+					%li.progress--off
+					%li.progress--off
+					%li.progress--on

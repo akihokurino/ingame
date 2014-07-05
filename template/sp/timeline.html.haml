@@ -1,0 +1,42 @@
+!!!
+%html
+	%head
+		%meta{charset: "UTF-8"}
+		%meta{name: "viewport", content: "width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"}
+		%title Playdy
+		%link{rel: "stylesheet", href: "stylesheets/reset-min.css"}
+		%link{rel: "stylesheet", href: "stylesheets/timeline.css"}
+	%body
+		#wrapper
+			/	header
+			%header
+				%h1.ttlWrap
+					%a.ttl{href: ""} Playdy
+				%a.serch{href: ""}
+				%a.profile{href: ""}
+			/	/header
+
+			/	.mainCnt
+			.mainCnt
+				%form.entryBox
+					%input.comment{type: "text", placeholder: "ゲームのログを書こう。"}
+
+				/	.postBox
+				- 3.times do |i|
+					%article.postBox
+						.topBox
+							%img.profImg{src: "../images/baba.jpg", width: "58", height: "58", alt: ""}
+							.postArea
+								%a.account{href: ""} baba
+								%time.time 2時間前
+								%h2.ttl
+									アルティメットヒッツ
+									%br
+									ファイナルファンタジー
+								.mood プレイ中
+						%p.text まず目を惹かれるのは圧倒的なグラフィックですね。ムービーも美しいのですが、２Ｄ、バトル画面の綺麗さは特筆物です。今回のリメイクでの一番の売りは個人的にはグラフィックだと思っているので、さすがはスクウェアエニックスです。フィールド画面の２Ｄが綺麗なので携帯ゲーム機でも、あまり目
+						.stateBox
+							%a.commentBtn{href: ""} コメントする
+							%a.favBtn{href: ""} 12
+				/	/.postBox
+			/	/.mainCnt
