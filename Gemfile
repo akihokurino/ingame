@@ -53,5 +53,4 @@ gem 'haml-rails'
 gem 'haml'
 gem 'backbone-on-rails'
 gem 'nokogiri'
-gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
-
+gem 'redis-rails'
