@@ -1,0 +1,68 @@
+$support-ie6: false;
+$support-ie7: true;
+$support-ie8: true;
+$support-ie9: true;
+$support-mozilla: true;
+$support-webkit : true;
+$support-opera  : true;
+
+@mixin substitute {
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
+}
+@mixin flexbox {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    flex-directon: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+@mixin box-sizing {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+@mixin background-size($size) {
+	-moz-background-size: $size;
+	-o-background-size: $size;
+	-webkit-background-size: $size;
+	background-size: $size;
+}
+@mixin border-radius($size) {
+	-moz-border-radius: $size;
+	-webkit-border-radius: $size;
+	border-radius: $size;
+}
+@mixin gradient($from, $to) {
+	background: -moz-linear-gradient($from, $to);
+	background: -webkit-linear-gradient($from, $to);
+	background: linear-gradient($from, $to);
+}
+@mixin box-shadow($side, $top, $shade, $spread, $color) {
+  -moz-box-shadow: $side $top $shade $spread $color;
+  -webkit-box-shadow: $side $top $shade $spread $color;
+  box-shadow: $side $top $shade $spread $color;
+}
+@mixin font-weight($size, $color) {
+	-webkit-text-stroke: $size $color;
+}
+@mixin appearance {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+}
+@mixin clearfix {
+	&:before, &:after {
+		display: table;
+        content: "";
+	}
+    &:after {
+        clear: both;
+    }
+	@if $support-ie6 or $support-ie7 {
+        *zoom: 1;
+    }
+}

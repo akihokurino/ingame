@@ -1,0 +1,21 @@
+!!!
+%html
+	%head
+		%meta{charset: "UTF-8"}
+		%title Playdy
+		%link{rel: "stylesheet", href: "stylesheets/reset-min.css"}
+		%link{rel: "stylesheet", href: "stylesheets/step.css"}
+	%body
+		#wrapper
+			%section.step01
+				%h2.step01Ttl プロフィール情報を入力
+				%form.entryBox
+					%input.textarea{type: "text", placeholder: "プレイ中のゲーム1"}
+					%span.textarea_node [必須]
+					%input.textarea{type: "text", placeholder: "プレイ中のゲーム2"}
+					%input.textarea{type: "text", placeholder: "住んでいる場所"}
+					%input.btn{type: "submit", value: "次へ"}
+				%ul.progress
+					%li.progress--on
+					%li.progress--off
+					%li.progress--off
