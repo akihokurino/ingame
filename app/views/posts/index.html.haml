@@ -2,8 +2,6 @@
 	= javascript_include_tag "timeline.js"
 
 %div.timeline-page
-	= notice
-	= debug(@current_user)
 	= link_to "ログアウト", logout_users_path
 	= link_to "ユーザー情報", user_path(@current_user)
 
@@ -14,28 +12,28 @@
 
 	%ul.post-list
 
-	%script{type: "text/template", id: "post-template"}
-		<p><%- text %></p>
-		<p><%- post_likes_count %></p>
-		<% if(!i_liked){ %>
-		<p><span class="like">いいね</span></p>
-		<% } else { %>
-		<p><span class="unlike">いいねを取り消す</span></p>
-		<% } %>
-		<a href="/games/<%= game.id %>" style="display: block;">
-		<p><%- game.title %></p>
-		<img src=<%- game.photo_path %> />
-		</a>
-		<a href="/users/<%= user.id %>" style="display: block;">
-		<p><%- user.username %></p>
-		<img src=<%- user.photo_path %> />
-		</a>
-		<% if(current_user_id == user.id){ %>
-		<span class="delete">[x]</span>
-		<% } %>
+%script{type: "text/template", id: "post-template"}
+	<p><%- text %></p>
+	<p><%- post_likes_count %></p>
+	<% if(!i_liked){ %>
+	<p><span class="like">いいね</span></p>
+	<% } else { %>
+	<p><span class="unlike">いいねを取り消す</span></p>
+	<% } %>
+	<a href="/games/<%= game.id %>" style="display: block;">
+	<p><%- game.title %></p>
+	<img src=<%- game.photo_path %> />
+	</a>
+	<a href="/users/<%= user.id %>" style="display: block;">
+	<p><%- user.username %></p>
+	<img src=<%- user.photo_path %> />
+	</a>
+	<% if(current_user_id == user.id){ %>
+	<span class="delete">[x]</span>
+	<% } %>
 
-	%script{type: "text/template", id: "game-template"}
-		<%- title %>
+%script{type: "text/template", id: "game-template"}
+	<%- title %>
 
 
 

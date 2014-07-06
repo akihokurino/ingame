@@ -95,19 +95,6 @@
 				var that = this;
 				this.collection = new Games();
 				this.listenTo(this.collection, "add", this.addGame);
-				this.collection.fetch({
-					success: function (collection, response, options) {
-						if(response.games && response.games.length > 0){
-							for(var i = 0; i < response.games.length; i++){
-								var game = new Game(response.games[i])
-								that.collection.add(game);
-							}
-						}
-					},
-					error: function () {
-						console.log("error");
-					}
-				}, {wait: true})
 			},
 			addGame: function (game) {
 				if(game.id){
@@ -134,19 +121,6 @@
 				var that = this;
 				this.collection = posts;
 				this.listenTo(this.collection, "add", this.addPost);
-				this.collection.fetch({
-					success: function (collection, response, options) {
-						if(response.posts && response.posts.length > 0){
-							for(var i = 0; i < response.posts.length; i++){
-								var post = new Post(response.posts[i]);
-								that.collection.add(post);
-							}
-						}
-					},
-					error: function () {
-						console.log("error");
-					}
-				})
 			},
 			addPost: function (post) {
 				if(post.id){
@@ -226,9 +200,34 @@
 			}
 		})
 
+		var AppView = Backbone.View.extend({
+			el: ".timeline-page",
+			initialize: function () {
+				var post_form_view = new PostFormView();
+				var games_select_view = new GamesSelectView();
+				var posts_view = new PostsView();
 
-		var post_form_view = new PostFormView();
-		var games_select_view = new GamesSelectView();
-		var posts_view = new PostsView();
+				$.ajax({
+					type: "GET",
+					url: "/api/posts",
+					data: {},
+					success: function (data) {
+						for(var i = 0; i < data.games.length; i++){
+							var game = new Game(data.games[i]);
+							games_select_view.collection.add(game);
+						}
+						for(var i = 0; i < data.posts.length; i++){
+							var post = new Post(data.posts[i]);
+							posts_view.collection.add(post);
+						}
+					},
+					error: function () {
+						console.log("error");
+					}
+				})
+			}
+		})
+
+		var app = new AppView();
 	})
 })();

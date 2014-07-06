@@ -44,14 +44,14 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'sass', '~> 3.3.9'
+# gem 'compass-rails', '~> 1.1.7'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
-
 gem 'haml-rails'
-gem "haml"
-
+gem 'haml'
+gem 'backbone-on-rails'
 gem 'nokogiri'
-
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 
