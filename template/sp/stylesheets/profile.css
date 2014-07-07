@@ -246,7 +246,7 @@ header .profile {
   display: -ms-flex;
   display: -o-flex;
   display: flex;
-  flex-directon: row;
+  flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
 }
@@ -290,7 +290,7 @@ header .profile {
   display: -ms-flex;
   display: -o-flex;
   display: flex;
-  flex-directon: row;
+  flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
   justify-content: center;
