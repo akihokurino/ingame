@@ -1,10 +1,11 @@
 @import "../../stylesheets/function.css.scss";
+//@import "../../../scss/function.css.scss";
 
 @mixin iconSprite($width, $height, $bpl, $bpt) {
 	width: $width;
 	height: $height;
-	background: url(../images/profile__iconSprite.png) no-repeat $bpl $bpt;
-	background-size: 83px 170px;
+	background: url(../images/iconSprite.png) no-repeat $bpl $bpt;
+	background-size: 83px 371px;
 }
 
 /*---   common   ---------------------------*/
@@ -38,14 +39,14 @@ header {
 		position: absolute;
 		top: 7px;
 		left: 11px;
-		@include iconSprite(28px, 28px, 0, -35px);
+		@include iconSprite(28px, 28px, 0, -37px);
 	}
 	.profile {
 		display: block;
 		position: absolute;
 		top: 9px;
 		right: 39px;
-		@include iconSprite(22px, 27px, 0, -67px);
+		@include iconSprite(22px, 27px, 0, -73px);
 	}
 }
 
@@ -94,7 +95,7 @@ header {
 		position: absolute;
 		top: 60px;
 		right: 25px;
-		@include iconSprite(25px, 25px, 0, -99px);
+		@include iconSprite(25px, 25px, 0, -184px);
 	}
 }
 
@@ -200,7 +201,7 @@ header {
 		  @include border-radius(18px);
 		  @include box-sizing;
 		  border: none;
-		  @include iconSprite(100%, 33px, right -50px, top -125px);
+		  @include iconSprite(100%, 33px, right -50px, top -212px);
 		  @include appearance;
 		  outline: 0;
 		}
@@ -239,7 +240,7 @@ header {
 			border-top: 1px solid #dcdcdc;
 		}
 		.star {
-			@include iconSprite(14px, 12px, 0, -158px);
+			@include iconSprite(14px, 12px, 0, -248px);
 		}
 	}
 }

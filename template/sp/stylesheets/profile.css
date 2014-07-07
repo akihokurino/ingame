@@ -29,8 +29,8 @@ header .ttl {
   white-space: nowrap;
   width: 87px;
   height: 31px;
-  background: url(../images/profile__iconSprite.png) no-repeat 0 0;
-  background-size: 83px 170px;
+  background: url(../images/iconSprite.png) no-repeat 0 0;
+  background-size: 83px 371px;
 }
 header .serch {
   display: block;
@@ -39,8 +39,8 @@ header .serch {
   left: 11px;
   width: 28px;
   height: 28px;
-  background: url(../images/profile__iconSprite.png) no-repeat 0 -35px;
-  background-size: 83px 170px;
+  background: url(../images/iconSprite.png) no-repeat 0 -37px;
+  background-size: 83px 371px;
 }
 header .profile {
   display: block;
@@ -49,8 +49,8 @@ header .profile {
   right: 39px;
   width: 22px;
   height: 27px;
-  background: url(../images/profile__iconSprite.png) no-repeat 0 -67px;
-  background-size: 83px 170px;
+  background: url(../images/iconSprite.png) no-repeat 0 -73px;
+  background-size: 83px 371px;
 }
 
 /*---   .personalBox   ---------------------------*/
@@ -105,8 +105,8 @@ header .profile {
   right: 25px;
   width: 25px;
   height: 25px;
-  background: url(../images/profile__iconSprite.png) no-repeat 0 -99px;
-  background-size: 83px 170px;
+  background: url(../images/iconSprite.png) no-repeat 0 -184px;
+  background-size: 83px 371px;
 }
 
 /*---   .funcBox   ---------------------------*/
@@ -234,8 +234,8 @@ header .profile {
   border: none;
   width: 100%;
   height: 33px;
-  background: url(../images/profile__iconSprite.png) no-repeat right -50px top -125px;
-  background-size: 83px 170px;
+  background: url(../images/iconSprite.png) no-repeat right -50px top -212px;
+  background-size: 83px 371px;
   -moz-appearance: none;
   -webkit-appearance: none;
   outline: 0;
@@ -300,6 +300,6 @@ header .profile {
 .gameBox .gameList .star {
   width: 14px;
   height: 12px;
-  background: url(../images/profile__iconSprite.png) no-repeat 0 -158px;
-  background-size: 83px 170px;
+  background: url(../images/iconSprite.png) no-repeat 0 -248px;
+  background-size: 83px 371px;
 }

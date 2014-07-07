@@ -1,8 +1,9 @@
 @import "../../stylesheets/function.css.scss";
+//@import "../../scss/function.css.scss";
 
 @mixin iconSprite($bpl, $bpt) {
 	background: url(../images/iconSprite.png) no-repeat $bpl $bpt;
-	background-size: 87px 175px;
+	background-size: 83px 371px;
 }
 
 /*---   common   ---------------------------*/
@@ -34,7 +35,7 @@ header {
 		left: 11px;
 		width: 28px;
 		height: 28px;
-		@include iconSprite(0, -36px);
+		@include iconSprite(0, -37px);
 	}
 	.profile {
 		display: block;
@@ -43,7 +44,7 @@ header {
 		right: 39px;
 		width: 22px;
 		height: 27px;
-		@include iconSprite(0, -69px);
+		@include iconSprite(0, -73px);
 	}
 }
 

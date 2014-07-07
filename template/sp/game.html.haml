@@ -1,0 +1,109 @@
+!!!
+%html
+	%head
+		%meta{charset: "UTF-8"}
+		%meta{name: "viewport", content: "width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"}
+		%title Playdy
+		%link{rel: "stylesheet", href: "stylesheets/reset-min.css"}
+		%link{rel: "stylesheet", href: "stylesheets/game.css"}
+	%body
+		#wrapper
+			/	header
+			%header
+				%h1.ttlWrap
+					%a.ttl{href: ""} Playdy
+				%a.serch{href: ""}
+				%a.profile{href: ""}
+			/	/header
+
+			/
+
+			/	.mainCnt
+			.mainCnt
+				/	.gameBox
+				%section.gameBox
+					%h1.ttl スーパーマリオ 3Dワールド
+					%figure.gameWrap
+						%img.gameImg{src: "images/game02.jpg", width: "78", height: "110", alt: "スーパーマリオ 3Dワールド"}
+						%figcaption.gameInfoWrap
+							%ul.gameInfo
+								%li.item
+									%span.date 発売日
+									%span.year 2013
+									%span.month 11
+									%span.day 12
+								%li.item
+									%span.hard ハード
+									Wii U
+								%li.item
+									%span.maker メーカー
+									スクウェア・エニックス
+					.funcBox
+						%ul.dataBox
+							%li.item
+								.postIconWrap
+									.postIcon
+								ポスト数
+								%span.count 567
+							%li.item
+								.evaluationIconWrap
+									.evaluationIcon
+								全体の評価
+								%ul.stars
+									- 4.times do |i|
+										%li.star
+							%li.item
+								%a.amazonBtn{href: ""} Amazonへ
+								%a.steamBtn{href: ""} Steamへ
+						.reviewBox
+							.reviewBoxInner
+								%a.btn{href: ""} レビューを書く
+								.evaluationBox
+									.iconWrap
+										.icon
+									%p.text 自分の評価
+									%ul.stars
+										- 3.times do |i|
+											%li.star
+						.friendBox
+							.friendBoxInner
+								%p.text 6人のフォローゲーマーが遊んでいます。
+								%ul.friendList
+									- 4.times do |i|
+										%li.item
+											%img.friendImg{src: "../images/baba.jpg", width: "30", height: "30", alt: ""}
+						.sortBoxWrap
+							%ul.sortBox
+								%li.item.current
+									%a.follow{href: ""}
+										フォローの
+										%br
+										コメント
+								%li.item
+									%a.all{href: ""} 全コメント
+								%li.item
+									%a.star{href: ""}
+										の多い
+										%br
+										コメント
+				/	/.gameBox
+
+				/	.postBox
+				- 3.times do |i|
+					%article.postBox
+						.topBox
+							%img.profImg{src: "../images/baba.jpg", width: "58", height: "58", alt: ""}
+							.postArea
+								%a.account{href: ""} baba
+								%time.time 2時間前
+								%h2.ttl
+									アルティメットヒッツ
+									%br
+									ファイナルファンタジー
+								.mood プレイ中
+						%p.text まず目を惹かれるのは圧倒的なグラフィックですね。ムービーも美しいのですが、２Ｄ、バトル画面の綺麗さは特筆物です。今回のリメイクでの一番の売りは個人的にはグラフィックだと思っているので、さすがはスクウェアエニックスです。フィールド画面の２Ｄが綺麗なので携帯ゲーム機でも、あまり目
+						.stateBox
+							%a.commentBtn{href: ""} コメントする
+							%a.favBtn{href: ""} 12
+				/	/.postBox
+			/	/.mainCnt

@@ -23,7 +23,7 @@ header .ttl {
   text-indent: 100%;
   white-space: nowrap;
   background: url(../images/iconSprite.png) no-repeat 0 0;
-  background-size: 87px 175px;
+  background-size: 83px 371px;
 }
 header .serch {
   display: block;
@@ -32,8 +32,8 @@ header .serch {
   left: 11px;
   width: 28px;
   height: 28px;
-  background: url(../images/iconSprite.png) no-repeat 0 -36px;
-  background-size: 87px 175px;
+  background: url(../images/iconSprite.png) no-repeat 0 -37px;
+  background-size: 83px 371px;
 }
 header .profile {
   display: block;
@@ -42,8 +42,8 @@ header .profile {
   right: 39px;
   width: 22px;
   height: 27px;
-  background: url(../images/iconSprite.png) no-repeat 0 -69px;
-  background-size: 87px 175px;
+  background: url(../images/iconSprite.png) no-repeat 0 -73px;
+  background-size: 83px 371px;
 }
 
 /*---   .mainCnt   ---------------------------*/
@@ -64,7 +64,7 @@ header .profile {
   -webkit-box-shadow: 0 2px 2px 0 #c7c6c6;
   box-shadow: 0 2px 2px 0 #c7c6c6;
   background: url(../images/iconSprite.png) no-repeat 8px -100px;
-  background-size: 87px 175px;
+  background-size: 83px 371px;
   font-size: 14px;
   -moz-appearance: none;
   -webkit-appearance: none;
@@ -152,7 +152,7 @@ header .profile {
   font-size: 12px;
   text-decoration: none;
   background: url(../images/iconSprite.png) no-repeat 0 -134px;
-  background-size: 87px 175px;
+  background-size: 83px 371px;
 }
 .mainCnt .postBox .favBtn {
   padding: 4px 0 4px 28px;
@@ -160,5 +160,5 @@ header .profile {
   font-size: 12px;
   text-decoration: none;
   background: url(../images/iconSprite.png) no-repeat 0 -157px;
-  background-size: 87px 175px;
+  background-size: 83px 371px;
 }
