@@ -13,6 +13,7 @@ json.logs do |json|
       json.game_likes_count log.game[:game_likes_count]
     end
     json.status do |json|
+      json.id log.status.id
       json.name log.status.name
     end
   end

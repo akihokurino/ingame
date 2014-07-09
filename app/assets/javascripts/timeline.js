@@ -215,7 +215,7 @@
 					data: {},
 					success: function (data) {
 						for(var i = 0; i < data.games.length; i++){
-							console.log(data);
+							//console.log(data);
 							var game = new Game(data.games[i]);
 							that.games_select_view.collection.add(game);
 						}

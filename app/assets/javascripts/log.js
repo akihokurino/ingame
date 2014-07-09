@@ -203,16 +203,17 @@
 			render: function () {
 				var template = this.template(this.model.toJSON());
 				this.$el.html(template);
-				this.$el.append("<select><option value=1>気になる</option><option value=2>プレイ中</option><option value=3>アーカイブ</option></select>");
 				return this;
 			},
 			regist: function () {
 				var that = this;
 				var regist_game = new RegistGame({
 					log: {
-						game_id: this.model.id
+						game_id: this.model.id,
+						status_id: this.$el.find("select").val()
 					}
 				});
+
 				regist_game.save(null, {
 					success: function (model, response, options) {
 						var log = new Log(response.log)

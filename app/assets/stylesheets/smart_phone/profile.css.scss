@@ -208,7 +208,6 @@ header {
 	}
 	.gameList {
 		@include flexbox;
-
 		.item {
 			width: 140px;
 			min-width: 140px;
@@ -218,6 +217,9 @@ header {
 			@include box-sizing;
 			@include box-shadow(0, 2px, 2px, 0, #5a595a);
 			background: #ffffff;
+		}
+		.articleWrap {
+			display: block;
 		}
 		.gameImg {
 			width: 140px;

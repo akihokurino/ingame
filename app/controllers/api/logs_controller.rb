@@ -1,31 +1,30 @@
 class Api::LogsController < ApplicationController
-	def index
-		@logs = Log.where(user_id: @current_user[:id]).order("created_at ASC").includes(:game)
-		@statuses = Status.all
-	end
+  def index
+    @logs = Log.where(user_id: @current_user[:id]).order("created_at ASC").includes(:game)
+    @statuses = Status.all
+  end
 
-	def create
-		if(params[:amazon_url])
-			result = Game.get_from_amazon(params[:amazon_url])
-			@log = Log.create_with(result, @current_user)
-		else
-			params[:log][:user_id] = @current_user[:id]
-			params[:log][:status_id] = 1
-			@log = Log.last if Log.create(log_params)
-		end
-	end
+  def create
+    if(params[:amazon_url])
+      result = Game.get_from_amazon(params[:amazon_url])
+      @log = Log.create_with(result, @current_user)
+    else
+      params[:log][:user_id] = @current_user[:id]
+      @log = Log.last if Log.create(log_params)
+    end
+  end
 
-	def destroy
-		log = Log.find(params[:id])
-		log.destroy
-		render nothing: true
-	end
+  def destroy
+    log = Log.find(params[:id])
+    log.destroy
+    render nothing: true
+  end
 
-	def update
-	end
+  def update
+  end
 
-	private
-	def log_params
-		params.require(:log).permit(:game_id, :user_id, :status_id)
-	end
+  private
+  def log_params
+    params.require(:log).permit(:game_id, :user_id, :status_id)
+  end
 end
