@@ -1,5 +1,9 @@
 = content_for :head do
   = javascript_include_tag "timeline.js"
+
+= link_to "ログアウト", logout_users_path
+= link_to "ユーザー情報", user_path(@current_user)
+
 %div{class: "mainCnt timeline-page"}
   %form{class: "entryBox post-form"}
     %input{type: "text", placeholder: "ゲームのログを書こう。", class: "comment text-input"}

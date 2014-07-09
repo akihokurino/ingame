@@ -1,0 +1,59 @@
+.personalBoxWrap
+  %section.personalBox
+    %h1.name
+      = @user.username
+    %p.place
+      %span.town Tokyo
+      %span.country Japan
+    %p.text
+      = @user.introduction
+    %figure.profImgWrap
+      = image_tag("/user_photos/asuya02.jpg", height: 83, class: "profImg")
+    %a.option{href: ""}
+
+.funcBox
+  %ul.countBox
+    %li.item
+      %a.follow{href: ""}
+        %span.count 12
+        フォロー
+    %li.item
+      %a.follower{href: ""}
+        %span.count 34
+        フォロワー
+    %li.item
+      %a.gameNum{href: ""}
+        %span.count 57
+        ゲーム数
+    %li.item
+      %a.postNum{href: ""}
+        %span.count 98
+        ポスト数
+  %ul.sortBox
+    %li.item.current
+      %a.playing{href: ""} プレイ中
+    %li.item
+      %a.ready{href: ""}
+        欲しい
+        %br
+        ゲーム
+    %li.item
+      %a.played{href: ""}
+        クリアした
+        %br
+        ゲーム
+
+.gameBox
+  %form.searchBox
+    %input{input: "text", placeholder: "search", role: "textarea"}
+  %ul.gameList
+    - @user.logs.each do |log|
+      %li.item
+        %article.game
+          = image_tag(log.game.photo_path, class: "gameImg")
+          %h1.ttl
+            = log.game.title
+          %ul.stars
+            - 4.times do |i|
+              %li.star
+

@@ -1,10 +1,10 @@
-@import "../../stylesheets/function.css.scss";
+@import "../function.css.scss";
 //@import "../../../scss/function.css.scss";
 
 @mixin iconSprite($width, $height, $bpl, $bpt) {
 	width: $width;
 	height: $height;
-	background: url(../images/iconSprite.png) no-repeat $bpl $bpt;
+	background: url(/assets/smart_phone/iconSprite.png) no-repeat $bpl $bpt;
 	background-size: 83px 371px;
 }
 
@@ -53,7 +53,7 @@ header {
 /*---   .personalBox   ---------------------------*/
 .personalBoxWrap {
 	@include box-shadow(0, 1px, 1px, 1px, #9b9b9b);
-	background: url(../images/bg.jpg) repeat top center;
+	background: url(/assets/smart_phone/bg.jpg) repeat top center;
 }
 .personalBox {
 	position: relative;
@@ -226,7 +226,7 @@ header {
 			border: 1px solid #2a2d34;
 			@include border-radius(5px);
 			@include box-sizing;
-			background: url(../images/game.jpg) no-repeat top center;
+			/*background: url(../images/game.jpg) no-repeat top center;*/
 		}
 		.ttl {
 			margin-bottom: 15px;

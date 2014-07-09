@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :auth, only: [:login]
-   before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update]
 
   def login
   end
@@ -19,17 +19,17 @@ class UsersController < ApplicationController
     end
   end
 
-    def logout
-        reset_session
-        redirect_to login_users_path
-    end
+  def logout
+    reset_session
+    redirect_to login_users_path
+  end
 
-    private
-    def user_params
-        params.require(:user).permit(:username, :introduction, :place, :photo_path, :place)
-    end
+  private
+  def user_params
+    params.require(:user).permit(:username, :introduction, :place, :photo_path, :place)
+  end
 
-    def set_user
-        @user = User.find(params[:id])
-    end
+  def set_user
+     @user = User.find(params[:id])
+  end
 end

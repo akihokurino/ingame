@@ -2,7 +2,7 @@
 //@import "../../scss/function.css.scss";
 
 @mixin iconSprite($bpl, $bpt) {
-	background: url(../../images/smart_phone/iconSprite.png) no-repeat $bpl $bpt;
+	background: url(/assets/smart_phone/iconSprite.png) no-repeat $bpl $bpt;
 	background-size: 83px 371px;
 }
 
