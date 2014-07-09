@@ -203,6 +203,7 @@
 			render: function () {
 				var template = this.template(this.model.toJSON());
 				this.$el.html(template);
+				this.$el.append("<select><option value=1>気になる</option><option value=2>プレイ中</option><option value=3>アーカイブ</option></select>");
 				return this;
 			},
 			regist: function () {
@@ -266,11 +267,12 @@
 		var AppView = Backbone.View.extend({
 			el: ".logs-page",
 			initialize: function () {
-				var amazon_form_view = new AmazonFormView();
-				var statuses_select_view = new StatusesSelectView();
-				var search_form_view = new SearchFormView();
-				var logs_view = new LogsView();
-				var results_view = new ResultsView();
+				this.amazon_form_view = new AmazonFormView();
+				this.statuses_select_view = new StatusesSelectView();
+				this.search_form_view = new SearchFormView();
+				this.logs_view = new LogsView();
+				this.results_view = new ResultsView();
+				var that = this;
 
 				$.ajax({
 					type: "GET",
@@ -279,11 +281,11 @@
 					success: function (data) {
 						for(var i = 0; i < data.logs.length; i++){
 							var log = new Log(data.logs[i]);
-							logs_view.collection.add(log);
+							that.logs_view.collection.add(log);
 						}
 						for(var i = 0; i < data.statuses.length; i++){
 							var status = new Status(data.statuses[i]);
-							statuses_select_view.collection.add(status);
+							that.statuses_select_view.collection.add(status);
 						}
 					},
 					error: function () {

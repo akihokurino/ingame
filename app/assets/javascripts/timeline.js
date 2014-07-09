@@ -203,9 +203,10 @@
 		var AppView = Backbone.View.extend({
 			el: ".timeline-page",
 			initialize: function () {
-				var post_form_view = new PostFormView();
-				var games_select_view = new GamesSelectView();
-				var posts_view = new PostsView();
+				this.post_form_view = new PostFormView();
+				this.games_select_view = new GamesSelectView();
+				this.posts_view = new PostsView();
+				var that = this;
 
 				$.ajax({
 					type: "GET",
@@ -214,11 +215,11 @@
 					success: function (data) {
 						for(var i = 0; i < data.games.length; i++){
 							var game = new Game(data.games[i]);
-							games_select_view.collection.add(game);
+							that.games_select_view.collection.add(game);
 						}
 						for(var i = 0; i < data.posts.length; i++){
 							var post = new Post(data.posts[i]);
-							posts_view.collection.add(post);
+							that.posts_view.collection.add(post);
 						}
 					},
 					error: function () {

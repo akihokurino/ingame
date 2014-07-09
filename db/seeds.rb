@@ -7,11 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 %w(
-	気になった
-	買った
-	遊んでいる
-	遊び終わった
-	積んでる
+	気になる
+	プレイ中
+	アーカイブ
 ).each_with_index do |status, index|
 	Status.create(name: status)
 end
