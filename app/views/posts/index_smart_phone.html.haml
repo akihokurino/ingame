@@ -1,0 +1,45 @@
+= content_for :head do
+  = javascript_include_tag "timeline.js"
+%div{class: "mainCnt timeline-page"}
+  %form{class: "entryBox post-form"}
+    %input{type: "text", placeholder: "ゲームのログを書こう。", class: "comment text-input"}
+    %select.game-select
+    %input{type: "submit", value: "送信", class: "submit-btn"}
+
+    .post-list
+      - 3.times do |i|
+        %article.postBox
+          .topBox
+            %img.profImg{src: "/user_photos/baba.jpg", width: "58", height: "58", alt: ""}
+            .postArea
+              %a.account{href: ""} baba
+              %time.time 2時間前
+              %h2.ttl
+                アルティメットヒッツ
+                %br
+                ファイナルファンタジー
+              .mood プレイ中
+          %p.text まず目を惹かれるのは圧倒的なグラフィックですね。ムービーも美しいのですが、２Ｄ、バトル画面の綺麗さは特筆物です。今回のリメイクでの一番の売りは個人的にはグラフィックだと思っているので、さすがはスクウェアエニックスです。フィールド画面の２Ｄが綺麗なので携帯ゲーム機でも、あまり目
+          .stateBox
+            %a.commentBtn{href: ""} コメントする
+            %a.favBtn{href: ""} 12
+
+
+%script{type: "text/template", id: "post-template"}
+  <div class="topBox">
+  <img class="profImg" width="58" height="58" src=<%- user.photo_path %>/>
+  <div class="postArea">
+  <a class="account" href=""><%- user.username %></a>
+  <time class="time">２時間前</time>
+  <h2 class="ttl"><%- game.title %></h2>
+  <div class="mood">プレイ中</div>
+  </div>
+  </div>
+  <p class="text"><%- text %></p>
+  <div class="stateBox">
+  <a class="commentBtn" href="">コメントする</a>
+  <a class="favBtn" href="">12</a>
+  </div>
+
+%script{type: "text/template", id: "game-template"}
+  <%- title %>

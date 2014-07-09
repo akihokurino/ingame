@@ -1,3 +1,4 @@
+
 (function () {
 	$(function () {
 		/* ---------- Model ---------- */
@@ -131,7 +132,8 @@
 		})
 
 		var PostView = Backbone.View.extend({
-			tagName: "li",
+			tagName: "article",
+			className: "postBox",
 			events: {
 				"click .delete": "destroy",
 				"click .like" : "like",
@@ -207,13 +209,13 @@
 				this.games_select_view = new GamesSelectView();
 				this.posts_view = new PostsView();
 				var that = this;
-
 				$.ajax({
 					type: "GET",
 					url: "/api/posts",
 					data: {},
 					success: function (data) {
 						for(var i = 0; i < data.games.length; i++){
+							console.log(data);
 							var game = new Game(data.games[i]);
 							that.games_select_view.collection.add(game);
 						}
