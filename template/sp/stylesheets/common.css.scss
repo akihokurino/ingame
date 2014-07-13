@@ -1,0 +1,64 @@
+@import "../../stylesheets/function.css.scss";
+//@import "../../scss/function.css.scss";
+
+@mixin iconSprite($bpl, $bpt) {
+	background: url(../images/img_set.png) no-repeat $bpl $bpt;
+	background-size: 25px 232px;
+}
+
+/*---   common   ---------------------------*/
+html {
+	background: #dddcdc;
+}
+a {
+	text-decoration: none;
+}
+
+/*---   header   ---------------------------*/
+header {
+	position: relative;
+	width: 100%;
+	height: 46px;
+	padding-top: 11px;
+	@include box-sizing;
+	background: #111111;
+
+	.ttl {
+		display: block;
+		width: 87px;
+		height: 31px;
+		margin: 0 auto;
+		color: #ffffff;
+		font-size: 24px;
+		font-family: Helvetica;
+		text-decoration: none;
+		@include font-weight(1px, #ffffff);
+	}
+	.menu {
+		display: block;
+		position: absolute;
+		top: 15px;
+		left: 14px;
+		width: 22px;
+		height: 19px;
+		@include iconSprite(0, 0);
+	}
+	.serch {
+		display: block;
+		position: absolute;
+		top: 13px;
+		right: 46px;
+		width: 21px;
+		height: 21px;
+		@include iconSprite(0, -24px);
+	}
+	.profile {
+		display: block;
+		position: absolute;
+		top: 14px;
+		right: 13px;
+		width: 20px;
+		height: 19px;
+		@include iconSprite(0, -50px);
+	}
+}

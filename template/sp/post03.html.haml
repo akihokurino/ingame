@@ -10,35 +10,15 @@
 		#wrapper
 			.post03
 				%header
-					%h1.ttl 投稿
+					%h1.ttl ゲームを追加する
 					%a.cancel{href: ""} キャンセル
-					%a.addGame{href: ""}
-						ゲームを
-						%br
-						追加する
 				.mainCnt
-					%ul.addGameWrap
-						%li.item
-							%a.addGame{href: ""} ゲームを追加する
-						%li.item
-							%figure
-								%img.addGameImg{src: "images/game03.jpg", width: "32", height: "32", alt: ""}
-								%figcaption アルティメットヒ ッツ ファイナル...
-					%ul.addPhotoWrap
-						%li.item
-							%a.addPhoto{href: ""} 写真を追加する
-						%li.item
-							%figure
-								%img.addPhotoImg{src: "images/game03.jpg", width: "32", height: "32", alt: ""}
-					%form.textareaWrap
-						%textarea{:readonly => true}
-							このゲームめっちゃ面白い！
-					%ul.snsBtn
-						%li.fb
-							%a.fbBtn{href: ""}
-								%span.fbInner
-						%li.tw
-							%a.twBtn{href: ""}
-								%span.twInner
-					%form.btnWrap
-						%input.btn{value: "投稿する"}
+					%form.serchWrap
+						%input.serch{type: "text"}
+					%ul.gameList
+						- 8.times do |i|
+							%li.item
+								%figure
+									%img.gameImg{src: "images/game03.jpg", width: "32", height: "32", alt: ""}
+									%figcaption アルティメットヒッツ ファイナル...
+									%span.mood ステータス

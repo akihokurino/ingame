@@ -33,115 +33,11 @@ a {
 		}
 		.addGame {
 			position: absolute;
-			top: 7px;
+			top: 12px;
 			right: 10px;
 			color: #424343;
 			font-size: 15px;
-		}
-	}
-	.mainCnt {
-		.addGame, .addPhoto {
-			display: block;
-			width: 180px;
-			margin: 21px auto;
-			padding: 12px 0;
-			@include border-radius(30px);
-			background: #10b5a3;
-			color: #ffffff;
-			font-size: 16px;
-			text-align: center;
-		}
-		.textareaWrap {
-			margin-top: 39px;
-			border-top: 1px solid #a0a0a0;
-		}
-		textarea {
-			width: 100%;
-			padding: 4px 9px;
-			border: none;
-			@include box-sizing;
-			resize: none;
-		}
-		.snsBtn {
-			@include flexbox;
-			justify-content: center;
-			margin-top: -6px;
-			padding: 18px 0 32px;
-			border-top: 1px solid #a0a0a0;
-		}
-		.fbBtn, .twBtn {
-			display: block;
-			width: 70px;
-			height: 70px;
-			margin: 0 30px;
-			@include border-radius(35px);
-			@include box-sizing;
-			background: #949292;
-		}
-		.fbBtn {
-			padding-top: 18px;
-		}
-		.twBtn {
-			padding-top: 21px;
-		}
-		.fbInner {
-			display: block;
-			width: 17px;
-			height: 36px;
-			margin: 0 auto;
-			background: url(../images/snsSprite.png) no-repeat 0 0;
-			background-size: 62px 36px;
-		}
-		.twInner {
-			display: block;
-			width: 40px;
-			height: 30px;
-			margin: 0 auto;
-			background: url(../images/snsSprite.png) no-repeat -22px 0;
-			background-size: 62px 36px;
-		}
-		.btn {
-			width: 100%;
-			padding: 26px 0;
-			border: none;
-			background: #949292;
-			color: #ffffff;
-			font-size: 18px;
-			text-align: center;
-			@include appearance;
-			cursor: pointer;
-		}
-	}
-}
-
-/*---   .post02   ---------------------------*/
-.post02 {
-	/*---   header   ----------*/
-	header {
-		position: relative;
-		margin-bottom: 30px;
-		padding: 14px 0 13px;
-		border-bottom: 1px solid #a0a0a0;
-		text-align: center;
-
-		.ttl {
-			color: #000000;
-			font-size: 20px;
-			@include font-weight(1px, #000000);
-		}
-		.cancel {
-			position: absolute;
-			top: 15px;
-			left: 9px;
-			color: #1ba189;
-			font-size: 17px;
-		}
-		.addGame {
-			position: absolute;
-			top: 7px;
-			right: 10px;
-			color: #424343;
-			font-size: 15px;
+			line-height: 1.2;
 		}
 	}
 	.mainCnt {
@@ -172,6 +68,7 @@ a {
 				color: #10b5a3;
 				text-align: center;
 				vertical-align: middle;
+				font-size: 14px;
 				line-height: 1.1;
 			}
 			.ready {
@@ -228,12 +125,12 @@ a {
 	}
 }
 
-/*---   .post03   ---------------------------*/
-.post03 {
+/*---   .post02   ---------------------------*/
+.post02 {
 	/*---   header   ----------*/
 	header {
 		position: relative;
-		margin-bottom: 30px;
+		margin-bottom: 6px;
 		padding: 14px 0 13px;
 		border-bottom: 1px solid #a0a0a0;
 		text-align: center;
@@ -250,74 +147,59 @@ a {
 			color: #1ba189;
 			font-size: 17px;
 		}
-		.addGame {
-			position: absolute;
-			top: 7px;
-			right: 10px;
-			color: #424343;
-			font-size: 15px;
-		}
 	}
 	.mainCnt {
-		.addGameWrap , .addPhotoWrap {
-			@include flexbox;
-			justify-content: center;
-			margin-bottom: 14px;
-
-			.item {
-				&:last-child {
-					width: 100px;
-					margin-left: 15px;
-					text-align: center;
-				}
-				figcaption {
-					color: #1ba189;
-					font-size: 12px;
-					text-align: left;
-					line-height: 1.0;
-				}
-			}
+		.gameBox {
+			margin: 0 8px 0 4px;
+			@include clearfix;
 		}
-		.addGame, .addPhoto {
+		.gameImage {
+			float: left;
+			margin-right: 7px;
+		}
+		.gameTtl {
+			float: left;
+			width: 50%;
+			padding-top: 5px;
+			color: #5f5f5f;
+			font-size: 12px;
+		}
+		.gameSelect {
 			display: block;
-			width: 180px;
-			margin: 0 auto;
-			padding: 12px 0;
-			@include border-radius(30px);
+			float: right;
+			padding: 5px 10px;
+			@include border-radius(18px);
 			background: #10b5a3;
 			color: #ffffff;
-			font-size: 16px;
+			font-size: 7px;
 			text-align: center;
 		}
-		.addGame {
-			margin: 10px auto;
-		}
-		.addGameImg, .addPhotoImg {
-			@include border-radius(16px);
-		}
-		.addPhotoWrap {
-			figure {
-				padding-top: 6px;
-			}
-		}
 		.textareaWrap {
-			margin-top: 39px;
+			clear: both;
+			margin-top: 6px;
 			border-top: 1px solid #a0a0a0;
 		}
 		textarea {
 			width: 100%;
+			height: 122px;
 			padding: 4px 9px;
 			border: none;
 			@include box-sizing;
-			color: #222121;
+			background: #f6f4f4;
 			resize: none;
+		}
+		.addPhoto {
+			display: block;
+			padding: 9px 0 0 8px;
+			border-top: 1px solid #a0a0a0;
+			color: #727272;
+			font-size: 16px;
 		}
 		.snsBtn {
 			@include flexbox;
 			justify-content: center;
 			margin-top: -6px;
 			padding: 18px 0 32px;
-			border-top: 1px solid #a0a0a0;
 		}
 		.fbBtn, .twBtn {
 			display: block;
@@ -326,21 +208,20 @@ a {
 			margin: 0 30px;
 			@include border-radius(35px);
 			@include box-sizing;
+			background: #949292;
 		}
 		.fbBtn {
 			padding-top: 18px;
-			background: #39599f;
 		}
 		.twBtn {
 			padding-top: 21px;
-			background: #45b0e3;
 		}
 		.fbInner {
 			display: block;
 			width: 17px;
 			height: 36px;
 			margin: 0 auto;
-			background: url(../images/snsSprite.png) no-repeat 0 0;
+			background: url(../images/sns_set.png) no-repeat 0 0;
 			background-size: 62px 36px;
 		}
 		.twInner {
@@ -348,19 +229,138 @@ a {
 			width: 40px;
 			height: 30px;
 			margin: 0 auto;
-			background: url(../images/snsSprite.png) no-repeat -22px 0;
+			background: url(../images/sns_set.png) no-repeat -22px 0;
 			background-size: 62px 36px;
 		}
 		.btn {
 			width: 100%;
 			padding: 26px 0;
 			border: none;
-			background: #10b5a3;
+			background: #949292;
 			color: #ffffff;
 			font-size: 18px;
 			text-align: center;
 			@include appearance;
 			cursor: pointer;
+		}
+	}
+}
+
+
+/*---   .post03   ---------------------------*/
+.post03 {
+	/*---   header   ----------*/
+	header {
+		position: relative;
+		margin-bottom: 17px;
+		padding: 14px 0 13px;
+		border-bottom: 1px solid #a0a0a0;
+		text-align: center;
+
+		.ttl {
+			padding-left: 40px;
+			color: #000000;
+			font-size: 20px;
+			@include font-weight(1px, #000000);
+		}
+		.cancel {
+			position: absolute;
+			top: 15px;
+			left: 9px;
+			color: #1ba189;
+			font-size: 17px;
+		}
+	}
+	.mainCnt {
+		.serchWrap {
+			width: 90%;
+			margin: 0 auto 17px;
+			@include border-radius(5px);
+			background: #cccccc;
+		}
+		.serch {
+			width: 100%;
+			padding-left: 5px;
+			border: none;
+			@include box-sizing;
+			background: url(../images/img_set.png) no-repeat right -195px;
+			background-size: 25px 213px;
+			@include appearance;
+		}
+		.playing, .ready, .played {
+			display: table-cell;
+			width: 104px;
+			height: 30px;
+			padding-top: 4px;
+			@include box-sizing;
+			color: #10b5a3;
+			text-align: center;
+			vertical-align: middle;
+			font-size: 14px;
+			line-height: 1.1;
+		}
+		.ready {
+			border-radius: 3px 0 0 3px;
+		}
+		.played {
+			border-radius: 0 3px 3px 0;
+		}
+		.current {
+			position: relative;
+
+			@at-root {
+				&.item {
+					border: none;
+				}
+			}
+			.playing, .ready, .played {
+				background: #10b5a3;
+				color: #ffffff;
+				@include font-weight(1px, #ffffff);
+			}
+			.tri {
+				position: absolute;
+				left: 50%;
+				bottom: -25px;
+				margin-left: -13px;
+				border-top: 13px solid #10b5a3;
+				border-right: 10px solid transparent;
+				border-bottom: 13px solid transparent;
+				border-left: 10px solid transparent;
+			}
+		}
+		.gameList {
+			background: #ffffff;
+
+			.item {
+				padding: 9px 0;
+				border-top: 1px solid #b6b4b4;
+				@include clearfix;
+			}
+			.gameImg {
+				float: left;
+				margin: 0 12px 0 11px;
+				@include border-radius(16px);
+			}
+			figcaption {
+				float: left;
+				width: 58%;
+				padding-top: 4px;
+				color: #1ba189;
+				font-size: 15px;
+				@include font-weight(1px, #1ba189);
+			}
+			.mood {
+				float: right;
+				margin-right: 13px;
+				padding: 6px 4px;
+				@include border-radius(5px);
+				@include box-sizing;
+				background: #cccccc;
+				color: #464646;
+				font-size: 6px;
+				text-align: center;
+			}
 		}
 	}
 }

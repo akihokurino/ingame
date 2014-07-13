@@ -10,26 +10,23 @@
 		#wrapper
 			.post02
 				%header
-					%h1.ttl 投稿
+					%h1.ttl シェア
 					%a.cancel{href: ""} キャンセル
-					%a.addGame{href: ""}
-						ゲームを
-						%br
-						追加する
 				.mainCnt
-					%ul.sortBox
-						%li.item.current
-							%a.ready{href: ""} 気になる
-							%span.tri
-						%li.item
-							%a.playing{href: ""} プレイ中
-							%span.tri
-						%li.item
-							%a.played{href: ""} アーカイブ
-							%span.tri
-					%ul.gameList
-						- 8.times do |i|
-							%li.item
-								%figure
-									%img.gameImg{src: "images/game03.jpg", width: "32", height: "32", alt: ""}
-									%figcaption アルティメットヒッツ ファイナル...
+					.gameBox
+						%figure.gameImageWrap
+							%img.gameImage{src: "", width: "30", height: "30", alt: "image"}
+							%figcaption.gameTtl ゲームタイトル。ゲームタイ...
+						%a.gameSelect{href: ""} ゲームを変更する
+					%form.textareaWrap
+						%textarea{placeholder: "| そのゲームについて、どう思った？"}
+					%a.addPhoto{href: ""} 写真を追加+
+					%ul.snsBtn
+						%li.fb
+							%a.fbBtn{href: ""}
+								%span.fbInner
+						%li.tw
+							%a.twBtn{href: ""}
+								%span.twInner
+					%form.btnWrap
+						%input.btn{value: "投稿する"}
