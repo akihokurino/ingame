@@ -1,0 +1,40 @@
+= content_for :head do
+  = javascript_include_tag "mobile_post.js"
+
+= link_to "キャンセル", posts_path
+
+.post-new-page{"data-userid" => @current_user[:id]}
+
+%script{type: "text/template", id: "select-template"}
+  <ul class="sortBox">
+  <li class="item current playing-li"><span class="playing">プレイ中</span></li>
+  <li class="item ready-li"><span class="ready">気になる</span></li>
+  <li class="item played-li"><span class="played">アーカイブ</span></li>
+  </ul>
+
+%script{type: "text/template", id: "log-template"}
+  <a href="/posts/new#write/<%= game.id %>" style="display: block;" class="articleWrap">
+  <article class="game">
+  <img class="gameImg" src=<%- game.photo_path %> />
+  <h1 class="ttl"><%- game.title %></h1>
+  <ul class="stars">
+  <li class="star"></li>
+  <li class="star"></li>
+  <li class="star"></li>
+  <li class="star"></li>
+  </ul>
+  </article>
+  </a>
+
+%script{type: "text/template", id: "write-template"}
+  <a href="/posts/new#select">ゲームを変更する</a>
+  <form>
+  <textarea placeholder="そのゲームについて、どう思った？"></textarea>
+  <input type="submit" class="submit" value="投稿" />
+  </form>
+
+%script{type: "text/template", id: "game-template"}
+  <p><%- title %></p>
+  <img class="gameImg" src=<%- photo_path %> />
+
+

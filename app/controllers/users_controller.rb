@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
-
+    @user.check_follow(@current_user)
   end
 
   def edit

@@ -6,7 +6,7 @@ Ingame::Application.routes.draw do
       get "logout"
     end
   end
-  resources :posts, only: ["index"]
+  resources :posts, only: ["index", "new"]
   resources :logs, only: ["index", "create"]
   resources :games, only: ["show"]
 
@@ -14,7 +14,7 @@ Ingame::Application.routes.draw do
     resources :logs, only: ["index", "create", "update", "destroy"], format: "json"
     resources :statuses, only: ["index"], format: "json"
     resources :posts, only: ["index", "create", "destroy"], format: "json"
-    resources :games, only: ["index"], format: "json" do
+    resources :games, only: ["index", "show"], format: "json" do
       collection do
         get "search"
       end
@@ -22,6 +22,7 @@ Ingame::Application.routes.draw do
     resources :post_likes, only: ["create", "destroy"], format: "json"
     resources :game_likes, only: ["create", "destroy"], format: "json"
     resources :users, only: ["index"], format: "json"
+    resources :follows, only: ["create", "destroy"], format: "json"
   end
 
   match "/auth/:provider/callback", to: "sessions#callback", via: :get
