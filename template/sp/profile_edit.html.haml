@@ -1,0 +1,38 @@
+!!!
+%html
+	%head
+		%meta{charset: "UTF-8"}
+		%meta{name: "viewport", content: "width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"}
+		%title Playdy
+		%link{rel: "stylesheet", href: "stylesheets/reset-min.css"}
+		%link{rel: "stylesheet", href: "stylesheets/profile.css"}
+	%body
+		#wrapper
+			.profileEdit
+				%header
+					%h1.ttl アカウント変更
+					%span.cancel キャンセル
+					%span.save 保存する
+				.imgEditBox
+					%figure.profImgWrap
+						%img.profImg{src: "images/baba.jpg", width: "44", height: "44", alt: ""}
+						%figcaption.text プロフィール画像
+					%figure.mainImgWrap
+						%img.mainfImg{src: "images/sky.jpg", width: "44", height: "44", alt: ""}
+						%figcaption.text メイン画像
+				.personalEditBox
+					%dl.item
+						%dt.nameTtl name
+						%dd.name baba
+					%dl.item
+						%dt.placeTtl place
+						%dd.place kashiwa
+					%form.commentWrap
+						%input.comment{type: "text", placeholder: "コメント"}
+				.accountEditBox
+					%dl.item
+						%dt.passTtl パスワードを変更
+						%dd.pass ********
+					%dl.item
+						%dt.mailTtl メールアドレスを変更
+						%dd.mail baba@yahoo.com
