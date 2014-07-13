@@ -1,12 +1,5 @@
 @import "../../stylesheets/function.css.scss";
-//@import "../../../scss/function.css.scss";
-
-@mixin iconSprite($width, $height, $bpl, $bpt) {
-	width: $width;
-	height: $height;
-	background: url(../images/img_set.png) no-repeat $bpl $bpt;
-	background-size: 25px 232px;
-}
+@import "iconSprite.css.scss";
 
 /*---   .personalBox   ---------------------------*/
 .personalBoxWrap {
@@ -162,7 +155,7 @@
 		  @include border-radius(18px);
 		  @include box-sizing;
 		  border: none;
-		  @include iconSprite(100%, 33px, right 6px, top -165px);
+		  @include iconSprite4(100%, 33px, right 6px, top -165px);
 		  @include appearance;
 		  outline: 0;
 		}
@@ -201,7 +194,7 @@
 		}
 		.star {
 			margin-right: 4px;
-			@include iconSprite(14px, 12px, 0, -198px);
+			@include iconSprite4(14px, 12px, 0, -198px);
 
 			&:last-child {
 				margin-right: 0;
