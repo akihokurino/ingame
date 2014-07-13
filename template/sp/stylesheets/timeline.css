@@ -90,7 +90,7 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   color: #e27676;
-  font-size: 10px;
+  font-size: 8px;
   text-align: center;
 }
 .mainCnt .postBox .text {
@@ -119,4 +119,7 @@
   text-decoration: none;
   background: url(../images/img_set.png) no-repeat 0 -125px;
   background-size: 25px 232px;
+}
+.mainCnt .postBox .favBtn.on {
+  background-position: 0 -145px;
 }
