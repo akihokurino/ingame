@@ -7,6 +7,7 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :posts_count, :default => 0
       t.string :photo_path
       t.string :place, :limit => 255
+      t.boolean :is_first, :default => true
 
       t.timestamps
     end
