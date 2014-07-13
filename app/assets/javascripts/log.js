@@ -132,7 +132,8 @@
 				this.collection.fetch({
 					data: {search_title: search_title},
 					success: function (model, response, options) {
-						console.log(response.results)
+						that.collection.reset();
+						app.results_view.$el.html("");
 						if(response.results && response.results.length > 0){
 							for(var i = 0; i < response.results.length; i++){
 								var result = new Result(response.results[i]);

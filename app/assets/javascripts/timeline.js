@@ -256,6 +256,8 @@
 					this.collection.fetch({
 						data: {username: username},
 						success: function (model, response, options) {
+							that.collection.reset();
+							app.users_view.$el.html("");
 							for(var i = 0; i < response.results.length; i++){
 								var user = new User(response.results[i]);
 								console.log(user);
