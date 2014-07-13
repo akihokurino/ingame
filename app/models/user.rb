@@ -17,9 +17,19 @@ class User < ActiveRecord::Base
     where("username LIKE ?", "%#{username}%").select(:id, :username, :photo_path)
   }
 
+  attr_accessor :i_followed
+
 	def update_with(user_params)
   	self.class.upload(user_params) unless user_params[:photo_path].nil?
   	self.update(user_params) ? true : false
+  end
+
+  def check_follow(current_user)
+    if Follow.where(from_user_id: current_user[:id]).pluck(:to_user_id).include?(self[:id])
+      self.i_followed = true
+    else
+      self.i_followed = false
+    end
   end
 
 	class << self

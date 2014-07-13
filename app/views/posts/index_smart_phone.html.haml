@@ -4,6 +4,8 @@
 = link_to "ログアウト", logout_users_path
 = link_to "ユーザー情報", user_path(@current_user)
 
+= link_to "投稿", "/posts/new#select"
+
 %div{class: "mainCnt timeline-page"}
   %form{class: "entryBox post-form"}
     %input{type: "text", placeholder: "ゲームのログを書こう。", class: "comment text-input"}
@@ -51,3 +53,6 @@
 
 %script{type: "text/template", id: "game-template"}
   <%- title %>
+
+%script{type: "text-template", id: "user-template"}
+  <a href="/users/<%= id %>" style="display: block;"><%- username %></a>

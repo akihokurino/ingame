@@ -38,7 +38,6 @@
 		var LogsView = Backbone.View.extend({
 			el: $(".log-list"),
 			initialize: function () {
-				var that = this;
 				this.collection = logs;
 				this.listenTo(this.collection, "add", this.addLog);
 			},
@@ -76,7 +75,8 @@
 				"click .playing": "setPlaying",
 				"click .ready": "setAttention",
 				"click .played": "setArchive",
-				"click .follow": "follow"
+				"click .follow": "follow",
+				"click .unfollow": "unfollow"
 			},
 			initialize: function () {
 				this.logs_view = new LogsView();
@@ -84,6 +84,8 @@
 				this.playings = [];
 				this.archives = [];
 				var that = this;
+				this.follow_template = _.template($("#follow-template").html());
+				this.unfollow_template = _.template($("#unfollow-template").html());
 
 				$.ajax({
 					type: "GET",
@@ -136,6 +138,7 @@
 				this.$el.find("ul.sortBox li.played-li").addClass("current");
 			},
 			follow: function () {
+				var that = this;
 				var data = {
 					"follow": {
 						"to_user_id": user_id
@@ -148,8 +151,29 @@
 					data: data,
 					success: function (data) {
 						if(data.result){
-
+							that.$el.find(".follow-wrap").html("");
+							that.$el.find(".follow-wrap").append(that.unfollow_template);
 						}
+					},
+					error: function () {
+						console.log("error");
+					}
+				})
+			},
+			unfollow: function () {
+				var that = this;
+				$.ajax({
+					"type": "DELETE",
+					url: "/api/follows/" + user_id,
+					data: {},
+					success: function (data) {
+						if(data.result){
+							that.$el.find(".follow-wrap").html("");
+							that.$el.find(".follow-wrap").append(that.follow_template);
+						}
+					},
+					error: function () {
+						console.log("error");
 					}
 				})
 			}
