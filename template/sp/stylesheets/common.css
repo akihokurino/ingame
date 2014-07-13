@@ -11,6 +11,7 @@ a {
 /*---   header   ---------------------------*/
 header {
   position: relative;
+  z-index: 1;
   width: 100%;
   height: 46px;
   padding-top: 11px;
@@ -38,7 +39,7 @@ header .menu {
   width: 22px;
   height: 19px;
   background: url(../images/img_set.png) no-repeat 0 0;
-  background-size: 25px 232px;
+  background-size: 25px 271px;
 }
 header .serch {
   display: block;
@@ -48,7 +49,7 @@ header .serch {
   width: 21px;
   height: 21px;
   background: url(../images/img_set.png) no-repeat 0 -24px;
-  background-size: 25px 232px;
+  background-size: 25px 271px;
 }
 header .profile {
   display: block;
@@ -58,5 +59,5 @@ header .profile {
   width: 20px;
   height: 19px;
   background: url(../images/img_set.png) no-repeat 0 -50px;
-  background-size: 25px 232px;
+  background-size: 25px 271px;
 }

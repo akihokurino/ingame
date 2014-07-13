@@ -1,10 +1,5 @@
 @import "../../stylesheets/function.css.scss";
-//@import "../../scss/function.css.scss";
-
-@mixin iconSprite($bpl, $bpt) {
-	background: url(../images/img_set.png) no-repeat $bpl $bpt;
-	background-size: 25px 232px;
-}
+@import "iconSprite.css.scss";
 
 /*---   .mainCnt   ---------------------------*/
 .mainCnt {
@@ -22,7 +17,7 @@
 			border-radius: 3px;
 			box-sizing: border-box;
 			@include box-shadow(0, 2px, 2px, 0, #c7c6c6);
-			@include iconSprite(8px, -69px);
+			@include iconSprite2(8px, -69px);
 			font-size: 14px;
 			@include appearance;
 		}
@@ -97,14 +92,14 @@
 			color: #8d8e8e;
 			font-size: 12px;
 			text-decoration: none;
-			@include iconSprite(0, -104px);
+			@include iconSprite2(0, -104px);
 		}
 		.favBtn {
 			padding: 4px 0 4px 25px;
 			color: #8d8e8e;
 			font-size: 12px;
 			text-decoration: none;
-			@include iconSprite(0, -125px);
+			@include iconSprite2(0, -125px);
 
 			@at-root {
 				&.on {

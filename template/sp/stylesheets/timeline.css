@@ -16,7 +16,7 @@
   -webkit-box-shadow: 0 2px 2px 0 #c7c6c6;
   box-shadow: 0 2px 2px 0 #c7c6c6;
   background: url(../images/img_set.png) no-repeat 8px -69px;
-  background-size: 25px 232px;
+  background-size: 25px 271px;
   font-size: 14px;
   -moz-appearance: none;
   -webkit-appearance: none;
@@ -110,7 +110,7 @@
   font-size: 12px;
   text-decoration: none;
   background: url(../images/img_set.png) no-repeat 0 -104px;
-  background-size: 25px 232px;
+  background-size: 25px 271px;
 }
 .mainCnt .postBox .favBtn {
   padding: 4px 0 4px 25px;
@@ -118,7 +118,7 @@
   font-size: 12px;
   text-decoration: none;
   background: url(../images/img_set.png) no-repeat 0 -125px;
-  background-size: 25px 232px;
+  background-size: 25px 271px;
 }
 .mainCnt .postBox .favBtn.on {
   background-position: 0 -145px;
