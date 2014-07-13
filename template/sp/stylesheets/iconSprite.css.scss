@@ -1,10 +1,10 @@
 @mixin iconSprite2($bpl, $bpt) {
 	background: url(../images/img_set.png) no-repeat $bpl $bpt;
-	background-size: 25px 271px;
+	background-size: 25px 286px;
 }
 @mixin iconSprite4($width, $height, $bpl, $bpt) {
 	width: $width;
 	height: $height;
 	background: url(../images/img_set.png) no-repeat $bpl $bpt;
-	background-size: 25px 271px;
+	background-size: 25px 286px;
 }
