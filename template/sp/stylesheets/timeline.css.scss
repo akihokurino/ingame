@@ -78,7 +78,7 @@
 			@include border-radius(22px);
 			@include box-sizing;
 			color: #e27676;
-			font-size: 10px;
+			font-size: 8px;
 			text-align: center;
 		}
 		.text {
@@ -105,6 +105,12 @@
 			font-size: 12px;
 			text-decoration: none;
 			@include iconSprite(0, -125px);
+
+			@at-root {
+				&.on {
+					background-position: 0 -145px;
+				}
+			}
 		}
 	}
 }
