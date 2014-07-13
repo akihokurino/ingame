@@ -1,7 +1,7 @@
 = content_for :head do
   = javascript_include_tag "profile.js"
 
-.profile-page
+.profile-page{"data-userid" => @user[:id]}
   .personalBoxWrap
     %section.personalBox
       %h1.name

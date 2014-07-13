@@ -1,5 +1,31 @@
-= debug @user
-= debug @user.logs
+= content_for :head do
+  = javascript_include_tag "profile.js"
 
-= link_to "ユーザー情報の編集", edit_user_path(@user)
-= link_to "ログ情報の編集", logs_path
+= debug @user
+
+.profile-page{"data-userid" => @user[:id]}
+  .gameBox
+    %form.searchBox
+      %input{input: "text", placeholder: "search", role: "textarea"}
+    %ul.gameList.log-list
+
+  - unless current_user?(@user)
+    %span.follow-btn フォローする
+
+  - if current_user?(@user)
+    = link_to "ユーザー情報の編集", edit_user_path(@user)
+    = link_to "ログ情報の編集", logs_path
+
+%script{type: "text/template", id: "log-template"}
+  <a href="/games/<%= game.id %>" style="display: block;" class="articleWrap">
+  <article class="game">
+  <img class="gameImg" src=<%- game.photo_path %> />
+  <h1 class="ttl"><%- game.title %></h1>
+  <ul class="stars">
+  <li class="star"></li>
+  <li class="star"></li>
+  <li class="star"></li>
+  <li class="star"></li>
+  </ul>
+  </article>
+  </a>

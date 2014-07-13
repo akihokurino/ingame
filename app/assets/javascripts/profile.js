@@ -1,5 +1,7 @@
 (function () {
 	$(function () {
+		var user_id = $(".profile-page").data("userid");
+
 		/* ---------- Model ---------- */
 		var Log = Backbone.Model.extend({
 			defaults: {
@@ -42,7 +44,6 @@
 			},
 			addLog: function (log) {
 				if(log.id){
-					console.log("test")
 					var log_view = new LogView({model: log});
 					this.$el.prepend(log_view.render().el);
 				}
@@ -74,7 +75,8 @@
 			events: {
 				"click .playing": "setPlaying",
 				"click .ready": "setAttention",
-				"click .played": "setArchive"
+				"click .played": "setArchive",
+				"click .follow": "follow"
 			},
 			initialize: function () {
 				this.logs_view = new LogsView();
@@ -85,7 +87,7 @@
 
 				$.ajax({
 					type: "GET",
-					url: "/api/logs",
+					url: "/api/logs?user_id=" + user_id,
 					data: {},
 					success: function (data) {
 						for(var i = 0; i < data.logs.length; i++){
@@ -132,6 +134,24 @@
 					this.logs_view.addLog(this.archives[i]);
 				}
 				this.$el.find("ul.sortBox li.played-li").addClass("current");
+			},
+			follow: function () {
+				var data = {
+					"follow": {
+						"to_user_id": user_id
+					}
+				}
+
+				$.ajax({
+					type: "POST",
+					url: "/api/follows",
+					data: data,
+					success: function (data) {
+						if(data.result){
+
+						}
+					}
+				})
 			}
 		})
 
