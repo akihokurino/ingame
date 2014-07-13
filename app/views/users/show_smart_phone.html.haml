@@ -3,6 +3,8 @@
 
 .profile-page{"data-userid" => @user[:id]}
   .personalBoxWrap
+    %figure.profImgWrap
+      = image_tag("/user_photos/asuya02.jpg", height: 83, class: "profImg")
     %section.personalBox
       %h1.name
         = @user.username
@@ -11,30 +13,28 @@
         %span.country Japan
       %p.text
         = @user.introduction
-      %figure.profImgWrap
-        = image_tag("/user_photos/asuya02.jpg", height: 83, class: "profImg")
-      %a.option{href: ""}
+      %a.followBtn{href: ""} フォロー
+      %ul.countBox
+        %li.item
+          %a.follow{href: ""}
+            %span.count 12
+            フォロー
+        %li.item
+          %a.follower{href: ""}
+            %span.count 34
+            フォロワー
+        %li.item
+          %a.gameNum{href: ""}
+            %span.count
+              = @user.logs.count
+            ゲーム数
+        %li.item
+          %a.postNum{href: ""}
+            %span.count
+              = @user.posts.count
+            ポスト数
 
-  .funcBox
-    %ul.countBox
-      %li.item
-        %a.follow{href: ""}
-          %span.count 12
-          フォロー
-      %li.item
-        %a.follower{href: ""}
-          %span.count 34
-          フォロワー
-      %li.item
-        %a.gameNum{href: ""}
-          %span.count
-            = @user.logs.count
-          ゲーム数
-      %li.item
-        %a.postNum{href: ""}
-          %span.count
-            = @user.posts.count
-          ポスト数
+  .gameBox
     %ul.sortBox
       %li.item.current.playing-li
         %span.playing プレイ中
@@ -42,8 +42,6 @@
         %span.ready 気になる
       %li.item.played-li
         %span.played アーカイブ
-
-  .gameBox
     %form.searchBox
       %input{input: "text", placeholder: "search", role: "textarea"}
     %ul.gameList.log-list
