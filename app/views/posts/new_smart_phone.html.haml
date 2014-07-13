@@ -6,6 +6,7 @@
 .post-new-page{"data-userid" => @current_user[:id]}
 
 %script{type: "text/template", id: "select-template"}
+  <a href="/posts/new#add">ゲームを追加</a>
   <ul class="sortBox">
   <li class="item current playing-li"><span class="playing">プレイ中</span></li>
   <li class="item ready-li"><span class="ready">気になる</span></li>
@@ -36,5 +37,22 @@
 %script{type: "text/template", id: "game-template"}
   <p><%- title %></p>
   <img class="gameImg" src=<%- photo_path %> />
+
+%script{type: "text/template", id: "add-template"}
+  <form class="search-form">
+  <input type="text" name="search_title" class="search-title-input">
+  <input type="submit" class="submit-btn">
+  </form>
+
+%script{type: "text/template", id: "result-template"}
+  <p><%- title %></p>
+  <img src=<%- photo_path %> />
+  <span class="regist-btn">登録</span>
+  <select>
+  <option value="1">気になる</option>
+  <option value="2">プレイ中</option>
+  <option value="3">アーカイブ</option>
+  </select>
+
 
 

@@ -153,7 +153,6 @@
 		var StatusesSelectView = Backbone.View.extend({
 			tagName: "select",
 			initialize: function () {
-				var that = this;
 				this.collection = new Statuses();
 				this.listenTo(this.collection, "add", this.addStatus);
 			},
@@ -179,7 +178,6 @@
 		var ResultsView = Backbone.View.extend({
 			el: $(".result-list"),
 			initialize: function () {
-				var that = this;
 				this.collection = results;
 				this.listenTo(this.collection, "add", this.addResult);
 			},
@@ -233,7 +231,6 @@
 		var LogsView = Backbone.View.extend({
 			el: $(".log-list"),
 			initialize: function () {
-				var that = this;
 				this.collection = logs;
 				this.listenTo(this.collection, "add", this.addLog);
 			},
