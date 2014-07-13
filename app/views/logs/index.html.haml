@@ -1,7 +1,7 @@
 = content_for :head do
 	= javascript_include_tag "log.js"
 
-%div.logs-page
+%div.logs-page{"data-userid" => @current_user[:id]}
 	%form.log-form
 		%input{type: "text", name: "amazon_url", placeholder: "アマゾンのURLを入力して下さい。", class: "amazon-url-input"}
 		%input{type: "submit", class: "submit-btn"}

@@ -1,6 +1,6 @@
 class Api::LogsController < ApplicationController
   def index
-    @logs = Log.where(user_id: @current_user[:id]).order("created_at ASC").includes(:game)
+    @logs = Log.where(user_id: params[:user_id]).order("created_at ASC").includes(:game)
     @statuses = Status.all
   end
 

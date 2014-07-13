@@ -1,5 +1,7 @@
 (function () {
 	$(function () {
+		var user_id = $(".logs-page").data("userid");
+
 		/* ---------- Model ---------- */
 		var SearchInput = Backbone.Model.extend({
 			urlRoot: "/api/games/search",
@@ -278,7 +280,7 @@
 
 				$.ajax({
 					type: "GET",
-					url: "/api/logs",
+					url: "/api/logs?user_id=" + user_id,
 					data: {},
 					success: function (data) {
 						for(var i = 0; i < data.logs.length; i++){
