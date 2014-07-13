@@ -5,6 +5,10 @@ class UsersController < ApplicationController
   def login
   end
 
+  def setting
+
+  end
+
   def show
     @user.check_follow(@current_user)
   end

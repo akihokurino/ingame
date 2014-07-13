@@ -5,6 +5,9 @@ Ingame::Application.routes.draw do
       get "login"
       get "logout"
     end
+    member do
+      get "setting"
+    end
   end
   resources :posts, only: ["index", "new"]
   resources :logs, only: ["index", "create"]
