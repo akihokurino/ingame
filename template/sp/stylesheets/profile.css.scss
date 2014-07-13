@@ -1,12 +1,5 @@
 @import "../../stylesheets/function.css.scss";
-//@import "../../../scss/function.css.scss";
-
-@mixin iconSprite($width, $height, $bpl, $bpt) {
-	width: $width;
-	height: $height;
-	background: url(../images/img_set.png) no-repeat $bpl $bpt;
-	background-size: 25px 232px;
-}
+@import "iconSprite.css.scss";
 
 /*---   .personalBox   ---------------------------*/
 .personalBoxWrap {
@@ -162,7 +155,7 @@
 		  @include border-radius(18px);
 		  @include box-sizing;
 		  border: none;
-		  @include iconSprite(100%, 33px, right 6px, top -165px);
+		  @include iconSprite4(100%, 33px, right 6px, top -165px);
 		  @include appearance;
 		  outline: 0;
 		}
@@ -201,11 +194,138 @@
 		}
 		.star {
 			margin-right: 4px;
-			@include iconSprite(14px, 12px, 0, -198px);
+			@include iconSprite4(14px, 12px, 0, -198px);
 
 			&:last-child {
 				margin-right: 0;
 			}
+		}
+	}
+}
+
+/*---   .profileEdit   ---------------------------*/
+.profileEdit {
+	background: #f6f4f4;
+
+	/*---   header   ----------*/
+	header {
+		position: relative;
+		padding: 14px 0 13px;
+		border-bottom: 1px solid #a0a0a0;
+		text-align: center;
+
+		.ttl {
+			margin-left: 15px;
+			color: #000000;
+			font-size: 20px;
+			@include font-weight(1px, #000000);
+		}
+		.cancel {
+			position: absolute;
+			top: 15px;
+			left: 9px;
+			color: #1ba189;
+			font-size: 17px;
+		}
+		.save {
+			position: absolute;
+			top: 20px;
+			right: 10px;
+			color: #424343;
+			font-size: 15px;
+			line-height: 1.2;
+		}
+	}
+	/*---   .imgEditBox   ----------*/
+	.imgEditBox {
+		margin-bottom: 7px;
+		border-bottom: 1px solid #a0a0a0;
+		background: #ffffff;
+
+		.profImgWrap, .mainImgWrap {
+			@include clearfix;
+		}
+		.profImg, .mainfImg {
+			float: left;
+			margin: 9px 0 0 8px;
+			@include border-radius(22px);
+		}
+		.text {
+			float: right;
+			width: 78%;
+			height: 59px;
+			padding: 22px 0 0 77px;
+			@include box-sizing;
+			color: #232323;
+			font-size: 14px;
+		}
+		.profImgWrap {
+			.text {
+				border-bottom: 1px solid #a0a0a0;
+			}
+		}
+	}
+	/*---   .personalEditBox   ----------*/
+	.personalEditBox {
+		margin-bottom: 7px;
+		border-top: 1px solid #a09e9e;
+		@include box-shadow(0, 1px, 0, 0, #a09e9e);
+		background: #ffffff;
+
+		.item {
+			border-bottom: 1px solid #a09e9e;
+			@include clearfix;
+		}
+		.nameTtl, .placeTtl {
+			float: left;
+			margin-right: 88px;
+			padding: 15px 0 15px 18px;
+			color: #2e2e2e;
+			font-size: 14px;
+		}
+		.name, .place {
+			padding-top: 14px;
+			color: #1ba189;
+			font-size: 16px;
+		}
+		.comment {
+			width: 100%;
+			padding: 15px 0 15px 18px;
+			border: none;
+			@include box-sizing;
+
+			&::-webkit-input-placeholder {
+				color: #868585;
+				font-size: 14px;
+			}
+		}
+	}
+	/*---   .accountEditBox   ----------*/
+	.accountEditBox {
+		border-top: 1px solid #a09e9e;
+		background: #ffffff;
+
+		.item {
+			border-bottom: 1px solid #a09e9e;
+			@include clearfix;
+		}
+		.passTtl, .mailTtl {
+			float: left;
+			margin-right: 50px;
+			padding: 15px 0 15px 18px;
+			color: #2e2e2e;
+			font-size: 14px;
+		}
+		.mailTtl {
+			margin-right: 20px;
+		}
+		.pass, .mail {
+			padding-top: 14px;
+			color: #1ba189;
+			font-size: 16px;
+		}
+		.mail {
+			font-size: 14px
 		}
 	}
 }

@@ -5,6 +5,7 @@
 		%meta{name: "viewport", content: "width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"}
 		%title Playdy
 		%link{rel: "stylesheet", href: "stylesheets/reset-min.css"}
+		%link{rel: "stylesheet", href: "stylesheets/common.css"}
 		%link{rel: "stylesheet", href: "stylesheets/game.css"}
 	%body
 		#wrapper
@@ -12,82 +13,90 @@
 			%header
 				%h1.ttlWrap
 					%a.ttl{href: ""} Playdy
+				%a.menu{href: ""}
 				%a.serch{href: ""}
 				%a.profile{href: ""}
 			/	/header
 
-			/
-
 			/	.mainCnt
 			.mainCnt
 				/	.gameBox
-				%section.gameBox
-					%h1.ttl スーパーマリオ 3Dワールド
+				.gameBoxWrap
 					%figure.gameWrap
-						%img.gameImg{src: "images/game02.jpg", width: "78", height: "110", alt: "スーパーマリオ 3Dワールド"}
-						%figcaption.gameInfoWrap
-							%ul.gameInfo
-								%li.item
-									%span.date 発売日
-									%span.year 2013
-									%span.month 11
-									%span.day 12
-								%li.item
-									%span.hard ハード
-									Wii U
-								%li.item
-									%span.maker メーカー
-									スクウェア・エニックス
-					.funcBox
-						%ul.dataBox
+						.gameInner
+							%img.gameImg{src: "images/game02.jpg", width: "78", height: "111", alt: "スーパーマリオ 3Dワールド"}
+					%section.gameBox
+						%h1.ttl スーパーマリオ 3Dワールド
+						%ul.gameInfo
 							%li.item
-								.postIconWrap
-									.postIcon
-								ポスト数
-								%span.count 567
+								%span.date 発売日
+								%span.year 2013
+								%span.month 11
+								%span.day 12
 							%li.item
-								.evaluationIconWrap
-									.evaluationIcon
-								全体の評価
-								%ul.stars
-									- 4.times do |i|
-										%li.star
+								%span.hard ハード
+								Wii U
 							%li.item
-								%a.amazonBtn{href: ""} Amazonへ
-								%a.steamBtn{href: ""} Steamへ
-						.reviewBox
-							.reviewBoxInner
-								%a.btn{href: ""} レビューを書く
-								.evaluationBox
-									.iconWrap
-										.icon
-									%p.text 自分の評価
-									%ul.stars
-										- 3.times do |i|
-											%li.star
-						.friendBox
-							.friendBoxInner
-								%p.text 6人のフォローゲーマーが遊んでいます。
-								%ul.friendList
-									- 4.times do |i|
-										%li.item
-											%img.friendImg{src: "../images/baba.jpg", width: "30", height: "30", alt: ""}
-						.sortBoxWrap
-							%ul.sortBox
-								%li.item.current
-									%a.follow{href: ""}
-										フォローの
-										%br
-										コメント
-								%li.item
-									%a.all{href: ""} 全コメント
-								%li.item
-									%a.star{href: ""}
-										の多い
-										%br
-										コメント
+								%span.maker メーカー
+								スクウェア・エニックス
+						%ul.btnList
+							%li.item コメントする
+							%li.item ステータス
 				/	/.gameBox
 
+				/	.dataBox
+				%ul.dataBox
+					%li.item
+						%span.count 567
+						ポスト数
+					%li.item
+						%ul.stars
+							- 4.times do |i|
+								%li.star
+						全体の評価
+					%li.item
+						%ul.stars
+							- 3.times do |i|
+								%li.star
+						自分の評価
+				/	/.dataBox
+
+				/	.shopList
+				%ul.shopList
+					%li.item
+						%a.amazonBtn{href: ""} Amazonへ
+					%li.item
+						%a.steamBtn{href: ""} Steamへ
+				/	/.shopList
+
+				/	.friendBox
+				.friendBox
+					.friendBoxInner
+						%p.text 6人のフォローゲーマーが遊んでいます。
+						%ul.friendList
+							- 4.times do |i|
+								%li.item
+									%img.friendImg{src: "../images/baba.jpg", width: "30", height: "30", alt: ""}
+				/	/.friendBox
+
+				/	.sortBox
+				.sortBoxWrap
+					%ul.sortBox
+						%li.item.current
+							%span.follow
+								フォローの
+								%br
+								コメント
+						%li.item
+							%span.all 全コメント
+						%li.item
+							%span.star
+								の多い
+								%br
+								コメント
+				/	/.sortBox
+
+				
 				/	.postBox
 				- 3.times do |i|
 					%article.postBox
@@ -95,7 +104,7 @@
 							%img.profImg{src: "../images/baba.jpg", width: "58", height: "58", alt: ""}
 							.postArea
 								%a.account{href: ""} baba
-								%time.time 2時間前
+								%span.time 2時間前
 								%h2.ttl
 									アルティメットヒッツ
 									%br

@@ -316,8 +316,8 @@ a {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  background: url(../images/img_set.png) no-repeat right -195px;
-  background-size: 25px 213px;
+  background: url(../images/img_set.png) no-repeat right -213px;
+  background-size: 25px 286px;
   -moz-appearance: none;
   -webkit-appearance: none;
 }

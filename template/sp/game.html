@@ -5,6 +5,7 @@
     <meta content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no' name='viewport'>
     <title>Playdy</title>
     <link href='stylesheets/reset-min.css' rel='stylesheet'>
+    <link href='stylesheets/common.css' rel='stylesheet'>
     <link href='stylesheets/game.css' rel='stylesheet'>
   </head>
   <body>
@@ -14,129 +15,131 @@
         <h1 class='ttlWrap'>
           <a class='ttl' href=''>Playdy</a>
         </h1>
+        <a class='menu' href=''></a>
         <a class='serch' href=''></a>
         <a class='profile' href=''></a>
       </header>
       <!-- /header -->
-      <!--  -->
       <!-- .mainCnt -->
       <div class='mainCnt'>
         <!-- .gameBox -->
-        <section class='gameBox'>
-          <h1 class='ttl'>スーパーマリオ 3Dワールド</h1>
+        <div class='gameBoxWrap'>
           <figure class='gameWrap'>
-            <img alt='スーパーマリオ 3Dワールド' class='gameImg' height='110' src='images/game02.jpg' width='78'>
-            <figcaption class='gameInfoWrap'>
-              <ul class='gameInfo'>
-                <li class='item'>
-                  <span class='date'>発売日</span>
-                  <span class='year'>2013</span>
-                  <span class='month'>11</span>
-                  <span class='day'>12</span>
-                </li>
-                <li class='item'>
-                  <span class='hard'>ハード</span>
-                  Wii U
-                </li>
-                <li class='item'>
-                  <span class='maker'>メーカー</span>
-                  スクウェア・エニックス
-                </li>
-              </ul>
-            </figcaption>
+            <div class='gameInner'>
+              <img alt='スーパーマリオ 3Dワールド' class='gameImg' height='111' src='images/game02.jpg' width='78'>
+            </div>
           </figure>
-          <div class='funcBox'>
-            <ul class='dataBox'>
+          <section class='gameBox'>
+            <h1 class='ttl'>スーパーマリオ 3Dワールド</h1>
+            <ul class='gameInfo'>
               <li class='item'>
-                <div class='postIconWrap'>
-                  <div class='postIcon'></div>
-                </div>
-                ポスト数
-                <span class='count'>567</span>
+                <span class='date'>発売日</span>
+                <span class='year'>2013</span>
+                <span class='month'>11</span>
+                <span class='day'>12</span>
               </li>
               <li class='item'>
-                <div class='evaluationIconWrap'>
-                  <div class='evaluationIcon'></div>
-                </div>
-                全体の評価
-                <ul class='stars'>
-                  <li class='star'></li>
-                  <li class='star'></li>
-                  <li class='star'></li>
-                  <li class='star'></li>
-                </ul>
+                <span class='hard'>ハード</span>
+                Wii U
               </li>
               <li class='item'>
-                <a class='amazonBtn' href=''>Amazonへ</a>
-                <a class='steamBtn' href=''>Steamへ</a>
+                <span class='maker'>メーカー</span>
+                スクウェア・エニックス
               </li>
             </ul>
-            <div class='reviewBox'>
-              <div class='reviewBoxInner'>
-                <a class='btn' href=''>レビューを書く</a>
-                <div class='evaluationBox'>
-                  <div class='iconWrap'>
-                    <div class='icon'></div>
-                  </div>
-                  <p class='text'>自分の評価</p>
-                  <ul class='stars'>
-                    <li class='star'></li>
-                    <li class='star'></li>
-                    <li class='star'></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class='friendBox'>
-              <div class='friendBoxInner'>
-                <p class='text'>6人のフォローゲーマーが遊んでいます。</p>
-                <ul class='friendList'>
-                  <li class='item'>
-                    <img alt='' class='friendImg' height='30' src='../images/baba.jpg' width='30'>
-                  </li>
-                  <li class='item'>
-                    <img alt='' class='friendImg' height='30' src='../images/baba.jpg' width='30'>
-                  </li>
-                  <li class='item'>
-                    <img alt='' class='friendImg' height='30' src='../images/baba.jpg' width='30'>
-                  </li>
-                  <li class='item'>
-                    <img alt='' class='friendImg' height='30' src='../images/baba.jpg' width='30'>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class='sortBoxWrap'>
-              <ul class='sortBox'>
-                <li class='item current'>
-                  <a class='follow' href=''>
-                    フォローの
-                    <br>
-                    コメント
-                  </a>
-                </li>
-                <li class='item'>
-                  <a class='all' href=''>全コメント</a>
-                </li>
-                <li class='item'>
-                  <a class='star' href=''>
-                    の多い
-                    <br>
-                    コメント
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </section>
+            <ul class='btnList'>
+              <li class='item'>コメントする</li>
+              <li class='item'>ステータス</li>
+            </ul>
+          </section>
+        </div>
         <!-- /.gameBox -->
+        <!-- .dataBox -->
+        <ul class='dataBox'>
+          <li class='item'>
+            <span class='count'>567</span>
+            ポスト数
+          </li>
+          <li class='item'>
+            <ul class='stars'>
+              <li class='star'></li>
+              <li class='star'></li>
+              <li class='star'></li>
+              <li class='star'></li>
+            </ul>
+            全体の評価
+          </li>
+          <li class='item'>
+            <ul class='stars'>
+              <li class='star'></li>
+              <li class='star'></li>
+              <li class='star'></li>
+            </ul>
+            自分の評価
+          </li>
+        </ul>
+        <!-- /.dataBox -->
+        <!-- .shopList -->
+        <ul class='shopList'>
+          <li class='item'>
+            <a class='amazonBtn' href=''>Amazonへ</a>
+          </li>
+          <li class='item'>
+            <a class='steamBtn' href=''>Steamへ</a>
+          </li>
+        </ul>
+        <!-- /.shopList -->
+        <!-- .friendBox -->
+        <div class='friendBox'>
+          <div class='friendBoxInner'>
+            <p class='text'>6人のフォローゲーマーが遊んでいます。</p>
+            <ul class='friendList'>
+              <li class='item'>
+                <img alt='' class='friendImg' height='30' src='../images/baba.jpg' width='30'>
+              </li>
+              <li class='item'>
+                <img alt='' class='friendImg' height='30' src='../images/baba.jpg' width='30'>
+              </li>
+              <li class='item'>
+                <img alt='' class='friendImg' height='30' src='../images/baba.jpg' width='30'>
+              </li>
+              <li class='item'>
+                <img alt='' class='friendImg' height='30' src='../images/baba.jpg' width='30'>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- /.friendBox -->
+        <!-- .sortBox -->
+        <div class='sortBoxWrap'>
+          <ul class='sortBox'>
+            <li class='item current'>
+              <span class='follow'>
+                フォローの
+                <br>
+                コメント
+              </span>
+            </li>
+            <li class='item'>
+              <span class='all'>全コメント</span>
+            </li>
+            <li class='item'>
+              <span class='star'>
+                の多い
+                <br>
+                コメント
+              </span>
+            </li>
+          </ul>
+        </div>
+        <!-- /.sortBox -->
         <!-- .postBox -->
         <article class='postBox'>
           <div class='topBox'>
             <img alt='' class='profImg' height='58' src='../images/baba.jpg' width='58'>
             <div class='postArea'>
               <a class='account' href=''>baba</a>
-              <time class='time'>2時間前</time>
+              <span class='time'>2時間前</span>
               <h2 class='ttl'>
                 アルティメットヒッツ
                 <br>
@@ -156,7 +159,7 @@
             <img alt='' class='profImg' height='58' src='../images/baba.jpg' width='58'>
             <div class='postArea'>
               <a class='account' href=''>baba</a>
-              <time class='time'>2時間前</time>
+              <span class='time'>2時間前</span>
               <h2 class='ttl'>
                 アルティメットヒッツ
                 <br>
@@ -176,7 +179,7 @@
             <img alt='' class='profImg' height='58' src='../images/baba.jpg' width='58'>
             <div class='postArea'>
               <a class='account' href=''>baba</a>
-              <time class='time'>2時間前</time>
+              <span class='time'>2時間前</span>
               <h2 class='ttl'>
                 アルティメットヒッツ
                 <br>

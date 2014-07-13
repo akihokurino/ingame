@@ -1,0 +1,69 @@
+!!!
+%html
+	%head
+		%meta{charset: "UTF-8"}
+		%meta{name: "viewport", content: "width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"}
+		%title Playdy
+		%link{rel: "stylesheet", href: "stylesheets/reset-min.css"}
+		%link{rel: "stylesheet", href: "stylesheets/common.css"}
+		%link{rel: "stylesheet", href: "stylesheets/game.css"}
+	%body
+		#wrapper
+			/	header
+			%header
+				%h1.ttlWrap
+					%a.ttl{href: ""} Playdy
+				%a.menu{href: ""}
+				%a.serch{href: ""}
+				%a.profile{href: ""}
+			/	/header
+
+			/	.editCnt
+			.editCnt
+				/	.sortBox
+				.sortBoxWrap
+					%ul.sortBox
+						%li.item.current
+							%span.playing プレイ中
+						%li.item
+							%span.ready
+								欲しい
+								%br
+								ゲーム
+						%li.item
+							%span.played
+								クリアした
+								%br
+								ゲーム
+				/	/.sortBox
+
+				/	.seach
+				%form.seachWrap
+					%input.seach{type: "text", placeholder: "seach"}
+				/	/.seach
+
+				/	.gameList
+				- 2.times do |i|
+					%article.gameList
+						%figure.gameImgWrap
+							.gameImgInner
+								%img.gameImg{src: "images/game02.jpg", width: "62", height: "88", alt: ""}
+						%section.gameInfo
+							%h1.ttl スーパーマリオブラザーズ3
+							%ul.btnList
+								%li.item レビュー
+								%li.item ステータス
+					%article.gameList
+						%figure.gameImgWrap
+							.gameImgInner
+								%img.gameImg{src: "images/game.jpg", width: "70", height: "89", alt: ""}
+						%section.gameInfo
+							%h1.ttl スーパーマリオブラザーズ3
+							%ul.btnList
+								%li.item
+									%ul.stars
+										- 4.times do |i|
+											%li.star
+								%li.item 欲しい
+				/	/.gameList
+			/	/.editCnt
