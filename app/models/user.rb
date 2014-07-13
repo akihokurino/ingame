@@ -13,6 +13,10 @@ class User < ActiveRecord::Base
 	validates :place,
 		length: {maximum: 255}
 
+  scope :search, -> (username) {
+    where("username LIKE ?", "%#{username}%").select(:id, :username, :photo_path)
+  }
+
 	def update_with(user_params)
   	self.class.upload(user_params) unless user_params[:photo_path].nil?
   	self.update(user_params) ? true : false
@@ -60,5 +64,13 @@ class User < ActiveRecord::Base
 				char_list_str.sort_by{rand}.take(size).join("")
 			end
 		end
+
+    def search_with(username)
+      users = self.search(self.escape_like(username))
+    end
+
+    def escape_like(string)
+      string.gsub(/[\\%_]/){|m| "\\#{m}"}
+    end
 	end
 end

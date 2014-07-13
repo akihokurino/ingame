@@ -39,6 +39,14 @@
 			}
 		})
 
+		var User = Backbone.Model.extend({
+			defaults: {
+				"id": "",
+				"username": "",
+				"photo_path": ""
+			}
+		})
+
 
 
 		/* ---------- Collection ---------- */
@@ -52,7 +60,13 @@
 			url: "api/games"
 		})
 
+		var Users = Backbone.Collection.extend({
+			model: User,
+			url: "api/users"
+		})
+
 		var posts = new Posts();
+		var users = new Users();
 
 
 
@@ -202,12 +216,68 @@
 			}
 		})
 
+		var UsersView = Backbone.View.extend({
+			el: $(".user-list"),
+			initialize: function () {
+				this.collection = users;
+				this.listenTo(this.collection, "add", this.addUser);
+			},
+			addUser: function (user) {
+				if(user.id){
+					var user_view = new UserView({model: user});
+					this.$el.append(user_view.render().el);
+				}
+			}
+		})
+
+		var UserView = Backbone.View.extend({
+			tagName: "li",
+			template: _.template($("#user-template").html()),
+			render: function () {
+				var template = this.template(this.model.toJSON());
+				this.$el.html(template);
+				return this;
+			}
+		})
+
+		var UserSearchView = Backbone.View.extend({
+			el: ".user-input",
+			events: {
+				"keypress": "search"
+			},
+			initialize: function () {
+				this.collection = users;
+				this.username = $(".user-input");
+			},
+			search: function (e) {
+				var that = this;
+				var username = this.username.val();
+				if(username && e.which == 13){
+					this.collection.fetch({
+						data: {username: username},
+						success: function (model, response, options) {
+							for(var i = 0; i < response.results.length; i++){
+								var user = new User(response.results[i]);
+								console.log(user);
+								that.collection.add(user);
+							}
+						},
+						error: function () {
+
+						}
+					});
+				}
+			}
+		})
+
 		var AppView = Backbone.View.extend({
 			el: ".timeline-page",
 			initialize: function () {
 				this.post_form_view = new PostFormView();
 				this.games_select_view = new GamesSelectView();
 				this.posts_view = new PostsView();
+				this.user_search_view = new UserSearchView();
+				this.users_view = new UsersView();
 				var that = this;
 				$.ajax({
 					type: "GET",

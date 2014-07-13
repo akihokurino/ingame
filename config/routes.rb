@@ -1,4 +1,5 @@
 Ingame::Application.routes.draw do
+  get "users/users"
   resources :users, only: ["show", "edit", "update"] do
     collection do
       get "login"
@@ -20,6 +21,7 @@ Ingame::Application.routes.draw do
     end
     resources :post_likes, only: ["create", "destroy"], format: "json"
     resources :game_likes, only: ["create", "destroy"], format: "json"
+    resources :users, only: ["index"], format: "json"
   end
 
   match "/auth/:provider/callback", to: "sessions#callback", via: :get
