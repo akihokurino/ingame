@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 	has_many :logs
 	has_many :game_likes
 	has_many :post_likes
-	has_many :follows
+	has_many :follows, :foreign_key => "from_user_id"
 
 	validates :username,
 		presence: true,
@@ -75,8 +75,12 @@ class User < ActiveRecord::Base
 			end
 		end
 
-    def search_with(username)
+    def search_with(username, current_user)
       users = self.search(self.escape_like(username))
+      users = users.keep_if do |user|
+        user[:id] != current_user[:id] && !current_user.follows.pluck(:to_user_id).include?(user[:id])
+      end
+      users
     end
 
     def escape_like(string)
