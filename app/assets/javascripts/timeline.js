@@ -57,12 +57,12 @@
 
 		var Games = Backbone.Collection.extend({
 			model: Game,
-			url: "api/games"
+			url: "/api/games"
 		})
 
 		var Users = Backbone.Collection.extend({
 			model: User,
-			url: "api/users"
+			url: "/api/users"
 		})
 
 		var posts = new Posts();

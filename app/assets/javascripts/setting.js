@@ -10,6 +10,14 @@
       }
     })
 
+    var User = Backbone.Model.extend({
+      defaults: {
+        "id": "",
+        "username": "",
+        "photo_path": ""
+      }
+    })
+
 
 
     /* ---------- Collection ---------- */
@@ -18,7 +26,13 @@
       url: "/api/games/search"
     })
 
+    var Users = Backbone.Collection.extend({
+      model: User,
+      url: "/api/users"
+    })
+
     var results = new Results();
+    var users = new Users();
 
 
 
@@ -77,6 +91,57 @@
       }
     })
 
+    var UsersView = Backbone.View.extend({
+      tagName: "ul",
+      className: "user-list",
+      initialize: function () {
+        this.collection = users;
+        this.listenTo(this.collection, "add", this.addUser);
+      },
+      addUser: function (user) {
+        if(user.id){
+          var user_view = new UserView({model: user});
+          this.$el.append(user_view.render().el);
+        }
+      }
+    })
+
+    var UserView = Backbone.View.extend({
+      tagName: "li",
+      events: {
+        "click .follow": "follow"
+      },
+      template: _.template($("#user-template").html()),
+      render: function () {
+        var template = this.template(this.model.toJSON());
+        this.$el.html(template);
+        return this;
+      },
+      follow: function () {
+        var that = this;
+        var data = {
+          "follow": {
+            "to_user_id": this.model.id
+          }
+        }
+
+        $.ajax({
+          type: "POST",
+          url: "/api/follows",
+          data: data,
+          success: function (data) {
+            if(data.result){
+              that.$el.remove();
+            }
+          },
+          error: function () {
+            console.log("error");
+          }
+        })
+      }
+    })
+
+
     var FirstView = Backbone.View.extend({
       el: $(".setting-page"),
       events: {
@@ -124,11 +189,39 @@
 
     var SecondView = Backbone.View.extend({
       el: $(".setting-page"),
-      template: _.template($(".second-template")),
+      events: {
+        "keypress .user-input": "search"
+      },
+      template: _.template($("#second-template").html()),
       initialize: function () {
         var that = this;
         this.$el.html("");
         this.$el.append(this.template);
+        this.users_view = new UsersView();
+        this.$el.append(this.users_view.el);
+        this.collection = users;
+        this.username = $(".user-input");
+      },
+      search: function (e) {
+        var that = this;
+        var username = this.username.val();
+        if(username && e.which == 13){
+          this.collection.fetch({
+            data: {username: username},
+            success: function (model, response, options) {
+              that.collection.reset();
+              that.users_view.$el.html("");
+              for(var i = 0; i < response.results.length; i++){
+                var user = new User(response.results[i]);
+                console.log(user);
+                that.collection.add(user);
+              }
+            },
+            error: function () {
+              console.log("error");
+            }
+          });
+        }
       }
     })
 

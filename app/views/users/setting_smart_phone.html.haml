@@ -19,3 +19,10 @@
   <option value="2">プレイ中</option>
   <option value="3">アーカイブ</option>
   </select>
+
+%script{type: "text/template", id: "second-template"}
+  <input type="text" placeholder="ユーザー名" class="user-input">
+
+%script{type: "text-template", id: "user-template"}
+  <a href="/users/<%= id %>" style="display: block;"><%- username %></a>
+  <span class="follow">フォロー</span>
