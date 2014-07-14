@@ -8,15 +8,14 @@ class SessionsController < ApplicationController
       session[:current_user_id] = user[:id]
 
       if user[:is_first]
-        redirect_to setting_user_path(user[:id])
+        redirect_to "/users/#{user[:id]}/setting#first"
       else
         redirect_to posts_path, :notice => "ログインしました。"
       end
     else
       User.create_with_omniauth(auth)
       session[:current_user_id] = User.last[:id]
-      redirect_to setting_user_path(session[:current_user_id])
-      #redirect_to posts_path, :notice => "#{auth["info"]["name"]}さんの#{auth["provider"]}アカウントと接続しました。"
+      redirect_to "/users/#{session[:current_user_id]}/setting#first"
     end
   end
 end
