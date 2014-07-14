@@ -22,7 +22,13 @@
 
 %script{type: "text/template", id: "second-template"}
   <input type="text" placeholder="ユーザー名" class="user-input">
+  <span class="next-page">次へ</span>
 
-%script{type: "text-template", id: "user-template"}
+%script{type: "text/template", id: "user-template"}
   <a href="/users/<%= id %>" style="display: block;"><%- username %></a>
   <span class="follow">フォロー</span>
+
+%script{type: "text/template", id: "third-template"}
+  <input type="file" id="upload-btn">
+  <div id="thumbnail"></div>
+  <a href="/posts">終了</a>

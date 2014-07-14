@@ -24,6 +24,11 @@ class User < ActiveRecord::Base
   	self.update(user_params) ? true : false
   end
 
+  def update_with_url(user_params)
+    self.class.upload_url(user_params) unless user_params[:photo_path].nil?
+    self.update(user_params) ? true : false
+  end
+
   def check_follow(current_user)
     if Follow.where(from_user_id: current_user[:id]).pluck(:to_user_id).include?(self[:id])
       self.i_followed = true
@@ -60,6 +65,27 @@ class User < ActiveRecord::Base
 
   		end
   	end
+
+    def upload_url(user_params)
+      data_url = user_params[:photo_path]
+
+      case data_url
+      when /png/
+        extname = ".png"
+      when /jpg|jpeg/
+        extname = ".jpg"
+      when /gif/
+        extname = ".gif"
+      end
+
+      name = self.generate_random_name("alphabet", 10)
+      photo_path = "#{name}#{extname}"
+      File.open("public/user_photos/#{photo_path}", "wb") do |f|
+        data_url = data_url.sub(/^.*,/, '')
+        f.write(Base64.decode64(data_url))
+      end
+      user_params[:photo_path] = photo_path
+    end
 
   	def generate_random_name(type = "alphabet", size = 8)
 			char_list_str = []

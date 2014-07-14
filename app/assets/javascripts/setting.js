@@ -190,7 +190,8 @@
     var SecondView = Backbone.View.extend({
       el: $(".setting-page"),
       events: {
-        "keypress .user-input": "search"
+        "keypress .user-input": "search",
+        "click .next-page": "next"
       },
       template: _.template($("#second-template").html()),
       initialize: function () {
@@ -201,6 +202,9 @@
         this.$el.append(this.users_view.el);
         this.collection = users;
         this.username = $(".user-input");
+        var tmp = location.href.split("#")[0].split("/");
+        tmp.pop();
+        this.user_id = tmp.pop();
       },
       search: function (e) {
         var that = this;
@@ -213,7 +217,6 @@
               that.users_view.$el.html("");
               for(var i = 0; i < response.results.length; i++){
                 var user = new User(response.results[i]);
-                console.log(user);
                 that.collection.add(user);
               }
             },
@@ -222,8 +225,121 @@
             }
           });
         }
+      },
+      next: function () {
+        location.href = "/users/" + this.user_id + "/setting#third";
       }
     })
+
+    var ThirdView = Backbone.View.extend({
+      el: $(".setting-page"),
+      template: _.template($("#third-template").html()),
+      initialize: function () {
+        var that = this;
+        this.$el.html("");
+        this.$el.append(this.template);
+        var tmp = location.href.split("#")[0].split("/");
+        tmp.pop();
+        this.user_id = tmp.pop();
+        this.upload = new Upload("upload-btn", "thumbnail", this.user_id);
+      }
+    })
+
+    var Upload = function (inputID, outputID, user_id) {
+      var that = this;
+      this._input = document.getElementById(inputID);
+      this._output = document.getElementById(outputID);
+      this.user_id = user_id;
+      if(this._input != null){
+        this._input.addEventListener("change", function () {
+          that.changeFile();
+        }, false);
+      }
+    }
+
+    Upload.prototype = {
+      changeFile: function () {
+        this.setThumbnail();
+
+        if(this.isPdf(this._input.files[0])){
+          this.valid("document");
+          return;
+        }
+        if(this.isOffice(this._input.files[0])){
+          this.valid("document");
+          return;
+        }
+        if(this.isVideo(this._input.files[0])){
+          this.valid("video");
+          return;
+        }
+        this.readFile(this._input.files[0], this._input.files[0].name);
+      },
+      readFile: function (file, name) {
+        var that = this;
+        var reader = new FileReader();
+        reader.addEventListener("load", function (e) {
+          that.send(reader.result);
+          that.render(reader.result, name);
+        });
+        reader.readAsDataURL(file);
+      },
+      send: function (data_url) {
+        var data = {
+          "user": {
+            "photo_path": data_url
+          }
+        }
+
+        $.ajax({
+          type: "PUT",
+          url: "/api/users/" + this.user_id,
+          data: data,
+          success: function (data) {
+            console.log(data);
+          },
+          error: function () {
+            console.log("error");
+          }
+        })
+      },
+      render: function (data, name) {
+        var div = document.createElement("div");
+        var img = document.createElement("img");
+        img.src = data;
+        div.appendChild(img);
+        this._output.appendChild(div);
+      },
+      isVideo: function (file) {
+        return file.type.match("video.*") ? true : false;
+      },
+      isPdf: function (file) {
+        return file.type.match("application/pdf") ? true : false;
+      },
+      isOffice: function (file) {
+        return file.type.match("application/vnd.*") ? true : false;
+      },
+      setThumbnail: function () {
+        this._output.style.display = "block";
+      },
+      valid: function (type) {
+        if(this.uploads.length == 0){
+          this._output.style.display = "none";
+          this._output.innerHTML = "";
+        }
+
+        switch(type){
+          case "document":
+            $("#validate-message").html("画像ファイルを選択して下さい");
+            $("#validate-message").css("display", "block");
+            break;
+          case "video":
+            $("#validate-message").html("画像ファイルを選択して下さい");
+            $("#validate-message").css("display", "block");
+            break;
+        }
+      }
+    }
 
     var Router = Backbone.Router.extend({
       routes: {
@@ -238,7 +354,7 @@
         var app = new SecondView();
       },
       third: function () {
-
+        var app = new ThirdView();
       }
     })
 
