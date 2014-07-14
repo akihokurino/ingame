@@ -1,0 +1,509 @@
+/*---   common   ---------------------------*/
+html {
+  background: #f4f2f2; }
+
+/*---   .mainCnt   ---------------------------*/
+.mainCnt {
+  /*---   .gameBox   ----------*/
+  /*---   .dataBox   ----------*/
+  /*---   .shopList   ----------*/
+  /*---   .friendBox   ----------*/
+  /*---   .sortBox   ----------*/
+  /*---   .postBox   ----------*/ }
+  .mainCnt .gameBoxWrap {
+    background: url(../images/game__bg.jpg) no-repeat center top;
+    background-size: cover; }
+    .mainCnt .gameBoxWrap .gameWrap {
+      width: 162px;
+      height: 162px;
+      margin: -25px auto 0;
+      padding-top: 16px;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      background: url(../images/game__bg02.png) no-repeat center top;
+      background-size: 162px 162px;
+      vertical-align: middle; }
+    .mainCnt .gameBoxWrap .gameInner {
+      width: 126px;
+      height: 126px;
+      margin: 0 auto;
+      -moz-border-radius: 82px;
+      -webkit-border-radius: 82px;
+      border-radius: 82px;
+      -moz-box-shadow: 1px 1px 3px 0 #cacdcd;
+      -webkit-box-shadow: 1px 1px 3px 0 #cacdcd;
+      box-shadow: 1px 1px 3px 0 #cacdcd;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      background: #ffffff;
+      text-align: center;
+      *zoom: 1; }
+      .mainCnt .gameBoxWrap .gameInner:before, .mainCnt .gameBoxWrap .gameInner:after {
+        display: table;
+        content: ""; }
+      .mainCnt .gameBoxWrap .gameInner:after {
+        clear: both; }
+    .mainCnt .gameBoxWrap .gameImg {
+      -webkit-mask: url(../images/mask.png) no-repeat center top;
+      padding-top: 8px; }
+  .mainCnt .gameBox {
+    padding-top: 14px;
+    color: #ffffff; }
+    .mainCnt .gameBox .ttl {
+      width: 248px;
+      margin: 0 auto 14px;
+      font-size: 18px; }
+    .mainCnt .gameBox .gameInfo {
+      text-align: center; }
+      .mainCnt .gameBox .gameInfo .item {
+        display: inline;
+        color: #1db398;
+        font-size: 13px;
+        -webkit-text-stroke: 1px #1db398; }
+        .mainCnt .gameBox .gameInfo .item:first-child {
+          margin-right: 28px; }
+        .mainCnt .gameBox .gameInfo .item:last-child {
+          display: block; }
+    .mainCnt .gameBox .date, .mainCnt .gameBox .hard, .mainCnt .gameBox .maker {
+      margin-bottom: 3px;
+      color: #ffffff;
+      font-size: 11px;
+      text-align: center;
+      -webkit-text-stroke: 0 white; }
+    .mainCnt .gameBox .year:after, .mainCnt .gameBox .month:after {
+      content: "/"; }
+    .mainCnt .gameBox .month, .mainCnt .gameBox .day {
+      margin-left: -3px; }
+    .mainCnt .gameBox .btnList {
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flex;
+      display: -o-flex;
+      display: flex;
+      flex-directon: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      justify-content: center; }
+      .mainCnt .gameBox .btnList .item {
+        width: 150px;
+        margin: 19px 4px 16px;
+        padding: 6px 0;
+        border: 1px solid #ffffff;
+        -moz-border-radius: 20px;
+        -webkit-border-radius: 20px;
+        border-radius: 20px;
+        text-align: center; }
+  .mainCnt .dataBox {
+    margin: 0 auto;
+    color: #ffffff;
+    background: #10b5a3;
+    *zoom: 1; }
+    .mainCnt .dataBox:before, .mainCnt .dataBox:after {
+      display: table;
+      content: ""; }
+    .mainCnt .dataBox:after {
+      clear: both; }
+    .mainCnt .dataBox .item {
+      position: relative;
+      float: left;
+      width: 33%;
+      height: 59px;
+      padding-top: 10px;
+      border-right: 1px solid #106c62;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      font-size: 12px;
+      text-align: center; }
+      .mainCnt .dataBox .item:first-child {
+        padding-top: 3px; }
+      .mainCnt .dataBox .item:last-child {
+        border: none; }
+    .mainCnt .dataBox .count {
+      display: block;
+      font-size: 20px;
+      -webkit-text-stroke: 1px white; }
+    .mainCnt .dataBox .stars {
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flex;
+      display: -o-flex;
+      display: flex;
+      flex-directon: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      justify-content: center;
+      margin-bottom: 6px; }
+    .mainCnt .dataBox .star {
+      width: 19px;
+      height: 17px;
+      background: url(../images/img_set.png) no-repeat 0 -238px;
+      background-size: 25px 286px; }
+  .mainCnt .shopList {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    flex-directon: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    justify-content: center;
+    margin: 11px 0 10px; }
+    .mainCnt .shopList .amazonBtn, .mainCnt .shopList .steamBtn {
+      display: block;
+      width: 107px;
+      height: 28px;
+      padding-top: 4px;
+      -moz-border-radius: 18px;
+      -webkit-border-radius: 18px;
+      border-radius: 18px;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      color: #ffffff;
+      font-size: 12px;
+      text-align: center; }
+    .mainCnt .shopList .amazonBtn {
+      margin-right: 56px;
+      background: #fc9a18; }
+    .mainCnt .shopList .steamBtn {
+      background: #7cb038; }
+  .mainCnt .friendBox {
+    border-top: 1px solid #bbbbbc; }
+    .mainCnt .friendBoxInner {
+      width: 320px;
+      margin: 0 auto;
+      padding: 7px 0; }
+    .mainCnt .friendBox .text {
+      margin-bottom: 6px;
+      padding-left: 12px;
+      color: #222222;
+      font-size: 13px; }
+    .mainCnt .friendBox .friendList {
+      *zoom: 1; }
+      .mainCnt .friendBox .friendList:before, .mainCnt .friendBox .friendList:after {
+        display: table;
+        content: ""; }
+      .mainCnt .friendBox .friendList:after {
+        clear: both; }
+      .mainCnt .friendBox .friendList .item {
+        float: left;
+        margin: 0 16px; }
+    .mainCnt .friendBox .friendImg {
+      -moz-border-radius: 15px;
+      -webkit-border-radius: 15px;
+      border-radius: 15px; }
+  .mainCnt .sortBoxWrap {
+    margin-bottom: 14px;
+    padding-top: 15px;
+    border-top: 1px solid #bbbbbc; }
+  .mainCnt .sortBox {
+    width: 312px;
+    margin: 0 auto;
+    border: 1px solid #10b5a3;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    *zoom: 1; }
+    .mainCnt .sortBox:before, .mainCnt .sortBox:after {
+      display: table;
+      content: ""; }
+    .mainCnt .sortBox:after {
+      clear: both; }
+    .mainCnt .sortBox .item {
+      float: left;
+      width: 104px;
+      border-right: 1px solid #10b5a3;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      font-size: 12px; }
+      .mainCnt .sortBox .item:last-child {
+        border: none; }
+    .mainCnt .sortBox .follow, .mainCnt .sortBox .all, .mainCnt .sortBox .star {
+      display: table-cell;
+      width: 104px;
+      height: 30px;
+      padding-top: 4px;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      color: #10ac9b;
+      text-align: center;
+      vertical-align: middle;
+      line-height: 1.1; }
+    .mainCnt .sortBox .follow {
+      border-radius: 3px 0 0 3px; }
+    .mainCnt .sortBox .star {
+      border-radius: 0 3px 3px 0;
+      background: url(../images/img_set.png) no-repeat 26px -258px;
+      background-size: 25px 286px;
+      text-indent: 1.0em; }
+    .mainCnt .sortBox .current.item {
+      border: none; }
+    .mainCnt .sortBox .current .follow, .mainCnt .sortBox .current .all, .mainCnt .sortBox .current .star {
+      background: #10ac9b;
+      color: #ffffff;
+      -webkit-text-stroke: 1px white; }
+  .mainCnt .postBox {
+    margin: 0 10px 8px;
+    padding: 15px 13px;
+    -moz-box-shadow: 0 1px 1px 0 #d6d2d2;
+    -webkit-box-shadow: 0 1px 1px 0 #d6d2d2;
+    box-shadow: 0 1px 1px 0 #d6d2d2;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    background: #fbfbfb; }
+    .mainCnt .postBox .topBox {
+      margin-bottom: 15px;
+      *zoom: 1; }
+      .mainCnt .postBox .topBox:before, .mainCnt .postBox .topBox:after {
+        display: table;
+        content: ""; }
+      .mainCnt .postBox .topBox:after {
+        clear: both; }
+    .mainCnt .postBox .profImg {
+      float: left;
+      width: 58px;
+      height: 58px;
+      margin-right: 10px;
+      -moz-border-radius: 29px;
+      -webkit-border-radius: 29px;
+      border-radius: 29px; }
+    .mainCnt .postBox .postArea {
+      position: relative; }
+    .mainCnt .postBox .account {
+      color: #232937;
+      font-size: 14px;
+      -webkit-text-stroke: 1px #232937;
+      text-decoration: none; }
+    .mainCnt .postBox .time {
+      color: #717171;
+      font-size: 9px; }
+    .mainCnt .postBox .ttl {
+      color: #22c0a4;
+      font-size: 14px;
+      -webkit-text-stroke: 1px #22c0a4;
+      line-height: 1.0; }
+    .mainCnt .postBox .mood {
+      display: table-cell;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 44px;
+      height: 44px;
+      padding-top: 15px;
+      border: 1px solid #e27676;
+      -moz-border-radius: 22px;
+      -webkit-border-radius: 22px;
+      border-radius: 22px;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      color: #e27676;
+      font-size: 8px;
+      text-align: center; }
+    .mainCnt .postBox .text {
+      margin-bottom: 17px;
+      color: #404040;
+      font-size: 13px;
+      line-height: 1.6; }
+    .mainCnt .postBox .stateBox {
+      padding: 12px 0 0 5px;
+      border-top: 1px solid #999a9a; }
+    .mainCnt .postBox .commentBtn {
+      margin-right: 16px;
+      padding: 4px 0 4px 26px;
+      color: #8d8e8e;
+      font-size: 12px;
+      text-decoration: none;
+      background: url(../images/img_set.png) no-repeat 0 -104px;
+      background-size: 25px 286px; }
+    .mainCnt .postBox .favBtn {
+      padding: 4px 0 4px 25px;
+      color: #8d8e8e;
+      font-size: 12px;
+      text-decoration: none;
+      background: url(../images/img_set.png) no-repeat 0 -125px;
+      background-size: 25px 286px; }
+      .mainCnt .postBox .favBtn.on {
+        background-position: 0 -145px; }
+
+/*---   .editCnt   ---------------------------*/
+.editCnt {
+  padding: 16px 0;
+  background: #ffffff;
+  /*---   .sortBox   ----------*/
+  /*---   .seachWrap   ----------*/
+  /*---   .gameList   ----------*/ }
+  .editCnt .sortBox {
+    width: 312px;
+    margin: 0 auto 12px;
+    border: 1px solid #10b5a3;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+    *zoom: 1; }
+    .editCnt .sortBox:before, .editCnt .sortBox:after {
+      display: table;
+      content: ""; }
+    .editCnt .sortBox:after {
+      clear: both; }
+    .editCnt .sortBox .item {
+      float: left;
+      width: 104px;
+      border-right: 1px solid #10b5a3;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      font-size: 12px; }
+      .editCnt .sortBox .item:last-child {
+        border: none; }
+    .editCnt .sortBox .playing, .editCnt .sortBox .ready, .editCnt .sortBox .played {
+      display: table-cell;
+      width: 104px;
+      height: 30px;
+      padding-top: 4px;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      color: #10ac9b;
+      text-align: center;
+      vertical-align: middle;
+      line-height: 1.1; }
+    .editCnt .sortBox .playing {
+      border-radius: 20px 0 0 20px; }
+    .editCnt .sortBox .played {
+      border-radius: 0 20px 20px 0; }
+    .editCnt .sortBox .current.item {
+      border: none; }
+    .editCnt .sortBox .current .playing, .editCnt .sortBox .current .ready, .editCnt .sortBox .current .played {
+      background: #10ac9b;
+      color: #ffffff;
+      -webkit-text-stroke: 1px white; }
+  .editCnt .seachWrap {
+    width: 100%;
+    margin-bottom: 14px;
+    border-bottom: 1px solid #a09f9f;
+    -moz-box-shadow: 1px 0 0 0 #e7e7e7;
+    -webkit-box-shadow: 1px 0 0 0 #e7e7e7;
+    box-shadow: 1px 0 0 0 #e7e7e7; }
+    .editCnt .seachWrap .seach {
+      display: block;
+      width: 240px;
+      height: 34px;
+      margin: 0 auto 26px;
+      padding-left: 11px;
+      border: 1px solid #a09e9f;
+      -moz-border-radius: 18px;
+      -webkit-border-radius: 18px;
+      border-radius: 18px;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      background: url(../images/img_set.png) no-repeat right 4px top -165px;
+      background-size: 25px 286px;
+      font-size: 14px;
+      outline: 0; }
+  .editCnt .gameList {
+    position: relative;
+    width: 320px;
+    margin: 0 auto; }
+    .editCnt .gameList .gameImgWrap {
+      position: absolute;
+      top: 12px;
+      left: 9px;
+      width: 100px;
+      height: 100px;
+      padding-top: 3px;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      background: url(../images/game__bg02.png) no-repeat center top;
+      background-size: 100px 100px;
+      text-align: center; }
+    .editCnt .gameList .gameImgInner {
+      width: 94px;
+      height: 94px;
+      margin: 0 auto;
+      -moz-border-radius: 48px;
+      -webkit-border-radius: 48px;
+      border-radius: 48px;
+      background: #ffffff; }
+    .editCnt .gameList .gameImg {
+      -webkit-mask: url(../images/mask.png) no-repeat center top;
+      -webkit-mask-size: 94px 94px;
+      padding-top: 3px; }
+    .editCnt .gameList .gameInfo {
+      width: 250px;
+      height: 124px;
+      margin: 0 3px 0 auto;
+      padding: 22px 0 0 53px;
+      border-bottom: 1px solid #bbbbbc;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box; }
+    .editCnt .gameList .ttl {
+      color: #10b5a3;
+      font-size: 14px;
+      -webkit-text-stroke: 1px #10b5a3; }
+    .editCnt .gameList .btnList {
+      position: absolute;
+      bottom: 17px;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flex;
+      display: -o-flex;
+      display: flex;
+      flex-directon: row;
+      flex-wrap: wrap;
+      justify-content: space-between; }
+      .editCnt .gameList .btnList .item {
+        position: relative;
+        width: 86px;
+        padding-top: 3px;
+        padding-right: 5px;
+        border: 1px solid #959494;
+        -moz-border-radius: 18px;
+        -webkit-border-radius: 18px;
+        border-radius: 18px;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        color: #a09f9f;
+        font-size: 10px;
+        text-align: center; }
+        .editCnt .gameList .btnList .item:first-child {
+          margin-right: 12px; }
+        .editCnt .gameList .btnList .item:after {
+          position: absolute;
+          top: 7px;
+          right: 6px;
+          border-top: 6px solid #888787;
+          border-right: 5px solid transparent;
+          border-bottom: 6px solid transparent;
+          border-left: 5px solid transparent;
+          content: ""; }
+      .editCnt .gameList .btnList .stars {
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        flex-directon: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        justify-content: center;
+        margin-top: 1px; }
+      .editCnt .gameList .btnList .star {
+        width: 11px;
+        height: 10px;
+        background: url(../images/img_set.png) no-repeat 0 -276px;
+        background-size: 25px 286px; }

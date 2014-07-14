@@ -1,24 +1,24 @@
 /*---   .personalBox   ---------------------------*/
 .personalBoxWrap {
   position: relative;
-  padding-bottom: 12px;
+  padding-bottom: 16px;
   background: url(../images/profile__bg.jpg) repeat top center;
   background-size: cover;
   text-align: center; }
   .personalBoxWrap .profImg {
-    margin-top: 24px;
+    margin-top: 18px;
     border: 1px solid #fffcfc;
     -moz-border-radius: 44px;
     -webkit-border-radius: 44px;
     border-radius: 44px; }
   .personalBoxWrap .followBtn {
     position: absolute;
-    top: 14px;
+    top: 7px;
     right: 8px;
     width: 74px;
     height: 23px;
-    line-height: 23px;
-    border: 1px solid #ffffff;
+    padding-top: 2px;
+    border: 2px solid #ffffff;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     border-radius: 5px;
@@ -27,6 +27,7 @@
     box-sizing: border-box;
     color: #ffffff;
     font-size: 10px;
+    -webkit-text-stroke: 1px white;
     text-align: center; }
 
 .personalBox {
@@ -35,22 +36,24 @@
   box-sizing: border-box;
   color: #ffffff; }
   .personalBox .name {
-    font-size: 18px; }
+    margin-top: 10px;
+    font-size: 15px;
+    -webkit-text-stroke: 1px white;
+    text-shadow: 2px 2px 1px #888888; }
   .personalBox .place {
-    font-size: 12px;
-    opacity: .8; }
+    font-size: 12px; }
   .personalBox .town:after {
     content: "/"; }
   .personalBox .country {
     margin-left: -5px; }
   .personalBox .text {
-    margin-top: 10px;
+    margin-top: 19px;
     padding: 0 50px;
     font-size: 12px;
     text-align: left; }
   .personalBox .countBox {
     width: 320px;
-    margin: 20px auto 0;
+    margin: 28px auto 0;
     *zoom: 1; }
     .personalBox .countBox:before, .personalBox .countBox:after {
       display: table;
@@ -85,12 +88,12 @@
 .gameBox {
   padding: 0 3px; }
   .gameBox .sortBox {
-    width: 300px;
+    width: 312px;
     margin: 10px auto 13px;
     border: 1px solid #10b5a3;
-    -moz-border-radius: 20px;
-    -webkit-border-radius: 20px;
-    border-radius: 20px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
     *zoom: 1; }
     .gameBox .sortBox:before, .gameBox .sortBox:after {
       display: table;
@@ -99,7 +102,7 @@
       clear: both; }
     .gameBox .sortBox .item {
       float: left;
-      width: 100px;
+      width: 104px;
       border-right: 1px solid #10b5a3;
       -moz-box-sizing: border-box;
       -webkit-box-sizing: border-box;
@@ -109,7 +112,7 @@
         border: none; }
     .gameBox .sortBox .playing, .gameBox .sortBox .ready, .gameBox .sortBox .played {
       display: table-cell;
-      width: 100px;
+      width: 104px;
       height: 30px;
       padding-top: 4px;
       -moz-box-sizing: border-box;
@@ -121,9 +124,9 @@
       vertical-align: middle;
       line-height: 1.1; }
     .gameBox .sortBox .playing {
-      border-radius: 20px 0 0 20px; }
+      border-radius: 3px 0 0 3px; }
     .gameBox .sortBox .played {
-      border-radius: 0 20px 20px 0; }
+      border-radius: 0 3px 3px 0; }
     .gameBox .sortBox .current.item {
       border: none; }
     .gameBox .sortBox .current .playing, .gameBox .sortBox .current .ready, .gameBox .sortBox .current .played {
@@ -131,7 +134,7 @@
       color: #ffffff;
       -webkit-text-stroke: 1px white; }
   .gameBox .searchBox {
-    width: 94.375z%;
+    width: 98%;
     height: 33px;
     margin: 0 auto 15px;
     border: 1px solid #b3b2b3;
@@ -175,14 +178,14 @@
       -moz-box-sizing: border-box;
       -webkit-box-sizing: border-box;
       box-sizing: border-box;
-      -moz-box-shadow: 1px 1px 2px 0 #a2a2a2;
-      -webkit-box-shadow: 1px 1px 2px 0 #a2a2a2;
-      box-shadow: 1px 1px 2px 0 #a2a2a2;
+      -moz-box-shadow: 1px 1px 2px 0 #5a595a;
+      -webkit-box-shadow: 1px 1px 2px 0 #5a595a;
+      box-shadow: 1px 1px 2px 0 #5a595a;
       background: #ffffff; }
     .gameBox .gameList .gameImg {
       width: 140px;
       height: 160px;
-      margin: 0 0 12px -10px;
+      margin: 0 0 15px -10px;
       -moz-border-radius: 5px;
       -webkit-border-radius: 5px;
       border-radius: 5px;
@@ -191,7 +194,7 @@
       box-sizing: border-box;
       background: url(../images/game.jpg) no-repeat top center; }
     .gameBox .gameList .ttl {
-      margin-bottom: 10px;
+      margin-bottom: 15px;
       color: #333232;
       font-size: 12px; }
     .gameBox .gameList .stars {

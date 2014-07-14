@@ -1,0 +1,495 @@
+@import "../../stylesheets/function.css.scss";
+@import "iconSprite.css.scss";
+
+/*---   common   ---------------------------*/
+html {
+	background: #f4f2f2;
+}
+
+/*---   .mainCnt   ---------------------------*/
+.mainCnt {
+	/*---   .gameBox   ----------*/
+	.gameBoxWrap {
+		background: url(../images/game__bg.jpg) no-repeat center top;
+		background-size: cover;
+
+		.gameWrap {
+			width: 162px;
+			height: 162px;
+			margin: 0 auto;
+			padding-top: 16px;
+			@include box-sizing;
+			background: url(../images/game__bg02.png) no-repeat center top;
+			background-size: 162px 162px;
+			vertical-align: middle;
+		}
+		.gameInner {
+			width: 126px;
+			height: 126px;
+			margin: 0 auto;
+			@include border-radius(82px);
+			@include box-shadow(1px, 1px, 3px, 0, #cacdcd);
+			@include box-sizing;
+			background: #ffffff;
+			text-align: center;
+			@include clearfix;
+			
+		}
+		.gameImg {
+			-webkit-mask: url(../images/mask.png) no-repeat center top;
+			padding-top: 8px;
+		}
+	}
+	.gameBox {
+		padding-top: 14px;
+		color: #ffffff;
+
+		.ttl {
+			width: 248px;
+			margin: 0 auto 2px;
+			text-align: center;
+			font-size: 18px;
+		}
+		.gameInfo {
+			text-align: center;
+
+			.item {
+				display: inline;
+				color: #1db398;
+				font-size: 13px;
+				@include font-weight(1px, #1db398);
+
+				&:first-child {
+					margin-right: 28px;
+				}
+				&:last-child {
+					display: block;
+				}
+			}
+		}
+		.date, .hard, .maker {
+			margin-bottom: 3px;
+			color: #ffffff;
+			font-size: 11px;
+			text-align: center;
+			@include font-weight(0, #ffffff);
+		}
+		.year, .month {
+			&:after {
+				content: "/";
+			}
+		}
+		.month, .day {
+			margin-left: -3px;
+		}
+		.btnList {
+			@include flexbox;
+			justify-content: center;
+			font-size:13px;
+			.item {
+				width: 120px;
+				margin: 12px 14px 20px;
+				padding: 3px 0;
+				border: 1px solid #ffffff;
+				@include border-radius(20px);
+				text-align: center;
+			}
+		}
+	}
+	/*---   .dataBox   ----------*/
+	.dataBox {
+		margin: 0 auto;
+		color: #ffffff;
+		background: #10b5a3;
+		@include clearfix;
+
+		.item {
+			position: relative;
+			float: left;
+			width: 33%;
+			height: 59px;
+			padding-top: 10px;
+			border-right: 1px solid #106c62;
+			@include box-sizing;
+			font-size: 12px;
+			text-align: center;
+
+			&:first-child {
+				padding-top: 3px;
+			}
+			&:last-child {
+				border: none;
+			}
+		}
+		.count {
+			display: block;
+			font-size: 20px;
+			@include font-weight(1px, #ffffff);
+		}
+		.stars {
+			@include flexbox;
+			justify-content: center;
+			margin-bottom: 6px;
+		}
+		.star {
+			@include iconSprite4(19px, 17px, 0, -238px);
+		}
+	}
+	/*---   .shopList   ----------*/
+	.shopList {
+		@include flexbox;
+		justify-content: center;
+		margin: 11px 0 10px;
+
+		.amazonBtn, .steamBtn {
+			display: block;
+			width: 107px;
+			height: 28px;
+			padding-top: 4px;
+			@include border-radius(18px);
+			@include box-sizing;
+			color: #ffffff;
+			font-size: 12px;
+			text-align: center;
+		}
+		.amazonBtn {
+			margin-right: 56px;
+			background: #fc9a18;
+		}
+		.steamBtn {
+			background: #7cb038;
+		}
+	}
+	/*---   .friendBox   ----------*/
+	.friendBox {
+		border-top: 1px solid #bbbbbc;
+
+		@at-root {
+			&Inner {
+				width: 320px;
+				margin: 0 auto;
+				padding: 7px 0;
+			}
+		}
+		.text {
+			margin-bottom: 6px;
+			padding-left: 12px;
+			color: #222222;
+			font-size: 13px;
+		}
+		.friendList {
+			@include clearfix;
+
+			.item {
+				float: left;
+				margin: 0 8px;
+			}
+		}
+		.friendImg {
+			@include border-radius(15px);
+		}
+	}
+	/*---   .sortBox   ----------*/
+	.sortBoxWrap {
+		margin-bottom: 14px;
+		padding-top: 15px;
+		border-top: 1px solid #bbbbbc;
+	}
+	.sortBox {
+		width: 300px;
+		margin: 0 auto;
+		border: 1px solid #10b5a3;
+		@include border-radius(20px);
+		@include clearfix;
+
+		.item {
+			float: left;
+			width: 100px;
+			border-right: 1px solid #10b5a3;
+			@include box-sizing;
+			font-size: 12px;
+
+			&:last-child {
+				border: none;
+			}
+		}
+		.follow, .all, .star {
+			display: table-cell;
+			width: 104px;
+			height: 30px;
+			padding-top: 4px;
+			@include box-sizing;
+			color: #10ac9b;
+			text-align: center;
+			vertical-align: middle;
+			line-height: 1.1;
+		}
+		.follow {
+			border-radius: 20px 0 0 20px;
+		}
+		.star {
+			border-radius: 0 3px 3px 0;
+			@include iconSprite2(26px, -258px);
+			text-indent: 1.0em;
+		}
+		.current {
+			@at-root {
+				&.item {
+					border: none;
+				}
+			}
+			.follow, .all, .star {
+				background: #10ac9b;
+				color: #ffffff;
+				@include font-weight(1px, #ffffff);
+			}
+		}
+	}
+	/*---   .postBox   ----------*/
+	.postBox {
+		margin: 0 10px 8px;
+		padding: 15px 13px;
+		@include box-shadow(0, 1px, 1px, 0, #d6d2d2);
+		@include box-sizing;
+		@include border-radius(3px);
+		background: #fbfbfb;
+
+		.topBox {
+			margin-bottom: 15px;
+			@include clearfix;
+		}
+		.profImg {
+			float: left;
+			width: 58px;
+			height: 58px;
+			margin-right: 10px;
+			@include border-radius(29px);
+		}
+		.postArea {
+			position: relative;
+		}
+		.account {
+			color: #232937;
+			font-size: 14px;
+			@include font-weight(1px, #232937);
+			text-decoration: none;
+		}
+		.time {
+			color: #717171;
+			font-size: 9px;
+		}
+		.ttl {
+			color: #22c0a4;
+			font-size: 14px;
+			@include font-weight(1px, #22c0a4);
+			line-height: 1.0;
+		}
+		.mood {
+			display: table-cell;
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 44px;
+			height: 44px;
+			padding-top: 15px;
+			border: 1px solid #e27676;
+			@include border-radius(22px);
+			@include box-sizing;
+			color: #e27676;
+			font-size: 8px;
+			text-align: center;
+		}
+		.text {
+			margin-bottom: 17px;
+			color: #404040;
+			font-size: 13px;
+			line-height: 1.6;
+		}
+		.stateBox {
+			padding: 12px 0 0 5px;
+			border-top: 1px solid #999a9a;
+		}
+		.commentBtn {
+			margin-right: 16px;
+			padding: 4px 0 4px 26px;
+			color: #8d8e8e;
+			font-size: 12px;
+			text-decoration: none;
+			@include iconSprite2(0, -104px);
+		}
+		.favBtn {
+			padding: 4px 0 4px 25px;
+			color: #8d8e8e;
+			font-size: 12px;
+			text-decoration: none;
+			@include iconSprite2(0, -125px);
+
+			@at-root {
+				&.on {
+					background-position: 0 -145px;
+				}
+			}
+		}
+	}
+}
+
+/*---   .editCnt   ---------------------------*/
+.editCnt {
+	padding: 16px 0;
+	background: #ffffff;
+
+	/*---   .sortBox   ----------*/
+	.sortBox {
+		width: 300px;
+		margin: 0 auto 18px;
+		border: 1px solid #10b5a3;
+		@include border-radius(20px);
+		@include clearfix;
+
+		.item {
+			float: left;
+			width: 100px;
+			border-right: 1px solid #158D80;
+			@include box-sizing;
+			font-size: 12px;
+
+			&:last-child {
+				border: none;
+			}
+		}
+		.playing, .ready, .played {
+			display: table-cell;
+			width: 104px;
+			height: 30px;
+			padding-top: 4px;
+			@include box-sizing;
+			color: #10ac9b;
+			text-align: center;
+			vertical-align: middle;
+			line-height: 1.1;
+		}
+		.playing {
+			border-radius: 20px 0 0 20px;
+		}
+		.played {
+			border-radius: 0 20px 20px 0;
+		}
+		.current {
+			@at-root {
+				&.item {
+					border: none;
+				}
+			}
+			.playing, .ready, .played {
+				background: #10ac9b;
+				color: #ffffff;
+				@include font-weight(1px, #ffffff);
+			}
+		}
+	}
+	/*---   .seachWrap   ----------*/
+	.seachWrap {
+		width: 100%;
+		margin-bottom: 14px;
+		border-bottom: 1px solid #a09f9f;
+		@include box-shadow(1px, 0, 0, 0, #e7e7e7);
+
+		.seach {
+			display: block;
+			width: 240px;
+			height: 34px;
+			margin: 0 auto 18px;
+			padding-left: 11px;
+			border: 1px solid #a09e9f;
+			@include border-radius(18px);
+			@include box-sizing;
+			@include iconSprite2(right 4px, top -165px);
+			font-size: 14px;
+			outline: 0;
+		}
+	}
+	/*---   .gameList   ----------*/
+	.gameList {
+		position: relative;
+		width: 320px;
+		margin: 0 auto;
+
+		.gameImgWrap {
+			position: absolute;
+			top: 12px;
+			left: 9px;
+			width: 100px;
+			height: 100px;
+			padding-top: 3px;
+			@include box-sizing;
+			background: url(../images/game__bg02.png) no-repeat center top;
+			background-size: 100px 100px;
+			text-align: center;
+		}
+		.gameImgInner {
+			width: 94px;
+			height: 94px;
+			margin: 0 auto;
+			@include border-radius(48px);
+			background: #ffffff;
+		}
+		.gameImg {
+			-webkit-mask: url(../images/mask.png) no-repeat center top;
+			-webkit-mask-size: 94px 94px;
+			padding-top: 3px;
+		}
+		.gameInfo {
+			width: 250px;
+			height: 124px;
+			margin: 0 3px 0 auto;
+			padding: 22px 0 0 53px;
+			border-bottom: 1px solid #bbbbbc;
+			@include box-sizing;
+		}
+		.ttl {
+			color: #10b5a3;
+			font-size: 14px;
+			@include font-weight(1px, #10b5a3);
+		}
+		.btnList {
+			position: absolute;
+			bottom: 17px;
+			@include flexbox;
+
+			.item {
+				position: relative;
+				width: 86px;
+				padding-top: 3px;
+				padding-right: 5px;
+				border: 1px solid #959494;
+				@include border-radius(18px);
+				@include box-sizing;
+				color: #a09f9f;
+				font-size: 10px;
+				text-align: center;
+
+				&:first-child {
+					margin-right: 12px;
+				}
+				&:after {
+					position: absolute;
+					top: 7px;
+					right: 6px;
+					border-top: 6px solid #888787;
+					border-right: 5px solid transparent;
+					border-bottom: 6px solid transparent;
+					border-left: 5px solid transparent;
+					content: "";
+				}
+			}
+			.stars {
+				@include flexbox;
+				justify-content: center;
+				margin-top: 1px;
+			}          
+			.star {
+				@include iconSprite4(11px, 10px, 0, -276px);
+			}
+		}
+	}
+}
