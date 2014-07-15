@@ -1,12 +1,10 @@
 /*---   common   ---------------------------*/
 html {
-  background: #dddcdc;
-  font-family: "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
-}
+  background: #F6F4F1;
+  font-family: "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif; }
 
 a {
-  text-decoration: none;
-}
+  text-decoration: none; }
 
 /*---   header   ---------------------------*/
 header {
@@ -18,46 +16,41 @@ header {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  background: #111111;
-}
-header .ttl {
-  display: block;
-  width: 87px;
-  height: 31px;
-  margin: 0 auto;
-  color: #ffffff;
-  font-size: 24px;
-  font-family: Helvetica;
-  text-decoration: none;
-  -webkit-text-stroke: 1px white;
-}
-header .menu {
-  display: block;
-  position: absolute;
-  top: 15px;
-  left: 14px;
-  width: 22px;
-  height: 19px;
-  background: url(../images/img_set.png) no-repeat 0 0;
-  background-size: 25px 286px;
-}
-header .serch {
-  display: block;
-  position: absolute;
-  top: 13px;
-  right: 46px;
-  width: 21px;
-  height: 21px;
-  background: url(../images/img_set.png) no-repeat 0 -24px;
-  background-size: 25px 286px;
-}
-header .profile {
-  display: block;
-  position: absolute;
-  top: 14px;
-  right: 13px;
-  width: 20px;
-  height: 19px;
-  background: url(../images/img_set.png) no-repeat 0 -50px;
-  background-size: 25px 286px;
-}
+  background: #111111; }
+  header .ttl {
+    display: block;
+    width: 87px;
+    height: 31px;
+    margin: 0 auto;
+    color: #ffffff;
+    font-size: 24px;
+    font-family: Helvetica;
+    text-decoration: none;
+    -webkit-text-stroke: 1px white; }
+  header .menu {
+    display: block;
+    position: absolute;
+    top: 15px;
+    left: 14px;
+    width: 22px;
+    height: 19px;
+    background: url(../images/img_set.png) no-repeat 0 0;
+    background-size: 25px 286px; }
+  header .serch {
+    display: block;
+    position: absolute;
+    top: 13px;
+    right: 46px;
+    width: 21px;
+    height: 21px;
+    background: url(../images/img_set.png) no-repeat 0 -24px;
+    background-size: 25px 286px; }
+  header .profile {
+    display: block;
+    position: absolute;
+    top: 14px;
+    right: 13px;
+    width: 20px;
+    height: 19px;
+    background: url(../images/img_set.png) no-repeat 0 -50px;
+    background-size: 25px 286px; }
