@@ -199,13 +199,13 @@ body {
 		}
 		.btn {
 			display: block;
-			width: 76px;
+			width: 70px;
 			height: 21px;
 			padding-top: 1px;
-			border: 1px solid #088462;
+			border: 1px solid #10ac9b;
 			@include border-radius(3px);
 			@include box-sizing;
-			color: #088462;
+			color: #10ac9b;
 			font-size: 12px;
 			text-align: center;
 			text-decoration: none;
@@ -224,7 +224,7 @@ body {
 			border: 1px solid #a09e9f;
 			@include border-radius(18px);
 			@include box-sizing;
-			@include iconSprite2(right 4px, top -165px);
+			@include iconSprite2(right 4px, top -178px);
 			font-size: 14px;
 			outline: 0;
 		}
@@ -237,7 +237,6 @@ body {
 			@include gradient(#10b5a3, #10a696);
 			color: #ffffff;
 			font-size: 14px;
-			font-weight: bold;
 			text-align: center;
 			cursor: pointer;
 			outline: 0;
@@ -293,7 +292,7 @@ body {
 			font-size: 12px;
 		}
 		.camera {
-			color: #08a481;
+			color: #10ac9b;
 			font-size: 14px;
 			text-decoration: underline;
 		}
@@ -311,8 +310,6 @@ body {
 			@include gradient(#10b5a3, #10a696);
 			color: #ffffff;
 			font-size: 14px;
-			font-weight: bold;
-			text-align: center;
 			cursor: pointer;
 			outline: 0;
 		}

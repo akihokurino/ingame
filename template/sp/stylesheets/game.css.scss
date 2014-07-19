@@ -10,13 +10,14 @@ html {
 .mainCnt {
 	/*---   .gameBox   ----------*/
 	.gameBoxWrap {
+		padding-top: 20px;
 		background: url(../images/game__bg.jpg) no-repeat center top;
 		background-size: cover;
 
 		.gameWrap {
-			width: 162px;
-			height: 162px;
-			margin: -25px auto 0;
+			width: 163px;
+			height: 163px;
+			margin: 0 auto;
 			padding-top: 16px;
 			@include box-sizing;
 			background: url(../images/game__bg02.png) no-repeat center top;
@@ -46,7 +47,8 @@ html {
 
 		.ttl {
 			width: 248px;
-			margin: 0 auto 14px;
+			margin: 0 auto 2px;
+			text-align: center;
 			font-size: 18px;
 		}
 		.gameInfo {
@@ -84,15 +86,24 @@ html {
 		.btnList {
 			@include flexbox;
 			justify-content: center;
-
+			font-size:13px;
 			.item {
-				width: 150px;
-				margin: 19px 4px 16px;
-				padding: 6px 0;
+				width: 120px;
+				margin: 12px 14px 20px;
+				padding: 4px 0 3px;
 				border: 1px solid #ffffff;
 				@include border-radius(20px);
 				text-align: center;
 			}
+		}
+		.comment {
+			display: block;
+			width: 120px;
+			padding: 0;
+			@include border-radius(20px);
+			@include box-sizing;
+			color: #ffffff;
+			text-align: center;
 		}
 	}
 	/*---   .dataBox   ----------*/
@@ -131,7 +142,7 @@ html {
 			margin-bottom: 6px;
 		}
 		.star {
-			@include iconSprite4(19px, 17px, 0, -238px);
+			@include iconSprite4(19px, 17px, 0, -235px);
 		}
 	}
 	/*---   .shopList   ----------*/
@@ -181,7 +192,7 @@ html {
 
 			.item {
 				float: left;
-				margin: 0 16px;
+				margin: 0 8px;
 			}
 		}
 		.friendImg {
@@ -195,15 +206,15 @@ html {
 		border-top: 1px solid #bbbbbc;
 	}
 	.sortBox {
-		width: 312px;
+		width: 300px;
 		margin: 0 auto;
 		border: 1px solid #10b5a3;
-		@include border-radius(5px);
+		@include border-radius(20px);
 		@include clearfix;
 
 		.item {
 			float: left;
-			width: 104px;
+			width: 100px;
 			border-right: 1px solid #10b5a3;
 			@include box-sizing;
 			font-size: 12px;
@@ -224,11 +235,11 @@ html {
 			line-height: 1.1;
 		}
 		.follow {
-			border-radius: 3px 0 0 3px;
+			border-radius: 20px 0 0 20px;
 		}
 		.star {
 			border-radius: 0 3px 3px 0;
-			@include iconSprite2(26px, -258px);
+			@include iconSprite2(24px, -274px);
 			text-indent: 1.0em;
 		}
 		.current {
@@ -278,10 +289,11 @@ html {
 			font-size: 9px;
 		}
 		.ttl {
-			color: #22c0a4;
+			color: #10ac9b;
 			font-size: 14px;
-			@include font-weight(1px, #22c0a4);
+			@include font-weight(1px, #10ac9b);
 			line-height: 1.0;
+			margin-top: 2px;
 		}
 		.mood {
 			display: table-cell;
@@ -299,7 +311,7 @@ html {
 			text-align: center;
 		}
 		.text {
-			margin-bottom: 17px;
+			margin-bottom: 12px;
 			color: #404040;
 			font-size: 13px;
 			line-height: 1.6;
@@ -310,22 +322,22 @@ html {
 		}
 		.commentBtn {
 			margin-right: 16px;
-			padding: 4px 0 4px 26px;
+			padding: 1px 0 4px 26px;
 			color: #8d8e8e;
 			font-size: 12px;
 			text-decoration: none;
-			@include iconSprite2(0, -104px);
+			@include iconSprite2(0, -110px);
 		}
 		.favBtn {
-			padding: 4px 0 4px 25px;
+			padding: 3px 0 4px 25px;
 			color: #8d8e8e;
 			font-size: 12px;
 			text-decoration: none;
-			@include iconSprite2(0, -125px);
+			@include iconSprite2(0, -134px);
 
 			@at-root {
 				&.on {
-					background-position: 0 -145px;
+					background-position: 0 -157px;
 				}
 			}
 		}
@@ -339,16 +351,16 @@ html {
 
 	/*---   .sortBox   ----------*/
 	.sortBox {
-		width: 312px;
-		margin: 0 auto 12px;
+		width: 300px;
+		margin: 0 auto 18px;
 		border: 1px solid #10b5a3;
 		@include border-radius(20px);
 		@include clearfix;
 
 		.item {
 			float: left;
-			width: 104px;
-			border-right: 1px solid #10b5a3;
+			width: 100px;
+			border-right: 1px solid #158D80;
 			@include box-sizing;
 			font-size: 12px;
 
@@ -386,26 +398,25 @@ html {
 			}
 		}
 	}
-	/*---   .seachWrap   ----------*/
-	.seachWrap {
+	/*---   .searchWrap   ----------*/
+	.searchWrap {
 		width: 100%;
 		margin-bottom: 14px;
 		border-bottom: 1px solid #a09f9f;
 		@include box-shadow(1px, 0, 0, 0, #e7e7e7);
-
-		.seach {
-			display: block;
-			width: 240px;
-			height: 34px;
-			margin: 0 auto 26px;
-			padding-left: 11px;
-			border: 1px solid #a09e9f;
-			@include border-radius(18px);
-			@include box-sizing;
-			@include iconSprite2(right 4px, top -165px);
-			font-size: 14px;
-			outline: 0;
-		}
+	}
+	.search {
+		display: block;
+		width: 240px;
+		height: 34px;
+		margin: 0 auto 18px;
+		padding-left: 11px;
+		border: 1px solid #a09e9f;
+		@include border-radius(18px);
+		@include box-sizing;
+		@include iconSprite2(right 4px, top -177px);
+		font-size: 14px;
+		outline: 0;
 	}
 	/*---   .gameList   ----------*/
 	.gameList {
@@ -487,7 +498,7 @@ html {
 				margin-top: 1px;
 			}          
 			.star {
-				@include iconSprite4(11px, 10px, 0, -276px);
+				@include iconSprite4(11px, 10px, 0, -258px);
 			}
 		}
 	}

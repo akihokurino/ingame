@@ -3,7 +3,7 @@
 
 /*---   common   ---------------------------*/
 html {
-	background: #dddcdc;
+	background: #F6F4F1;
 	font-family:"Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
 }
 a {
@@ -47,7 +47,7 @@ header {
 		right: 46px;
 		width: 21px;
 		height: 21px;
-		@include iconSprite2(0, -24px);
+		@include iconSprite2(0, -26px);
 	}
 	.profile {
 		display: block;
@@ -56,6 +56,6 @@ header {
 		right: 13px;
 		width: 20px;
 		height: 19px;
-		@include iconSprite2(0, -50px);
+		@include iconSprite2(0, -55px);
 	}
 }

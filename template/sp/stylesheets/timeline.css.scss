@@ -17,7 +17,7 @@
 			border-radius: 3px;
 			box-sizing: border-box;
 			@include box-shadow(0, 2px, 2px, 0, #c7c6c6);
-			@include iconSprite2(8px, -69px);
+			@include iconSprite2(8px, -75px);
 			font-size: 14px;
 			@include appearance;
 		}
@@ -56,12 +56,13 @@
 			font-size: 9px;
 		}
 		.ttl {
-			color: #22c0a4;
+			color: #10ac9b;
 			font-size: 14px;
-			@include font-weight(1px, #22c0a4);
+			@include font-weight(1px, #10ac9b);
 			line-height: 1.0;
+			margin-top: 2px;
 		}
-		.mood {
+		.mood_ready, .mood_playing, .mood_played {
 			display: table-cell;
 			position: absolute;
 			right: 0;
@@ -69,15 +70,25 @@
 			width: 44px;
 			height: 44px;
 			padding-top: 15px;
-			border: 1px solid #e27676;
 			@include border-radius(22px);
 			@include box-sizing;
-			color: #e27676;
 			font-size: 8px;
 			text-align: center;
 		}
+		.mood_ready {
+			border: 1px solid #b7b51b;
+			color: #b7b51b;
+		}
+		.mood_playing {
+			border: 1px solid #22c0a4;
+			color: #22c0a4;
+		}
+		.mood_played {
+			border: 1px solid #e27676;
+			color: #e27676;
+		}
 		.text {
-			margin-bottom: 17px;
+			margin-bottom: 12px;
 			color: #404040;
 			font-size: 13px;
 			line-height: 1.6;
@@ -88,22 +99,22 @@
 		}
 		.commentBtn {
 			margin-right: 16px;
-			padding: 4px 0 4px 26px;
+			padding: 1px 0 4px 26px;
 			color: #8d8e8e;
 			font-size: 12px;
 			text-decoration: none;
-			@include iconSprite2(0, -104px);
+			@include iconSprite2(0, -110px);
 		}
 		.favBtn {
-			padding: 4px 0 4px 25px;
+			padding: 3px 0 4px 25px;
 			color: #8d8e8e;
 			font-size: 12px;
 			text-decoration: none;
-			@include iconSprite2(0, -125px);
+			@include iconSprite2(0, -134px);
 
 			@at-root {
 				&.on {
-					background-position: 0 -145px;
+					background-position: 0 -157px;
 				}
 			}
 		}

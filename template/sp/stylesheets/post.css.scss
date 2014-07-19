@@ -14,7 +14,7 @@ a {
 	/*---   header   ----------*/
 	header {
 		position: relative;
-		margin-bottom: 30px;
+		margin-bottom: 15px;
 		padding: 14px 0 13px;
 		border-bottom: 1px solid #a0a0a0;
 		text-align: center;
@@ -42,15 +42,15 @@ a {
 	}
 	.mainCnt {
 		.sortBox {
-			width: 312px;
+			width: 300px;
 			margin: 0 auto 13px;
 			border: 1px solid #10b5a3;
-			@include border-radius(5px);
+			@include border-radius(20px);
 			@include clearfix;
 
 			.item {
 				float: left;
-				width: 104px;
+				width: 100px;
 				border-right: 1px solid #10b5a3;
 				@include box-sizing;
 				font-size: 12px;
@@ -63,16 +63,16 @@ a {
 				display: table-cell;
 				width: 104px;
 				height: 30px;
-				padding-top: 4px;
+				padding-top: 2px;
 				@include box-sizing;
 				color: #10b5a3;
 				text-align: center;
 				vertical-align: middle;
-				font-size: 14px;
+				font-size: 13px;
 				line-height: 1.1;
 			}
 			.ready {
-				border-radius: 3px 0 0 3px;
+				border-radius: 20px 0 0 20px;
 			}
 			.played {
 				border-radius: 0 3px 3px 0;
@@ -83,22 +83,24 @@ a {
 				@at-root {
 					&.item {
 						border: none;
+
+						&:after {
+							position: absolute;
+							left: 50%;
+							bottom: -25px;
+							content: "";
+							margin-left: -13px;
+							border-top: 13px solid #10b5a3;
+							border-right: 10px solid transparent;
+							border-bottom: 13px solid transparent;
+							border-left: 10px solid transparent;
+						}
 					}
 				}
 				.playing, .ready, .played {
 					background: #10b5a3;
 					color: #ffffff;
 					@include font-weight(1px, #ffffff);
-				}
-				.tri {
-					position: absolute;
-					left: 50%;
-					bottom: -25px;
-					margin-left: -13px;
-					border-top: 13px solid #10b5a3;
-					border-right: 10px solid transparent;
-					border-bottom: 13px solid transparent;
-					border-left: 10px solid transparent;
 				}
 			}
 		}
@@ -268,23 +270,29 @@ a {
 			top: 15px;
 			left: 9px;
 			color: #1ba189;
-			font-size: 17px;
+			font-size: 16px;
 		}
 	}
 	.mainCnt {
-		.serchWrap {
-			width: 90%;
-			margin: 0 auto 17px;
-			@include border-radius(5px);
-			background: #cccccc;
+		.searchWrap {
+			width: 98%;
+			margin: 0 auto 14px;
+			@include border-radius(18px);
+			@include box-shadow(1px, 0, 0, 0, #e7e7e7);
+			background: #ffffff;
 		}
-		.serch {
+		.search {
+			display: block;
 			width: 100%;
-			padding-left: 5px;
-			border: none;
+			height: 34px;
+			margin: 0 auto 18px;
+			padding-left: 11px;
+			border: 1px solid #a09e9f;
+			@include border-radius(18px);
 			@include box-sizing;
-			@include iconSprite2(right, -213px);
-			@include appearance;
+			@include iconSprite2(right 4px, top -177px);
+			font-size: 14px;
+			outline: 0;
 		}
 		.playing, .ready, .played {
 			display: table-cell;
@@ -344,9 +352,9 @@ a {
 			figcaption {
 				float: left;
 				width: 58%;
-				padding-top: 4px;
+				padding-top: 6px;
 				color: #1ba189;
-				font-size: 15px;
+				font-size: 14px;
 				@include font-weight(1px, #1ba189);
 			}
 			.mood {
