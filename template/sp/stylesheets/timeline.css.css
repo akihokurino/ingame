@@ -59,11 +59,10 @@
     color: #717171;
     font-size: 9px; }
   .mainCnt .postBox .ttl {
-    color: #10ac9b;
+    color: #22c0a4;
     font-size: 14px;
-    -webkit-text-stroke: 1px #10ac9b;
-    line-height: 1.0;
-    margin-top: 2px; }
+    -webkit-text-stroke: 1px #22c0a4;
+    line-height: 1.0; }
   .mainCnt .postBox .mood {
     display: table-cell;
     position: absolute;
@@ -83,7 +82,7 @@
     font-size: 8px;
     text-align: center; }
   .mainCnt .postBox .text {
-    margin-bottom: 12px;
+    margin-bottom: 17px;
     color: #404040;
     font-size: 13px;
     line-height: 1.6; }
@@ -92,14 +91,14 @@
     border-top: 1px solid #999a9a; }
   .mainCnt .postBox .commentBtn {
     margin-right: 16px;
-    padding: 1px 0 4px 26px;
+    padding: 4px 0 4px 26px;
     color: #8d8e8e;
     font-size: 12px;
     text-decoration: none;
     background: url(../images/img_set.png) no-repeat 0 -104px;
     background-size: 25px 286px; }
   .mainCnt .postBox .favBtn {
-    padding: 3px 0 4px 25px;
+    padding: 4px 0 4px 25px;
     color: #8d8e8e;
     font-size: 12px;
     text-decoration: none;

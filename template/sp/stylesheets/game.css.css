@@ -16,7 +16,7 @@ html {
     .mainCnt .gameBoxWrap .gameWrap {
       width: 162px;
       height: 162px;
-      margin: 0 auto;
+      margin: -25px auto 0;
       padding-top: 16px;
       -moz-box-sizing: border-box;
       -webkit-box-sizing: border-box;
@@ -53,8 +53,7 @@ html {
     color: #ffffff; }
     .mainCnt .gameBox .ttl {
       width: 248px;
-      margin: 0 auto 2px;
-      text-align: center;
+      margin: 0 auto 14px;
       font-size: 18px; }
     .mainCnt .gameBox .gameInfo {
       text-align: center; }
@@ -86,12 +85,11 @@ html {
       flex-directon: row;
       flex-wrap: wrap;
       justify-content: space-between;
-      justify-content: center;
-      font-size: 13px; }
+      justify-content: center; }
       .mainCnt .gameBox .btnList .item {
-        width: 120px;
-        margin: 12px 14px 20px;
-        padding: 3px 0;
+        width: 150px;
+        margin: 19px 4px 16px;
+        padding: 6px 0;
         border: 1px solid #ffffff;
         -moz-border-radius: 20px;
         -webkit-border-radius: 20px;
@@ -193,7 +191,7 @@ html {
         clear: both; }
       .mainCnt .friendBox .friendList .item {
         float: left;
-        margin: 0 8px; }
+        margin: 0 16px; }
     .mainCnt .friendBox .friendImg {
       -moz-border-radius: 15px;
       -webkit-border-radius: 15px;
@@ -203,12 +201,12 @@ html {
     padding-top: 15px;
     border-top: 1px solid #bbbbbc; }
   .mainCnt .sortBox {
-    width: 300px;
+    width: 312px;
     margin: 0 auto;
     border: 1px solid #10b5a3;
-    -moz-border-radius: 20px;
-    -webkit-border-radius: 20px;
-    border-radius: 20px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
     *zoom: 1; }
     .mainCnt .sortBox:before, .mainCnt .sortBox:after {
       display: table;
@@ -217,7 +215,7 @@ html {
       clear: both; }
     .mainCnt .sortBox .item {
       float: left;
-      width: 100px;
+      width: 104px;
       border-right: 1px solid #10b5a3;
       -moz-box-sizing: border-box;
       -webkit-box-sizing: border-box;
@@ -238,7 +236,7 @@ html {
       vertical-align: middle;
       line-height: 1.1; }
     .mainCnt .sortBox .follow {
-      border-radius: 20px 0 0 20px; }
+      border-radius: 3px 0 0 3px; }
     .mainCnt .sortBox .star {
       border-radius: 0 3px 3px 0;
       background: url(../images/img_set.png) no-repeat 26px -258px;
@@ -290,11 +288,10 @@ html {
       color: #717171;
       font-size: 9px; }
     .mainCnt .postBox .ttl {
-      color: #10ac9b;
+      color: #22c0a4;
       font-size: 14px;
-      -webkit-text-stroke: 1px #10ac9b;
-      line-height: 1.0;
-      margin-top: 2px; }
+      -webkit-text-stroke: 1px #22c0a4;
+      line-height: 1.0; }
     .mainCnt .postBox .mood {
       display: table-cell;
       position: absolute;
@@ -314,7 +311,7 @@ html {
       font-size: 8px;
       text-align: center; }
     .mainCnt .postBox .text {
-      margin-bottom: 12px;
+      margin-bottom: 17px;
       color: #404040;
       font-size: 13px;
       line-height: 1.6; }
@@ -323,14 +320,14 @@ html {
       border-top: 1px solid #999a9a; }
     .mainCnt .postBox .commentBtn {
       margin-right: 16px;
-      padding: 1px 0 4px 26px;
+      padding: 4px 0 4px 26px;
       color: #8d8e8e;
       font-size: 12px;
       text-decoration: none;
       background: url(../images/img_set.png) no-repeat 0 -104px;
       background-size: 25px 286px; }
     .mainCnt .postBox .favBtn {
-      padding: 3px 0 4px 25px;
+      padding: 4px 0 4px 25px;
       color: #8d8e8e;
       font-size: 12px;
       text-decoration: none;
@@ -347,8 +344,8 @@ html {
   /*---   .seachWrap   ----------*/
   /*---   .gameList   ----------*/ }
   .editCnt .sortBox {
-    width: 300px;
-    margin: 0 auto 18px;
+    width: 312px;
+    margin: 0 auto 12px;
     border: 1px solid #10b5a3;
     -moz-border-radius: 20px;
     -webkit-border-radius: 20px;
@@ -361,8 +358,8 @@ html {
       clear: both; }
     .editCnt .sortBox .item {
       float: left;
-      width: 100px;
-      border-right: 1px solid #158D80;
+      width: 104px;
+      border-right: 1px solid #10b5a3;
       -moz-box-sizing: border-box;
       -webkit-box-sizing: border-box;
       box-sizing: border-box;
@@ -402,7 +399,7 @@ html {
       display: block;
       width: 240px;
       height: 34px;
-      margin: 0 auto 18px;
+      margin: 0 auto 26px;
       padding-left: 11px;
       border: 1px solid #a09e9f;
       -moz-border-radius: 18px;
