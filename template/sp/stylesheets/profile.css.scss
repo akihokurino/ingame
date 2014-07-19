@@ -303,18 +303,33 @@
 		background: #ffffff;
 
 		.item {
+			position: relative;
 			border-bottom: 1px solid #a09e9e;
 			@include clearfix;
+
+			&:before {
+				position: absolute;
+				top: 50%;
+				right: 11px;
+				content: "";
+				width: 15px;
+				height: 15px;
+				margin-top: -8px;
+				border-top: 2px solid #7e7e7e;
+				border-right: 2px solid #7e7e7e;
+				-webkit-transform: rotate(45deg);
+				transform: rotate(45deg);
+			}
 		}
 		.passTtl, .mailTtl {
 			float: left;
-			margin-right: 50px;
+			margin-right: 45px;
 			padding: 15px 0 15px 18px;
 			color: #2e2e2e;
 			font-size: 14px;
 		}
 		.mailTtl {
-			margin-right: 20px;
+			margin-right: 15px;
 		}
 		.pass, .mail {
 			padding-top: 14px;
