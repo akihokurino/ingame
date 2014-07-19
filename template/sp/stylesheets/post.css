@@ -161,6 +161,7 @@ a {
   font-size: 17px;
 }
 .post02 .mainCnt .gameBox {
+  position: relative;
   margin: 0 8px 0 4px;
   *zoom: 1;
 }
@@ -176,15 +177,17 @@ a {
   margin-right: 7px;
 }
 .post02 .mainCnt .gameTtl {
-  float: left;
-  width: 50%;
+  width: 60%;
   padding-top: 5px;
   color: #5f5f5f;
   font-size: 12px;
 }
 .post02 .mainCnt .gameSelect {
   display: block;
-  float: right;
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  margin-top: -13px;
   padding: 5px 10px;
   -moz-border-radius: 18px;
   -webkit-border-radius: 18px;
@@ -326,7 +329,7 @@ a {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  background: url(../images/img_set.png) no-repeat right 4px top -177px;
+  background: url(../images/img_set.png) no-repeat right 5px top -178px;
   background-size: 25px 288px;
   font-size: 14px;
   outline: 0;
@@ -376,6 +379,7 @@ a {
   background: #ffffff;
 }
 .post03 .mainCnt .gameList .item {
+  position: relative;
   padding: 9px 0;
   border-top: 1px solid #b6b4b4;
   *zoom: 1;
@@ -396,16 +400,13 @@ a {
 }
 .post03 .mainCnt .gameList figcaption {
   float: left;
-  width: 58%;
+  width: 56%;
   padding-top: 6px;
   color: #1ba189;
   font-size: 14px;
   -webkit-text-stroke: 1px #1ba189;
 }
 .post03 .mainCnt .gameList .mood {
-  float: right;
-  margin-right: 13px;
-  padding: 6px 4px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
@@ -416,4 +417,26 @@ a {
   color: #464646;
   font-size: 6px;
   text-align: center;
+}
+.post03 .mainCnt .gameList select {
+  position: absolute;
+  top: 50%;
+  right: 13px;
+  display: block;
+  margin-top: -13px;
+  margin-left: auto;
+  padding: 4px 6px;
+  border: none;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background: #cccccc;
+  color: #464646;
+  text-align: center;
+  outline: 0;
+  -moz-appearance: none;
+  -webkit-appearance: none;
 }

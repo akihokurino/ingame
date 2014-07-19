@@ -105,6 +105,19 @@ html {
 			color: #ffffff;
 			text-align: center;
 		}
+		select {
+			display: block;
+			width: 107px;
+			margin-left: auto;
+			padding: 0;
+			border: none;
+			@include border-radius(20px);
+			@include box-sizing;
+			background: none;
+			color: #ffffff;
+			text-align: center;
+			outline: 0;
+		}
 	}
 	/*---   .dataBox   ----------*/
 	.dataBox {
@@ -486,11 +499,24 @@ html {
 					top: 7px;
 					right: 6px;
 					border-top: 6px solid #888787;
-					border-right: 5px solid transparent;
-					border-bottom: 6px solid transparent;
-					border-left: 5px solid transparent;
+					border-right: 5px solid #ffffff;
+					border-bottom: 6px solid #ffffff;
+					border-left: 5px solid #ffffff;
 					content: "";
 				}
+			}
+			select {
+				display: block;
+				width: 70px;
+				margin-left: auto;
+				border: none;
+				@include border-radius(18px);
+				@include box-sizing;
+				color: #a09f9f;
+				font-size: 10px;
+				text-align: center;
+				outline: 0;
+				@include appearance;
 			}
 			.stars {
 				@include flexbox;
@@ -498,7 +524,7 @@ html {
 				margin-top: 1px;
 			}          
 			.star {
-				@include iconSprite4(11px, 10px, 0, -258px);
+				@include iconSprite4(11px, 10px, 0, -260px);
 			}
 		}
 	}

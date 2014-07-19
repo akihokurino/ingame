@@ -288,7 +288,9 @@
 }
 .profileEdit .imgEditBox {
   margin-bottom: 7px;
-  border-bottom: 1px solid #a0a0a0;
+  -moz-box-shadow: 0 1px 1px 0 #d6d2d2;
+  -webkit-box-shadow: 0 1px 1px 0 #d6d2d2;
+  box-shadow: 0 1px 1px 0 #d6d2d2;
   background: #ffffff;
 }
 .profileEdit .imgEditBox .profImgWrap, .profileEdit .imgEditBox .mainImgWrap {
@@ -324,10 +326,9 @@
 }
 .profileEdit .personalEditBox {
   margin-bottom: 7px;
-  border-top: 1px solid #a09e9e;
-  -moz-box-shadow: 0 1px 0 0 #a09e9e;
-  -webkit-box-shadow: 0 1px 0 0 #a09e9e;
-  box-shadow: 0 1px 0 0 #a09e9e;
+  -moz-box-shadow: 0 1px 1px 0 #d6d2d2;
+  -webkit-box-shadow: 0 1px 1px 0 #d6d2d2;
+  box-shadow: 0 1px 1px 0 #d6d2d2;
   background: #ffffff;
 }
 .profileEdit .personalEditBox .item {
@@ -366,7 +367,9 @@
   font-size: 14px;
 }
 .profileEdit .accountEditBox {
-  border-top: 1px solid #a09e9e;
+  -moz-box-shadow: 0 1px 1px 0 #d6d2d2;
+  -webkit-box-shadow: 0 1px 1px 0 #d6d2d2;
+  box-shadow: 0 1px 1px 0 #d6d2d2;
   background: #ffffff;
 }
 .profileEdit .accountEditBox .item {
@@ -393,6 +396,9 @@
   border-right: 2px solid #7e7e7e;
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+.profileEdit .accountEditBox .item:last-child {
+  border-bottom: none;
 }
 .profileEdit .accountEditBox .passTtl, .profileEdit .accountEditBox .mailTtl {
   float: left;

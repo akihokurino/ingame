@@ -236,7 +236,7 @@
 	/*---   .imgEditBox   ----------*/
 	.imgEditBox {
 		margin-bottom: 7px;
-		border-bottom: 1px solid #a0a0a0;
+		@include box-shadow(0, 1px, 1px, 0, #d6d2d2);
 		background: #ffffff;
 
 		.profImgWrap, .mainImgWrap {
@@ -265,8 +265,7 @@
 	/*---   .personalEditBox   ----------*/
 	.personalEditBox {
 		margin-bottom: 7px;
-		border-top: 1px solid #a09e9e;
-		@include box-shadow(0, 1px, 0, 0, #a09e9e);
+		@include box-shadow(0, 1px, 1px, 0, #d6d2d2);
 		background: #ffffff;
 
 		.item {
@@ -299,7 +298,7 @@
 	}
 	/*---   .accountEditBox   ----------*/
 	.accountEditBox {
-		border-top: 1px solid #a09e9e;
+		@include box-shadow(0, 1px, 1px, 0, #d6d2d2);
 		background: #ffffff;
 
 		.item {
@@ -319,6 +318,9 @@
 				border-right: 2px solid #7e7e7e;
 				-webkit-transform: rotate(45deg);
 				transform: rotate(45deg);
+			}
+			&:last-child {
+				border-bottom: none;
 			}
 		}
 		.passTtl, .mailTtl {

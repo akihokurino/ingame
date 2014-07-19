@@ -52,7 +52,12 @@
 							%h1.ttl スーパーマリオブラザーズ3
 							%ul.btnList
 								%li.item レビュー
-								%li.item ステータス
+								%li.item 
+									%select{name: "status", size: "1"}
+										%option{value: "ステータス"} ステータス
+										%option{value: "気になる"} 気になる
+										%option{value: "プレイ中"} プレイ中
+										%option{value: "アーカイブ"} アーカイブ
 					%article.gameList
 						%figure.gameImgWrap
 							.gameImgInner
