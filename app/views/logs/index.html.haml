@@ -4,11 +4,15 @@
 %div.logs-page{"data-userid" => @current_user[:id]}
 	%form.log-form
 		%input{type: "text", name: "amazon_url", placeholder: "アマゾンのURLを入力して下さい。", class: "amazon-url-input"}
+		%select
+			%option{value: 1} 気になる
+			%option{value: 1} プレイ中
+			%option{value: 1} アーカイブ
 		%input{type: "submit", class: "submit-btn"}
 
 	%form.search-form
 		%input{type: "text", name: "search_title", class: "search-title-input"}
-		%input{type: "submit", class: "submit-btn"}
+		%input{type: "submit", class: "submit-btn search"}
 
 	%ul.result-list{style: "float: right; width: 45%"}
 

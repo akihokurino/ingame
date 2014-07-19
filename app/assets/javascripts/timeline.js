@@ -1,69 +1,13 @@
+//= require ./models/post.js
+//= require ./models/game.js
+//= require ./models/user.js
+//= require ./collections/posts.js
+//= require ./collections/games.js
+//= require ./collections/users.js
 
 (function () {
 	$(function () {
-		/* ---------- Model ---------- */
-		var PostInput = Backbone.Model.extend({
-			urlRoot: "/api/posts",
-			defaults: {
-				"post": {
-					"text": "",
-					"game_id": ""
-				}
-			}
-		})
-
-		var Post = Backbone.Model.extend({
-			defaults: {
-				"id": "",
-				"text": "",
-				"post_likes_count": "",
-				"i_liked": "",
-				"game": {
-					"id": "",
-					"title": "",
-					"photo_path": "",
-				},
-				"user": {
-					"id": "",
-					"username": "",
-					"photo_path": ""
-				},
-				"current_user_id": ""
-			}
-		})
-
-		var Game = Backbone.Model.extend({
-			defaults: {
-				"id": "",
-				"title": ""
-			}
-		})
-
-		var User = Backbone.Model.extend({
-			defaults: {
-				"id": "",
-				"username": "",
-				"photo_path": ""
-			}
-		})
-
-
-
 		/* ---------- Collection ---------- */
-		var Posts = Backbone.Collection.extend({
-			model: Post,
-			url: "/api/posts"
-		})
-
-		var Games = Backbone.Collection.extend({
-			model: Game,
-			url: "/api/games"
-		})
-
-		var Users = Backbone.Collection.extend({
-			model: User,
-			url: "/api/users"
-		})
 
 		var posts = new Posts();
 		var users = new Users();
@@ -79,22 +23,26 @@
 			initialize: function () {
 				this.collection = posts;
 				this.text = $(".text-input");
-				this.game_id = $(".game-select");
+				this.game_select = $(".game-select");
 			},
 			savePost: function (e) {
 				e.preventDefault();
 
 				var that = this;
-				var post_input = new PostInput({
-					post: {
-						text: this.text.val(),
-						game_id: this.game_id.val()
-					}
-				});
 
-				post_input.save(null, {
-					success: function (model, response, options) {
-						var post = new Post(response.post);
+				var data = {
+					"post": {
+						"text": this.text.val(),
+						"game_id": this.game_select.val()
+					}
+				}
+
+				$.ajax({
+					type: "POST",
+					url: "/api/posts",
+					data: data,
+					success: function (data) {
+						var post = new Post(data.post);
 						that.collection.add(post);
 					},
 					error: function () {
@@ -260,7 +208,6 @@
 							app.users_view.$el.html("");
 							for(var i = 0; i < response.results.length; i++){
 								var user = new User(response.results[i]);
-								console.log(user);
 								that.collection.add(user);
 							}
 						},
@@ -280,18 +227,17 @@
 				this.posts_view = new PostsView();
 				this.user_search_view = new UserSearchView();
 				this.users_view = new UsersView();
+				this.collection = posts;
 				var that = this;
-				$.ajax({
-					type: "GET",
-					url: "/api/posts",
-					data: {},
-					success: function (data) {
-						for(var i = 0; i < data.games.length; i++){
-							var game = new Game(data.games[i]);
+
+				this.collection.fetch({
+					success: function (model, response, options) {
+						for(var i = 0; i < response.games.length; i++){
+							var game = new Game(response.games[i]);
 							that.games_select_view.collection.add(game);
 						}
-						for(var i = 0; i < data.posts.length; i++){
-							var post = new Post(data.posts[i]);
+						for(var i = 0; i < response.posts.length; i++){
+							var post = new Post(response.posts[i]);
 							that.posts_view.collection.add(post);
 						}
 					},

@@ -1,80 +1,13 @@
+//= require ./models/log.js
+//= require ./models/result.js
+//= require ./collections/logs.js
+//= require ./collections/results.js
+
 (function () {
 	$(function () {
 		var user_id = $(".logs-page").data("userid");
 
-		/* ---------- Model ---------- */
-		var SearchInput = Backbone.Model.extend({
-			urlRoot: "/api/games/search",
-			defaults: {
-				"search_title": ""
-			}
-		})
-
-		var AmazonInput = Backbone.Model.extend({
-			urlRoot: "/api/logs",
-			defaults: {
-				"amazon_url": "",
-			}
-		})
-
-		var RegistGame = Backbone.Model.extend({
-			urlRoot: "/api/logs"
-		})
-
-		var Status = Backbone.Model.extend({
-			defaults: {
-				"id": "",
-				"name": ""
-			}
-		})
-
-		var Result = Backbone.Model.extend({
-			urlRoot: "/api/logs",
-			defaults: {
-				"title": "",
-				"photo_path": "",
-				"device": "",
-				"maker": ""
-			}
-		})
-
-		var Log = Backbone.Model.extend({
-			defaults: {
-				"id": "",
-				"text": "",
-				"game": {
-					"id": "",
-					"title": "",
-					"photo_path": "",
-					"device": "",
-					"maker": "",
-					"game_like_count": 0
-				},
-				"status": {
-					"name": ""
-				}
-			}
-		})
-
-
-
 		/* ---------- Collection ---------- */
-		var Statuses = Backbone.Collection.extend({
-			model: Status,
-			url: "/api/statuses"
-		})
-
-		var Results = Backbone.Collection.extend({
-			model: Result,
-			url: "/api/games/search"
-		})
-
-		var Logs = Backbone.Collection.extend({
-			model: Log,
-			url: "/api/logs"
-		})
-
-
 		var logs = new Logs();
 		var results = new Results();
 
@@ -96,22 +29,24 @@
 				var that = this;
 				e.preventDefault();
 
-				var amazon_input = new AmazonInput({
-					amazon_url: this.amazon_url.val(),
-					release_day: this.release_day.val(),
-					text: this.text.val(),
-					status_id: this.status.val()
-				});
+				var data = {
+					"amazon_url": this.amazon_url.val(),
+					"text": this.text.val(),
+					"status_id": this.status.val()
+				}
 
-				amazon_input.save(null, {
-					success: function (model, response, options) {
-						var log = new Log(response.log);
+				$.ajax({
+					type: "POST",
+					url: "/api/logs",
+					data: data,
+					success: function (data) {
+						var log = new Log(data.log);
 						that.collection.add(log);
 					},
 					error: function () {
 						console.log("error");
 					}
-				});
+				})
 			}
 		})
 
@@ -128,11 +63,8 @@
 				var that = this;
 				e.preventDefault();
 
-				var search_title = this.search_title.val();
-
-				this.collection.reset([]);
 				this.collection.fetch({
-					data: {search_title: search_title},
+					data: {search_title: this.search_title.val()},
 					success: function (model, response, options) {
 						that.collection.reset();
 						app.results_view.$el.html("");
@@ -147,31 +79,6 @@
 						console.log("error");
 					}
 				})
-			}
-		})
-
-		var StatusesSelectView = Backbone.View.extend({
-			tagName: "select",
-			initialize: function () {
-				this.collection = new Statuses();
-				this.listenTo(this.collection, "add", this.addStatus);
-			},
-			addStatus: function (status) {
-				if(status.id){
-					var status_view = new StatusView({model: status});
-					this.$el.append(status_view.render().el);
-				}
-			}
-		})
-
-		var StatusView = Backbone.View.extend({
-			tagName: "option",
-			template: _.template($("#status-template").html()),
-			render: function () {
-				var template = this.template(this.model.toJSON());
-				this.$el.html(template);
-				this.$el.attr("value", this.model.id);
-				return this;
 			}
 		})
 
@@ -208,21 +115,25 @@
 			},
 			regist: function () {
 				var that = this;
-				var regist_game = new RegistGame({
-					log: {
-						game_id: this.model.id,
+
+				var data = {
+					"log": {
+						"game_id": this.model.id,
 						status_id: this.$el.find("select").val()
 					}
-				});
+				}
 
-				regist_game.save(null, {
-					success: function (model, response, options) {
-						var log = new Log(response.log)
+				$.ajax({
+					type: "POST",
+					url: "/api/logs",
+					data: data,
+					success: function (data) {
+						var log = new Log(data.log);
 						that.collection.add(log);
 						that.remove();
 					},
 					error: function () {
-						console.log("error");
+						cnsole.log("error");
 					}
 				})
 			}
@@ -269,24 +180,18 @@
 			el: ".logs-page",
 			initialize: function () {
 				this.amazon_form_view = new AmazonFormView();
-				this.statuses_select_view = new StatusesSelectView();
 				this.search_form_view = new SearchFormView();
 				this.logs_view = new LogsView();
 				this.results_view = new ResultsView();
+				this.collection = logs;
 				var that = this;
 
-				$.ajax({
-					type: "GET",
-					url: "/api/logs?user_id=" + user_id,
-					data: {},
-					success: function (data) {
-						for(var i = 0; i < data.logs.length; i++){
-							var log = new Log(data.logs[i]);
+				this.collection.fetch({
+					data: {user_id: user_id},
+					success: function (model, response, options) {
+						for(var i = 0; i < response.logs.length; i++){
+							var log = new Log(response.logs[i]);
 							that.logs_view.collection.add(log);
-						}
-						for(var i = 0; i < data.statuses.length; i++){
-							var status = new Status(data.statuses[i]);
-							that.statuses_select_view.collection.add(status);
 						}
 					},
 					error: function () {

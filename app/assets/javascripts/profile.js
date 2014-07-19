@@ -1,35 +1,12 @@
+//= require ./models/log.js
+//= require ./collections/logs.js
+
 (function () {
 	$(function () {
 		var user_id = $(".profile-page").data("userid");
 
-		/* ---------- Model ---------- */
-		var Log = Backbone.Model.extend({
-			defaults: {
-				"id": "",
-				"text": "",
-				"game": {
-					"id": "",
-					"title": "",
-					"photo_path": "",
-					"device": "",
-					"maker": "",
-					"game_like_count": 0
-				},
-				"status": {
-					"id": "",
-					"name": ""
-				}
-			}
-		})
 
-
-
-		/* ---------- Collection ---------- */
-		var Logs = Backbone.Collection.extend({
-			model: Log,
-			url: "/api/logs"
-		})
-
+		/* ---------- Collection --------- */
 		var logs = new Logs();
 
 

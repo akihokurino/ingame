@@ -1,60 +1,14 @@
+//= require ./models/log.js
+//= require ./models/game.js
+//= require ./models/result.js
+//= require ./collections/logs.js
+//= require ./collections/results.js
+
 (function () {
   $(function () {
     var user_id = $(".post-new-page").data("userid");
 
-
-    /* ---------- Model ---------- */
-    var Log = Backbone.Model.extend({
-      defaults: {
-        "id": "",
-        "text": "",
-        "game": {
-          "id": "",
-          "title": "",
-          "photo_path": "",
-          "device": "",
-          "maker": "",
-          "game_like_count": 0
-        },
-        "status": {
-          "id": "",
-          "name": ""
-        }
-      }
-    })
-
-    var Game = Backbone.Model.extend({
-      defaults: {
-        "id": "",
-        "title": "",
-        "photo_path": "",
-        "device": "",
-        "maker": ""
-      }
-    })
-
-    var Result = Backbone.Model.extend({
-      urlRoot: "/api/logs",
-      defaults: {
-        "title": "",
-        "photo_path": ""
-      }
-    })
-
-
-
-
     /* ---------- Collection ---------- */
-    var Logs = Backbone.Collection.extend({
-      model: Log,
-      url: "/api/logs"
-    })
-
-    var Results = Backbone.Collection.extend({
-      model: Result,
-      url: "/api/games/search"
-    })
-
     var logs = new Logs();
     var results = new Results();
 
@@ -172,6 +126,7 @@
       initialize: function () {
         this.$el.html("");
         this.$el.html(this.template);
+
         this.logs_view = new LogsView();
         this.$el.append(this.logs_view.el);
         this.attentions = [];
