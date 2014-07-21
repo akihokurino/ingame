@@ -1,0 +1,571 @@
+@import "function.css.scss";
+@import "iconSprite.css.scss";
+
+$width: 960px !default;
+
+@mixin circleBox($size, $color) {
+	width: $size;
+	height: $size;
+	border: 1px solid $color;
+	@include border-radius($size / 2.0);
+	@include box-sizing;
+}
+
+/*---   common   ---------------------------*/
+html {
+	background: #f1f1f1;
+}
+body {
+	min-width: $width;
+}
+
+/*---   .mainCnt   ---------------------------*/
+.mainCnt {
+	width: 960px;
+	min-width: $width;
+	margin: 0 auto;
+	@include clearfix;
+}
+/*---   .personalClm   ----------*/
+.personalClm {
+	float: left;
+	width: 196px;
+	color: #ffffff;
+	font-size: 10pt;
+	text-align: left;
+
+	/*---   .profBox   ---*/
+	.profBox {
+		margin-bottom: 1px;
+		padding-bottom: 16px;
+		@include box-sizing;
+		border-bottom: 1px solid #1a1c21;
+		@include box-shadow(0, 2px, 0px, 0px, #434852);
+		background: #1a1d24;
+
+		@at-root {
+			&Top {
+				padding: 7px 0 0 6px;
+				border-bottom: 1px solid #1a1c21;
+				@include box-shadow(0, 2px, 0px, 0px, #434852);
+				background: #25272e;
+				@include clearfix;
+			}
+		}
+		.profImgWrap {
+			float: left;
+			margin: 0 10px 10px 0;
+			padding: 5px 5px;
+			@include circleBox(70px, #35eab9);
+		}
+		.profImg {
+			@include circleBox(58px, none);
+		}
+		.name {
+			margin: 14px 0 9px;
+			color: #2cd8ba;
+			font-size: 14px;
+		}
+		.place {
+			margin-bottom: 17px;
+			color: #666666;
+			font-size: 12px;
+
+			&--town:after {
+				content: "/";
+			}
+			&--country {
+				margin-left: -7px;
+			}
+		}
+		.countBox {
+			padding: 20px 28px 0 16px;
+			color: #ffffff;
+			@include clearfix;
+
+			.item {
+				clear: both;
+				margin-bottom: 26px;
+			}
+			.ttl {
+				float: left;
+				font-size: 12px;
+			}
+			.text {
+				font-size: 10px;
+				text-align: right;
+			}
+		}
+		.introBox {
+			padding: 0 20px 0 16px;
+			color: #b7b6b6;
+			font-size: 10px;
+			line-height: 1.5;
+			text-align: left;
+		}
+	}
+	/*---   .personalClm__trendBox   ---*/
+	.trendBox {
+		margin-bottom: 1px;
+		padding: 8px 16px;
+		@include box-sizing;
+		border-bottom: 1px solid #1a1c21;
+		@include box-shadow(0, 2px, 0px, 0px, #434852);
+		background: #1a1d24;
+		text-align: left;
+		@include clearfix;
+
+		.ttl {
+			margin-bottom: 18px;
+			padding: 5px 0 8px;
+			font-size: 12px;
+			@include iconSprite3(30px, 0, -182px);
+		}
+		.word {
+			float: left;
+			margin: 0 12px 16px 0;
+			padding: 4px 16px;
+			@include border-radius(4px);
+			background: #1ba189;
+			font-size: 10px;
+			text-align: center;
+
+			&.evenRung {
+				margin-left: 20px;
+			}
+			&.lastItem {
+				margin: 0;
+			}
+		}
+	}
+	/*---   .activityBox   ---*/
+	.activityBox {
+		padding: 13px 14px;
+		@include box-sizing;
+		background: #1a1d24;
+		text-align: left;
+
+		.ttl {
+			margin-bottom: 26px;
+			padding: 3px 0 1px;
+			@include iconSprite3(34px, 0, -217px);
+		}
+		.playing {
+			margin-bottom: 5px;
+			@include clearfix;
+		}
+		.played {
+			@include clearfix;
+		}
+		.playTtl {
+			margin: 0 0 12px 12px;
+			color: #b7b6b6;
+			font-size: 12px;
+		}
+		.gameImgWrap {
+			float: left;
+			margin-right: 5px;
+			margin-bottom: 16px;
+
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+		.gameImg {
+			@include circleBox(50px, none);
+		}
+	}
+}
+/*---   .gameClm   ----------*/
+.gameClm {
+	float: left;
+	width: 720px;
+	margin: 16px 0 0 18px;
+
+	/*---   .gameBox   ---*/
+	.gameBox {
+		width: 720px;
+		margin-bottom: 12px;
+		@include box-shadow(2px, 2px, 2px, 0, #d4d7d7);
+		background: #ffffff;
+		@include clearfix;
+	}
+	.gameImgWrap {
+		float: left;
+		width: 166px;
+		padding: 27px 0 30px;
+		border-right: 1px solid #c2c2c2;
+		text-align: center;
+	}
+	.gameImg {
+		@include box-shadow(3px, 3px, 5px, 0, #cacdcd);
+	}
+	.gameInfo {
+		float: left;
+		padding-top: 12px;
+
+		.ttl {
+			margin: 0 0 14px 10px;
+			padding-left: 11px;
+			border-left: 4px solid #2cd8ba;
+			color: #3e3e3e;
+			font-size: 24px;
+		}
+	}
+	/*---   .estimateList   ---*/
+	.estimateList {
+		width: 552px;
+		padding-bottom: 10px;
+		border-bottom: 1px solid #c2c2c2;
+		@include clearfix;
+
+		.item {
+			float: left;
+			position: relative;
+			width: 130px;
+			color: #666666;
+			font-size: 12px;
+			text-align: center;
+
+			&:after {
+				position: absolute;
+				top: 28px;
+				right: 0;
+				height: 56px;
+				border-right: 1px solid #c0c1c1;
+				content: "";
+			}
+		}
+		.review {
+			position: relative;
+			width: 159px;
+
+			&:before {
+				display: block;
+				position: absolute;
+				bottom: -9px;
+				left: 50%;
+				width: 80px;
+				margin-left: -40px;
+				border-bottom: 1px solid #717378;
+				content: "";
+			}
+			&:after {
+				content: none;
+			}
+		}
+		.reviewBtn {
+			display: block;
+			width: 130px;
+			margin: 41px auto 0;
+			padding: 8px 0;
+			@include border-radius(4px);
+			background: #373b42;
+			color: #ffffff;
+			font-size: 12px;
+			text-align: center;
+
+			&:hover {
+				text-decoration: none;
+			}
+		}
+		.icon {
+			display: block;
+			position: relative;
+			@include circleBox(57px, #ffffff);
+			margin: 0 auto 5px;
+			background: #373b42;
+		}
+		.postNum {
+			&:before {
+				display: block;
+				position: absolute;
+				top: 15px;
+				left: 46px;
+				z-index: 1;
+				@include iconSprite4(36px, 31px, 0, -557px);
+				content: "";
+			}
+		}
+		.all {
+			&:before {
+				display: block;
+				position: absolute;
+				top: 11px;
+				left: 46px;
+				z-index: 1;
+				@include iconSprite4(39px, 35px, 0, -632px);
+				content: "";
+			}
+		}
+		.mine {
+			&:before {
+				display: block;
+				position: absolute;
+				top: 13px;
+				left: 48px;
+				z-index: 1;
+				@include iconSprite4(35px, 32px, 0, -708px);
+				content: "";
+			}
+		}
+		.count {
+			display: block;
+			margin-top: 14px;
+			color: #1ba189;
+			font-size: 16px;
+			font-weight: bold;
+		}
+		.stars {
+			@include flexbox;
+			justify-content: center;
+			margin-top: 9px;
+		}
+		.star {
+			color: #1ba189;
+			font-size: 18px;
+		}
+	}
+	/*---   .infoBox   ---*/
+	.infoBox {
+		width: 552px;
+		@include clearfix;
+
+		.item {
+			float: left;
+			width: 124px;
+			height: 86px;
+			padding-top: 22px;
+			border-right: 1px solid #c0c1c1;
+			@include box-sizing;
+			color: #666666;
+			font-size: 12px;
+			text-align: center;
+
+			&.lastItem {
+				width: 176px;
+				padding-top: 0;
+				border: none;
+			}
+		}
+		.year, .month, .day, .hard, .maker {
+			display: block;
+			margin-top: 16px;
+			color: #1ba189;
+			font-size: 14px;
+		}
+		.block {
+			display: block;
+			margin-bottom: 16px;
+		}
+		.year, .month {
+			display: inline;
+
+			&:after {
+				margin-right: -5px;
+				content: "/";
+			}
+		}
+		.day {
+			display: inline;
+		}
+		.maker {
+			margin-top: 2px;
+		}
+		.amazonBtn, .steamBtn {
+			display: block;
+			width: 124px;
+			padding: 6px 0;
+			@include border-radius(4px);
+			font-size: 12px;
+			text-align: center;
+
+			&:hover {
+				text-decoration: none;
+			}
+		}
+		.amazonBtn {
+			margin: 10px auto;
+			border: 1px solid #fc9a18;
+			@include box-shadow(0, 3px, 0, 0, #c87b16);
+			color: #fc9a18;
+		}
+		.steamBtn {
+			margin: 0 auto;
+			border: 1px solid #7cb038;
+			@include box-shadow(0, 3px, 0, 0, #658f2f);
+			color: #7cb038;
+		}
+	}
+	/*---   .postBox   ----------*/
+	.postBox {
+		width: 720px;
+		margin-bottom: 20px;
+		@include clearfix;
+	}
+	/*---   .followPost   ----------*/
+	.followPost {
+		float: left;
+		width: 352px;
+		@include box-shadow(2px, 2px, 2px, 0, #d4d7d7);
+		background: #ffffff;
+
+		.estimateBox {
+			position: relative;
+
+			.ttl {
+				width: 180px;
+				margin-left: 16px;
+				padding: 40px 0 16px 93px;
+				border-bottom: 1px solid #999a9a;
+				color: #474646;
+				font-size: 18px;
+			}
+			.num {
+				position: absolute;
+				top: 25px;
+				left: 51px;
+				color: #1ba189;
+				font-size: 32px;
+			}
+			.subTtl {
+				position: absolute;
+				top: 16px;
+				left: 15px;
+				color: #1ba189;
+				font-size: 10px;
+				line-height: 1.2;
+			}
+		}
+	}
+	/*---   .othersPost   ----------*/
+	.othersPost {
+		float: right;
+		width: 352px;
+		@include box-shadow(2px, 2px, 2px, 0, #d4d7d7);
+		background: #ffffff;
+
+		.estimateBox {
+			position: relative;
+
+			.ttl {
+				width: 180px;
+				margin-left: 16px;
+				padding: 40px 0 16px 93px;
+				border-bottom: 1px solid #999a9a;
+				color: #474646;
+				font-size: 18px;
+			}
+			.num {
+				position: absolute;
+				top: 25px;
+				left: 51px;
+				color: #909594;
+				font-size: 32px;
+			}
+			.subTtl {
+				position: absolute;
+				top: 16px;
+				left: 15px;
+				color: #909594;
+				font-size: 10px;
+				line-height: 1.1;
+			}
+		}
+	}
+	/*---   .post   ---*/
+	.post {
+		position: relative;
+	}
+	/*---   .topBox   ---*/
+	.topBox {
+		padding: 9px 0 0 16px;
+	}
+	.profImg {
+		float: left;
+		margin-right: 20px;
+		@include circleBox(50px, rgba(255, 255, 255, 0.5));
+	}
+	.postArea {
+		margin-left: 70px;
+		padding-top: 8px;
+		padding-right: 10px;
+	}
+	.account {
+		display: inline;
+		margin: 0 6px 10px 0;
+		color: #464646;
+		font-size: 12px;
+	}
+	.time {
+		color: #666666;
+		font-size: 10px;
+	}
+	.ttl {
+		margin: 8px 0 14px;
+		color: #22c0a4;
+		font-size: 12px;
+	}
+	.text {
+		margin-bottom: 14px;
+		padding: 0 32px 0 16px;
+		color: #5b5a5a;
+		font-size: 12px;
+		line-height: 1.5;
+	}
+	.mood_ready, .mood_playing, .mood_played {
+		position: absolute;
+		top: 14px;
+		right: 32px;
+		width: 48px;
+		height: 48px;
+		padding-top: 18px;
+		@include border-radius(24px);
+		@include box-sizing;
+		font-size: 8px;
+		text-align: center;
+	}
+	.mood_ready {
+		border: 1px solid #000;
+		color: #000;
+	}
+	.mood_playing {
+		border: 1px solid #e27676;
+		color: #e27676;
+	}
+	.mood_played {
+		border: 1px solid #cecbcb;
+		color: #cecbcb;
+	}
+	/*---   .bottomBox   ---*/
+	.bottomBox {
+		margin-left: 70px;
+		padding: 10px 10px 9px 0;
+		@include clearfix;
+	}
+	/*---   .stateBox   ---*/
+	.stateBox {
+		padding: 18px 0 12px 27px;
+		border-bottom: 1px solid #9c9e9e;
+		background: #f8f8f9;
+		@include clearfix;
+	}
+	.commentBtn {
+		float: left;
+		padding: 6px 0;
+		@include iconSprite3(28px, 0, -754px);
+		color: #8d8e8e;
+		font-size: 12px;
+		cursor: pointer;
+	}
+	.favBtn {
+		display: block;
+		float: left;
+		margin-left: 20px;
+		padding: 6px 0;
+		@include iconSprite3(28px, 0, -789px);
+		color: #8d8e8e;
+		font-size: 12px;
+		cursor: pointer;
+	}
+}
