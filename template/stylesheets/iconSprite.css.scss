@@ -1,0 +1,12 @@
+@mixin iconSprite2($bpl, $bpt) {
+	background: url(../images/img_set.png) no-repeat $bpl $bpt;
+}
+@mixin iconSprite3($pl, $bpl, $bpt) {
+	padding-left: $pl;
+	background: url(../images/img_set.png) no-repeat $bpl $bpt;
+}
+@mixin iconSprite4($width, $height, $bpl, $bpt) {
+	width: $width;
+	height: $height;
+	background: url(../images/img_set.png) no-repeat $bpl $bpt;
+}

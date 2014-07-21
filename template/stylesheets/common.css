@@ -13,12 +13,14 @@ a:hover {
 
 /*---   header   ---------------------------*/
 header {
-  position: relative;
   width: 100%;
-  background: #1b463a;
+  background: #222222;
   color: #ffffff;
   font-size: 12px;
+  text-align: center;
   *zoom: 1;
+  /*---   .funcBoxLeft   ----------*/
+  /*---   .funcBoxRight   ----------*/
 }
 header:before, header:after {
   display: table;
@@ -27,127 +29,106 @@ header:before, header:after {
 header:after {
   clear: both;
 }
-
 .headerInner {
-  position: absolute;
-  top: 0;
-  left: 50%;
+  position: relative;
   width: 960px;
   height: 60px;
-  margin-left: -480px;
-  padding: 9px 0 10px 182px;
+  margin: 0 auto;
+  padding-top: 11px;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  background: url(../images/header_bg.png) repeat-x top center;
 }
-
-.headerLeft {
-  float: left;
-  width: 50%;
-  height: 60px;
-  background: #1b463a;
+header .ttl {
+  font-size: 34px;
+  font-family: Helvetica;
+  font-weight: bold;
 }
-
-.headerRight {
-  float: right;
-  clear: right;
-  width: 50%;
-  height: 60px;
-  background: #0a331e;
-}
-
-.header__ttl {
-  float: left;
-  width: 112px;
-  height: 40px;
-  margin-right: 86px;
-  padding-left: 0;
-  background: url(../images/iconSprite.png) no-repeat 0 0;
-  overflow: hidden;
-  text-indent: 100%;
-  white-space: nowrap;
-}
-
-/*---   .header__funcBoxLeft   ----------*/
-.header__funcBox {
+header .funcBoxLeft {
+  position: absolute;
+  top: 11px;
+  left: 23px;
   *zoom: 1;
 }
-.header__funcBox:before, .header__funcBox:after {
+header .funcBoxLeft:before, header .funcBoxLeft:after {
   display: table;
   content: "";
 }
-.header__funcBox:after {
+header .funcBoxLeft:after {
   clear: both;
 }
-
-.header__homeWrap, .header__alertWrap, .header__profile, .header__searchBox, .header__optionWrap {
+header .homeWrap, header .alertWrap, header .profileWrap, header .searchBox, header .optionWrap {
   float: left;
 }
-
-.header__home {
+header .home {
   display: block;
-  margin-right: 18px;
-  padding-top: 15px;
+  margin-right: 26px;
+  padding-top: 13px;
   color: #ffffff;
-  padding-left: 22px;
-  background: url(../images/iconSprite.png) no-repeat 0 -44px;
+  padding-left: 32px;
+  background: url(../images/img_set.png) no-repeat 0 2px;
 }
-
-.header__alert {
+header .alert {
   display: block;
-  margin-right: 18px;
-  padding-top: 15px;
+  margin-right: 33px;
+  padding-top: 13px;
   color: #ffffff;
-  padding-left: 28px;
-  background: url(../images/iconSprite.png) no-repeat 0 -75px;
+  padding-left: 31px;
+  background: url(../images/img_set.png) no-repeat 0 -36px;
 }
-
-.header__profile {
+header .profile {
   display: block;
-  margin-right: 15px;
-  padding-top: 15px;
+  padding-top: 13px;
   color: #ffffff;
-  padding-left: 23px;
-  background: url(../images/iconSprite.png) no-repeat 0 -106px;
+  padding-left: 31px;
+  background: url(../images/img_set.png) no-repeat 0 -74px;
 }
-
-.header__searchBox {
+header .funcBoxRight {
+  position: absolute;
+  top: 15px;
+  right: 23px;
+  *zoom: 1;
+}
+header .funcBoxRight:before, header .funcBoxRight:after {
+  display: table;
+  content: "";
+}
+header .funcBoxRight:after {
+  clear: both;
+}
+header .searchBox {
   height: 30px;
   margin-right: 38px;
   padding-top: 4px;
 }
-
-.header__searchWrap {
-  width: 136px;
-  height: 30px;
-  border: 1px solid #b3b2b3;
-  -moz-border-radius: 18px;
-  -webkit-border-radius: 18px;
-  border-radius: 18px;
+header .searchWrap {
+  width: 171px;
+  height: 21px;
+  border: 1px solid #bfbfbf;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
   background: #ffffff;
 }
-
-.header__search {
+header .search {
   display: block;
-  width: 126px;
-  height: 24px;
-  margin: 4px auto;
+  width: 171px;
+  height: 21px;
   padding: 7px 26px 7px 6px;
   border: none;
   box-sizing: border-box;
   padding-left: 6px;
-  background: url(../images/iconSprite.png) no-repeat 109px -146px;
+  background: url(../images/img_set.png) no-repeat 150px -111px;
+  line-height: 1.7;
   -moz-appearance: none;
   -webkit-appearance: none;
   outline: 0;
 }
-
-.header__option {
+header .option {
   display: block;
-  width: 19px;
-  height: 18px;
-  padding-top: 12px;
+  width: 22px;
+  height: 23px;
+  margin-top: 5px;
   padding-left: 0;
-  background: url(../images/iconSprite.png) no-repeat 0 -171px;
+  background: url(../images/img_set.png) no-repeat 0 -144px;
 }

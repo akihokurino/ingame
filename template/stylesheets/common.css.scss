@@ -1,36 +1,7 @@
-@import "compass";
+@import "function.css.scss";
+@import "iconSprite.css.scss";
 
 $width: 960px !default;
-
-$support-ie6: false;
-$support-ie7: true;
-$support-ie8: true;
-$support-ie9: true;
-$support-mozilla: true;
-$support-webkit : true;
-$support-opera  : true;
-
-@mixin clearfix {
-	&:before, &:after {
-		display: table;
-        content: "";
-	}
-    &:after {
-        clear: both;
-    }
-	@if $support-ie6 or $support-ie7 {
-        *zoom: 1;
-    }
-}
-@mixin substitute {
-    overflow: hidden;
-    text-indent: 100%;
-    white-space: nowrap;
-}
-@mixin iconSprite($pl, $bpl, $bpt) {
-	padding-left: $pl;
-	background: url(../images/iconSprite.png) no-repeat $bpl $bpt;
-}
 
 /*---   common   ---------------------------*/
 #wrapper {
@@ -45,105 +16,94 @@ a:hover {
 
 /*---   header   ---------------------------*/
 header {
-	position: relative;
 	width: 100%;
-	background: #1b463a;
+	background: #222222;
 	color: #ffffff;
 	font-size: 12px;
+	text-align: center;
 	@include clearfix;
-}
-.header {
+
 	@at-root {
-		&Inner {
-			position: absolute;
-			top: 0;
-			left: 50%;
-			width: $width;
+		.headerInner {
+			position: relative;
+			width: 960px;
 			height: 60px;
-			margin-left: - ($width / 2.0);
-			padding: 9px 0 10px 182px;
-			@include box-sizing(border-box);
-			background: url(../images/header_bg.png) repeat-x top center;
+			margin: 0 auto;
+			padding-top: 11px;
+			@include box-sizing;
 		}
-		&Left {
-			float: left;
-			width: 50%;
-			height: 60px;
-			background: #1b463a;
-		}
-		&Right {
-			float: right;
-			clear: right;
-			width: 50%;
-			height: 60px;
-			background: #0a331e;
-		}
-		&__ttl {
-			float: left;
-			width: 112px;
-			height: 40px;
-			margin-right: 86px;
-			@include iconSprite(0, 0, 0);
-			@include substitute;
-		}
-		/*---   .header__funcBoxLeft   ----------*/
-		&__funcBox {
-			@include clearfix;
-		}
-		&__homeWrap, &__alertWrap, &__profile, &__searchBox, &__optionWrap {
-			float: left;
-		}
-		&__home {
-			display: block;
-			margin-right: 18px;
-			padding-top: 15px;
-			color: #ffffff;
-			@include iconSprite(22px, 0, -44px);
-		}
-		&__alert {
-			display: block;
-			margin-right: 18px;
-			padding-top: 15px;
-			color: #ffffff;
-			@include iconSprite(28px, 0, -75px);
-		}
-		&__profile {
-			display: block;
-			margin-right: 15px;
-			padding-top: 15px;
-			color: #ffffff;
-			@include iconSprite(23px, 0, -106px);
-		}
-		&__searchBox {
-			height: 30px;
-			margin-right: 38px;
-			padding-top: 4px;
-		}
-		&__searchWrap {
-			width: 136px;
-			height: 30px;
-			border: 1px solid #b3b2b3;
-			@include border-radius(18px);
-			background: #ffffff;
-		}
-		&__search {
-			display: block;
-			width: 126px;
-			height: 24px;
-			margin: 4px auto;
-			padding: 7px 26px 7px 6px;
-			border: none;
-			box-sizing: border-box;
-			@include iconSprite(6px, 109px, -146px);
-			@include appearance(none);
-			outline: 0;
-		}
-		&__option {
-			display: block;
-			width: 19px;
-			height: 18px;
-			padding-top: 12px;
-			@include iconSprite(0, 0, -171px);
-		}
+	}
+	.ttl {
+		font-size: 34px;
+		font-family: Helvetica;
+		font-weight: bold;
+	}
+	/*---   .funcBoxLeft   ----------*/
+	.funcBoxLeft {
+		position: absolute;
+		top: 11px;
+		left: 23px;
+		@include clearfix;
+	}
+	.homeWrap, .alertWrap, .profileWrap, .searchBox, .optionWrap {
+		float: left;
+	}
+	.home {
+		display: block;
+		margin-right: 26px;
+		padding-top: 13px;
+		color: #ffffff;
+		@include iconSprite3(32px, 0, 2px);
+	}
+	.alert {
+		display: block;
+		margin-right: 33px;
+		padding-top: 13px;
+		color: #ffffff;
+		@include iconSprite3(31px, 0, -36px);
+	}
+	.profile {
+		display: block;
+		padding-top: 13px;
+		color: #ffffff;
+		@include iconSprite3(31px, 0, -74px);
+	}
+	/*---   .funcBoxRight   ----------*/
+	.funcBoxRight {
+		position: absolute;
+		top: 15px;
+		right: 23px;
+		@include clearfix;
+	}
+	.searchBox {
+		height: 30px;
+		margin-right: 38px;
+		padding-top: 4px;
+	}
+	.searchWrap {
+		width: 171px;
+		height: 21px;
+		border: 1px solid #bfbfbf;
+		@include border-radius(3px);
+		background: #ffffff;
+	}
+	.search {
+		display: block;
+		width: 171px;
+		height: 21px;
+		padding: 7px 26px 7px 6px;
+		border: none;
+		box-sizing: border-box;
+		@include iconSprite3(6px, 150px, -111px);
+		line-height: 1.7;
+		@include appearance;
+		outline: 0;
+	}
+	.option {
+		display: block;
+		width: 22px;
+		height: 23px;
+		margin-top: 5px;
+		@include iconSprite3(0, 0, -144px);
 	}
 }
