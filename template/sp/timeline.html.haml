@@ -13,9 +13,21 @@
 			%header
 				%h1.ttlWrap
 					%a.ttl{href: ""} Playdy
-				%a.menu{href: ""}
-				%a.serch{href: ""}
-				%a.profile{href: ""}
+				%span.menu{href: ""}
+				%span.serch{href: ""}
+				%span.profile{href: ""}
+				%ul.openMenu
+					%li.item
+						%a.menuItem{href: ""} 登録しているゲーム
+					%li.item
+						%a.menuItem{href: ""} 通知
+					%li.item
+						%a.menuItem{href: ""} アカウント設定
+					%li.item
+						%a.menuItem{href: ""} Playdyとは
+					%li.item
+						%a.menuItem{href: ""} ログアウト
+
 			/	/header
 
 			/	.mainCnt
@@ -71,3 +83,5 @@
 						%a.favBtn.on{href: ""} 12
 				/	/.postBox
 			/	/.mainCnt
+		%script{src: "../javascripts/jquery-2.1.1.min.js"}
+		%script{src: "javascripts/common.js"}

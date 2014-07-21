@@ -62,55 +62,41 @@ body {
   margin-right: 0;
 }
 
-/*---   .step01   ---------------------------*/
-.step01 {
+/*---   .step01_01   ---------------------------*/
+.step01_01 {
   padding-top: 38px;
 }
-.step01Ttl {
-  margin-bottom: 32px;
+.step01_01Ttl {
+  color: #404040;
   font-size: 18px;
-  font-weight: bold;
+  -webkit-text-stroke: 1px #404040;
 }
-.step01 .entryBox {
-  position: relative;
-  width: 222px;
-  margin: 0 auto 28px;
+.step01_01 .entryBox {
+  width: 250px;
+  margin: 16px auto 28px;
 }
-.step01 .entryBox .textarea {
+.step01_01 .entryBox .search {
   display: block;
-  width: 222px;
+  width: 250px;
   height: 34px;
-  margin: 0 auto 28px;
-  padding-left: 12px;
-  border: none;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
+  margin-bottom: 26px;
+  padding-left: 11px;
+  border: 1px solid #a09e9f;
+  -moz-border-radius: 18px;
+  -webkit-border-radius: 18px;
+  border-radius: 18px;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  background: #dcdbdb;
+  background: url(../images/img_set.png) no-repeat right 4px top -178px;
+  background-size: 25px 288px;
   font-size: 14px;
+  outline: 0;
 }
-.step01 .entryBox .textarea::-webkit-input-placeholder {
-  margin-left: -12px;
-  padding-top: 2px;
-  color: #605f5f;
-  font-size: 12px;
-  text-align: center;
-}
-.step01 .entryBox .textarea_node {
-  position: absolute;
-  top: 10px;
-  left: -27px;
-  color: #e97171;
-  font-size: 12px;
-  font-weight: bold;
-}
-.step01 .entryBox .btn {
-  width: 76px;
+.step01_01 .entryBox .btn {
+  width: 79px;
   height: 29px;
-  margin-top: 12px;
+  margin-top: 260px;
   border: none;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -128,6 +114,183 @@ body {
   outline: 0;
 }
 
+/*---   .step01_02   ---------------------------*/
+.step01_02 {
+  padding-top: 38px;
+  /*---   .gameList   ----------*/
+}
+.step01_02Ttl {
+  color: #404040;
+  font-size: 18px;
+  -webkit-text-stroke: 1px #404040;
+}
+.step01_02 .entryBox {
+  width: 250px;
+  margin: 16px auto 28px;
+}
+.step01_02 .entryBox .search {
+  display: block;
+  width: 250px;
+  height: 34px;
+  margin-bottom: 26px;
+  padding-left: 11px;
+  border: 1px solid #a09e9f;
+  -moz-border-radius: 18px;
+  -webkit-border-radius: 18px;
+  border-radius: 18px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background: url(../images/img_set.png) no-repeat right 4px top -178px;
+  background-size: 25px 288px;
+  font-size: 14px;
+  outline: 0;
+}
+.step01_02 .entryBox .btn {
+  width: 79px;
+  height: 29px;
+  border: none;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background: -moz-linear-gradient(#10b5a3, #10a696);
+  background: -webkit-linear-gradient(#10b5a3, #10a696);
+  background: linear-gradient(#10b5a3, #10a696);
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  outline: 0;
+}
+.step01_02 .gameList {
+  position: relative;
+  width: 320px;
+  margin: 10px auto 0;
+}
+.step01_02 .gameList .gameImgWrap {
+  position: absolute;
+  top: 12px;
+  left: 9px;
+  width: 100px;
+  height: 100px;
+  padding-top: 3px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background: url(../images/game__bg02.png) no-repeat center top;
+  background-size: 100px 100px;
+  text-align: center;
+}
+.step01_02 .gameList .gameImgInner {
+  width: 94px;
+  height: 94px;
+  margin: 0 auto;
+  -moz-border-radius: 48px;
+  -webkit-border-radius: 48px;
+  border-radius: 48px;
+  background: #ffffff;
+}
+.step01_02 .gameList .gameImg {
+  -webkit-mask: url(../images/mask.png) no-repeat center top;
+  -webkit-mask-size: 94px 94px;
+  padding-top: 3px;
+}
+.step01_02 .gameList .gameInfo {
+  width: 250px;
+  height: 124px;
+  margin: 0 3px 0 auto;
+  padding: 22px 0 0 53px;
+  border-bottom: 1px solid #bbbbbc;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.step01_02 .gameList .ttl {
+  color: #10b5a3;
+  font-size: 14px;
+  -webkit-text-stroke: 1px #10b5a3;
+}
+.step01_02 .gameList .btnList {
+  position: absolute;
+  bottom: 17px;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.step01_02 .gameList .btnList .item {
+  position: relative;
+  width: 86px;
+  padding-top: 3px;
+  padding-right: 5px;
+  border: 1px solid #959494;
+  -moz-border-radius: 18px;
+  -webkit-border-radius: 18px;
+  border-radius: 18px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #a09f9f;
+  font-size: 10px;
+  text-align: center;
+}
+.step01_02 .gameList .btnList .item:first-child {
+  margin-right: 12px;
+}
+.step01_02 .gameList .btnList .item:after {
+  position: absolute;
+  top: 7px;
+  right: 6px;
+  border-top: 6px solid #888787;
+  border-right: 5px solid #ffffff;
+  border-bottom: 6px solid #ffffff;
+  border-left: 5px solid #ffffff;
+  content: "";
+}
+.step01_02 .gameList .btnList select {
+  display: block;
+  width: 70px;
+  margin-left: auto;
+  border: none;
+  -moz-border-radius: 18px;
+  -webkit-border-radius: 18px;
+  border-radius: 18px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #a09f9f;
+  font-size: 10px;
+  text-align: center;
+  outline: 0;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+.step01_02 .gameList .btnList .stars {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  justify-content: center;
+  margin-top: 1px;
+}
+.step01_02 .gameList .btnList .star {
+  width: 11px;
+  height: 10px;
+  background: url(../images/img_set.png) no-repeat 0 -260px;
+  background-size: 25px 288px;
+}
+
 /*---   .step02   ---------------------------*/
 .step02 {
   padding-top: 38px;
@@ -136,7 +299,7 @@ body {
   margin-bottom: 23px;
   color: #404040;
   font-size: 18px;
-  font-weight: bold;
+  -webkit-text-stroke: 1px #404040;
 }
 .step02 .friendBox {
   position: relative;
@@ -299,8 +462,9 @@ body {
 }
 .step03Ttl {
   margin-bottom: 28px;
+  color: #404040;
   font-size: 18px;
-  font-weight: bold;
+  -webkit-text-stroke: 1px #404040;
 }
 .step03 .uploadBox {
   position: relative;

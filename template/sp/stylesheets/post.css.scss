@@ -362,26 +362,40 @@ a {
 				@include font-weight(1px, #1ba189);
 			}
 			.mood {
-				@include border-radius(5px);
-				@include box-sizing;
-				background: #cccccc;
-				color: #464646;
-				font-size: 6px;
-				text-align: center;
-			}
-			select {
+				display: block;
 				position: absolute;
 				top: 50%;
 				right: 13px;
-				display: block;
-				margin-top: -13px;
-				margin-left: auto;
-				padding: 4px 6px;
-				border: none;
-				@include border-radius(5px);
+				width: 86px;
+				margin-top: -10px;
+				padding-top: 1px;
+				border: 1px solid #959494;
+				@include border-radius(18px);
 				@include box-sizing;
-				background: #cccccc;
 				color: #464646;
+				font-size: 6px;
+				text-align: center;
+
+				&:after {
+					position: absolute;
+					top: 6px;
+					right: 6px;
+					border-top: 6px solid #888787;
+					border-right: 5px solid #ffffff;
+					border-bottom: 6px solid #ffffff;
+					border-left: 5px solid #ffffff;
+					content: "";
+				}
+			}
+			select {
+				display: block;
+				width: 75px;
+				margin-left: auto;
+				border: none;
+				@include border-radius(18px);
+				@include box-sizing;
+				color: #a09f9f;
+				font-size: 10px;
 				text-align: center;
 				outline: 0;
 				@include appearance;

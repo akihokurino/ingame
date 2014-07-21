@@ -30,25 +30,14 @@
 				.overlayer
 			/	/header
 
-			%section.step02
-				%h2.step02Ttl 友達を検索
-				.friendBox
-					%a.leftBtn{href: ""}
-						%span.tri
-					%ul.listWrap
-						- 3.times do |i|
-							%li.list
-								%img.profImg{src: "images/asuya.jpg", width: "63", height: "63", alt: ""}
-								%p.name asuya
-								%a.btn{href: ""} 友達になる
-					%a.rightBtn{href: ""}
-						%span.tri
+			%section.step01_01
+				%h2.step01_01Ttl 好きなゲームを登録
 				%form.entryBox
-					%input.friend{type: "text", placeholder: "seach"}
+					%input.search{type: "text", placeholder: "seach"}
 					%input.btn{type: "submit", value: "スキップ"}
 				%ul.progress
-					%li.progress--off
 					%li.progress--on
+					%li.progress--off
 					%li.progress--off
 		%script{src: "../javascripts/jquery-2.1.1.min.js"}
 		%script{src: "javascripts/common.js"}

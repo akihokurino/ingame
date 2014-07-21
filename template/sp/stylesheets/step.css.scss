@@ -52,54 +52,38 @@ body {
 	}
 }
 
-/*---   .step01   ---------------------------*/
-.step01 {
+/*---   .step01_01   ---------------------------*/
+.step01_01 {
 	padding-top: 38px;
 
 	@at-root {
 		&Ttl {
-			margin-bottom: 32px;
+			color: #404040;
 			font-size: 18px;
-			font-weight: bold;
+			@include font-weight(1px, #404040);
 		}
 	}
 	.entryBox {
-		position: relative;
-		width: 222px;
-		margin: 0 auto 28px;
+		width: 250px;
+		margin: 16px auto 28px;
 
-		.textarea {
+		.search {
 			display: block;
-			width: 222px;
+			width: 250px;
 			height: 34px;
-			margin: 0 auto 28px;
-			padding-left: 12px;
-			border: none;
-			@include border-radius(5px);
+			margin-bottom: 26px;
+			padding-left: 11px;
+			border: 1px solid #a09e9f;
+			@include border-radius(18px);
 			@include box-sizing;
-			background: #dcdbdb;
+			@include iconSprite2(right 4px, top -178px);
 			font-size: 14px;
-
-			&::-webkit-input-placeholder {
-				margin-left: -12px;
-				padding-top: 2px;
-				color: #605f5f;
-				font-size: 12px;
-				text-align: center;
-			}
-			&_node {
-				position: absolute;
-				top: 10px;
-				left: -27px;
-				color: #e97171;
-				font-size: 12px;
-				font-weight: bold;
-			}
+			outline: 0;
 		}
 		.btn {
-			width: 76px;
+			width: 79px;
 			height: 29px;
-			margin-top: 12px;
+			margin-top: 260px;
 			border: none;
 			@include border-radius(3px);
 			@include box-sizing;
@@ -113,6 +97,146 @@ body {
 	}
 }
 
+/*---   .step01_02   ---------------------------*/
+.step01_02 {
+	padding-top: 38px;
+
+	@at-root {
+		&Ttl {
+			color: #404040;
+			font-size: 18px;
+			@include font-weight(1px, #404040);
+		}
+	}
+	.entryBox {
+		width: 250px;
+		margin: 16px auto 28px;
+
+		.search {
+			display: block;
+			width: 250px;
+			height: 34px;
+			margin-bottom: 26px;
+			padding-left: 11px;
+			border: 1px solid #a09e9f;
+			@include border-radius(18px);
+			@include box-sizing;
+			@include iconSprite2(right 4px, top -178px);
+			font-size: 14px;
+			outline: 0;
+		}
+		.btn {
+			width: 79px;
+			height: 29px;
+			border: none;
+			@include border-radius(3px);
+			@include box-sizing;
+			@include gradient(#10b5a3, #10a696);
+			color: #ffffff;
+			font-size: 14px;
+			text-align: center;
+			cursor: pointer;
+			outline: 0;
+		}
+	}
+	/*---   .gameList   ----------*/
+	.gameList {
+		position: relative;
+		width: 320px;
+		margin: 10px auto 0;
+
+		.gameImgWrap {
+			position: absolute;
+			top: 12px;
+			left: 9px;
+			width: 100px;
+			height: 100px;
+			padding-top: 3px;
+			@include box-sizing;
+			background: url(../images/game__bg02.png) no-repeat center top;
+			background-size: 100px 100px;
+			text-align: center;
+		}
+		.gameImgInner {
+			width: 94px;
+			height: 94px;
+			margin: 0 auto;
+			@include border-radius(48px);
+			background: #ffffff;
+		}
+		.gameImg {
+			-webkit-mask: url(../images/mask.png) no-repeat center top;
+			-webkit-mask-size: 94px 94px;
+			padding-top: 3px;
+		}
+		.gameInfo {
+			width: 250px;
+			height: 124px;
+			margin: 0 3px 0 auto;
+			padding: 22px 0 0 53px;
+			border-bottom: 1px solid #bbbbbc;
+			@include box-sizing;
+		}
+		.ttl {
+			color: #10b5a3;
+			font-size: 14px;
+			@include font-weight(1px, #10b5a3);
+		}
+		.btnList {
+			position: absolute;
+			bottom: 17px;
+			@include flexbox;
+
+			.item {
+				position: relative;
+				width: 86px;
+				padding-top: 3px;
+				padding-right: 5px;
+				border: 1px solid #959494;
+				@include border-radius(18px);
+				@include box-sizing;
+				color: #a09f9f;
+				font-size: 10px;
+				text-align: center;
+
+				&:first-child {
+					margin-right: 12px;
+				}
+				&:after {
+					position: absolute;
+					top: 7px;
+					right: 6px;
+					border-top: 6px solid #888787;
+					border-right: 5px solid #ffffff;
+					border-bottom: 6px solid #ffffff;
+					border-left: 5px solid #ffffff;
+					content: "";
+				}
+			}
+			select {
+				display: block;
+				width: 70px;
+				margin-left: auto;
+				border: none;
+				@include border-radius(18px);
+				@include box-sizing;
+				color: #a09f9f;
+				font-size: 10px;
+				text-align: center;
+				outline: 0;
+				@include appearance;
+			}
+			.stars {
+				@include flexbox;
+				justify-content: center;
+				margin-top: 1px;
+			}          
+			.star {
+				@include iconSprite4(11px, 10px, 0, -260px);
+			}
+		}
+	}
+}
 
 /*---   .step02   ---------------------------*/
 .step02 {
@@ -123,7 +247,7 @@ body {
 			margin-bottom: 23px;
 			color: #404040;
 			font-size: 18px;
-			font-weight: bold;
+			@include font-weight(1px, #404040);
 		}
 	}
 	.friendBox {
@@ -251,8 +375,9 @@ body {
 	@at-root {
 		&Ttl {
 			margin-bottom: 28px;
+			color: #404040;
 			font-size: 18px;
-			font-weight: bold;
+			@include font-weight(1px, #404040);
 		}
 	}
 	.uploadBox {

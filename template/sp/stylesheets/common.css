@@ -40,6 +40,7 @@ header .menu {
   height: 19px;
   background: url(../images/img_set.png) no-repeat 0 0;
   background-size: 25px 288px;
+  cursor: pointer;
 }
 header .serch {
   display: block;
@@ -50,6 +51,7 @@ header .serch {
   height: 21px;
   background: url(../images/img_set.png) no-repeat 0 -26px;
   background-size: 25px 288px;
+  cursor: pointer;
 }
 header .profile {
   display: block;
@@ -60,4 +62,31 @@ header .profile {
   height: 19px;
   background: url(../images/img_set.png) no-repeat 0 -55px;
   background-size: 25px 288px;
+  cursor: pointer;
+}
+header .openMenu {
+  display: none;
+  position: absolute;
+  top: 50px;
+  left: 2px;
+  width: 224px;
+  border: 2px solid #000000;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+header .item {
+  display: block;
+  border-bottom: 1px solid #000000;
+  background: #ffffff;
+}
+header .item:last-child {
+  border: none;
+}
+header .menuItem {
+  display: block;
+  padding: 5px 0 5px 5px;
+  background: #ffffff;
+  color: #353535;
+  font-size: 12px;
 }

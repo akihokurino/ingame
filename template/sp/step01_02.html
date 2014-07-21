@@ -6,7 +6,7 @@
     <title>Playdy</title>
     <link href='stylesheets/reset-min.css' rel='stylesheet'>
     <link href='stylesheets/common.css' rel='stylesheet'>
-    <link href='stylesheets/game.css' rel='stylesheet'>
+    <link href='stylesheets/step.css' rel='stylesheet'>
   </head>
   <body>
     <div id='wrapper'>
@@ -35,38 +35,20 @@
             <a class='menuItem' href=''>ログアウト</a>
           </li>
         </ul>
+        <div class='overlayer'></div>
       </header>
       <!-- /header -->
-      <!-- .editCnt -->
-      <div class='editCnt'>
-        <!-- .sortBox -->
-        <div class='sortBoxWrap'>
-          <ul class='sortBox'>
-            <li class='item current'>
-              <span class='playing'>プレイ中</span>
-            </li>
-            <li class='item'>
-              <span class='ready'>
-                欲しい
-                <br>
-                ゲーム
-              </span>
-            </li>
-            <li class='item'>
-              <span class='played'>
-                クリアした
-                <br>
-                ゲーム
-              </span>
-            </li>
-          </ul>
-        </div>
-        <!-- /.sortBox -->
-        <!-- .search -->
-        <form class='searchWrap'>
-          <input class='search' placeholder='search' type='text'>
+      <section class='step01_02'>
+        <h2 class='step01_02Ttl'>好きなゲームを登録</h2>
+        <form class='entryBox'>
+          <input class='search' placeholder='seach' type='text'>
+          <input class='btn' type='submit' value='次へ'>
         </form>
-        <!-- /.search -->
+        <ul class='progress'>
+          <li class='progress--on'></li>
+          <li class='progress--off'></li>
+          <li class='progress--off'></li>
+        </ul>
         <!-- .gameList -->
         <article class='gameList'>
           <figure class='gameImgWrap'>
@@ -153,8 +135,7 @@
           </section>
         </article>
         <!-- /.gameList -->
-      </div>
-      <!-- /.editCnt -->
+      </section>
     </div>
     <script src='../javascripts/jquery-2.1.1.min.js'></script>
     <script src='javascripts/common.js'></script>
