@@ -1,5 +1,5 @@
 @import "../../stylesheets/function.css.scss";
-//@import "../../../scss/function.css.scss";
+@import "iconSprite.css.scss";
 
 /*---   common   ---------------------------*/
 html {
@@ -14,7 +14,7 @@ a {
 	/*---   header   ----------*/
 	header {
 		position: relative;
-		margin-bottom: 30px;
+		margin-bottom: 15px;
 		padding: 14px 0 13px;
 		border-bottom: 1px solid #a0a0a0;
 		text-align: center;
@@ -33,128 +33,24 @@ a {
 		}
 		.addGame {
 			position: absolute;
-			top: 7px;
+			top: 12px;
 			right: 10px;
 			color: #424343;
 			font-size: 15px;
-		}
-	}
-	.mainCnt {
-		.addGame, .addPhoto {
-			display: block;
-			width: 180px;
-			margin: 21px auto;
-			padding: 12px 0;
-			@include border-radius(30px);
-			background: #10b5a3;
-			color: #ffffff;
-			font-size: 16px;
-			text-align: center;
-		}
-		.textareaWrap {
-			margin-top: 39px;
-			border-top: 1px solid #a0a0a0;
-		}
-		textarea {
-			width: 100%;
-			padding: 4px 9px;
-			border: none;
-			@include box-sizing;
-			resize: none;
-		}
-		.snsBtn {
-			@include flexbox;
-			justify-content: center;
-			margin-top: -6px;
-			padding: 18px 0 32px;
-			border-top: 1px solid #a0a0a0;
-		}
-		.fbBtn, .twBtn {
-			display: block;
-			width: 70px;
-			height: 70px;
-			margin: 0 30px;
-			@include border-radius(35px);
-			@include box-sizing;
-			background: #949292;
-		}
-		.fbBtn {
-			padding-top: 18px;
-		}
-		.twBtn {
-			padding-top: 21px;
-		}
-		.fbInner {
-			display: block;
-			width: 17px;
-			height: 36px;
-			margin: 0 auto;
-			background: url(../images/snsSprite.png) no-repeat 0 0;
-			background-size: 62px 36px;
-		}
-		.twInner {
-			display: block;
-			width: 40px;
-			height: 30px;
-			margin: 0 auto;
-			background: url(../images/snsSprite.png) no-repeat -22px 0;
-			background-size: 62px 36px;
-		}
-		.btn {
-			width: 100%;
-			padding: 26px 0;
-			border: none;
-			background: #949292;
-			color: #ffffff;
-			font-size: 18px;
-			text-align: center;
-			@include appearance;
-			cursor: pointer;
-		}
-	}
-}
-
-/*---   .post02   ---------------------------*/
-.post02 {
-	/*---   header   ----------*/
-	header {
-		position: relative;
-		margin-bottom: 30px;
-		padding: 14px 0 13px;
-		border-bottom: 1px solid #a0a0a0;
-		text-align: center;
-
-		.ttl {
-			color: #000000;
-			font-size: 20px;
-			@include font-weight(1px, #000000);
-		}
-		.cancel {
-			position: absolute;
-			top: 15px;
-			left: 9px;
-			color: #1ba189;
-			font-size: 17px;
-		}
-		.addGame {
-			position: absolute;
-			top: 7px;
-			right: 10px;
-			color: #424343;
-			font-size: 15px;
+			line-height: 1.2;
 		}
 	}
 	.mainCnt {
 		.sortBox {
-			width: 312px;
+			width: 300px;
 			margin: 0 auto 13px;
 			border: 1px solid #10b5a3;
-			@include border-radius(5px);
+			@include border-radius(20px);
 			@include clearfix;
 
 			.item {
 				float: left;
-				width: 104px;
+				width: 100px;
 				border-right: 1px solid #10b5a3;
 				@include box-sizing;
 				font-size: 12px;
@@ -167,15 +63,16 @@ a {
 				display: table-cell;
 				width: 104px;
 				height: 30px;
-				padding-top: 4px;
+				padding-top: 2px;
 				@include box-sizing;
 				color: #10b5a3;
 				text-align: center;
 				vertical-align: middle;
+				font-size: 13px;
 				line-height: 1.1;
 			}
 			.ready {
-				border-radius: 3px 0 0 3px;
+				border-radius: 20px 0 0 20px;
 			}
 			.played {
 				border-radius: 0 3px 3px 0;
@@ -186,22 +83,24 @@ a {
 				@at-root {
 					&.item {
 						border: none;
+
+						&:after {
+							position: absolute;
+							left: 50%;
+							bottom: -25px;
+							content: "";
+							margin-left: -13px;
+							border-top: 13px solid #10b5a3;
+							border-right: 10px solid transparent;
+							border-bottom: 13px solid transparent;
+							border-left: 10px solid transparent;
+						}
 					}
 				}
 				.playing, .ready, .played {
 					background: #10b5a3;
 					color: #ffffff;
 					@include font-weight(1px, #ffffff);
-				}
-				.tri {
-					position: absolute;
-					left: 50%;
-					bottom: -25px;
-					margin-left: -13px;
-					border-top: 13px solid #10b5a3;
-					border-right: 10px solid transparent;
-					border-bottom: 13px solid transparent;
-					border-left: 10px solid transparent;
 				}
 			}
 		}
@@ -228,12 +127,12 @@ a {
 	}
 }
 
-/*---   .post03   ---------------------------*/
-.post03 {
+/*---   .post02   ---------------------------*/
+.post02 {
 	/*---   header   ----------*/
 	header {
 		position: relative;
-		margin-bottom: 30px;
+		margin-bottom: 6px;
 		padding: 14px 0 13px;
 		border-bottom: 1px solid #a0a0a0;
 		text-align: center;
@@ -250,74 +149,62 @@ a {
 			color: #1ba189;
 			font-size: 17px;
 		}
-		.addGame {
-			position: absolute;
-			top: 7px;
-			right: 10px;
-			color: #424343;
-			font-size: 15px;
-		}
 	}
 	.mainCnt {
-		.addGameWrap , .addPhotoWrap {
-			@include flexbox;
-			justify-content: center;
-			margin-bottom: 14px;
-
-			.item {
-				&:last-child {
-					width: 100px;
-					margin-left: 15px;
-					text-align: center;
-				}
-				figcaption {
-					color: #1ba189;
-					font-size: 12px;
-					text-align: left;
-					line-height: 1.0;
-				}
-			}
+		.gameBox {
+			position: relative;
+			margin: 0 8px 0 4px;
+			@include clearfix;
 		}
-		.addGame, .addPhoto {
+		.gameImage {
+			float: left;
+			margin-right: 7px;
+		}
+		.gameTtl {
+			width: 60%;
+			padding-top: 5px;
+			color: #5f5f5f;
+			font-size: 12px;
+		}
+		.gameSelect {
 			display: block;
-			width: 180px;
-			margin: 0 auto;
-			padding: 12px 0;
-			@include border-radius(30px);
+			position: absolute;
+			top: 50%;
+			right: 5px;
+			margin-top: -13px;
+			padding: 5px 10px;
+			@include border-radius(18px);
 			background: #10b5a3;
 			color: #ffffff;
-			font-size: 16px;
+			font-size: 7px;
 			text-align: center;
 		}
-		.addGame {
-			margin: 10px auto;
-		}
-		.addGameImg, .addPhotoImg {
-			@include border-radius(16px);
-		}
-		.addPhotoWrap {
-			figure {
-				padding-top: 6px;
-			}
-		}
 		.textareaWrap {
-			margin-top: 39px;
+			clear: both;
+			margin-top: 6px;
 			border-top: 1px solid #a0a0a0;
 		}
 		textarea {
 			width: 100%;
+			height: 122px;
 			padding: 4px 9px;
 			border: none;
 			@include box-sizing;
-			color: #222121;
+			background: #f6f4f4;
 			resize: none;
+		}
+		.addPhoto {
+			display: block;
+			padding: 9px 0 0 8px;
+			border-top: 1px solid #a0a0a0;
+			color: #727272;
+			font-size: 16px;
 		}
 		.snsBtn {
 			@include flexbox;
 			justify-content: center;
 			margin-top: -6px;
 			padding: 18px 0 32px;
-			border-top: 1px solid #a0a0a0;
 		}
 		.fbBtn, .twBtn {
 			display: block;
@@ -326,21 +213,20 @@ a {
 			margin: 0 30px;
 			@include border-radius(35px);
 			@include box-sizing;
+			background: #949292;
 		}
 		.fbBtn {
 			padding-top: 18px;
-			background: #39599f;
 		}
 		.twBtn {
 			padding-top: 21px;
-			background: #45b0e3;
 		}
 		.fbInner {
 			display: block;
 			width: 17px;
 			height: 36px;
 			margin: 0 auto;
-			background: url(../images/snsSprite.png) no-repeat 0 0;
+			background: url(../images/sns_set.png) no-repeat 0 0;
 			background-size: 62px 36px;
 		}
 		.twInner {
@@ -348,19 +234,172 @@ a {
 			width: 40px;
 			height: 30px;
 			margin: 0 auto;
-			background: url(../images/snsSprite.png) no-repeat -22px 0;
+			background: url(../images/sns_set.png) no-repeat -22px 0;
 			background-size: 62px 36px;
 		}
 		.btn {
 			width: 100%;
 			padding: 26px 0;
 			border: none;
-			background: #10b5a3;
+			background: #949292;
 			color: #ffffff;
 			font-size: 18px;
 			text-align: center;
 			@include appearance;
 			cursor: pointer;
+		}
+	}
+}
+
+
+/*---   .post03   ---------------------------*/
+.post03 {
+	/*---   header   ----------*/
+	header {
+		position: relative;
+		margin-bottom: 17px;
+		padding: 14px 0 13px;
+		border-bottom: 1px solid #a0a0a0;
+		text-align: center;
+
+		.ttl {
+			padding-left: 40px;
+			color: #000000;
+			font-size: 20px;
+			@include font-weight(1px, #000000);
+		}
+		.cancel {
+			position: absolute;
+			top: 15px;
+			left: 9px;
+			color: #1ba189;
+			font-size: 16px;
+		}
+	}
+	.mainCnt {
+		.searchWrap {
+			width: 98%;
+			margin: 0 auto 14px;
+			@include border-radius(18px);
+			@include box-shadow(1px, 0, 0, 0, #e7e7e7);
+			background: #ffffff;
+		}
+		.search {
+			display: block;
+			width: 100%;
+			height: 34px;
+			margin: 0 auto 18px;
+			padding-left: 11px;
+			border: 1px solid #a09e9f;
+			@include border-radius(18px);
+			@include box-sizing;
+			@include iconSprite2(right 5px, top -178px);
+			font-size: 14px;
+			outline: 0;
+		}
+		.playing, .ready, .played {
+			display: table-cell;
+			width: 104px;
+			height: 30px;
+			padding-top: 4px;
+			@include box-sizing;
+			color: #10b5a3;
+			text-align: center;
+			vertical-align: middle;
+			font-size: 14px;
+			line-height: 1.1;
+		}
+		.ready {
+			border-radius: 3px 0 0 3px;
+		}
+		.played {
+			border-radius: 0 3px 3px 0;
+		}
+		.current {
+			position: relative;
+
+			@at-root {
+				&.item {
+					border: none;
+				}
+			}
+			.playing, .ready, .played {
+				background: #10b5a3;
+				color: #ffffff;
+				@include font-weight(1px, #ffffff);
+			}
+			.tri {
+				position: absolute;
+				left: 50%;
+				bottom: -25px;
+				margin-left: -13px;
+				border-top: 13px solid #10b5a3;
+				border-right: 10px solid transparent;
+				border-bottom: 13px solid transparent;
+				border-left: 10px solid transparent;
+			}
+		}
+		.gameList {
+			background: #ffffff;
+
+			.item {
+				position: relative;
+				padding: 9px 0;
+				border-top: 1px solid #b6b4b4;
+				@include clearfix;
+			}
+			.gameImg {
+				float: left;
+				margin: 0 12px 0 11px;
+				@include border-radius(16px);
+			}
+			figcaption {
+				float: left;
+				width: 56%;
+				padding-top: 6px;
+				color: #1ba189;
+				font-size: 14px;
+				@include font-weight(1px, #1ba189);
+			}
+			.mood {
+				display: block;
+				position: absolute;
+				top: 50%;
+				right: 13px;
+				width: 86px;
+				margin-top: -10px;
+				padding-top: 1px;
+				border: 1px solid #959494;
+				@include border-radius(18px);
+				@include box-sizing;
+				color: #464646;
+				font-size: 6px;
+				text-align: center;
+
+				&:after {
+					position: absolute;
+					top: 6px;
+					right: 6px;
+					border-top: 6px solid #888787;
+					border-right: 5px solid #ffffff;
+					border-bottom: 6px solid #ffffff;
+					border-left: 5px solid #ffffff;
+					content: "";
+				}
+			}
+			select {
+				display: block;
+				width: 75px;
+				margin-left: auto;
+				border: none;
+				@include border-radius(18px);
+				@include box-sizing;
+				color: #a09f9f;
+				font-size: 10px;
+				text-align: center;
+				outline: 0;
+				@include appearance;
+			}
 		}
 	}
 }

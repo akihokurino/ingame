@@ -1,78 +1,35 @@
-@import "../function.css.scss";
-//@import "../../scss/function.css.scss";
-
-@mixin iconSprite($bpl, $bpt) {
-	background: url(/assets/smart_phone/iconSprite.png) no-repeat $bpl $bpt;
-	background-size: 83px 371px;
-}
-
-/*---   common   ---------------------------*/
-html {
-	background: #dddcdc;
-}
-
-/*---   header   ---------------------------*/
-header {
-	position: relative;
-	width: 100%;
-	height: 46px;
-	padding-top: 11px;
-	@include box-sizing;
-	background: #11a78c;
-
-	.ttl {
-		display: block;
-		width: 87px;
-		height: 31px;
-		margin: 0 auto;
-		@include substitute;
-		@include iconSprite(0, 0);
-	}
-	.serch {
-		display: block;
-		position: absolute;
-		top: 7px;
-		left: 11px;
-		width: 28px;
-		height: 28px;
-		@include iconSprite(0, -37px);
-	}
-	.profile {
-		display: block;
-		position: absolute;
-		top: 9px;
-		right: 39px;
-		width: 22px;
-		height: 27px;
-		@include iconSprite(0, -73px);
-	}
-}
+@import "../../stylesheets/function.css.scss";
+@import "iconSprite.css.scss";
 
 /*---   .mainCnt   ---------------------------*/
 .mainCnt {
-	.entryBox {
+	.commentWrap {
 		height: 34px;
-		margin: 9px 5px 15px;
+		margin: 9px 10px 15px;
 		border-radius: 3px;
 		background: #ffffff;
 
 		.comment {
+			display: block;
 			width: 100%;
 			height: 34px;
+			padding-top: 7px;
 			padding-left: 39px;
-			border: 1px solid #9a9999;
+			border: none;
 			border-radius: 3px;
 			box-sizing: border-box;
 			@include box-shadow(0, 2px, 2px, 0, #c7c6c6);
-			@include iconSprite(8px, -100px);
+			@include iconSprite2(8px, -75px);
+			color: #bcbcbc;
 			font-size: 14px;
 			@include appearance;
 		}
 	}
 
 	.postBox {
-		margin: 0 5px 8px;
+		margin: 0 10px 8px;
 		padding: 15px 13px;
+		@include box-shadow(0, 1px, 1px, 0, #afafaf);
 		@include box-sizing;
 		@include border-radius(3px);
 		background: #fbfbfb;
@@ -85,15 +42,16 @@ header {
 			float: left;
 			width: 58px;
 			height: 58px;
-			margin-right: 18px;
+			margin-right: 10px;
 			@include border-radius(29px);
 		}
 		.postArea {
 			position: relative;
 		}
 		.account {
-			color: #464646;
-			font-size: 13px;
+			color: #232937;
+			font-size: 14px;
+			@include font-weight(1px, #232937);
 			text-decoration: none;
 		}
 		.time {
@@ -101,48 +59,67 @@ header {
 			font-size: 9px;
 		}
 		.ttl {
-			color: #22c0a4;
-			font-size: 13px;
+			color: #10ac9b;
+			font-size: 14px;
+			@include font-weight(1px, #10ac9b);
 			line-height: 1.0;
+			margin-top: 2px;
 		}
-		.mood {
+		.mood_ready, .mood_playing, .mood_played {
 			display: table-cell;
 			position: absolute;
 			right: 0;
 			top: 0;
-			width: 48px;
-			height: 48px;
-			padding-top: 16px;
-			border: 1px solid #e27676;
-			@include border-radius(24px);
+			width: 44px;
+			height: 44px;
+			padding-top: 15px;
+			@include border-radius(22px);
 			@include box-sizing;
-			color: #e27676;
-			font-size: 10px;
+			font-size: 8px;
 			text-align: center;
 		}
+		.mood_ready {
+			border: 1px solid #b7b51b;
+			color: #b7b51b;
+		}
+		.mood_playing {
+			border: 1px solid #22c0a4;
+			color: #22c0a4;
+		}
+		.mood_played {
+			border: 1px solid #e27676;
+			color: #e27676;
+		}
 		.text {
-			margin-bottom: 17px;
+			margin-bottom: 12px;
 			color: #404040;
-			font-size: 12px;
+			font-size: 13px;
+			line-height: 1.6;
 		}
 		.stateBox {
 			padding: 12px 0 0 5px;
 			border-top: 1px solid #999a9a;
 		}
 		.commentBtn {
-			margin-right: 20px;
-			padding: 4px 0 4px 33px;
+			margin-right: 16px;
+			padding: 1px 0 4px 26px;
 			color: #8d8e8e;
 			font-size: 12px;
 			text-decoration: none;
-			@include iconSprite(0, -134px);
+			@include iconSprite2(0, -110px);
 		}
 		.favBtn {
-			padding: 4px 0 4px 28px;
+			padding: 3px 0 4px 25px;
 			color: #8d8e8e;
 			font-size: 12px;
 			text-decoration: none;
-			@include iconSprite(0, -157px);
+			@include iconSprite2(0, -134px);
+
+			@at-root {
+				&.on {
+					background-position: 0 -157px;
+				}
+			}
 		}
 	}
 }
