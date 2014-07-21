@@ -1,13 +1,15 @@
 /*---   .mainCnt   ---------------------------*/
-.mainCnt .entryBox {
+.mainCnt .commentWrap {
   height: 34px;
   margin: 9px 10px 15px;
   border-radius: 3px;
   background: #ffffff;
 }
-.mainCnt .entryBox .comment {
+.mainCnt .commentWrap .comment {
+  display: block;
   width: 100%;
   height: 34px;
+  padding-top: 7px;
   padding-left: 39px;
   border: none;
   border-radius: 3px;
@@ -17,6 +19,7 @@
   box-shadow: 0 2px 2px 0 #c7c6c6;
   background: url(../images/img_set.png) no-repeat 8px -75px;
   background-size: 25px 288px;
+  color: #bcbcbc;
   font-size: 14px;
   -moz-appearance: none;
   -webkit-appearance: none;
