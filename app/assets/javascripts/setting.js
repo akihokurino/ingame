@@ -127,7 +127,6 @@
       },
       template: _.template($("#first-template").html()),
       initialize: function () {
-        var that = this;
         this.$el.html("");
         this.$el.append(this.template);
         this.results_view = new ResultsView({el: ".result-list"});
@@ -174,7 +173,6 @@
       },
       template: _.template($("#second-template").html()),
       initialize: function () {
-        var that = this;
         this.$el.html("");
         this.$el.append(this.template);
         this.users_view = new UsersView({el: ".user-list"});
@@ -218,7 +216,6 @@
       },
       template: _.template($("#third-template").html()),
       initialize: function () {
-        var that = this;
         this.$el.html("");
         this.$el.append(this.template);
         var tmp = location.href.split("#")[0].split("/");

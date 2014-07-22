@@ -19,6 +19,7 @@
     %li.item
       %a.menuItem{href: ""} ログアウト
   .overlayer
+
 .setting-page
 
 %script{type: "text/template", id: "first-template"}
@@ -75,14 +76,14 @@
   <input type="submit" class="btn next-page" value="スキップ">
   </form>
   <ul class="progress">
-  <li class="progress--on"></li>
+  <li class="progress--off"></li>
   <li class="progress--on"></li>
   <li class="progress--off"></li>
   </ul>
   </section>
 
 %script{type: "text/template", id: "user-template"}
-  <img src=<%= photo_path %> class="profImg" width="48" height="48" alt="">
+  <img src=<%- photo_path %> class="profImg" width="48" height="48" alt="">
   <p class="name"><%- username %></p>
   <a class="btn follow" href="#">友達になる</a>
 
@@ -101,8 +102,8 @@
   <input type="submit" class="btn next-page" value="スキップ">
   </form>
   <ul class="progress">
-  <li class="progress--on"></li>
-  <li class="progress--on"></li>
+  <li class="progress--off"></li>
+  <li class="progress--off"></li>
   <li class="progress--on"></li>
   </ul>
   </section>
