@@ -57,6 +57,7 @@ ProfileUpload.prototype = {
     })
   },
   render: function (data, name) {
+    this._output.innerHTML = "";
     var div = document.createElement("div");
     var img = document.createElement("img");
     img.src = data;

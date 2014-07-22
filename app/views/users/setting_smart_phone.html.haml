@@ -34,7 +34,7 @@
   <li class="progress--off"></li>
   </ul>
   //この部分にResultのリストを入れる
-  <div class="result-list-wrap"></div>
+  <ul class="result-list"></ul>
   </section>
 
 %script{type: "text/template", id: "result-template"}
@@ -67,7 +67,7 @@
   <div class="friendBox">
   <a href="#" class="leftBtn"><span class="tri"></span></a>
   //この部分にUserのリストを入れる
-  <div class="user-list-wrap"></div>
+  <ul class="user-list listWrap"></ul>
   <a href="#" class="rightBtn"><span class="tri"></span></a>
   </div>
   <form class="entryBox">
@@ -87,6 +87,22 @@
   <a class="btn follow" href="#">友達になる</a>
 
 %script{type: "text/template", id: "third-template"}
-  <input type="file" id="upload-btn">
-  <div id="thumbnail"></div>
-  <a href="/posts">終了</a>
+  <section class="step03">
+  <h2 class="step03Ttl">プロフィール写真を設定</h2>
+  <div class="uploadBox">
+  <div id="thumbnail" width="96" height="96">
+  <img src="/assets/smart_phone/step03__profImg.png" width="96" height="96">
+  </div>
+  <form class="btnWrap">
+  <input type="file" class="btn" value="写真をアップロード" id="upload-btn">
+  </form>
+  </div>
+  <form class="entryBox">
+  <input type="submit" class="btn next-page" value="スキップ">
+  </form>
+  <ul class="progress">
+  <li class="progress--on"></li>
+  <li class="progress--on"></li>
+  <li class="progress--on"></li>
+  </ul>
+  </section>

@@ -14,8 +14,6 @@
 
     /* ---------- View ---------- */
     var ResultsView = Backbone.View.extend({
-      tagName: "ul",
-      className: "result-list",
       initialize: function () {
         this.collection = results;
         this.listenTo(this.collection, "add", this.addResult);
@@ -71,8 +69,6 @@
     })
 
     var UsersView = Backbone.View.extend({
-      tagName: "ul",
-      className: "listWrap",
       initialize: function () {
         this.collection = users;
         this.listenTo(this.collection, "add", this.addUser);
@@ -134,8 +130,7 @@
         var that = this;
         this.$el.html("");
         this.$el.append(this.template);
-        this.results_view = new ResultsView();
-        this.$el.find(".result-list-wrap").append(this.results_view.el);
+        this.results_view = new ResultsView({el: ".result-list"});
         this.collection = results;
         this.search_title = this.$(".search-title-input");
         var tmp = location.href.split("#")[0].split("/");
@@ -182,8 +177,7 @@
         var that = this;
         this.$el.html("");
         this.$el.append(this.template);
-        this.users_view = new UsersView();
-        this.$el.find(".user-list-wrap").append(this.users_view.el);
+        this.users_view = new UsersView({el: ".user-list"});
         this.collection = users;
         this.username = $(".user-input");
         var tmp = location.href.split("#")[0].split("/");
@@ -219,6 +213,9 @@
 
     var ThirdView = Backbone.View.extend({
       el: $(".setting-page"),
+      events: {
+        "click .next-page": "next"
+      },
       template: _.template($("#third-template").html()),
       initialize: function () {
         var that = this;
@@ -228,6 +225,10 @@
         tmp.pop();
         this.user_id = tmp.pop();
         this.upload = new ProfileUpload("upload-btn", "thumbnail", this.user_id);
+      },
+      next: function (e) {
+        e.preventDefault();
+        location.href = "/posts";
       }
     })
 
