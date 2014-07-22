@@ -31,7 +31,7 @@
     var ResultView = Backbone.View.extend({
       tagName: "li",
       events: {
-        "click .regist-btn": "regist"
+        "change .status": "regist"
       },
       initialize: function () {
       },
@@ -45,31 +45,34 @@
         return this;
       },
       regist: function () {
-        var that = this;
-        var data = {
-          "log": {
-            "game_id": this.model.id,
-            "status_id": this.$el.find("select").val()
+        console.log("test")
+        if(this.$el.find("select").val() != ""){
+          var that = this;
+          var data = {
+            "log": {
+              "game_id": this.model.id,
+              "status_id": this.$el.find("select").val()
+            }
           }
-        }
 
-        $.ajax({
-          type: "POST",
-          url: "/api/logs",
-          data: data,
-          success: function (data) {
-            that.remove();
-          },
-          error: function () {
-            console.log("error");
-          }
-        })
+          $.ajax({
+            type: "POST",
+            url: "/api/logs",
+            data: data,
+            success: function (data) {
+              that.remove();
+            },
+            error: function () {
+              console.log("error");
+            }
+          })
+        }
       }
     })
 
     var UsersView = Backbone.View.extend({
       tagName: "ul",
-      className: "user-list",
+      className: "listWrap",
       initialize: function () {
         this.collection = users;
         this.listenTo(this.collection, "add", this.addUser);
@@ -84,6 +87,7 @@
 
     var UserView = Backbone.View.extend({
       tagName: "li",
+      className: "list",
       events: {
         "click .follow": "follow"
       },
@@ -93,7 +97,8 @@
         this.$el.html(template);
         return this;
       },
-      follow: function () {
+      follow: function (e) {
+        e.preventDefault();
         var that = this;
         var data = {
           "follow": {
@@ -121,7 +126,7 @@
     var FirstView = Backbone.View.extend({
       el: $(".setting-page"),
       events: {
-        "submit": "search",
+        "keypress .search": "search",
         "click .next-page": "next"
       },
       template: _.template($("#first-template").html()),
@@ -130,7 +135,7 @@
         this.$el.html("");
         this.$el.append(this.template);
         this.results_view = new ResultsView();
-        this.$el.append(this.results_view.el);
+        this.$el.find(".result-list-wrap").append(this.results_view.el);
         this.collection = results;
         this.search_title = this.$(".search-title-input");
         var tmp = location.href.split("#")[0].split("/");
@@ -138,27 +143,30 @@
         this.user_id = tmp.pop();
       },
       search: function (e) {
-        e.preventDefault();
-        var that = this;
-        var search_title = this.search_title.val();
-        this.collection.fetch({
-          data: {search_title: search_title},
-          success: function (model, response, options) {
-            that.collection.reset();
-            that.results_view.$el.html("");
-            if(response.results && response.results.length > 0){
-              for(var i = 0; i < response.results.length; i++){
-                var result = new Result(response.results[i]);
-                that.collection.add(result);
+        if(e.which == 13){
+          e.preventDefault();
+          var that = this;
+          var search_title = this.search_title.val();
+          this.collection.fetch({
+            data: {search_title: search_title},
+            success: function (model, response, options) {
+              that.collection.reset();
+              that.results_view.$el.html("");
+              if(response.results && response.results.length > 0){
+                for(var i = 0; i < response.results.length; i++){
+                  var result = new Result(response.results[i]);
+                  that.collection.add(result);
+                }
               }
+            },
+            error: function () {
+              console.log("error");
             }
-          },
-          error: function () {
-            console.log("error");
-          }
-        })
+          })
+        }
       },
-      next: function () {
+      next: function (e) {
+        e.preventDefault()
         location.href = "/users/" + this.user_id + "/setting#second";
       }
     })
@@ -175,7 +183,7 @@
         this.$el.html("");
         this.$el.append(this.template);
         this.users_view = new UsersView();
-        this.$el.append(this.users_view.el);
+        this.$el.find(".user-list-wrap").append(this.users_view.el);
         this.collection = users;
         this.username = $(".user-input");
         var tmp = location.href.split("#")[0].split("/");
@@ -186,6 +194,7 @@
         var that = this;
         var username = this.username.val();
         if(username && e.which == 13){
+          e.preventDefault();
           this.collection.fetch({
             data: {username: username},
             success: function (model, response, options) {
@@ -202,7 +211,8 @@
           });
         }
       },
-      next: function () {
+      next: function (e) {
+        e.preventDefault();
         location.href = "/users/" + this.user_id + "/setting#third";
       }
     })

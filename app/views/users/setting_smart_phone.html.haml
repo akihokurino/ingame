@@ -1,32 +1,90 @@
 = content_for :head do
   = javascript_include_tag "setting.js"
 
+%header
+  %h1.ttlWrap
+    %a.ttl{href: ""} Playdy
+  %span.menu{href: ""}
+  %span.serch{href: ""}
+  %span.profile{href: ""}
+  %ul.openMenu
+    %li.item
+      %a.menuItem{href: ""} 登録しているゲーム
+    %li.item
+      %a.menuItem{href: ""} 通知
+    %li.item
+      %a.menuItem{href: ""} アカウント設定
+    %li.item
+      %a.menuItem{href: ""} Playdyとは
+    %li.item
+      %a.menuItem{href: ""} ログアウト
+  .overlayer
 .setting-page
 
 %script{type: "text/template", id: "first-template"}
-  <form class="search-form">
-  <input type="text" name="search_title" class="search-title-input">
-  <input type="submit" class="submit-btn">
+  <section class="step01_01">
+  <h2 class="step01_01Ttl">好きなゲームを登録</h2>
+  <form class="search-form entryBox">
+  <input type="text" name="search_title" class="search-title-input search" placeholder="search">
+  <input type="submit" class="submit-btn btn next-page" value="スキップ">
   </form>
-  <span class="next-page">次へ</span>
+  <ul class="progress">
+  <li class="progress--on"></li>
+  <li class="progress--off"></li>
+  <li class="progress--off"></li>
+  </ul>
+  //この部分にResultのリストを入れる
+  <div class="result-list-wrap"></div>
+  </section>
 
 %script{type: "text/template", id: "result-template"}
-  <p><%- title %></p>
-  <img src=<%- photo_path %> />
-  <span class="regist-btn">登録</span>
-  <select>
+  <article class="gameList">
+  <figure class="gameImgWrap">
+  <div class="gameImgInner">
+  <img class="gameImg" src=<%- photo_path %> width="62" height="88" alt="">
+  </div>
+  </figure>
+  <section class="gameInfo">
+  <h1 class="ttl"><%- title %></h1>
+  <ul class="btnList">
+  <li class="item">レビュー</li>
+  <li class="item">
+  <select name="status", size="1" class="status">
+  <option value="">ステータス</option>
   <option value="1">気になる</option>
   <option value="2">プレイ中</option>
   <option value="3">アーカイブ</option>
   </select>
+  </li>
+  </ul>
+  </section>
+  </article>
 
 %script{type: "text/template", id: "second-template"}
-  <input type="text" placeholder="ユーザー名" class="user-input">
-  <span class="next-page">次へ</span>
+  <section class="step02">
+  <h2 class="step02Ttl">友達を検索</h2>
+  <p class="step02Text">友達かも？</p>
+  <div class="friendBox">
+  <a href="#" class="leftBtn"><span class="tri"></span></a>
+  //この部分にUserのリストを入れる
+  <div class="user-list-wrap"></div>
+  <a href="#" class="rightBtn"><span class="tri"></span></a>
+  </div>
+  <form class="entryBox">
+  <input type="text" class="user-input friend" placeholder="友達を検索">
+  <input type="submit" class="btn next-page" value="スキップ">
+  </form>
+  <ul class="progress">
+  <li class="progress--on"></li>
+  <li class="progress--on"></li>
+  <li class="progress--off"></li>
+  </ul>
+  </section>
 
 %script{type: "text/template", id: "user-template"}
-  <a href="/users/<%= id %>" style="display: block;"><%- username %></a>
-  <span class="follow">フォロー</span>
+  <img src=<%= photo_path %> class="profImg" width="48" height="48" alt="">
+  <p class="name"><%- username %></p>
+  <a class="btn follow" href="#">友達になる</a>
 
 %script{type: "text/template", id: "third-template"}
   <input type="file" id="upload-btn">

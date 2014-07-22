@@ -1,5 +1,5 @@
-@import "../../stylesheets/function.css.scss";
-@import "iconSprite.css.scss";
+@import "../function.css.scss";
+@import "./iconSprite.css.scss";
 
 
 /*---   common   ---------------------------*/
@@ -153,7 +153,7 @@ body {
 			height: 100px;
 			padding-top: 3px;
 			@include box-sizing;
-			background: url(../images/game__bg02.png) no-repeat center top;
+			background: url(/assets/smart_phone/game__bg02.png) no-repeat center top;
 			background-size: 100px 100px;
 			text-align: center;
 		}
@@ -165,7 +165,7 @@ body {
 			background: #ffffff;
 		}
 		.gameImg {
-			-webkit-mask: url(../images/mask.png) no-repeat center top;
+			-webkit-mask: url(/assets/smart_phone/mask.png) no-repeat center top;
 			-webkit-mask-size: 94px 94px;
 			padding-top: 3px;
 		}
@@ -230,7 +230,7 @@ body {
 				@include flexbox;
 				justify-content: center;
 				margin-top: 1px;
-			}          
+			}
 			.star {
 				@include iconSprite4(11px, 10px, 0, -260px);
 			}

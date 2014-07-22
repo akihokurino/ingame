@@ -1,29 +1,47 @@
 = content_for :head do
   = javascript_include_tag "timeline.js"
 
-= link_to "ログアウト", logout_users_path
-= link_to "ユーザー情報", user_path(@current_user)
+= #link_to "ログアウト", logout_users_path
+= #link_to "ユーザー情報", user_path(@current_user)
+= #link_to "投稿", "/posts/new#select"
 
-= link_to "投稿", "/posts/new#select"
+%header
+  %h1.ttlWrap
+    %a.ttl{href: ""} Playdy
+  %span.menu{href: ""}
+  %span.serch{href: ""}
+  %span.profile{href: ""}
+  %ul.openMenu
+    %li.item
+      %a.menuItem{href: ""} 登録しているゲーム
+    %li.item
+      %a.menuItem{href: ""} 通知
+    %li.item
+      %a.menuItem{href: ""} アカウント設定
+    %li.item
+      %a.menuItem{href: ""} Playdyとは
+    %li.item
+      %a.menuItem{href: ""} ログアウト
 
-%div{class: "mainCnt timeline-page"}
-  .post-list
-    - 3.times do |i|
-      %article.postBox
-        .topBox
-          %img.profImg{src: "/user_photos/baba.jpg", width: "58", height: "58", alt: ""}
-          .postArea
-            %a.account{href: ""} baba
-            %time.time 2時間前
-            %h2.ttl
-              アルティメットヒッツ
-              %br
-              ファイナルファンタジー
-            .mood プレイ中
-        %p.text まず目を惹かれるのは圧倒的なグラフィックですね。ムービーも美しいのですが、２Ｄ、バトル画面の綺麗さは特筆物です。今回のリメイクでの一番の売りは個人的にはグラフィックだと思っているので、さすがはスクウェアエニックスです。フィールド画面の２Ｄが綺麗なので携帯ゲーム機でも、あまり目
-        .stateBox
-          %a.commentBtn{href: ""} コメントする
-          %a.favBtn{href: ""} 12
+.mainCnt.timeline-page
+  .commentWrap
+    %span.comment ゲームをシェア
+  / .post-list
+  %article.postBox
+    .topBox
+      %img.profImg{src: "/user_photos/baba.jpg", width: "58", height: "58", alt: ""}
+      .postArea
+        %a.account{href: ""} baba
+        %time.time 2時間前
+        %h2.ttl
+          アルティメットヒッツ
+          %br
+          ファイナルファンタジー
+        .mood_playing プレイ中
+    %p.text まず目を惹かれるのは圧倒的なグラフィックですね。ムービーも美しいのですが、２Ｄ、バトル画面の綺麗さは特筆物です。今回のリメイクでの一番の売りは個人的にはグラフィックだと思っているので、さすがはスクウェアエニックスです。フィールド画面の２Ｄが綺麗なので携帯ゲーム機でも、あまり目
+    .stateBox
+      %a.commentBtn{href: ""} コメントする
+      %a.favBtn{href: ""} 12
 
 
 %script{type: "text/template", id: "post-template"}
