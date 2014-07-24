@@ -1,11 +1,11 @@
-@import "../../stylesheets/function.css.scss";
-@import "iconSprite.css.scss";
+@import "../function.css.scss";
+@import "./iconSprite.css.scss";
 
 /*---   .personalBox   ---------------------------*/
 .personalBoxWrap {
 	position: relative;
 	padding-bottom: 12px;
-	background: url(../images/profile__bg.jpg) repeat top center;
+	background: url(/assets/smart_phone/profile__bg.jpg) repeat top center;
 	background-size: cover;
 	text-align: center;
 
@@ -176,7 +176,7 @@
 			margin: 0 0 12px -10px;
 			@include border-radius(5px);
 			@include box-sizing;
-			background: url(../images/game.jpg) no-repeat top center;
+			//background: url(/assets/smart_phone/game.jpg) no-repeat top center;
 		}
 		.ttl {
 			margin-bottom: 10px;

@@ -1,10 +1,28 @@
 = content_for :head do
   = javascript_include_tag "profile.js"
 
+%header
+  %h1.ttlWrap
+    = link_to "Playdy", posts_path, class: "ttl"
+  %span.menu{href: ""}
+  %span.serch{href: ""}
+  %span.profile{href: ""}
+  %ul.openMenu
+    %li.item
+      %a.menuItem{href: ""} 登録しているゲーム
+    %li.item
+      %a.menuItem{href: ""} 通知
+    %li.item
+      = link_to "アカウント設定", user_path(@current_user), class: "menuItem"
+    %li.item
+      %a.menuItem{href: ""} Playdyとは
+    %li.item
+      = link_to "ログアウト", logout_users_path, class: "menuItem"
+
 .profile-page{"data-userid" => @user[:id]}
   .personalBoxWrap
     %figure.profImgWrap
-      = image_tag("/user_photos/asuya02.jpg", height: 83, class: "profImg")
+      = image_tag "/user_photos/#{@user[:photo_path]}", height: 83, class: "profImg"
     %section.personalBox
       %h1.name
         = @user.username
