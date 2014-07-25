@@ -37,18 +37,16 @@
 					}
 				}
 
-				$.ajax({
-					type: "POST",
-					url: "/api/posts",
-					data: data,
-					success: function (data) {
-						var post = new Post(data.post);
+				this.collection.create(data, {
+					method: "POST",
+					success: function (response) {
+						var post = new Post(response.attributes.post);
 						that.collection.add(post);
 					},
 					error: function () {
 						console.log("error");
 					}
-				})
+				});
 			}
 		})
 
@@ -212,7 +210,7 @@
 							}
 						},
 						error: function () {
-
+							console.log("error");
 						}
 					});
 				}

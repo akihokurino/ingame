@@ -43,7 +43,6 @@
         return this;
       },
       regist: function () {
-        console.log("test")
         if(this.$el.find("select").val() != ""){
           var that = this;
           var data = {

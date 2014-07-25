@@ -123,17 +123,15 @@
 					}
 				}
 
-				$.ajax({
-					type: "POST",
-					url: "/api/logs",
-					data: data,
-					success: function (data) {
-						var log = new Log(data.log);
+				this.collection.create(data, {
+					method: "POST",
+					success: function (response) {
+						var log = new Log(response.attributes.log);
 						that.collection.add(log);
 						that.remove();
 					},
 					error: function () {
-						cnsole.log("error");
+						console.log("error");
 					}
 				})
 			}
