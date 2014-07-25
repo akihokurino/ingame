@@ -1,0 +1,14 @@
+%script{type: "text/template", id: "third-template"}
+  %section.step03
+    %h2.step03Ttl プロフィール写真を設定
+    .uploadBox
+      #thumbnail{width: 96, height: 96}
+        %img{src: "/assets/smart_phone/step03__profImg.png", width: 96, height: 96}
+      %form.btnWrap
+        %input.btn#upload-btn{type: "file", value: "写真をアップロード"}
+    %form.entryBox
+      %input.btn.next-page{type: "submit", value: "スキップ"}
+    %ul.progress
+      %li.progress--off
+      %li.progress--off
+      %li.progress--on

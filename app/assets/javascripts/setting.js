@@ -6,6 +6,10 @@
 
 (function () {
   $(function () {
+    _.templateSettings = {
+      interpolate : /\{\{(.+?)\}\}/g
+    };
+
     /* ---------- Collection ---------- */
     var results = new Results();
     var users = new Users();

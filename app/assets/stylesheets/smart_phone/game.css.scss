@@ -1,5 +1,5 @@
-@import "../../stylesheets/function.css.scss";
-@import "iconSprite.css.scss";
+@import "../function.css.scss";
+@import "./iconSprite.css.scss";
 
 /*---   common   ---------------------------*/
 html {
@@ -11,7 +11,7 @@ html {
 	/*---   .gameBox   ----------*/
 	.gameBoxWrap {
 		padding-top: 20px;
-		background: url(../images/game__bg.jpg) no-repeat center top;
+		background: url(/assets/smart_phone/game__bg.jpg) no-repeat center top;
 		background-size: cover;
 
 		.gameWrap {
@@ -20,7 +20,7 @@ html {
 			margin: 0 auto;
 			padding-top: 16px;
 			@include box-sizing;
-			background: url(../images/game__bg02.png) no-repeat center top;
+			background: url(/assets/smart_phone/game__bg02.png) no-repeat center top;
 			background-size: 162px 162px;
 			vertical-align: middle;
 		}
@@ -34,10 +34,10 @@ html {
 			background: #ffffff;
 			text-align: center;
 			@include clearfix;
-			
+
 		}
 		.gameImg {
-			-webkit-mask: url(../images/mask.png) no-repeat center top;
+			-webkit-mask: url(/assets/smart_phone/mask.png) no-repeat center top;
 			padding-top: 8px;
 		}
 	}
@@ -445,7 +445,7 @@ html {
 			height: 100px;
 			padding-top: 3px;
 			@include box-sizing;
-			background: url(../images/game__bg02.png) no-repeat center top;
+			background: url(/assets/smart_phone/game__bg02.png) no-repeat center top;
 			background-size: 100px 100px;
 			text-align: center;
 		}
@@ -457,7 +457,7 @@ html {
 			background: #ffffff;
 		}
 		.gameImg {
-			-webkit-mask: url(../images/mask.png) no-repeat center top;
+			-webkit-mask: url(/assets/smart_phone/mask.png) no-repeat center top;
 			-webkit-mask-size: 94px 94px;
 			padding-top: 3px;
 		}
@@ -522,7 +522,7 @@ html {
 				@include flexbox;
 				justify-content: center;
 				margin-top: 1px;
-			}          
+			}
 			.star {
 				@include iconSprite4(11px, 10px, 0, -260px);
 			}
