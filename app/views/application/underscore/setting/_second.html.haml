@@ -1,0 +1,18 @@
+%script{type: "text/template", id: "second-template"}
+  %section.step02
+    %h2.step02Ttl 友達を検索
+    %p.step02Text 友達かも？
+    .friendBox
+      %a.leftBtn{href: "#"}
+        %span.tri
+      %ul.user-list.listWrap
+      %a.rightBtn{href: "#"}
+        %span.tri
+    %form.entryBox
+      %input.user-input.friend{type: "text", placeholder: "友達を検索"}
+      %input.btn.next-page{type: "submit", value: "スキップ"}
+    %ul.progress
+      %li.progress--off
+      %li.progress--on
+      %li.progress--off
+
