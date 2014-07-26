@@ -12,7 +12,7 @@ a {
 /*---   .post01   ---------------------------*/
 .post01 {
 	/*---   header   ----------*/
-	header {
+	.header {
 		position: relative;
 		margin-bottom: 15px;
 		padding: 14px 0 13px;
@@ -75,7 +75,7 @@ a {
 				border-radius: 20px 0 0 20px;
 			}
 			.played {
-				border-radius: 0 3px 3px 0;
+				border-radius: 0 20px 20px 0;
 			}
 			.current {
 				position: relative;
@@ -118,6 +118,7 @@ a {
 				@include border-radius(16px);
 			}
 			figcaption {
+				overflow: hidden;
 				padding-top: 4px;
 				color: #1ba189;
 				font-size: 15px;
@@ -130,7 +131,7 @@ a {
 /*---   .post02   ---------------------------*/
 .post02 {
 	/*---   header   ----------*/
-	header {
+	.header {
 		position: relative;
 		margin-bottom: 6px;
 		padding: 14px 0 13px;
@@ -181,8 +182,10 @@ a {
 		}
 		.textareaWrap {
 			clear: both;
+			position: relative;
 			margin-top: 6px;
 			border-top: 1px solid #a0a0a0;
+			line-height: 0.8;
 		}
 		textarea {
 			width: 100%;
@@ -191,7 +194,21 @@ a {
 			border: none;
 			@include box-sizing;
 			background: #f6f4f4;
+			line-height: 1.3;
 			resize: none;
+		}
+		.btn {
+			position: absolute;
+			top: 274px;
+			width: 100%;
+			padding: 26px 0;
+			border: none;
+			background: #949292;
+			color: #ffffff;
+			font-size: 18px;
+			text-align: center;
+			@include appearance;
+			cursor: pointer;
 		}
 		.addPhoto {
 			display: block;
@@ -237,17 +254,6 @@ a {
 			background: url(/assets/smart_phone/sns_set.png) no-repeat -22px 0;
 			background-size: 62px 36px;
 		}
-		.btn {
-			width: 100%;
-			padding: 26px 0;
-			border: none;
-			background: #949292;
-			color: #ffffff;
-			font-size: 18px;
-			text-align: center;
-			@include appearance;
-			cursor: pointer;
-		}
 	}
 }
 
@@ -255,7 +261,7 @@ a {
 /*---   .post03   ---------------------------*/
 .post03 {
 	/*---   header   ----------*/
-	header {
+	.header {
 		position: relative;
 		margin-bottom: 17px;
 		padding: 14px 0 13px;
@@ -355,7 +361,7 @@ a {
 			}
 			figcaption {
 				float: left;
-				width: 56%;
+				width: 50%;
 				padding-top: 6px;
 				color: #1ba189;
 				font-size: 14px;
