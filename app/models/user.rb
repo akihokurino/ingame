@@ -37,8 +37,8 @@ class User < ActiveRecord::Base
       self.i_followed = false
     end
 
-    self.follow_num = Follow.where(from_user_id: current_user[:id]).count
-    self.follower_num = Follow.where(to_user_id: current_user[:id]).count
+    self.follow_num = Follow.where(from_user_id: self[:id]).count
+    self.follower_num = Follow.where(to_user_id: self[:id]).count
   end
 
 	class << self
