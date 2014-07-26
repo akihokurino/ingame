@@ -417,4 +417,12 @@ body {
 			outline: 0;
 		}
 	}
+	#thumbnail {
+		img {
+			width: 96px;
+			height: 96px;
+			@include box-shadow(2px, 2px, 2px, 0, #b3b2b2);
+			@include border-radius(48px);
+		}
+	}
 }
