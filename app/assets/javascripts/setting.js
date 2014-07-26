@@ -43,12 +43,12 @@
         return this;
       },
       regist: function () {
-        if(this.$el.find("select").val() != ""){
+        if(this.$el.find(".status").val() != ""){
           var that = this;
           var data = {
             "log": {
               "game_id": this.model.id,
-              "status_id": this.$el.find("select").val()
+              "status_id": this.$el.find(".status").val()
             }
           }
 
