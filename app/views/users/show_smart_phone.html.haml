@@ -69,23 +69,10 @@
       %input{input: "text", placeholder: "search", role: "textarea"}
     %ul.gameList.log-list
 
-%script{type: "text/template", id: "log-template"}
-  <a href="/games/<%= game.id %>" style="display: block;" class="articleWrap">
-  <article class="game">
-  <img class="gameImg" src=<%- game.photo_path %> />
-  <h1 class="ttl"><%- game.title %></h1>
-  <ul class="stars">
-  <li class="star"></li>
-  <li class="star"></li>
-  <li class="star"></li>
-  <li class="star"></li>
-  </ul>
-  </article>
-  </a>
+= render partial: "application/underscore/profile/log"
+= render partial: "application/underscore/profile/follow"
+= render partial: "application/underscore/profile/unfollow"
 
-%script{type: "text/template", id: "follow-template"}
-  <span class="followBtn follow">フォロー</span>
 
-%script{type: "text/template", id: "unfollow-template"}
-  <span class="followBtn unfollow">フォローを外す</span>
+
 

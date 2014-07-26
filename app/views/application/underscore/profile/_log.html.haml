@@ -1,0 +1,11 @@
+%script{type: "text/template", id: "log-template"}
+  %a.articleWrap{href: "/games/{{= game.id }}", style: "display: block;"}
+    %article.game
+      %img.gameImg{src: "{{= game.photo_path }}"}
+      %h1.ttl
+        {{= game.title}}
+      %ul.stars
+        %li.star
+        %li.star
+        %li.star
+        %li.star
