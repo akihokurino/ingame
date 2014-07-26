@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require underscore
 //= require backbone
+//= require ./underscore_template.js
 
 
