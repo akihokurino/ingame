@@ -16,8 +16,6 @@
 
     /* ---------- View ---------- */
     var LogsView = Backbone.View.extend({
-      tagName: "ul",
-      className: "log-list",
       initialize: function () {
         this.collection = logs;
         this.listenTo(this.collection, "add", this.addLog);
@@ -149,10 +147,10 @@
               switch(log.get("status").id){
                 case 1:
                   that.attentions.push(log);
+                  that.logs_view.collection.add(log);
                   break;
                 case 2:
                   that.playings.push(log);
-                  that.logs_view.collection.add(log);
                   break;
                 case 3:
                   that.archives.push(log);
