@@ -1,23 +1,7 @@
 = content_for :head do
   = javascript_include_tag "timeline.js"
 
-%header
-  %h1.ttlWrap
-    = link_to "Playdy", posts_path, class: "ttl"
-  %span.menu{href: ""}
-  %span.serch{href: ""}
-  = link_to "", user_path(@current_user), class: "profile"
-  %ul.openMenu
-    %li.item
-      %a.menuItem{href: ""} 登録しているゲーム
-    %li.item
-      %a.menuItem{href: ""} 通知
-    %li.item
-      = link_to "アカウント設定", user_path(@current_user), class: "menuItem"
-    %li.item
-      %a.menuItem{href: ""} Playdyとは
-    %li.item
-      = link_to "ログアウト", logout_users_path, class: "menuItem"
+= render partial: "application/default_header"
 
 .timeline-page.mainCnt
   .commentWrap
