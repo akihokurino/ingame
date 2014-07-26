@@ -6,6 +6,7 @@
     %section.gameInfo
       %h1.ttl
         {{= game.title }}
+        {{= status.id}}
       %ul.btnList
         %li.item
           %select.stars{name: "stars", size: 1}
@@ -18,6 +19,6 @@
         %li.item
           %select.status{name: "status", size: 1}
             %option{value: ""} ステータス
-            %option{value: 1, selected: "{{= game.status == 1 ? 'selected' : ''}}"} 気になる
-            %option{value: 2, selected: "{{= game.status == 2 ? 'selected' : ''}}"} プレイ中
-            %option{value: 3, selected: "{{= game.status == 3 ? 'selected' : ''}}"} アーカイブ
+            %option{value: 1, selected: "{{= status.id == 1 ? true : false}}"} 気になる
+            %option{value: 2, selected: "{{= status.id == 2 ? true : false}}"} プレイ中
+            %option{value: 3, selected: "{{= status.id == 3 ? true : false}}"} アーカイブ
