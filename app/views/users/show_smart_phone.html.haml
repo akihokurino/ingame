@@ -26,9 +26,10 @@
     %section.personalBox
       %h1.name
         = @user.username
-      %p.place
-        %span.town Tokyo
-        %span.country Japan
+      - if @user.place
+        %p.place
+          %span.town
+            = @user.place
       %p.text
         = @user.introduction
       - unless current_user?(@user)
