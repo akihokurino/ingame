@@ -161,10 +161,11 @@
 		@include flexbox;
 
 		.item {
+			position: relative;
 			width: 140px;
 			min-width: 140px;
 			margin: 0 8px 16px;
-			padding: 0 10px;
+			padding: 0 10px 35px;
 			@include border-radius(5px);
 			@include box-sizing;
 			@include box-shadow(1px, 1px, 2px, 0, #a2a2a2);
@@ -179,13 +180,18 @@
 			//background: url(/assets/smart_phone/game.jpg) no-repeat top center;
 		}
 		.ttl {
+			width: auto;
 			margin-bottom: 10px;
 			color: #333232;
 			font-size: 12px;
+			text-align: left;
 		}
 		.stars {
 			@include flexbox;
 			justify-content: center;
+			position: absolute;
+			bottom: 0;
+			width: 120px;
 			padding: 10px 0;
 			border-top: 1px solid #cccccc;
 		}
