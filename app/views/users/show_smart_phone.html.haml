@@ -6,7 +6,7 @@
     = link_to "Playdy", posts_path, class: "ttl"
   %span.menu{href: ""}
   %span.serch{href: ""}
-  %span.profile{href: ""}
+  = link_to "", user_path(@current_user), class: "profile"
   %ul.openMenu
     %li.item
       %a.menuItem{href: ""} 登録しているゲーム
@@ -42,11 +42,13 @@
       %ul.countBox
         %li.item
           %a.follow{href: ""}
-            %span.count 12
+            %span.count
+              = @user.follow_num
             フォロー
         %li.item
           %a.follower{href: ""}
-            %span.count 34
+            %span.count
+              = @user.follower_num
             フォロワー
         %li.item
           %a.gameNum{href: ""}
