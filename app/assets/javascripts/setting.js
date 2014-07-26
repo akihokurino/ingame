@@ -194,6 +194,10 @@
               for(var i = 0; i < response.results.length; i++){
                 var user = new User(response.results[i]);
                 that.collection.add(user);
+
+                if (i > 2) {
+                  break;
+                }
               }
             },
             error: function () {

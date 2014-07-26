@@ -1,16 +1,12 @@
 = content_for :head do
   = javascript_include_tag "timeline.js"
 
-= #link_to "ログアウト", logout_users_path
-= link_to "ユーザー情報", user_path(@current_user)
-= #link_to "投稿", "/posts/new#select"
-
 %header
   %h1.ttlWrap
     = link_to "Playdy", posts_path, class: "ttl"
   %span.menu{href: ""}
   %span.serch{href: ""}
-  %span.profile{href: ""}
+  = link_to "", user_path(@current_user), class: "profile"
   %ul.openMenu
     %li.item
       %a.menuItem{href: ""} 登録しているゲーム
