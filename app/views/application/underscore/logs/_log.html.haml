@@ -1,0 +1,23 @@
+%script{type: "text/template", id: "log-template"}
+  %article.gameList
+    %figure.gameImgWrap
+      .gameImgInner
+        %img.gameImg{src: "{{= game.photo_path }}", width: 62, height: 88}
+    %section.gameInfo
+      %h1.ttl
+        {{= game.title }}
+      %ul.btnList
+        %li.item
+          %select.stars{name: "stars", size: 1}
+            %option{value: ""} レビュー
+            %option{value: 1} ★☆☆☆☆
+            %option{value: 2} ★★☆☆☆
+            %option{value: 3} ★★★☆☆
+            %option{value: 4} ★★★★☆
+            %option{value: 5} ★★★★★
+        %li.item
+          %select.status{name: "status", size: 1}
+            %option{value: ""} ステータス
+            %option{value: 1, selected: "{{= game.status == 1 ? 'selected' : ''}}"} 気になる
+            %option{value: 2, selected: "{{= game.status == 2 ? 'selected' : ''}}"} プレイ中
+            %option{value: 3, selected: "{{= game.status == 3 ? 'selected' : ''}}"} アーカイブ

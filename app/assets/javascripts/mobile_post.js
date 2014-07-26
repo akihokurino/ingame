@@ -16,8 +16,6 @@
 
     /* ---------- View ---------- */
     var LogsView = Backbone.View.extend({
-      tagName: "ul",
-      className: "log-list",
       initialize: function () {
         this.collection = logs;
         this.listenTo(this.collection, "add", this.addLog);
