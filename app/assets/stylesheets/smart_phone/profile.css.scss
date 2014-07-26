@@ -28,6 +28,20 @@
 		font-size: 10px;
 		text-align: center;
 	}
+	.personalEdit {
+		position: absolute;
+		top: 14px;
+		right: 8px;
+		width: 74px;
+		height: 23px;
+		line-height: 23px;
+		border: 1px solid #ffffff;
+		@include border-radius(5px);
+		@include box-sizing;
+		color: #ffffff;
+		font-size: 10px;
+		text-align: center;
+	}
 }
 .personalBox {
 	@include box-sizing;
