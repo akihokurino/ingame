@@ -18,8 +18,11 @@ $support-opera  : true;
     display: -o-flex;
     display: flex;
     flex-direction: row;
+    -webkit-flex-direction: row;
     flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
     justify-content: space-between;
+    -webkit-justify-content: space-between;
 }
 @mixin box-sizing {
 	-moz-box-sizing: border-box;

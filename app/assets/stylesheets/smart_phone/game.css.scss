@@ -86,7 +86,9 @@ html {
 		.btnList {
 			@include flexbox;
 			justify-content: center;
+			-webkit-justify-content: center;
 			font-size:13px;
+			
 			.item {
 				width: 120px;
 				margin: 12px 14px 20px;
@@ -152,6 +154,7 @@ html {
 		.stars {
 			@include flexbox;
 			justify-content: center;
+			-webkit-justify-content: center;
 			margin-bottom: 6px;
 		}
 		.star {
@@ -162,6 +165,7 @@ html {
 	.shopList {
 		@include flexbox;
 		justify-content: center;
+		-webkit-justify-content: center;
 		margin: 11px 0 10px;
 
 		.amazonBtn, .steamBtn {

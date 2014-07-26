@@ -189,6 +189,7 @@
 		.stars {
 			@include flexbox;
 			justify-content: center;
+			-webkit-justify-content: center;
 			position: absolute;
 			bottom: 0;
 			width: 120px;
@@ -197,7 +198,7 @@
 		}
 		.star {
 			margin-right: 4px;
-			@include iconSprite4(14px, 12px, 0, -216px);
+			@include iconSprite4(14px, 14px, 0, -214px);
 
 			&:last-child {
 				margin-right: 0;
