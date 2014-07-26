@@ -3,6 +3,8 @@
 
 /*---   .mainCnt   ---------------------------*/
 .mainCnt {
+	text-align: left;
+
 	.commentWrap {
 		height: 34px;
 		margin: 9px 10px 15px;
@@ -59,36 +61,33 @@
 			font-size: 9px;
 		}
 		.ttl {
+			overflow: hidden;
+			margin-top: 2px;
+			padding-right: 85px;
 			color: #10ac9b;
 			font-size: 14px;
 			@include font-weight(1px, #10ac9b);
-			line-height: 1.0;
-			margin-top: 2px;
+			line-height: 1.3;
 		}
 		.mood_ready, .mood_playing, .mood_played {
-			display: table-cell;
 			position: absolute;
-			right: 0;
-			top: 0;
-			width: 44px;
-			height: 44px;
-			padding-top: 15px;
-			@include border-radius(22px);
-			@include box-sizing;
-			font-size: 8px;
+			top: 8px;
+			right: 5px;
+			width: 68px;
+			padding: 4px 0;
+			@include border-radius(3px);
+			color: #ffffff;
+			font-size: 11px;
 			text-align: center;
 		}
 		.mood_ready {
-			border: 1px solid #b7b51b;
-			color: #b7b51b;
+			background: #000;
 		}
 		.mood_playing {
-			border: 1px solid #22c0a4;
-			color: #22c0a4;
+			background: #e27676;
 		}
 		.mood_played {
-			border: 1px solid #e27676;
-			color: #e27676;
+			background: #a4a3a3;
 		}
 		.text {
 			margin-bottom: 12px;
