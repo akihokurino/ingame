@@ -23,7 +23,6 @@
       addLog: function (log) {
         if(log.id){
           var log_view = new LogView({model: log});
-          console.log(this.$el);
           this.$el.prepend(log_view.render().el);
         }
       },
@@ -137,6 +136,8 @@
         this.playings = [];
         this.archives = [];
 
+        this.logs_view.collection.reset();
+
         $.ajax({
           type: "GET",
           url: "/api/logs?user_id=" + user_id,
@@ -148,6 +149,7 @@
                 case 1:
                   that.attentions.push(log);
                   that.logs_view.collection.add(log);
+                  console.log(log);
                   break;
                 case 2:
                   that.playings.push(log);
