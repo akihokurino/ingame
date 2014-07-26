@@ -1,10 +1,12 @@
-= #debug @game
+= content_for :head do
+  = javascript_include_tag "game.js"
+
 %header
   %h1.ttlWrap
     = link_to "Playdy", posts_path, class: "ttl"
   %span.menu{href: ""}
   %span.serch{href: ""}
-  %span.profile{href: ""}
+  = link_to "", user_path(@current_user), class: "profile"
   %ul.openMenu
     %li.item
       %a.menuItem{href: ""} 登録しているゲーム
@@ -17,7 +19,7 @@
     %li.item
       = link_to "ログアウト", logout_users_path, class: "menuItem"
 
-.game-page.mainCnt
+.game-page.mainCnt{"data-gameid" => @game[:id]}
   .gameBoxWrap
     %figure.gameWrap
       .gameInner
@@ -36,11 +38,21 @@
         %li.item
           %a.comment{href: ""} コメントする
         %li.item
-          %select{name: "status", size: "1"}
-            %option{value: "ステータス"} ステータス
-            %option{value: "気になる"} 気になる
-            %option{value: "プレイ中"} プレイ中
-            %option{value: "アーカイブ"} アーカイブ
+          - unless @game.i_registed
+            %select.new_status{name: "status", size: "1"}
+              %option{value: ""} ステータス
+              %option{value: "1"} 気になる
+              %option{value: "2"} プレイ中
+              %option{value: "3"} アーカイブ
+          - else
+            %select.my_status{name: "status", size: "1"}
+              - [{value: "", name: "ステータス"}, {value: "1", name: "気になる"}, {value: "2", name: "プレイ中"}, {value: "3", name: "アーカイブ"}].each do |obj|
+                - if obj[:value].to_i == @game.my_status_id.to_i
+                  %option{value: obj[:value], selected: "selected"}
+                    = obj[:name]
+                - else
+                  %option{value: obj[:value]}
+                    = obj[:name]
 
   %ul.dataBox
     %li.item

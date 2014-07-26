@@ -6,7 +6,8 @@
         {{= user.username }}
       %time.time ２時間前
       %h2.ttl
-        {{= game.title }}
+        %a{href: "/games/{{= game.id}}"}
+          {{= game.title }}
       .mood_playing プレイ中
   %p.text
     {{= text }}

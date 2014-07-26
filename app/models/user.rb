@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 	has_many :posts
 	has_many :logs
+  has_many :games, :through => :logs
 	has_many :game_likes
 	has_many :post_likes
 	has_many :follows, :foreign_key => "from_user_id"

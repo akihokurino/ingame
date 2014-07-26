@@ -13,7 +13,11 @@ Ingame::Application.routes.draw do
   resources :games, only: ["show"]
 
   namespace :api do
-    resources :logs, only: ["index", "create", "update", "destroy"], format: "json"
+    resources :logs, only: ["index", "create", "update", "destroy"], format: "json" do
+      member do
+        put "update_status"
+      end
+    end
     resources :statuses, only: ["index"], format: "json"
     resources :posts, only: ["index", "create", "destroy"], format: "json"
     resources :games, only: ["index", "show"], format: "json" do

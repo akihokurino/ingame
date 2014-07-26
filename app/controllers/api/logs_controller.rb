@@ -22,6 +22,12 @@ class Api::LogsController < ApplicationController
   def update
   end
 
+  def update_status
+    p params[:log]
+    log = @current_user.logs.find_by(game_id: params[:id])
+    @result = log.update(log_params) ? true : false
+  end
+
   private
   def log_params
     params.require(:log).permit(:game_id, :user_id, :status_id)

@@ -4,6 +4,7 @@ class Game < ActiveRecord::Base
 	require 'kconv'
 
 	has_many :logs
+	has_many :users, :through => :logs
 	has_many :game_likes
 	has_many :posts
 
@@ -17,6 +18,16 @@ class Game < ActiveRecord::Base
 		length: {maximum: 255}
 	validates :maker,
 		length: {maximum: 255}
+
+	attr_accessor :i_registed, :my_status_id
+
+	def check_regist(current_user)
+		self.i_registed = current_user.logs.pluck(:game_id).include?(self[:id]) ? true : false
+
+		if self.i_registed
+			self.my_status_id = self.logs.find_by(user_id: current_user[:id]).status_id
+		end
+	end
 
 	class << self
 		def get_from_amazon(url)
