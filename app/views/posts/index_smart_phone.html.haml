@@ -26,36 +26,15 @@
 .mainCnt.timeline-page
   .commentWrap
     = link_to "ゲームをシェア", "/posts/new#select", class: "comment"
-  / ここにPostの一覧を表示
   .post-list
 
-%script{type: "text/template", id: "post-template"}
-  .topBox
-    %img.profImg{width: 58, height: 58, src: "/user_photos/{{= user.photo_path }}"}
-    .postArea
-      %a.account{href: "#"}
-        {{= user.username }}
-      %time.time ２時間前
-      %h2.ttl
-        {{= game.title }}
-      .mood_playing プレイ中
-  %p.text
-    {{= text }}
-  .stateBox
-    %a.commentBtn{href: "#"}
-      コメント
-    {{ if(!i_liked) { }}
-    %span.like.favBtn
-      {{= post_likes_count }}
-    {{ } else { }}
-    %span.unlike.favBtn
-      {{= post_likes_count }}
-    {{ } }}
+= render partial: "application/underscore/timeline/post"
+= render partial: "application/underscore/timeline/game_option"
+= render partial: "application/underscore/timeline/user"
 
 
 
-%script{type: "text/template", id: "game-template"}
-  <%- title %>
 
-%script{type: "text-template", id: "user-template"}
-  <a href="/users/<%= id %>" style="display: block;"><%- username %></a>
+
+
+
