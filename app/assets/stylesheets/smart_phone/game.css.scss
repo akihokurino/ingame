@@ -252,8 +252,6 @@ html {
 		}
 		.star {
 			border-radius: 0 3px 3px 0;
-			@include iconSprite2(24px, -274px);
-			text-indent: 1.0em;
 		}
 		.current {
 			@at-root {
@@ -302,26 +300,32 @@ html {
 			font-size: 9px;
 		}
 		.ttl {
+			margin-top: 5px;
 			color: #10ac9b;
 			font-size: 14px;
 			@include font-weight(1px, #10ac9b);
 			line-height: 1.0;
-			margin-top: 2px;
 		}
-		.mood {
-			display: table-cell;
+		.mood_ready, .mood_playing, .mood_played {
 			position: absolute;
-			right: 0;
 			top: 0;
-			width: 44px;
-			height: 44px;
-			padding-top: 15px;
-			border: 1px solid #e27676;
-			@include border-radius(22px);
-			@include box-sizing;
-			color: #e27676;
-			font-size: 8px;
+			right: 0;
+			height: 18px;
+			width: 63px;
+			padding: 4px 0 0;
+			@include border-radius(3px);
+			color: #ffffff;
+			font-size: 10px;
 			text-align: center;
+		}
+		.mood_ready {
+			background: #e2bd76;
+		}
+		.mood_playing {
+			background: #e27676;
+		}
+		.mood_played {
+			background: #768ae2;
 		}
 		.text {
 			margin-bottom: 12px;
