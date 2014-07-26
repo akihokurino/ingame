@@ -1,0 +1,64 @@
+%header
+  %h1.ttlWrap
+    = link_to "Playdy", posts_path, class: "ttl"
+  %span.menu{href: ""}
+  %span.serch{href: ""}
+  = link_to "", user_path(@current_user), class: "profile"
+  %ul.openMenu
+    %li.item
+      %a.menuItem{href: ""} 登録しているゲーム
+    %li.item
+      %a.menuItem{href: ""} 通知
+    %li.item
+      = link_to "アカウント設定", user_path(@current_user), class: "menuItem"
+    %li.item
+      %a.menuItem{href: ""} Playdyとは
+    %li.item
+      = link_to "ログアウト", logout_users_path, class: "menuItem"
+
+.logs-page.editCnt
+  .sortBoxWrap
+    %ul.sortBox
+      %li.item.current
+        %span.playing プレイ中
+      %li.item
+        %span.ready
+          欲しい
+          %br
+          ゲーム
+      %li.item
+        %span.played
+          クリアした
+          %br
+          ゲーム
+
+  %form.searchWrap
+    %input.search{type: "text", placeholder: "search"}
+
+  - 2.times do |i|
+    %article.gameList
+      %figure.gameImgWrap
+        .gameImgInner
+          %img.gameImg{src: "images/game02.jpg", width: "62", height: "88", alt: ""}
+      %section.gameInfo
+        %h1.ttl スーパーマリオブラザーズ3
+        %ul.btnList
+          %li.item レビュー
+          %li.item
+            %select{name: "status", size: "1"}
+              %option{value: "ステータス"} ステータス
+              %option{value: "気になる"} 気になる
+              %option{value: "プレイ中"} プレイ中
+              %option{value: "アーカイブ"} アーカイブ
+    %article.gameList
+      %figure.gameImgWrap
+        .gameImgInner
+          %img.gameImg{src: "images/game.jpg", width: "70", height: "89", alt: ""}
+      %section.gameInfo
+        %h1.ttl スーパーマリオブラザーズ3
+        %ul.btnList
+          %li.item
+            %ul.stars
+              - 4.times do |i|
+                %li.star
+          %li.item 欲しい

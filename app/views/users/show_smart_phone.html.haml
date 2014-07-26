@@ -40,6 +40,7 @@
             %span.followBtn.follow フォロー
       - else
         = link_to "編集", edit_user_path(@user), class: "edit-btn"
+        = link_to "ログ編集", logs_path, class: "edit-btn"
       %ul.countBox
         %li.item
           %a.follow{href: ""}
