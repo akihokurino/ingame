@@ -62,8 +62,7 @@
 		}
 		.ttl {
 			overflow: hidden;
-			margin-top: 2px;
-			padding-right: 85px;
+			margin-top: 5px;
 			color: #10ac9b;
 			font-size: 14px;
 			@include font-weight(1px, #10ac9b);
@@ -71,23 +70,24 @@
 		}
 		.mood_ready, .mood_playing, .mood_played {
 			position: absolute;
-			top: 8px;
-			right: 5px;
-			width: 68px;
-			padding: 4px 0;
+			top: 0;
+			right: 0;
+			width: 63px;
+			height: 18px;
+			padding: 4px 0 0;
 			@include border-radius(3px);
 			color: #ffffff;
-			font-size: 11px;
+			font-size: 10px;
 			text-align: center;
 		}
 		.mood_ready {
-			background: #000;
+			background: #e2bd76;
 		}
 		.mood_playing {
 			background: #e27676;
 		}
 		.mood_played {
-			background: #a4a3a3;
+			background: #768ae2;
 		}
 		.text {
 			margin-bottom: 12px;

@@ -308,7 +308,7 @@ html {
 			line-height: 1.0;
 			margin-top: 2px;
 		}
-		.mood {
+		.mood_ready, .mood_playing, .mood_played {
 			display: table-cell;
 			position: absolute;
 			right: 0;
@@ -316,12 +316,22 @@ html {
 			width: 44px;
 			height: 44px;
 			padding-top: 15px;
-			border: 1px solid #e27676;
 			@include border-radius(22px);
 			@include box-sizing;
-			color: #e27676;
 			font-size: 8px;
 			text-align: center;
+		}
+		.mood_ready {
+			border: 1px solid #b7b51b;
+			color: #b7b51b;
+		}
+		.mood_playing {
+			border: 1px solid #22c0a4;
+			color: #22c0a4;
+		}
+		.mood_played {
+			border: 1px solid #e27676;
+			color: #e27676;
 		}
 		.text {
 			margin-bottom: 12px;
