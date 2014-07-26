@@ -17,8 +17,20 @@
             %option{value: 4} ★★★★☆
             %option{value: 5} ★★★★★
         %li.item
-          %select.status{name: "status", size: 1}
+          %select.my_status{name: "status", size: 1}
+            {{ if (status.id == "1") { }}
             %option{value: ""} ステータス
-            %option{value: 1, selected: "{{= status.id == 1 ? true : false}}"} 気になる
-            %option{value: 2, selected: "{{= status.id == 2 ? true : false}}"} プレイ中
-            %option{value: 3, selected: "{{= status.id == 3 ? true : false}}"} アーカイブ
+            %option{value: 1, selected: "selected"} 気になる
+            %option{value: 2} プレイ中
+            %option{value: 3} アーカイブ
+            {{ } else if (status.id == "2") { }}
+            %option{value: ""} ステータス
+            %option{value: 1} 気になる
+            %option{value: 2, selected: "selected"} プレイ中
+            %option{value: 3} アーカイブ
+            {{ } else if (status.id == "3") { }}
+            %option{value: ""} ステータス
+            %option{value: 1} 気になる
+            %option{value: 2} プレイ中
+            %option{value: 3, selected: "selected"} アーカイブ
+            {{ } }}

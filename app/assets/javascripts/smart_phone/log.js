@@ -32,16 +32,37 @@
       tagName: "li",
       className: "item",
       events: {
-
+        "change .my_status": "changeStatus"
       },
       initialize: function () {
-
       },
       template: _.template($("#log-template").html()),
       render: function () {
         var template = this.template(this.model.toJSON());
         this.$el.html(template);
         return this;
+      },
+      changeStatus: function () {
+        if (this.$el.find(".my_status").val() != "") {
+          var game_id = this.model.get("game").id;
+          var data = {
+            "log": {
+              "status_id": this.$el.find(".my_status").val()
+            }
+          }
+
+          $.ajax({
+            type: "PUT",
+            url: "/api/logs/" + game_id + "/update_status",
+            data: data,
+            success: function (data) {
+              console.log(data);
+            },
+            error: function () {
+              console.log("error");
+            }
+          })
+        }
       }
     })
 
@@ -57,7 +78,6 @@
         var that = this;
 
         this.logs_view = new LogsView();
-        //this.$el.find(".select-page").append(this.logs_view.el);
 
         this.attentions = [];
         this.playings = [];

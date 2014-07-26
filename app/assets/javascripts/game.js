@@ -19,14 +19,12 @@
           }
         }
 
-        console.log(data);
-
         $.ajax({
           type: "PUT",
           url: "/api/logs/" + game_id + "/update_status",
           data: data,
-          success: function () {
-
+          success: function (data) {
+            console.log(data);
           },
           error: function () {
             console.log("error");
