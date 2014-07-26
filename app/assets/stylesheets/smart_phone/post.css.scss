@@ -1,5 +1,5 @@
-@import "../../stylesheets/function.css.scss";
-@import "iconSprite.css.scss";
+@import "../function.css.scss";
+@import "./iconSprite.css.scss";
 
 /*---   common   ---------------------------*/
 html {
@@ -226,7 +226,7 @@ a {
 			width: 17px;
 			height: 36px;
 			margin: 0 auto;
-			background: url(../images/sns_set.png) no-repeat 0 0;
+			background: url(/assets/smart_phone/sns_set.png) no-repeat 0 0;
 			background-size: 62px 36px;
 		}
 		.twInner {
@@ -234,7 +234,7 @@ a {
 			width: 40px;
 			height: 30px;
 			margin: 0 auto;
-			background: url(../images/sns_set.png) no-repeat -22px 0;
+			background: url(/assets/smart_phone/sns_set.png) no-repeat -22px 0;
 			background-size: 62px 36px;
 		}
 		.btn {

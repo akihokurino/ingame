@@ -19,7 +19,7 @@
     %li.item
       = link_to "ログアウト", logout_users_path, class: "menuItem"
 
-.profile-page{"data-userid" => @user[:id]}
+.profile-page.mainCnt{"data-userid" => @user[:id]}
   .personalBoxWrap
     %figure.profImgWrap
       = image_tag "/user_photos/#{@user[:photo_path]}", height: 83, class: "profImg"

@@ -53,6 +53,7 @@
 
     var GameView = Backbone.View.extend({
       tagName: "div",
+      className: "gameBox",
       template: _.template($("#game-template").html()),
       render: function () {
         var template = this.template(this.model.toJSON());
@@ -62,8 +63,6 @@
     })
 
     var ResultsView = Backbone.View.extend({
-      tagName: "ul",
-      className: "result-list",
       initialize: function () {
         this.collection = results;
         this.listenTo(this.collection, "add", this.addResult);
@@ -78,8 +77,9 @@
 
     var ResultView = Backbone.View.extend({
       tagName: "li",
+      className: "item",
       events: {
-        "click .regist-btn": "regist"
+        "change .status": "regist"
       },
       initialize: function () {
       },
@@ -93,26 +93,29 @@
         return this;
       },
       regist: function () {
-        var that = this;
-        var data = {
-          "log": {
-            "game_id": this.model.id,
-            "status_id": this.$el.find("select").val()
+        if (this.$el.find("select").val() != ""){
+          var that = this;
+
+          var data = {
+            "log": {
+              "game_id": this.model.id,
+              "status_id": this.$el.find("select").val()
+            }
+          }
+
+          $.ajax({
+            type: "POST",
+            url: "/api/logs",
+            data: data,
+            success: function (data) {
+              that.remove();
+            },
+            error: function () {
+              console.log("error");
+            }
+          })
           }
         }
-
-        $.ajax({
-          type: "POST",
-          url: "/api/logs",
-          data: data,
-          success: function (data) {
-            that.remove();
-          },
-          error: function () {
-            console.log("error");
-          }
-        })
-      }
     })
 
     var SelectView = Backbone.View.extend({
@@ -124,15 +127,17 @@
       },
       template: _.template($("#select-template").html()),
       initialize: function () {
+        var that = this;
+
         this.$el.html("");
         this.$el.html(this.template);
 
-        this.logs_view = new LogsView();
-        this.$el.append(this.logs_view.el);
+        this.logs_view = new LogsView({el: ".gameList"});
+        this.$el.find(".select-page").append(this.logs_view.el);
+
         this.attentions = [];
         this.playings = [];
         this.archives = [];
-        var that = this;
 
         $.ajax({
           type: "GET",
@@ -195,8 +200,10 @@
       },
       initialize: function () {
         var that = this;
+
         this.$el.html("");
         this.$el.append(this.template);
+
         this.game_id = location.href.split("/").pop();
         this.text = $("textarea")
 
@@ -207,7 +214,7 @@
           success: function (data) {
             var game = new Game(data.game);
             var game_view = new GameView({model: game});
-            that.$el.prepend(game_view.render().el);
+            that.$el.find(".write-page").prepend(game_view.render().el);
           },
           error: function () {
             console.log("error");
@@ -247,10 +254,13 @@
       template: _.template($("#add-template").html()),
       initialize: function () {
         var that = this;
+
         this.$el.html("");
         this.$el.append(this.template);
-        this.results_view = new ResultsView();
-        this.$el.append(this.results_view.el);
+
+        this.results_view = new ResultsView({el: ".gameList"});
+        this.$el.find(".add-page").append(this.results_view.el);
+
         this.collection = results;
         this.search_title = this.$(".search-title-input");
       },

@@ -1,58 +1,17 @@
 = content_for :head do
   = javascript_include_tag "mobile_post.js"
 
-= link_to "キャンセル", posts_path
-
 .post-new-page{"data-userid" => @current_user[:id]}
 
-%script{type: "text/template", id: "select-template"}
-  <a href="/posts/new#add">ゲームを追加</a>
-  <ul class="sortBox">
-  <li class="item current playing-li"><span class="playing">プレイ中</span></li>
-  <li class="item ready-li"><span class="ready">気になる</span></li>
-  <li class="item played-li"><span class="played">アーカイブ</span></li>
-  </ul>
+= render partial: "application/underscore/mobile_post/select"
+= render partial: "application/underscore/mobile_post/log"
 
-%script{type: "text/template", id: "log-template"}
-  <a href="/posts/new#write/<%= game.id %>" style="display: block;" class="articleWrap">
-  <article class="game">
-  <img class="gameImg" src=<%- game.photo_path %> />
-  <h1 class="ttl"><%- game.title %></h1>
-  <ul class="stars">
-  <li class="star"></li>
-  <li class="star"></li>
-  <li class="star"></li>
-  <li class="star"></li>
-  </ul>
-  </article>
-  </a>
+= render partial: "application/underscore/mobile_post/write"
+= render partial: "application/underscore/mobile_post/game"
 
-%script{type: "text/template", id: "write-template"}
-  <a href="/posts/new#select">ゲームを変更する</a>
-  <form class="post-form">
-  <textarea placeholder="そのゲームについて、どう思った？"></textarea>
-  <input type="submit" class="submit" value="投稿" />
-  </form>
+= render partial: "application/underscore/mobile_post/add"
+= render partial: "application/underscore/mobile_post/result"
 
-%script{type: "text/template", id: "game-template"}
-  <p><%- title %></p>
-  <img class="gameImg" src=<%- photo_path %> />
-
-%script{type: "text/template", id: "add-template"}
-  <form class="search-form">
-  <input type="text" name="search_title" class="search-title-input">
-  <input type="submit" class="submit-btn">
-  </form>
-
-%script{type: "text/template", id: "result-template"}
-  <p><%- title %></p>
-  <img src=<%- photo_path %> />
-  <span class="regist-btn">登録</span>
-  <select>
-  <option value="1">気になる</option>
-  <option value="2">プレイ中</option>
-  <option value="3">アーカイブ</option>
-  </select>
 
 
 

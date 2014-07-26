@@ -1,0 +1,18 @@
+%script{type: "text/template", id: "write-template"}
+  .post02
+    %header
+      %h1.ttl シェア
+      %a.cancel{href: "/posts/new#select"} キャンセル
+    .write-page.mainCnt
+      %form.textareaWrap.post-form
+        %textarea{placeholder: "そのゲームについて、どう思った？"}
+      %a.addPhoto{href: ""} 写真を追加+
+      %ul.snsBtn
+        %li.fb
+          %a.fbBtn{href: ""}
+            %span.fbInner
+        %li.tw
+          %a.twBtn{href: ""}
+            %span.twInner
+      %form.btnWrap
+        %input.btn.submit{value: "投稿する"}
