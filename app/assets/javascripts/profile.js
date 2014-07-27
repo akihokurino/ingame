@@ -93,26 +93,29 @@
 				})
 			},
 			setPlaying: function () {
-				this.$el.find("ul.sortBox li").removeClass("current");
+				this.logs_view.collection.reset();
 				this.logs_view.removeLogs();
+				this.$el.find("ul.sortBox li").removeClass("current");
 				for (var i = 0; i < this.playings.length; i++) {
-					this.logs_view.addLog(this.playings[i]);
+					this.logs_view.collection.add(this.playings[i]);
 				}
 				this.$el.find("ul.sortBox li.playing-li").addClass("current");
 			},
 			setAttention: function () {
-				this.$el.find("ul.sortBox li").removeClass("current");
+				this.logs_view.collection.reset();
 				this.logs_view.removeLogs();
+				this.$el.find("ul.sortBox li").removeClass("current");
 				for (var i = 0; i < this.attentions.length; i++) {
-					this.logs_view.addLog(this.attentions[i]);
+					this.logs_view.collection.add(this.attentions[i]);
 				}
 				this.$el.find("ul.sortBox li.ready-li").addClass("current");
 			},
 			setArchive: function () {
-				this.$el.find("ul.sortBox li").removeClass("current");
+				this.logs_view.collection.reset();
 				this.logs_view.removeLogs();
+				this.$el.find("ul.sortBox li").removeClass("current");
 				for (var i = 0; i < this.archives.length; i++) {
-					this.logs_view.addLog(this.archives[i]);
+					this.logs_view.collection.add(this.archives[i]);
 				}
 				this.$el.find("ul.sortBox li.played-li").addClass("current");
 			},
