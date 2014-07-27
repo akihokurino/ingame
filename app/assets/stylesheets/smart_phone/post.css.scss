@@ -12,32 +12,47 @@ a {
 /*---   .post01   ---------------------------*/
 .post01 {
 	/*---   header   ----------*/
-	.header {
+	header {
 		position: relative;
 		margin-bottom: 15px;
-		padding: 14px 0 13px;
+		padding: 12px 0 13px;
 		border-bottom: 1px solid #a0a0a0;
+		color: #ffffff;
+		font-size: 14px;
 		text-align: center;
 
 		.ttl {
-			color: #000000;
-			font-size: 20px;
-			@include font-weight(1px, #000000);
+			width: auto;
+			font-size: 14px;
+			@include font-weight(1px, #ffffff);
 		}
 		.cancel {
 			position: absolute;
-			top: 15px;
-			left: 9px;
-			color: #1ba189;
-			font-size: 17px;
+			top: 12px;
+			left: 24px;
+			color: #ffffff;
+
+			&:before {
+				display: block;
+				position: absolute;
+				top: 5px;
+				left: -14px;
+				width: 9px;
+				height: 9px;
+				border-top: 3px solid #ffffff;
+				border-left: 3px solid #ffffff;
+				-webkit-transform: rotate(-45deg);
+				transform: rotate(-45deg);
+				content: "";
+			}
 		}
 		.addGame {
 			position: absolute;
-			top: 12px;
+			top: -3px;
 			right: 10px;
-			color: #424343;
-			font-size: 15px;
-			line-height: 1.2;
+			color: #ffffff;
+			font-size: 30px;
+			@include font-weight(1px, #ffffff);
 		}
 	}
 	.mainCnt {
@@ -121,7 +136,7 @@ a {
 				overflow: hidden;
 				padding-top: 4px;
 				color: #1ba189;
-				font-size: 15px;
+				font-size: 14px;
 				@include font-weight(1px, #1ba189);
 			}
 		}
@@ -131,24 +146,45 @@ a {
 /*---   .post02   ---------------------------*/
 .post02 {
 	/*---   header   ----------*/
-	.header {
+	header {
 		position: relative;
-		margin-bottom: 6px;
-		padding: 14px 0 13px;
+		margin-bottom: 15px;
+		padding: 12px 0 13px;
 		border-bottom: 1px solid #a0a0a0;
+		color: #ffffff;
+		font-size: 14px;
 		text-align: center;
 
 		.ttl {
-			color: #000000;
-			font-size: 20px;
-			@include font-weight(1px, #000000);
+			width: auto;
+			font-size: 14px;
+			@include font-weight(1px, #ffffff);
 		}
 		.cancel {
 			position: absolute;
-			top: 15px;
-			left: 9px;
-			color: #1ba189;
-			font-size: 17px;
+			top: 12px;
+			left: 24px;
+			color: #ffffff;
+
+			&:before {
+				display: block;
+				position: absolute;
+				top: 5px;
+				left: -14px;
+				width: 9px;
+				height: 9px;
+				border-top: 3px solid #ffffff;
+				border-left: 3px solid #ffffff;
+				-webkit-transform: rotate(-45deg);
+				transform: rotate(-45deg);
+				content: "";
+			}
+		}
+		.addGame {
+			position: absolute;
+			top: 12px;
+			right: 10px;
+			color: #ffffff;
 		}
 	}
 	.mainCnt {
@@ -164,7 +200,6 @@ a {
 		}
 		.gameTtl {
 			overflow: hidden;
-			width: 65%;
 			height: 18px;
 			padding-top: 5px;
 			color: #5f5f5f;
@@ -265,25 +300,47 @@ a {
 /*---   .post03   ---------------------------*/
 .post03 {
 	/*---   header   ----------*/
-	.header {
+	header {
 		position: relative;
-		margin-bottom: 17px;
-		padding: 14px 0 13px;
+		margin-bottom: 15px;
+		padding: 12px 0 13px;
 		border-bottom: 1px solid #a0a0a0;
+		color: #ffffff;
+			font-size: 14px;
 		text-align: center;
 
 		.ttl {
-			padding-left: 40px;
-			color: #000000;
-			font-size: 20px;
-			@include font-weight(1px, #000000);
+			width: auto;
+			font-size: 14px;
+			@include font-weight(1px, #ffffff);
 		}
 		.cancel {
 			position: absolute;
-			top: 15px;
-			left: 9px;
-			color: #1ba189;
-			font-size: 16px;
+			top: 12px;
+			left: 24px;
+			color: #ffffff;
+
+			&:before {
+				display: block;
+				position: absolute;
+				top: 5px;
+				left: -14px;
+				width: 9px;
+				height: 9px;
+				border-top: 3px solid #ffffff;
+				border-left: 3px solid #ffffff;
+				-webkit-transform: rotate(-45deg);
+				transform: rotate(-45deg);
+				content: "";
+			}
+		}
+		.addGame {
+			position: absolute;
+			top: -3px;
+			right: 10px;
+			color: #ffffff;
+			font-size: 30px;
+			@include font-weight(1px, #ffffff);
 		}
 	}
 	.mainCnt {

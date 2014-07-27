@@ -1,12 +1,9 @@
 %script{type: "text/template", id: "select-template"}
   .post01
-    .header
+    %header
       %h1.ttl ゲームを選択
-      = link_to "キャンセル", posts_path, class: "cancel"
-      %a.addGame{href: "/posts/new#add"}
-        ゲームを
-        %br
-        追加する
+      = link_to "戻る", posts_path, class: "cancel"
+      %a.addGame{href: "/posts/new#add"} +
     .select-page.mainCnt
       %ul.sortBox
         %li.item.current.ready-li
