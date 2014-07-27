@@ -19,7 +19,7 @@ class Game < ActiveRecord::Base
 	validates :maker,
 		length: {maximum: 255}
 
-	attr_accessor :i_registed, :my_status_id, :my_rate
+	attr_accessor :i_registed, :my_status_id, :my_rate, :avg_rate
 
 	def check_regist(current_user)
 		self.i_registed = current_user.logs.pluck(:game_id).include?(self[:id]) ? true : false
@@ -37,6 +37,16 @@ class Game < ActiveRecord::Base
 		end
 
 		self.my_rate = my_rate
+
+		sum_rate = 0
+		sum_log = 0
+		Log.where(game_id: self[:id]).each do |log|
+			unless log.rate.nil?
+				sum_rate += log.rate.to_i
+				sum_log += 1
+			end
+		end
+		self.avg_rate = (sum_rate / sum_log).floor
 	end
 
 	class << self
