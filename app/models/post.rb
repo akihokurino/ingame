@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
   belongs_to :user, counter_cache: true
-  belongs_to :game
+  belongs_to :game, counter_cache: true
   has_many :post_likes
 
   attr_accessor :i_liked

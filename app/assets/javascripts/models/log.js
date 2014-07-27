@@ -2,6 +2,7 @@ var Log = Backbone.Model.extend({
   defaults: {
     "id": "",
     "text": "",
+    "rate": "",
     "game": {
       "id": "",
       "title": "",

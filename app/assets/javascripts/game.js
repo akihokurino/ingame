@@ -21,7 +21,7 @@
 
         $.ajax({
           type: "PUT",
-          url: "/api/logs/" + game_id + "/update_status",
+          url: "/api/logs/" + game_id + "/update_status_or_rate",
           data: data,
           success: function (data) {
             console.log(data);

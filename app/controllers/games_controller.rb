@@ -3,6 +3,7 @@ class GamesController < ApplicationController
 
 	def show
     @game.check_regist(@current_user)
+    @game.check_rate(@current_user)
 	end
 
 	private

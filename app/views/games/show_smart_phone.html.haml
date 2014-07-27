@@ -40,17 +40,20 @@
 
   %ul.dataBox
     %li.item
-      %span.count 567
+      %span.count
+        = @game.posts_count
       ポスト数
     %li.item
       %ul.stars
-        - 4.times do |i|
-          %li.star
+        - unless @game.avg_rate.nil?
+          - @game.avg_rate.to_i.times do |i|
+            %li.star
       全体の評価
     %li.item
       %ul.stars
-        - 3.times do |i|
-          %li.star
+        - unless @game.my_rate.nil?
+          - @game.my_rate.to_i.times do |i|
+            %li.star
       自分の評価
 
   %ul.shopList
