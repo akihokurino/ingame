@@ -46,7 +46,12 @@ class Game < ActiveRecord::Base
 				sum_log += 1
 			end
 		end
-		self.avg_rate = (sum_rate / sum_log).floor
+
+		begin
+			self.avg_rate = (sum_rate / sum_log).floor
+		rescue
+			self.avg_rate = 0
+		end
 	end
 
 	class << self
