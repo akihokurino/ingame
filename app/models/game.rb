@@ -19,7 +19,7 @@ class Game < ActiveRecord::Base
 	validates :maker,
 		length: {maximum: 255}
 
-	attr_accessor :i_registed, :my_status_id
+	attr_accessor :i_registed, :my_status_id, :my_rate
 
 	def check_regist(current_user)
 		self.i_registed = current_user.logs.pluck(:game_id).include?(self[:id]) ? true : false
@@ -27,6 +27,16 @@ class Game < ActiveRecord::Base
 		if self.i_registed
 			self.my_status_id = self.logs.find_by(user_id: current_user[:id]).status_id
 		end
+	end
+
+	def check_rate(current_user)
+		begin
+			my_rate = current_user.logs.find_by(game_id: self[:id]).rate
+		rescue ActiveRecord::RecordNotFound
+			my_rate = nil
+		end
+
+		self.my_rate = my_rate
 	end
 
 	class << self

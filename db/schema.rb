@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140727082922) do
+ActiveRecord::Schema.define(version: 20140727090106) do
 
   create_table "follows", force: true do |t|
     t.integer  "from_user_id"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20140727082922) do
     t.integer  "game_likes_count", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "posts_count",      default: 0
   end
 
   create_table "logs", force: true do |t|

@@ -5,7 +5,8 @@
       %h1.ttl
         {{= game.title}}
       %ul.stars
+        {{ if (rate) { }}
+        {{ for(var i = 0; i < parseInt(rate); i++) { }}
         %li.star
-        %li.star
-        %li.star
-        %li.star
+        {{ } }}
+        {{ } }}
