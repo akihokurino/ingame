@@ -13,13 +13,108 @@
 
 
     /* ---------- View ---------- */
+
+    var PostsView = Backbone.View.extend({
+      el: $(".post-list"),
+      initialize: function () {
+        var that = this;
+        this.collection = posts;
+        this.listenTo(this.collection, "add", this.addPost);
+      },
+      addPost: function (post) {
+        if(post.id){
+          var post_view = new PostView({model: post});
+          this.$el.prepend(post_view.render().el);
+        }
+      },
+      removePosts: function () {
+        this.$el.html("");
+      }
+    })
+
+    var PostView = Backbone.View.extend({
+      tagName: "article",
+      className: "postBox",
+      events: {
+        "click .delete": "destroy",
+        "click .like" : "like",
+        "click .unlike": "unlike"
+      },
+      initialize: function () {
+        this.listenTo(this.model, "destroy", this.remove);
+        this.listenTo(this.model, "change", this.render);
+      },
+      destroy: function () {
+        this.model.destroy();
+      },
+      remove: function () {
+        this.$el.remove();
+      },
+      template: _.template($("#post-template").html()),
+      render: function () {
+        var template = this.template(this.model.toJSON());
+        this.$el.html(template);
+        return this;
+      },
+      like: function () {
+        var data = {
+          "post_like": {
+            "post_id": this.model.id,
+            "user_id": null
+          }
+        };
+        var that = this;
+
+        $.ajax({
+          type: "POST",
+            url: "/api/post_likes",
+            data: data,
+            success: function (data) {
+              if(data){
+                that.model.set({
+                  "i_liked": true,
+                  "post_likes_count": parseInt(that.model.get("post_likes_count")) + 1
+                });
+              }
+            },
+            error: function () {
+              console.log("error");
+            }
+        })
+      },
+      unlike: function () {
+        var that = this;
+        $.ajax({
+          type: "DELETE",
+          url: "/api/post_likes/" + this.model.id,
+          data: {},
+          success: function (data) {
+            if(data){
+                that.model.set({
+                  "i_liked": false,
+                  "post_likes_count": parseInt(that.model.get("post_likes_count")) - 1
+                });
+              }
+          },
+          error: function () {
+            console.log("error");
+          }
+        })
+      }
+    })
+
     var AppView = Backbone.View.extend({
       el: ".game-page",
       events: {
         "change .my_status": "changeStatus",
-        "change .new_status": "registLog"
+        "change .new_status": "registLog",
+        "click .follower_posts": "setFollowerPosts",
+        "click .all_posts": "setAllPosts"
       },
       initialize: function () {
+        var that = this;
+        this.posts_view = new PostsView();
+
         this.my_status_select = $(".my_status");
         this.new_status_select = $(".new_status");
 
@@ -33,6 +128,16 @@
           data: {},
           success: function (data) {
             console.log(data);
+            for (var i = 0; i < data.follower_posts.length; i++) {
+              var post = new Post(data.follower_posts[i]);
+              that.follower_posts.push(post);
+              that.posts_view.collection.add(post)
+            }
+
+            for (var i = 0; i < data.all_posts.length; i++) {
+              var post = new Post(data.all_posts[i]);
+              that.all_posts.push(post);
+            }
           },
           error: function () {
             console.log("error");
@@ -77,6 +182,24 @@
             console.log("error");
           }
         })
+      },
+      setFollowerPosts: function () {
+        this.posts_view.collection.reset();
+        this.posts_view.removePosts();
+        this.$el.find("ul.sortBox li").removeClass("current");
+        for (var i = 0; i < this.follower_posts.length; i++) {
+          this.posts_view.collection.add(this.follower_posts[i]);
+        }
+        this.$el.find("ul.sortBox li.follower_posts").addClass("current");
+      },
+      setAllPosts: function () {
+        this.posts_view.collection.reset();
+        this.posts_view.removePosts();
+        this.$el.find("ul.sortBox li").removeClass("current");
+        for (var i = 0; i < this.all_posts.length; i++) {
+          this.posts_view.collection.add(this.all_posts[i]);
+        }
+        this.$el.find("ul.sortBox li.all_posts").addClass("current");
       }
     })
 

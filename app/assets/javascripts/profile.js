@@ -19,7 +19,7 @@
 				this.listenTo(this.collection, "add", this.addLog);
 			},
 			addLog: function (log) {
-				if(log.id){
+				if (log.id) {
 					var log_view = new LogView({model: log});
 					this.$el.prepend(log_view.render().el);
 				}
@@ -56,11 +56,13 @@
 				"click .unfollow": "unfollow"
 			},
 			initialize: function () {
+				var that = this;
 				this.logs_view = new LogsView();
+
 				this.attentions = [];
 				this.playings = [];
 				this.archives = [];
-				var that = this;
+
 				this.follow_template = _.template($("#follow-template").html());
 				this.unfollow_template = _.template($("#unfollow-template").html());
 
@@ -69,9 +71,9 @@
 					url: "/api/logs?user_id=" + user_id,
 					data: {},
 					success: function (data) {
-						for(var i = 0; i < data.logs.length; i++){
+						for (var i = 0; i < data.logs.length; i++) {
 							var log = new Log(data.logs[i]);
-							switch(log.get("status").id){
+							switch (log.get("status").id) {
 								case 1:
 									that.attentions.push(log);
 									that.logs_view.collection.add(log);
@@ -93,7 +95,7 @@
 			setPlaying: function () {
 				this.$el.find("ul.sortBox li").removeClass("current");
 				this.logs_view.removeLogs();
-				for(var i = 0; i < this.playings.length; i++){
+				for (var i = 0; i < this.playings.length; i++) {
 					this.logs_view.addLog(this.playings[i]);
 				}
 				this.$el.find("ul.sortBox li.playing-li").addClass("current");
@@ -101,7 +103,7 @@
 			setAttention: function () {
 				this.$el.find("ul.sortBox li").removeClass("current");
 				this.logs_view.removeLogs();
-				for(var i = 0; i < this.attentions.length; i++){
+				for (var i = 0; i < this.attentions.length; i++) {
 					this.logs_view.addLog(this.attentions[i]);
 				}
 				this.$el.find("ul.sortBox li.ready-li").addClass("current");
@@ -109,7 +111,7 @@
 			setArchive: function () {
 				this.$el.find("ul.sortBox li").removeClass("current");
 				this.logs_view.removeLogs();
-				for(var i = 0; i < this.archives.length; i++){
+				for (var i = 0; i < this.archives.length; i++) {
 					this.logs_view.addLog(this.archives[i]);
 				}
 				this.$el.find("ul.sortBox li.played-li").addClass("current");
@@ -144,7 +146,7 @@
 					url: "/api/follows/" + user_id,
 					data: {},
 					success: function (data) {
-						if(data.result){
+						if (data.result) {
 							that.$el.find(".follow-wrap").html("");
 							that.$el.find(".follow-wrap").append(that.follow_template);
 						}

@@ -72,12 +72,12 @@
 
   .sortBoxWrap
     %ul.sortBox
-      %li.item.current
+      %li.item.current.follower_posts
         %span.follow
           フォローの
           %br
           コメント
-      %li.item
+      %li.item.all_posts
         %span.all 全コメント
       %li.item
         %span.star
@@ -85,50 +85,6 @@
           %br
           コメント
 
-  %article.postBox
-    .topBox
-      %img.profImg{src: "../images/baba.jpg", width: "58", height: "58", alt: ""}
-      .postArea
-        %a.account{href: ""} baba
-        %span.time 2時間前
-        %h2.ttl
-          アルティメットヒッツ
-          %br
-          ファイナルファンタジー
-        .mood_playing プレイ中
-    %p.text まず目を惹かれるのは圧倒的なグラフィックですね。ムービーも美しいのですが、２Ｄ、バトル画面の綺麗さは特筆物です。今回のリメイクでの一番の売りは個人的にはグラフィックだと思っているので、さすがはスクウェアエニックスです。フィールド画面の２Ｄが綺麗なので携帯ゲーム機でも、あまり目
-    .stateBox
-      %a.commentBtn{href: ""} コメントする
-      %a.favBtn{href: ""} 12
+  .post-list
 
-  %article.postBox
-    .topBox
-      %img.profImg{src: "../images/baba.jpg", width: "58", height: "58", alt: ""}
-      .postArea
-        %a.account{href: ""} baba
-        %span.time 2時間前
-        %h2.ttl
-          アルティメットヒッツ
-          %br
-          ファイナルファンタジー
-        .mood_ready 気になる
-    %p.text まず目を惹かれるのは圧倒的なグラフィックですね。ムービーも美しいのですが、２Ｄ、バトル画面の綺麗さは特筆物です。今回のリメイクでの一番の売りは個人的にはグラフィックだと思っているので、さすがはスクウェアエニックスです。フィールド画面の２Ｄが綺麗なので携帯ゲーム機でも、あまり目
-    .stateBox
-      %a.commentBtn{href: ""} コメントする
-      %a.favBtn{href: ""} 12
-
-  %article.postBox
-    .topBox
-      %img.profImg{src: "../images/baba.jpg", width: "58", height: "58", alt: ""}
-      .postArea
-        %a.account{href: ""} baba
-        %span.time 2時間前
-        %h2.ttl
-          アルティメットヒッツ
-          %br
-          ファイナルファンタジー
-        .mood_played アカイブ
-    %p.text まず目を惹かれるのは圧倒的なグラフィックですね。ムービーも美しいのですが、２Ｄ、バトル画面の綺麗さは特筆物です。今回のリメイクでの一番の売りは個人的にはグラフィックだと思っているので、さすがはスクウェアエニックスです。フィールド画面の２Ｄが綺麗なので携帯ゲーム機でも、あまり目
-    .stateBox
-      %a.commentBtn{href: ""} コメントする
-      %a.favBtn{href: ""} 12
+= render partial: "application/underscore/game/post"
