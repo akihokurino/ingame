@@ -15,7 +15,7 @@ Ingame::Application.routes.draw do
   namespace :api do
     resources :logs, only: ["index", "create", "update", "destroy"], format: "json" do
       member do
-        put "update_status"
+        put "update_status_or_rate"
       end
     end
     resources :statuses, only: ["index"], format: "json"

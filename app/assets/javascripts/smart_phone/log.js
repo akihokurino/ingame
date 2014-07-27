@@ -32,7 +32,8 @@
       tagName: "li",
       className: "item",
       events: {
-        "change .my_status": "changeStatus"
+        "change .my_status": "changeStatus",
+        "change .my_rate": "changeRate"
       },
       initialize: function () {
       },
@@ -53,10 +54,32 @@
 
           $.ajax({
             type: "PUT",
-            url: "/api/logs/" + game_id + "/update_status",
+            url: "/api/logs/" + game_id + "/update_status_or_rate",
             data: data,
             success: function (data) {
               console.log(data);
+            },
+            error: function () {
+              console.log("error");
+            }
+          })
+        }
+      },
+      changeRate: function () {
+        if(this.$el.find(".my_rate").val() != "") {
+          var game_id = this.model.get("game").id;
+          var data = {
+            "log": {
+              "rate": this.$el.find(".my_rate").val()
+            }
+          }
+
+          $.ajax({
+            type: "PUT",
+            url: "/api/logs/" + game_id + "/update_status_or_rate",
+            data: data,
+            success: function () {
+
             },
             error: function () {
               console.log("error");
