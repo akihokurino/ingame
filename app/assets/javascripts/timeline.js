@@ -234,11 +234,11 @@
 				this.collection.fetch({
 					data: {page: page},
 					success: function (model, response, options) {
-						for(var i = 0; i < response.games.length; i++){
+						for (var i = 0; i < response.games.length; i++) {
 							var game = new Game(response.games[i]);
 							that.games_select_view.collection.add(game);
 						}
-						for(var i = 0; i < response.posts.length; i++){
+						for (var i = 0; i < response.posts.length; i++) {
 							var post = new Post(response.posts[i]);
 							that.posts_view.collection.add(post);
 						}
@@ -256,7 +256,7 @@
 		function pagenation(){
 			var scrollHeight = $(document).height();
 			var scrollPosition = $(window).height() + $(window).scrollTop();
-			if((scrollHeight - scrollPosition) / scrollHeight <= 0.1){
+			if ((scrollHeight - scrollPosition) / scrollHeight <= 0.1) {
 				$(".loading-gif").css("display", "block");
 				$(window).unbind("scroll");
 				page += 1;
@@ -264,11 +264,16 @@
 				app.collection.fetch({
 					data: {page: page},
 					success: function (model, response, options) {
-						for(var i = 0; i < response.posts.length; i++){
+						for (var i = 0; i < response.posts.length; i++) {
 							var post = new Post(response.posts[i]);
 							app.posts_view.collection.add(post);
 						}
+
 						$(".loading-gif").css("display", "none");
+
+						if (response.posts.length != 0) {
+							$(window).bind("scroll");
+						}
 					},
 					error: function () {
 						console.log("error");
