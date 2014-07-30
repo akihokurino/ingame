@@ -14,8 +14,7 @@ class Api::PostsController < ApplicationController
 
   def create
     params[:post][:user_id] = @current_user[:id]
-    Post.create!(post_params)
-    @last_post = Post.last
+    @last_post = Post.create!(post_params)
   end
 
   def destroy
