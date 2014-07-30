@@ -14,11 +14,14 @@ class Post < ActiveRecord::Base
 
   attr_accessor :i_liked
 
+  LIMIT = 20
+
   class << self
-    def get_all_posts(current_user_id)
+    def get_all_posts(current_user_id, page)
+      offset = (page - 1) * LIMIT
       follower_ids = Follow.where(from_user_id: current_user_id).pluck(:to_user_id)
       follower_ids << current_user_id
-      posts = self.where(user_id: follower_ids).includes(:game).includes(:user).includes(:post_likes)
+      posts = self.where(user_id: follower_ids).includes(:game).includes(:user).includes(:post_likes).order("created_at DESC").offset(offset).limit(LIMIT)
       posts = self.i_like?(posts, current_user_id)
     end
 

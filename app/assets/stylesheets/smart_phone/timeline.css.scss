@@ -4,6 +4,7 @@
 /*---   .mainCnt   ---------------------------*/
 .mainCnt {
 	text-align: left;
+	padding-bottom: 10px;
 
 	.commentWrap {
 		height: 34px;
@@ -120,5 +121,13 @@
 				}
 			}
 		}
+	}
+
+	.loading-gif {
+		width: 30px;
+		height: 30px;
+		display: block;
+		margin: 0 auto;
+		display: none;
 	}
 }

@@ -7,6 +7,8 @@
 
 (function () {
 	$(function () {
+		var page = 1;
+
 		/* ---------- Collection ---------- */
 
 		var posts = new Posts();
@@ -86,7 +88,7 @@
 			addPost: function (post) {
 				if(post.id){
 					var post_view = new PostView({model: post});
-					this.$el.prepend(post_view.render().el);
+					this.$el.append(post_view.render().el);
 				}
 			}
 		})
@@ -226,9 +228,11 @@
 				this.user_search_view = new UserSearchView();
 				this.users_view = new UsersView();
 				this.collection = posts;
+
 				var that = this;
 
 				this.collection.fetch({
+					data: {page: page},
 					success: function (model, response, options) {
 						for(var i = 0; i < response.games.length; i++){
 							var game = new Game(response.games[i]);
@@ -247,5 +251,30 @@
 		})
 
 		var app = new AppView();
+
+		$(window).bind("scroll", pagenation);
+		function pagenation(){
+			var scrollHeight = $(document).height();
+			var scrollPosition = $(window).height() + $(window).scrollTop();
+			if((scrollHeight - scrollPosition) / scrollHeight <= 0.1){
+				$(".loading-gif").css("display", "block");
+				$(window).unbind("scroll");
+				page += 1;
+
+				app.collection.fetch({
+					data: {page: page},
+					success: function (model, response, options) {
+						for(var i = 0; i < response.posts.length; i++){
+							var post = new Post(response.posts[i]);
+							app.posts_view.collection.add(post);
+						}
+						$(".loading-gif").css("display", "none");
+					},
+					error: function () {
+						console.log("error");
+					}
+				})
+			}
+		}
 	})
 })();
