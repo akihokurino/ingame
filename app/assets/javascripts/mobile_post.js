@@ -264,14 +264,18 @@
         this.$el.find(".add-page").append(this.results_view.el);
 
         this.collection = results;
+
         this.search_title = this.$(".search-title-input");
+        this.current_search_title = null;
+
+        this.page = 1;
       },
       search: function (e) {
         e.preventDefault();
         var that = this;
-        var search_title = this.search_title.val();
+        this.current_search_title = this.search_title.val();
         this.collection.fetch({
-          data: {search_title: search_title},
+          data: {search_title: this.current_search_title, page: this.page},
           success: function (model, response, options) {
             that.collection.reset();
             that.results_view.$el.html("");
@@ -281,6 +285,8 @@
                 that.collection.add(result);
               }
             }
+
+            $(window).bind("scroll", pagenation);
           },
           error: function () {
             console.log("error");
@@ -288,6 +294,39 @@
         })
       }
     })
+
+    function pagenation(){
+      var scrollHeight = $(document).height();
+      var scrollPosition = $(window).height() + $(window).scrollTop();
+      if ((scrollHeight - scrollPosition) / scrollHeight <= 0.1) {
+        $(".loading-gif").css("display", "block");
+        $(window).unbind("scroll");
+
+        var app = router.current_app;
+        app.page += 1;
+
+        app.collection.fetch({
+          data: {search_title: app.current_search_title, page: app.page},
+          success: function (model, response, options) {
+            if (response.results && response.results.length > 0) {
+              for (var i = 0; i < response.results.length; i++) {
+                var result = new Result(response.results[i]);
+                app.collection.add(result);
+              }
+            }
+
+            $(".loading-gif").css("display", "none");
+
+            if (response.results.length != 0) {
+              $(window).bind("scroll");
+            }
+          },
+          error: function () {
+            console.log("error");
+          }
+        })
+      }
+    }
 
 
     var Router = Backbone.Router.extend({
@@ -297,13 +336,13 @@
         "add": "add"
       },
       select: function () {
-        var app = new SelectView();
+        this.current_app = new SelectView();
       },
       write: function () {
-        var app = new WriteView();
+        this.current_app = new WriteView();
       },
       add: function () {
-        var app = new AddView();
+        this.current_app = new AddView();
       }
     })
 
