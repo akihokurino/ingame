@@ -129,28 +129,35 @@
         this.$el.html("");
         this.$el.append(this.template);
         this.results_view = new ResultsView({el: ".result-list"});
+
         this.collection = results;
+
         this.search_title = this.$(".search-title-input");
+        this.current_search_title = null;
+
         var tmp = location.href.split("#")[0].split("/");
-        tmp.pop();
-        this.user_id = tmp.pop();
+        this.user_id = tmp.pop() && tmp.pop();
+        this.page = 1;
       },
       search: function (e) {
         if(e.which == 13){
           e.preventDefault();
           var that = this;
-          var search_title = this.search_title.val();
+
+          this.current_search_title = this.search_title.val();
           this.collection.fetch({
-            data: {search_title: search_title},
+            data: {search_title: this.current_search_title, page: this.page},
             success: function (model, response, options) {
               that.collection.reset();
               that.results_view.$el.html("");
-              if(response.results && response.results.length > 0){
-                for(var i = 0; i < response.results.length; i++){
+              if (response.results && response.results.length > 0) {
+                for (var i = 0; i < response.results.length; i++) {
                   var result = new Result(response.results[i]);
                   that.collection.add(result);
                 }
               }
+
+              $(window).bind("scroll", pagenation);
             },
             error: function () {
               console.log("error");
@@ -163,6 +170,39 @@
         location.href = "/users/" + this.user_id + "/setting#second";
       }
     })
+
+    function pagenation(){
+      var scrollHeight = $(document).height();
+      var scrollPosition = $(window).height() + $(window).scrollTop();
+      if ((scrollHeight - scrollPosition) / scrollHeight <= 0.1) {
+        $(".loading-gif").css("display", "block");
+        $(window).unbind("scroll");
+
+        var app = router.current_app;
+        app.page += 1;
+
+        app.collection.fetch({
+          data: {search_title: app.current_search_title, page: app.page},
+          success: function (model, response, options) {
+            if (response.results && response.results.length > 0) {
+              for (var i = 0; i < response.results.length; i++) {
+                var result = new Result(response.results[i]);
+                app.collection.add(result);
+              }
+            }
+
+            $(".loading-gif").css("display", "none");
+
+            if (response.results.length != 0) {
+              $(window).bind("scroll");
+            }
+          },
+          error: function () {
+            console.log("error");
+          }
+        })
+      }
+    }
 
     var SecondView = Backbone.View.extend({
       el: $(".setting-page"),
@@ -239,13 +279,13 @@
         "third": "third"
       },
       first: function () {
-        var app = new FirstView();
+        this.current_app = new FirstView();
       },
       second: function () {
-        var app = new SecondView();
+        this.current_app = new SecondView();
       },
       third: function () {
-        var app = new ThirdView();
+        this.current_app = new ThirdView();
       }
     })
 

@@ -6,16 +6,12 @@ class Api::GamesController < ApplicationController
   end
 
 	def search
-		@results = Game.where("title LIKE ?", "%#{escape_like(params[:search_title])}%").keep_if do |game|
-			!@current_user.logs.pluck(:game_id).include?(game.id)
-		end
+    page = params[:page].to_i
+    return false if page < 1
+		@results = Game.search(params[:search_title], page, @current_user)
 	end
 
 	private
-	def escape_like(string)
-	  	string.gsub(/[\\%_]/){|m| "\\#{m}"}
-	end
-
   def set_game
     @game = Game.find(params[:id])
   end

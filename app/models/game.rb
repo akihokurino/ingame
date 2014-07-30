@@ -21,6 +21,8 @@ class Game < ActiveRecord::Base
 
 	attr_accessor :i_registed, :my_status_id, :my_rate, :avg_rate
 
+	LIMIT = 20
+
 	def check_regist(current_user)
 		self.i_registed = current_user.logs.pluck(:game_id).include?(self[:id]) ? true : false
 
@@ -95,6 +97,17 @@ class Game < ActiveRecord::Base
 			end
 
 			game
+		end
+
+		def search(search_title, page, current_user)
+			offset = (page - 1) * LIMIT
+			self.where("title LIKE ?", "%#{self.escape_like(search_title)}%").order("created_at DESC").offset(offset).limit(LIMIT).keep_if do |game|
+				!current_user.logs.pluck(:game_id).include?(game.id)
+			end
+		end
+
+		def escape_like(string)
+	  	string.gsub(/[\\%_]/){|m| "\\#{m}"}
 		end
 	end
 end
