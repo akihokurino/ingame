@@ -6,6 +6,7 @@ class CreatePosts < ActiveRecord::Migration
 
       t.references :user
       t.references :game
+      t.references :log
 
       t.timestamps
     end

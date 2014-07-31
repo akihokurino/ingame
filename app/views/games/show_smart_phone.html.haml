@@ -45,15 +45,19 @@
       ポスト数
     %li.item
       %ul.stars
-        - unless @game.avg_rate.nil?
+        - if !@game.avg_rate.nil? && @game.avg_rate > 0
           - @game.avg_rate.to_i.times do |i|
             %li.star
+        - else
+          %li なし
       全体の評価
     %li.item
       %ul.stars
         - unless @game.my_rate.nil?
           - @game.my_rate.to_i.times do |i|
             %li.star
+        - else
+          %li なし
       自分の評価
 
   %ul.shopList
@@ -62,13 +66,14 @@
     %li.item
       %a.steamBtn{href: ""} Steamへ
 
-  .friendBox
-    .friendBoxInner
-      %p.text 6人のフォローゲーマーが遊んでいます。
-      %ul.friendList
-        - 4.times do |i|
-          %li.item
-            %img.friendImg{src: "../images/baba.jpg", width: "30", height: "30", alt: ""}
+  -#
+    .friendBox
+      .friendBoxInner
+        %p.text 6人のフォローゲーマーが遊んでいます。
+        %ul.friendList
+          - 4.times do |i|
+            %li.item
+              %img.friendImg{src: "../images/baba.jpg", width: "30", height: "30", alt: ""}
 
   .sortBoxWrap
     %ul.sortBox

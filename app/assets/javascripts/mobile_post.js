@@ -206,8 +206,11 @@
         this.$el.html("");
         this.$el.append(this.template);
 
-        this.game_id = location.href.split("/").pop();
-        this.text = $("textarea")
+        var url_array = location.href.split("/");
+        this.log_id = url_array.pop();
+        this.game_id = url_array.pop();
+        console.log(log_id, game_id);
+        this.text = $("textarea");
 
         $.ajax({
           type: "GET",
@@ -332,7 +335,7 @@
     var Router = Backbone.Router.extend({
       routes: {
         "select": "select",
-        "write/:game_id": "write",
+        "write/:game_id/:log_id": "write",
         "add": "add"
       },
       select: function () {

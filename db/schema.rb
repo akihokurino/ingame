@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140727090106) do
+ActiveRecord::Schema.define(version: 20140611012427) do
 
   create_table "follows", force: true do |t|
     t.integer  "from_user_id"
@@ -33,19 +33,19 @@ ActiveRecord::Schema.define(version: 20140727090106) do
     t.string   "device"
     t.string   "maker"
     t.integer  "game_likes_count", default: 0
+    t.integer  "posts_count",      default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "posts_count",      default: 0
   end
 
   create_table "logs", force: true do |t|
     t.text     "text"
+    t.integer  "rate"
     t.integer  "game_id"
     t.integer  "status_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "rate"
   end
 
   create_table "post_likes", force: true do |t|
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20140727090106) do
     t.integer  "post_likes_count", default: 0
     t.integer  "user_id"
     t.integer  "game_id"
+    t.integer  "log_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
