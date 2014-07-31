@@ -25,6 +25,6 @@ class Api::PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:user_id, :game_id, :text)
+    params.require(:post).permit(:user_id, :game_id, :text, :log_id)
   end
 end

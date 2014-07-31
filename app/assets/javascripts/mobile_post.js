@@ -209,7 +209,6 @@
         var url_array = location.href.split("/");
         this.log_id = url_array.pop();
         this.game_id = url_array.pop();
-        console.log(log_id, game_id);
         this.text = $("textarea");
 
         $.ajax({
@@ -232,6 +231,7 @@
         var data = {
           "post": {
             "game_id": this.game_id,
+            "log_id": this.log_id,
             "text": this.text.val()
           }
         }
