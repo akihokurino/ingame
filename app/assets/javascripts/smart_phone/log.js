@@ -1,5 +1,7 @@
 //= require ../models/log.js
+//= require ../models/result.js
 //= require ../collections/logs.js
+//= require ../collections/results.js
 
 (function () {
   $(function () {
@@ -7,12 +9,12 @@
 
     /* ---------- Collection ---------- */
     var logs = new Logs();
+    var results = new Results();
 
 
 
     /* ---------- View ---------- */
     var LogsView = Backbone.View.extend({
-      el: "ul.gameList",
       initialize: function () {
         this.collection = logs;
         this.listenTo(this.collection, "add", this.addLog);
@@ -89,22 +91,85 @@
       }
     })
 
+    var ResultsView = Backbone.View.extend({
+      initialize: function () {
+        this.collection = results;
+        this.listenTo(this.collection, "add", this.addResult);
+      },
+      addResult: function (result) {
+        if(result.id){
+          var result_view = new ResultView({model: result});
+          this.$el.prepend(result_view.render().el);
+        }
+      }
+    })
 
-    var AppView = Backbone.View.extend({
+    var ResultView = Backbone.View.extend({
+      tagName: "li",
+      className: "item",
+      events: {
+        "change .status": "regist"
+      },
+      initialize: function () {
+      },
+      remove: function () {
+        this.$el.remove();
+      },
+      template: _.template($("#result-template").html()),
+      render: function () {
+        var template = this.template(this.model.toJSON());
+        this.$el.html(template);
+        return this;
+      },
+      regist: function () {
+        if (this.$el.find("select").val() != ""){
+          var that = this;
+
+          var data = {
+            "log": {
+              "game_id": this.model.id,
+              "status_id": this.$el.find("select").val()
+            }
+          }
+
+          $.ajax({
+            type: "POST",
+            url: "/api/logs",
+            data: data,
+            success: function (data) {
+              that.remove();
+            },
+            error: function () {
+              console.log("error");
+            }
+          })
+          }
+        }
+    })
+
+
+
+    var EditView = Backbone.View.extend({
       el: $(".logs-page"),
       events: {
         "click .playing": "setPlaying",
         "click .ready": "setAttention",
         "click .played": "setArchive"
       },
+      template: _.template($("#edit-template").html()),
       initialize: function () {
         var that = this;
 
-        this.logs_view = new LogsView();
+        this.$el.html("");
+        this.$el.append(this.template);
+
+        this.logs_view = new LogsView({el: "ul.gameList"});
 
         this.attentions = [];
         this.playings = [];
         this.archives = [];
+
+        this.logs_view.collection.reset();
 
         $.ajax({
           type: "GET",
@@ -162,6 +227,67 @@
       }
     })
 
-    var app = new AppView();
+    var AddView = Backbone.View.extend({
+      el: $(".logs-page"),
+      events: {
+        "submit": "search"
+      },
+      template: _.template($("#add-template").html()),
+      initialize: function () {
+        var that = this;
+
+        this.$el.html("");
+        this.$el.append(this.template);
+
+        this.results_view = new ResultsView({el: ".gameList"});
+        this.$el.find(".add-page").append(this.results_view.el);
+
+        this.collection = results;
+
+        this.search_title = this.$(".search-title-input");
+        this.current_search_title = null;
+
+        this.page = 1;
+      },
+      search: function (e) {
+        e.preventDefault();
+        var that = this;
+        this.current_search_title = this.search_title.val();
+        this.collection.fetch({
+          data: {search_title: this.current_search_title, page: this.page},
+          success: function (model, response, options) {
+            that.collection.reset();
+            that.results_view.$el.html("");
+            if(response.results && response.results.length > 0){
+              for(var i = 0; i < response.results.length; i++){
+                var result = new Result(response.results[i]);
+                that.collection.add(result);
+              }
+            }
+
+            $(window).bind("scroll", pagenation);
+          },
+          error: function () {
+            console.log("error");
+          }
+        })
+      }
+    })
+
+    var Router = Backbone.Router.extend({
+      routes: {
+        "edit": "edit",
+        "add": "add"
+      },
+      edit: function () {
+        this.current_app = new EditView();
+      },
+      add: function () {
+        this.current_app = new AddView();
+      }
+    })
+
+    var router = new Router();
+    Backbone.history.start();
   })
 })();

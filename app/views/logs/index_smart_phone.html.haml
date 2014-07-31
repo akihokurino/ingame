@@ -1,22 +1,12 @@
 = content_for :head do
   = javascript_include_tag "smart_phone/log.js"
 
-= render partial: "application/default_header"
-
 .logs-page.editCnt{"data-userid" => @current_user[:id]}
-  .sortBoxWrap
-    %ul.sortBox
-      %li.item.current.ready-li
-        %span.ready 気になる
-      %li.item.playing-li
-        %span.playing プレイ中
-      %li.item.played-li
-        %span.played アーカイブ
 
-  %form.searchWrap
-    %input.search{type: "text", placeholder: "search"}
 
-  %ul.gameList
-
+= render partial: "application/underscore/logs/edit"
 = render partial: "application/underscore/logs/log"
+
+= render partial: "application/underscore/logs/add"
+= render partial: "application/underscore/logs/result"
 

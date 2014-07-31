@@ -1,0 +1,9 @@
+%script{type: "text/template", id: "add-template"}
+  %header
+    %h1.ttl ゲームを追加する
+    %a.cancel{href: "/logs#edit"} 戻る
+  .add-page.mainCnt
+    %form.searchWrap
+      %input.search.search-title-input{type: "text", placeholder: "search"}
+    %ul.gameList
+    = image_tag "gif-load.gif", class: "loading-gif"
