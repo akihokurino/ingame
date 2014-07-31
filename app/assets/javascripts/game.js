@@ -145,23 +145,25 @@
         })
       },
       changeStatus: function () {
-        var data = {
-          "log": {
-            "status_id": this.my_status_select.val()
+        if (this.my_status_select.val() != "") {
+          var data = {
+            "log": {
+              "status_id": this.my_status_select.val()
+            }
           }
-        }
 
-        $.ajax({
-          type: "PUT",
-          url: "/api/logs/" + game_id + "/update_status_or_rate",
-          data: data,
-          success: function (data) {
-            console.log(data);
-          },
-          error: function () {
-            console.log("error");
-          }
-        })
+          $.ajax({
+            type: "PUT",
+            url: "/api/logs/" + game_id + "/update_status_or_rate",
+            data: data,
+            success: function (data) {
+              console.log(data);
+            },
+            error: function () {
+              console.log("error");
+            }
+          })
+        }
       },
       registLog: function () {
         var data = {
