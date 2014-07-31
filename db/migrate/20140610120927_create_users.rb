@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :introduction, :limit => 255
       t.integer :logs_count, :default => 0
       t.integer :posts_count, :default => 0
-      t.string :photo_path
+      t.string :photo_path, :default => "default.jpg"
       t.string :place, :limit => 255
       t.boolean :is_first, :default => true
 

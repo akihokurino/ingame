@@ -14,6 +14,10 @@ json.all_posts do |json|
       json.username post.user[:username]
       json.photo_path post.user[:photo_path]
     end
+    json.status do |json|
+      json.id post.log.status[:id]
+      json.name post.log.status[:name]
+    end
     json.current_user_id @current_user[:id]
   end
 end
@@ -33,6 +37,10 @@ json.follower_posts do |json|
       json.id post.user[:id]
       json.username post.user[:username]
       json.photo_path post.user[:photo_path]
+    end
+    json.status do |json|
+      json.id post.log.status[:id]
+      json.name post.log.status[:name]
     end
     json.current_user_id @current_user[:id]
   end

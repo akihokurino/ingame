@@ -34,7 +34,7 @@ class Game < ActiveRecord::Base
 	def check_rate(current_user)
 		begin
 			my_rate = current_user.logs.find_by(game_id: self[:id]).rate
-		rescue ActiveRecord::RecordNotFound
+		rescue Exception
 			my_rate = nil
 		end
 

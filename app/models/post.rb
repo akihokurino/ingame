@@ -1,6 +1,7 @@
 class Post < ActiveRecord::Base
   belongs_to :user, counter_cache: true
   belongs_to :game, counter_cache: true
+  belongs_to :log
   has_many :post_likes
 
   validates :user_id,
@@ -21,18 +22,18 @@ class Post < ActiveRecord::Base
       offset = (page - 1) * LIMIT
       follower_ids = Follow.where(from_user_id: current_user_id).pluck(:to_user_id)
       follower_ids << current_user_id
-      posts = self.where(user_id: follower_ids).includes(:game).includes(:user).includes(:post_likes).order("created_at DESC").offset(offset).limit(LIMIT)
+      posts = self.where(user_id: follower_ids).includes(:game).includes(:log).includes(:user).includes(:post_likes).order("created_at DESC").offset(offset).limit(LIMIT)
       posts = self.i_like?(posts, current_user_id)
     end
 
     def get_all_posts_of_game(current_user_id, game_id)
-      posts = self.where(game_id: game_id).includes(:game).includes(:user).includes(:post_likes)
+      posts = self.where(game_id: game_id).includes(:log).includes(:game).includes(:user).includes(:post_likes)
       posts = self.i_like?(posts, current_user_id)
     end
 
     def get_follower_posts_of_game(current_user_id, game_id)
       follower_ids = Follow.where(from_user_id: current_user_id).pluck(:to_user_id)
-      posts = self.where(game_id: game_id, user_id: follower_ids).includes(:game).includes(:user).includes(:post_likes)
+      posts = self.where(game_id: game_id, user_id: follower_ids).includes(:log).includes(:game).includes(:user).includes(:post_likes)
       posts = self.i_like?(posts, current_user_id)
     end
 
