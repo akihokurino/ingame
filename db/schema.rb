@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20140611012427) do
     t.string   "maker"
     t.integer  "game_likes_count", default: 0
     t.integer  "posts_count",      default: 0
+    t.string   "amazon_url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -83,7 +84,7 @@ ActiveRecord::Schema.define(version: 20140611012427) do
     t.string   "introduction"
     t.integer  "logs_count",               default: 0
     t.integer  "posts_count",              default: 0
-    t.string   "photo_path"
+    t.string   "photo_path",               default: "default.jpg"
     t.string   "place"
     t.boolean  "is_first",                 default: true
     t.datetime "created_at"

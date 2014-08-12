@@ -6,8 +6,10 @@
 .game-page.mainCnt{"data-gameid" => @game[:id]}
   .gameBoxWrap
     %figure.gameWrap
-      .gameInner
-        = image_tag @game.photo_path, width: 78, height: 111, class: "gameImg"
+      - if !@game.amazon_url.nil?
+        %a.gameInner{href: @game.amazon_url}
+          = image_tag @game.photo_path, width: 78, height: 111, class: "gameImg"
+
     %section.gameBox
       %h1.ttl
         = @game.title
@@ -62,7 +64,8 @@
 
   %ul.shopList
     %li.item
-      %a.amazonBtn{href: ""} Amazonへ
+      -if !@game.amazon_url.nil?
+        %a.amazonBtn{href: @game.amazon_url} Amazonへ
     %li.item
       %a.steamBtn{href: ""} Steamへ
 

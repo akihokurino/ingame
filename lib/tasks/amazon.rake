@@ -6,7 +6,9 @@ namespace :amazon do
 		require 'kconv'
 
 		def get_detail(url)
-			result = {}
+			result = {
+				amazon_url: URI.unescape(url)
+			}
 
 			begin
 				html = open(url){|f| f.read }
