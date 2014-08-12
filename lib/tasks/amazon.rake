@@ -1,9 +1,24 @@
 namespace :amazon do
 	desc "scraping from amazon"
-  	task :get => :environment do
-    	require 'open-uri'
+  task :get => :environment do
+    require 'open-uri'
 		require 'nokogiri'
 		require 'kconv'
+		require "FileUtils"
+
+		def generate_random_name(type = "alphabet", size = 8)
+      char_list_str = []
+      char_list_str = ("a".."z").to_a if type == "alphabet"
+      char_list_str = (0..9).to_a if type == "number"
+
+      return false if size < 1
+
+      if size == 1
+        char_list_str.sample
+      else
+        char_list_str.sort_by{rand}.take(size).join("")
+      end
+    end
 
 		def get_detail(url)
 			result = {
@@ -38,7 +53,17 @@ namespace :amazon do
 			if Game.exists?(title: result[:title])
 				p false
 			else
-				p Game.create(result)
+			  if result[:photo_path]
+			  	filename = Time.now.to_i.to_s + generate_random_name("alphabet", 25)
+			  	filepath = "public/game_photos/#{filename}"
+				  File.open(filepath, 'wb') do |output|
+				    open(result[:photo_path]) do |data|
+				      output.write(data.read)
+				      result[:photo_path] = filename
+				    end
+				  end
+					p Game.create(result)
+				end
 			end
 		end
 
