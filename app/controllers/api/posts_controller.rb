@@ -15,6 +15,9 @@ class Api::PostsController < ApplicationController
   def create
     params[:post][:user_id] = @current_user[:id]
     @last_post = Post.create!(post_params)
+    unless params[:post][:files].blank?
+      @last_post.save_files(params[:post][:files])
+    end
   end
 
   def destroy

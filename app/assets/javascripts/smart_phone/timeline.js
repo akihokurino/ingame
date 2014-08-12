@@ -87,6 +87,7 @@
 			},
 			addPost: function (post) {
 				if(post.id){
+					console.log(post);
 					var post_view = new PostView({model: post});
 					this.$el.append(post_view.render().el);
 				}

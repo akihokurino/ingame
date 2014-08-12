@@ -1,16 +1,16 @@
 = content_for :head do
-  = javascript_include_tag "smart_phone/mobile_post.js"
+  = javascript_include_tag "smart_phone/post.js"
 
 .post-new-page{"data-userid" => @current_user[:id]}
 
-= render partial: "application/underscore/smart_phone/mobile_post/select"
-= render partial: "application/underscore/smart_phone/mobile_post/log"
+= render partial: "application/underscore/smart_phone/post/select"
+= render partial: "application/underscore/smart_phone/post/log"
 
-= render partial: "application/underscore/smart_phone/mobile_post/write"
-= render partial: "application/underscore/smart_phone/mobile_post/game"
+= render partial: "application/underscore/smart_phone/post/write"
+= render partial: "application/underscore/smart_phone/post/game"
 
-= render partial: "application/underscore/smart_phone/mobile_post/add"
-= render partial: "application/underscore/smart_phone/mobile_post/result"
+= render partial: "application/underscore/smart_phone/post/add"
+= render partial: "application/underscore/smart_phone/post/result"
 
 
 

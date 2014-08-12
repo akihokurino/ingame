@@ -18,6 +18,7 @@ var Post = Backbone.Model.extend({
       "id": "",
       "name": ""
     },
+    "post_photos": [],
     "current_user_id": ""
   }
 })

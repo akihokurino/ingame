@@ -17,6 +17,10 @@
       {{ } }}
   %p.text
     {{= text }}
+  .thumbnail
+    {{ for (var i = 0; i < post_photos.length; i++) { }}
+    %img{src: "/post_photos/{{= post_photos[i].photo_path }}"}
+    {{ } }}
   .stateBox
     %a.commentBtn{href: "#"}
       コメント

@@ -8,7 +8,8 @@
       %form.textareaWrap.post-form
         %textarea{placeholder: "そのゲームについて、どう思った？"}
         /%input.btn.submit{value: "投稿する"}
-      %a.addPhoto{href: ""} 写真を追加+
+      #thumbnail
+      %input.addPhoto#upload-btn{type: "file", href: ""}
       %ul.snsBtn
         %li.fb
           %a.fbBtn{href: ""}

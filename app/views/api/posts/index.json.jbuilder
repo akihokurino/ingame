@@ -18,6 +18,12 @@ json.posts do |json|
       json.id post.log.status[:id]
       json.name post.log.status[:name]
     end
+    json.post_photos do |json|
+      json.array!(post.post_photos) do |post_photo|
+        json.id post_photo[:id]
+        json.photo_path post_photo[:photo_path]
+      end
+    end
     json.current_user_id @current_user[:id]
   end
 end

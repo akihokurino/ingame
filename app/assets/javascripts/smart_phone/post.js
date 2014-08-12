@@ -3,6 +3,7 @@
 //= require ../models/result.js
 //= require ../collections/logs.js
 //= require ../collections/results.js
+//= require ../libs/post_upload.js
 
 (function () {
   $(function () {
@@ -211,6 +212,8 @@
         this.game_id = url_array.pop();
         this.text = $("textarea");
 
+        this.upload = new PostUpload("upload-btn", "thumbnail");
+
         $.ajax({
           type: "GET",
           url: "/api/games/" + this.game_id,
@@ -232,7 +235,8 @@
           "post": {
             "game_id": this.game_id,
             "log_id": this.log_id,
-            "text": this.text.val()
+            "text": this.text.val(),
+            "files": this.upload.files
           }
         }
 
