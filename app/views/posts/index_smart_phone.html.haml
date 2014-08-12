@@ -1,5 +1,5 @@
 = content_for :head do
-  = javascript_include_tag "timeline.js"
+  = javascript_include_tag "smart_phone/timeline.js"
 
 = render partial: "application/default_header"
 
@@ -9,9 +9,9 @@
   .post-list
   = image_tag "gif-load.gif", class: "loading-gif"
 
-= render partial: "application/underscore/timeline/post"
-= render partial: "application/underscore/timeline/game_option"
-= render partial: "application/underscore/timeline/user"
+= render partial: "application/underscore/smart_phone/timeline/post"
+= render partial: "application/underscore/smart_phone/timeline/game_option"
+= render partial: "application/underscore/smart_phone/timeline/user"
 
 
 

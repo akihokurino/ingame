@@ -1,5 +1,5 @@
 = content_for :head do
-  = javascript_include_tag "profile.js"
+  = javascript_include_tag "smart_phone/profile.js"
 
 = render partial: "application/default_header"
 
@@ -59,9 +59,9 @@
       %input{input: "text", placeholder: "search", role: "textarea", class: "search-log"}
     %ul.gameList.log-list
 
-= render partial: "application/underscore/profile/log"
-= render partial: "application/underscore/profile/follow"
-= render partial: "application/underscore/profile/unfollow"
+= render partial: "application/underscore/smart_phone/profile/log"
+= render partial: "application/underscore/smart_phone/profile/follow"
+= render partial: "application/underscore/smart_phone/profile/unfollow"
 
 
 
