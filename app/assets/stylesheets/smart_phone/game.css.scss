@@ -107,7 +107,7 @@ html {
 			color: #ffffff;
 			text-align: center;
 		}
-		select {
+		select.new_status, select.my_status {
 			display: block;
 			width: 107px;
 			margin-left: auto;
@@ -119,6 +119,28 @@ html {
 			color: #ffffff;
 			text-align: center;
 			outline: 0;
+		}
+
+		select.stars {
+			display: block;
+			width: 70px;
+			margin-left: auto;
+			border: none;
+			@include border-radius(18px);
+			@include box-sizing;
+			color: #a09f9f;
+			font-size: 10px;
+			text-align: center;
+			outline: 0;
+			@include appearance;
+		}
+		.stars {
+			@include flexbox;
+			justify-content: center;
+			margin-top: 1px;
+		}
+		.star {
+			@include iconSprite4(11px, 10px, 0, -260px);
 		}
 	}
 	/*---   .dataBox   ----------*/

@@ -21,8 +21,52 @@
           %span.maker メーカー
           = @game.maker
       %ul.btnList
-        %li.item
-          %a.comment{href: ""} コメントする
+        - if @game.i_registed
+          %li.item
+            %select.stars.my_rate{name: "stars", size: 1}
+              - case @game.my_rate.to_i
+              - when 1
+                %option{value: ""} レビュー
+                %option{value: 1, selected: "selected"} ★☆☆☆☆
+                %option{value: 2} ★★☆☆☆
+                %option{value: 3} ★★★☆☆
+                %option{value: 4} ★★★★☆
+                %option{value: 5} ★★★★★
+              - when 2
+                %option{value: ""} レビュー
+                %option{value: 1} ★☆☆☆☆
+                %option{value: 2, selected: "selected"} ★★☆☆☆
+                %option{value: 3} ★★★☆☆
+                %option{value: 4} ★★★★☆
+                %option{value: 5} ★★★★★
+              - when 3
+                %option{value: ""} レビュー
+                %option{value: 1} ★☆☆☆☆
+                %option{value: 2} ★★☆☆☆
+                %option{value: 3, selected: "selected"} ★★★☆☆
+                %option{value: 4} ★★★★☆
+                %option{value: 5} ★★★★★
+              - when 4
+                %option{value: ""} レビュー
+                %option{value: 1} ★☆☆☆☆
+                %option{value: 2} ★★☆☆☆
+                %option{value: 3} ★★★☆☆
+                %option{value: 4, selected: "selected"} ★★★★☆
+                %option{value: 5} ★★★★★
+              - when 5
+                %option{value: ""} レビュー
+                %option{value: 1} ★☆☆☆☆
+                %option{value: 2} ★★☆☆☆
+                %option{value: 3} ★★★☆☆
+                %option{value: 4} ★★★★☆
+                %option{value: 5, selected: "selected"} ★★★★★
+              - else
+                %option{value: ""} レビュー
+                %option{value: 1} ★☆☆☆☆
+                %option{value: 2} ★★☆☆☆
+                %option{value: 3} ★★★☆☆
+                %option{value: 4} ★★★★☆
+                %option{value: 5} ★★★★★
         %li.item
           - unless @game.i_registed
             %select.new_status{name: "status", size: "1"}
@@ -63,20 +107,12 @@
       自分の評価
 
   %ul.shopList
-    %li.item
-      -if !@game.amazon_url.nil?
+    - if !@game.amazon_url.nil?
+      %li.item
         %a.amazonBtn{href: @game.amazon_url} Amazonへ
-    %li.item
-      %a.steamBtn{href: ""} Steamへ
-
-  -#
-    .friendBox
-      .friendBoxInner
-        %p.text 6人のフォローゲーマーが遊んでいます。
-        %ul.friendList
-          - 4.times do |i|
-            %li.item
-              %img.friendImg{src: "../images/baba.jpg", width: "30", height: "30", alt: ""}
+    - else
+      %li.item
+        %a.steamBtn{href: ""} Steamへ
 
   .sortBoxWrap
     %ul.sortBox

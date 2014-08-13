@@ -108,6 +108,7 @@
       events: {
         "change .my_status": "changeStatus",
         "change .new_status": "registLog",
+        "change .my_rate": "changeRate",
         "click .follower_posts": "setFollowerPosts",
         "click .all_posts": "setAllPosts"
       },
@@ -117,6 +118,8 @@
 
         this.my_status_select = $(".my_status");
         this.new_status_select = $(".new_status");
+
+        this.my_rate_select = $(".my_rate");
 
         this.follower_posts = [];
         this.all_posts = [];
@@ -143,6 +146,27 @@
             console.log("error");
           }
         })
+      },
+      changeRate: function () {
+        if (this.my_rate_select.val() != "") {
+          var data = {
+            "log": {
+              "rate": this.my_rate_select.val()
+            }
+          }
+
+          $.ajax({
+            type: "PUT",
+            url: "/api/logs/" + game_id + "/update_status_or_rate",
+            data: data,
+            success: function (data) {
+              console.log(data);
+            },
+            error: function () {
+              console.log("error");
+            }
+          })
+        }
       },
       changeStatus: function () {
         if (this.my_status_select.val() != "") {
