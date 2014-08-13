@@ -1,8 +1,9 @@
 = form_for @user do |f|
   .file-input
-    = image_tag "/user_photos/#{@user.photo_path}", class: "profile-img"
+    #thumbnail
+      = image_tag "/user_photos/#{@user.photo_path}", class: "profile-img"
     %span プロフィール画像
-    = f.file_field :photo_path
+    = f.file_field :photo_path, id: "upload-btn"
   .username-input
     %span 名前
     = f.text_field :username
