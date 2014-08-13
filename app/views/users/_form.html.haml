@@ -2,7 +2,7 @@
   .file-input
     = image_tag "/user_photos/#{@user.photo_path}", class: "profile-img"
     %span プロフィール画像
-    = f.file_field :file
+    = f.file_field :photo_path
   .username-input
     %span 名前
     = f.text_field :username
