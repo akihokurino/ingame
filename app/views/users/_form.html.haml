@@ -1,6 +1,15 @@
 = form_for @user do |f|
-  = f.text_field :username
-  = f.text_field :introduction
-  = f.file_field :photo_path
-  = f.text_field :place
-  = f.submit "変更"
+  .file-input
+    = image_tag "/user_photos/#{@user.photo_path}", class: "profile-img"
+    %span プロフィール画像
+    = f.file_field :file
+  .username-input
+    %span 名前
+    = f.text_field :username
+  .place-input
+    %span 場所
+    = f.text_field :place
+  .introduction-input
+    %span 紹介
+    = f.text_field :introduction
+  = f.submit "変更", class: "edit"
