@@ -100,7 +100,8 @@
 			events: {
 				"click .delete": "destroy",
 				"click .like" : "like",
-				"click .unlike": "unlike"
+				"click .unlike": "unlike",
+				"click .comment-btn": "showComment"
 			},
 			initialize: function () {
 				this.listenTo(this.model, "destroy", this.remove);
@@ -162,6 +163,10 @@
 						console.log("error");
 					}
 				})
+			},
+			showComment: function () {
+				$(".comment-modal").css("display", "block");
+				$(".layer").css("display", "block");
 			}
 		})
 

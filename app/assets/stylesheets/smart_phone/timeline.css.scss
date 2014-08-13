@@ -131,3 +131,16 @@
 		display: none;
 	}
 }
+
+.comment-modal {
+	width: 90%;
+	height: 500px;
+	position: fixed;
+	z-index: 100;
+	top: 50px;
+	left: 50%;
+	margin-left: -45%;
+	border: solid 1px #e2e2e2;
+	background-color: #fff;
+	display: none;
+}
