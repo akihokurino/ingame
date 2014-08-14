@@ -13,6 +13,7 @@
   .modal-header
     .cancel-btn 終了
   .modal-body
+    %ul.commnet-list
   .modal-footer
     %textarea{placeholder: "コメント...", class: "comment-input"}
     .submit-btn 送信
@@ -21,6 +22,7 @@
 = render partial: "application/underscore/smart_phone/timeline/post"
 = render partial: "application/underscore/smart_phone/timeline/game_option"
 = render partial: "application/underscore/smart_phone/timeline/user"
+= render partial: "application/underscore/smart_phone/timeline/comment"
 
 
 

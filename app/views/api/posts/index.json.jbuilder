@@ -24,6 +24,17 @@ json.posts do |json|
         json.photo_path post_photo[:photo_path]
       end
     end
+    json.post_comments do |json|
+      json.array!(post.post_comments) do |post_comment|
+        json.id post_comment[:id]
+        json.text post_comment[:text]
+        json.user do |json|
+          json.id post_comment.user[:id]
+          json.username post_comment.user[:username]
+          json.photo_path post_comment.user[:photo_path]
+        end
+      end
+    end
     json.current_user_id @current_user[:id]
   end
 end
