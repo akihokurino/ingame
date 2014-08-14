@@ -33,6 +33,7 @@ Ingame::Application.routes.draw do
     resources :game_likes, only: ["create", "destroy"], format: "json"
     resources :users, only: ["index", "update"], format: "json"
     resources :follows, only: ["create", "destroy"], format: "json"
+    resources :post_comments, only: ["create", "destory"], format: "json"
   end
 
   match "/auth/:provider/callback", to: "sessions#callback", via: :get

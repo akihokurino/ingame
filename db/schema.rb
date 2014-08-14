@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140611012427) do
+ActiveRecord::Schema.define(version: 20140814131158) do
 
   create_table "follows", force: true do |t|
     t.integer  "from_user_id"
@@ -48,6 +48,17 @@ ActiveRecord::Schema.define(version: 20140611012427) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "post_comments", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.text     "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "post_comments", ["post_id"], name: "index_post_comments_on_post_id", using: :btree
+  add_index "post_comments", ["user_id"], name: "index_post_comments_on_user_id", using: :btree
 
   create_table "post_likes", force: true do |t|
     t.integer  "post_id"

@@ -1,9 +1,9 @@
 //= require ../models/post.js
-//= require ../models/game.js
 //= require ../models/user.js
+//= require ../models/comment.js
 //= require ../collections/posts.js
-//= require ../collections/games.js
 //= require ../collections/users.js
+//= require ../collections/comments.js
 
 (function () {
 	$(function () {
@@ -13,71 +13,11 @@
 
 		var posts = new Posts();
 		var users = new Users();
+		var comments = new Comments();
 
 
 
 		/* ---------- View ---------- */
-		var PostFormView = Backbone.View.extend({
-			el: $(".post-form"),
-			events: {
-				"submit": "savePost"
-			},
-			initialize: function () {
-				this.collection = posts;
-				this.text = $(".text-input");
-				this.game_select = $(".game-select");
-			},
-			savePost: function (e) {
-				e.preventDefault();
-
-				var that = this;
-
-				var data = {
-					"post": {
-						"text": this.text.val(),
-						"game_id": this.game_select.val()
-					}
-				}
-
-				this.collection.create(data, {
-					method: "POST",
-					success: function (response) {
-						var post = new Post(response.attributes.post);
-						that.collection.add(post);
-					},
-					error: function () {
-						console.log("error");
-					}
-				});
-			}
-		})
-
-		var GamesSelectView = Backbone.View.extend({
-			el: $(".game-select"),
-			initialize: function () {
-				var that = this;
-				this.collection = new Games();
-				this.listenTo(this.collection, "add", this.addGame);
-			},
-			addGame: function (game) {
-				if(game.id){
-					var game_view = new GameView({model: game});
-					this.$el.append(game_view.render().el);
-				}
-			}
-		})
-
-		var GameView = Backbone.View.extend({
-			tagName: "option",
-			template: _.template($("#game-template").html()),
-			render: function () {
-				var template = this.template(this.model.toJSON());
-				this.$el.html(template);
-				this.$el.attr("value", this.model.id);
-				return this;
-			}
-		})
-
 		var PostsView = Backbone.View.extend({
 			el: $(".post-list"),
 			initialize: function () {
@@ -101,7 +41,7 @@
 				"click .delete": "destroy",
 				"click .like" : "like",
 				"click .unlike": "unlike",
-				"click .comment-btn": "showComment"
+				"click .comment-btn": "showComment",
 			},
 			initialize: function () {
 				this.listenTo(this.model, "destroy", this.remove);
@@ -164,7 +104,9 @@
 					}
 				})
 			},
-			showComment: function () {
+			showComment: function (e) {
+				e.preventDefault();
+				app.comment_modal_view.post_id = this.model.id;
 				$(".comment-modal").css("display", "block");
 				$(".layer").css("display", "block");
 			}
@@ -225,14 +167,55 @@
 			}
 		})
 
+		var CommentModalView = Backbone.View.extend({
+			el: ".comment-modal",
+			events: {
+				"click .cancel-btn": "hideComment",
+				"click .submit-btn": "postComment"
+			},
+			initialize: function () {
+				this.collection = comments;
+				this.comment_input = this.$(".comment-input");
+				this.post_id = null;
+			},
+			hideComment: function () {
+				$(".comment-modal").css("display", "none");
+				$(".layer").css("display", "none");
+				this.comment_input.val("");
+			},
+			postComment: function () {
+				if (this.comment_input.val() != "") {
+					var that = this;
+
+					var data = {
+						"post_comment": {
+							"post_id": this.post_id,
+							"text": this.comment_input.val()
+						}
+					}
+
+					this.collection.create(data, {
+						method: "POST",
+						success: function (response) {
+							console.log(response);
+							//var comment = new Comment(response.attributes.comment);
+							//that.collection.add(comment);
+						},
+						error: function () {
+							console.log("error");
+						}
+					})
+				}
+			}
+		})
+
 		var AppView = Backbone.View.extend({
 			el: ".timeline-page",
 			initialize: function () {
-				this.post_form_view = new PostFormView();
-				this.games_select_view = new GamesSelectView();
 				this.posts_view = new PostsView();
 				this.user_search_view = new UserSearchView();
 				this.users_view = new UsersView();
+				this.comment_modal_view = new CommentModalView();
 				this.collection = posts;
 
 				var that = this;
@@ -240,10 +223,6 @@
 				this.collection.fetch({
 					data: {page: page},
 					success: function (model, response, options) {
-						for (var i = 0; i < response.games.length; i++) {
-							var game = new Game(response.games[i]);
-							that.games_select_view.collection.add(game);
-						}
 						for (var i = 0; i < response.posts.length; i++) {
 							var post = new Post(response.posts[i]);
 							that.posts_view.collection.add(post);
