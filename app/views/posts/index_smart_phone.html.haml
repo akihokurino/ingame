@@ -10,6 +10,12 @@
   = image_tag "gif-load.gif", class: "loading-gif"
 
 .comment-modal
+  .modal-header
+    .cancel-btn 終了
+  .modal-body
+  .modal-footer
+    %textarea{placeholder: "コメント...", class: "comment-input"}
+    .submit-btn 送信
 .layer
 
 = render partial: "application/underscore/smart_phone/timeline/post"

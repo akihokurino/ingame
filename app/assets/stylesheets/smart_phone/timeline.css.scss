@@ -133,14 +133,68 @@
 }
 
 .comment-modal {
-	width: 90%;
+	width: 96%;
 	height: 500px;
 	position: fixed;
 	z-index: 100;
 	top: 50px;
 	left: 50%;
-	margin-left: -45%;
+	margin-left: -48%;
 	border: solid 1px #e2e2e2;
 	background-color: #fff;
 	display: none;
+	.modal-header {
+		width: 96%;
+		height: 40px;
+		margin: 0 auto;
+		border-bottom: solid 1px #e2e2e2;
+		overflow: hidden;
+		.cancel-btn {
+			width: 70px;
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+			border: solid 1px #e2e2e2;
+			border-radius: 3px;
+			float: right;
+			margin-top: 4px;
+			margin-right: 5px;
+		}
+	}
+	.modal-body {
+		width: 96%;
+		height: 410px;
+		margin: 0 auto;
+	}
+	.modal-footer {
+		overflow: hidden;
+		width: 96%;
+		height: 50px;
+		border-top: solid 1px #e2e2e2;
+		position: absolute;
+		bottom: 0px;
+		left: 2%;
+		textarea {
+			width: 80%;
+			float: left;
+			height: 40px;
+			margin-top: 4px;
+			display: block;
+			border: solid 1px #e2e2e2;
+			border-radius: 3px;
+			padding: 5px;
+			box-sizing: border-box;
+		}
+		.submit-btn {
+			width: 17%;
+			float: right;
+			height: 38px;
+			margin-top: 6px;
+			background-color: #10ac9b;
+			color: #fff;
+			border-radius: 3px;
+			line-height: 38px;
+			text-align: center;
+		}
+	}
 }
