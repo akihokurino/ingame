@@ -1,1 +1,8 @@
 %script{type: "text/template", id: "comment-template"}
+  %img{src: "/user_photos/{{= user.photo_path }}"}
+  .body
+    .inner-body
+      %a{href: "/users/{{= user.id }}"}
+        {{= user.username }}
+      %p
+        {{= text }}

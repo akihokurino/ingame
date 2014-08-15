@@ -26,7 +26,7 @@
 				this.listenTo(this.collection, "add", this.addPost);
 			},
 			addPost: function (post) {
-				if(post.id){
+				if (post.id) {
 					console.log(post);
 					var post_view = new PostView({model: post});
 					this.$el.append(post_view.render().el);
@@ -108,9 +108,13 @@
 				e.preventDefault();
 
 				app.comment_modal_view.post_id = this.model.id;
-				app.comment_modal_view.collection.reset();
-				app.comment_modal_view.collection = new Comments(this.model.comments);
-				app.comments_view = new CommentsView();
+				if (app.comment_modal_view.collection) {
+					app.comment_modal_view.collection.reset(this.model.get("post_comments"));
+				} else {
+					app.comment_modal_view.collection = new Comments(this.model.get("post_comments"));
+				}
+
+				app.comments_view = new CommentsView({collection: app.comment_modal_view.collection});
 
 				$(".comment-modal").css("display", "block");
 				$(".layer").css("display", "block");
@@ -175,13 +179,26 @@
 		var CommentsView = Backbone.View.extend({
 			el: ".comment-list",
 			initialize: function () {
-				this.listenTo(this.collection, "add", addComment);
+				this.refresh();
+				this.listenTo(this.collection, "add", this.addComment);
+				this.render();
 			},
 			addComment: function (comment) {
 				if (comment.id) {
 					var comment_view = new CommentView({model: comment});
 					this.$el.append(comment_view.render().el);
 				}
+			},
+			refresh: function () {
+				this.$el.html("");
+			},
+			render: function () {
+				var that = this;
+				this.collection.each(function (model) {
+					var comment_view = new CommentView({model: model});
+					that.$el.append(comment_view.render().el);
+				})
+				return this;
 			}
 		})
 
@@ -227,7 +244,7 @@
 						method: "POST",
 						success: function (response) {
 							//console.log(response);
-							var comment = new Comment(response.attributes.comment);
+							var comment = new Comment(response.get("comment"));
 							that.collection.add(comment);
 
 							that.comment_input.val("");

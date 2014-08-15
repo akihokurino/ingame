@@ -165,6 +165,39 @@
 		width: 96%;
 		height: 410px;
 		margin: 0 auto;
+		.comment-list {
+			width: 100%;
+			list-style-type: none;
+			.comment {
+				overflow: hidden;
+				padding-top: 5px;
+				padding-bottom: 5px;
+				border-bottom: solid 1px #e2e2e2;
+				img {
+					width: 40px;
+					height: 40px;
+					border-radius: 20px;
+					float: left;
+				}
+				.body {
+					width: 100%;
+					margin-left: -40px;
+					float: right;
+					.inner-body {
+						margin-left: 50px;
+						a {
+							display: block;
+							text-align: left;
+							font-size: 12px;
+						}
+						p {
+							text-align: left;
+							font-size: 12px;
+						}
+					}
+				}
+			}
+		}
 	}
 	.modal-footer {
 		overflow: hidden;
