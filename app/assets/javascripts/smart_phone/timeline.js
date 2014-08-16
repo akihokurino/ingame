@@ -13,7 +13,7 @@
 
 		var posts = new Posts();
 		var users = new Users();
-		var comments = new Comments();
+		var comments = null;
 
 
 
@@ -26,7 +26,7 @@
 				this.listenTo(this.collection, "add", this.addPost);
 			},
 			addPost: function (post) {
-				if(post.id){
+				if (post.id) {
 					console.log(post);
 					var post_view = new PostView({model: post});
 					this.$el.append(post_view.render().el);
@@ -106,7 +106,16 @@
 			},
 			showComment: function (e) {
 				e.preventDefault();
+
 				app.comment_modal_view.post_id = this.model.id;
+				if (app.comment_modal_view.collection) {
+					app.comment_modal_view.collection.reset(this.model.get("post_comments"));
+				} else {
+					app.comment_modal_view.collection = new Comments(this.model.get("post_comments"));
+				}
+
+				app.comments_view = new CommentsView({collection: app.comment_modal_view.collection});
+
 				$(".comment-modal").css("display", "block");
 				$(".layer").css("display", "block");
 			}
@@ -148,13 +157,13 @@
 			search: function (e) {
 				var that = this;
 				var username = this.username.val();
-				if(username && e.which == 13){
+				if (username && e.which == 13) {
 					this.collection.fetch({
 						data: {username: username},
 						success: function (model, response, options) {
 							that.collection.reset();
 							app.users_view.$el.html("");
-							for(var i = 0; i < response.results.length; i++){
+							for (var i = 0; i < response.results.length; i++) {
 								var user = new User(response.results[i]);
 								that.collection.add(user);
 							}
@@ -164,6 +173,43 @@
 						}
 					});
 				}
+			}
+		})
+
+		var CommentsView = Backbone.View.extend({
+			el: ".comment-list",
+			initialize: function () {
+				this.refresh();
+				this.listenTo(this.collection, "add", this.addComment);
+				this.render();
+			},
+			addComment: function (comment) {
+				if (comment.id) {
+					var comment_view = new CommentView({model: comment});
+					this.$el.append(comment_view.render().el);
+				}
+			},
+			refresh: function () {
+				this.$el.html("");
+			},
+			render: function () {
+				var that = this;
+				this.collection.each(function (model) {
+					var comment_view = new CommentView({model: model});
+					that.$el.append(comment_view.render().el);
+				})
+				return this;
+			}
+		})
+
+		var CommentView = Backbone.View.extend({
+			tagName: "li",
+			className: "comment",
+			template: _.template($("#comment-template").html()),
+			render: function () {
+				var template = this.template(this.model.toJSON());
+				this.$el.html(template);
+				return this;
 			}
 		})
 
@@ -197,9 +243,11 @@
 					this.collection.create(data, {
 						method: "POST",
 						success: function (response) {
-							console.log(response);
-							//var comment = new Comment(response.attributes.comment);
-							//that.collection.add(comment);
+							//console.log(response);
+							var comment = new Comment(response.get("comment"));
+							that.collection.add(comment);
+
+							that.comment_input.val("");
 						},
 						error: function () {
 							console.log("error");

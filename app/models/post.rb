@@ -4,6 +4,7 @@ class Post < ActiveRecord::Base
   belongs_to :log
   has_many :post_likes
   has_many :post_photos
+  has_many :post_comments
 
   validates :user_id,
     presence: true,
@@ -17,6 +18,10 @@ class Post < ActiveRecord::Base
   attr_accessor :i_liked
 
   LIMIT = 20
+
+  scope :all_include, -> {
+    includes(:game).includes(:log).includes(:user).includes(:post_likes).includes(:post_photos).includes(:post_comments)
+  }
 
   def save_files(files)
     files.each do |file|
@@ -44,18 +49,18 @@ class Post < ActiveRecord::Base
       offset = (page - 1) * LIMIT
       follower_ids = Follow.where(from_user_id: current_user_id).pluck(:to_user_id)
       follower_ids << current_user_id
-      posts = self.where(user_id: follower_ids).includes(:game).includes(:log).includes(:user).includes(:post_likes).includes(:post_photos).order("created_at DESC").offset(offset).limit(LIMIT)
+      posts = self.where(user_id: follower_ids).all_include.order("created_at DESC").offset(offset).limit(LIMIT)
       posts = self.i_like?(posts, current_user_id)
     end
 
     def get_all_posts_of_game(current_user_id, game_id)
-      posts = self.where(game_id: game_id).includes(:log).includes(:game).includes(:user).includes(:post_likes)
+      posts = self.where(game_id: game_id).all_include
       posts = self.i_like?(posts, current_user_id)
     end
 
     def get_follower_posts_of_game(current_user_id, game_id)
       follower_ids = Follow.where(from_user_id: current_user_id).pluck(:to_user_id)
-      posts = self.where(game_id: game_id, user_id: follower_ids).includes(:log).includes(:game).includes(:user).includes(:post_likes)
+      posts = self.where(game_id: game_id, user_id: follower_ids).all_include
       posts = self.i_like?(posts, current_user_id)
     end
 

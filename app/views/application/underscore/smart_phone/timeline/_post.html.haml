@@ -24,6 +24,8 @@
   .stateBox
     %a.commentBtn.comment-btn{href: "#"}
       コメント
+      %span.commentCnt
+        {{= post_comments.length }}
     {{ if (!i_liked) { }}
     %span.like.favBtn
       {{= post_likes_count }}
