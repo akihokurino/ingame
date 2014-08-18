@@ -76,7 +76,8 @@ ActiveRecord::Schema.define(version: 20140814131158) do
 
   create_table "posts", force: true do |t|
     t.text     "text"
-    t.integer  "post_likes_count", default: 0
+    t.integer  "post_likes_count",    default: 0
+    t.integer  "post_comments_count", default: 0
     t.integer  "user_id"
     t.integer  "game_id"
     t.integer  "log_id"

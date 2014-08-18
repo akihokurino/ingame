@@ -1,10 +1,10 @@
 namespace :amazon do
 	desc "scraping from amazon"
   task :get => :environment do
-    require 'open-uri'
+  	require 'open-uri'
 		require 'nokogiri'
 		require 'kconv'
-		require "FileUtils"
+		#require "FileUtils"
 
 		def generate_random_name(type = "alphabet", size = 8)
       char_list_str = []
@@ -26,9 +26,9 @@ namespace :amazon do
 			}
 
 			begin
-				html = open(url){|f| f.read }
+				html = open(url, "User-Agent" => "Mozilla/4.0"){|f| f.read }
 			rescue Exception
-				html = open(url, "r:binary").read.encode("utf-8", "euc-jp", invalid: :replace, undef: :replace)
+				html = open(url, "r:binary", "User-Agent" => "Mozilla/4.0").read.encode("utf-8", "euc-jp", invalid: :replace, undef: :replace)
 			end
 
 			begin
@@ -57,7 +57,7 @@ namespace :amazon do
 			  	filename = Time.now.to_i.to_s + generate_random_name("alphabet", 25)
 			  	filepath = "public/game_photos/#{filename}"
 				  File.open(filepath, 'wb') do |output|
-				    open(result[:photo_path]) do |data|
+				    open(result[:photo_path], "User-Agent" => "Mozilla/4.0") do |data|
 				      output.write(data.read)
 				      result[:photo_path] = filename
 				    end
@@ -69,8 +69,9 @@ namespace :amazon do
 
 		def crawl_amazon(url)
 			begin
-				html = open(url){|f| f.read }
-			rescue Exception
+				html = open(URI.unescape(url), "User-Agent" => "Mozilla/4.0"){|f| f.read }
+			rescue Exception => e
+				p e
 				return
 			end
 
@@ -85,15 +86,17 @@ namespace :amazon do
 			end
 			doc.css("#pagnNextLink").each do |node|
 				if node.name == "a"
-					crawl_amazon2(node.attributes["href"].value)
+					url = "http://www.amazon.co.jp/" + node.attributes["href"].value
+					crawl_amazon2(url)
 				end
 			end
 		end
 
 		def crawl_amazon2(url)
 			begin
-				html = open(url){|f| f.read }
-			rescue Exception
+				html = open(url, "User-Agent" => "Mozilla/4.0").read
+			rescue Exception => e
+				p e
 				return
 			end
 
@@ -116,6 +119,7 @@ namespace :amazon do
 				end
 			end
 		end
+
 
 		#PS4
 		crawl_amazon("http://www.amazon.co.jp/s/ref=lp_2494234051_nr_n_0?rh=n%3A637394%2Cn%3A%21637872%2Cn%3A2494234051%2Cn%3A2494235051&bbn=2494234051&ie=UTF8&qid=1403177798&rnid=2494234051")
@@ -140,6 +144,6 @@ namespace :amazon do
 		#Xbox 360
 		crawl_amazon("http://www.amazon.co.jp/s/ref=lp_15783231_nr_n_0?rh=n%3A637394%2Cn%3A%21637872%2Cn%3A15783231%2Cn%3A2228406051&bbn=15783231&ie=UTF8&qid=1403178118&rnid=15783231")
 		#PC Game
-		#crawl_amazon("http://www.amazon.co.jp/s/ref=sr_nr_n_12?rh=n%3A637394%2Cn%3A%21637872%2Cn%3A689132&bbn=637872&ie=UTF8&qid=1403509187&rnid=637872")
-  	end
+		crawl_amazon("http://www.amazon.co.jp/s/ref=sr_nr_n_12?rh=n%3A637394%2Cn%3A%21637872%2Cn%3A689132&bbn=637872&ie=UTF8&qid=1403509187&rnid=637872")
+  end
 end
