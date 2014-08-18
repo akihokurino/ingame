@@ -1,4 +1,4 @@
-@import "../function.css.scss";
+@import "../_function.css.scss";
 @import "./iconSprite.css.scss";
 
 /*---   .mainCnt   ---------------------------*/
@@ -123,6 +123,9 @@
 		}
 	}
 
+	/*------------------------------
+			systemClass   
+	------------------------------*/
 	.loading-gif {
 		width: 30px;
 		height: 30px;
@@ -132,6 +135,11 @@
 	}
 }
 
+
+
+/*------------------------------
+		systemClass   
+------------------------------*/
 .comment-modal {
 	width: 96%;
 	height: 500px;
@@ -166,34 +174,39 @@
 		height: 410px;
 		overflow: scroll;
 		margin: 0 auto;
+
 		.comment-list {
 			width: 100%;
 			list-style-type: none;
+
 			.comment {
 				overflow: hidden;
 				padding-top: 5px;
 				padding-bottom: 5px;
 				border-bottom: solid 1px #e2e2e2;
+
 				img {
+					float: left;
 					width: 40px;
 					height: 40px;
 					border-radius: 20px;
-					float: left;
 				}
 				.body {
+					float: right;
 					width: 100%;
 					margin-left: -40px;
-					float: right;
+
 					.inner-body {
 						margin-left: 50px;
+
 						a {
 							display: block;
-							text-align: left;
 							font-size: 12px;
+							text-align: left;
 						}
 						p {
-							text-align: left;
 							font-size: 12px;
+							text-align: left;
 						}
 					}
 				}
@@ -202,31 +215,32 @@
 	}
 	.modal-footer {
 		overflow: hidden;
-		width: 96%;
-		height: 50px;
-		border-top: solid 1px #e2e2e2;
 		position: absolute;
 		bottom: 0px;
 		left: 2%;
+		width: 96%;
+		height: 50px;
+		border-top: solid 1px #e2e2e2;
+
 		textarea {
-			width: 80%;
+			display: block;
 			float: left;
+			width: 80%;
 			height: 40px;
 			margin-top: 4px;
-			display: block;
-			border: solid 1px #e2e2e2;
-			border-radius: 3px;
 			padding: 5px;
-			box-sizing: border-box;
+			border: solid 1px #e2e2e2;
+			@include border-radius(3px);
+			@include box-sizing;
 		}
 		.submit-btn {
-			width: 17%;
 			float: right;
+			width: 17%;
 			height: 38px;
 			margin-top: 6px;
+			@include border-radius(3px);
 			background-color: #10ac9b;
 			color: #fff;
-			border-radius: 3px;
 			line-height: 38px;
 			text-align: center;
 		}
