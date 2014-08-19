@@ -21,13 +21,11 @@
 		var PostsView = Backbone.View.extend({
 			el: $(".post-list"),
 			initialize: function () {
-				var that = this;
 				this.collection = posts;
 				this.listenTo(this.collection, "add", this.addPost);
 			},
 			addPost: function (post) {
 				if (post.id) {
-					console.log(post);
 					var post_view = new PostView({model: post});
 					this.$el.append(post_view.render().el);
 				}
@@ -107,13 +105,8 @@
 			showComment: function (e) {
 				e.preventDefault();
 
-				app.comment_modal_view.post_id = this.model.id;
-				if (app.comment_modal_view.collection) {
-					app.comment_modal_view.collection.reset(this.model.get("post_comments"));
-				} else {
-					app.comment_modal_view.collection = new Comments(this.model.get("post_comments"));
-				}
-
+				app.comment_modal_view.model = this.model;
+				app.comment_modal_view.collection = new Comments(this.model.get("post_comments"));
 				app.comments_view = new CommentsView({collection: app.comment_modal_view.collection});
 
 				$(".comment-modal").css("display", "block");
@@ -185,6 +178,7 @@
 			},
 			addComment: function (comment) {
 				if (comment.id) {
+					console.log("test");
 					var comment_view = new CommentView({model: comment});
 					this.$el.append(comment_view.render().el);
 				}
@@ -222,9 +216,13 @@
 			initialize: function () {
 				this.collection = comments;
 				this.comment_input = this.$(".comment-input");
-				this.post_id = null;
+				this.model = null;
 			},
 			hideComment: function () {
+				app.comment_modal_view.model = null;
+				app.comment_modal_view.collection = null;
+				app.comments_view = null;
+
 				$(".comment-modal").css("display", "none");
 				$(".layer").css("display", "none");
 				this.comment_input.val("");
@@ -235,7 +233,7 @@
 
 					var data = {
 						"post_comment": {
-							"post_id": this.post_id,
+							"post_id": this.model.get("id"),
 							"text": this.comment_input.val()
 						}
 					}
@@ -243,11 +241,16 @@
 					this.collection.create(data, {
 						method: "POST",
 						success: function (response) {
-							//console.log(response);
+							console.log(response.get("comment"));
 							var comment = new Comment(response.get("comment"));
 							that.collection.add(comment);
+							that.model.get("post_comments").push(response.get("comment"));
+							that.model.set("post_comments_count", that.model.get("post_comments_count") + 1);
 
 							that.comment_input.val("");
+							comment = null;
+
+							console.log(that.model);
 						},
 						error: function () {
 							console.log("error");

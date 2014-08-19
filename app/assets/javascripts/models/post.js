@@ -3,6 +3,7 @@ var Post = Backbone.Model.extend({
     "id": "",
     "text": "",
     "post_likes_count": "",
+    "post_comments_count": "",
     "i_liked": "",
     "game": {
       "id": "",

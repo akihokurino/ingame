@@ -2,6 +2,7 @@ json.post do |json|
   json.id @last_post[:id]
   json.text @last_post[:text]
   json.post_likes_count @last_post[:post_likes_count]
+  json.post_comments_count @last_post[:post_comments_count]
   json.game do |json|
   	json.id @last_post.game[:id]
   	json.title @last_post.game[:title]
