@@ -178,7 +178,6 @@
 			},
 			addComment: function (comment) {
 				if (comment.id) {
-					console.log("test");
 					var comment_view = new CommentView({model: comment});
 					this.$el.append(comment_view.render().el);
 				}
@@ -225,6 +224,7 @@
 
 				$(".comment-modal").css("display", "none");
 				$(".layer").css("display", "none");
+
 				this.comment_input.val("");
 			},
 			postComment: function () {
@@ -241,16 +241,12 @@
 					this.collection.create(data, {
 						method: "POST",
 						success: function (response) {
-							console.log(response.get("comment"));
 							var comment = new Comment(response.get("comment"));
 							that.collection.add(comment);
 							that.model.get("post_comments").push(response.get("comment"));
 							that.model.set("post_comments_count", that.model.get("post_comments_count") + 1);
 
 							that.comment_input.val("");
-							comment = null;
-
-							console.log(that.model);
 						},
 						error: function () {
 							console.log("error");
