@@ -23,3 +23,6 @@
 
 # vim swap file
 .*.swp
+
+Vagrantfile
+.vagrant/*
