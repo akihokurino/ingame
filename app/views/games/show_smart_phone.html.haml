@@ -101,7 +101,7 @@
       %ul.stars
         - unless @game.my_rate.nil?
           - @game.my_rate.to_i.times do |i|
-            %li.star
+            %li.star ★
         - else
           %li なし
       自分の評価
@@ -123,7 +123,7 @@
           コメント
       %li.item.all_posts
         %span.all 全コメント
-      %li.item
+      %li.item.star_posts
         %span.star
           ☆の多い
           %br

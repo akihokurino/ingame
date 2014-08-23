@@ -94,10 +94,8 @@ html, body {
 			.item {
 				width: 120px;
 				margin: 12px 14px 20px;
-				padding: 4px 0 3px;
 				border: 1px solid #ffffff;
 				@include border-radius(20px);
-				text-align: center;
 			}
 		}
 		.comment {
@@ -109,32 +107,14 @@ html, body {
 			color: #ffffff;
 			text-align: center;
 		}
-		select.new_status, select.my_status {
+		.new_status, .my_status, .my_rate {
 			display: block;
 			width: 107px;
 			margin-left: auto;
-			padding: 0;
 			border: none;
-			@include border-radius(20px);
-			@include box-sizing;
 			background: none;
 			color: #ffffff;
-			text-align: center;
 			outline: 0;
-		}
-
-		select.stars {
-			display: block;
-			width: 70px;
-			margin-left: auto;
-			border: none;
-			@include border-radius(18px);
-			@include box-sizing;
-			color: #a09f9f;
-			font-size: 10px;
-			text-align: center;
-			outline: 0;
-			@include appearance;
 		}
 		.stars {
 			@include flexbox;
@@ -189,7 +169,7 @@ html, body {
 		-webkit-justify-content: center;
 		margin: 11px 0 10px;
 
-		.amazonBtn, .steamBtn {
+		.amazonBtn {
 			display: block;
 			width: 107px;
 			height: 28px;
@@ -201,23 +181,17 @@ html, body {
 			text-align: center;
 		}
 		.amazonBtn {
-			margin-right: 56px;
 			background: #fc9a18;
-		}
-		.steamBtn {
-			background: #7cb038;
 		}
 	}
 	/*---   .friendBox   ----------*/
 	.friendBox {
 		border-top: 1px solid #bbbbbc;
 
-		@at-root {
-			&Inner {
-				width: 320px;
-				margin: 0 auto;
-				padding: 7px 0;
-			}
+		&Inner {
+			width: 320px;
+			margin: 0 auto;
+			padding: 7px 0;
 		}
 		.text {
 			margin-bottom: 6px;
@@ -271,12 +245,20 @@ html, body {
 			text-align: center;
 			vertical-align: middle;
 			line-height: 1.1;
+
+			&_posts {
+				background: #fff;
+			}
 		}
 		.follow {
 			border-radius: 20px 0 0 20px;
 		}
 		.star {
-			border-radius: 0 3px 3px 0;
+			border-radius: 0 20px 20px 0;
+
+			&_posts {
+				border-radius: 0 20px 20px 0;
+			}
 		}
 		.current {
 			@at-root {
