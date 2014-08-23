@@ -15,10 +15,11 @@ html {
 		background-size: cover;
 
 		.gameWrap {
+			overflow: hidden;
 			width: 163px;
 			height: 163px;
 			margin: 0 auto;
-			padding-top: 16px;
+			padding: 8px 0 0 3px;
 			@include box-sizing;
 			background: url(/assets/smart_phone/game__bg02.png) no-repeat center top;
 			background-size: 162px 162px;
@@ -30,9 +31,7 @@ html {
 			height: 126px;
 			margin: 0 auto;
 			@include border-radius(82px);
-			@include box-shadow(1px, 1px, 3px, 0, #cacdcd);
 			@include box-sizing;
-			background: #ffffff;
 			text-align: center;
 			@include clearfix;
 
