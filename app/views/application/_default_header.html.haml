@@ -6,12 +6,10 @@
   = link_to "", user_path(@current_user), class: "profile"
   %ul.openMenu
     %li.item
-      %a.menuItem{href: ""} 登録しているゲーム
+      %a.menuItem{href: ""} ゲームを検索
     %li.item
-      %a.menuItem{href: ""} 通知
+      %a.menuItem{href: ""} ライブラリ
     %li.item
       = link_to "アカウント設定", user_path(@current_user), class: "menuItem"
-    %li.item
-      %a.menuItem{href: ""} Playdyとは
     %li.item
       = link_to "ログアウト", logout_users_path, class: "menuItem"
