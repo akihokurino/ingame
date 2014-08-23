@@ -6,10 +6,10 @@
   = link_to "", user_path(@current_user), class: "profile"
   %ul.openMenu
     %li.item
-      %a.menuItem{href: ""} ゲームを検索
+      %a.menuItemSearch{href: ""} ゲームを検索
     %li.item
-      %a.menuItem{href: ""} ライブラリ
+      %a.menuItemLibrary{href: ""} ライブラリ
     %li.item
-      = link_to "アカウント設定", user_path(@current_user), class: "menuItem"
+      = link_to "アカウント設定", user_path(@current_user), class: "menuItemAccount"
     %li.item
-      = link_to "ログアウト", logout_users_path, class: "menuItem"
+      = link_to "ログアウト", logout_users_path, class: "menuItemLogout"

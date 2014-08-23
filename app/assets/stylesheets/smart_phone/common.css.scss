@@ -64,27 +64,49 @@ header {
 	.openMenu {
 		display: none;
 		position: absolute;
-		top: 50px;
-		left: 2px;
-		width: 224px;
-		border: 2px solid #000000;
+		top: 46px;
+		left: 4px;
+		padding: 17px 16px;
+		@include border-radius(5px);
 		@include box-sizing;
-	}
-	.item {
-		display: block;
-		border-bottom: 1px solid #000000;
+		@include box-shadow(0, 0, 5px, 0, rgba(0, 0, 0, 0.75));
 		background: #ffffff;
+		text-align: left;
 
-		&:last-child {
-			border: none;
+		&:before {
+			position: absolute;
+			top: -16px;
+			left: 13px;
+			width: 0;
+			height: 0;
+			border-top: 8px solid transparent;
+			border-right: 9px solid transparent;
+			border-bottom: 8px solid #fff;
+			border-left: 9px solid transparent;
+			content: '';
 		}
 	}
-	.menuItem {
+	.menuItemSearch, .menuItemLibrary, .menuItemAccount, .menuItemLogout {
 		display: block;
-		padding: 5px 0 5px 5px;
-		background: #ffffff;
-		color: #353535;
+		padding-left: 25px;
+		color: #626262;
 		font-size: 12px;
+		@include font-weight(0.5px, #626262);
+	}
+	.menuItemSearch {
+		margin-bottom: 5px;
+		@include iconSprite2(left, -212px);
+	}
+	.menuItemLibrary {
+		margin-bottom: 5px;
+		@include iconSprite2(left, -233px);
+	}
+	.menuItemAccount {
+		margin-bottom: 5px;
+		@include iconSprite2(left, -252px);
+	}
+	.menuItemLogout {
+		@include iconSprite2(left, -274px);
 	}
 }
 
