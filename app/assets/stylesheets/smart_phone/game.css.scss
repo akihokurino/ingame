@@ -1,9 +1,8 @@
 @import "../_function.css.scss";
-@import "./iconSprite.css.scss";
 
 /*---   common   ---------------------------*/
-html {
-	background: #f4f2f2;
+html, body {
+	background: #dddcdc;
 }
 
 /*---   .mainCnt   ---------------------------*/
@@ -19,7 +18,7 @@ html {
 			width: 163px;
 			height: 163px;
 			margin: 0 auto;
-			padding: 8px 0 0 3px;
+			padding-top: 16px;
 			@include box-sizing;
 			background: url(/assets/smart_phone/game__bg02.png) no-repeat center top;
 			background-size: 162px 162px;
@@ -27,11 +26,14 @@ html {
 			text-align: center;
 		}
 		.gameInner {
+			display: block;
 			width: 126px;
 			height: 126px;
 			margin: 0 auto;
 			@include border-radius(82px);
 			@include box-sizing;
+			@include box-shadow(1px, 1px, 3px, 0, #cacdcd);
+			background: #ffffff;
 			text-align: center;
 			@include clearfix;
 
