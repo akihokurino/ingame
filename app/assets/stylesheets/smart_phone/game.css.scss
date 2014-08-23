@@ -23,6 +23,7 @@ html {
 			background: url(/assets/smart_phone/game__bg02.png) no-repeat center top;
 			background-size: 162px 162px;
 			vertical-align: middle;
+			text-align: center;
 		}
 		.gameInner {
 			width: 126px;
@@ -178,9 +179,6 @@ html {
 			justify-content: center;
 			-webkit-justify-content: center;
 			margin-bottom: 6px;
-		}
-		.star {
-			@include iconSprite4(19px, 17px, 0, -235px);
 		}
 	}
 	/*---   .shopList   ----------*/

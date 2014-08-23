@@ -93,7 +93,7 @@
       %ul.stars
         - if !@game.avg_rate.nil? && @game.avg_rate > 0
           - @game.avg_rate.to_i.times do |i|
-            %li.star
+            %li.star ★
         - else
           %li なし
       全体の評価
