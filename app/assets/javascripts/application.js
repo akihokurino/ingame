@@ -17,12 +17,31 @@
 //= require ./underscore_template.js
 
 $(function(){
-  var menu = $(".menu");
+  if(typeof APP === 'undefined'){
+      APP = {};
+  }
+  if(typeof APP.UI === 'undefined'){
+      APP.UI = {};
+  }
+  var Menu = APP.UI.menu;
+  Menu = (function(){
+    var _menu = $('.menu');
 
-  menu.on("click", function(){
-    $(".openMenu").slideToggle(200, function(){
-      $(this).queue([]);      // queueを空にする
-      $(this).stop();         // アニメーション停止
-    });
-  });
+    function _showMenu(){
+      _menu.on('click', function(){
+        $('.openMenu').slideToggle(200, function(){
+          $(this).queue([]);
+          $(this).stop();
+        });
+      });
+    }
+    function _init(){
+      _showMenu();
+    }
+    return{
+      init: _init
+    }
+  })();
+
+  Menu.init();
 });
