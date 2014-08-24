@@ -1,11 +1,14 @@
 @import "../_function.css.scss";
 
 /*---   common   ---------------------------*/
-html, body {
+html {
 	background: #dddcdc;
 }
 a {
 	text-decoration: none;
+}
+.post-new-page {
+	background: #fff;
 }
 
 /*---   .post01   ---------------------------*/
