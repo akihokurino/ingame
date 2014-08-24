@@ -25,15 +25,29 @@ $(function(){
   }
   var Menu = APP.UI.menu;
   Menu = (function(){
-    var _menu = $('.menu');
+    var _menu = $('.menu'),
+        _glFlg = true;
 
     function _showMenu(){
       _menu.on('click', function(){
+          _toggleGlaylayer();
+
         $('.openMenu').slideToggle(200, function(){
+          _glFlg = !_glFlg;
           $(this).queue([]);
           $(this).stop();
         });
       });
+    }
+    function _toggleGlaylayer(){
+      if(_glFlg){
+        $('body').append('<div id="graylayer">');
+        $('header').append('<div id="headerGraylayer">');
+      }
+      else{
+        $('#graylayer').remove();
+        $('#headerGraylayer').remove();
+      }
     }
     function _init(){
       _showMenu();

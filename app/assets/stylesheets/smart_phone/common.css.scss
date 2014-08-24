@@ -8,6 +8,22 @@ html {
 a {
 	text-decoration: none;
 }
+#headerGraylayer {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 80%;
+	height: 46px;
+	background: rgba(0, 0, 0, 0.7);
+}
+#graylayer {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.7);
+}
 
 /*---   header   ---------------------------*/
 header {
