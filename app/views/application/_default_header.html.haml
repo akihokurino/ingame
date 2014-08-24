@@ -4,12 +4,13 @@
   %span.menu{href: ""}
   %span.serch{href: ""}
   = link_to "", user_path(@current_user), class: "profile"
-  %ul.openMenu
-    %li.item
-      %a.menuItemSearch{href: ""} ゲームを検索
-    %li.item
-      %a.menuItemLibrary{href: ""} ライブラリ
-    %li.item
-      = link_to "アカウント設定", user_path(@current_user), class: "menuItemAccount"
-    %li.item
-      = link_to "ログアウト", logout_users_path, class: "menuItemLogout"
+  .openMenuWrap
+    %ul.openMenu
+      %li.item
+        %a.menuItemSearch{href: ""} ゲームを検索
+      %li.item
+        %a.menuItemLibrary{href: ""} ライブラリ
+      %li.item
+        = link_to "アカウント設定", user_path(@current_user), class: "menuItemAccount"
+      %li.item
+        = link_to "ログアウト", logout_users_path, class: "menuItemLogout"

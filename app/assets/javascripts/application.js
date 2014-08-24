@@ -32,6 +32,7 @@ $(function(){
       _menu.on('click', function(){
           _toggleGlaylayer();
 
+        $('.openMenuWrap').slideToggle(200);
         $('.openMenu').slideToggle(200, function(){
           _glFlg = !_glFlg;
           $(this).queue([]);
