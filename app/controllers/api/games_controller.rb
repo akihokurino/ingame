@@ -8,6 +8,7 @@ class Api::GamesController < ApplicationController
 	def search
     page = params[:page].to_i
     return false if page < 1
+
 		@results = Game.search(params[:search_title], page, @current_user)
 	end
 

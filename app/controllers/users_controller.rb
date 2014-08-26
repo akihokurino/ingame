@@ -6,7 +6,9 @@ class UsersController < ApplicationController
   end
 
   def setting
+  end
 
+  def search_game_or_user
   end
 
   def show

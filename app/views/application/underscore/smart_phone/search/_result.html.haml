@@ -1,0 +1,15 @@
+%script{type: "text/template", id: "result-template"}
+  %article.gameList
+    %figure.gameImgWrap
+      .gameImgInner
+        %img.gameImg{src: "/game_photos/{{= photo_path }}", width: 62, height: 88}
+    %section.gameInfo
+      %h1.ttl
+        {{= title }}
+      %ul.btnList
+        %li.item
+          %select.status{name: "status", size: 1}
+            %option{value: ""} ステータス
+            %option{value: 1} 気になる
+            %option{value: 2} プレイ中
+            %option{value: 3} アーカイブ

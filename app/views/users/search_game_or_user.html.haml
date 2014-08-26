@@ -1,0 +1,12 @@
+= content_for :head do
+  = javascript_include_tag "smart_phone/search.js"
+
+= render partial: "application/default_header"
+
+.search-page
+
+= render partial: "application/underscore/smart_phone/search/game_search"
+= render partial: "application/underscore/smart_phone/search/user_search"
+
+= render partial: "application/underscore/smart_phone/search/result"
+= render partial: "application/underscore/smart_phone/search/user"

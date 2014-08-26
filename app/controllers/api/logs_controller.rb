@@ -6,10 +6,10 @@ class Api::LogsController < ApplicationController
   def create
     if(params[:amazon_url])
       result = Game.get_from_amazon(params[:amazon_url])
-      @log = Log.create_with(result, @current_user)
+      @log   = Log.create_with(result, @current_user)
     else
       params[:log][:user_id] = @current_user[:id]
-      @log = Log.last if Log.create(log_params)
+      @log                   = Log.last if Log.create(log_params)
     end
   end
 
@@ -23,7 +23,7 @@ class Api::LogsController < ApplicationController
   end
 
   def update_status_or_rate
-    log = @current_user.logs.find_by(game_id: params[:id])
+    log     = @current_user.logs.find_by(game_id: params[:id])
     @result = log.update(log_params) ? true : false
   end
 

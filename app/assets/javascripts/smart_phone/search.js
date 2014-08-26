@@ -2,13 +2,12 @@
 //= require ../models/user.js
 //= require ../collections/results.js
 //= require ../collections/users.js
-//= require ../libs/profile_upload.js
 
 (function () {
   $(function () {
     /* ---------- Collection ---------- */
     var results = new Results();
-    var users = new Users();
+    var users   = new Users();
 
 
 
@@ -40,6 +39,7 @@
       render: function () {
         var template = this.template(this.model.toJSON());
         this.$el.html(template);
+
         return this;
       },
       regist: function () {
@@ -47,7 +47,7 @@
           var that = this;
           var data = {
             "log": {
-              "game_id": this.model.id,
+              "game_id":   this.model.id,
               "status_id": this.$el.find(".status").val()
             }
           }
@@ -118,35 +118,29 @@
     })
 
 
-    var FirstView = Backbone.View.extend({
-      el: $(".setting-page"),
+    var GameSearchView = Backbone.View.extend({
+      el: $(".search-page"),
       events: {
         "keypress .search": "search",
-        "click .next-page": "next"
+        "click .to-user-search": "toUserSearch"
       },
-      template: _.template($("#first-template").html()),
+      template: _.template($("#game-search-template").html()),
       initialize: function () {
         this.$el.html("");
         this.$el.append(this.template);
-        this.results_view = new ResultsView({el: ".result-list"});
-
-        this.collection = results;
-
-        this.search_title = this.$(".search-title-input");
-        this.current_search_title = null;
-
-        var tmp = location.href.split("#")[0].split("/");
-        this.user_id = tmp.pop() && tmp.pop();
-        this.page = 1;
+        this.results_view       = new ResultsView({el: ".result-list"});
+        this.collection         = results;
+        this.game_title         = this.$(".game-title-input");
+        this.current_game_title = null;
+        this.page               = 1;
       },
       search: function (e) {
         if(e.which == 13){
           e.preventDefault();
-          var that = this;
-
-          this.current_search_title = this.search_title.val();
+          var that                = this;
+          this.current_game_title = this.game_title.val();
           this.collection.fetch({
-            data: {search_title: this.current_search_title, page: this.page},
+            data: {search_title: this.current_game_title, page: this.page},
             success: function (model, response, options) {
               that.collection.reset();
               that.results_view.$el.html("");
@@ -157,9 +151,9 @@
                 }
               }
 
-              that.page = 1;
+              this.page = 1;
               $(window).unbind("scroll");
-              $(window).bind("scroll", pagenation);
+              $(window).bind("scroll", pagenation("game"));
             },
             error: function () {
               console.log("error");
@@ -167,80 +161,46 @@
           })
         }
       },
-      next: function (e) {
+      toUserSearch: function (e) {
         e.preventDefault()
-        location.href = "/users/" + this.user_id + "/setting#second";
+        location.href = "/games/search_game_or_user#user";
       }
     })
 
-    function pagenation () {
-      var scrollHeight = $(document).height();
-      var scrollPosition = $(window).height() + $(window).scrollTop();
-      if ((scrollHeight - scrollPosition) / scrollHeight <= 0.1) {
-        $(".loading-gif").css("display", "block");
-        $(window).unbind("scroll");
-
-        var app = router.current_app;
-        app.page += 1;
-
-        app.collection.fetch({
-          data: {search_title: app.current_search_title, page: app.page},
-          success: function (model, response, options) {
-            if (response.results && response.results.length > 0) {
-              for (var i = 0; i < response.results.length; i++) {
-                var result = new Result(response.results[i]);
-                app.collection.add(result);
-              }
-            }
-
-            $(".loading-gif").css("display", "none");
-
-            if (response.results.length != 0) {
-              $(window).bind("scroll");
-            }
-          },
-          error: function () {
-            console.log("error");
-          }
-        })
-      }
-    }
-
-    var SecondView = Backbone.View.extend({
-      el: $(".setting-page"),
+    var UserSearchView = Backbone.View.extend({
+      el: $(".search-page"),
       events: {
-        "keypress .user-input": "search",
-        "click .next-page": "next"
+        "keypress .search": "search",
+        "click .to-game-search": "toGameSearch"
       },
-      template: _.template($("#second-template").html()),
+      template: _.template($("#user-search-template").html()),
       initialize: function () {
         this.$el.html("");
         this.$el.append(this.template);
-        this.users_view = new UsersView({el: ".user-list"});
-        this.collection = users;
-        this.username = $(".user-input");
-        var tmp = location.href.split("#")[0].split("/");
-        tmp.pop();
-        this.user_id = tmp.pop();
+        this.users_view       = new UsersView({el: ".user-list"});
+        this.collection       = users;
+        this.username         = $(".user-input");
+        this.current_username = null;
+        this.page             = 1;
       },
       search: function (e) {
-        var that = this;
-        var username = this.username.val();
         if (username && e.which == 13) {
           e.preventDefault();
+          var that              = this;
+          this.current_username = this.current_username.val();
           this.collection.fetch({
-            data: {username: username},
+            data: {username: this.current_username},
             success: function (model, response, options) {
               that.collection.reset();
               that.users_view.$el.html("");
-              for (var i = 0; i < response.results.length; i++) {
+              for(var i = 0; i < response.results.length; i++){
                 var user = new User(response.results[i]);
                 that.collection.add(user);
-
-                if (i > 2) {
-                  break;
-                }
               }
+
+              this.page = 1;
+              $(window).unbind("scroll");
+              $(window).bind("scroll", pagenation("user"));
             },
             error: function () {
               console.log("error");
@@ -248,46 +208,59 @@
           });
         }
       },
-      next: function (e) {
+      toGameSearch: function (e) {
         e.preventDefault();
-        location.href = "/users/" + this.user_id + "/setting#third";
+        location.href = "/games/search_game_or_user#game";
       }
     })
 
-    var ThirdView = Backbone.View.extend({
-      el: $(".setting-page"),
-      events: {
-        "click .next-page": "next"
-      },
-      template: _.template($("#third-template").html()),
-      initialize: function () {
-        this.$el.html("");
-        this.$el.append(this.template);
-        var tmp = location.href.split("#")[0].split("/");
-        tmp.pop();
-        this.user_id = tmp.pop();
-        this.upload = new ProfileUpload("upload-btn", "thumbnail", this.user_id);
-      },
-      next: function (e) {
-        e.preventDefault();
-        location.href = "/posts";
+    function pagenation (type) {
+      var scrollHeight   = $(document).height();
+      var scrollPosition = $(window).height() + $(window).scrollTop();
+      if ((scrollHeight - scrollPosition) / scrollHeight <= 0.1) {
+        $(".loading-gif").css("display", "block");
+        $(window).unbind("scroll");
+
+        var app   = router.current_app;
+        app.page += 1;
+
+        if (type == "game") {
+          app.collection.fetch({
+            data: {search_title: app.current_search_title, page: app.page},
+            success: function (model, response, options) {
+              if (response.results && response.results.length > 0) {
+                for (var i = 0; i < response.results.length; i++) {
+                  var result = new Result(response.results[i]);
+                  app.collection.add(result);
+                }
+              }
+
+              $(".loading-gif").css("display", "none");
+
+              if (response.results.length != 0) {
+                $(window).bind("scroll");
+              }
+            },
+            error: function () {
+              console.log("error");
+            }
+          })
+        } else {
+
+        }
       }
-    })
+    }
 
     var Router = Backbone.Router.extend({
       routes: {
-        "first": "first",
-        "second": "second",
-        "third": "third"
+        "game": "game",
+        "user": "user"
       },
-      first: function () {
-        this.current_app = new FirstView();
+      game: function () {
+        this.current_app = new GameSearchView();
       },
-      second: function () {
-        this.current_app = new SecondView();
-      },
-      third: function () {
-        this.current_app = new ThirdView();
+      user: function () {
+        this.current_app = new UserSearchView();
       }
     })
 
