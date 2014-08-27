@@ -90,6 +90,7 @@
       render: function () {
         var template = this.template(this.model.toJSON());
         this.$el.html(template);
+
         return this;
       },
       follow: function (e) {
@@ -121,8 +122,7 @@
     var GameSearchView = Backbone.View.extend({
       el: $(".search-page"),
       events: {
-        "keypress .search": "search",
-        "click .to-user-search": "toUserSearch"
+        "keypress .search": "search"
       },
       template: _.template($("#game-search-template").html()),
       initialize: function () {
@@ -160,34 +160,29 @@
             }
           })
         }
-      },
-      toUserSearch: function (e) {
-        e.preventDefault()
-        location.href = "/games/search_game_or_user#user";
       }
     })
 
     var UserSearchView = Backbone.View.extend({
       el: $(".search-page"),
       events: {
-        "keypress .search": "search",
-        "click .to-game-search": "toGameSearch"
+        "keypress .search": "search"
       },
       template: _.template($("#user-search-template").html()),
       initialize: function () {
         this.$el.html("");
         this.$el.append(this.template);
-        this.users_view       = new UsersView({el: ".user-list"});
+        this.users_view       = new UsersView({el: ".result-list"});
         this.collection       = users;
-        this.username         = $(".user-input");
+        this.username         = $(".username-input");
         this.current_username = null;
         this.page             = 1;
       },
       search: function (e) {
-        if (username && e.which == 13) {
+        if (e.which == 13) {
           e.preventDefault();
           var that              = this;
-          this.current_username = this.current_username.val();
+          this.current_username = this.username.val();
           this.collection.fetch({
             data: {username: this.current_username},
             success: function (model, response, options) {
@@ -207,10 +202,6 @@
             }
           });
         }
-      },
-      toGameSearch: function (e) {
-        e.preventDefault();
-        location.href = "/games/search_game_or_user#game";
       }
     })
 
