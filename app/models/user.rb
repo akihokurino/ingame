@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
 	validates :place,
 		length: {maximum: 255}
 
+  LIMIT = 20
+
   scope :search, -> (username) {
     where("username LIKE ?", "%#{username}%").select(:id, :username, :photo_path)
   }
@@ -37,7 +39,7 @@ class User < ActiveRecord::Base
       self.i_followed = false
     end
 
-    self.follow_num = Follow.where(from_user_id: self[:id]).count
+    self.follow_num   = Follow.where(from_user_id: self[:id]).count
     self.follower_num = Follow.where(to_user_id: self[:id]).count
   end
 
@@ -105,9 +107,10 @@ class User < ActiveRecord::Base
 			end
 		end
 
-    def search_with(username, current_user)
-      users = self.search(self.escape_like(username))
-      users = users.keep_if do |user|
+    def search_with(username, current_user, page)
+      offset = (page - 1) * LIMIT
+      users  = self.search(self.escape_like(username)).offset(offset).limit(LIMIT)
+      users  = users.keep_if do |user|
         user[:id] != current_user[:id] && !current_user.follows.pluck(:to_user_id).include?(user[:id])
       end
       users

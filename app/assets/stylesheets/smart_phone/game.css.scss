@@ -479,6 +479,14 @@ html {
 			@include appearance;
 		}
 	}
+
+	.loading-gif {
+		width: 30px;
+		height: 30px;
+		display: block;
+		margin: 0 auto;
+		display: none;
+	}
 }
 
 .editCnt {

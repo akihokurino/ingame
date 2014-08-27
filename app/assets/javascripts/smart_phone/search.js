@@ -18,7 +18,7 @@
         this.listenTo(this.collection, "add", this.addResult);
       },
       addResult: function (result) {
-        if(result.id){
+        if (result.id) {
           var result_view = new ResultView({model: result});
           this.$el.prepend(result_view.render().el);
         }
@@ -43,7 +43,7 @@
         return this;
       },
       regist: function () {
-        if(this.$el.find(".status").val() != ""){
+        if (this.$el.find(".status").val() != "") {
           var that = this;
           var data = {
             "log": {
@@ -73,7 +73,7 @@
         this.listenTo(this.collection, "add", this.addUser);
       },
       addUser: function (user) {
-        if(user.id){
+        if (user.id) {
           var user_view = new UserView({model: user});
           this.$el.append(user_view.render().el);
         }
@@ -135,9 +135,10 @@
         this.page               = 1;
       },
       search: function (e) {
-        if(e.which == 13){
+        if (e.which == 13 && this.game_title.val()) {
           e.preventDefault();
           var that                = this;
+          this.page               = 1;
           this.current_game_title = this.game_title.val();
           this.collection.fetch({
             data: {search_title: this.current_game_title, page: this.page},
@@ -151,7 +152,6 @@
                 }
               }
 
-              this.page = 1;
               $(window).unbind("scroll");
               $(window).bind("scroll", pagenation("game"));
             },
@@ -179,21 +179,21 @@
         this.page             = 1;
       },
       search: function (e) {
-        if (e.which == 13) {
+        if (e.which == 13 && this.username.val()) {
           e.preventDefault();
           var that              = this;
+          this.page             = 1;
           this.current_username = this.username.val();
           this.collection.fetch({
-            data: {username: this.current_username},
+            data: {username: this.current_username, page: this.page},
             success: function (model, response, options) {
               that.collection.reset();
               that.users_view.$el.html("");
-              for(var i = 0; i < response.results.length; i++){
+              for (var i = 0; i < response.results.length; i++) {
                 var user = new User(response.results[i]);
                 that.collection.add(user);
               }
 
-              this.page = 1;
               $(window).unbind("scroll");
               $(window).bind("scroll", pagenation("user"));
             },
@@ -229,7 +229,7 @@
               $(".loading-gif").css("display", "none");
 
               if (response.results.length != 0) {
-                $(window).bind("scroll");
+                $(window).bind("scroll", pagenation("game"));
               }
             },
             error: function () {
@@ -237,7 +237,26 @@
             }
           })
         } else {
+          app.collection.fetch({
+            data: {username: app.current_username, page: app.page},
+            success: function (model, response, options) {
+              if (response.results && response.results.length > 0) {
+                for (var i = 0; i < response.results.length; i++) {
+                  var user = new User(response.results[i]);
+                  app.collection.add(user);
+                }
+              }
 
+              $(".loading-gif").css("display", "none");
+
+              if (response.results.length != 0) {
+                $(window).bind("scroll", pagenation("user"));
+              }
+            },
+            error: function () {
+              console.log("error");
+            }
+          });
         }
       }
     }

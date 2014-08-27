@@ -7,12 +7,12 @@
 
 (function () {
 	$(function () {
-		var page = 1;
+		var page     = 1;
 
 		/* ---------- Collection ---------- */
 
-		var posts = new Posts();
-		var users = new Users();
+		var posts    = new Posts();
+		var users    = new Users();
 		var comments = null;
 
 
@@ -105,9 +105,9 @@
 			showComment: function (e) {
 				e.preventDefault();
 
-				app.comment_modal_view.model = this.model;
+				app.comment_modal_view.model      = this.model;
 				app.comment_modal_view.collection = new Comments(this.model.get("post_comments"));
-				app.comments_view = new CommentsView({collection: app.comment_modal_view.collection});
+				app.comments_view                 = new CommentsView({collection: app.comment_modal_view.collection});
 
 				$(".comment-modal").css("display", "block");
 				$(".layer").css("display", "block");
@@ -145,10 +145,10 @@
 			},
 			initialize: function () {
 				this.collection = users;
-				this.username = $(".user-input");
+				this.username   = $(".user-input");
 			},
 			search: function (e) {
-				var that = this;
+				var that     = this;
 				var username = this.username.val();
 				if (username && e.which == 13) {
 					this.collection.fetch({
@@ -213,14 +213,14 @@
 				"click .submit-btn": "postComment"
 			},
 			initialize: function () {
-				this.collection = comments;
+				this.collection    = comments;
 				this.comment_input = this.$(".comment-input");
-				this.model = null;
+				this.model         = null;
 			},
 			hideComment: function () {
-				app.comment_modal_view.model = null;
+				app.comment_modal_view.model      = null;
 				app.comment_modal_view.collection = null;
-				app.comments_view = null;
+				app.comments_view                 = null;
 
 				$(".comment-modal").css("display", "none");
 				$(".layer").css("display", "none");
@@ -259,13 +259,13 @@
 		var AppView = Backbone.View.extend({
 			el: ".timeline-page",
 			initialize: function () {
-				this.posts_view = new PostsView();
-				this.user_search_view = new UserSearchView();
-				this.users_view = new UsersView();
+				this.posts_view         = new PostsView();
+				this.user_search_view   = new UserSearchView();
+				this.users_view         = new UsersView();
 				this.comment_modal_view = new CommentModalView();
-				this.collection = posts;
+				this.collection         = posts;
 
-				var that = this;
+				var that                = this;
 
 				this.collection.fetch({
 					data: {page: page},
@@ -286,7 +286,7 @@
 
 		$(window).bind("scroll", pagenation);
 		function pagenation(){
-			var scrollHeight = $(document).height();
+			var scrollHeight   = $(document).height();
 			var scrollPosition = $(window).height() + $(window).scrollTop();
 			if ((scrollHeight - scrollPosition) / scrollHeight <= 0.1) {
 				$(".loading-gif").css("display", "block");
@@ -304,7 +304,7 @@
 						$(".loading-gif").css("display", "none");
 
 						if (response.posts.length != 0) {
-							$(window).bind("scroll");
+							$(window).bind("scroll", pagenation);
 						}
 					},
 					error: function () {

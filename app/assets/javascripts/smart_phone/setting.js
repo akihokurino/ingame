@@ -8,7 +8,7 @@
   $(function () {
     /* ---------- Collection ---------- */
     var results = new Results();
-    var users = new Users();
+    var users   = new Users();
 
 
 
@@ -128,22 +128,21 @@
       initialize: function () {
         this.$el.html("");
         this.$el.append(this.template);
-        this.results_view = new ResultsView({el: ".result-list"});
-
-        this.collection = results;
-
-        this.search_title = this.$(".search-title-input");
+        this.results_view         = new ResultsView({el: ".result-list"});
+        this.collection           = results;
+        this.search_title         = this.$(".search-title-input");
         this.current_search_title = null;
 
-        var tmp = location.href.split("#")[0].split("/");
-        this.user_id = tmp.pop() && tmp.pop();
-        this.page = 1;
+        var tmp                   = location.href.split("#")[0].split("/");
+        this.user_id              = tmp.pop() && tmp.pop();
+        this.page                 = 1;
       },
       search: function (e) {
-        if(e.which == 13){
+        if(e.which == 13 && this.search_title.val()){
           e.preventDefault();
-          var that = this;
 
+          var that                  = this;
+          this.page                 = 1;
           this.current_search_title = this.search_title.val();
           this.collection.fetch({
             data: {search_title: this.current_search_title, page: this.page},
@@ -157,7 +156,6 @@
                 }
               }
 
-              that.page = 1;
               $(window).unbind("scroll");
               $(window).bind("scroll", pagenation);
             },
@@ -174,13 +172,13 @@
     })
 
     function pagenation () {
-      var scrollHeight = $(document).height();
+      var scrollHeight   = $(document).height();
       var scrollPosition = $(window).height() + $(window).scrollTop();
       if ((scrollHeight - scrollPosition) / scrollHeight <= 0.1) {
         $(".loading-gif").css("display", "block");
         $(window).unbind("scroll");
 
-        var app = router.current_app;
+        var app   = router.current_app;
         app.page += 1;
 
         app.collection.fetch({
@@ -196,7 +194,7 @@
             $(".loading-gif").css("display", "none");
 
             if (response.results.length != 0) {
-              $(window).bind("scroll");
+              $(window).bind("scroll", pagenation);
             }
           },
           error: function () {
@@ -218,18 +216,20 @@
         this.$el.append(this.template);
         this.users_view = new UsersView({el: ".user-list"});
         this.collection = users;
-        this.username = $(".user-input");
-        var tmp = location.href.split("#")[0].split("/");
+        this.username   = $(".user-input");
+
+        var tmp         = location.href.split("#")[0].split("/");
         tmp.pop();
-        this.user_id = tmp.pop();
+        this.user_id    = tmp.pop();
+        this.page       = 1;
       },
       search: function (e) {
-        var that = this;
-        var username = this.username.val();
-        if (username && e.which == 13) {
-          e.preventDefault();
+        if (e.which == 13 && this.username.val()) {
+           e.preventDefault();
+          var that  = this;
+          this.page = 1;
           this.collection.fetch({
-            data: {username: username},
+            data: {username: this.username.val(), page: this.page},
             success: function (model, response, options) {
               that.collection.reset();
               that.users_view.$el.html("");
@@ -263,10 +263,10 @@
       initialize: function () {
         this.$el.html("");
         this.$el.append(this.template);
-        var tmp = location.href.split("#")[0].split("/");
+        var tmp      = location.href.split("#")[0].split("/");
         tmp.pop();
         this.user_id = tmp.pop();
-        this.upload = new ProfileUpload("upload-btn", "thumbnail", this.user_id);
+        this.upload  = new ProfileUpload("upload-btn", "thumbnail", this.user_id);
       },
       next: function (e) {
         e.preventDefault();

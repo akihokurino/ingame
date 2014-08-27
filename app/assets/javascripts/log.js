@@ -8,7 +8,7 @@
 		var user_id = $(".logs-page").data("userid");
 
 		/* ---------- Collection ---------- */
-		var logs = new Logs();
+		var logs    = new Logs();
 		var results = new Results();
 
 
