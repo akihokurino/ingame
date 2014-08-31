@@ -3,14 +3,18 @@
 /*---   .personalBox   ---------------------------*/
 .personalBoxWrap {
 	position: relative;
-	padding-bottom: 12px;
 	background: url(/assets/smart_phone/profile__bg.jpg) repeat top center;
 	background-size: cover;
-	text-align: center;
 
+	.bgOverlayer {
+		width: 100%;
+		@include box-sizing;
+		@include gradient(rgba(20, 91, 57, 0.5), rgba(38, 18, 68, 0.5));
+	}
 	.profImg {
-		margin-top: 24px;
-		border: 1px solid #fffcfc;
+		float: left;
+		margin: 16px 10px 0 12px;
+		border: 2px solid #fffcfc;
 		@include border-radius(44px);
 	}
 	.followBtn {
@@ -43,11 +47,13 @@
 	}
 }
 .personalBox {
+	z-index: 5;
 	@include box-sizing;
 	color: #ffffff;
 
 	.name {
-		font-size: 18px;
+		padding-top: 27px;
+		font-size: 14px;
 	}
 	.place {
 		font-size: 12px;
@@ -62,29 +68,49 @@
 		margin-left: -5px;
 	}
 	.text {
-		margin-top: 10px;
-		padding: 0 50px;
+		clear: both;
+		margin-left: 12px;
+		padding-top: 19px;
 		font-size: 12px;
 		text-align: left;
 	}
 	.countBox {
-		width: 320px;
+		width: 100%;
 		margin: 20px auto 0;
+		background: rgba(0, 0, 0, 0.5);
 		@include clearfix;
 
 		.item {
 			float: left;
-			width: 80px;
-			border-right: 1px solid #ffffff;
+			position: relative;
+			width: 25%;
 			@include box-sizing;
 
+			&.current {
+				background: #fff;
+
+				.follow, .follower, .gameNum, .postNum, .count {
+					color: #333;
+				}
+				.count {
+					@include font-weight(1.5px, #333);
+				}
+				.count:after {
+					position: absolute;
+					bottom: 0;
+					left: 50%;
+					width: 60px;
+					margin-left: -30px;
+					border-bottom: 1px solid #10b5a3;
+					content: "";
+				}
+			}
 			&:last-child {
 				border: none;
 			}
 		}
 		.follow, .follower, .gameNum, .postNum {
 			display: block;
-			width: 80px;
 			@include box-sizing;
 			color: #ffffff;
 			font-size: 12px;

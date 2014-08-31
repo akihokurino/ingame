@@ -5,47 +5,48 @@
 
 .profile-page.mainCnt{"data-userid" => @user[:id]}
   .personalBoxWrap
-    %figure.profImgWrap
-      = image_tag "/user_photos/#{@user[:photo_path]}", height: 83, class: "profImg"
-    %section.personalBox
-      %h1.name
-        = @user.username
-      - if @user.place
-        %p.place
-          %span.town
-            = @user.place
-      %p.text
-        = @user.introduction
-      - unless current_user?(@user)
-        %span.follow-wrap
-          - if @user.i_followed
-            %span.followBtn.unfollow フォローを外す
-          - else
-            %span.followBtn.follow フォロー
-      - else
-        = link_to "編集", edit_user_path(@user), class: "edit-btn personalEdit"
-        = link_to "ログ編集", "/logs#edit", class: "edit-btn"
-      %ul.countBox
-        %li.item
-          %a.follow{href: ""}
-            %span.count
-              = @user.follow_num
-            フォロー
-        %li.item
-          %a.follower{href: ""}
-            %span.count
-              = @user.follower_num
-            フォロワー
-        %li.item
-          %a.gameNum{href: ""}
-            %span.count
-              = @user.logs.count
-            ゲーム数
-        %li.item
-          %a.postNum{href: ""}
-            %span.count
-              = @user.posts.count
-            ポスト数
+    .bgOverlayer
+      %figure.profImgWrap
+        = image_tag "/user_photos/#{@user[:photo_path]}", height: 54, class: "profImg"
+      %section.personalBox
+        %h1.name
+          = @user.username
+        - if @user.place
+          %p.place
+            %span.town
+              = @user.place
+        %p.text
+          = @user.introduction
+        - unless current_user?(@user)
+          %span.follow-wrap
+            - if @user.i_followed
+              %span.followBtn.unfollow フォローを外す
+            - else
+              %span.followBtn.follow フォロー
+        - else
+          = link_to "編集", edit_user_path(@user), class: "edit-btn personalEdit"
+          = link_to "ログ編集", "/logs#edit", class: "edit-btn"
+        %ul.countBox
+          %li.item.current
+            %a.gameNum{href: ""}
+              %span.count
+                = @user.logs.count
+              ライブラリ
+          %li.item
+            %a.postNum{href: ""}
+              %span.count
+                = @user.posts.count
+              チェックイン
+          %li.item
+            %a.follow{href: ""}
+              %span.count
+                = @user.follow_num
+              フォロー
+          %li.item
+            %a.follower{href: ""}
+              %span.count
+                = @user.follower_num
+              フォロワー
 
   .gameBox
     %ul.sortBox
