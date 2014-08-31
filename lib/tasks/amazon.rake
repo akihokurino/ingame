@@ -4,7 +4,6 @@ namespace :amazon do
   	require 'open-uri'
 		require 'nokogiri'
 		require 'kconv'
-		#require "FileUtils"
 
 		def generate_random_name(type = "alphabet", size = 8)
       char_list_str = []
@@ -56,12 +55,16 @@ namespace :amazon do
 			  if result[:photo_path]
 			  	filename = Time.now.to_i.to_s + generate_random_name("alphabet", 25)
 			  	filepath = "public/game_photos/#{filename}"
-				  File.open(filepath, 'wb') do |output|
-				    open(result[:photo_path], "User-Agent" => "Mozilla/4.0") do |data|
-				      output.write(data.read)
-				      result[:photo_path] = filename
-				    end
-				  end
+			  	begin
+					  File.open(filepath, 'wb') do |output|
+					    open(result[:photo_path], "User-Agent" => "Mozilla/4.0") do |data|
+					      output.write(data.read)
+					      result[:photo_path] = filename
+					    end
+					  end
+					rescue
+					end
+
 					p Game.create(result)
 				end
 			end
@@ -144,6 +147,6 @@ namespace :amazon do
 		#Xbox 360
 		crawl_amazon("http://www.amazon.co.jp/s/ref=lp_15783231_nr_n_0?rh=n%3A637394%2Cn%3A%21637872%2Cn%3A15783231%2Cn%3A2228406051&bbn=15783231&ie=UTF8&qid=1403178118&rnid=15783231")
 		#PC Game
-		crawl_amazon("http://www.amazon.co.jp/s/ref=sr_nr_n_12?rh=n%3A637394%2Cn%3A%21637872%2Cn%3A689132&bbn=637872&ie=UTF8&qid=1403509187&rnid=637872")
+		#crawl_amazon("http://www.amazon.co.jp/s/ref=sr_nr_n_12?rh=n%3A637394%2Cn%3A%21637872%2Cn%3A689132&bbn=637872&ie=UTF8&qid=1403509187&rnid=637872")
   end
 end
