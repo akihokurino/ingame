@@ -1,12 +1,7 @@
 %script{type: "text/template", id: "log-template"}
   %a.articleWrap{href: "/games/{{= game.id }}", style: "display: block;"}
-    %article.game
+    %figure.game
       %img.gameImg{src: "/game_photos/{{= game.photo_path }}"}
-      %h1.ttl
-        {{= game.title}}
-      %ul.stars
-        {{ if (rate) { }}
-        {{ for(var i = 0; i < parseInt(rate); i++) { }}
-        %li.star
-        {{ } }}
-        {{ } }}
+      %figcaption.review
+        ☆
+        %span.reviewAve 3.8

@@ -224,7 +224,7 @@ html {
 		width: 300px;
 		margin: 0 auto;
 		border: 1px solid #10b5a3;
-		@include border-radius(20px);
+		@include border-radius(2px);
 		@include clearfix;
 
 		.item {
@@ -254,13 +254,13 @@ html {
 			}
 		}
 		.follow {
-			border-radius: 20px 0 0 20px;
+			border-radius: 2px 0 0 2px;
 		}
 		.star {
-			border-radius: 0 20px 20px 0;
+			border-radius: 0 2px 2px 0;
 
 			&_posts {
-				border-radius: 0 20px 20px 0;
+				border-radius: 0 2px 2px 0;
 			}
 		}
 		.current {
