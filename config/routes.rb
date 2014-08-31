@@ -6,6 +6,7 @@ Ingame::Application.routes.draw do
     end
     member do
       get "setting"
+      get "search_game_or_user"
     end
   end
   resources :posts, only: ["index", "new"]

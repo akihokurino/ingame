@@ -2,7 +2,9 @@ class Api::UsersController < ApplicationController
   before_action :set_user, only: [:update]
 
 	def index
-		@users = User.search_with(params[:username], @current_user)
+    page   = params[:page].to_i
+    return false if page < 1
+		@users = User.search_with(params[:username], @current_user, page)
 	end
 
   def update

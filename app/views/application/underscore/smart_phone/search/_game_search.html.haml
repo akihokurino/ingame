@@ -1,0 +1,9 @@
+%script{type: "text/template", id: "game-search-template"}
+  .tabs
+    .to-game-search ゲーム
+    = link_to "ユーザー", "/users/#{@current_user[:id]}/search_game_or_user#user", class: "to-user-search"
+  %section.game-search
+    %form.search-form.entryBox
+      %input.game-title-input.search{type: "text", name: "game_title", placeholder: "search"}
+    %ul.result-list
+    = image_tag "gif-load.gif", class: "loading-gif"

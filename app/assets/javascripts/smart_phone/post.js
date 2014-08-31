@@ -325,7 +325,7 @@
             $(".loading-gif").css("display", "none");
 
             if (response.results.length != 0) {
-              $(window).bind("scroll");
+              $(window).bind("scroll", pagenation);
             }
           },
           error: function () {

@@ -7,7 +7,7 @@
   .openMenuWrap
     %ul.openMenu
       %li.item
-        %a.menuItemSearch{href: ""} ゲームを検索
+        = link_to "ゲームを検索", "/users/#{@current_user[:id]}/search_game_or_user#game", class: "menuItemSearch"
       %li.item
         %a.menuItemLibrary{href: ""} ライブラリ
       %li.item

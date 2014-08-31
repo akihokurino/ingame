@@ -8,7 +8,7 @@
     var user_id = $(".logs-page").data("userid");
 
     /* ---------- Collection ---------- */
-    var logs = new Logs();
+    var logs    = new Logs();
     var results = new Results();
 
 
@@ -99,7 +99,7 @@
       addResult: function (result) {
         if(result.id){
           var result_view = new ResultView({model: result});
-          this.$el.prepend(result_view.render().el);
+          this.$el.append(result_view.render().el);
         }
       }
     })
@@ -164,16 +164,16 @@
         this.$el.html("");
         this.$el.append(this.template);
 
-        this.logs_view = new LogsView({el: "ul.gameList"});
+        this.logs_view  = new LogsView({el: "ul.gameList"});
 
         this.attentions = [];
-        this.playings = [];
-        this.archives = [];
+        this.playings   = [];
+        this.archives   = [];
 
         this.logs_view.collection.reset();
 
         this.search_log_title = $(".search-log");
-        this.current_tab = null;
+        this.current_tab      = null;
 
         $.ajax({
           type: "GET",
@@ -234,8 +234,8 @@
         this.current_tab = 3;
       },
       search: function (e) {
-        e.preventDefault();
         if (e.which == 13 && this.search_log_title.val() != "") {
+          e.preventDefault();
           this.logs_view.collection.reset();
           this.logs_view.removeLogs();
           this.$el.find("ul.sortBox li").removeClass("current");
@@ -277,7 +277,7 @@
     var AddView = Backbone.View.extend({
       el: $(".logs-page"),
       events: {
-        "submit": "search"
+        "keypress .search": "search"
       },
       template: _.template($("#add-template").html()),
       initialize: function () {
@@ -297,29 +297,64 @@
         this.page = 1;
       },
       search: function (e) {
-        e.preventDefault();
-        var that = this;
-        this.current_search_title = this.search_title.val();
-        this.collection.fetch({
-          data: {search_title: this.current_search_title, page: this.page},
+        if (e.which == 13 && this.search_title.val()) {
+          e.preventDefault();
+          var that = this;
+          this.current_search_title = this.search_title.val();
+          this.collection.fetch({
+            data: {search_title: this.current_search_title, page: this.page},
+            success: function (model, response, options) {
+              that.collection.reset();
+              that.results_view.$el.html("");
+              if (response.results && response.results.length > 0) {
+                for (var i = 0; i < response.results.length; i++) {
+                  var result = new Result(response.results[i]);
+                  that.collection.add(result);
+                }
+              }
+
+              $(window).bind("scroll", pagenation);
+            },
+            error: function () {
+              console.log("error");
+            }
+          })
+        }
+      }
+    })
+
+    function pagenation () {
+      var scrollHeight   = $(document).height();
+      var scrollPosition = $(window).height() + $(window).scrollTop();
+      if ((scrollHeight - scrollPosition) / scrollHeight <= 0.1) {
+        $(".loading-gif").css("display", "block");
+        $(window).unbind("scroll");
+
+        var app   = router.current_app;
+        app.page += 1;
+
+        app.collection.fetch({
+          data: {search_title: app.current_search_title, page: app.page},
           success: function (model, response, options) {
-            that.collection.reset();
-            that.results_view.$el.html("");
-            if(response.results && response.results.length > 0){
-              for(var i = 0; i < response.results.length; i++){
+            if (response.results && response.results.length > 0) {
+              for (var i = 0; i < response.results.length; i++) {
                 var result = new Result(response.results[i]);
-                that.collection.add(result);
+                app.collection.add(result);
               }
             }
 
-            $(window).bind("scroll", pagenation);
+            $(".loading-gif").css("display", "none");
+
+            if (response.results.length != 0) {
+              $(window).bind("scroll", pagenation);
+            }
           },
           error: function () {
             console.log("error");
           }
         })
       }
-    })
+    }
 
     var Router = Backbone.Router.extend({
       routes: {
