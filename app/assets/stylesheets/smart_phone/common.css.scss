@@ -33,7 +33,7 @@ header {
 	height: 46px;
 	padding-top: 11px;
 	@include box-sizing;
-	background: #111111;
+	background: #2d3e58;
 
 	.ttl {
 		display: block;
@@ -56,10 +56,10 @@ header {
 		@include iconSprite2(0, 0);
 		cursor: pointer;
 	}
-	.serch {
+	.notify {
 		display: block;
 		position: absolute;
-		top: 13px;
+		top: 14px;
 		right: 46px;
 		width: 21px;
 		height: 21px;
