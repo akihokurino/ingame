@@ -56,12 +56,16 @@ namespace :amazon do
 			  if result[:photo_path]
 			  	filename = Time.now.to_i.to_s + generate_random_name("alphabet", 25)
 			  	filepath = "public/game_photos/#{filename}"
-				  File.open(filepath, 'wb') do |output|
-				    open(result[:photo_path], "User-Agent" => "Mozilla/4.0") do |data|
-				      output.write(data.read)
-				      result[:photo_path] = filename
-				    end
-				  end
+			  	begin
+					  File.open(filepath, 'wb') do |output|
+					    open(result[:photo_path], "User-Agent" => "Mozilla/4.0") do |data|
+					      output.write(data.read)
+					      result[:photo_path] = filename
+					    end
+					  end
+					rescue
+					end
+
 					p Game.create(result)
 				end
 			end
