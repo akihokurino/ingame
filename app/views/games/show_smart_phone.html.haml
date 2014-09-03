@@ -4,130 +4,100 @@
 = render partial: "application/default_header"
 
 .game-page.mainCnt{"data-gameid" => @game[:id]}
-  .gameBoxWrap
-    %figure.gameWrap
-      - if !@game.amazon_url.nil?
-        %a.gameInner{href: @game.amazon_url}
-          = image_tag "/game_photos/#{@game.photo_path}", height: 106, class: "gameImg"
-
-    %section.gameBox
-      %h1.ttl
-        = @game.title
-      %ul.gameInfo
+  .gameBox
+    .gameTopBox
+      %figure.gameWrap
+        - if !@game.amazon_url.nil?
+          %a.gameInner{href: @game.amazon_url}
+            = image_tag "/game_photos/#{@game.photo_path}", height: 96, class: "gameImg"
+      .gameInfoWrap
+        %ul.gameInfo
+          %li.item.maker
+            = @game.maker
+          %li.item.data
+            = @game.device
+          %li.item.hard
+            = @game.device
+        %h1.ttl
+          = @game.title
+        %p.review
+          %span.reviewInner ☆
+          3.8
+        - if !@game.amazon_url.nil?
+          %p
+            %a.amazonBtn{href: @game.amazon_url} Amazonへ
+    %ul.btnList
+      - if @game.i_registed
         %li.item
-          %span.hard ハード
-          = @game.device
-        %li.item
-          %span.maker メーカー
-          = @game.maker
-      %ul.btnList
-        - if @game.i_registed
-          %li.item
-            %select.stars.my_rate{name: "stars", size: 1}
-              - case @game.my_rate.to_i
-              - when 1
-                %option{value: ""} レビュー
-                %option{value: 1, selected: "selected"} ★☆☆☆☆
-                %option{value: 2} ★★☆☆☆
-                %option{value: 3} ★★★☆☆
-                %option{value: 4} ★★★★☆
-                %option{value: 5} ★★★★★
-              - when 2
-                %option{value: ""} レビュー
-                %option{value: 1} ★☆☆☆☆
-                %option{value: 2, selected: "selected"} ★★☆☆☆
-                %option{value: 3} ★★★☆☆
-                %option{value: 4} ★★★★☆
-                %option{value: 5} ★★★★★
-              - when 3
-                %option{value: ""} レビュー
-                %option{value: 1} ★☆☆☆☆
-                %option{value: 2} ★★☆☆☆
-                %option{value: 3, selected: "selected"} ★★★☆☆
-                %option{value: 4} ★★★★☆
-                %option{value: 5} ★★★★★
-              - when 4
-                %option{value: ""} レビュー
-                %option{value: 1} ★☆☆☆☆
-                %option{value: 2} ★★☆☆☆
-                %option{value: 3} ★★★☆☆
-                %option{value: 4, selected: "selected"} ★★★★☆
-                %option{value: 5} ★★★★★
-              - when 5
-                %option{value: ""} レビュー
-                %option{value: 1} ★☆☆☆☆
-                %option{value: 2} ★★☆☆☆
-                %option{value: 3} ★★★☆☆
-                %option{value: 4} ★★★★☆
-                %option{value: 5, selected: "selected"} ★★★★★
+          %select.stars.my_rate{name: "stars", size: 1}
+            - case @game.my_rate.to_i
+            - when 1
+              %option{value: ""} レビュー
+              %option{value: 1, selected: "selected"} ★☆☆☆☆
+              %option{value: 2} ★★☆☆☆
+              %option{value: 3} ★★★☆☆
+              %option{value: 4} ★★★★☆
+              %option{value: 5} ★★★★★
+            - when 2
+              %option{value: ""} レビュー
+              %option{value: 1} ★☆☆☆☆
+              %option{value: 2, selected: "selected"} ★★☆☆☆
+              %option{value: 3} ★★★☆☆
+              %option{value: 4} ★★★★☆
+              %option{value: 5} ★★★★★
+            - when 3
+              %option{value: ""} レビュー
+              %option{value: 1} ★☆☆☆☆
+              %option{value: 2} ★★☆☆☆
+              %option{value: 3, selected: "selected"} ★★★☆☆
+              %option{value: 4} ★★★★☆
+              %option{value: 5} ★★★★★
+            - when 4
+              %option{value: ""} レビュー
+              %option{value: 1} ★☆☆☆☆
+              %option{value: 2} ★★☆☆☆
+              %option{value: 3} ★★★☆☆
+              %option{value: 4, selected: "selected"} ★★★★☆
+              %option{value: 5} ★★★★★
+            - when 5
+              %option{value: ""} レビュー
+              %option{value: 1} ★☆☆☆☆
+              %option{value: 2} ★★☆☆☆
+              %option{value: 3} ★★★☆☆
+              %option{value: 4} ★★★★☆
+              %option{value: 5, selected: "selected"} ★★★★★
+            - else
+              %option{value: ""} レビュー
+              %option{value: 1} ★☆☆☆☆
+              %option{value: 2} ★★☆☆☆
+              %option{value: 3} ★★★☆☆
+              %option{value: 4} ★★★★☆
+              %option{value: 5} ★★★★★
+      %li.item
+        - unless @game.i_registed
+          %select.new_status{name: "status", size: "1"}
+            %option{value: ""} ステータス
+            %option{value: "1"} 気になる
+            %option{value: "2"} プレイ中
+            %option{value: "3"} アーカイブ
+        - else
+          %select.my_status{name: "status", size: "1"}
+            - [{value: "", name: "ステータス"}, {value: "1", name: "気になる"}, {value: "2", name: "プレイ中"}, {value: "3", name: "アーカイブ"}].each do |obj|
+              - if obj[:value].to_i == @game.my_status_id.to_i
+                %option{value: obj[:value], selected: "selected"}
+                  = obj[:name]
               - else
-                %option{value: ""} レビュー
-                %option{value: 1} ★☆☆☆☆
-                %option{value: 2} ★★☆☆☆
-                %option{value: 3} ★★★☆☆
-                %option{value: 4} ★★★★☆
-                %option{value: 5} ★★★★★
-        %li.item
-          - unless @game.i_registed
-            %select.new_status{name: "status", size: "1"}
-              %option{value: ""} ステータス
-              %option{value: "1"} 気になる
-              %option{value: "2"} プレイ中
-              %option{value: "3"} アーカイブ
-          - else
-            %select.my_status{name: "status", size: "1"}
-              - [{value: "", name: "ステータス"}, {value: "1", name: "気になる"}, {value: "2", name: "プレイ中"}, {value: "3", name: "アーカイブ"}].each do |obj|
-                - if obj[:value].to_i == @game.my_status_id.to_i
-                  %option{value: obj[:value], selected: "selected"}
-                    = obj[:name]
-                - else
-                  %option{value: obj[:value]}
-                    = obj[:name]
-
-  %ul.dataBox
-    %li.item
-      %span.count
-        = @game.posts_count
-      ポスト数
-    %li.item
-      %ul.stars
-        - if !@game.avg_rate.nil? && @game.avg_rate > 0
-          - @game.avg_rate.to_i.times do |i|
-            %li.star ★
-        - else
-          %li なし
-      全体の評価
-    %li.item
-      %ul.stars
-        - unless @game.my_rate.nil?
-          - @game.my_rate.to_i.times do |i|
-            %li.star ★
-        - else
-          %li なし
-      自分の評価
-
-  %ul.shopList
-    - if !@game.amazon_url.nil?
-      %li.item
-        %a.amazonBtn{href: @game.amazon_url} Amazonへ
-    - else
-      %li.item
-        %a.steamBtn{href: ""} Steamへ
+                %option{value: obj[:value]}
+                  = obj[:name]
 
   .sortBoxWrap
     %ul.sortBox
       %li.item.current.follower_posts
-        %span.follow
-          フォローの
-          %br
-          コメント
+        %span.follow 友達
       %li.item.all_posts
-        %span.all 全コメント
+        %span.all 全て
       %li.item.star_posts
-        %span.star
-          ☆の多い
-          %br
-          コメント
+        %span.star ♥︎
 
   .post-list
 
