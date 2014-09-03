@@ -49,6 +49,7 @@
     padding-bottom: 5px;
     padding-left: 10px;
     border-bottom: solid 1px #e2e2e2;
+    @include box-sizing;
 
     #thumbnail {
       display: inline-block;

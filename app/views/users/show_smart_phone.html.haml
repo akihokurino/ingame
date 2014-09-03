@@ -25,7 +25,7 @@
               %span.followBtn.follow フォロー
         - else
           = link_to "編集", edit_user_path(@user), class: "edit-btn personalEdit"
-          = link_to "ログ編集", "/logs#edit", class: "edit-btn"
+          = link_to "フォロー", "/logs#edit", class: "edit-btn followBtn"
         %ul.countBox
           %li.item.current
             %a.gameNum{href: ""}
@@ -57,7 +57,7 @@
       %li.item.played-li
         %span.played アーカイブ
     %form.searchBox
-      %input{input: "text", placeholder: "search", role: "textarea", class: "search-log"}
+      %input{input: "text", placeholder: "ゲーム名で検索", role: "textarea", class: "search-log"}
     %ul.gameList.log-list
 
 = render partial: "application/underscore/smart_phone/profile/log"
