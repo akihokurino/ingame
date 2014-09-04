@@ -79,7 +79,7 @@
             %option{value: ""} ステータス
             %option{value: "1"} 気になる
             %option{value: "2"} プレイ中
-            %option{value: "3"} アーカイブ
+            %option{value: "3"} クリア済
         - else
           %select.my_status{name: "status", size: "1"}
             - [{value: "", name: "ステータス"}, {value: "1", name: "気になる"}, {value: "2", name: "プレイ中"}, {value: "3", name: "アーカイブ"}].each do |obj|
