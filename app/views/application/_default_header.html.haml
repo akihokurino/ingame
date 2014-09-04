@@ -1,8 +1,10 @@
 %header
   %h1.ttlWrap
     = link_to "Playdy", posts_path, class: "ttl"
-  %span.menu{href: ""}
+  %span.menuWrap
+    %span.menu{href: ""}
   %span.notify{href: ""}
+    %span.notifyNum 1
   = link_to "", user_path(@current_user), class: "profile"
   .openMenuWrap
     %ul.openMenu

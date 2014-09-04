@@ -4,5 +4,6 @@
 .user-edit-page
   %header
     %h1.ttl ユーザー編集
+    %span.cancelWrap
     = link_to "戻る", user_path(@user[:id]), class: "cancel"
   = render "form"

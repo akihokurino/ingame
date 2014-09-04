@@ -15,25 +15,21 @@
       font-size: 14px;
       @include font-weight(1px, #ffffff);
     }
+    .cancelWrap {
+      display: block;
+      position: absolute;
+      top: 10px;
+      left: 7px;
+      @include iconSprite4(53px ,25px, left, bottom);
+      content: "";
+    }
     .cancel {
+      display: block;
       position: absolute;
       top: 12px;
-      left: 24px;
+      left: 18px;
+      width: 40px;
       color: #ffffff;
-
-      &:before {
-        display: block;
-        position: absolute;
-        top: 5px;
-        left: -14px;
-        width: 9px;
-        height: 9px;
-        border-top: 3px solid #ffffff;
-        border-left: 3px solid #ffffff;
-        -webkit-transform: rotate(-45deg);
-        transform: rotate(-45deg);
-        content: "";
-      }
     }
   }
 

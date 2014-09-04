@@ -17,7 +17,7 @@ a {
 	background: rgba(0, 0, 0, 0.7);
 }
 #graylayer {
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -37,20 +37,26 @@ header {
 
 	.ttl {
 		display: block;
-		width: 87px;
-		height: 31px;
+		width: 68px;
 		margin: 0 auto;
 		color: #ffffff;
-		font-size: 24px;
+		font-size: 18px;
 		font-family: Helvetica;
 		text-decoration: none;
 		@include font-weight(1px, #ffffff);
 	}
-	.menu {
+	.menuWrap {
 		display: block;
 		position: absolute;
-		top: 15px;
-		left: 14px;
+		top: 10px;
+		left: 8px;
+		padding: 5px 8px;
+		@include border-radius(5px);
+		box-shadow: 0 1px 0 rgba(0, 0, 0, 0.31) inset,  0 1px 0 #495b74;
+		background: #202c3e;
+	}
+	.menu {
+		display: block;
 		width: 22px;
 		height: 19px;
 		@include iconSprite2(0, 0);
@@ -65,6 +71,22 @@ header {
 		height: 21px;
 		@include iconSprite2(0, -26px);
 		cursor: pointer;
+
+		&Num {
+			display: block;
+			position: absolute;
+			top: -2px;
+			right: -6px;
+			width: 17px;
+			height: 17px;
+			@include border-radius(6px);
+			background: #22c0a4;
+			color: #fff;
+			font-family: Helvetica;
+			font-size: 12px;
+			@include font-weight(1px, #fff);
+			line-height: 17px;
+		}
 	}
 	.profile {
 		display: block;

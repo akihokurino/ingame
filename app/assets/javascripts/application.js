@@ -23,11 +23,25 @@ $(function(){
   if(typeof APP.UI === 'undefined'){
       APP.UI = {};
   }
-  var Menu = APP.UI.menu;
-  Menu = (function(){
-    var _menu = $('.menu'),
+  APP.UI.menu = (function(){
+    var _menu = $('.menuWrap'),
+        _header = $('header'),
         _glFlg = true;
 
+    //#graylayerの切り替え
+    function _toggleGlaylayer(){
+      if(_glFlg){
+        $('body').append('<div id="graylayer">');
+        _header.append('<div id="headerGraylayer">')
+              .css({'background' : '#0d121a'});
+      }
+      else{
+        $('#graylayer').remove();
+        $('#headerGraylayer').remove();
+        _header.css({'background' : '#2d3e58'});
+      }
+    }
+    //メニューのスライドアニメーション
     function _showMenu(){
       _menu.on('click', function(){
           _toggleGlaylayer();
@@ -40,16 +54,7 @@ $(function(){
         });
       });
     }
-    function _toggleGlaylayer(){
-      if(_glFlg){
-        $('body').append('<div id="graylayer">');
-        $('header').append('<div id="headerGraylayer">');
-      }
-      else{
-        $('#graylayer').remove();
-        $('#headerGraylayer').remove();
-      }
-    }
+    //初期化
     function _init(){
       _showMenu();
     }
@@ -57,6 +62,6 @@ $(function(){
       init: _init
     }
   })();
-
+  var Menu = APP.UI.menu;
   Menu.init();
 });

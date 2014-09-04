@@ -1,0 +1,39 @@
+@import "../_function.css.scss";
+
+.search-page {
+
+	.tabs {
+		width: 202px;
+		height: 30px;
+		margin: 20px auto 10px;
+		border: 1px solid #10b5a3;
+		@include border-radius(5px);
+		@include box-sizing;
+		@include clearfix;
+	}
+	.to-game-search, .to-user-search {
+		width: 100px;
+		padding: 5px 0;
+		font-size: 12px;
+		@include box-sizing;
+	}
+	.to-game-search {
+		float: left;
+		border-right: 1px solid #10b5a3;
+		@include border-radius(3px 0 0 3px);
+	}
+	.to-user-search {
+		float: right;
+		@include border-radius(0 3px 3px 0);
+	}
+	div.to-game-search, div.to-user-search {
+		background: #10b5a3;
+		color: #fff;
+		@include font-weight(1px, #fff);
+	}
+	a.to-game-search, a.to-user-search {
+		display: block;
+		background: #fff;
+		color: #10b5a3;
+	}
+}
