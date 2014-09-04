@@ -32,6 +32,19 @@ html {
 		}
 		.gameInfoWrap {
 			margin-left: 87px;
+
+			.review {
+				float: left;
+				color: #6a45b7;
+				font-size: 21px;
+				@include font-weight(1px, #6a45b7);
+				text-shadow: 1px 1px 0 #cacbcb;
+
+				&Inner {
+					font-size: 14px;
+					@include font-weight(0px, #fff);
+				}
+			}
 		}
 		.gameInfo {
 			margin-bottom: 9px;
@@ -73,18 +86,6 @@ html {
 			font-size: 12px;
 			text-align: center;
 			line-height: 22px;
-		}
-		.review {
-			float: left;
-			color: #6a45b7;
-			font-size: 21px;
-			@include font-weight(1px, #6a45b7);
-			text-shadow: 1px 1px 0 #cacbcb;
-
-			&Inner {
-				font-size: 14px;
-				@include font-weight(0px, #fff);
-			}
 		}
 		.btnList {
 			@include flexbox;
