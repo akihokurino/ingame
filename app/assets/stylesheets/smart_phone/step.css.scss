@@ -66,18 +66,28 @@ body {
 		width: 250px;
 		margin: 16px auto 28px;
 
-		.search {
-			display: block;
+		.searchWrap {
 			width: 250px;
-			height: 34px;
-			margin-bottom: 26px;
-			padding-left: 11px;
-			border: 1px solid #a09e9f;
+			height: 33px;
+			margin: 0 auto 15px;
+			border: 1px solid #b3b2b3;
+			@include border-radius(18px);
+			background: #ffffff;
+		}
+		.search {
+			padding-left: 45px;
 			@include border-radius(18px);
 			@include box-sizing;
-			@include iconSprite2(right 4px, top -178px);
-			font-size: 14px;
+			border: none;
+			@include iconSprite4(100%, 32px, 10px, -178px);
+			@include appearance;
 			outline: 0;
+
+			&::-webkit-input-placeholder {
+				color: #8d8d8d;
+				font-size: 12px;
+				line-height: 24px;
+			}
 		}
 		.btn {
 			width: 79px;
@@ -276,6 +286,8 @@ body {
 			@include clearfix;
 		}
 		.list {
+			margin-bottom: 15px;
+			
 			&:last-child {
 				margin-right: 0;
 			}
@@ -311,18 +323,28 @@ body {
 		width: 250px;
 		margin: 0 auto 28px;
 
+		.friendWrap {
+			width: 200px;
+			height: 33px;
+			margin: 0 auto 15px;
+			border: 1px solid #b3b2b3;
+			@include border-radius(18px);
+			background: #ffffff;
+		}
 		.friend {
-			display: block;
-			width: 250px;
-			height: 34px;
-			margin-bottom: 26px;
-			padding-left: 11px;
-			border: 1px solid #a09e9f;
+			padding-left: 45px;
 			@include border-radius(18px);
 			@include box-sizing;
-			@include iconSprite2(right 4px, top -178px);
-			font-size: 14px;
+			border: none;
+			@include iconSprite4(100%, 32px, 10px, -178px);
+			@include appearance;
 			outline: 0;
+
+			&::-webkit-input-placeholder {
+				color: #8d8d8d;
+				font-size: 12px;
+				line-height: 24px;
+			}
 		}
 		.btn {
 			width: 79px;
