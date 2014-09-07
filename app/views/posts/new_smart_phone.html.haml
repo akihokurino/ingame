@@ -1,5 +1,6 @@
 = content_for :head do
-  = javascript_include_tag "smart_phone/post.js"
+  = stylesheet_link_tag    "smart_phone/post"
+  = javascript_include_tag "smart_phone/post"
 
 .post-new-page{"data-userid" => @current_user[:id]}
 
