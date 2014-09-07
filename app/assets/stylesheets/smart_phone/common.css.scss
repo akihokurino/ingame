@@ -1,3 +1,4 @@
+
 @import "../../stylesheets/_function.css.scss";
 
 /*---   common   ---------------------------*/
@@ -89,6 +90,7 @@ header {
 			font-size: 12px;
 			@include font-weight(1px, #fff);
 			line-height: 17px;
+			text-align: center;
 		}
 	}
 	.profile {
