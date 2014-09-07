@@ -4,6 +4,10 @@
 html {
 	font-family:"Hiragino Kaku Gothic ProN", "Lucida Grande", Helvetica, "Meiryo", sans-serif;
 }
+body {
+    overflow : scroll;
+    -webkit-overflow-scrolling : touch;
+}
 a {
 	text-decoration: none;
 }
