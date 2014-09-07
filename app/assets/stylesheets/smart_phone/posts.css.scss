@@ -127,7 +127,6 @@ a {
 			.gameImg {
 				float: left;
 				margin: 0 12px 0 11px;
-				@include border-radius(16px);
 			}
 			figcaption {
 				overflow: hidden;
@@ -419,7 +418,6 @@ a {
 			.gameImg {
 				float: left;
 				margin: 0 12px 0 11px;
-				@include border-radius(16px);
 			}
 			figcaption {
 				float: left;
@@ -436,37 +434,46 @@ a {
 				right: 13px;
 				width: 86px;
 				margin-top: -10px;
-				padding-top: 1px;
-				border: 1px solid #959494;
-				@include border-radius(18px);
+				padding-top: 2px;
+				border: none;
+				@include border-radius(5px);
 				@include box-sizing;
-				color: #464646;
+				background: #10b5a4;
+				@include box-shadow(0, 1px, 0, 0, #0d9183);
 				font-size: 6px;
-				text-align: center;
 
+				&:before {
+					position: absolute;
+					top: 3px;
+					right: 3px;
+					z-index: 5;
+					width: 15px;
+					height: 15px;
+					border: 1px solid #fff;
+					@include border-radius(20px);
+					@include box-sizing;
+					background: #10b5a4;
+					content: "";
+				}
 				&:after {
 					position: absolute;
 					top: 6px;
 					right: 6px;
-					border-top: 6px solid #888787;
-					border-right: 5px solid #ffffff;
-					border-bottom: 6px solid #ffffff;
-					border-left: 5px solid #ffffff;
+					z-index: 5;
+					@include iconSprite4(8px, 8px, 0, -313px);
 					content: "";
 				}
 			}
 			select {
-				display: block;
-				width: 75px;
-				margin-left: auto;
+				position: relative;
+				width: 80px;
+				height: 20px;
 				border: none;
-				@include border-radius(18px);
+				@include border-radius(5px);
 				@include box-sizing;
-				color: #a09f9f;
-				font-size: 10px;
-				text-align: center;
+				background: #10b5a4;
+				color: #fff;
 				outline: 0;
-				@include appearance;
 			}
 		}
 	}
