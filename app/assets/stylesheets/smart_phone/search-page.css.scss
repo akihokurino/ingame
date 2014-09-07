@@ -2,6 +2,7 @@
 
 .search-page {
 
+	/*---   .tabs   ----------*/
 	.tabs {
 		width: 202px;
 		height: 30px;
@@ -35,5 +36,176 @@
 		display: block;
 		background: #fff;
 		color: #10b5a3;
+	}
+	/*---   .search-form   ----------*/
+	.search-form {
+		width: 250px;
+		height: 33px;
+		margin: 0 auto 15px;
+		border: 1px solid #b3b2b3;
+		@include border-radius(18px);
+		background: #ffffff;
+	}
+	.game-title-input, .username-input {
+		padding-left: 45px;
+		@include border-radius(18px);
+		@include box-sizing;
+		border: none;
+		@include iconSprite4(100%, 32px, 10px, -178px);
+		@include appearance;
+		outline: 0;
+
+		&::-webkit-input-placeholder {
+			color: #8d8d8d;
+			font-size: 12px;
+			line-height: 24px;
+		}
+	}
+	/*---   .loading-gif   ----------*/
+	.loading-gif {
+		margin-top: 20px;
+	}
+	/*---   .gameList   ----------*/
+	.gameList {
+		position: relative;
+		width: 320px;
+		margin: 10px auto 0;
+
+		.gameImgWrap {
+			position: absolute;
+			top: 12px;
+			left: 9px;
+			width: 98px;
+			height: 98px;
+			border: 2px solid #99b9d6;
+			@include border-radius(50px);
+			@include box-sizing;
+			text-align: center;
+		}
+		.gameImgInner {
+			width: 94px;
+			height: 94px;
+			margin: 0 auto;
+			@include border-radius(48px);
+			background: #ffffff;
+		}
+		.gameImg {
+			-webkit-mask: url(/assets/smart_phone/mask.png) no-repeat center top;
+			-webkit-mask-size: 94px 94px;
+			padding-top: 3px;
+		}
+		.gameInfo {
+			width: 250px;
+			height: 124px;
+			margin: 0 3px 0 auto;
+			padding: 22px 0 0 53px;
+			border-bottom: 1px solid #bbbbbc;
+			@include box-sizing;
+		}
+		.ttl {
+			overflow: hidden;
+			height: 43px;
+			color: #10b5a3;
+			font-size: 14px;
+			@include font-weight(1px, #10b5a3);
+			text-align: left;
+			text-shadow: 1px 1px 0 #cacbcb;
+		}
+		.btnList {
+			position: absolute;
+			bottom: 17px;
+			@include flexbox;
+
+			.item {
+				position: relative;
+				width: 80px;
+				height: 20px;
+				margin: 12px 0 20px;
+				border: none;
+				@include border-radius(5px);
+				@include box-sizing;
+				background: #10b5a4;
+				@include box-shadow(0, 1px, 0, 0, #0d9183);
+
+				&:before {
+					position: absolute;
+					top: 2px;
+					right: 2px;
+					width: 15px;
+					height: 15px;
+					border: 1px solid #fff;
+					@include border-radius(20px);
+					@include box-sizing;
+					background: #10b5a4;
+					content: "";
+				}
+				&:after {
+					position: absolute;
+					top: 5px;
+					right: 5px;
+					@include iconSprite4(8px, 8px, 0, -313px);
+					content: "";
+				}
+			}
+			select {
+				display: block;
+				width: 75px;
+				height: 20px;
+				margin-left: auto;
+				border: none;
+				@include border-radius(18px);
+				@include box-sizing;
+				background: none;
+				color: #fff;
+				font-size: 11px;
+				text-align: center;
+				outline: 0;
+				@include appearance;
+			}
+			.stars {
+				text-align: -webkit-center;
+			}
+		}
+	}
+	.user-search {
+		.result-list {
+			@include flexbox;
+			width: 78%;
+			margin: 0 auto;
+			@include clearfix;
+		}
+		.list {
+			margin-bottom: 15px;
+			
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+		.profImg {
+			width: 63px;
+			height: 63px;
+			margin-bottom: 12px;
+			@include border-radius(32px);
+			@include box-sizing;
+		}
+		.name {
+			margin-bottom: 8px;
+			color: #404040;
+			font-size: 12px;
+			font-weight: bold;
+		}
+		.btn {
+			display: block;
+			width: 70px;
+			height: 21px;
+			padding-top: 1px;
+			border: 1px solid #10ac9b;
+			@include border-radius(3px);
+			@include box-sizing;
+			color: #10ac9b;
+			font-size: 12px;
+			text-align: center;
+			text-decoration: none;
+		}
 	}
 }
