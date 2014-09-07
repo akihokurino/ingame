@@ -7,7 +7,7 @@
 
 
 		/* ---------- Collection --------- */
-		var logs = new Logs();
+		var logs    = new Logs();
 
 
 
@@ -49,26 +49,26 @@
 		var AppView = Backbone.View.extend({
 			el: ".profile-page",
 			events: {
-				"click .playing": "setPlaying",
-				"click .ready": "setAttention",
-				"click .played": "setArchive",
-				"click .follow": "follow",
-				"click .unfollow": "unfollow",
+				"click .playing":       "setPlaying",
+				"click .ready":         "setAttention",
+				"click .played":        "setArchive",
+				"click .follow":        "follow",
+				"click .unfollow":      "unfollow",
 				"keypress .search-log": "search"
 			},
 			initialize: function () {
-				var that = this;
-				this.logs_view = new LogsView();
+				var that               = this;
+				this.logs_view         = new LogsView();
 
-				this.attentions = [];
-				this.playings = [];
-				this.archives = [];
+				this.attentions        = [];
+				this.playings          = [];
+				this.archives          = [];
 
-				this.follow_template = _.template($("#follow-template").html());
+				this.follow_template   = _.template($("#follow-template").html());
 				this.unfollow_template = _.template($("#unfollow-template").html());
 
-				this.search_log_title = $(".search-log");
-				this.current_tab = null;
+				this.search_log_title  = $(".search-log");
+				this.current_tab       = null;
 
 				$.ajax({
 					type: "GET",

@@ -10,7 +10,7 @@
     var user_id = $(".post-new-page").data("userid");
 
     /* ---------- Collection ---------- */
-    var logs = new Logs();
+    var logs    = new Logs();
     var results = new Results();
 
 
@@ -202,24 +202,24 @@
         "click .submit": "post"
       },
       initialize: function () {
-        var that = this;
+        var that      = this;
 
         this.$el.html("");
         this.$el.append(this.template);
 
         var url_array = location.href.split("/");
-        this.log_id = url_array.pop();
-        this.game_id = url_array.pop();
-        this.text = $("textarea");
+        this.log_id   = url_array.pop();
+        this.game_id  = url_array.pop();
+        this.text     = $("textarea");
 
-        this.upload = new PostUpload("upload-btn", "thumbnail");
+        this.upload   = new PostUpload("upload-btn", "thumbnail");
 
         $.ajax({
           type: "GET",
           url: "/api/games/" + this.game_id,
           data: {},
           success: function (data) {
-            var game = new Game(data.game);
+            var game      = new Game(data.game);
             var game_view = new GameView({model: game});
             that.$el.find(".write-page").prepend(game_view.render().el);
           },
@@ -234,9 +234,9 @@
         var data = {
           "post": {
             "game_id": this.game_id,
-            "log_id": this.log_id,
-            "text": this.text.val(),
-            "files": this.upload.files
+            "log_id":  this.log_id,
+            "text":    this.text.val(),
+            "files":   this.upload.files
           }
         }
 
@@ -262,24 +262,19 @@
       },
       template: _.template($("#add-template").html()),
       initialize: function () {
-        var that = this;
-
+        var that                  = this;
         this.$el.html("");
         this.$el.append(this.template);
-
-        this.results_view = new ResultsView({el: ".gameList"});
+        this.results_view         = new ResultsView({el: ".gameList"});
         this.$el.find(".add-page").append(this.results_view.el);
-
-        this.collection = results;
-
-        this.search_title = this.$(".search-title-input");
+        this.collection           = results;
+        this.search_title         = $(".search-title-input");
         this.current_search_title = null;
-
-        this.page = 1;
+        this.page                 = 1;
       },
       search: function (e) {
         e.preventDefault();
-        var that = this;
+        var that                  = this;
         this.current_search_title = this.search_title.val();
         this.collection.fetch({
           data: {search_title: this.current_search_title, page: this.page},
@@ -303,13 +298,13 @@
     })
 
     function pagenation(){
-      var scrollHeight = $(document).height();
+      var scrollHeight   = $(document).height();
       var scrollPosition = $(window).height() + $(window).scrollTop();
       if ((scrollHeight - scrollPosition) / scrollHeight <= 0.1) {
         $(".loading-gif").css("display", "block");
         $(window).unbind("scroll");
 
-        var app = router.current_app;
+        var app   = router.current_app;
         app.page += 1;
 
         app.collection.fetch({

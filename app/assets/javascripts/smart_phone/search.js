@@ -130,7 +130,7 @@
         this.$el.append(this.template);
         this.results_view       = new ResultsView({el: ".result-list"});
         this.collection         = results;
-        this.game_title         = this.$(".game-title-input");
+        this.game_title         = $(".game-title-input");
         this.current_game_title = null;
         this.page               = 1;
       },
@@ -153,7 +153,7 @@
               }
 
               $(window).unbind("scroll");
-              $(window).bind("scroll", pagenation("game"));
+              $(window).bind("scroll", game_pagenation);
             },
             error: function () {
               console.log("error");
@@ -195,7 +195,7 @@
               }
 
               $(window).unbind("scroll");
-              $(window).bind("scroll", pagenation("user"));
+              $(window).bind("scroll", user_pagenation);
             },
             error: function () {
               console.log("error");
@@ -205,9 +205,11 @@
       }
     })
 
-    function pagenation (type) {
+
+    function game_pagenation () {
       var scrollHeight   = $(document).height();
       var scrollPosition = $(window).height() + $(window).scrollTop();
+
       if ((scrollHeight - scrollPosition) / scrollHeight <= 0.1) {
         $(".loading-gif").css("display", "block");
         $(window).unbind("scroll");
@@ -215,51 +217,63 @@
         var app   = router.current_app;
         app.page += 1;
 
-        if (type == "game") {
-          app.collection.fetch({
-            data: {search_title: app.current_search_title, page: app.page},
-            success: function (model, response, options) {
-              if (response.results && response.results.length > 0) {
-                for (var i = 0; i < response.results.length; i++) {
-                  var result = new Result(response.results[i]);
-                  app.collection.add(result);
-                }
+        app.collection.fetch({
+          data: {search_title: app.current_game_title, page: app.page},
+          success: function (model, response, options) {
+            if (response.results && response.results.length > 0) {
+              for (var i = 0; i < response.results.length; i++) {
+                var result = new Result(response.results[i]);
+                app.collection.add(result);
               }
-
-              $(".loading-gif").css("display", "none");
-
-              if (response.results.length != 0) {
-                $(window).bind("scroll", pagenation("game"));
-              }
-            },
-            error: function () {
-              console.log("error");
             }
-          })
-        } else {
-          app.collection.fetch({
-            data: {username: app.current_username, page: app.page},
-            success: function (model, response, options) {
-              if (response.results && response.results.length > 0) {
-                for (var i = 0; i < response.results.length; i++) {
-                  var user = new User(response.results[i]);
-                  app.collection.add(user);
-                }
-              }
 
-              $(".loading-gif").css("display", "none");
+            $(".loading-gif").css("display", "none");
 
-              if (response.results.length != 0) {
-                $(window).bind("scroll", pagenation("user"));
-              }
-            },
-            error: function () {
-              console.log("error");
+            if (response.results.length != 0) {
+              $(window).bind("scroll", game_pagenation);
             }
-          });
-        }
+          },
+          error: function () {
+            console.log("error");
+          }
+        })
       }
     }
+
+    function user_pagenation () {
+      var scrollHeight   = $(document).height();
+      var scrollPosition = $(window).height() + $(window).scrollTop();
+
+      if ((scrollHeight - scrollPosition) / scrollHeight <= 0.1) {
+        $(".loading-gif").css("display", "block");
+        $(window).unbind("scroll");
+
+        var app   = router.current_app;
+        app.page += 1;
+
+        app.collection.fetch({
+          data: {username: app.current_username, page: app.page},
+          success: function (model, response, options) {
+            if (response.results && response.results.length > 0) {
+              for (var i = 0; i < response.results.length; i++) {
+                var user = new User(response.results[i]);
+                app.collection.add(user);
+              }
+            }
+
+            $(".loading-gif").css("display", "none");
+
+            if (response.results.length != 0) {
+              $(window).bind("scroll", user_pagenation);
+            }
+          },
+          error: function () {
+            console.log("error");
+          }
+        });
+      }
+    }
+
 
     var Router = Backbone.Router.extend({
       routes: {

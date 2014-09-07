@@ -105,7 +105,7 @@
 			&.current {
 				background: #fff;
 
-				.follow, .follower, .gameNum, .postNum, .count {
+				.followNum, .followerNum, .gameNum, .postNum, .count {
 					color: #333;
 				}
 				.count {
@@ -125,7 +125,7 @@
 				border: none;
 			}
 		}
-		.follow, .follower, .gameNum, .postNum {
+		.followNum, .followerNum, .gameNum, .postNum {
 			display: block;
 			@include box-sizing;
 			color: #ffffff;

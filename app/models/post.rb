@@ -44,6 +44,10 @@ class Post < ActiveRecord::Base
     end
   end
 
+  def datetime
+    self[:created_at].strftime("%Y/%m/%d %H:%M:%S")
+  end
+
   class << self
     def get_all_posts(current_user_id, page)
       offset       = (page - 1) * LIMIT

@@ -36,9 +36,9 @@
 			tagName: "article",
 			className: "postBox",
 			events: {
-				"click .delete": "destroy",
-				"click .like" : "like",
-				"click .unlike": "unlike",
+				"click .delete":      "destroy",
+				"click .like" :       "like",
+				"click .unlike":      "unlike",
 				"click .comment-btn": "showComment",
 			},
 			initialize: function () {

@@ -3,6 +3,7 @@ json.posts do |json|
   	json.id post[:id]
   	json.text post[:text]
     json.i_liked post.i_liked
+    json.created_at post.datetime
     json.post_likes_count post[:post_likes_count]
     json.post_comments_count post[:post_comments_count]
   	json.game do |json|

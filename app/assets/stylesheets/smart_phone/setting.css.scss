@@ -202,16 +202,6 @@ body {
 			}
 		}
 	}
-
-	.loading-gif {
-		width: 30px;
-		height: 30px;
-		display: block;
-		margin: 0 auto;
-		margin-top: 10px;
-		margin-bottom: 10px;
-		display: none;
-	}
 }
 
 /*---   .setting02   ---------------------------*/
@@ -284,7 +274,7 @@ body {
 		}
 		.list {
 			margin-bottom: 15px;
-			
+
 			&:last-child {
 				margin-right: 0;
 			}

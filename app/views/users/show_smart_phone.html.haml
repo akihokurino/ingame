@@ -38,12 +38,12 @@
                 = @user.posts.count
               チェックイン
           %li.item
-            %a.follow{href: ""}
+            %a.followNum{href: ""}
               %span.count
                 = @user.follow_num
               フォロー
           %li.item
-            %a.follower{href: ""}
+            %a.followerNum{href: ""}
               %span.count
                 = @user.follower_num
               フォロワー
