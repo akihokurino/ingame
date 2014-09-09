@@ -1,3 +1,6 @@
+= content_for :head do
+  = javascript_include_tag "smart_phone/header"
+
 %header
   %h1.ttlWrap
     = link_to "Playdy", posts_path, class: "ttl"
@@ -17,12 +20,5 @@
       %li.item
         = link_to "ログアウト", logout_users_path, class: "menuItemLogout"
 
-.notification-modal
-  .modal-header
-    通知
-    %span.close-btn 閉じる
-  .modal-body
-    .notification-list
-
-
+= render partial: "application/notifications_modal"
 = render partial: "application/underscore/smart_phone/header/notification"
