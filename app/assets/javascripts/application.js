@@ -15,6 +15,7 @@
 //= require underscore
 //= require backbone
 //= require ./underscore_template.js
+//= require ./smart_phone/header.js
 
 $(function(){
   if(typeof APP === 'undefined'){

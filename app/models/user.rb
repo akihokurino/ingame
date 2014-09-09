@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 	has_many :game_likes
 	has_many :post_likes
 	has_many :follows, :foreign_key => "from_user_id"
+  has_many :notifications, :foreign_key => "to_user_id"
 
 	validates :username,
 		presence: true,

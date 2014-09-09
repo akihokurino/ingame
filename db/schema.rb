@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140814131158) do
+ActiveRecord::Schema.define(version: 20140909120153) do
 
   create_table "follows", force: true do |t|
     t.integer  "from_user_id"
@@ -45,6 +45,21 @@ ActiveRecord::Schema.define(version: 20140814131158) do
     t.integer  "game_id"
     t.integer  "status_id"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "notification_types", force: true do |t|
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "notifications", force: true do |t|
+    t.integer  "from_user_id"
+    t.integer  "to_user_id"
+    t.integer  "notification_type_id"
+    t.boolean  "is_read",              default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

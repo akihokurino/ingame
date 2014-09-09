@@ -16,3 +16,5 @@
         = link_to "アカウント設定", user_path(@current_user), class: "menuItemAccount"
       %li.item
         = link_to "ログアウト", logout_users_path, class: "menuItemLogout"
+
+= render partial: "application/underscore/smart_phone/header/notification"

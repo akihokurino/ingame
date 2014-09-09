@@ -61,7 +61,8 @@
 				var data = {
 					"post_like": {
 						"post_id": this.model.id,
-						"user_id": null
+						"user_id": null,
+						"to_user_id": this.model.get("user").id
 					}
 				};
 				var that = this;
@@ -233,8 +234,9 @@
 
 					var data = {
 						"post_comment": {
-							"post_id": this.model.get("id"),
-							"text": this.comment_input.val()
+							"post_id":    this.model.id,
+							"text":       this.comment_input.val(),
+							"to_user_id": this.model.get("user").id
 						}
 					}
 

@@ -13,3 +13,11 @@
 ).each_with_index do |status, index|
 	Status.create(name: status)
 end
+
+%w(
+  がフォローしました
+  のポストにいいね！と言っています
+  のポストにコメントしました
+).each do |value|
+  NotificationType.create(value: value)
+end
