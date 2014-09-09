@@ -51,6 +51,8 @@
         this.$el.find("notification-list").html("");
         $(".notification-modal").css("display", "none");
         $(".layer").css("display", "none");
+
+        header_view.notifications_view = null;
       }
     })
 
