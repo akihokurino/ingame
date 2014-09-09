@@ -1,13 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  from_user_id: 1
-  to_user_id: 1
-  notification_type_id_id: 
+<% 1.upto(50) do |n| %>
+item<%= n %>:
+  id: <%= n %>
+  from_user_id: <%= (n % 10) + 1 %>
+  to_user_id: 11
+  notification_type_id: <%= (n % 3) + 1 %>
   is_read: false
-
-two:
-  from_user_id: 1
-  to_user_id: 1
-  notification_type_id_id: 
-  is_read: false
+<% end %>

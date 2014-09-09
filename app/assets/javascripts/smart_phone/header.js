@@ -11,19 +11,22 @@
 
     /* ---------- View ---------- */
     var NotificationsView = Backbone.View.extend({
-      el: $(".notification-list"),
+      el: $(".notification-modal"),
+      events: {
+        "click .close-btn": "hideNotifications"
+      },
       initialize: function () {
         var that        = this;
         this.collection = notifications;
-        this.page       = 1;
 
         this.listenTo(this.collection, "add", this.addNotification);
 
         this.collection.fetch({
-          data: {page: this.page},
+          data: {},
           success: function (model, response, options) {
             console.log(response);
             for (var i = 0; i < response.notifications.length; i++) {
+              response.notifications[i].text = that.createText(response.notifications[i]);
               var notification = new Notification(response.notifications[i]);
               that.collection.add(notification);
             }
@@ -34,8 +37,20 @@
         })
       },
       addNotification: function (notification) {
-        var notification_view = new NotificationView({model: notification});
-        this.$el.append(notification_view.render().el);
+        if (notification.id) {
+          var notification_view = new NotificationView({model: notification});
+          this.$el.find(".notification-list").append(notification_view.render().el);
+        }
+      },
+      createText: function (notification) {
+        var text = "<a href='/users/" + notification.from_user.id + "'>" + notification.from_user.username + "さん</a>があなた" + notification.text;
+        return text;
+      },
+      hideNotifications: function () {
+        this.stopListening();
+        this.$el.find("notification-list").html("");
+        $(".notification-modal").css("display", "none");
+        $(".layer").css("display", "none");
       }
     })
 
@@ -51,8 +66,31 @@
 
     var HeaderView = Backbone.View.extend({
       el: $("header"),
+      events: {
+        "click .notify": "showNotifications"
+      },
       initialize: function () {
+        this.getNotificationCount();
+      },
+      getNotificationCount: function () {
+        var that = this;
+        $.ajax({
+          type: "GET",
+          url: "/api/notifications/count",
+          success: function (data) {
+            that.$el.find(".notifyNum").html(data.count);
+          },
+          error: function () {
+            console.log("error");
+          }
+        })
+      },
+      showNotifications: function (e) {
+        e.preventDefault();
+        $(".notification-modal").css("display", "block");
+        $(".layer").css("display", "block");
         this.notifications_view = new NotificationsView();
+        this.$el.find(".notifyNum").html(0);
       }
     })
 

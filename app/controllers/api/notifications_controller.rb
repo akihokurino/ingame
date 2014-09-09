@@ -1,8 +1,6 @@
 class Api::NotificationsController < ApplicationController
   def index
-    page           = params[:page].to_i
-    return if page < 1
-    @notifications = Notification.my_notifications(@current_user, page)
+    @notifications = Notification.my_notifications(@current_user)
   end
 
   def count
