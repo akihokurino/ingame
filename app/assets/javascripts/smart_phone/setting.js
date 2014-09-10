@@ -47,7 +47,7 @@
           var that = this;
           var data = {
             "log": {
-              "game_id": this.model.id,
+              "game_id":   this.model.id,
               "status_id": this.$el.find(".status").val()
             }
           }
@@ -57,6 +57,7 @@
             url: "/api/logs",
             data: data,
             success: function (data) {
+              $(".next-page").attr("value", "次へ");
               that.remove();
             },
             error: function () {
@@ -109,6 +110,7 @@
             if(data.result){
               that.$el.remove();
             }
+            $(".next-page").attr("value", "次へ");
           },
           error: function () {
             console.log("error");
@@ -166,7 +168,7 @@
         }
       },
       next: function (e) {
-        e.preventDefault()
+        e.preventDefault();
         location.href = "/users/" + this.user_id + "/setting#second";
       }
     })
@@ -208,7 +210,7 @@
       el: $(".setting-page"),
       events: {
         "keypress .user-input": "search",
-        "click .next-page": "next"
+        "click .next-page":     "next"
       },
       template: _.template($("#second-template").html()),
       initialize: function () {
@@ -276,9 +278,9 @@
 
     var Router = Backbone.Router.extend({
       routes: {
-        "first": "first",
+        "first":  "first",
         "second": "second",
-        "third": "third"
+        "third":  "third"
       },
       first: function () {
         this.current_app = new FirstView();
