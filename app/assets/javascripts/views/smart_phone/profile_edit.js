@@ -1,4 +1,4 @@
-//= require ../libs/profile_edit_upload.js
+//= require ../../libs/profile_edit_upload.js
 
 (function () {
   $(function () {

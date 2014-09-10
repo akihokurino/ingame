@@ -1,8 +1,8 @@
-//= require ../models/result.js
-//= require ../models/user.js
-//= require ../collections/results.js
-//= require ../collections/users.js
-//= require ../libs/profile_upload.js
+//= require ../../models/result.js
+//= require ../../models/user.js
+//= require ../../collections/results.js
+//= require ../../collections/users.js
+//= require ../../libs/profile_upload.js
 
 (function () {
   $(function () {

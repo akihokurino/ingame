@@ -1,11 +1,13 @@
-//= require ../models/log.js
-//= require ../models/result.js
-//= require ../collections/logs.js
-//= require ../collections/results.js
+//= require ../../models/log.js
+//= require ../../models/game.js
+//= require ../../models/result.js
+//= require ../../collections/logs.js
+//= require ../../collections/results.js
+//= require ../../libs/post_upload.js
 
 (function () {
   $(function () {
-    var user_id = $(".logs-page").data("userid");
+    var user_id = $(".post-new-page").data("userid");
 
     /* ---------- Collection ---------- */
     var logs    = new Logs();
@@ -34,60 +36,27 @@
       tagName: "li",
       className: "item",
       events: {
-        "change .my_status": "changeStatus",
-        "change .my_rate": "changeRate"
+
       },
       initialize: function () {
+
       },
       template: _.template($("#log-template").html()),
       render: function () {
         var template = this.template(this.model.toJSON());
         this.$el.html(template);
         return this;
-      },
-      changeStatus: function () {
-        if (this.$el.find(".my_status").val() != "") {
-          var game_id = this.model.get("game").id;
-          var data = {
-            "log": {
-              "status_id": this.$el.find(".my_status").val()
-            }
-          }
+      }
+    })
 
-          $.ajax({
-            type: "PUT",
-            url: "/api/logs/" + game_id + "/update_status_or_rate",
-            data: data,
-            success: function (data) {
-              console.log(data);
-            },
-            error: function () {
-              console.log("error");
-            }
-          })
-        }
-      },
-      changeRate: function () {
-        if(this.$el.find(".my_rate").val() != "") {
-          var game_id = this.model.get("game").id;
-          var data = {
-            "log": {
-              "rate": this.$el.find(".my_rate").val()
-            }
-          }
-
-          $.ajax({
-            type: "PUT",
-            url: "/api/logs/" + game_id + "/update_status_or_rate",
-            data: data,
-            success: function () {
-
-            },
-            error: function () {
-              console.log("error");
-            }
-          })
-        }
+    var GameView = Backbone.View.extend({
+      tagName: "div",
+      className: "gameBox",
+      template: _.template($("#game-template").html()),
+      render: function () {
+        var template = this.template(this.model.toJSON());
+        this.$el.html(template);
+        return this;
       }
     })
 
@@ -99,7 +68,7 @@
       addResult: function (result) {
         if(result.id){
           var result_view = new ResultView({model: result});
-          this.$el.append(result_view.render().el);
+          this.$el.prepend(result_view.render().el);
         }
       }
     })
@@ -147,47 +116,40 @@
         }
     })
 
-
-
-    var EditView = Backbone.View.extend({
-      el: $(".logs-page"),
+    var SelectView = Backbone.View.extend({
+      el: $(".post-new-page"),
       events: {
         "click .playing": "setPlaying",
         "click .ready": "setAttention",
-        "click .played": "setArchive",
-        "keypress .search-log": "search"
+        "click .played": "setArchive"
       },
-      template: _.template($("#edit-template").html()),
+      template: _.template($("#select-template").html()),
       initialize: function () {
         var that = this;
 
         this.$el.html("");
-        this.$el.append(this.template);
+        this.$el.html(this.template);
 
-        this.logs_view  = new LogsView({el: "ul.gameList"});
+        this.logs_view = new LogsView({el: ".gameList"});
+        this.$el.find(".select-page").append(this.logs_view.el);
 
         this.attentions = [];
-        this.playings   = [];
-        this.archives   = [];
+        this.playings = [];
+        this.archives = [];
 
         this.logs_view.collection.reset();
-
-        this.search_log_title = $(".search-log");
-        this.current_tab      = null;
 
         $.ajax({
           type: "GET",
           url: "/api/logs?user_id=" + user_id,
           data: {},
           success: function (data) {
-            console.log(data);
             for(var i = 0; i < data.logs.length; i++){
               var log = new Log(data.logs[i]);
               switch(log.get("status").id){
                 case 1:
                   that.attentions.push(log);
                   that.logs_view.collection.add(log);
-                  that.current_tab = 1
                   break;
                 case 2:
                   that.playings.push(log);
@@ -203,16 +165,6 @@
           }
         })
       },
-      setAttention: function () {
-        this.logs_view.collection.reset();
-        this.logs_view.removeLogs();
-        this.$el.find("ul.sortBox li").removeClass("current");
-        for(var i = 0; i < this.attentions.length; i++){
-          this.logs_view.collection.add(this.attentions[i]);
-        }
-        this.$el.find("ul.sortBox li.ready-li").addClass("current");
-        this.current_tab = 1;
-      },
       setPlaying: function () {
         this.logs_view.collection.reset();
         this.logs_view.removeLogs();
@@ -221,7 +173,15 @@
           this.logs_view.collection.add(this.playings[i]);
         }
         this.$el.find("ul.sortBox li.playing-li").addClass("current");
-        this.current_tab = 2;
+      },
+      setAttention: function () {
+        this.logs_view.collection.reset();
+        this.logs_view.removeLogs();
+        this.$el.find("ul.sortBox li").removeClass("current");
+        for(var i = 0; i < this.attentions.length; i++){
+          this.logs_view.collection.add(this.attentions[i]);
+        }
+        this.$el.find("ul.sortBox li.ready-li").addClass("current");
       },
       setArchive: function () {
         this.logs_view.collection.reset();
@@ -231,99 +191,113 @@
           this.logs_view.collection.add(this.archives[i]);
         }
         this.$el.find("ul.sortBox li.played-li").addClass("current");
-        this.current_tab = 3;
-      },
-      search: function (e) {
-        if (e.which == 13 && this.search_log_title.val() != "") {
-          e.preventDefault();
-          this.logs_view.collection.reset();
-          this.logs_view.removeLogs();
-          this.$el.find("ul.sortBox li").removeClass("current");
-
-          var keyword = new RegExp(this.search_log_title.val(), "i");
-
-          switch (this.current_tab) {
-            case 1:
-              for (var i = 0; i < this.attentions.length; i++) {
-                var log = this.attentions[i]
-                if (log.get("game").title.match(keyword)) {
-                  this.logs_view.collection.add(log);
-                }
-              }
-              break;
-            case 2:
-              for (var i = 0; i < this.playings.length; i++) {
-                var log = this.playings[i]
-                if (log.get("game").title.match(keyword)) {
-                  this.logs_view.collection.add(log);
-                }
-              }
-              break;
-            case 3:
-              for (var i = 0; i < this.archives.length; i++) {
-                var log = this.archives[i]
-                if (log.get("game").title.match(keyword)) {
-                  this.logs_view.collection.add(log);
-                }
-              }
-              break;
-          }
-
-          this.search_log_title.val("");
-        }
       }
     })
 
-    var AddView = Backbone.View.extend({
-      el: $(".logs-page"),
+
+    var WriteView = Backbone.View.extend({
+      el: $(".post-new-page"),
+      template: _.template($("#write-template").html()),
       events: {
-        "keypress .search": "search"
+        "click .submit": "post"
       },
-      template: _.template($("#add-template").html()),
       initialize: function () {
-        var that = this;
+        var that      = this;
 
         this.$el.html("");
         this.$el.append(this.template);
 
-        this.results_view = new ResultsView({el: ".gameList"});
-        this.$el.find(".add-page").append(this.results_view.el);
+        var url_array = location.href.split("/");
+        this.log_id   = url_array.pop();
+        this.game_id  = url_array.pop();
+        this.text     = $("textarea");
 
-        this.collection = results;
+        this.upload   = new PostUpload("upload-btn", "thumbnail");
 
-        this.search_title = this.$(".search-title-input");
-        this.current_search_title = null;
-
-        this.page = 1;
+        $.ajax({
+          type: "GET",
+          url: "/api/games/" + this.game_id,
+          data: {},
+          success: function (data) {
+            var game      = new Game(data.game);
+            var game_view = new GameView({model: game});
+            that.$el.find(".write-page").prepend(game_view.render().el);
+          },
+          error: function () {
+            console.log("error");
+          }
+        })
       },
-      search: function (e) {
-        if (e.which == 13 && this.search_title.val()) {
-          e.preventDefault();
-          var that = this;
-          this.current_search_title = this.search_title.val();
-          this.collection.fetch({
-            data: {search_title: this.current_search_title, page: this.page},
-            success: function (model, response, options) {
-              that.collection.reset();
-              that.results_view.$el.html("");
-              if (response.results && response.results.length > 0) {
-                for (var i = 0; i < response.results.length; i++) {
-                  var result = new Result(response.results[i]);
-                  that.collection.add(result);
-                }
-              }
+      post: function (e) {
+        e.preventDefault();
 
-              $(window).bind("scroll", pagenation);
-            },
-            error: function () {
-              console.log("error");
-            }
-          })
+        var data = {
+          "post": {
+            "game_id": this.game_id,
+            "log_id":  this.log_id,
+            "text":    this.text.val(),
+            "files":   this.upload.files
+          }
         }
+
+        $.ajax({
+          type: "POST",
+          url: "/api/posts",
+          data: data,
+          success: function (data) {
+            location.href = "/posts";
+          },
+          error: function () {
+            console.log("error");
+          }
+        })
       }
     })
 
-    function pagenation () {
+
+    var AddView = Backbone.View.extend({
+      el: $(".post-new-page"),
+      events: {
+        "submit": "search"
+      },
+      template: _.template($("#add-template").html()),
+      initialize: function () {
+        var that                  = this;
+        this.$el.html("");
+        this.$el.append(this.template);
+        this.results_view         = new ResultsView({el: ".gameList"});
+        this.$el.find(".add-page").append(this.results_view.el);
+        this.collection           = results;
+        this.search_title         = $(".search-title-input");
+        this.current_search_title = null;
+        this.page                 = 1;
+      },
+      search: function (e) {
+        e.preventDefault();
+        var that                  = this;
+        this.current_search_title = this.search_title.val();
+        this.collection.fetch({
+          data: {search_title: this.current_search_title, page: this.page},
+          success: function (model, response, options) {
+            that.collection.reset();
+            that.results_view.$el.html("");
+            if(response.results && response.results.length > 0){
+              for(var i = 0; i < response.results.length; i++){
+                var result = new Result(response.results[i]);
+                that.collection.add(result);
+              }
+            }
+
+            $(window).bind("scroll", pagenation);
+          },
+          error: function () {
+            console.log("error");
+          }
+        })
+      }
+    })
+
+    function pagenation(){
       var scrollHeight   = $(document).height();
       var scrollPosition = $(window).height() + $(window).scrollTop();
       if ((scrollHeight - scrollPosition) / scrollHeight <= 0.1) {
@@ -356,13 +330,18 @@
       }
     }
 
+
     var Router = Backbone.Router.extend({
       routes: {
-        "edit": "edit",
+        "select": "select",
+        "write/:game_id/:log_id": "write",
         "add": "add"
       },
-      edit: function () {
-        this.current_app = new EditView();
+      select: function () {
+        this.current_app = new SelectView();
+      },
+      write: function () {
+        this.current_app = new WriteView();
       },
       add: function () {
         this.current_app = new AddView();
