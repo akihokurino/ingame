@@ -1,5 +1,5 @@
-//= require ../models/notification.js
-//= require ../collections/notifications.js
+//= require ../../models/notification.js
+//= require ../../collections/notifications.js
 
 (function () {
   $(function () {

@@ -1,7 +1,7 @@
-//= require ../models/post.js
-//= require ../models/user.js
-//= require ../collections/posts.js
-//= require ../collections/users.js
+//= require ../../models/post.js
+//= require ../../models/user.js
+//= require ../../collections/posts.js
+//= require ../../collections/users.js
 
 (function () {
   $(function () {

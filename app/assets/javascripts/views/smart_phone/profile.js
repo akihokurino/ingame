@@ -1,5 +1,5 @@
-//= require ../models/log.js
-//= require ../collections/logs.js
+//= require ../../models/log.js
+//= require ../../collections/logs.js
 
 (function () {
 	$(function () {
