@@ -39,18 +39,17 @@ class Game < ActiveRecord::Base
 		end
 
 		self.my_rate = my_rate
-
-		sum_rate = 0
-		sum_log = 0
+		sum_rate     = 0
+		sum_log      = 0
 		Log.where(game_id: self[:id]).each do |log|
 			unless log.rate.nil?
 				sum_rate += log.rate.to_i
-				sum_log += 1
+				sum_log  += 1
 			end
 		end
 
 		begin
-			self.avg_rate = (sum_rate / sum_log).floor
+			self.avg_rate = sprintf("%.1f", (sum_rate / sum_log))
 		rescue
 			self.avg_rate = 0
 		end
@@ -72,13 +71,13 @@ class Game < ActiveRecord::Base
 			end
 
 			doc.css("#btAsinTitle").each do |node|
-				result[:title] = node.children.text
+				result[:title]      = node.children.text
 			end
 			doc.css("#platform-information .byLinePipe").each do |node|
-				result[:device] = node.next.text
+				result[:device]     = node.next.text
 			end
 			doc.css(".parseasinTitle + a").each do |node|
-				result[:maker] = node.children.text
+				result[:maker]      = node.children.text
 			end
 			doc.css("#prodImageCell img").each do |node|
 				result[:photo_path] = node.attributes["src"].value
@@ -93,7 +92,7 @@ class Game < ActiveRecord::Base
 			else
 				result[:release_day] = result[:release_day]
 				self.create!(result)
-				game = self.last
+				game                 = self.last
 			end
 
 			game

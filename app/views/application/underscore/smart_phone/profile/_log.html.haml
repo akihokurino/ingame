@@ -3,5 +3,9 @@
     %figure.game
       %img.gameImg{src: "/game_photos/{{= game.photo_path }}"}
       %figcaption.review
+        {{ if (rate) { }}
         ☆
-        %span.reviewAve 3.8
+        %span.reviewAve {{= rate }}.0
+        {{ } else { }}
+        %span.reviewAve 評価なし
+        {{ } }}

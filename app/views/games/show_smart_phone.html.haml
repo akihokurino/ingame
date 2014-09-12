@@ -23,7 +23,7 @@
           = @game.title
         %p.review
           %span.reviewInner ☆
-          3.8
+          = @game.avg_rate
         - if !@game.amazon_url.nil?
           %p
             %a.amazonBtn{href: @game.amazon_url} Amazonへ
