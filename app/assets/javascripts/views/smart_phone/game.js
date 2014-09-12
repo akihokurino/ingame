@@ -23,6 +23,7 @@
       },
       addPost: function (post) {
         if(post.id){
+          post.strimWidth(40);
           var post_view = new PostView({model: post});
           this.$el.prepend(post_view.render().el);
         }

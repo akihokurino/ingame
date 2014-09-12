@@ -23,6 +23,7 @@
       },
       addLog: function (log) {
         if(log.id){
+          log.strimWidth(70);
           var log_view = new LogView({model: log});
           this.$el.prepend(log_view.render().el);
         }
@@ -67,6 +68,7 @@
       },
       addResult: function (result) {
         if(result.id){
+          result.strimWidth(30);
           var result_view = new ResultView({model: result});
           this.$el.prepend(result_view.render().el);
         }
@@ -220,6 +222,7 @@
           data: {},
           success: function (data) {
             var game      = new Game(data.game);
+            game.strimWidth(40);
             var game_view = new GameView({model: game});
             that.$el.find(".write-page").prepend(game_view.render().el);
           },

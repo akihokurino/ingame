@@ -19,6 +19,7 @@
       },
       addResult: function (result) {
         if (result.id) {
+          result.strimWidth(40);
           var result_view = new ResultView({model: result});
           this.$el.prepend(result_view.render().el);
         }
