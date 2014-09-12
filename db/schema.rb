@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140909120153) do
+ActiveRecord::Schema.define(version: 20140911143336) do
+
+  create_table "admins", force: true do |t|
+    t.string   "username"
+    t.string   "password"
+    t.integer  "salt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "follows", force: true do |t|
     t.integer  "from_user_id"

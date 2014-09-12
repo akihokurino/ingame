@@ -7,6 +7,6 @@ user<%= n %>:
   introduction: フィクスチャから生成したユーザーデータです。フィクスチャから生成したユーザーデータです。フィクスチャから生成したユーザーデータです。フィクスチャから生成したユーザーデータです。
   logs_count: 0
   posts_count: 0
-  photo_path:
+  photo_path: "default.png"
   place: 東京
 <% end %>
