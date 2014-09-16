@@ -10,6 +10,7 @@ class Api::PostsController < ApplicationController
     game_id         = params[:game_id]
     @all_posts      = Post.get_all_posts_of_game(@current_user[:id], game_id)
     @follower_posts = Post.get_follower_posts_of_game(@current_user[:id], game_id)
+    @liker_posts    = Post.get_liker_posts_of_game(@current_user[:id], game_id)
   end
 
   def create

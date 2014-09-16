@@ -58,7 +58,7 @@ class Post < ActiveRecord::Base
     end
 
     def get_all_posts_of_game(current_user_id, game_id)
-      posts = self.where(game_id: game_id).all_include
+      posts = self.where(game_id: game_id).all_include.order("created_at DESC")
       posts = self.i_like?(posts, current_user_id)
     end
 
@@ -66,6 +66,11 @@ class Post < ActiveRecord::Base
       follower_ids = Follow.where(from_user_id: current_user_id).pluck(:to_user_id)
       posts        = self.where(game_id: game_id, user_id: follower_ids).all_include
       posts        = self.i_like?(posts, current_user_id)
+    end
+
+    def get_liker_posts_of_game(current_user_id, game_id)
+      posts = self.where(game_id: game_id).all_include.order("post_likes_count DESC")
+      posts = self.i_like?(posts, current_user_id)
     end
 
     def i_like?(post_args, current_user_id)

@@ -8,7 +8,7 @@
     var game_id = $(".game-page").data("gameid");
 
     /* ---------- Collection ---------- */
-    var posts = new Posts();
+    var posts   = new Posts();
 
 
 
@@ -17,7 +17,7 @@
     var PostsView = Backbone.View.extend({
       el: $(".post-list"),
       initialize: function () {
-        var that = this;
+        var that        = this;
         this.collection = posts;
         this.listenTo(this.collection, "add", this.addPost);
       },
@@ -34,11 +34,11 @@
     })
 
     var PostView = Backbone.View.extend({
-      tagName: "article",
+      tagName:   "article",
       className: "postBox",
       events: {
         "click .delete": "destroy",
-        "click .like" : "like",
+        "click .like" :  "like",
         "click .unlike": "unlike"
       },
       initialize: function () {
@@ -107,31 +107,31 @@
     var AppView = Backbone.View.extend({
       el: ".game-page",
       events: {
-        "change .my_status": "changeStatus",
-        "change .new_status": "registLog",
-        "change .my_rate": "changeRate",
+        "change .my_status":     "changeStatus",
+        "change .new_status":    "registLog",
+        "change .my_rate":       "changeRate",
         "click .follower_posts": "setFollowerPosts",
-        "click .all_posts": "setAllPosts"
+        "click .all_posts":      "setAllPosts",
+        "click .liker_posts":    "setLikerPosts"
       },
       initialize: function () {
-        var that = this;
-        this.posts_view = new PostsView();
+        var that               = this;
+        this.posts_view        = new PostsView();
 
-        this.my_status_select = $(".my_status");
+        this.my_status_select  = $(".my_status");
         this.new_status_select = $(".new_status");
 
-        this.my_rate_select = $(".my_rate");
+        this.my_rate_select    = $(".my_rate");
 
-        this.follower_posts = [];
-        this.all_posts = [];
-        this.rating_posts = [];
+        this.follower_posts    = [];
+        this.all_posts         = [];
+        this.liker_posts       = [];
 
         $.ajax({
           type: "GET",
           url: "/api/posts/index_of_game?game_id=" + game_id,
           data: {},
           success: function (data) {
-            console.log(data);
             for (var i = 0; i < data.follower_posts.length; i++) {
               var post = new Post(data.follower_posts[i]);
               that.follower_posts.push(post);
@@ -141,6 +141,11 @@
             for (var i = 0; i < data.all_posts.length; i++) {
               var post = new Post(data.all_posts[i]);
               that.all_posts.push(post);
+            }
+
+            for (var i = 0; i < data.liker_posts.length; i++) {
+              var post = new Post(data.liker_posts[i]);
+              that.liker_posts.push(post);
             }
           },
           error: function () {
@@ -227,6 +232,15 @@
           this.posts_view.collection.add(this.all_posts[i]);
         }
         this.$el.find("ul.sortBox li.all_posts").addClass("current");
+      },
+      setLikerPosts: function () {
+        this.posts_view.collection.reset();
+        this.posts_view.removePosts();
+        this.$el.find("ul.sortBox li").removeClass("current");
+        for (var i = 0; i < this.liker_posts.length; i++) {
+          this.posts_view.collection.add(this.liker_posts[i]);
+        }
+        this.$el.find("ul.sortBox li.liker_posts").addClass("current");
       }
     })
 
