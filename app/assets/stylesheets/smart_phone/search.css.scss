@@ -9,6 +9,7 @@
 		border: 1px solid #10b5a3;
 		@include border-radius(5px);
 		@include box-sizing;
+		text-align: center;
 		@include clearfix;
 	}
 	.to-game-search, .to-user-search {
