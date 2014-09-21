@@ -1,4 +1,5 @@
 class Api::GamesController < ApplicationController
+  skip_before_action :verify_authenticity_token, :auth, only: [:create]
   before_action :set_game, only: [:show]
 
   def index

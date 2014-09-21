@@ -3,11 +3,23 @@ class ApplicationController < ActionController::Base
 	# For APIs, you may want to use :null_session instead.
 	# skip_before_action :verify_authenticity_token
 	protect_from_forgery with: :exception
-	before_action :auth
+	before_action :auth, :set_headers
 	helper_method :current_user?
 	include Jpmobile::ViewSelector
 
-	private
+	def cors_preflight_check
+		head :no_content
+	end
+
+  private
+  def set_headers
+		origin_regex = Regexp.new(Settings.cors.origin_regex, Regexp::IGNORECASE)
+		if request.headers["HTTP_ORIGIN"] && origin_regex.match(request.headers["HTTP_ORIGIN"])
+			headers['Access-Control-Allow-Origin'] = request.headers["HTTP_ORIGIN"]
+			Settings.cors[Rails.env.to_s].headers.each { |k, v| headers[k.to_s] = v }
+		end
+	end
+
 	def auth
 		if session[:current_user_id]
 			begin
