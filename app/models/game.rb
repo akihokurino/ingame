@@ -57,33 +57,54 @@ class Game < ActiveRecord::Base
 
 	class << self
 		def get_from_amazon(url)
-			result = {}
+			result = {
+				amazon_url: URI.unescape(url)
+			}
+
 			begin
-				html = open(url){|f| f.read }
+				html = open(url, "User-Agent" => "Mozilla/4.0"){|f| f.read }
 			rescue Exception
-				html = open(url, "r:binary").read.encode("utf-8", "euc-jp", invalid: :replace, undef: :replace)
+				html = open(url, "r:binary", "User-Agent" => "Mozilla/4.0").read.encode("utf-8", "euc-jp", invalid: :replace, undef: :replace)
 			end
 
 			begin
 				doc = Nokogiri::HTML.parse(html.toutf8, nil, "UTF-8")
-			rescue Exception
+			rescue
 				doc = Nokogiri::HTML.parse(html, nil)
 			end
 
 			doc.css("#btAsinTitle").each do |node|
-				result[:title]      = node.children.text
+				result[:title] = node.children.text
 			end
 			doc.css("#platform-information .byLinePipe").each do |node|
-				result[:device]     = node.next.text
+				result[:device] = node.next.text
 			end
 			doc.css(".parseasinTitle + a").each do |node|
-				result[:maker]      = node.children.text
+				result[:maker] = node.children.text
 			end
 			doc.css("#prodImageCell img").each do |node|
 				result[:photo_path] = node.attributes["src"].value
 			end
 
-			result
+			if Game.exists?(title: result[:title])
+				return false
+			else
+			  if result[:photo_path]
+			  	filename = Time.now.to_i.to_s + self.generate_random_name("alphabet", 25)
+			  	filepath = "public/game_photos/#{filename}"
+			  	begin
+					  File.open(filepath, 'wb') do |output|
+					    open(result[:photo_path], "User-Agent" => "Mozilla/4.0") do |data|
+					      output.write(data.read)
+					      result[:photo_path] = filename
+					    end
+					  end
+					rescue
+					end
+
+					return Game.create(result) ? true : false
+				end
+			end
 		end
 
 		def find_or_create!(result)
@@ -108,5 +129,19 @@ class Game < ActiveRecord::Base
 		def escape_like(string)
 	  	string.gsub(/[\\%_]/){|m| "\\#{m}"}
 		end
+
+		def generate_random_name(type = "alphabet", size = 8)
+      char_list_str = []
+      char_list_str = ("a".."z").to_a if type == "alphabet"
+      char_list_str = (0..9).to_a if type == "number"
+
+      return false if size < 1
+
+      if size == 1
+        char_list_str.sample
+      else
+        char_list_str.sort_by{rand}.take(size).join("")
+      end
+    end
 	end
 end

@@ -25,7 +25,7 @@ Ingame::Application.routes.draw do
         get "index_of_game"
       end
     end
-    resources :games, only: ["index", "show"], format: "json" do
+    resources :games, only: ["index", "show", "create"], format: "json" do
       collection do
         get "search"
       end
