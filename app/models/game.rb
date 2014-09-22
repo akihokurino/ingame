@@ -87,6 +87,7 @@ class Game < ActiveRecord::Base
 			end
 
 			if Game.exists?(title: result[:title])
+				p "already exists"
 				return false
 			else
 			  if result[:photo_path]
@@ -102,8 +103,11 @@ class Game < ActiveRecord::Base
 					rescue
 					end
 
+					p "create or not"
 					return Game.create(result) ? true : false
 				end
+
+				return false
 			end
 		end
 
