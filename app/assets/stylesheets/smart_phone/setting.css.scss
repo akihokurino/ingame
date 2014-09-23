@@ -208,24 +208,23 @@ body {
 .setting02 {
 	padding-top: 38px;
 
-	@at-root {
-		&Ttl {
-			margin-bottom: 23px;
-			color: #404040;
-			font-size: 18px;
-			@include font-weight(1px, #404040);
-		}
-		&Text {
-			margin-bottom: 23px;
-		}
+	&Ttl {
+		margin-bottom: 23px;
+		color: #404040;
+		font-size: 18px;
+		@include font-weight(1px, #404040);
+	}
+	&Text {
+		margin-bottom: 23px;
 	}
 	.friendBox {
 		position: relative;
-		margin: 0 5px 30px;
+		margin: 30px 5px 30px;
 		@include clearfix;
 
 		.leftBtn {
-			display: block;
+			//display: block;
+			display: none;
 			position: absolute;
 			top: 40px;
 			left: 5px;
@@ -246,7 +245,8 @@ body {
 			}
 		}
 		.rightBtn {
-			display: block;
+			//display: block;
+			display: none;
 			position: absolute;
 			top: 40px;
 			right: 5px;
@@ -267,26 +267,30 @@ body {
 			}
 		}
 		.listWrap {
-			@include flexbox;
-			width: 78%;
+			//@include flexbox;
+			width: 70%;
 			margin: 0 auto;
 			@include clearfix;
 		}
 		.list {
+			position: relative;
 			margin-bottom: 15px;
+			@include clearfix;
 
 			&:last-child {
 				margin-right: 0;
 			}
 		}
 		.profImg {
+			float: left;
 			width: 63px;
 			height: 63px;
-			margin-bottom: 12px;
+			margin-right: 24px;
 			@include border-radius(32px);
 			@include box-sizing;
 		}
 		.name {
+			float: left;
 			margin-bottom: 8px;
 			color: #404040;
 			font-size: 12px;
@@ -294,6 +298,9 @@ body {
 		}
 		.btn {
 			display: block;
+			position: absolute;
+			left: 87px;
+			bottom: 10px;
 			width: 70px;
 			height: 21px;
 			padding-top: 1px;
@@ -353,13 +360,11 @@ body {
 .setting03 {
 	padding-top: 38px;
 
-	@at-root {
-		&Ttl {
-			margin-bottom: 28px;
-			color: #404040;
-			font-size: 18px;
-			@include font-weight(1px, #404040);
-		}
+	&Ttl {
+		margin-bottom: 28px;
+		color: #404040;
+		font-size: 18px;
+		@include font-weight(1px, #404040);
 	}
 	.uploadBox {
 		position: relative;
