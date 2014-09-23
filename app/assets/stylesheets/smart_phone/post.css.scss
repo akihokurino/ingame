@@ -123,6 +123,10 @@ a {
 				padding: 9px 0;
 				border-top: 1px solid #b6b4b4;
 				@include clearfix;
+
+				&:first-child {
+					border-top: none;
+				}
 			}
 			.gameImg {
 				float: left;
