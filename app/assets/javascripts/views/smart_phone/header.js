@@ -80,7 +80,11 @@
           type: "GET",
           url: "/api/notifications/count",
           success: function (data) {
-            that.$el.find(".notifyNum").html(data.count);
+            if (data.count > 0) {
+              that.$el.find(".notifyNum").html(data.count);
+            } else {
+              that.$el.find(".notifyNum").css("display", "none");
+            }
           },
           error: function () {
             console.log("error");
