@@ -1,5 +1,6 @@
 cors:
-  origin_regex: https?://(www.)?
+  origin_regex: .*
+  #origin_regex: https?://(www.)?
 
 security:
   token_length: 20
