@@ -48,7 +48,6 @@ html {
 		.profImg {
 			float: left;
 			width: 58px;
-			height: 58px;
 			margin-right: 10px;
 			@include border-radius(29px);
 		}
@@ -101,6 +100,12 @@ html {
 			color: #404040;
 			font-size: 13px;
 			line-height: 1.6;
+		}
+		.thumbnail {
+			img {
+				width: 100%;
+				margin-bottom: 5px;
+			}
 		}
 		.stateBox {
 			padding: 12px 0 0 5px;

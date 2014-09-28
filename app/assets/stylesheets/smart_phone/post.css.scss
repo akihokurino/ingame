@@ -252,12 +252,50 @@ a {
 			@include appearance;
 			cursor: pointer;
 		}
+		#thumbnail {
+			padding: 15px 0;
+			text-align: center;
+
+			img {
+				width: 80%;
+			}
+		}
+		.btnWrap {
+			position: relative;
+			margin-bottom: 22px;
+		}
+		.btnText {
+			width: 186px;
+			height: 37px;
+			margin: 0 auto;
+			padding: 8px 28px;
+			border: none;
+			@include border-radius(20px);
+			@include box-sizing;
+			background: #10b5a3;
+			color: #ffffff;
+			font-size: 14px;
+			text-align: center;
+			cursor: pointer;
+		}
 		.addPhoto {
-			display: block;
-			padding: 9px 0 0 8px;
-			border-top: 1px solid #a0a0a0;
-			color: #727272;
-			font-size: 16px;
+			opacity: 0;
+			position: absolute;
+			top: 0;
+			left: 50%;
+			width: 186px;
+			height: 37px;
+			margin-left: -93px;
+			padding: 8px 28px;
+			border: none;
+			@include border-radius(20px);
+			@include box-sizing;
+			background: #10b5a3;
+			color: #ffffff;
+			font-size: 14px;
+			text-align: center;
+			cursor: pointer;
+			outline: 0;
 		}
 		.snsBtn {
 			@include flexbox;
