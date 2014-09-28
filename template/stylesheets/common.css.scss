@@ -1,9 +1,11 @@
-@import "function.css.scss";
-@import "iconSprite.css.scss";
+@import "_function.css.scss";
 
 $width: 960px !default;
 
 /*---   common   ---------------------------*/
+html {
+	font-family:"Hiragino Kaku Gothic ProN", "Lucida Grande", Helvetica, "Meiryo", sans-serif;
+}
 #wrapper {
 	line-height: 1.0;
 }
@@ -16,94 +18,4 @@ a:hover {
 
 /*---   header   ---------------------------*/
 header {
-	width: 100%;
-	background: #222222;
-	color: #ffffff;
-	font-size: 12px;
-	text-align: center;
-	@include clearfix;
-
-	@at-root {
-		.headerInner {
-			position: relative;
-			width: 960px;
-			height: 60px;
-			margin: 0 auto;
-			padding-top: 11px;
-			@include box-sizing;
-		}
-	}
-	.ttl {
-		font-size: 34px;
-		font-family: Helvetica;
-		font-weight: bold;
-	}
-	/*---   .funcBoxLeft   ----------*/
-	.funcBoxLeft {
-		position: absolute;
-		top: 11px;
-		left: 23px;
-		@include clearfix;
-	}
-	.homeWrap, .alertWrap, .profileWrap, .searchBox, .optionWrap {
-		float: left;
-	}
-	.home {
-		display: block;
-		margin-right: 26px;
-		padding-top: 13px;
-		color: #ffffff;
-		@include iconSprite3(32px, 0, 2px);
-	}
-	.alert {
-		display: block;
-		margin-right: 33px;
-		padding-top: 13px;
-		color: #ffffff;
-		@include iconSprite3(31px, 0, -36px);
-	}
-	.profile {
-		display: block;
-		padding-top: 13px;
-		color: #ffffff;
-		@include iconSprite3(31px, 0, -74px);
-	}
-	/*---   .funcBoxRight   ----------*/
-	.funcBoxRight {
-		position: absolute;
-		top: 15px;
-		right: 23px;
-		@include clearfix;
-	}
-	.searchBox {
-		height: 30px;
-		margin-right: 38px;
-		padding-top: 4px;
-	}
-	.searchWrap {
-		width: 171px;
-		height: 21px;
-		border: 1px solid #bfbfbf;
-		@include border-radius(3px);
-		background: #ffffff;
-	}
-	.search {
-		display: block;
-		width: 171px;
-		height: 21px;
-		padding: 7px 26px 7px 6px;
-		border: none;
-		box-sizing: border-box;
-		@include iconSprite3(6px, 150px, -111px);
-		line-height: 1.7;
-		@include appearance;
-		outline: 0;
-	}
-	.option {
-		display: block;
-		width: 23px;
-		height: 23px;
-		margin-top: 5px;
-		@include iconSprite3(0, 0, -144px);
-	}
 }
