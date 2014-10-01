@@ -1,8 +1,6 @@
 //= require ../../models/post.js
-//= require ../../models/user.js
 //= require ../../models/comment.js
 //= require ../../collections/posts.js
-//= require ../../collections/users.js
 //= require ../../collections/comments.js
 //= require ../../libs/socket.js
 
@@ -21,7 +19,6 @@
 		/* ---------- Collection ---------- */
 
 		var posts    = new Posts();
-		var users    = new Users();
 		var comments = null;
 
 
