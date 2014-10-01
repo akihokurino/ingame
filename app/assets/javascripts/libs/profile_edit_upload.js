@@ -1,6 +1,6 @@
 var ProfileUpload = function (inputID, outputID, user_id) {
-  var that = this;
-  this._input = document.getElementById(inputID);
+  var that     = this;
+  this._input  = document.getElementById(inputID);
   this._output = document.getElementById(outputID);
   this.user_id = user_id;
   if(this._input != null){
@@ -29,7 +29,7 @@ ProfileUpload.prototype = {
     this.readFile(this._input.files[0], this._input.files[0].name);
   },
   readFile: function (file, name) {
-    var that = this;
+    var that   = this;
     var reader = new FileReader();
     reader.addEventListener("load", function (e) {
       that.render(reader.result, name);
@@ -38,9 +38,9 @@ ProfileUpload.prototype = {
   },
   render: function (data, name) {
     this._output.innerHTML = "";
-    var div = document.createElement("div");
-    var img = document.createElement("img");
-    img.src = data;
+    var div                = document.createElement("div");
+    var img                = document.createElement("img");
+    img.src                = data;
     div.appendChild(img);
     this._output.appendChild(div);
   },
@@ -59,7 +59,7 @@ ProfileUpload.prototype = {
   valid: function (type) {
     if(this.uploads.length == 0){
       this._output.style.display = "none";
-      this._output.innerHTML = "";
+      this._output.innerHTML     = "";
     }
 
     switch(type){

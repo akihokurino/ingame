@@ -44,6 +44,10 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+group :development do
+  gem 'better_errors'
+end
+
 gem 'sass', '~> 3.3.9'
 # gem 'compass-rails', '~> 1.1.7'
 gem 'omniauth'
@@ -58,3 +62,8 @@ gem 'redis-rails'
 gem 'jpmobile', '~> 4.0.0'
 gem 'unicorn'
 gem 'rails_config'
+gem 'websocket-rails'
+gem 'hiredis'
+gem 'redis', :require => ["redis", "redis/connection/hiredis"]
+
+

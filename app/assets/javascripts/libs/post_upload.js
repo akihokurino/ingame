@@ -1,8 +1,8 @@
 var PostUpload = function (inputID, outputID, user_id) {
-  var that = this;
-  this._input = document.getElementById(inputID);
+  var that     = this;
+  this._input  = document.getElementById(inputID);
   this._output = document.getElementById(outputID);
-  this.files = [];
+  this.files   = [];
   if(this._input != null){
     this._input.addEventListener("change", function () {
       that.changeFile();
@@ -29,7 +29,7 @@ PostUpload.prototype = {
     this.readFile(this._input.files[0]);
   },
   readFile: function (file) {
-    var that = this;
+    var that   = this;
     var reader = new FileReader();
     reader.addEventListener("load", function (e) {
       that.render(reader.result);
@@ -60,7 +60,7 @@ PostUpload.prototype = {
   valid: function (type) {
     if(this.uploads.length == 0){
       this._output.style.display = "none";
-      this._output.innerHTML = "";
+      this._output.innerHTML     = "";
     }
 
     switch(type){

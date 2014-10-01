@@ -4,10 +4,19 @@
 //= require ../../collections/posts.js
 //= require ../../collections/users.js
 //= require ../../collections/comments.js
+//= require ../../libs/socket.js
 
 (function () {
 	$(function () {
 		var page     = 1;
+
+		/* ---------- Socket ---------- */
+    var socket   = new Socket("localhost:3000/websocket", true, "post", function () {
+
+    });
+
+    socket.send("huga");
+
 
 		/* ---------- Collection ---------- */
 
@@ -116,61 +125,6 @@
 			}
 		})
 
-		var UsersView = Backbone.View.extend({
-			el: $(".user-list"),
-			initialize: function () {
-				this.collection = users;
-				this.listenTo(this.collection, "add", this.addUser);
-			},
-			addUser: function (user) {
-				if(user.id){
-					var user_view = new UserView({model: user});
-					this.$el.append(user_view.render().el);
-				}
-			}
-		})
-
-		var UserView = Backbone.View.extend({
-			tagName: "li",
-			template: _.template($("#user-template").html()),
-			render: function () {
-				var template = this.template(this.model.toJSON());
-				this.$el.html(template);
-				return this;
-			}
-		})
-
-		var UserSearchView = Backbone.View.extend({
-			el: ".user-input",
-			events: {
-				"keypress": "search"
-			},
-			initialize: function () {
-				this.collection = users;
-				this.username   = $(".user-input");
-			},
-			search: function (e) {
-				var that     = this;
-				var username = this.username.val();
-				if (username && e.which == 13) {
-					this.collection.fetch({
-						data: {username: username},
-						success: function (model, response, options) {
-							that.collection.reset();
-							app.users_view.$el.html("");
-							for (var i = 0; i < response.results.length; i++) {
-								var user = new User(response.results[i]);
-								that.collection.add(user);
-							}
-						},
-						error: function () {
-							console.log("error");
-						}
-					});
-				}
-			}
-		})
-
 		var CommentsView = Backbone.View.extend({
 			el: ".comment-list",
 			initialize: function () {
@@ -263,8 +217,6 @@
 			el: ".timeline-page",
 			initialize: function () {
 				this.posts_view         = new PostsView();
-				this.user_search_view   = new UserSearchView();
-				this.users_view         = new UsersView();
 				this.comment_modal_view = new CommentModalView();
 				this.collection         = posts;
 

@@ -9,6 +9,8 @@
   $(function () {
     var user_id = $(".post-new-page").data("userid");
 
+
+
     /* ---------- Collection ---------- */
     var logs    = new Logs();
     var results = new Results();
@@ -82,6 +84,7 @@
         "change .status": "regist"
       },
       initialize: function () {
+
       },
       remove: function () {
         this.$el.remove();
