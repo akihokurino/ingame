@@ -2,6 +2,16 @@
 
 (function () {
   $(function () {
-    var upload = new ProfileUpload("upload-btn", "thumbnail");
+
+    /* ---------- View ---------- */
+
+    var AppView = Backbone.View.extend({
+      el: ".user-edit-page",
+      initialize: function () {
+        this.upload = new ProfileUpload("upload-btn", "thumbnail");
+      }
+    })
+
+    var app = new AppView();
   })
 })();
