@@ -4,10 +4,6 @@
 (function () {
   $(function () {
 
-    /* ---------- Collection ---------- */
-    var notifications = new Notifications();
-
-
 
     /* ---------- View ---------- */
     var NotificationsView = Backbone.View.extend({
@@ -16,15 +12,12 @@
         "click .close-btn": "hideNotifications"
       },
       initialize: function () {
-        var that        = this;
-        this.collection = notifications;
-
+        var that = this;
         this.listenTo(this.collection, "add", this.addNotification);
 
         this.collection.fetch({
           data: {},
           success: function (model, response, options) {
-            console.log(response);
             for (var i = 0; i < response.notifications.length; i++) {
               response.notifications[i].text = that.createText(response.notifications[i]);
               var notification = new Notification(response.notifications[i]);
@@ -32,7 +25,7 @@
             }
           },
           error: function () {
-            console.log("error");
+
           }
         })
       },
@@ -48,9 +41,10 @@
       },
       hideNotifications: function () {
         this.stopListening();
-        this.$el.find("notification-list").html("");
+
         $(".notification-modal").css("display", "none");
         $(".layer").css("display", "none");
+        this.$el.find("notification-list").html("");
 
         header_view.notifications_view = null;
       }
@@ -62,6 +56,7 @@
       render: function () {
         var template = this.template(this.model.toJSON());
         this.$el.html(template);
+
         return this;
       }
     })
@@ -72,6 +67,7 @@
         "click .notify": "showNotifications"
       },
       initialize: function () {
+        this.notification_collection = new Notifications();
         this.getNotificationCount();
       },
       getNotificationCount: function () {
@@ -87,16 +83,18 @@
             }
           },
           error: function () {
-            console.log("error");
+
           }
         })
       },
       showNotifications: function (e) {
         e.preventDefault();
+
         $(".notification-modal").css("display", "block");
         $(".layer").css("display", "block");
-        this.notifications_view = new NotificationsView();
         this.$el.find(".notifyNum").html(0);
+
+        this.notifications_view = new NotificationsView({collection: this.notification_collection});
       }
     })
 
