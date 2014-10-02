@@ -7,24 +7,15 @@
 
 (function () {
   $(function () {
-    var user_id = $(".post-new-page").data("userid");
-
-
-
-    /* ---------- Collection ---------- */
-    var logs    = new Logs();
-    var results = new Results();
-
-
 
     /* ---------- View ---------- */
+
     var LogsView = Backbone.View.extend({
       initialize: function () {
-        this.collection = logs;
         this.listenTo(this.collection, "add", this.addLog);
       },
       addLog: function (log) {
-        if(log.id){
+        if (log.id) {
           log.strimWidth(70);
           var log_view = new LogView({model: log});
           this.$el.prepend(log_view.render().el);
@@ -48,6 +39,7 @@
       render: function () {
         var template = this.template(this.model.toJSON());
         this.$el.html(template);
+
         return this;
       }
     })
@@ -59,17 +51,17 @@
       render: function () {
         var template = this.template(this.model.toJSON());
         this.$el.html(template);
+
         return this;
       }
     })
 
     var ResultsView = Backbone.View.extend({
       initialize: function () {
-        this.collection = results;
         this.listenTo(this.collection, "add", this.addResult);
       },
       addResult: function (result) {
-        if(result.id){
+        if (result.id) {
           result.strimWidth(30);
           var result_view = new ResultView({model: result});
           this.$el.prepend(result_view.render().el);
@@ -93,6 +85,7 @@
       render: function () {
         var template = this.template(this.model.toJSON());
         this.$el.html(template);
+
         return this;
       },
       regist: function () {
@@ -130,27 +123,28 @@
       },
       template: _.template($("#select-template").html()),
       initialize: function () {
-        var that = this;
-
         this.$el.html("");
         this.$el.html(this.template);
 
-        this.logs_view = new LogsView({el: ".gameList"});
+        var that            = this;
+
+        this.log_collection = new Logs();
+        this.logs_view      = new LogsView({el: ".gameList", collection: this.log_collection});
         this.$el.find(".select-page").append(this.logs_view.el);
 
-        this.attentions = [];
-        this.playings = [];
-        this.archives = [];
+        this.attentions     = [];
+        this.playings       = [];
+        this.archives       = [];
+
+        this.user_id        = $(".post-new-page").data("userid");
 
         this.logs_view.collection.reset();
 
-        $.ajax({
-          type: "GET",
-          url: "/api/logs?user_id=" + user_id,
-          data: {},
-          success: function (data) {
-            for(var i = 0; i < data.logs.length; i++){
-              var log = new Log(data.logs[i]);
+        this.log_collection.fetch({
+          data: {user_id: this.user_id},
+          success: function (model, response, options) {
+            for (var i = 0; i < response.logs.length; i++) {
+              var log = new Log(response.logs[i]);
               switch(log.get("status").id){
                 case 1:
                   that.attentions.push(log);
@@ -166,7 +160,7 @@
             }
           },
           error: function () {
-            console.log("error");
+
           }
         })
       },
@@ -174,7 +168,7 @@
         this.logs_view.collection.reset();
         this.logs_view.removeLogs();
         this.$el.find("ul.sortBox li").removeClass("current");
-        for(var i = 0; i < this.playings.length; i++){
+        for (var i = 0; i < this.playings.length; i++) {
           this.logs_view.collection.add(this.playings[i]);
         }
         this.$el.find("ul.sortBox li.playing-li").addClass("current");
@@ -183,7 +177,7 @@
         this.logs_view.collection.reset();
         this.logs_view.removeLogs();
         this.$el.find("ul.sortBox li").removeClass("current");
-        for(var i = 0; i < this.attentions.length; i++){
+        for (var i = 0; i < this.attentions.length; i++) {
           this.logs_view.collection.add(this.attentions[i]);
         }
         this.$el.find("ul.sortBox li.ready-li").addClass("current");
@@ -192,7 +186,7 @@
         this.logs_view.collection.reset();
         this.logs_view.removeLogs();
         this.$el.find("ul.sortBox li").removeClass("current");
-        for(var i = 0; i < this.archives.length; i++){
+        for (var i = 0; i < this.archives.length; i++) {
           this.logs_view.collection.add(this.archives[i]);
         }
         this.$el.find("ul.sortBox li.played-li").addClass("current");
@@ -207,14 +201,13 @@
         "click .submit": "post"
       },
       initialize: function () {
-        var that      = this;
-
         this.$el.html("");
         this.$el.append(this.template);
 
-        var url_array = location.href.split("/");
-        this.log_id   = url_array.pop();
-        this.game_id  = url_array.pop();
+        var that      = this;
+        var tmp       = location.href.split("/");
+        this.log_id   = tmp.pop();
+        this.game_id  = tmp.pop();
         this.text     = $("textarea");
 
         this.upload   = new PostUpload("upload-btn", "thumbnail");
@@ -230,7 +223,7 @@
             that.$el.find(".write-page").prepend(game_view.render().el);
           },
           error: function () {
-            console.log("error");
+
           }
         })
       },
@@ -254,7 +247,7 @@
             location.href = "/posts";
           },
           error: function () {
-            console.log("error");
+
           }
         })
       }
@@ -268,80 +261,85 @@
       },
       template: _.template($("#add-template").html()),
       initialize: function () {
-        var that                  = this;
         this.$el.html("");
         this.$el.append(this.template);
-        this.results_view         = new ResultsView({el: ".gameList"});
-        this.$el.find(".add-page").append(this.results_view.el);
-        this.collection           = results;
-        this.search_title         = $(".search-title-input");
+
+        _.bindAll(this, "pagenation");
+
+        var that                  = this;
+        this.result_collection    = new Results();
+        this.results_view         = new ResultsView({el: ".gameList", collection: this.result_collection});
+
+        this.search_title         = this.$(".search-title-input");
         this.current_search_title = null;
         this.page                 = 1;
       },
       search: function (e) {
         e.preventDefault();
-        var that                  = this;
-        this.current_search_title = this.search_title.val();
-        this.collection.fetch({
-          data: {search_title: this.current_search_title, page: this.page},
-          success: function (model, response, options) {
-            that.collection.reset();
-            that.results_view.$el.html("");
-            if(response.results && response.results.length > 0){
-              for(var i = 0; i < response.results.length; i++){
-                var result = new Result(response.results[i]);
-                that.collection.add(result);
-              }
-            }
+        if (this.search_title.val()) {
+          var that                  = this;
+          this.current_search_title = this.search_title.val();
 
-            $(window).bind("scroll", pagenation);
-          },
-          error: function () {
-            console.log("error");
-          }
-        })
+          this.result_collection.fetch({
+            data: {search_title: this.current_search_title, page: this.page},
+            success: function (model, response, options) {
+              that.result_collection.reset();
+              that.results_view.$el.html("");
+              if (response.results && response.results.length > 0) {
+                for (var i = 0; i < response.results.length; i++) {
+                  var result = new Result(response.results[i]);
+                  that.results_view.collection.add(result);
+                }
+              }
+            },
+            error: function () {
+
+            }
+          })
+
+          $(window).bind("scroll", this.pagenation);
+        }
+      },
+      pagenation: function () {
+        var that           = this;
+        var scrollHeight   = $(document).height();
+        var scrollPosition = $(window).height() + $(window).scrollTop();
+        if ((scrollHeight - scrollPosition) / scrollHeight <= 0.1) {
+          $(".loading-gif").css("display", "block");
+          $(window).unbind("scroll");
+
+          this.page += 1;
+
+          this.result_collection.fetch({
+            data: {search_title: this.current_search_title, page: this.page},
+            success: function (model, response, options) {
+              if (response.results && response.results.length > 0) {
+                for (var i = 0; i < response.results.length; i++) {
+                  var result = new Result(response.results[i]);
+                  that.results_view.collection.add(result);
+                }
+              }
+
+              $(".loading-gif").css("display", "none");
+
+              if (response.results.length != 0) {
+                $(window).bind("scroll", that.pagenation);
+              }
+            },
+            error: function () {
+
+            }
+          })
+        }
       }
     })
-
-    function pagenation(){
-      var scrollHeight   = $(document).height();
-      var scrollPosition = $(window).height() + $(window).scrollTop();
-      if ((scrollHeight - scrollPosition) / scrollHeight <= 0.1) {
-        $(".loading-gif").css("display", "block");
-        $(window).unbind("scroll");
-
-        var app   = router.current_app;
-        app.page += 1;
-
-        app.collection.fetch({
-          data: {search_title: app.current_search_title, page: app.page},
-          success: function (model, response, options) {
-            if (response.results && response.results.length > 0) {
-              for (var i = 0; i < response.results.length; i++) {
-                var result = new Result(response.results[i]);
-                app.collection.add(result);
-              }
-            }
-
-            $(".loading-gif").css("display", "none");
-
-            if (response.results.length != 0) {
-              $(window).bind("scroll", pagenation);
-            }
-          },
-          error: function () {
-            console.log("error");
-          }
-        })
-      }
-    }
 
 
     var Router = Backbone.Router.extend({
       routes: {
-        "select": "select",
+        "select":                 "select",
         "write/:game_id/:log_id": "write",
-        "add": "add"
+        "add":                    "add"
       },
       select: function () {
         this.current_app = new SelectView();

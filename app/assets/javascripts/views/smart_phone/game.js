@@ -5,11 +5,6 @@
 
 (function () {
   $(function () {
-    var game_id = $(".game-page").data("gameid");
-
-    /* ---------- Collection ---------- */
-    var posts   = new Posts();
-
 
 
     /* ---------- View ---------- */
@@ -17,11 +12,10 @@
     var PostsView = Backbone.View.extend({
       el: $(".post-list"),
       initialize: function () {
-        this.collection = posts;
         this.listenTo(this.collection, "add", this.addPost);
       },
       addPost: function (post) {
-        if(post.id){
+        if (post.id) {
           post.strimWidth(40);
           var post_view = new PostView({model: post});
           this.$el.prepend(post_view.render().el);
@@ -54,23 +48,24 @@
       render: function () {
         var template = this.template(this.model.toJSON());
         this.$el.html(template);
+
         return this;
       },
       like: function () {
+        var that = this;
         var data = {
           "post_like": {
             "post_id": this.model.id,
             "user_id": null
           }
         };
-        var that = this;
 
         $.ajax({
           type: "POST",
             url: "/api/post_likes",
             data: data,
             success: function (data) {
-              if(data){
+              if (data) {
                 that.model.set({
                   "i_liked": true,
                   "post_likes_count": parseInt(that.model.get("post_likes_count")) + 1
@@ -78,18 +73,19 @@
               }
             },
             error: function () {
-              console.log("error");
+
             }
         })
       },
       unlike: function () {
         var that = this;
+
         $.ajax({
           type: "DELETE",
           url: "/api/post_likes/" + this.model.id,
           data: {},
           success: function (data) {
-            if(data){
+            if (data) {
                 that.model.set({
                   "i_liked": false,
                   "post_likes_count": parseInt(that.model.get("post_likes_count")) - 1
@@ -97,7 +93,7 @@
               }
           },
           error: function () {
-            console.log("error");
+
           }
         })
       }
@@ -115,11 +111,12 @@
       },
       initialize: function () {
         var that               = this;
-        this.posts_view        = new PostsView();
+        this.post_collection   = new Posts();
+        this.posts_view        = new PostsView({collection: this.post_collection});
+        this.game_id           = $(".game-page").data("gameid");
 
         this.my_status_select  = $(".my_status");
         this.new_status_select = $(".new_status");
-
         this.my_rate_select    = $(".my_rate");
 
         this.follower_posts    = [];
@@ -128,7 +125,7 @@
 
         $.ajax({
           type: "GET",
-          url: "/api/posts/index_of_game?game_id=" + game_id,
+          url: "/api/posts/index_of_game?game_id=" + this.game_id,
           data: {},
           success: function (data) {
             for (var i = 0; i < data.follower_posts.length; i++) {
@@ -148,7 +145,7 @@
             }
           },
           error: function () {
-            console.log("error");
+
           }
         })
       },
@@ -162,13 +159,13 @@
 
           $.ajax({
             type: "PUT",
-            url: "/api/logs/" + game_id + "/update_status_or_rate",
+            url: "/api/logs/" + this.game_id + "/update_status_or_rate",
             data: data,
             success: function (data) {
-              console.log(data);
+
             },
             error: function () {
-              console.log("error");
+
             }
           })
         }
@@ -183,13 +180,13 @@
 
           $.ajax({
             type: "PUT",
-            url: "/api/logs/" + game_id + "/update_status_or_rate",
+            url: "/api/logs/" + this.game_id + "/update_status_or_rate",
             data: data,
             success: function (data) {
-              console.log(data);
+
             },
             error: function () {
-              console.log("error");
+
             }
           })
         }
@@ -197,7 +194,7 @@
       registLog: function () {
         var data = {
           "log": {
-            "game_id": game_id,
+            "game_id": this.game_id,
             "status_id": this.new_status_select.val()
           }
         }
@@ -210,7 +207,7 @@
 
           },
           error: function () {
-            console.log("error");
+
           }
         })
       },
