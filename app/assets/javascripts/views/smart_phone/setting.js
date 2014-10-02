@@ -6,20 +6,16 @@
 
 (function () {
   $(function () {
-    /* ---------- Collection ---------- */
-    var results = new Results();
-    var users   = new Users();
-
 
 
     /* ---------- View ---------- */
+
     var ResultsView = Backbone.View.extend({
       initialize: function () {
-        this.collection = results;
         this.listenTo(this.collection, "add", this.addResult);
       },
       addResult: function (result) {
-        if(result.id){
+        if (result.id) {
           result.strimWidth(40);
           var result_view = new ResultView({model: result});
           this.$el.prepend(result_view.render().el);
@@ -41,10 +37,11 @@
       render: function () {
         var template = this.template(this.model.toJSON());
         this.$el.html(template);
+
         return this;
       },
       regist: function () {
-        if(this.$el.find(".status").val() != ""){
+        if (this.$el.find(".status").val() != "") {
           var that = this;
           var data = {
             "log": {
@@ -62,7 +59,7 @@
               that.remove();
             },
             error: function () {
-              console.log("error");
+
             }
           })
         }
@@ -71,11 +68,10 @@
 
     var UsersView = Backbone.View.extend({
       initialize: function () {
-        this.collection = users;
         this.listenTo(this.collection, "add", this.addUser);
       },
       addUser: function (user) {
-        if(user.id){
+        if (user.id) {
           var user_view = new UserView({model: user});
           this.$el.append(user_view.render().el);
         }
@@ -92,6 +88,7 @@
       render: function () {
         var template = this.template(this.model.toJSON());
         this.$el.html(template);
+
         return this;
       },
       follow: function (e) {
@@ -108,13 +105,13 @@
           url: "/api/follows",
           data: data,
           success: function (data) {
-            if(data.result){
+            if (data.result) {
               that.$el.remove();
             }
             $(".next-page").attr("value", "次へ");
           },
           error: function () {
-            console.log("error");
+
           }
         })
       }
@@ -131,8 +128,9 @@
       initialize: function () {
         this.$el.html("");
         this.$el.append(this.template);
-        this.results_view         = new ResultsView({el: ".result-list"});
-        this.collection           = results;
+
+        this.result_collection    = new Results();
+        this.results_view         = new ResultsView({el: ".result-list", collection: this.result_collection});
         this.search_title         = this.$(".search-title-input");
         this.current_search_title = null;
 
@@ -141,21 +139,21 @@
         this.page                 = 1;
       },
       search: function (e) {
-        if(e.which == 13 && this.search_title.val()){
+        if (e.which == 13 && this.search_title.val()) {
           e.preventDefault();
 
           var that                  = this;
           this.page                 = 1;
           this.current_search_title = this.search_title.val();
-          this.collection.fetch({
+          this.result_collection.fetch({
             data: {search_title: this.current_search_title, page: this.page},
             success: function (model, response, options) {
-              that.collection.reset();
+              that.result_collection.reset();
               that.results_view.$el.html("");
               if (response.results && response.results.length > 0) {
                 for (var i = 0; i < response.results.length; i++) {
                   var result = new Result(response.results[i]);
-                  that.collection.add(result);
+                  that.results_view.collection.add(result);
                 }
               }
 
@@ -163,7 +161,7 @@
               $(window).bind("scroll", pagenation);
             },
             error: function () {
-              console.log("error");
+
             }
           })
         }
@@ -171,6 +169,57 @@
       next: function (e) {
         e.preventDefault();
         location.href = "/users/" + this.user_id + "/setting#second";
+      }
+    })
+
+    var SecondView = Backbone.View.extend({
+      el: $(".setting-page"),
+      events: {
+        "keypress .user-input": "search",
+        "click .next-page":     "next"
+      },
+      template: _.template($("#second-template").html()),
+      initialize: function () {
+        this.$el.html("");
+        this.$el.append(this.template);
+
+        this.user_collection = new Users();
+        this.users_view      = new UsersView({el: ".user-list", collection: this.user_collection});
+        this.username        = this.$(".user-input");
+
+        var tmp              = location.href.split("#")[0].split("/");
+        this.user_id         = tmp.pop() && tmp.pop();
+        this.page            = 1;
+      },
+      search: function (e) {
+        if (e.which == 13 && this.username.val()) {
+          e.preventDefault();
+
+          var that  = this;
+          this.page = 1;
+
+          this.user_collection.fetch({
+            data: {username: this.username.val(), page: this.page},
+            success: function (model, response, options) {
+              that.user_collection.reset();
+              that.users_view.$el.html("");
+
+              if (response.results && response.results.length > 0) {
+                for (var i = 0; i < response.results.length; i++) {
+                  var user = new User(response.results[i]);
+                  that.users_view.collection.add(user);
+                }
+              }
+            },
+            error: function () {
+
+            }
+          });
+        }
+      },
+      next: function (e) {
+        e.preventDefault();
+        location.href = "/users/" + this.user_id + "/setting#third";
       }
     })
 
@@ -207,56 +256,6 @@
       }
     }
 
-    var SecondView = Backbone.View.extend({
-      el: $(".setting-page"),
-      events: {
-        "keypress .user-input": "search",
-        "click .next-page":     "next"
-      },
-      template: _.template($("#second-template").html()),
-      initialize: function () {
-        this.$el.html("");
-        this.$el.append(this.template);
-        this.users_view = new UsersView({el: ".user-list"});
-        this.collection = users;
-        this.username   = $(".user-input");
-
-        var tmp         = location.href.split("#")[0].split("/");
-        tmp.pop();
-        this.user_id    = tmp.pop();
-        this.page       = 1;
-      },
-      search: function (e) {
-        if (e.which == 13 && this.username.val()) {
-           e.preventDefault();
-          var that  = this;
-          this.page = 1;
-          this.collection.fetch({
-            data: {username: this.username.val(), page: this.page},
-            success: function (model, response, options) {
-              that.collection.reset();
-              that.users_view.$el.html("");
-              for (var i = 0; i < response.results.length; i++) {
-                var user = new User(response.results[i]);
-                that.collection.add(user);
-
-                if (i > 2) {
-                  break;
-                }
-              }
-            },
-            error: function () {
-              console.log("error");
-            }
-          });
-        }
-      },
-      next: function (e) {
-        e.preventDefault();
-        location.href = "/users/" + this.user_id + "/setting#third";
-      }
-    })
-
     var ThirdView = Backbone.View.extend({
       el: $(".setting-page"),
       events: {
@@ -266,9 +265,10 @@
       initialize: function () {
         this.$el.html("");
         this.$el.append(this.template);
+
         var tmp      = location.href.split("#")[0].split("/");
-        tmp.pop();
-        this.user_id = tmp.pop();
+        this.user_id = tmp.pop() && tmp.pop();
+
         this.upload  = new ProfileUpload("upload-btn", "thumbnail", this.user_id);
       },
       next: function (e) {
@@ -276,6 +276,10 @@
         location.href = "/posts";
       }
     })
+
+
+
+    /* ---------- Router --------- */
 
     var Router = Backbone.Router.extend({
       routes: {

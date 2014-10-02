@@ -17,7 +17,6 @@
     var PostsView = Backbone.View.extend({
       el: $(".post-list"),
       initialize: function () {
-        var that        = this;
         this.collection = posts;
         this.listenTo(this.collection, "add", this.addPost);
       },

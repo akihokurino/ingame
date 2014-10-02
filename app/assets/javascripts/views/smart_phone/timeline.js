@@ -6,20 +6,10 @@
 
 (function () {
 	$(function () {
-		var page     = 1;
 
 		/* ---------- Socket ---------- */
-    var socket   = new Socket("localhost:3000/websocket", true, "post", function () {
+    var socket   = new Socket("localhost:3000/websocket", true, "post", function () {});
 
-    });
-
-    socket.send("huga");
-
-
-		/* ---------- Collection ---------- */
-
-		var posts    = new Posts();
-		var comments = null;
 
 
 
@@ -27,7 +17,6 @@
 		var PostsView = Backbone.View.extend({
 			el: $(".post-list"),
 			initialize: function () {
-				this.collection = posts;
 				this.listenTo(this.collection, "add", this.addPost);
 			},
 			addPost: function (post) {
@@ -36,6 +25,9 @@
 					var post_view = new PostView({model: post});
 					this.$el.append(post_view.render().el);
 				}
+			},
+			render: function () {
+
 			}
 		})
 
@@ -62,9 +54,11 @@
 			render: function () {
 				var template = this.template(this.model.toJSON());
 				this.$el.html(template);
+
 				return this;
 			},
 			like: function () {
+				var that = this;
 				var data = {
 					"post_like": {
 						"post_id": this.model.id,
@@ -72,14 +66,13 @@
 						"to_user_id": this.model.get("user").id
 					}
 				};
-				var that = this;
 
 				$.ajax({
 					type: "POST",
   					url: "/api/post_likes",
   					data: data,
   					success: function (data) {
-  						if(data){
+  						if (data) {
   							that.model.set({
   								"i_liked": true,
   								"post_likes_count": parseInt(that.model.get("post_likes_count")) + 1
@@ -87,18 +80,19 @@
   						}
   					},
   					error: function () {
-  						console.log("error");
+
   					}
 				})
 			},
 			unlike: function () {
 				var that = this;
+
 				$.ajax({
 					type: "DELETE",
 					url: "/api/post_likes/" + this.model.id,
 					data: {},
 					success: function (data) {
-						if(data){
+						if (data) {
   							that.model.set({
   								"i_liked": false,
   								"post_likes_count": parseInt(that.model.get("post_likes_count")) - 1
@@ -106,7 +100,7 @@
   						}
 					},
 					error: function () {
-						console.log("error");
+
 					}
 				})
 			},
@@ -140,10 +134,12 @@
 			},
 			render: function () {
 				var that = this;
+
 				this.collection.each(function (model) {
 					var comment_view = new CommentView({model: model});
 					that.$el.append(comment_view.render().el);
 				})
+
 				return this;
 			}
 		})
@@ -155,6 +151,7 @@
 			render: function () {
 				var template = this.template(this.model.toJSON());
 				this.$el.html(template);
+
 				return this;
 			}
 		})
@@ -166,7 +163,6 @@
 				"click .submit-btn": "postComment"
 			},
 			initialize: function () {
-				this.collection    = comments;
 				this.comment_input = this.$(".comment-input");
 				this.model         = null;
 			},
@@ -213,14 +209,17 @@
 		var AppView = Backbone.View.extend({
 			el: ".timeline-page",
 			initialize: function () {
-				this.posts_view         = new PostsView();
-				this.comment_modal_view = new CommentModalView();
-				this.collection         = posts;
-
+				_.bindAll(this, "pagenation");
+				this.post_collection    = new Posts();
+				this.comment_collection = null;
+				this.posts_view         = new PostsView({collection: this.post_collection});
+				this.comment_modal_view = new CommentModalView({collection: this.comment_collection});
+				this.page               = 1;
 				var that                = this;
 
-				this.collection.fetch({
-					data: {page: page},
+
+				this.post_collection.fetch({
+					data: {page: this.page},
 					success: function (model, response, options) {
 						for (var i = 0; i < response.posts.length; i++) {
 							var post = new Post(response.posts[i]);
@@ -228,42 +227,43 @@
 						}
 					},
 					error: function () {
-						console.log("error");
+
 					}
 				})
+
+				$(window).bind("scroll", this.pagenation);
+			},
+			pagenation: function () {
+				var that           = this;
+				var scrollHeight   = $(document).height();
+				var scrollPosition = $(window).height() + $(window).scrollTop();
+				if ((scrollHeight - scrollPosition) / scrollHeight <= 0.1) {
+					$(".loading-gif").css("display", "block");
+					$(window).unbind("scroll");
+					this.page += 1;
+
+					this.post_collection.fetch({
+						data: {page: this.page},
+						success: function (model, response, options) {
+							for (var i = 0; i < response.posts.length; i++) {
+								var post = new Post(response.posts[i]);
+								that.posts_view.collection.add(post);
+							}
+
+							$(".loading-gif").css("display", "none");
+
+							if (response.posts.length != 0) {
+								$(window).bind("scroll", that.pagenation);
+							}
+						},
+						error: function () {
+
+						}
+					})
+				}
 			}
 		})
 
 		var app = new AppView();
-
-		$(window).bind("scroll", pagenation);
-		function pagenation(){
-			var scrollHeight   = $(document).height();
-			var scrollPosition = $(window).height() + $(window).scrollTop();
-			if ((scrollHeight - scrollPosition) / scrollHeight <= 0.1) {
-				$(".loading-gif").css("display", "block");
-				$(window).unbind("scroll");
-				page += 1;
-
-				app.collection.fetch({
-					data: {page: page},
-					success: function (model, response, options) {
-						for (var i = 0; i < response.posts.length; i++) {
-							var post = new Post(response.posts[i]);
-							app.posts_view.collection.add(post);
-						}
-
-						$(".loading-gif").css("display", "none");
-
-						if (response.posts.length != 0) {
-							$(window).bind("scroll", pagenation);
-						}
-					},
-					error: function () {
-						console.log("error");
-					}
-				})
-			}
-		}
 	})
 })();
