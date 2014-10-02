@@ -7,11 +7,6 @@
 (function () {
 	$(function () {
 
-		/* ---------- Socket ---------- */
-    var socket   = new Socket("localhost:3000/websocket", true, "post", function () {});
-
-
-
 
 		/* ---------- View ---------- */
 		var PostsView = Backbone.View.extend({
@@ -210,10 +205,12 @@
 			el: ".timeline-page",
 			initialize: function () {
 				_.bindAll(this, "pagenation");
+
 				this.post_collection    = new Posts();
 				this.comment_collection = null;
 				this.posts_view         = new PostsView({collection: this.post_collection});
 				this.comment_modal_view = new CommentModalView({collection: this.comment_collection});
+				this.socket             = new Socket("localhost:3000/websocket", true, "post", function () {});
 				this.page               = 1;
 				var that                = this;
 

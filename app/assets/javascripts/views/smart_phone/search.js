@@ -5,16 +5,11 @@
 
 (function () {
   $(function () {
-    /* ---------- Collection ---------- */
-    var results = new Results();
-    var users   = new Users();
-
 
 
     /* ---------- View ---------- */
     var ResultsView = Backbone.View.extend({
       initialize: function () {
-        this.collection = results;
         this.listenTo(this.collection, "add", this.addResult);
       },
       addResult: function (result) {
@@ -32,6 +27,7 @@
         "change .status": "regist"
       },
       initialize: function () {
+
       },
       remove: function () {
         this.$el.remove();
@@ -61,7 +57,7 @@
               that.remove();
             },
             error: function () {
-              console.log("error");
+
             }
           })
         }
@@ -70,7 +66,6 @@
 
     var UsersView = Backbone.View.extend({
       initialize: function () {
-        this.collection = users;
         this.listenTo(this.collection, "add", this.addUser);
       },
       addUser: function (user) {
@@ -113,7 +108,7 @@
             }
           },
           error: function () {
-            console.log("error");
+
           }
         })
       }
@@ -129,35 +124,73 @@
       initialize: function () {
         this.$el.html("");
         this.$el.append(this.template);
-        this.results_view       = new ResultsView({el: ".result-list"});
-        this.collection         = results;
-        this.game_title         = $(".game-title-input");
+
+        _.bindAll(this, "pagenation");
+
+        this.result_collection  = new Results();
+        this.results_view       = new ResultsView({el: ".result-list", collection: this.result_collection});
+        this.game_title         = this.$(".game-title-input");
         this.current_game_title = null;
         this.page               = 1;
       },
       search: function (e) {
         if (e.which == 13 && this.game_title.val()) {
           e.preventDefault();
+
           var that                = this;
           this.page               = 1;
           this.current_game_title = this.game_title.val();
-          this.collection.fetch({
+
+          this.result_collection.fetch({
             data: {search_title: this.current_game_title, page: this.page},
             success: function (model, response, options) {
-              that.collection.reset();
+              that.result_collection.reset();
               that.results_view.$el.html("");
               if (response.results && response.results.length > 0) {
                 for (var i = 0; i < response.results.length; i++) {
                   var result = new Result(response.results[i]);
-                  that.collection.add(result);
+                  that.results_view.collection.add(result);
+                }
+              }
+            },
+            error: function () {
+
+            }
+          })
+
+          $(window).unbind("scroll");
+          $(window).bind("scroll", this.pagenation);
+        }
+      },
+      pagenation: function () {
+        var that           = this;
+        var scrollHeight   = $(document).height();
+        var scrollPosition = $(window).height() + $(window).scrollTop();
+
+        if ((scrollHeight - scrollPosition) / scrollHeight <= 0.1) {
+          $(".loading-gif").css("display", "block");
+          $(window).unbind("scroll");
+
+          this.page += 1;
+
+          this.result_collection.fetch({
+            data: {search_title: this.current_game_title, page: this.page},
+            success: function (model, response, options) {
+              if (response.results && response.results.length > 0) {
+                for (var i = 0; i < response.results.length; i++) {
+                  var result = new Result(response.results[i]);
+                  that.results_view.collection.add(result);
                 }
               }
 
-              $(window).unbind("scroll");
-              $(window).bind("scroll", game_pagenation);
+              $(".loading-gif").css("display", "none");
+
+              if (response.results.length != 0) {
+                $(window).bind("scroll", that.pagenation);
+              }
             },
             error: function () {
-              console.log("error");
+
             }
           })
         }
@@ -173,107 +206,78 @@
       initialize: function () {
         this.$el.html("");
         this.$el.append(this.template);
-        this.users_view       = new UsersView({el: ".result-list"});
-        this.collection       = users;
-        this.username         = $(".username-input");
+
+        _.bindAll(this, "pagenation");
+
+        this.user_collection  = new Users();
+        this.users_view       = new UsersView({el: ".result-list", collection: this.user_collection});
+        this.username         = this.$(".username-input");
         this.current_username = null;
         this.page             = 1;
       },
       search: function (e) {
         if (e.which == 13 && this.username.val()) {
           e.preventDefault();
+
           var that              = this;
           this.page             = 1;
           this.current_username = this.username.val();
-          this.collection.fetch({
+
+          this.user_collection.fetch({
             data: {username: this.current_username, page: this.page},
             success: function (model, response, options) {
-              that.collection.reset();
+              that.user_collection.reset();
               that.users_view.$el.html("");
-              for (var i = 0; i < response.results.length; i++) {
-                var user = new User(response.results[i]);
-                that.collection.add(user);
+              if (response.results && response.results.length > 0) {
+                for (var i = 0; i < response.results.length; i++) {
+                  var user = new User(response.results[i]);
+                  that.users_view.collection.add(user);
+                }
               }
-
-              $(window).unbind("scroll");
-              $(window).bind("scroll", user_pagenation);
             },
             error: function () {
-              console.log("error");
+
+            }
+          });
+
+          $(window).unbind("scroll");
+          $(window).bind("scroll", this.pagenation);
+        }
+      },
+      pagenation: function () {
+        var that           = this;
+        var scrollHeight   = $(document).height();
+        var scrollPosition = $(window).height() + $(window).scrollTop();
+
+        if ((scrollHeight - scrollPosition) / scrollHeight <= 0.1) {
+          $(".loading-gif").css("display", "block");
+          $(window).unbind("scroll");
+
+          this.page += 1;
+
+          this.user_collection.fetch({
+            data: {username: this.current_username, page: this.page},
+            success: function (model, response, options) {
+              if (response.results && response.results.length > 0) {
+                for (var i = 0; i < response.results.length; i++) {
+                  var user = new User(response.results[i]);
+                  that.users_view.collection.add(user);
+                }
+              }
+
+              $(".loading-gif").css("display", "none");
+
+              if (response.results.length != 0) {
+                $(window).bind("scroll", that.pagenation);
+              }
+            },
+            error: function () {
+
             }
           });
         }
       }
     })
-
-
-    function game_pagenation () {
-      var scrollHeight   = $(document).height();
-      var scrollPosition = $(window).height() + $(window).scrollTop();
-
-      if ((scrollHeight - scrollPosition) / scrollHeight <= 0.1) {
-        $(".loading-gif").css("display", "block");
-        $(window).unbind("scroll");
-
-        var app   = router.current_app;
-        app.page += 1;
-
-        app.collection.fetch({
-          data: {search_title: app.current_game_title, page: app.page},
-          success: function (model, response, options) {
-            if (response.results && response.results.length > 0) {
-              for (var i = 0; i < response.results.length; i++) {
-                var result = new Result(response.results[i]);
-                app.collection.add(result);
-              }
-            }
-
-            $(".loading-gif").css("display", "none");
-
-            if (response.results.length != 0) {
-              $(window).bind("scroll", game_pagenation);
-            }
-          },
-          error: function () {
-            console.log("error");
-          }
-        })
-      }
-    }
-
-    function user_pagenation () {
-      var scrollHeight   = $(document).height();
-      var scrollPosition = $(window).height() + $(window).scrollTop();
-
-      if ((scrollHeight - scrollPosition) / scrollHeight <= 0.1) {
-        $(".loading-gif").css("display", "block");
-        $(window).unbind("scroll");
-
-        var app   = router.current_app;
-        app.page += 1;
-
-        app.collection.fetch({
-          data: {username: app.current_username, page: app.page},
-          success: function (model, response, options) {
-            if (response.results && response.results.length > 0) {
-              for (var i = 0; i < response.results.length; i++) {
-                var user = new User(response.results[i]);
-                app.collection.add(user);
-              }
-            }
-
-            $(".loading-gif").css("display", "none");
-
-            if (response.results.length != 0) {
-              $(window).bind("scroll", user_pagenation);
-            }
-          },
-          error: function () {
-            console.log("error");
-          }
-        });
-      }
-    }
 
 
     var Router = Backbone.Router.extend({
