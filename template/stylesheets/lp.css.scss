@@ -33,7 +33,7 @@
 	text-align: center;
 
 	.ttl {
-		width: 325px;
+		width: 350px;
 		margin: 0 auto 24px;
 		background: url(../images/lp_img01.png) no-repeat left top;
 		font-size: 60px;
@@ -136,7 +136,7 @@ $cntNum: 4;
 
 	.ftList {
 		@include clearfix;
-		width: 366px;
+		width: 385px;
 		margin: 0 auto 34px;
 
 		.item, .lastItem {
