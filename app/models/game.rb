@@ -3,6 +3,9 @@ class Game < ActiveRecord::Base
 	require 'nokogiri'
 	require 'kconv'
 
+	include RandomName
+	include EscapeLike
+
 	has_many :logs
 	has_many :users, :through => :logs
 	has_many :game_likes
@@ -91,7 +94,7 @@ class Game < ActiveRecord::Base
 				return false
 			else
 			  if result[:photo_path]
-			  	filename = Time.now.to_i.to_s + self.generate_random_name("alphabet", 25)
+			  	filename = Time.now.to_i.to_s + self.generate("alphabet", 25)
 			  	filepath = "public/game_photos/#{filename}"
 			  	begin
 					  File.open(filepath, 'wb') do |output|
@@ -125,27 +128,9 @@ class Game < ActiveRecord::Base
 
 		def search(search_title, page, current_user)
 			offset = (page - 1) * LIMIT
-			self.where("title LIKE ?", "%#{self.escape_like(search_title)}%").order("created_at DESC").offset(offset).limit(LIMIT).keep_if do |game|
+			self.where("title LIKE ?", "%#{self.escape(search_title)}%").order("created_at DESC").offset(offset).limit(LIMIT).keep_if do |game|
 				!current_user.logs.pluck(:game_id).include?(game.id)
 			end
 		end
-
-		def escape_like(string)
-	  	string.gsub(/[\\%_]/){|m| "\\#{m}"}
-		end
-
-		def generate_random_name(type = "alphabet", size = 8)
-      char_list_str = []
-      char_list_str = ("a".."z").to_a if type == "alphabet"
-      char_list_str = (0..9).to_a if type == "number"
-
-      return false if size < 1
-
-      if size == 1
-        char_list_str.sample
-      else
-        char_list_str.sort_by{rand}.take(size).join("")
-      end
-    end
 	end
 end

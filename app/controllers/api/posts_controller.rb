@@ -2,6 +2,7 @@ class Api::PostsController < ApplicationController
   def index
     page   = params[:page].to_i
     return false if page < 1
+
     @posts = Post.get_all_posts(@current_user[:id], page)
     @games = Log.where(user_id: @current_user[:id]).select(:game_id).map { |log| log.game } if page == 1
   end
@@ -17,7 +18,7 @@ class Api::PostsController < ApplicationController
     params[:post][:user_id] = @current_user[:id]
     @last_post              = Post.create!(post_params)
     unless params[:post][:files].blank?
-      @last_post.save_files(params[:post][:files])
+      @last_post.save_with(params[:post][:files])
     end
   end
 

@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
+  include RandomName
+  include EscapeLike
+  include CostomUpload
+
 	has_many :posts
 	has_many :logs
   has_many :games, :through => :logs
@@ -23,13 +27,14 @@ class User < ActiveRecord::Base
 
   attr_accessor :i_followed, :follow_num, :follower_num
 
+
 	def update_with(user_params)
-  	self.class.upload(user_params) unless user_params[:photo_path].nil?
+  	user_params[:photo_path] = self.class.file_upload(user_params[:photo_path], "user") unless user_params[:photo_path].nil?
   	self.update(user_params) ? true : false
   end
 
   def update_with_url(user_params)
-    self.class.upload_url(user_params) unless user_params[:photo_path].nil?
+    user_params[:photo_path] = self.class.url_upload(user_params[:photo_path], "user") unless user_params[:photo_path].nil?
     self.update(user_params) ? true : false
   end
 
@@ -58,67 +63,13 @@ class User < ActiveRecord::Base
     	end
   	end
 
-  	def upload(user_params)
-  		file  = user_params[:photo_path]
-  		name  = file.original_filename
-  		perms = [".jpg", ".jpeg", ".gif", ".png"]
-  		if perms.include?(File.extname(name).downcase) && file.size < 1.megabyte
-  			photo_path = self.generate_random_name("alphabet", 10) + name
-  			File.open("public/user_photos/#{photo_path}", "wb") do |f|
-  				f.write(file.read)
-  			end
-  			user_params[:photo_path] = photo_path
-  		else
-
-  		end
-  	end
-
-    def upload_url(user_params)
-      data_url = user_params[:photo_path]
-
-      case data_url
-      when /png/
-        extname = ".png"
-      when /jpg|jpeg/
-        extname = ".jpg"
-      when /gif/
-        extname = ".gif"
-      end
-
-      name = self.generate_random_name("alphabet", 10)
-      photo_path = "#{name}#{extname}"
-      File.open("public/user_photos/#{photo_path}", "wb") do |f|
-        data_url = data_url.sub(/^.*,/, '')
-        f.write(Base64.decode64(data_url))
-      end
-      user_params[:photo_path] = photo_path
-    end
-
-  	def generate_random_name(type = "alphabet", size = 8)
-			char_list_str = []
-			char_list_str = ("a".."z").to_a if type == "alphabet"
-			char_list_str = (0..9).to_a if type == "number"
-
-			return false if size < 1
-
-			if size == 1
-				char_list_str.sample
-			else
-				char_list_str.sort_by{rand}.take(size).join("")
-			end
-		end
-
     def search_with(username, current_user, page)
       offset = (page - 1) * LIMIT
-      users  = self.search(self.escape_like(username)).offset(offset).limit(LIMIT)
+      users  = self.search(self.escape(username)).offset(offset).limit(LIMIT)
       users  = users.keep_if do |user|
         user[:id] != current_user[:id] && !current_user.follows.pluck(:to_user_id).include?(user[:id])
       end
       users
-    end
-
-    def escape_like(string)
-      string.gsub(/[\\%_]/){|m| "\\#{m}"}
     end
 	end
 end

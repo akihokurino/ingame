@@ -1,10 +1,13 @@
 class Post < ActiveRecord::Base
+  include RandomName
+  include CostomUpload
+
   belongs_to :user, counter_cache: true
   belongs_to :game, counter_cache: true
   belongs_to :log
-  has_many :post_likes
-  has_many :post_photos
-  has_many :post_comments
+  has_many   :post_likes
+  has_many   :post_photos
+  has_many   :post_comments
 
   validates :user_id,
     presence: true,
@@ -23,24 +26,10 @@ class Post < ActiveRecord::Base
     includes(:game).includes(:log).includes(:user).includes(:post_likes).includes(:post_photos).includes(:post_comments)
   }
 
-  def save_files(files)
+  def save_with(files)
     files.each do |file|
-      case file
-      when /png/
-        extname = ".png"
-      when /jpg|jpeg/
-        extname = ".jpg"
-      when /gif/
-        extname = ".gif"
-      end
-
-      name = self.class.generate_random_name("alphabet", 10)
-      filename = "#{name}#{extname}"
-      File.open("public/post_photos/#{filename}", "wb") do |f|
-        file = file.sub(/^.*,/, '')
-        f.write(Base64.decode64(file))
-      end
-      PostPhoto.create!(post_id: self[:id], photo_path: filename)
+      photo_path = self.class.url_upload(file, "post")
+      PostPhoto.create!(post_id: self[:id], photo_path: photo_path)
     end
   end
 
@@ -77,20 +66,6 @@ class Post < ActiveRecord::Base
       post_args.map do |post|
         post.i_liked = post.post_likes.pluck(:user_id).include?(current_user_id) ? true : false
         post
-      end
-    end
-
-    def generate_random_name(type = "alphabet", size = 8)
-      char_list_str = []
-      char_list_str = ("a".."z").to_a if type == "alphabet"
-      char_list_str = (0..9).to_a if type == "number"
-
-      return false if size < 1
-
-      if size == 1
-        char_list_str.sample
-      else
-        char_list_str.sort_by{rand}.take(size).join("")
       end
     end
   end

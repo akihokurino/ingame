@@ -3,8 +3,10 @@ class ApplicationController < ActionController::Base
 	# For APIs, you may want to use :null_session instead.
 	# skip_before_action :verify_authenticity_token
 	protect_from_forgery with: :exception
+
 	before_action :auth, :set_headers
 	helper_method :current_user?
+
 	include Jpmobile::ViewSelector
 
 	def cors_preflight_check
