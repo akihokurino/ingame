@@ -1,0 +1,15 @@
+= content_for :head do
+  = javascript_include_tag "views/smart_phone/header"
+
+%header
+  %h1.ttlWrap
+    = link_to "Playdy", posts_path, class: "ttl"
+  %span.menuWrap
+    %span.menu{href: ""}
+  %span.notify{href: ""}
+    %span.notifyNum
+  = link_to "", user_path(@current_user), class: "profile"
+  = render partial: "application/smart_phone/menu"
+
+= render partial: "application/smart_phone/notifications_modal"
+= render partial: "application/underscore/smart_phone/header/notification"

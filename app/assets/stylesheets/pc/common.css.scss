@@ -1,0 +1,21 @@
+@import "../_function.css.scss";
+
+$width: 960px !default;
+
+/*---   common   ---------------------------*/
+html {
+  font-family:"Hiragino Kaku Gothic ProN", "Lucida Grande", Helvetica, "Meiryo", sans-serif;
+}
+#wrapper {
+  line-height: 1.0;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/*---   header   ---------------------------*/
+header {
+}
