@@ -1,0 +1,47 @@
+- # coding: utf-8
+!!!
+%html
+  %head
+    %meta{charset: "UTF-8"}
+    %title Gameful
+    %link{rel: "stylesheet", href: "stylesheets/reset-min.css"}
+    %link{rel: "stylesheet", href: "stylesheets/common.css"}
+    %link{rel: "stylesheet", href: "stylesheets/timeline.css"}
+  %body
+    %header.header
+      .headerInner
+        %h1.logo ロゴかなー
+        %nav.gnavi
+          %ul.gnaviList
+            - 6.times do |i|
+              %li.item
+                %a.gnaviBtn{href: ""}
+    %section.mainContent
+      %h1.mainTtl タイムライン
+      %a.postBtn{href: ""} 投稿ボタン　(インタラクションはあとで相談させてくれ)
+      - 3.times do |i|
+        %article.postBox
+          .topBox
+            %figure.profImg
+              %img{src: "", width: "44", height: "44", alt: "ユーザー画像"}
+            %a.account{href: ""} ユーザーネーム
+            %p.time 投稿時間
+            %p.status ステータス
+          %h2.gameTtl ゲームタイトル。ゲームタイトル。ゲームタイトル。ゲームタイトル。
+          %p.postTxt コメント本文。コメント本文。コメント本文。コメント本文。コメント本文。コメント本文。コメント本文。コメント本文。コメント本文。コメント本文。コメント本文。コメント本文。
+          .thumbnail
+            %img.thumbnailImg{src: "", alt: "アップロードした写真"}
+          %ul.actionList
+            %li.item.cmtBtn コメント
+            %li.item.fvrBtn いいね
+    %footer.footer
+      %ul.ftList
+        %li.item
+          %a.ftLink{href: ""} 免責事項とか
+        %li.item
+          %a.ftLink{href: ""} リンクとか
+        %li.item
+          %a.ftLink{href: ""} いろいろ
+        %li.item
+          %a.ftLink{href: ""} フッター
+      %small.copyright &copy; 2014 Gameful.

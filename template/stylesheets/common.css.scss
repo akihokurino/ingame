@@ -4,6 +4,7 @@ $width: 960px !default;
 
 /*---   common   ---------------------------*/
 html {
+	background: #eee;
 	font-family:"Hiragino Kaku Gothic ProN", "Lucida Grande", Helvetica, "Meiryo", sans-serif;
 }
 #wrapper {
@@ -16,8 +17,43 @@ a:hover {
 	text-decoration: underline;
 }
 
-/*---   header   ---------------------------*/
-header {
+/*---   .header   ---------------------------*/
+.header {
+	padding: 24px 0;
+	background: #999;
+
+	&Inner {
+		width: $width;
+		margin: 0 auto;
+		color: #fff;
+		@include clearfix;
+	}
+	.logo {
+		float: left;
+		padding-left: 30px;
+		font-size: 18px;
+	}
+	.gnavi {
+		float: right;
+
+		&List {
+			line-height: 1.0;
+
+			.item {
+				display: inline-block;
+			}
+		}
+		&Btn {
+			display: block;
+			width: 34px;
+			height: 34px;
+			background: #fff;
+		}
+	}
+}
+
+/*---   .mainContent   ---------------------------*/
+.mainContent {
 }
 
 /*---   .footer   ---------------------------*/
