@@ -9,7 +9,7 @@ var GameResultView = Backbone.View.extend({
   remove: function () {
     this.$el.remove();
   },
-  template: _.template($("#result-template").html()),
+  template: _.template($("#game-result-template").html()),
   render: function () {
     var template = this.template(this.model.toJSON());
     this.$el.html(template);

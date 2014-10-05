@@ -4,7 +4,7 @@ var UserResultView = Backbone.View.extend({
   events: {
     "click .follow": "follow"
   },
-  template: _.template($("#user-template").html()),
+  template: _.template($("#user-result-template").html()),
   render: function () {
     var template = this.template(this.model.toJSON());
     this.$el.html(template);
