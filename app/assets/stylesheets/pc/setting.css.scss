@@ -1,0 +1,214 @@
+@import "../_function.css.scss";
+
+/*---   common   ---------------------------*/
+$baseColor: #1de9b6;
+html {
+  background: #fff;
+}
+
+/*---   .settingHeader   ---------------------------*/
+.settingHeader {
+  padding: 26px 0;
+  background: #2d3e58;
+
+  /*---   .settingHeaderInner   ----------*/
+  &Inner {
+    width: 565px;
+    margin: 0 auto;
+    @include clearfix;
+
+    /*---   .step   ---*/
+    .step {
+      float: left;
+      color: $baseColor;
+      font-size: 18px;
+      line-height: 20px;
+    }
+    /*---   .stepBar01, 02, 03   ---*/
+    $cntNum: 3;
+    @for $i from 1 through $cntNum {
+      .stepBar0#{$i} {
+        float: right;
+        position: relative;
+        width: 514px;
+        height: 20px;
+        background: #b1bfbb;
+
+        &:before {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 20px;
+          background: $baseColor;
+          content: "";
+        }
+      }
+    }
+    .stepBar01 {
+      &:before {
+        width: 33%;
+      }
+    }
+    .stepBar02 {
+      &:before {
+        width: 66%;
+      }
+    }
+    .stepBar03 {
+      &:before {
+        width: 100%;
+      }
+    }
+  }
+}
+
+/*---   .mainContent   ---------------------------*/
+.mainContent {
+  position: relative;
+  padding: 32px 0 40px;
+
+  /*---   .mainTtl   ----------*/
+  .mainTtl {
+    margin-bottom: 40px;
+    color: $baseColor;
+    font-size: 36px;
+    text-align: center;
+  }
+  /*---   .mainTxt   ----------*/
+  .mainTxt {
+    margin-bottom: 60px;
+    color: #3d3d3d;
+    font-size: 18px;
+    text-align: center;
+  }
+  /*---   .search   ----------*/
+  .search {
+    display: block;
+    width: 400px;
+    height: 40px;
+    margin: 0 auto 30px;
+    padding-left: 10px;
+    border: 3px solid $baseColor;
+    @include border-radius(5px);
+    @include box-sizing;
+    font-size: 14px;
+    outline: 0;
+
+    &::-webkit-input-placeholder {
+      color: #a2a2a2;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+  }
+  /*---   .nextBtn   ----------*/
+  .nextBtn {
+    position: absolute;
+    top: 214px;
+    left: 50%;
+    width: 95px;
+    height: 40px;
+    margin-left: 286px;
+    background: $baseColor;
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    line-height: 40px;
+
+    &:hover {
+      text-decoration: none;
+    }
+    &03 {
+      @extend .nextBtn;
+      top: 138px;
+    }
+  }
+  /*---   #thumbnail   ----------*/
+  #thumbnail {
+    width: 180px;
+    margin: 0 auto 34px;
+  }
+  .thumbnailImg {
+    @include border-radius(90px);
+  }
+  /*---   .uploadBtnWrap   ----------*/
+  .uploadBtnWrap {
+    position: relative;
+  }
+  .uploadBtnTxt {
+    width: 190px;
+    height: 36px;
+    margin: 0 auto;
+    border: none;
+    @include box-sizing;
+    background: $baseColor;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    line-height: 36px;
+    cursor: pointer;
+  }
+  .uploadBtn {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 190px;
+    height: 36px;
+    margin-left: -95px;
+    border: none;
+    @include box-sizing;
+    background: $baseColor;
+    cursor: pointer;
+    outline: 0;
+  }
+  /*---   .gameList   ----------*/
+  .gameListWrap {
+    width: 825px;
+    margin: 0 auto;
+    font-size: 0; /* inline-block用 */
+
+    .item {
+      display: inline-block;
+      width: 123px;
+      height: 184px;
+      margin: 7px;
+      @include border-radius(3px);
+      background: #eee;
+    }
+  }
+  /*---   .friendList   ----------*/
+  .friendListWrap {
+    width: 810px;
+    margin: 0 auto;
+    font-size: 0; /* inline-block用 */
+
+    .item {
+      display: inline-block;
+      width: 250px;
+      height: 70px;
+      margin: 10px;
+      padding: 18px 16px;
+      @include border-radius(3px);
+      @include box-sizing;
+      background: #eee;
+      @include clearfix;
+    }
+    .userImgWrap {
+      float: left;
+      margin-top: -5px;
+    }
+    .userImg {
+      @include border-radius(20px);
+    }
+    .userName, .userProf {
+      width: 160px;
+      height: 10px;
+      margin-left: 54px;
+      background: #dcdcdc;
+    }
+    .userName {
+      margin-bottom: 10px;
+    }
+  }
+}

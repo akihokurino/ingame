@@ -1,0 +1,17 @@
+= content_for :head do
+  = stylesheet_link_tag    "pc/setting"
+  = javascript_include_tag "views/pc/setting"
+
+
+.setting-page
+
+= render partial: "application/pc/footer"
+
+
+= render partial: "application/underscore/pc/setting/first"
+= render partial: "application/underscore/pc/setting/result"
+
+= render partial: "application/underscore/pc/setting/second"
+= render partial: "application/underscore/pc/setting/user"
+
+= render partial: "application/underscore/pc/setting/third"

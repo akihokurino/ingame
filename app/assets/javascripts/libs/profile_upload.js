@@ -3,7 +3,7 @@ var ProfileUpload = function (inputID, outputID, user_id) {
   this._input  = document.getElementById(inputID);
   this._output = document.getElementById(outputID);
   this.user_id = user_id;
-  if(this._input != null){
+  if (this._input != null) {
     this._input.addEventListener("change", function () {
       that.changeFile();
     }, false);
@@ -14,15 +14,15 @@ ProfileUpload.prototype = {
   changeFile: function () {
     this.setThumbnail();
 
-    if(this.isPdf(this._input.files[0])){
+    if (this.isPdf(this._input.files[0])) {
       this.valid("document");
       return;
     }
-    if(this.isOffice(this._input.files[0])){
+    if (this.isOffice(this._input.files[0])) {
       this.valid("document");
       return;
     }
-    if(this.isVideo(this._input.files[0])){
+    if (this.isVideo(this._input.files[0])) {
       this.valid("video");
       return;
     }
@@ -77,7 +77,7 @@ ProfileUpload.prototype = {
     this._output.style.display = "block";
   },
   valid: function (type) {
-    if(this.uploads.length == 0){
+    if (this.uploads.length == 0) {
       this._output.style.display = "none";
       this._output.innerHTML     = "";
     }
