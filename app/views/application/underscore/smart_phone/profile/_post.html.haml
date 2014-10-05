@@ -1,0 +1,36 @@
+%script{type: "text/template", id: "post-template"}
+  .topBox
+    %figure.profImgWrap
+      %img.profImg{width: 58, src: "/user_photos/{{= user.photo_path }}"}
+    .postArea
+      %a.account{href: "/users/{{= user.id }}#logs"}
+        {{= user.username }}
+      %time.time {{= created_at }}
+      %h2.ttl
+        %a{href: "/games/{{= game.id}}"}
+          {{= game.title }}
+      {{ if (status.id == 1) { }}
+      .mood_ready 気になる
+      {{ } else if (status.id == 2) { }}
+      .mood_playing プレイ中
+      {{ } else if (status.id == 3) { }}
+      .mood_played アーカイブ
+      {{ } }}
+  %p.text
+    {{= text }}
+  .thumbnail
+    {{ for (var i = 0; i < post_photos.length; i++) { }}
+    %img{src: "/post_photos/{{= post_photos[i].photo_path }}"}
+    {{ } }}
+  .stateBox
+    %a.commentBtn.comment-btn{href: "#"}
+      コメント
+      %span.commentCnt
+        {{= post_comments_count }}
+    {{ if (!i_liked) { }}
+    %span.like.favBtn
+      {{= post_likes_count }}
+    {{ } else { }}
+    %span.unlike.favBtn.on
+      {{= post_likes_count }}
+    {{ } }}
