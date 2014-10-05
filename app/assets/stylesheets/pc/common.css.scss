@@ -1,21 +1,170 @@
-@import "../_function.css.scss";
+@import "_function.css.scss";
 
 $width: 960px !default;
+$cntWidth: 580px;
 
 /*---   common   ---------------------------*/
 html {
-  font-family:"Hiragino Kaku Gothic ProN", "Lucida Grande", Helvetica, "Meiryo", sans-serif;
+	background: #eee;
+	font-family:"Hiragino Kaku Gothic ProN", "Lucida Grande", Helvetica, "Meiryo", sans-serif;
 }
 #wrapper {
-  line-height: 1.0;
+	line-height: 1.0;
 }
 a {
-  text-decoration: none;
+	text-decoration: none;
 }
 a:hover {
-  text-decoration: underline;
+	text-decoration: underline;
 }
 
-/*---   header   ---------------------------*/
-header {
+/*---   .header   ---------------------------*/
+.header {
+	padding: 24px 0;
+	background: #999;
+
+	&Inner {
+		width: $width;
+		margin: 0 auto;
+		color: #fff;
+		@include clearfix;
+	}
+	.logo {
+		float: left;
+		padding-left: 30px;
+		font-size: 18px;
+	}
+	.gnavi {
+		float: right;
+
+		&List {
+			line-height: 1.0;
+
+			.item {
+				display: inline-block;
+			}
+		}
+		&Btn {
+			display: block;
+			width: 34px;
+			height: 34px;
+			background: #fff;
+		}
+	}
+}
+
+/*---   .mainContent   ---------------------------*/
+.mainContent {
+	min-height: 450px;
+	
+	/*---   .postBox   ----------*/
+	.postBox {
+		width: $cntWidth;
+		margin: 0 auto 18px;
+		padding: 10px;
+		@include border-radius(3px);
+		@include box-sizing;
+		background: #fff;
+
+		/*---   .topBox   ---*/
+		.topBox {
+			position: relative;
+			margin-bottom: 7px;
+			@include clearfix;
+
+			.profImg {
+				float: left;
+				margin-right: 10px;
+			}
+			.account {
+				color: #000;
+				font-size: 14px;
+				line-height: 1.0;
+			}
+			.time {
+				font-size: 10px;
+			}
+			.status {
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 88px;
+				height: 30px;
+				line-height: 30px;
+				text-align: center;
+				background: #bfbfbf;
+			}
+		}
+		/*---   .gameTtl   ---*/
+		.gameTtl {
+			margin-bottom: 18px;
+			font-size: 18px;
+			line-height: 1.5;
+		}
+		/*---   .postTxt   ---*/
+		.postTxt {
+			margin-bottom: 14px;
+			line-height: 1.5;
+		}
+		/*---   .thumbnail   ---*/
+		.thumbnail {
+			&Img {
+				width: 100%;
+			}
+		}
+		/*---   .actionList   ---*/
+		.actionList {
+			margin-top: 25px;
+			@include clearfix;
+
+			.item {
+				float: left;
+				position: relative;
+				padding-left: 35px;
+				line-height: 27px;
+				cursor: pointer;
+
+				&:before {
+					display: block;
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 27px;
+					height: 27px;
+					background: #bfbfbf;
+					content: "";
+				}
+			}
+			.cmtBtn {
+				margin-right: 34px;
+			}
+		}
+	}
+}
+
+/*---   .footer   ---------------------------*/
+.footer {
+	width: 100%;
+	margin-top: 40px;
+	padding: 38px 0;
+	background: #5e5e5e;
+	color: #d68356;
+	font-size: 16px;
+	text-align: center;
+
+	.ftList {
+		@include clearfix;
+		width: 385px;
+		margin: 0 auto 34px;
+
+		.item, .lastItem {
+			float: left;
+		}
+		.item {
+			margin-right: 20px;
+		}
+	}
+	.ftLink {
+		color: #d68356;
+	}
 }
