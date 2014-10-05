@@ -22,7 +22,7 @@ $cntWidth: 580px;
 		.gameInfoBox {
 			position: relative;
 			float: left;
-			width: 412px;
+			width: 410px;
 			margin-bottom: 45px;
 		}
 		/*---   .gameTtl   ---*/
@@ -93,6 +93,7 @@ $cntWidth: 580px;
 				color: #3e3e3e;
 				font-weight: bold;
 				font-size: 18px;
+				@include appearance;
 				cursor: pointer;
 				outline: 0;
 			}
