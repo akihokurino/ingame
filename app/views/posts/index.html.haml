@@ -1,0 +1,16 @@
+= content_for :head do
+  = stylesheet_link_tag    "pc/timeline"
+  = javascript_include_tag "views/pc/timeline"
+
+= render partial: "application/pc/default_header"
+
+%section.mainContent
+  %h1.mainTtl タイムライン
+  %a.postBtn{href: ""} 投稿ボタン　(インタラクションはあとで相談させてくれ)
+  .post-list
+
+= render partial: "application/pc/footer"
+
+
+= render partial: "application/underscore/pc/timeline/post"
+= render partial: "application/underscore/pc/timeline/comment"

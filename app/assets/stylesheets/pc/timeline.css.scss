@@ -1,0 +1,30 @@
+@import "../_function.css.scss";
+
+$cntWidth: 580px;
+
+/*---   .mainContent   ---------------------------*/
+.mainContent {
+  padding: 46px 0;
+
+  /*---   .mainTtl   ----------*/
+  .mainTtl {
+    margin-bottom: 40px;
+    color: #3e3e3e;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+  }
+  /*---   .postBtn   ----------*/
+  .postBtn {
+    display: block;
+    width: $cntWidth;
+    margin: 0 auto 100px;
+    padding: 10px;
+    @include border-radius(3px);
+    @include box-sizing;
+    background: #fff;
+    color: #0e0e0e;
+    font-size: 18px;
+    line-height: 1.0;
+  }
+}
