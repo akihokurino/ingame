@@ -67,7 +67,6 @@ $(function(){
         _profImgWidth = _img.width;
         _profImgHeight = _img.height;
       });
-      console.log(_img.width);
     }
     //初期化
     function _init(){

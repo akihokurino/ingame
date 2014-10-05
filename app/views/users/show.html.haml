@@ -2,6 +2,8 @@
   = stylesheet_link_tag    "pc/profile"
   = javascript_include_tag "views/pc/profile"
 
+= render partial: "application/pc/default_header"
+
 %section.mainContent
   .profileBox
     .profileBoxInner
@@ -40,3 +42,5 @@
       %ul.actionList
         %li.item.cmtBtn コメント
         %li.item.fvrBtn いいね
+
+= render partial: "application/pc/footer"

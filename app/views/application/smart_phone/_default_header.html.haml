@@ -8,7 +8,7 @@
     %span.menu{href: ""}
   %span.notify{href: ""}
     %span.notifyNum
-  = link_to "", user_path(@current_user), class: "profile"
+  = link_to "", "/users/#{@current_user[:id]}#logs", class: "profile"
   = render partial: "application/smart_phone/menu"
 
 = render partial: "application/smart_phone/notifications_modal"

@@ -6,7 +6,6 @@
 
 		/* ---------- View ---------- */
 		var LogsView = Backbone.View.extend({
-			el: $(".log-list"),
 			initialize: function () {
 				this.listenTo(this.collection, "add", this.addLog);
 			},
@@ -39,27 +38,26 @@
 			}
 		})
 
-		var AppView = Backbone.View.extend({
+		var LogListView = Backbone.View.extend({
 			el: ".profile-page",
 			events: {
 				"click .playing":       "setPlaying",
 				"click .ready":         "setAttention",
 				"click .played":        "setArchive",
-				"click .follow":        "follow",
-				"click .unfollow":      "unfollow",
 				"keypress .search-log": "search"
 			},
+			template: _.template($("#log-list-template").html()),
 			initialize: function () {
+				this.$(".profile-timeline").html("");
+				this.$(".profile-timeline").append(this.template);
+
 				var that               = this;
 				this.log_collection    = new Logs();
-				this.logs_view         = new LogsView({collection: this.log_collection});
+				this.logs_view         = new LogsView({el: ".log-list", collection: this.log_collection});
 
 				this.attentions        = [];
 				this.playings          = [];
 				this.archives          = [];
-
-				this.follow_template   = _.template($("#follow-template").html());
-				this.unfollow_template = _.template($("#unfollow-template").html());
 
 				this.search_log_title  = this.$(".search-log");
 				this.current_tab       = null;
@@ -120,46 +118,6 @@
 				this.$el.find("ul.sortBox li.played-li").addClass("current");
 				this.current_tab = 3
 			},
-			follow: function () {
-				var that = this;
-				var data = {
-					"follow": {
-						"to_user_id": this.user_id
-					}
-				}
-
-				$.ajax({
-					type: "POST",
-					url: "/api/follows",
-					data: data,
-					success: function (data) {
-						if (data.result) {
-							that.$el.find(".follow-wrap").html("");
-							that.$el.find(".follow-wrap").append(that.unfollow_template);
-						}
-					},
-					error: function () {
-
-					}
-				})
-			},
-			unfollow: function () {
-				var that = this;
-				$.ajax({
-					"type": "DELETE",
-					url: "/api/follows/" + this.user_id,
-					data: {},
-					success: function (data) {
-						if (data.result) {
-							that.$el.find(".follow-wrap").html("");
-							that.$el.find(".follow-wrap").append(that.follow_template);
-						}
-					},
-					error: function () {
-
-					}
-				})
-			},
 			search: function (e) {
 				if (e.which == 13 && this.search_log_title.val() != "") {
 					e.preventDefault();
@@ -202,6 +160,90 @@
 			}
 		})
 
-		var app = new AppView();
+		var PostListView = Backbone.View.extend({
+			el: ".profile-page",
+			initialize: function () {
+
+			}
+		})
+
+		var AppView = Backbone.View.extend({
+			el: ".profile-page",
+			events: {
+				"click .follow-btn":   "follow",
+				"click .unfollow-btn": "unfollow"
+			},
+			initialize: function () {
+				this.follow_btn_template   = _.template($("#follow-btn-template").html());
+				this.unfollow_btn_template = _.template($("#unfollow-btn-template").html());
+			},
+			follow: function () {
+				var that = this;
+				var data = {
+					"follow": {
+						"to_user_id": this.user_id
+					}
+				}
+
+				$.ajax({
+					type: "POST",
+					url: "/api/follows",
+					data: data,
+					success: function (data) {
+						if (data.result) {
+							that.$el.find(".follow-wrap").html("");
+							that.$el.find(".follow-wrap").append(that.unfollow_btn_template);
+						}
+					},
+					error: function () {
+
+					}
+				})
+			},
+			unfollow: function () {
+				var that = this;
+				$.ajax({
+					"type": "DELETE",
+					url: "/api/follows/" + this.user_id,
+					data: {},
+					success: function (data) {
+						if (data.result) {
+							that.$el.find(".follow-wrap").html("");
+							that.$el.find(".follow-wrap").append(that.follow_btn_template);
+						}
+					},
+					error: function () {
+
+					}
+				})
+			}
+		})
+
+
+		/* ---------- Router ---------- */
+		var Router = Backbone.Router.extend({
+			routes: {
+				"logs":      "logs",
+				"posts":     "posts",
+				"follows":   "follows",
+				"followers": "followers"
+			},
+			logs: function () {
+				this.current_list = new LogListView();
+			},
+			posts: function () {
+				this.current_list = new PostListView();
+			},
+			follows: function () {
+
+			},
+			followers: function () {
+
+			}
+		})
+
+		var app    = new AppView();
+		var router = new Router();
+		Backbone.history.start();
 	})
 })();

@@ -1,0 +1,12 @@
+%script{type: "text/tenplate", id: "log-list-template"}
+  .gameBox
+    %ul.sortBox
+      %li.item.ready-li.current
+        %span.ready 気になる
+      %li.item.playing-li
+        %span.playing プレイ中
+      %li.item.played-li
+        %span.played クリア済
+    %form.searchBox
+      %input{input: "text", placeholder: "ゲーム名で検索", role: "textarea", class: "search-log"}
+    %ul.gameList.log-list

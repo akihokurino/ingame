@@ -21,49 +21,38 @@
         - unless current_user?(@user)
           %span.follow-wrap
             - if @user.i_followed
-              %span.followBtn.unfollow フォローを外す
+              %span.followBtn.unfollow-btn フォローを外す
             - else
-              %span.followBtn.follow フォロー
+              %span.followBtn.follow-btn フォロー
         - else
           = link_to "編集", edit_user_path(@user), class: "edit-btn personalEdit"
-          =# link_to "フォロー", "/logs#edit", class: "edit-btn followBtn"
         %ul.countBox
           %li.item.current
-            %a.gameNum{href: ""}
+            %a.gameNum{href: "/users/#{@user[:id]}#logs"}
               %span.count
                 = @user.logs.count
               ライブラリ
           %li.item
-            %a.postNum{href: ""}
+            %a.postNum{href: "/users/#{@user[:id]}#posts"}
               %span.count
                 = @user.posts.count
               チェックイン
           %li.item
-            %a.followNum{href: ""}
+            %a.followNum{href: "/users/#{@user[:id]}#follows"}
               %span.count
                 = @user.follow_num
               フォロー
           %li.item
-            %a.followerNum{href: ""}
+            %a.followerNum{href: "/users/#{@user[:id]}#followers"}
               %span.count
                 = @user.follower_num
               フォロワー
+  .profile-timeline
 
-  .gameBox
-    %ul.sortBox
-      %li.item.ready-li.current
-        %span.ready 気になる
-      %li.item.playing-li
-        %span.playing プレイ中
-      %li.item.played-li
-        %span.played クリア済
-    %form.searchBox
-      %input{input: "text", placeholder: "ゲーム名で検索", role: "textarea", class: "search-log"}
-    %ul.gameList.log-list
-
+= render partial: "application/underscore/smart_phone/profile/log_list"
 = render partial: "application/underscore/smart_phone/profile/log"
-= render partial: "application/underscore/smart_phone/profile/follow"
-= render partial: "application/underscore/smart_phone/profile/unfollow"
+= render partial: "application/underscore/smart_phone/profile/follow_btn"
+= render partial: "application/underscore/smart_phone/profile/unfollow_btn"
 
 
 
