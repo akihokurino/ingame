@@ -1,4 +1,4 @@
 var UserResults = Backbone.Collection.extend({
   model: UserResult,
-  url: "/api/users"
+  url: "/api/users/search"
 })

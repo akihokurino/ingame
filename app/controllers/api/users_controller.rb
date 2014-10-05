@@ -1,14 +1,14 @@
 class Api::UsersController < ApplicationController
   before_action :set_user, only: [:update]
 
-	def index
-    page   = params[:page].to_i
-    return false if page < 1
-		@users = User.search_with(params[:username], @current_user, page)
-	end
-
   def update
     @result = @user.update_with_url(user_params)
+  end
+
+  def search
+    page   = params[:page].to_i
+    return false if page < 1
+    @users = User.search_with(params[:username], @current_user, page)
   end
 
   private
