@@ -1,6 +1,7 @@
 %script{type: "text/template", id: "post-template"}
   .topBox
-    %img.profImg{width: 58, src: "/user_photos/{{= user.photo_path }}"}
+    %figure.profImgWrap
+      %img.profImg{width: 58, src: "/user_photos/{{= user.photo_path }}"}
     .postArea
       %a.account{href: "/users/{{= user.id }}"}
         {{= user.username }}

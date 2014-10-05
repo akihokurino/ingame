@@ -9,14 +9,16 @@
     .write-page.mainCnt
       %form.textareaWrap.post-form
         %textarea{placeholder: "そのゲームについて、どう思った？"}
-      #thumbnail
       .btnWrap
         %p.btnText 写真をアップロード
         %input.addPhoto#upload-btn{type: "file", href: ""}
+      #thumbnail
       %ul.snsBtn
         %li.fb
           %a.fbBtn{href: ""}
             %span.fbInner
+            Facebook
         %li.tw
           %a.twBtn{href: ""}
             %span.twInner
+            Twitter

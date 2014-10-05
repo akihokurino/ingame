@@ -45,11 +45,13 @@ html {
 			margin-bottom: 15px;
 			@include clearfix;
 		}
-		.profImg {
+		.profImgWrap {
 			float: left;
+			@include border-radius(29px);
+		}
+		.profImg {
 			width: 58px;
 			margin-right: 10px;
-			@include border-radius(29px);
 		}
 		.postArea {
 			position: relative;
