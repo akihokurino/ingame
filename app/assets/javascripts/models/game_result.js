@@ -1,4 +1,4 @@
-var Result = Backbone.Model.extend({
+var GameResult = Backbone.Model.extend({
   urlRoot: "/api/logs",
   defaults: {
     "title":      "",

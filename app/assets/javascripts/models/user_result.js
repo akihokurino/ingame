@@ -1,4 +1,4 @@
-var User = Backbone.Model.extend({
+var UserResult = Backbone.Model.extend({
   defaults: {
     "id": "",
     "username": "",
