@@ -211,20 +211,4 @@ html {
 			margin-bottom: 10px;
 		}
 	}
-
-	/*---   .explain   ----------*/
-	.explain {
-		position: absolute;
-		top: 360px;
-		right: 50%;
-		margin-right: -97px;
-		padding: 20px;
-		@include border-radius(10px);
-		@include box-sizing;
-		background: rgba(0, 160, 233, 0.2);
-		color: #a2a2a2;
-		font-weight: bold;
-		font-size: 30px;
-		text-align: center;
-	}
 }
