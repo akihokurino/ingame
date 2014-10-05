@@ -1,0 +1,97 @@
+@import "../_function.css.scss";
+
+$width: 960px !default;
+$cntWidth: 580px;
+
+/*---   .mainContent   ---------------------------*/
+.mainContent {
+  /*---   .profileBox   ----------*/
+  .profileBox {
+    margin-bottom: 36px;
+    background: #bfbfbf;
+
+    /*---   .profileBoxInner   ---*/
+    &Inner {
+      position: relative;
+      width: $width;
+      margin: 0 auto;
+      padding: 72px 0 32px 20px;
+      color: #fff;
+      @include clearfix;
+    }
+    /*---   .profImg   ---*/
+    .profImgWrap {
+      float: left;
+      margin-right: 32px;
+    }
+    .profImg {
+      border: 1px solid #eee;
+    }
+    /*---   .userName   ---*/
+    .userName {
+      font-weight: bold;
+      font-size: 18px;
+    }
+    /*---   .userInfo   ---*/
+    .userInfo {
+      width: 716px;
+      line-height: 1.5;
+    }
+    /*---   .followBtn   ---*/
+    .followBtn {
+      display: block;
+      position: absolute;
+      right: 0;
+      bottom: 20px;
+      width: 194px;
+      height: 40px;
+      background: #a0a0a0;
+      color: #3e3e3e;
+      font-weight: bold;
+      font-size: 14px;
+      text-align: center;
+      line-height: 40px;
+      cursor: pointer;
+    }
+    /*---   .countList   ---*/
+    .countListWrap {
+      background: #dadada;
+    }
+    .countList {
+      width: $width;
+      margin: 0 auto;
+      font-size: 0;
+    }
+    .gameNum, .postNum, .followNum, .followerNum {
+      display: inline-block;
+      width: 240px;
+      padding: 13px 0 19px;
+      @include box-sizing;
+      color: #3e3e3e;
+      font-weight: bold;
+      font-size: 12px;
+      text-align: center;
+      cursor: pointer;
+
+      .count {
+        display: block;
+        font-size: 16px;
+      }
+      &.current {
+        position: relative;
+
+        &:after {
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          margin-left: -6px;
+          border-top: 12px solid transparent;
+          border-right: 12px solid transparent;
+          border-bottom: 12px solid #eee;
+          border-left: 12px solid transparent;
+          content: "";
+        }
+      }
+    }
+  }
+}

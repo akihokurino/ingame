@@ -1,0 +1,42 @@
+= content_for :head do
+  = stylesheet_link_tag    "pc/profile"
+  = javascript_include_tag "views/pc/profile"
+
+%section.mainContent
+  .profileBox
+    .profileBoxInner
+      %figure.profImgWrap
+        %img.profImg{src: "", width: "135", height: "135", alt: "ユーザー画像"}
+      %h1.userName ユーザーネーム
+      %p.userPlace 場所
+      %p.userInfo プロフィールテキストプロフィールテキストプロフィールテキストプロフィールテキストプロフィールテキストプロフィールテキストプロフィールテキストプロフィールテキスト
+      %span.followBtn フォロー（設定）
+    .countListWrap
+      %ul.countList
+        %li.gameNum
+          ライブラリ
+          %span.count 300
+        %li.postNum.current
+          ポスト
+          %span.count 1050
+        %li.followNum
+          フォロー
+          %span.count 1050
+        %li.followerNum
+          フォロワー
+          %span.count 1050
+  - 3.times do |i|
+    %article.postBox
+      .topBox
+        %figure.profImg
+          %img{src: "", width: "44", height: "44", alt: "ユーザー画像"}
+        %a.account{href: ""} ユーザーネーム
+        %p.time 投稿時間
+        %p.status ステータス
+      %h2.gameTtl ゲームタイトル。ゲームタイトル。ゲームタイトル。ゲームタイトル。
+      %p.postTxt コメント本文。コメント本文。コメント本文。コメント本文。コメント本文。コメント本文。コメント本文。コメント本文。コメント本文。コメント本文。コメント本文。コメント本文。
+      .thumbnail
+        %img.thumbnailImg{src: "", alt: "アップロードした写真"}
+      %ul.actionList
+        %li.item.cmtBtn コメント
+        %li.item.fvrBtn いいね
