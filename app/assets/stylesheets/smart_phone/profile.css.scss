@@ -13,11 +13,13 @@
 	}
 	.profImgWrap {
 		float: left;
+		width: 54px;
+		height: 54px;
 		border: 2px solid #fffcfc;
 		@include border-radius(44px);
 	}
 	.profImg {
-		margin: 16px 10px 0 12px;
+		width: 100%;
 	}
 	.followBtn {
 		position: absolute;

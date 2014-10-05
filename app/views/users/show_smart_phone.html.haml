@@ -8,7 +8,7 @@
   .personalBoxWrap
     .bgOverlayer
       %figure.profImgWrap
-        = image_tag "/user_photos/#{@user[:photo_path]}", height: 54, class: "profImg"
+        = image_tag "/user_photos/#{@user[:photo_path]}", class: "profImg"
       %section.personalBox
         %h1.name
           = @user.username
