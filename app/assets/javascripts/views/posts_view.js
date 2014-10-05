@@ -12,5 +12,8 @@ var PostsView = Backbone.View.extend({
   },
   render: function () {
 
+  },
+  removePosts: function () {
+    this.$el.html("");
   }
 })
