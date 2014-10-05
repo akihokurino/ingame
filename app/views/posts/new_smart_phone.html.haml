@@ -1,6 +1,8 @@
 = content_for :head do
   = stylesheet_link_tag    "smart_phone/post"
-  = javascript_include_tag "views/smart_phone/post"
+
+= content_for :last do
+  = javascript_include_tag "main/smart_phone/post"
 
 .post-new-page{"data-userid" => @current_user[:id]}
 
@@ -11,7 +13,7 @@
 = render partial: "application/underscore/smart_phone/post/game"
 
 = render partial: "application/underscore/smart_phone/post/add"
-= render partial: "application/underscore/smart_phone/post/result"
+= render partial: "application/underscore/smart_phone/post/game_result"
 
 
 
