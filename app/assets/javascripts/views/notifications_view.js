@@ -33,5 +33,6 @@ var NotificationsView = Backbone.View.extend({
   },
   hideNotifications: function () {
     this.stopListening();
+    this.event_handle.publish("hideNotifications");
   }
 })
