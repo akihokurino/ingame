@@ -22,7 +22,7 @@ namespace :steam do
 				result[:title] = row.css("span.title").text
 				result[:devices] = row.css("span.platform_img").map {|span| span["class"].split[1]}
 				result[:released] = row.css("div.search_released").text
-				result[:price] = ((tmp = row.css("div.search_price").children[-1]) and tmp.text) # なぜか()を外すと動かないぞ。
+				result[:price] = ((tmp = row.css("div.search_price").children[-1]) and tmp.text).gsub("\t","").gsub("¥ ", "").gsub(",", "") # なぜか()を外すと動かないぞ。
 				result[:tags] = row.css("div.search_name > p").text.gsub(/ - .*$/, '').gsub(/リリース日:.*$/, '').gsub(/\s/,'').split(",")
 				result[:image] = row.css("div.search_capsule > img")[0].attributes["src"].value.gsub(/\?.*/, "").gsub('capsule_sm_120', 'header')
 
