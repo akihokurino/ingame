@@ -10,3 +10,5 @@ EventHandle.prototype = {
     this.dispatcher.trigger(event, params);
   }
 }
+
+var event_handle = new EventHandle();

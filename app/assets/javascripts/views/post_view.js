@@ -70,5 +70,9 @@ var PostView = Backbone.View.extend({
 
       }
     })
+  },
+  showComment: function (e) {
+    e.preventDefault();
+    event_handle.publish("showComment", this.model);
   }
 })

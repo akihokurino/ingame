@@ -17,5 +17,6 @@
 //= require backbone
 //= require ./underscore_template.js
 //= require ./common.js
+//= require ./libs/event_handle.js
 
 
