@@ -28,33 +28,41 @@
               %span.followBtn.follow-btn フォロー
         - else
           = link_to "編集", edit_user_path(@user), class: "edit-btn personalEdit"
-        %ul.countBox
-          %li.item.current
+        %ul.countBox.count-box
+          %li.item.logs-li.current
             %a.gameNum{href: "/users/#{@user[:id]}#logs"}
               %span.count
                 = @user.logs.count
               ライブラリ
-          %li.item
+          %li.item.posts-li
             %a.postNum{href: "/users/#{@user[:id]}#posts"}
               %span.count
                 = @user.posts.count
               チェックイン
-          %li.item
+          %li.item.follows-li
             %a.followNum{href: "/users/#{@user[:id]}#follows"}
               %span.count
                 = @user.follow_num
               フォロー
-          %li.item
+          %li.item.followers-li
             %a.followerNum{href: "/users/#{@user[:id]}#followers"}
               %span.count
                 = @user.follower_num
               フォロワー
   .profile-timeline
 
-= render partial: "application/underscore/smart_phone/profile/log_list"
-= render partial: "application/underscore/smart_phone/profile/log"
 = render partial: "application/underscore/smart_phone/profile/follow_btn"
 = render partial: "application/underscore/smart_phone/profile/unfollow_btn"
+
+= render partial: "application/underscore/smart_phone/profile/log_list"
+= render partial: "application/underscore/smart_phone/profile/log"
+
+= render partial: "application/underscore/smart_phone/profile/post_list"
+= render partial: "application/underscore/smart_phone/profile/post"
+
+= render partial: "application/underscore/smart_phone/profile/follows_list"
+= render partial: "application/underscore/smart_phone/profile/followers_list"
+= render partial: "application/underscore/smart_phone/profile/user"
 
 
 

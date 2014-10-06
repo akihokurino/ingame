@@ -71,5 +71,23 @@ class User < ActiveRecord::Base
       end
       users
     end
+
+    def get_follows(current_user, user_id, page)
+      offset = (page - 1) * LIMIT
+      users  = Follow.where(from_user_id: user_id).offset(offset).limit(LIMIT).map do |follow|
+        follow.to_user
+      end
+
+      users
+    end
+
+    def get_followers(current_user, user_id, page)
+      offset = (page - 1) * LIMIT
+      users  = Follow.where(to_user_id: user_id).offset(offset).limit(LIMIT).map do |follow|
+        follow.from_user
+      end
+
+      users
+    end
 	end
 end

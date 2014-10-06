@@ -1,6 +1,19 @@
 class Api::UsersController < ApplicationController
   before_action :set_user, only: [:update]
 
+  def index
+    type = params[:type]
+    page = params[:page].to_i
+    return if page < 1
+
+    case type
+    when "follows"
+      @users = User.get_follows(@current_user, params[:user_id], page)
+    when "followers"
+      @users = User.get_followers(@current_user, params[:user_id], page)
+    end
+  end
+
   def update
     @result = @user.update_with_url(user_params)
   end

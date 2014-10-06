@@ -1,10 +1,14 @@
 class Api::PostsController < ApplicationController
   def index
+    type   = params[:type]
     page   = params[:page].to_i
     return false if page < 1
 
-    @posts = Post.get_all_posts(@current_user[:id], page)
-    @games = Log.where(user_id: @current_user[:id]).select(:game_id).map { |log| log.game } if page == 1
+    unless type == "user"
+      @posts = Post.get_all_posts(@current_user[:id], page)
+    else
+      @posts = Post.get_user_posts(@current_user[:id], params[:user_id], page)
+    end
   end
 
   def index_of_game

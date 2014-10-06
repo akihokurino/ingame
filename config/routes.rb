@@ -33,7 +33,7 @@ Ingame::Application.routes.draw do
     end
     resources :post_likes, only: ["create", "destroy"], format: "json"
     resources :game_likes, only: ["create", "destroy"], format: "json"
-    resources :users, only: ["update"], format: "json" do
+    resources :users, only: ["index", "update"], format: "json" do
       collection do
         get "search"
       end

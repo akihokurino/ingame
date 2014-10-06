@@ -22,6 +22,10 @@ class Post < ActiveRecord::Base
 
   LIMIT = 20
 
+  default_scope {
+    order("created_at DESC")
+  }
+
   scope :all_include, -> {
     includes(:game).includes(:log).includes(:user).includes(:post_likes).includes(:post_photos).includes(:post_comments)
   }
@@ -42,12 +46,18 @@ class Post < ActiveRecord::Base
       offset       = (page - 1) * LIMIT
       follower_ids = Follow.where(from_user_id: current_user_id).pluck(:to_user_id)
       follower_ids << current_user_id
-      posts        = self.where(user_id: follower_ids).all_include.order("created_at DESC").offset(offset).limit(LIMIT)
+      posts        = self.where(user_id: follower_ids).all_include.offset(offset).limit(LIMIT)
       posts        = self.i_like?(posts, current_user_id)
     end
 
+    def get_user_posts(current_user_id, user_id, page)
+      offset = (page - 1) * LIMIT
+      posts  = self.where(user_id: user_id).all_include.offset(offset).limit(LIMIT)
+      posts  = self.i_like?(posts, current_user_id)
+    end
+
     def get_all_posts_of_game(current_user_id, game_id)
-      posts = self.where(game_id: game_id).all_include.order("created_at DESC")
+      posts = self.where(game_id: game_id).all_include
       posts = self.i_like?(posts, current_user_id)
     end
 
