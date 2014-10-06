@@ -19,7 +19,7 @@ namespace :steam do
 			break if searchResults.length == 0
 			searchResults.each do |row|
 				result = {}
-				result[:title] = row.css("h4").text
+				result[:title] = row.css("span.title").text
 				result[:devices] = row.css("span.platform_img").map {|span| span["class"].split[1]}
 				result[:released] = row.css("div.search_released").text
 				result[:price] = ((tmp = row.css("div.search_price").children[-1]) and tmp.text) # なぜか()を外すと動かないぞ。
