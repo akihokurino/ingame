@@ -7,7 +7,7 @@
         {{= user.username }}
       %time.time {{= created_at }}
       %h2.ttl
-        %a{href: "/games/{{= game.id}}"}
+        %a{href: "/games/{{= game.id}}#all"}
           {{= game.title }}
       {{ if (status.id == 1) { }}
       .mood_ready 気になる

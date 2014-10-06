@@ -1,21 +1,22 @@
 class Api::PostsController < ApplicationController
   def index
-    type   = params[:type]
-    page   = params[:page].to_i
+    type    = params[:type]
+    game_id = params[:game_id]
+    page    = params[:page].to_i
     return false if page < 1
 
-    unless type == "user"
-      @posts = Post.get_all_posts(@current_user[:id], page)
-    else
+    case type
+    when "user"
       @posts = Post.get_user_posts(@current_user[:id], params[:user_id], page)
+    when "all_of_game"
+      @posts = Post.get_all_posts_of_game(@current_user[:id], game_id, page)
+    when "follower_of_game"
+      @posts = Post.get_follower_posts_of_game(@current_user[:id], game_id, page)
+    when "liker_of_game"
+      @posts = Post.get_liker_posts_of_game(@current_user[:id], game_id, page)
+    else
+      @posts = Post.get_all_posts(@current_user[:id], page)
     end
-  end
-
-  def index_of_game
-    game_id         = params[:game_id]
-    @all_posts      = Post.get_all_posts_of_game(@current_user[:id], game_id)
-    @follower_posts = Post.get_follower_posts_of_game(@current_user[:id], game_id)
-    @liker_posts    = Post.get_liker_posts_of_game(@current_user[:id], game_id)
   end
 
   def create

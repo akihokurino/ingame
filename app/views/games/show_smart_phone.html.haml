@@ -96,12 +96,14 @@
   .sortBoxWrap
     %ul.sortBox
       %li.item.current.follower_posts
-        %span.follow 友達
+        %a.follow{href: "/games/#{@game[:id]}#follower"} 友達
       %li.item.all_posts
-        %span.all 全て
+        %a.all{href: "/games/#{@game[:id]}#all"} 全て
       %li.item.liker_posts
-        %span.star ♥︎
+        %a.star{href: "/games/#{@game[:id]}#liker"} ♥︎
 
-  .post-list
+  .game-timeline
+    .post-list
+    = image_tag "gif-load.gif", class: "loading-gif"
 
 = render partial: "application/underscore/smart_phone/game/post"

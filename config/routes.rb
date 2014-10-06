@@ -21,11 +21,7 @@ Ingame::Application.routes.draw do
       end
     end
     resources :statuses, only: ["index"], format: "json"
-    resources :posts, only: ["index", "create", "destroy"], format: "json" do
-      collection do
-        get "index_of_game"
-      end
-    end
+    resources :posts, only: ["index", "create", "destroy"], format: "json"
     resources :games, only: ["index", "show", "create"], format: "json" do
       collection do
         get "search"

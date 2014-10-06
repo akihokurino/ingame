@@ -6,55 +6,206 @@
 
 (function () {
 
-  var AppView = Backbone.View.extend({
+  var AllPostListView = Backbone.View.extend({
     el: ".game-page",
-    events: {
-      "change .my_status":     "changeStatus",
-      "change .new_status":    "registLog",
-      "change .my_rate":       "changeRate",
-      "click .follower_posts": "setFollowerPosts",
-      "click .all_posts":      "setAllPosts",
-      "click .liker_posts":    "setLikerPosts"
-    },
     initialize: function () {
-      var that               = this;
-      this.post_collection   = new Posts();
-      this.posts_view        = new PostsView({collection: this.post_collection});
-      this.game_id           = $(".game-page").data("gameid");
+      this.$(".post-list").html("");
+      this.$el.find("ul.sortBox li").removeClass("current");
+      this.$el.find("ul.sortBox li.all_posts").addClass("current");
 
-      this.my_status_select  = $(".my_status");
-      this.new_status_select = $(".new_status");
-      this.my_rate_select    = $(".my_rate");
+      _.bindAll(this, "pagenation");
 
-      this.follower_posts    = [];
-      this.all_posts         = [];
-      this.liker_posts       = [];
+      var that             = this;
+      this.post_collection = new Posts();
+      this.posts_view      = new PostsView({el: ".post-list", collection: this.post_collection});
 
-      $.ajax({
-        type: "GET",
-        url: "/api/posts/index_of_game?game_id=" + this.game_id,
-        data: {},
-        success: function (data) {
-          for (var i = 0; i < data.follower_posts.length; i++) {
-            var post = new Post(data.follower_posts[i]);
-            that.follower_posts.push(post);
-            that.posts_view.collection.add(post)
-          }
+      this.game_id         = $(".game-page").data("gameid");
+      this.page            = 1;
 
-          for (var i = 0; i < data.all_posts.length; i++) {
-            var post = new Post(data.all_posts[i]);
-            that.all_posts.push(post);
-          }
-
-          for (var i = 0; i < data.liker_posts.length; i++) {
-            var post = new Post(data.liker_posts[i]);
-            that.liker_posts.push(post);
+      this.post_collection.fetch({
+        data: {type: "all_of_game", page: this.page, game_id: this.game_id},
+        success: function (model, response, options) {
+          for (var i = 0; i < response.posts.length; i++) {
+            var post = new Post(response.posts[i]);
+            that.posts_view.collection.add(post);
           }
         },
         error: function () {
 
         }
       })
+
+      $(window).bind("scroll", this.pagenation);
+    },
+    pagenation: function () {
+      var that           = this;
+      var scrollHeight   = $(document).height();
+      var scrollPosition = $(window).height() + $(window).scrollTop();
+      if ((scrollHeight - scrollPosition) / scrollHeight <= 0.1) {
+        $(".loading-gif").css("display", "block");
+        $(window).unbind("scroll");
+        this.page += 1;
+
+        this.post_collection.fetch({
+          data: {type: "all_of_game", page: this.page, game_id: this.game_id},
+          success: function (model, response, options) {
+            for (var i = 0; i < response.posts.length; i++) {
+              var post = new Post(response.posts[i]);
+              that.posts_view.collection.add(post);
+            }
+
+            $(".loading-gif").css("display", "none");
+
+            if (response.posts.length != 0) {
+              $(window).bind("scroll", that.pagenation);
+            }
+          },
+          error: function () {
+
+          }
+        })
+      }
+    }
+  })
+
+  var FollowerPostListView = Backbone.View.extend({
+    el: ".game-page",
+    initialize: function () {
+      this.$(".post-list").html("");
+      this.$el.find("ul.sortBox li").removeClass("current");
+      this.$el.find("ul.sortBox li.follower_posts").addClass("current");
+
+      _.bindAll(this, "pagenation");
+
+      var that             = this;
+      this.post_collection = new Posts();
+      this.posts_view      = new PostsView({el: ".post-list", collection: this.post_collection});
+
+      this.game_id         = $(".game-page").data("gameid");
+      this.page            = 1;
+
+      this.post_collection.fetch({
+        data: {type: "follower_of_game", page: this.page, game_id: this.game_id},
+        success: function (model, response, options) {
+          for (var i = 0; i < response.posts.length; i++) {
+            var post = new Post(response.posts[i]);
+            that.posts_view.collection.add(post);
+          }
+        },
+        error: function () {
+
+        }
+      })
+
+      $(window).bind("scroll", this.pagenation);
+    },
+    pagenation: function () {
+      var that           = this;
+      var scrollHeight   = $(document).height();
+      var scrollPosition = $(window).height() + $(window).scrollTop();
+      if ((scrollHeight - scrollPosition) / scrollHeight <= 0.1) {
+        $(".loading-gif").css("display", "block");
+        $(window).unbind("scroll");
+        this.page += 1;
+
+        this.post_collection.fetch({
+          data: {type: "follower_of_game", page: this.page, game_id: this.game_id},
+          success: function (model, response, options) {
+            for (var i = 0; i < response.posts.length; i++) {
+              var post = new Post(response.posts[i]);
+              that.posts_view.collection.add(post);
+            }
+
+            $(".loading-gif").css("display", "none");
+
+            if (response.posts.length != 0) {
+              $(window).bind("scroll", that.pagenation);
+            }
+          },
+          error: function () {
+
+          }
+        })
+      }
+    }
+  })
+
+  var LikerPostListView = Backbone.View.extend({
+    el: ".game-page",
+    initialize: function () {
+      this.$(".post-list").html("");
+      this.$el.find("ul.sortBox li").removeClass("current");
+      this.$el.find("ul.sortBox li.liker_posts").addClass("current");
+
+      _.bindAll(this, "pagenation");
+
+      var that             = this;
+      this.post_collection = new Posts();
+      this.posts_view      = new PostsView({el: ".post-list", collection: this.post_collection});
+
+      this.game_id         = $(".game-page").data("gameid");
+      this.page            = 1;
+
+      this.post_collection.fetch({
+        data: {type: "liker_of_game", page: this.page, game_id: this.game_id},
+        success: function (model, response, options) {
+          for (var i = 0; i < response.posts.length; i++) {
+            var post = new Post(response.posts[i]);
+            that.posts_view.collection.add(post);
+          }
+        },
+        error: function () {
+
+        }
+      })
+
+      $(window).bind("scroll", this.pagenation);
+    },
+    pagenation: function () {
+      var that           = this;
+      var scrollHeight   = $(document).height();
+      var scrollPosition = $(window).height() + $(window).scrollTop();
+      if ((scrollHeight - scrollPosition) / scrollHeight <= 0.1) {
+        $(".loading-gif").css("display", "block");
+        $(window).unbind("scroll");
+        this.page += 1;
+
+        this.post_collection.fetch({
+          data: {type: "liker_of_game", page: this.page, game_id: this.game_id},
+          success: function (model, response, options) {
+            for (var i = 0; i < response.posts.length; i++) {
+              var post = new Post(response.posts[i]);
+              that.posts_view.collection.add(post);
+            }
+
+            $(".loading-gif").css("display", "none");
+
+            if (response.posts.length != 0) {
+              $(window).bind("scroll", that.pagenation);
+            }
+          },
+          error: function () {
+
+          }
+        })
+      }
+    }
+  })
+
+  var AppView = Backbone.View.extend({
+    el: ".game-page",
+    events: {
+      "change .my_status":  "changeStatus",
+      "change .new_status": "registLog",
+      "change .my_rate":    "changeRate",
+    },
+    initialize: function () {
+      var that               = this;
+      this.game_id           = $(".game-page").data("gameid");
+
+      this.my_status_select  = $(".my_status");
+      this.new_status_select = $(".new_status");
+      this.my_rate_select    = $(".my_rate");
     },
     changeRate: function () {
       if (this.my_rate_select.val() != "") {
@@ -117,35 +268,30 @@
 
         }
       })
-    },
-    setFollowerPosts: function () {
-      this.posts_view.collection.reset();
-      this.posts_view.removePosts();
-      this.$el.find("ul.sortBox li").removeClass("current");
-      for (var i = 0; i < this.follower_posts.length; i++) {
-        this.posts_view.collection.add(this.follower_posts[i]);
-      }
-      this.$el.find("ul.sortBox li.follower_posts").addClass("current");
-    },
-    setAllPosts: function () {
-      this.posts_view.collection.reset();
-      this.posts_view.removePosts();
-      this.$el.find("ul.sortBox li").removeClass("current");
-      for (var i = 0; i < this.all_posts.length; i++) {
-        this.posts_view.collection.add(this.all_posts[i]);
-      }
-      this.$el.find("ul.sortBox li.all_posts").addClass("current");
-    },
-    setLikerPosts: function () {
-      this.posts_view.collection.reset();
-      this.posts_view.removePosts();
-      this.$el.find("ul.sortBox li").removeClass("current");
-      for (var i = 0; i < this.liker_posts.length; i++) {
-        this.posts_view.collection.add(this.liker_posts[i]);
-      }
-      this.$el.find("ul.sortBox li.liker_posts").addClass("current");
     }
   })
 
-  var app = new AppView();
+
+  /* ---------- Router ---------- */
+  var Router = Backbone.Router.extend({
+    routes: {
+      "all":      "all",
+      "follower": "follower",
+      "liker":    "liker"
+    },
+    all: function () {
+      this.current_list = new AllPostListView();
+    },
+    follower: function () {
+      this.current_list = new FollowerPostListView();
+    },
+    liker: function () {
+      this.current_list = new LikerPostListView();
+    }
+  })
+
+
+  var app    = new AppView();
+  var router = new Router();
+  Backbone.history.start();
 })();
