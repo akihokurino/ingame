@@ -23,12 +23,16 @@ namespace :steam do
 				result[:devices] = row.css("span.platform_img").map {|span| span["class"].split[1]}
 				result[:released] = row.css("div.search_released").text
 				result[:price] = ((tmp = row.css("div.search_price").children[-1]) and tmp.text).gsub("\t","").gsub("¥ ", "").gsub(",", "") # なぜか()を外すと動かないぞ。
-				result[:tags] = row.css("div.search_name > p").text.gsub(/ - .*$/, '').gsub(/リリース日:.*$/, '').gsub(/\s/,'').split(",")
 				result[:image] = row.css("div.search_capsule > img")[0].attributes["src"].value.gsub(/\?.*/, "").gsub('capsule_sm_120', 'header')
 
-        # publisher取るためだけに潜るよ・・・
+        # tagsとpublisher取るために潜る。これらをあきらめるともっと速い。
         game_url = row.attributes["href"].text + "&l=japanese"
-        game_html_lines = get(game_url).split
+        game_html = get(game_url)
+        game_html_lines = game_html.split
+
+        game_dom = Nokogiri::HTML.parse(game_html)
+				result[:tags] = game_dom.css("a.app_tag").map {|a| a.text.gsub /\s/, ""}
+
         publisher = game_html_lines.grep(/store.steampowered.com\/publisher\//)[0]
         unless publisher
           publisher = game_html_lines.grep(/store.steampowered.com\/search\/\?developer/)[0]
