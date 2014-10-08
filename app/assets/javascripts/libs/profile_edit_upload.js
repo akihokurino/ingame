@@ -37,12 +37,19 @@ ProfileUpload.prototype = {
     reader.readAsDataURL(file);
   },
   render: function (data, name) {
-    this._output.innerHTML = "";
+    //this._output.innerHTML = "";
     var div                = document.createElement("div");
     var img                = document.createElement("img");
     img.src                = data;
-    div.appendChild(img);
-    this._output.appendChild(div);
+    //div.appendChild(img);
+    //this._output.appendChild(div);
+
+    $(".image-wrap").append(img);
+
+    $(".image-wrap").scroll(function (e) {
+      $("#clip-height").val($(this).scrollTop());
+      $("#clip-width").val($(this).scrollLeft());
+    });
   },
   isVideo: function (file) {
     return file.type.match("video.*") ? true : false;

@@ -19,7 +19,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update_with(user_params)
+    clip = {width: params[:user][:clip_width].to_i, height: params[:user][:clip_height].to_i}
+    if @user.update_with(user_params, clip)
       redirect_to posts_path, notice: "ユーザー情報を変更しました"
     else
       render "edit"

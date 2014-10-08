@@ -1,8 +1,10 @@
+require 'RMagick'
+
 module CostomUpload
   extend ActiveSupport::Concern
 
   module ClassMethods
-    def file_upload(file, type)
+    def file_upload(file, type, clip = {})
       name  = file.original_filename
       perms = [".jpg", ".jpeg", ".gif", ".png"]
       if perms.include?(File.extname(name).downcase) && file.size < 1.megabyte
@@ -10,6 +12,9 @@ module CostomUpload
         File.open("public/#{type}_photos/#{photo_path}", "wb") do |f|
           f.write(file.read)
         end
+
+        file = Magick::Image.read("public/#{type}_photos/#{photo_path}").first.crop(clip[:width], clip[:height], 200, 200)
+        file.write("public/#{type}_photos/#{photo_path}")
 
         photo_path
       end

@@ -111,4 +111,19 @@
     background-color: transparent;
     @include font-weight(1px, #ffffff);
   }
+
+  .image-wrap {
+    position: relative;
+    z-index: 1;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    margin-top: 50px;
+    overflow: scroll;
+    border: solid 2px #000;
+    img {
+      position: relative;
+      z-index: 2;
+    }
+  }
 }
