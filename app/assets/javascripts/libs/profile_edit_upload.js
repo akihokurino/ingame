@@ -44,7 +44,7 @@ ProfileUpload.prototype = {
     //div.appendChild(img);
     //this._output.appendChild(div);
 
-    $(".image-wrap").append(img);
+    $(".image-wrap").css("display", "block").append(img);
 
     $(".image-wrap").scroll(function (e) {
       $("#clip-height").val($(this).scrollTop());
