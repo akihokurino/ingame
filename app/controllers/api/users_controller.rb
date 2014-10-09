@@ -15,7 +15,8 @@ class Api::UsersController < ApplicationController
   end
 
   def update
-    @result = @user.update_with_url(user_params)
+    clip = {width: params[:user][:clip_width].to_i, height: params[:user][:clip_height].to_i}
+    @result = @user.update_with_url(user_params, clip)
   end
 
   def search

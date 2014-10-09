@@ -202,11 +202,33 @@
       var tmp      = location.href.split("#")[0].split("/");
       this.user_id = tmp.pop() && tmp.pop();
 
-      this.upload  = new ProfileUpload("upload-btn", "thumbnail", this.user_id);
+      this.upload  = new ProfileUpload("upload-btn", "clip", null, null);
     },
     next: function (e) {
       e.preventDefault();
-      location.href = "/posts";
+
+      if (this.upload.file) {
+        var data = {
+          "user": {
+            "photo_path": this.upload.file,
+            "clip_width": this.upload.clip_width,
+            "clip_height": this.upload.clip_height
+          }
+        }
+        $.ajax({
+          type: "PUT",
+          url: "/api/users/" + this.user_id,
+          data: data,
+          success: function () {
+            location.href = "/posts";
+          },
+          error: function () {
+
+          }
+        })
+      } else {
+        location.href = "/posts";
+      }
     }
   })
 
