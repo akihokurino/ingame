@@ -13,8 +13,9 @@ class SocketsController < WebsocketRails::BaseController
 
   def new_like
     @from_user = User.find(message[:from_user_id])
-    @from_user
-    WebsocketRails[message[:to_user_id]].trigger "like", message
+    @from_user.follows.each do |user|
+      WebsocketRails[message[user[:id]]].trigger "like", message
+    end
   end
 
   def new_comment

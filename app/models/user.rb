@@ -39,14 +39,22 @@ class User < ActiveRecord::Base
   end
 
   def check_follow(current_user)
-    if Follow.where(from_user_id: current_user[:id]).pluck(:to_user_id).include?(self[:id])
+    if self.follows.pluck(:to_user_id).include?(self[:id])
       self.i_followed = true
     else
       self.i_followed = false
     end
 
-    self.follow_num   = Follow.where(from_user_id: self[:id]).count
-    self.follower_num = Follow.where(to_user_id: self[:id]).count
+    self.follow_num   = self.follows.count
+    self.follower_num = self.followers.count
+  end
+
+  def follows
+    Follow.where(from_user_id: self[:id])
+  end
+
+  def followers
+    Follow.where(to_user_id: self[:id])
   end
 
 	class << self
