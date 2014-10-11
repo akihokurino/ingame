@@ -8,18 +8,21 @@ class SocketsController < WebsocketRails::BaseController
   end
 
   def new_post
-    #WebsocketRails[:stream].trigger "post", message
-  end
-
-  def new_like
     @from_user = User.find(message[:from_user_id])
-    @from_user.follows.each do |user|
-      WebsocketRails[message[user[:id]]].trigger "like", message
-      WebsocketRails[message[user[:id]]].trigger "notification", message if message[:type] == "like"
+    @from_user.followers.each do |user|
+      WebsocketRails[message[user[:id]]].trigger "post", message
     end
   end
 
+  def new_like
+    @to_user = User.find(message[:to_user_id])
+    @to_user.followers.each do |user|
+      WebsocketRails[message[user[:id]]].trigger "like", message
+    end
+    WebsocketRails[message[:to_user_id]].trigger "notification", message if message[:type] == "like"
+  end
+
   def new_comment
-    #WebsocketRails[:stream].trigger "post", message
+
   end
 end

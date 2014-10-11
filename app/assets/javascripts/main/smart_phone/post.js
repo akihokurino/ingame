@@ -1,3 +1,4 @@
+//= require ../../libs/socket.js
 //= require ../../models/log.js
 //= require ../../models/game.js
 //= require ../../models/game_result.js
@@ -152,6 +153,14 @@
         url: "/api/posts",
         data: data,
         success: function (data) {
+          var data = {
+            type: "post",
+            post: data.last_post,
+            from_user_id: post_socket.user_id
+          }
+
+          post_socket.send(data);
+
           location.href = "/posts";
         },
         error: function () {

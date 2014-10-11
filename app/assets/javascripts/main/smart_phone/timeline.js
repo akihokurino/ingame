@@ -48,6 +48,11 @@
         });
       }
 
+      post_socket.callback = function (data) {
+        var post = new Post(data.post);
+        that.posts_view.collection.add(post);
+      }
+
 
       this.post_collection.fetch({
         data: {page: this.page},

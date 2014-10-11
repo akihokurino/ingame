@@ -14,7 +14,9 @@ Socket.prototype = {
     this.dispatcher.trigger(this.eventname, {data: data});
   },
   receive: function (data) {
-    this.callback(data);
+    if (this.callback) {
+      this.callback(data);
+    }
   }
 }
 
