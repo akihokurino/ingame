@@ -22,7 +22,14 @@ class Api::PostsController < ApplicationController
   def create
     params[:post][:user_id] = @current_user[:id]
     @last_post              = Post.create!(post_params)
-    @last_post.facebook(@current_user)
+
+    case params[:post][:provider]
+    when "facebook"
+      @last_post.facebook(@current_user)
+    when "twitter"
+      @last_post.twitter(@current_user)
+    end
+
     unless params[:post][:files].blank?
       @last_post.save_with(params[:post][:files])
     end

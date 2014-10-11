@@ -40,12 +40,23 @@ class Post < ActiveRecord::Base
   def facebook(current_user)
     me = FbGraph::User.me(current_user.token)
     me.feed!(
-      :message => 'Facebook に投稿するアプリのテスト！',
+      :message => self[:text],
       #:picture => 'https://graph.facebook.com/matake/picture',
       #:link => 'https://github.com/bussorenre',
-      :name => 'facebook Post Sample',
-      :description => 'Facebook に投稿するアプリのサンプル'
+      :name => "Gameful",
+      :description => "Posted from Gameful"
     )
+  end
+
+  def twitter(current_user)
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key        = "rfKeEqmpWn1KWj6XKoELR54YA"
+      config.consumer_secret     = "iUGETGMiVp4qCMRM9eK4H011pBdUtslVgSUPsbyZXfNUTAzOXU"
+      config.access_token        = current_user[:token]
+      config.access_token_secret = current_user[:secret_token]
+    end
+
+    client.update(self[:text])
   end
 
   def datetime

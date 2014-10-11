@@ -54,12 +54,13 @@ class User < ActiveRecord::Base
     	create! do |user|
       	user.provider = auth["provider"]
       	user.uid      = auth["uid"]
-
-      	if user.provider == "facebook"
-         	user.username = auth["info"]["name"]
-          user.token    = auth["credentials"]["token"]
-      	elsif user.provider == "twitter"
-         	user.username = auth["info"]["nickname"]
+        user.token    = auth["credentials"]["token"]
+        case user.provider
+        when "facebook"
+          user.username = auth["info"]["name"]
+        when "twitter"
+          user.username     = auth["info"]["nickname"]
+          user.secret_token = auth["credentials"]["secret"]
       	end
     	end
   	end

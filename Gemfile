@@ -52,6 +52,7 @@ end
 
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'twitter'
 gem 'omniauth-facebook'
 gem 'fb_graph'
 

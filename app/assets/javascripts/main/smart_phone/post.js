@@ -94,7 +94,9 @@
     el: $(".post-new-page"),
     template: _.template($("#write-template").html()),
     events: {
-      "click .submit": "post"
+      "click .submit":   "post",
+      "click .facebook": "facebook",
+      "click .twitter":  "twitter"
     },
     initialize: function () {
       this.$el.html("");
@@ -105,6 +107,7 @@
       this.log_id   = tmp.pop();
       this.game_id  = tmp.pop();
       this.text     = $("textarea");
+      this.provider = null;
 
       this.upload   = new PostUpload("upload-btn", "thumbnail");
 
@@ -123,15 +126,24 @@
         }
       })
     },
+    facebook: function (e) {
+      e.preventDefault();
+      this.provider = "facebook";
+    },
+    twitter: function (e) {
+      e.preventDefault();
+      this.provider = "twitter";
+    },
     post: function (e) {
       e.preventDefault();
 
       var data = {
         "post": {
-          "game_id": this.game_id,
-          "log_id":  this.log_id,
-          "text":    this.text.val(),
-          "files":   this.upload.files
+          "game_id":  this.game_id,
+          "log_id":   this.log_id,
+          "text":     this.text.val(),
+          "files":    this.upload.files,
+          "provider": this.provider
         }
       }
 

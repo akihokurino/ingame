@@ -1,5 +1,6 @@
 Ingame::Application.routes.draw do
   match '/*path' => 'application#cors_preflight_check', :via => :options
+
   resources :users, only: ["show", "edit", "update"] do
     collection do
       get "login"
