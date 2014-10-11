@@ -11,12 +11,25 @@
       "click .notify": "showNotifications"
     },
     initialize: function () {
+      var that = this;
       _.bindAll(this, "hideNotifications");
 
       this.notification_collection = new Notifications();
       this.getNotificationCount();
 
       event_handle.discribe("hideNotifications", this.hideNotifications);
+
+
+      notification_socket.callback = function (data) {
+        var new_notification_count;
+        if (that.$el.find(".notifyNum").css("display") == "none") {
+          new_notification_count = 1;
+        } else {
+          new_notification_count = parseInt(that.$el.find(".notifyNum").html()) + 1;
+        }
+        console.log(new_notification_count)
+        that.$el.find(".notifyNum").css("display", "block").html(new_notification_count);
+      }
     },
     getNotificationCount: function () {
       var that = this;

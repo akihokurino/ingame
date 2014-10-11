@@ -18,6 +18,7 @@ Socket.prototype = {
   }
 }
 
-var post_socket    = new Socket("localhost:3000/websocket", true, "post", null);
-var like_socket    = new Socket("localhost:3000/websocket", true, "like", null);
-var comment_socket = new Socket("localhost:3000/websocket", true, "comment", null);
+var post_socket         = new Socket("localhost:3000/websocket", true, "post", null);
+var like_socket         = new Socket("localhost:3000/websocket", true, "like", null);
+var comment_socket      = new Socket("localhost:3000/websocket", true, "comment", null);
+var notification_socket = new Socket("localhost:3000/websocket", true, "notification", null);

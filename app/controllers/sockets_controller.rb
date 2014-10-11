@@ -15,6 +15,7 @@ class SocketsController < WebsocketRails::BaseController
     @from_user = User.find(message[:from_user_id])
     @from_user.follows.each do |user|
       WebsocketRails[message[user[:id]]].trigger "like", message
+      WebsocketRails[message[user[:id]]].trigger "notification", message if message[:type] == "like"
     end
   end
 
