@@ -14,4 +14,6 @@ WebsocketRails::EventMap.describe do
 
   subscribe :client_connected, to: SocketsController, with_method: :connect_user
   subscribe :post,             to: SocketsController, with_method: :new_post
+  subscribe :like,             to: SocketsController, with_method: :new_like
+  subscribe :comment,          to: SocketsController, with_method: :new_comment
 end

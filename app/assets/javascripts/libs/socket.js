@@ -1,8 +1,10 @@
 var Socket = function (url, useWebsocket, eventname, callback) {
   this.dispatcher = new WebSocketRails(url, useWebsocket);
   this.eventname  = eventname;
-  this.dispatcher.subscribe("stream");
+  this.user_id    = $("#wrapper").data("userid");
+  this.callback   = callback;
   this.dispatcher.bind(this.eventname, this.receive);
+  this.dispatcher.subscribe(this.user_id);
 }
 
 Socket.prototype = {
@@ -13,3 +15,7 @@ Socket.prototype = {
     console.log(data);
   }
 }
+
+var post_socket    = new Socket("localhost:3000/websocket", true, "post", null);
+var like_socket    = new Scoket("localhost:3000/websocket", true, "like", null);
+var comment_socket = new Socket("localhost:3000/websocket", true, "comment", null);

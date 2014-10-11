@@ -8,6 +8,7 @@ class SocketsController < WebsocketRails::BaseController
   end
 
   def new_post
-    WebsocketRails[:stream].trigger "post", message
+    p message
+    #WebsocketRails[:stream].trigger "post", message
   end
 end

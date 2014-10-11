@@ -45,6 +45,8 @@ var PostView = Backbone.View.extend({
               "post_likes_count": parseInt(that.model.get("post_likes_count")) + 1
             });
           }
+
+          like_socket.send("like");
         },
         error: function () {
 
@@ -65,6 +67,8 @@ var PostView = Backbone.View.extend({
             "post_likes_count": parseInt(that.model.get("post_likes_count")) - 1
           });
         }
+
+        like_socket.send("unlike");
       },
       error: function () {
 

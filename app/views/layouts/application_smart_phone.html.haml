@@ -9,7 +9,7 @@
     = yield :head
     = csrf_meta_tags
   %body
-    #wrappers
+    #wrapper{"data-userid" => @current_user[:id]}
       = yield
     .layer
 

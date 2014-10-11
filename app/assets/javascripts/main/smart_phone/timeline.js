@@ -30,6 +30,7 @@
       event_handle.discribe("showComment", this.showComment);
 
 
+
       this.post_collection.fetch({
         data: {page: this.page},
         success: function (model, response, options) {
