@@ -53,6 +53,23 @@
         that.posts_view.collection.add(post);
       }
 
+      comment_socket.callback = function (data) {
+        that.post_collection.find(function (model) {
+          if (model.id == data.post_id) {
+            var new_comment_count;
+            if (data.type == "comment") {
+              new_comment_count = parseInt(model.get("post_comments_count")) + 1
+            } else if (data.type == "uncomment") {
+              new_comment_count = parseInt(model.get("post_comments_count")) - 1;
+            }
+
+            model.set({
+              "post_comments_count": new_comment_count
+            });
+          }
+        });
+      }
+
 
       this.post_collection.fetch({
         data: {page: this.page},
@@ -137,6 +154,17 @@
             that.commented_post_model.set("post_comments_count", that.commented_post_model.get("post_comments_count") + 1);
 
             that.comment_input.val("");
+
+            var data = {
+              type: "comment",
+              comment: response.get("comment"),
+              post_id: that.commented_post_model.id,
+              from_user_id: comment_socket.user_id,
+              to_user_id: that.commented_post_model.get("user").id
+            }
+
+            comment_socket.send(data);
+
           },
           error: function () {
 
