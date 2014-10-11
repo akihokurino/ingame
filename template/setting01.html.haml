@@ -10,18 +10,29 @@
   %body
     %header.settingHeader
       .settingHeaderInner
-        %p.step 1/3
+        %h1.logo Gameful
         .stepBar01
+        %p.stepTxt 登録は簡単です
     %section.mainContent
-      %h1.mainTtl ようそこ、Playdyへ的な。
-      %p.mainTxt まずはお気に入りのゲームをライブラリに登録しましょう的な。
+      %h1.mainTtl ようそこ、Gamefulへ。
+      %p.mainTxt
+        まずはお気に入りのゲームをライブラリに登録しましょう。
+        %br
+        ゲームは、後から好きなだけ追加することができます。
       %form.searchWrap
-        %input.search{type: "text", placeholder: "ゲーム名で検索的な"}
+        %input.search{type: "text", placeholder: "キーワードでゲームを探す"}
       %a.nextBtn{href: ""} 次へ
-      %ul.gameListWrap
-        - 16.times do |i|
-          %li.item
-            %article.gameList
+      .gameListBox
+        %ul.gameListWrap
+          - 16.times do |i|
+            %li.item
+              %article.gameList
+                %figure.gameImgWrap
+                  %img.gameImg{src: "../test_set/test03.jpg", width: "121", alt: ""}
+                %ul.starList
+                  - 4.times do |i|
+                    %li.starOn ★
+                  %li.starOff ☆
     %footer.footer
       %ul.ftList
         %li.item
