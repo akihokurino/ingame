@@ -17,24 +17,28 @@ class SocketsController < WebsocketRails::BaseController
   def like
     @to_user = User.find(message[:to_user_id])
 
-    WebsocketRails[@to_user[:id]].trigger "like", message
+    WebsocketRails[@to_user[:id]].trigger "like", message unless @to_user[:id] == message[:from_user_id]
 
     @to_user.follower_users.each do |user|
-      WebsocketRails[user[:id]].trigger "like", message
+      WebsocketRails[user[:id]].trigger "like", message unless user[:id] == message[:from_user_id]
     end
 
-    WebsocketRails[message[:to_user_id]].trigger "notification", message if message[:type] == "like"
+    if @to_user[:id] != message[:from_user_id] && message[:type] == "like"
+      WebsocketRails[message[:to_user_id]].trigger "notification", message
+    end
   end
 
   def comment
     @to_user = User.find(message[:to_user_id])
 
-    WebsocketRails[@to_user[:id]].trigger "comment", message
+    WebsocketRails[@to_user[:id]].trigger "comment", message unless @to_user[:id] == message[:from_user_id]
 
     @to_user.follower_users.each do |user|
-      WebsocketRails[user[:id]].trigger "comment", message
+      WebsocketRails[user[:id]].trigger "comment", message unless user[:id] == message[:from_user_id]
     end
 
-    WebsocketRails[message[:to_user_id]].trigger "notification", message if message[:type] == "comment"
+    if @to_user[:id] != message[:from_user_id] && message[:type] == "comment"
+      WebsocketRails[message[:to_user_id]].trigger "notification", message
+    end
   end
 end
