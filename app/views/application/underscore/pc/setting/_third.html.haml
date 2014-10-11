@@ -1,18 +1,19 @@
 %script{type: "text/template", id: "third-template"}
   %header.settingHeader
     .settingHeaderInner
-      %p.step 3/3!!
+      %h1.logo Gameful
       .stepBar03
+      %p.stepTxt あと少しで終わりますよ
   %section.mainContent
-    %h1.mainTtl 素敵なプロフィール写真を設定しましょう的な
+    %h1.mainTtl 写真は重要です。ゲーマーにとっても。
     %p.mainTxt
-      他のユーザーがあなたを認識する、最初の印象です。
+      プロフィール写真を設定すれば、友達や他のユーザーから発見されやすくなります。
       %br
-      素敵な写真を選びましょうとかなんとか
-    %a.nextBtn03.next-page{href: ""} 次へ
+      オンラインゲームにおける、アバターアイコンと同じですね。
     #thumbnail
-      = image_tag "pc/setting_img01.png", width: "180", height: "180", alt: "", class: "thumbnailImg"
+      = image_tag "pc/default_profImg.png", width: "157", height: "157", alt: "", class: "thumbnailImg"
     .uploadBtnWrap
       .uploadBtnTxt 写真をアップロード
       %form
         %input.uploadBtn#upload-btn{type: "file", value: "写真をアップロード"}
+    %a.nextBtn03.next-page{href: ""} 次へ
