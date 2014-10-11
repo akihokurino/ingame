@@ -3,7 +3,9 @@ class Api::PostLikesController < ApplicationController
 		params[:post_like][:user_id] = @current_user[:id]
 		@result                      = PostLike.check_and_create(post_like_params)
 
-		Notification.create(from_user_id: @current_user[:id], to_user_id: params[:post_like][:to_user_id], notification_type_id: 2)
+		unless @current_user[:id].to_i == params[:post_like][:to_user_id].to_i
+			Notification.create(from_user_id: @current_user[:id], to_user_id: params[:post_like][:to_user_id], notification_type_id: 2)
+		end
 	end
 
 	def destroy
