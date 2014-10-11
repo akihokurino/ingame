@@ -9,7 +9,7 @@ class SocketsController < WebsocketRails::BaseController
 
   def post
     @from_user = User.find(message[:from_user_id])
-    @from_user.followers.each do |user|
+    @from_user.follower_users.each do |user|
       WebsocketRails[user[:id]].trigger "post", message
     end
   end
@@ -19,7 +19,7 @@ class SocketsController < WebsocketRails::BaseController
 
     WebsocketRails[@to_user[:id]].trigger "like", message
 
-    @to_user.followers.each do |user|
+    @to_user.follower_users.each do |user|
       WebsocketRails[user[:id]].trigger "like", message
     end
 
@@ -31,7 +31,7 @@ class SocketsController < WebsocketRails::BaseController
 
     WebsocketRails[@to_user[:id]].trigger "comment", message
 
-    @to_user.followers.each do |user|
+    @to_user.follower_users.each do |user|
       WebsocketRails[user[:id]].trigger "comment", message
     end
 

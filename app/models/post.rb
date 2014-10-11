@@ -93,7 +93,7 @@ class Post < ActiveRecord::Base
 
     def get_liker_posts_of_game(current_user_id, game_id, page)
       offset = (page - 1) * LIMIT
-      posts  = self.where(game_id: game_id).all_include.offset(offset).limit(LIMIT).order("post_likes_count DESC")
+      posts  = self.where(game_id: game_id).all_include.offset(offset).limit(LIMIT).reorder("post_likes_count DESC")
       posts  = self.i_like?(posts, current_user_id)
     end
 
