@@ -1,28 +1,35 @@
 @import "_function.css.scss";
 
 /*---   common   ---------------------------*/
-$baseColor: #1de9b6;
+$width: 960px !default;
 html {
 	background: #fff;
 }
 
 /*---   .settingHeader   ---------------------------*/
 .settingHeader {
-	padding: 26px 0;
-	background: #2d3e58;
+	padding: 13px 0 10px;
+	background: $color-black;
 
 	/*---   .settingHeaderInner   ----------*/
 	&Inner {
-		width: 565px;
+		width: $width;
 		margin: 0 auto;
 		@include clearfix;
 
-		/*---   .step   ---*/
-		.step {
+		/*---   .logo   ---*/
+		.logo {
 			float: left;
-			color: $baseColor;
-			font-size: 18px;
-			line-height: 20px;
+			color: $color_green;
+			font-size: 28px;
+		}
+		/*---   .stepTxt   ---*/
+		.stepTxt {
+			float: right;
+			margin: 9px 10px 7px;
+			color: #fff;
+			font-size: 12px;
+			line-height: 26px;
 		}
 		/*---   .stepBar01, 02, 03   ---*/
 		$cntNum: 3;
@@ -30,33 +37,36 @@ html {
 			.stepBar0#{$i} {
 				float: right;
 				position: relative;
-				width: 514px;
-				height: 20px;
-				background: #b1bfbb;
+				width: 524px;
+				height: 24px;
+				margin: 9px 0;
+				@include border-radius(2px);
+				background: #222;
 
 				&:before {
 					position: absolute;
-					top: 0;
-					left: 0;
-					height: 20px;
-					background: $baseColor;
+					top: 4px;
+					left: 5px;
+					height: 16px;
+					@include border-radius(2px);
+					background: $color-green;
 					content: "";
 				}
 			}
 		}
 		.stepBar01 {
 			&:before {
-				width: 33%;
+				width: 175px;
 			}
 		}
 		.stepBar02 {
 			&:before {
-				width: 66%;
+				width: 350px;
 			}
 		}
 		.stepBar03 {
 			&:before {
-				width: 100%;
+				width: 514px;
 			}
 		}
 	}
@@ -65,12 +75,12 @@ html {
 /*---   .mainContent   ---------------------------*/
 .mainContent {
 	position: relative;
-	padding: 32px 0 40px;
+	padding-top: 32px;
 
 	/*---   .mainTtl   ----------*/
 	.mainTtl {
 		margin-bottom: 40px;
-		color: $baseColor;
+		color: $color-green;
 		font-size: 36px;
 		text-align: center;
 	}
@@ -82,66 +92,96 @@ html {
 		text-align: center;
 	}
 	/*---   .search   ----------*/
+	.searchWrap {
+		position: relative;
+		width: 390px;
+		margin: 0 auto;
+		border: 3px solid #ccc;
+		@include border-radius(7px);
+		background: #fff;
+
+		&:after {
+			position: absolute;
+			top: 4px;
+			left: 33px;
+			height: 26px;
+			border-left: 1px solid #cecece;
+			content: "";
+		}
+	}
 	.search {
-		display: block;
-		width: 400px;
-		height: 40px;
-		margin: 0 auto 30px;
-		padding-left: 10px;
-		border: 3px solid $baseColor;
-		@include border-radius(5px);
+		width: 390px;
+		height: 34px;
+		margin: 0 auto;
+		padding-left: 40px;
+		border: none;
 		@include box-sizing;
-		font-size: 14px;
+		@include img_set-PC2(6px, 7px);
+		@include appearance;
 		outline: 0;
 
 		&::-webkit-input-placeholder {
-			color: #a2a2a2;
+			color: #cbcbcb;
 			font-size: 14px;
-			line-height: 1.8;
 		}
 	}
 	/*---   .nextBtn   ----------*/
 	.nextBtn {
 		position: absolute;
-		top: 214px;
+		top: 243px;
 		left: 50%;
-		width: 95px;
-		height: 40px;
-		margin-left: 286px;
-		background: $baseColor;
+		width: 88px;
+		height: 30px;
+		margin-left: 247px;
+		@include border-radius(2px);
+		background: $color-green;
 		color: #fff;
 		font-weight: bold;
-		font-size: 18px;
+		font-size: 14px;
 		text-align: center;
-		line-height: 40px;
+		line-height: 30px;
 
 		&:hover {
 			text-decoration: none;
 		}
 		&03 {
-			@extend .nextBtn;
-			top: 138px;
+			position: absolute;
+			bottom: 202px;
+			left: 50%;
+			width: 88px;
+			height: 30px;
+			margin-left: 247px;
+			@include border-radius(2px);
+			background: $color-green;
+			color: #fff;
+			font-weight: bold;
+			font-size: 14px;
+			text-align: center;
+			line-height: 30px;
 		}
 	}
 	/*---   #thumbnail   ----------*/
 	#thumbnail {
-		width: 180px;
+		width: 157px;
 		margin: 0 auto 34px;
-	}
-	.thumbnailImg {
-		@include border-radius(90px);
+		border: 4px solid #ccc;
+		@include border-radius(5px);
+		line-height: 0;
 	}
 	/*---   .uploadBtnWrap   ----------*/
 	.uploadBtnWrap {
 		position: relative;
+		padding-bottom: 200px;
 	}
 	.uploadBtnTxt {
 		width: 190px;
 		height: 36px;
 		margin: 0 auto;
 		border: none;
+		@include border-radius(3px);
 		@include box-sizing;
-		background: $baseColor;
+		@include box-shadow(0, 2px, 0, 0, #3eb07e);
+		background: $color-green;
 		color: #fff;
 		font-size: 18px;
 		text-align: center;
@@ -158,57 +198,126 @@ html {
 		margin-left: -95px;
 		border: none;
 		@include box-sizing;
-		background: $baseColor;
+		background: $color-green;
 		cursor: pointer;
 		outline: 0;
 	}
 	/*---   .gameList   ----------*/
-	.gameListWrap {
-		width: 825px;
-		margin: 0 auto;
-		font-size: 0; /* inline-block用 */
+	.gameListBox {
+		width: 100%;
+		margin-top: 23px;
+		padding: 20px 0 40px;
+		border-top: 1px solid #e6e6e6;
+		background: #f2f2f2;
 
-		.item {
-			display: inline-block;
-			width: 123px;
-			height: 184px;
-			margin: 7px;
-			@include border-radius(3px);
-			background: #eee;
+		.gameListWrap {
+			width: 960px;
+			margin: 0 auto;
+			font-size: 0; /* inline-block用 */
+
+			.item {
+				display: inline-block;
+				width: 123px;
+				height: 214px;
+				margin: 7px;
+				border: 1px solid #e6e6e6;
+				@include box-sizing;
+				@include border-radius(3px);
+				background: #fff;
+			}
+		}
+		.gameList {
+			.gameImgWrap {
+				overflow: hidden;
+				width: 121px;
+				height: 176px;
+			}
+			.gameImg {
+				@include border-radius(3px 3px 0 0);
+			}
+		}
+		.starList {
+			width: 107px;
+			margin: 7px auto 0;
+
+			.starOn {
+				display: inline-block;
+				@include img_set-PC4(18px, 18px, 0, -293px);
+				margin-right: 4px;
+
+				&:last-child {
+					margin-right: 0;
+				}
+			}
+			.starOff {
+				display: inline-block;
+				@include img_set-PC4(18px, 18px, 0, -320px);
+				margin-right: 4px;
+
+				&:last-child {
+					margin-right: 0;
+				}
+			}
 		}
 	}
 	/*---   .friendList   ----------*/
-	.friendListWrap {
-		width: 810px;
-		margin: 0 auto;
-		font-size: 0; /* inline-block用 */
+	.friendListBox {
+		width: 100%;
+		margin-top: 23px;
+		padding: 20px 0 40px;
+		border-top: 1px solid #e6e6e6;
+		background: #f2f2f2;
 
-		.item {
-			display: inline-block;
-			width: 250px;
-			height: 70px;
-			margin: 10px;
-			padding: 18px 16px;
-			@include border-radius(3px);
-			@include box-sizing;
-			background: #eee;
-			@include clearfix;
+		.friendListWrap {
+			width: 580px;
+			margin: 0 auto;
+			font-size: 0; /* inline-block用 */
+
+			.item {
+				margin: 10px;
+				padding: 10px;
+				border: 1px solid #e6e6e6;
+				@include border-radius(3px);
+				@include box-sizing;
+				background: #fff;
+				@include clearfix;
+			}
 		}
-		.userImgWrap {
-			float: left;
-			margin-top: -5px;
-		}
-		.userImg {
-			@include border-radius(20px);
-		}
-		.userName, .userProf {
-			width: 160px;
-			height: 10px;
-			margin-left: 54px;
-			background: #dcdcdc;
-		}
-		.userName {
-			margin-bottom: 10px;
+		.friendList {
+			position: relative;
+
+			.userImgWrap {
+				float: left;
+				border: 1px solid #cfcfcf;
+			}
+			.userName {
+				margin-bottom: 5px;
+				margin-left: 54px;
+				padding-top: 4px;
+				color: #373737;
+				font-weight: bold;
+				font-size: 12px;
+			}
+			.userProf {
+				margin-left: 54px;
+				color: #7e7e7e;
+				font-size: 12px;
+			}
+			.followBtn {
+				position: absolute;
+				top: 5px;
+				right: 0;
+				width: 88px;
+				height: 30px;
+				@include border-radius(2px);
+				background: $color-green;
+				color: #fff;
+				font-weight: bold;
+				font-size: 14px;
+				text-align: center;
+				line-height: 30px;
+				cursor: pointer;
+			}
 		}
 	}
 }

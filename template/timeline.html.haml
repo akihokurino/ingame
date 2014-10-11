@@ -28,21 +28,88 @@
     %section.mainContent
       %h1.mainTtl タイムライン
       %a.postBtn{href: ""} 投稿ボタン　(インタラクションはあとで相談させてくれ)
-      - 3.times do |i|
-        %article.postBox
-          .topBox
-            %figure.profImg
-              %img{src: "", width: "44", height: "44", alt: "ユーザー画像"}
-            %a.account{href: ""} ユーザーネーム
-            %p.time 投稿時間
-            %p.status ステータス
-          %h2.gameTtl ゲームタイトル。ゲームタイトル。ゲームタイトル。ゲームタイトル。
-          %p.postTxt コメント本文。コメント本文。コメント本文。コメント本文。コメント本文。コメント本文。コメント本文。コメント本文。コメント本文。コメント本文。コメント本文。コメント本文。
-          .thumbnail
-            %img.thumbnailImg{src: "", alt: "アップロードした写真"}
-          %ul.actionList
-            %li.item.cmtBtn コメント
-            %li.item.fvrBtn いいね
+      %article.postBox
+        .topBox
+          %figure.profImg
+            %img{src: "../test_set/test02.png", width: "44", height: "44", alt: "ユーザー画像"}
+          %a.account{href: ""} Asuya Kono
+          %h2.gameTtl ゼルダの伝説 風のタクト HD
+          %p.statusPlayed クリア済み
+        %p.postTxt
+          高画質になって遊びやすくなってきたと感じます
+          %br
+          ＧＣの時の不満な点を改善したと思います
+          %br
+          しかしながら改善するなら削ったダンジョンを復活してほしかった
+        .thumbnail
+          %img.thumbnailImg{src: "", alt: "アップロードした写真"}
+        %p.time 3時間前
+        %ul.actionList
+          %li.cmtBtn コメント
+          %li.fvrBtn いいね！
+          %li.deleteBtn 削除
+      %article.postBox
+        .topBox
+          %figure.profImg
+            %img{src: "../test_set/test02.png", width: "44", height: "44", alt: "ユーザー画像"}
+          %a.account{href: ""} Asuya Kono
+          %h2.gameTtl ゼルダの伝説 風のタクト HD
+          %p.statusPlaying プレイ中
+        %p.postTxt
+          内容は最近のゲームの中でトップでした。グラフィックも非常に綺麗でかなり満足しました。
+          %br
+          …ですがシステム面に不満があり、この評価です。
+          %br
+          ・処理落ちが酷い（敵が多数出現した場合戦うのが苦痛です）
+          %br
+          ・アイテムが無いとボスが強すぎる（逆にあると非常に楽勝です）
+          %br
+          ・一度クリアしてもステージセレクトができない
+          %br
+          でも最後までクリアできたのはやはりシナリオのおかげです。（一度クリアするのに40時間ほどかかりました）ストーリを楽しみたい人にはいいゲームだと思います。
+        .thumbnail
+          %img.thumbnailImg{src: "", alt: "アップロードした写真"}
+        %p.time 3時間前
+        %ul.actionList
+          %li.cmtBtn コメント
+          %li.fvrBtn いいね！
+          %li.deleteBtn 削除
+        .commentBox
+          %figure.profImgWrap
+            %img.profImg{src: "../test_set/test02.png", width: "30", height: "30", alt: ""}
+          %form.commentWrap
+            %textarea.comment{placeholder: "コメントする"}
+      %article.postBox
+        .topBox
+          %figure.profImg
+            %img{src: "../test_set/test02.png", width: "44", height: "44", alt: "ユーザー画像"}
+          %a.account{href: ""} Asuya Kono
+          %h2.gameTtl ゼルダの伝説 風のタクト HD
+          %p.statusReady 気になる
+        %p.postTxt 気になってます。気になってます。気になってます。気になってます。気になってます。気になってます。
+        .thumbnail
+          %img.thumbnailImg{src: "", alt: "アップロードした写真"}
+        %p.time 3時間前
+        %ul.actionList
+          %li.cmtBtn コメント
+          %li.fvrBtn いいね！
+          %li.deleteBtn 削除
+        .commentBox
+          %ul.commentList
+            - 2.times do |i|
+              %li.item
+                %figure.profImgWrap
+                  %img.profImg{src: "../test_set/test02.png", width: "30", height: "30", alt: ""}
+                .commentInfo
+                  %a.account{href: ""} Asuya Kono
+                  %p.commentTime 3時間前
+                  %p.fvrBtn いいね！
+                  %p.userComment 俺も好きだよ！グラフィックがいいよね
+          .myCommentBox
+            %figure.profImgWrap
+              %img.profImg{src: "../test_set/test02.png", width: "30", height: "30", alt: ""}
+            %form.commentWrap
+              %textarea.comment{placeholder: "コメントする"}
     %footer.footer
       %ul.ftList
         %li.item
