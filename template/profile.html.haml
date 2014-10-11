@@ -10,12 +10,21 @@
   %body
     %header.header
       .headerInner
-        %h1.logo ロゴかなー
+        %h1.logo Gameful
+        %form.searchWrap
+          %input.search{placeholder: "キーワードでゲームを探す"}
         %nav.gnavi
           %ul.gnaviList
-            - 6.times do |i|
-              %li.item
-                %a.gnaviBtn{href: ""}
+            %li.item
+              %a.toTimelineBtn{href: ""} タイムライン
+            %li.item
+              %a.toProfileBtn{href: ""} マイページ
+            %li.item
+              %span.notify
+                通知
+                %span.notifyNum 1
+        %figure.profImgWrap
+          %img.profImg{src: "", width: "35", height: "35", alt: ""}
     %section.mainContent
       .profileBox
         .profileBoxInner
