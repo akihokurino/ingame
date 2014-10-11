@@ -79,20 +79,20 @@ $support-opera  : true;
     }
 }
 @mixin img_set-PC2($bpl, $bpt) {
-    background: url(/assets/images/pc/img_set.png) no-repeat $bpl $bpt;
+    background: url(/assets/pc/img_set.png) no-repeat $bpl $bpt;
 }
 @mixin img_set-PC4($width, $height, $bpl, $bpt) {
     width: $width;
     height: $height;
-    background: url(/assets/images/pc/img_set.png) no-repeat $bpl $bpt;
+    background: url(/assets/pc/img_set.png) no-repeat $bpl $bpt;
 }
 @mixin iconSprite2($bpl, $bpt) {
-    background: url(/assets/images/smart_phone/img_set.png) no-repeat $bpl $bpt;
+    background: url(/assets/smart_phone/img_set.png) no-repeat $bpl $bpt;
     background-size: 53px 354px;
 }
 @mixin iconSprite4($width, $height, $bpl, $bpt) {
     width: $width;
     height: $height;
-    background: url(/assets/images/smart_phone/img_set.png) no-repeat $bpl $bpt;
+    background: url(/assets/smart_phone/img_set.png) no-repeat $bpl $bpt;
     background-size: 53px 354px;
 }
