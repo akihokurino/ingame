@@ -1,12 +1,24 @@
 %script{type: "text/template", id: "second-template"}
   %header.settingHeader
     .settingHeaderInner
-      %p.step 2/3
+      %h1.logo Gameful
       .stepBar02
+      %p.stepTxt パーティは多いほうが有利ですよね
   %section.mainContent
-    %h1.mainTtl 親しい友人や、尊敬するゲーマーも的な
-    %p.mainTxt twitterやFacebookでもお友達を検索して、フォローしよう的な。
+    %h1.mainTtl 様々な人がGamefulを使っています。
+    %p.mainTxt
+      twitterやFacebookのお友達を検索して、フォローしましょう。
+      %br
+      有名なゲーマーや、尊敬するクリエイターも使っているかもしれません。
     %form.searchWrap
-      %input.search.user-input{type: "text", placeholder: "usernameで検索的な"}
+      %input.search.user-input{type: "text", placeholder: "キーワードでユーザーを探す"}
     %a.nextBtn.next-page{href: ""} 次へ
-    %ul.friendListWrap.user-list
+    .friendListBox
+      %ul.friendListWrap.user-list
+        %li.item
+          %article.friendList
+            %figure.userImgWrap
+              %img.userImg{src: "", width: "40", height: "40", alt: ""}
+            %p.userName Asuya Kono
+            %p.userProf プロフィールテキスト。プロフィールテキスト。プロフィールテ（略）
+            %p.followBtn フォロー
