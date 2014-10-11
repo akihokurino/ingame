@@ -25,16 +25,16 @@ class User < ActiveRecord::Base
     where("username LIKE ?", "%#{username}%").select(:id, :username, :photo_path)
   }
 
-  attr_accessor :i_followed, :follow_num, :follower_num
+  attr_accessor :i_followed, :follow_num, :follower_num, :clip_width, :clip_height
 
 
-	def update_with(user_params)
-  	user_params[:photo_path] = self.class.file_upload(user_params[:photo_path], "user") unless user_params[:photo_path].nil?
+	def update_with(user_params, clip = {})
+  	user_params[:photo_path] = self.class.file_upload(user_params[:photo_path], "user", clip) unless user_params[:photo_path].nil?
   	self.update(user_params) ? true : false
   end
 
-  def update_with_url(user_params)
-    user_params[:photo_path] = self.class.url_upload(user_params[:photo_path], "user") unless user_params[:photo_path].nil?
+  def update_with_url(user_params, clip = {})
+    user_params[:photo_path] = self.class.url_upload(user_params[:photo_path], "user", clip) unless user_params[:photo_path].nil?
     self.update(user_params) ? true : false
   end
 
@@ -69,6 +69,7 @@ class User < ActiveRecord::Base
       users  = users.keep_if do |user|
         user[:id] != current_user[:id] && !current_user.follows.pluck(:to_user_id).include?(user[:id])
       end
+
       users
     end
 

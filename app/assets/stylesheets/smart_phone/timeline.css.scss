@@ -159,7 +159,7 @@ html {
 		margin: 0 auto;
 		border-bottom: solid 1px #e2e2e2;
 		overflow: hidden;
-		.cancel-btn {
+		.cancel-modal-btn {
 			width: 70px;
 			height: 30px;
 			line-height: 30px;
@@ -235,7 +235,7 @@ html {
 			@include border-radius(3px);
 			@include box-sizing;
 		}
-		.submit-btn {
+		.submit-comment-btn {
 			float: right;
 			width: 17%;
 			height: 38px;

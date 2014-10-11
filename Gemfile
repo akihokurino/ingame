@@ -8,6 +8,8 @@ gem 'mysql2'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
+gem 'sass', '~> 3.3.9'
+# gem 'compass-rails', '~> 1.1.7'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -36,34 +38,40 @@ end
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
 # Use debugger
-# gem 'debugger', group: [:development, :test]
+gem 'debugger', group: [:development, :test]
 
 group :development do
   gem 'better_errors'
 end
 
-gem 'sass', '~> 3.3.9'
-# gem 'compass-rails', '~> 1.1.7'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
+
 gem 'haml-rails'
 gem 'haml'
+
 gem 'backbone-on-rails'
 gem 'haml-underscore-template'
+
 gem 'nokogiri'
-gem 'redis-rails'
+
 gem 'jpmobile', '~> 4.0.0'
-gem 'unicorn'
+
 gem 'rails_config'
+
 gem 'websocket-rails'
+
+gem 'redis-rails'
 gem 'hiredis'
 gem 'redis', :require => ["redis", "redis/connection/hiredis"]
+
+gem 'rmagick'
 
 

@@ -1,9 +1,13 @@
-var ProfileUpload = function (inputID, outputID, user_id) {
-  var that     = this;
-  this._input  = document.getElementById(inputID);
-  this._output = document.getElementById(outputID);
-  this.user_id = user_id;
-  if (this._input != null) {
+var ProfileUpload = function (input_id, output_id, user_id, clip) {
+  var that         = this;
+  this._input      = document.getElementById(input_id);
+  this._output     = document.getElementById(output_id);
+  this.user_id     = user_id;
+  this.file        = null;
+  this.clip        = clip;
+  this.clip_width  = null;
+  this.clip_height = null;
+  if(this._input != null){
     this._input.addEventListener("change", function () {
       that.changeFile();
     }, false);
@@ -14,15 +18,15 @@ ProfileUpload.prototype = {
   changeFile: function () {
     this.setThumbnail();
 
-    if (this.isPdf(this._input.files[0])) {
+    if(this.isPdf(this._input.files[0])){
       this.valid("document");
       return;
     }
-    if (this.isOffice(this._input.files[0])) {
+    if(this.isOffice(this._input.files[0])){
       this.valid("document");
       return;
     }
-    if (this.isVideo(this._input.files[0])) {
+    if(this.isVideo(this._input.files[0])){
       this.valid("video");
       return;
     }
@@ -32,37 +36,33 @@ ProfileUpload.prototype = {
     var that   = this;
     var reader = new FileReader();
     reader.addEventListener("load", function (e) {
-      that.send(reader.result);
+      that.file = reader.result;
       that.render(reader.result, name);
     });
     reader.readAsDataURL(file);
   },
-  send: function (data_url) {
-    var data = {
-      "user": {
-        "photo_path": data_url
-      }
-    }
-
-    $.ajax({
-      type: "PUT",
-      url: "/api/users/" + this.user_id,
-      data: data,
-      success: function (data) {
-        $(".next-page").attr("value", "次へ");
-      },
-      error: function () {
-        console.log("error");
-      }
-    })
-  },
   render: function (data, name) {
+    var that               = this;
     this._output.innerHTML = "";
-    var div                = document.createElement("div");
     var img                = document.createElement("img");
     img.src                = data;
-    div.appendChild(img);
-    this._output.appendChild(div);
+    this._output.appendChild(img);
+
+    if (this.clip) {
+      var width  = "#" + this.clip.clip_width;
+      var height = "#" + this.clip.clip_height;
+
+      this._output.addEventListener("scroll", function () {
+        $(height).val($(this).scrollTop());
+        $(width).val($(this).scrollLeft());
+      }, false);
+    } else {
+      $(".next-page").val("アップロード");
+      this._output.addEventListener("scroll", function () {
+        that.clip_height = $(this).scrollTop();
+        that.clip_width  = $(this).scrollLeft();
+      }, false);
+    }
   },
   isVideo: function (file) {
     return file.type.match("video.*") ? true : false;
@@ -77,7 +77,7 @@ ProfileUpload.prototype = {
     this._output.style.display = "block";
   },
   valid: function (type) {
-    if (this.uploads.length == 0) {
+    if(this.uploads.length == 0){
       this._output.style.display = "none";
       this._output.innerHTML     = "";
     }

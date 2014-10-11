@@ -1,4 +1,3 @@
-//= require ../../libs/event_handle.js
 //= require ../../models/notification.js
 //= require ../../collections/notifications.js
 //= require ../../views/notification_view.js
@@ -15,9 +14,9 @@
       _.bindAll(this, "hideNotifications");
 
       this.notification_collection = new Notifications();
-      this.event_handle            = new EventHandle();
-      this.event_handle.discribe("hideNotifications", this.hideNotifications);
       this.getNotificationCount();
+
+      event_handle.discribe("hideNotifications", this.hideNotifications);
     },
     getNotificationCount: function () {
       var that = this;
@@ -26,6 +25,7 @@
         url: "/api/notifications/count",
         success: function (data) {
           if (data.count > 0) {
+            that.$el.find(".notifyNum").css("display", "block");
             that.$el.find(".notifyNum").html(data.count);
           } else {
             that.$el.find(".notifyNum").css("display", "none");
@@ -41,10 +41,10 @@
 
       $(".notification-modal").css("display", "block");
       $(".layer").css("display", "block");
+      this.$el.find(".notifyNum").css("display", "none");
       this.$el.find(".notifyNum").html(0);
 
-      this.notifications_view              = new NotificationsView({collection: this.notification_collection});
-      this.notifications_view.event_handle = this.event_handle;
+      this.notifications_view = new NotificationsView({collection: this.notification_collection});
     },
     hideNotifications: function () {
       $(".notification-modal").css("display", "none");
