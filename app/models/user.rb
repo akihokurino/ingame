@@ -57,6 +57,7 @@ class User < ActiveRecord::Base
 
       	if user.provider == "facebook"
          	user.username = auth["info"]["name"]
+          user.token    = auth["credentials"]["token"]
       	elsif user.provider == "twitter"
          	user.username = auth["info"]["nickname"]
       	end

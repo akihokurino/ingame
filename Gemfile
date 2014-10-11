@@ -53,6 +53,7 @@ end
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
+gem 'fb_graph'
 
 gem 'haml-rails'
 gem 'haml'

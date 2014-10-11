@@ -37,6 +37,17 @@ class Post < ActiveRecord::Base
     end
   end
 
+  def facebook(current_user)
+    me = FbGraph::User.me(current_user.token)
+    me.feed!(
+      :message => 'Facebook に投稿するアプリのテスト！',
+      #:picture => 'https://graph.facebook.com/matake/picture',
+      #:link => 'https://github.com/bussorenre',
+      :name => 'facebook Post Sample',
+      :description => 'Facebook に投稿するアプリのサンプル'
+    )
+  end
+
   def datetime
     self[:created_at].strftime("%Y/%m/%d %H:%M:%S")
   end
