@@ -49,8 +49,10 @@
       }
 
       post_socket.callback = function (data) {
-        var post = new Post(data.post);
-        that.posts_view.collection.add(post);
+        var post      = new Post(data.post);
+        that.posts_view.collection.add(post, {silent: true});
+        var post_view = new PostView({model: post});
+        that.posts_view.$el.prepend(post_view.render().el);
       }
 
       comment_socket.callback = function (data) {
