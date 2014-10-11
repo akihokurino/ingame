@@ -1,3 +1,12 @@
+//カラーコード
+$color_black: #393c3f;
+$color_white: #dddcdc;
+$color_green: #24d387;
+$color_yellow: #e9d31d;
+$color_red: #e96969;
+$color_blue: #69a8e9;
+
+//IEサポート
 $support-ie6: false;
 $support-ie7: true;
 $support-ie8: true;
@@ -68,6 +77,14 @@ $support-opera  : true;
 	@if $support-ie6 or $support-ie7 {
         *zoom: 1;
     }
+}
+@mixin img_set-PC2($bpl, $bpt) {
+    background: url(../images/img_set.png) no-repeat $bpl $bpt;
+}
+@mixin img_set-PC4($width, $height, $bpl, $bpt) {
+    width: $width;
+    height: $height;
+    background: url(../images/img_set.png) no-repeat $bpl $bpt;
 }
 @mixin iconSprite2($bpl, $bpt) {
     background: url(/assets/smart_phone/img_set.png) no-repeat $bpl $bpt;
