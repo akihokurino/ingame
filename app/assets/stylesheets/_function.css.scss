@@ -1,3 +1,12 @@
+//カラーコード
+$color_black: #393c3f;
+$color_white: #dddcdc;
+$color_green: #24d387;
+$color_yellow: #e9d31d;
+$color_red: #e96969;
+$color_blue: #69a8e9;
+
+//IEサポート
 $support-ie6: false;
 $support-ie7: true;
 $support-ie8: true;
@@ -25,25 +34,25 @@ $support-opera  : true;
     -webkit-justify-content: space-between;
 }
 @mixin box-sizing {
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 @mixin background-size($size) {
-	-moz-background-size: $size;
-	-o-background-size: $size;
-	-webkit-background-size: $size;
-	background-size: $size;
+    -moz-background-size: $size;
+    -o-background-size: $size;
+    -webkit-background-size: $size;
+    background-size: $size;
 }
 @mixin border-radius($size) {
-	-moz-border-radius: $size;
-	-webkit-border-radius: $size;
-	border-radius: $size;
+    -moz-border-radius: $size;
+    -webkit-border-radius: $size;
+    border-radius: $size;
 }
 @mixin gradient($from, $to) {
-	background: -moz-linear-gradient($from, $to);
-	background: -webkit-linear-gradient($from, $to);
-	background: linear-gradient($from, $to);
+    background: -moz-linear-gradient($from, $to);
+    background: -webkit-linear-gradient($from, $to);
+    background: linear-gradient($from, $to);
 }
 @mixin box-shadow($side, $top, $shade, $spread, $color) {
   -moz-box-shadow: $side $top $shade $spread $color;
@@ -51,31 +60,39 @@ $support-opera  : true;
   box-shadow: $side $top $shade $spread $color;
 }
 @mixin font-weight($size, $color) {
-	-webkit-text-stroke: $size $color;
+    -webkit-text-stroke: $size $color;
 }
 @mixin appearance {
-	-moz-appearance: none;
-	-webkit-appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
 }
 @mixin clearfix {
-	&:before, &:after {
-		display: table;
+    &:before, &:after {
+        display: table;
         content: "";
-	}
+    }
     &:after {
         clear: both;
     }
-	@if $support-ie6 or $support-ie7 {
+    @if $support-ie6 or $support-ie7 {
         *zoom: 1;
     }
 }
+@mixin img_set-PC2($bpl, $bpt) {
+    background: url(/assets/images/pc/img_set.png) no-repeat $bpl $bpt;
+}
+@mixin img_set-PC4($width, $height, $bpl, $bpt) {
+    width: $width;
+    height: $height;
+    background: url(/assets/images/pc/img_set.png) no-repeat $bpl $bpt;
+}
 @mixin iconSprite2($bpl, $bpt) {
-    background: url(/assets/smart_phone/img_set.png) no-repeat $bpl $bpt;
+    background: url(/assets/images/smart_phone/img_set.png) no-repeat $bpl $bpt;
     background-size: 53px 354px;
 }
 @mixin iconSprite4($width, $height, $bpl, $bpt) {
     width: $width;
     height: $height;
-    background: url(/assets/smart_phone/img_set.png) no-repeat $bpl $bpt;
+    background: url(/assets/images/smart_phone/img_set.png) no-repeat $bpl $bpt;
     background-size: 53px 354px;
 }
