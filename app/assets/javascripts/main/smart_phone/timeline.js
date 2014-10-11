@@ -1,3 +1,4 @@
+//= require ../../libs/socket.js
 //= require ../../models/post.js
 //= require ../../models/comment.js
 //= require ../../collections/posts.js
@@ -29,6 +30,23 @@
 
       event_handle.discribe("showComment", this.showComment);
 
+
+      like_socket.callback = function (data) {
+        that.post_collection.find(function (model) {
+          if (model.id == data.post_id) {
+            var new_like_count;
+            if (data.type == "like") {
+              new_like_count = parseInt(model.get("post_likes_count")) + 1;
+            } else if (data.type == "unlike") {
+              new_like_count = parseInt(model.get("post_likes_count")) - 1;
+            }
+
+            model.set({
+              "post_likes_count": new_like_count
+            });
+          }
+        });
+      }
 
 
       this.post_collection.fetch({

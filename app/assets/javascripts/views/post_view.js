@@ -46,7 +46,14 @@ var PostView = Backbone.View.extend({
             });
           }
 
-          like_socket.send("like");
+          var data = {
+            type: "like",
+            post_id: that.model.id,
+            from_user_id: like_socket.user_id,
+            to_user_id: that.model.get("user").id
+          }
+
+          like_socket.send(data);
         },
         error: function () {
 
@@ -68,7 +75,14 @@ var PostView = Backbone.View.extend({
           });
         }
 
-        like_socket.send("unlike");
+        var data = {
+          type: "unlike",
+          post_id: that.model.id,
+          from_user_id: like_socket.user_id,
+          to_user_id: that.model.get("user").id
+        }
+
+        like_socket.send(data);
       },
       error: function () {
 

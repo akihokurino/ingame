@@ -8,5 +8,7 @@
 		= yield :head
 		= csrf_meta_tags
 	%body
-		#wrappers
+		#wrapper{"data-userid" => @current_user ? @current_user[:id] : nil}
 			= yield
+
+		= yield :last
