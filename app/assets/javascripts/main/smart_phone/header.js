@@ -27,7 +27,7 @@
         } else {
           new_notification_count = parseInt(that.$el.find(".notifyNum").html()) + 1;
         }
-        console.log(new_notification_count)
+
         that.$el.find(".notifyNum").css("display", "block").html(new_notification_count);
       }
     },
