@@ -8,6 +8,9 @@ EventHandle.prototype = {
   },
   publish: function (event, params) {
     this.dispatcher.trigger(event, params);
+  },
+  destroy: function (event) {
+    this.dispatcher.off(event);
   }
 }
 
