@@ -7,7 +7,38 @@ class SocketsController < WebsocketRails::BaseController
     logger.debug("connected user")
   end
 
-  def new_post
-    WebsocketRails[:stream].trigger "post", message
+  def post
+    @from_user = User.find(message[:from_user_id])
+    @from_user.follower_users.each do |user|
+      WebsocketRails[user[:id]].trigger "post", message
+    end
+  end
+
+  def like
+    @to_user = User.find(message[:to_user_id])
+
+    WebsocketRails[@to_user[:id]].trigger "like", message unless @to_user[:id] == message[:from_user_id]
+
+    @to_user.follower_users.each do |user|
+      WebsocketRails[user[:id]].trigger "like", message unless user[:id] == message[:from_user_id]
+    end
+
+    if @to_user[:id] != message[:from_user_id] && message[:type] == "like"
+      WebsocketRails[message[:to_user_id]].trigger "notification", message
+    end
+  end
+
+  def comment
+    @to_user = User.find(message[:to_user_id])
+
+    WebsocketRails[@to_user[:id]].trigger "comment", message unless @to_user[:id] == message[:from_user_id]
+
+    @to_user.follower_users.each do |user|
+      WebsocketRails[user[:id]].trigger "comment", message unless user[:id] == message[:from_user_id]
+    end
+
+    if @to_user[:id] != message[:from_user_id] && message[:type] == "comment"
+      WebsocketRails[message[:to_user_id]].trigger "notification", message
+    end
   end
 end

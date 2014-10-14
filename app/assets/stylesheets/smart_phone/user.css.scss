@@ -111,4 +111,15 @@
     background-color: transparent;
     @include font-weight(1px, #ffffff);
   }
+
+  #clip {
+    display: none;
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    margin-top: 50px;
+    overflow: scroll;
+    border: solid 2px #000;
+  }
 }

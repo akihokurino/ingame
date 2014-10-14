@@ -1,3 +1,4 @@
+//= require ../../libs/socket.js
 //= require ../../models/game_result.js
 //= require ../../models/user_result.js
 //= require ../../collections/game_results.js

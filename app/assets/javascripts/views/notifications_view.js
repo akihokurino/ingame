@@ -6,7 +6,7 @@ var NotificationsView = Backbone.View.extend({
   initialize: function () {
     var that = this;
     this.listenTo(this.collection, "add", this.addNotification);
-
+    this.$el.find(".notification-list").html("");
     this.collection.fetch({
       data: {},
       success: function (model, response, options) {
@@ -33,5 +33,6 @@ var NotificationsView = Backbone.View.extend({
   },
   hideNotifications: function () {
     this.stopListening();
+    event_handle.publish("hideNotifications");
   }
 })

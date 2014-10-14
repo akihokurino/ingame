@@ -10,21 +10,22 @@
   %body
     %header.settingHeader
       .settingHeaderInner
-        %p.step 3/3!!
+        %h1.logo Gameful
         .stepBar03
+        %p.stepTxt あと少しで終わりますよ
     %section.mainContent
-      %h1.mainTtl 素敵なプロフィール写真を設定しましょう的な
+      %h1.mainTtl 写真は重要です。ゲーマーにとっても。
       %p.mainTxt
-        他のユーザーがあなたを認識する、最初の印象です。
+        プロフィール写真を設定すれば、友達や他のユーザーから発見されやすくなります。
         %br
-        素敵な写真を選びましょうとかなんとか
-      %a.nextBtn03{href: ""} 次へ
+        オンラインゲームにおける、アバターアイコンと同じですね。
       #thumbnail
-        %img.thumbnailImg{src: "images/setting_img01.png", width: "180", height: "180", alt: ""}
+        %img.thumbnailImg{src: "images/default_profImg.png", width: "157", height: "157", alt: ""}
       .uploadBtnWrap
         .uploadBtnTxt 写真をアップロード
         %form
           %input.uploadBtn{type: "file", value: "写真をアップロード"}
+      %a.nextBtn03{href: ""} 次へ
     %footer.footer
       %ul.ftList
         %li.item

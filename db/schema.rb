@@ -119,13 +119,15 @@ ActiveRecord::Schema.define(version: 20140911143336) do
     t.string   "introduction"
     t.integer  "logs_count",               default: 0
     t.integer  "posts_count",              default: 0
-    t.string   "photo_path",               default: "default.jpg"
+    t.string   "photo_path",               default: "default.png"
     t.string   "place"
     t.boolean  "is_first",                 default: true
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "provider"
     t.string   "uid"
+    t.text     "token"
+    t.text     "secret_token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

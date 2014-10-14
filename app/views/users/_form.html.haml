@@ -1,4 +1,6 @@
 = form_for @user do |f|
+  = f.hidden_field :clip_width, id: "clip-width"
+  = f.hidden_field :clip_height, id: "clip-height"
   .file-input
     #thumbnail
       = image_tag "/user_photos/#{@user.photo_path}", class: "profile-img"

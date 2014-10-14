@@ -20,8 +20,8 @@ a:hover {
 
 /*---   .header   ---------------------------*/
 .header {
-	padding: 24px 0;
-	background: #999;
+	padding: 13px 0 10px;
+	background: $color_black;
 
 	&Inner {
 		width: $width;
@@ -31,11 +31,46 @@ a:hover {
 	}
 	.logo {
 		float: left;
+		margin-right: 40px;
 		padding-left: 30px;
-		font-size: 18px;
+		color: $color_green;
+		font-size: 28px;
+	}
+	.searchWrap {
+		position: relative;
+		float: left;
+		margin-top: 3px;
+		margin-right: 16px;
+		@include border-radius(2px);
+		background: #fff;
+
+		&:after {
+			position: absolute;
+			top: 4px;
+			left: 33px;
+			height: 26px;
+			border-left: 1px solid #cecece;
+			content: "";
+		}
+	}
+	.search {
+		width: 390px;
+		height: 34px;
+		padding-left: 40px;
+		border: none;
+		@include box-sizing;
+		@include img_set-PC2(6px, 7px);
+		@include appearance;
+		outline: 0;
+
+		&::-webkit-input-placeholder {
+			color: #cbcbcb;
+			font-size: 14px;
+		}
 	}
 	.gnavi {
-		float: right;
+		float: left;
+		@include clearfix;
 
 		&List {
 			line-height: 1.0;
@@ -44,22 +79,79 @@ a:hover {
 				display: inline-block;
 			}
 		}
-		&Btn {
+		.toTimelineBtn {
 			display: block;
-			width: 34px;
-			height: 34px;
-			background: #fff;
+			height: 28px;
+			padding-left: 32px;
+			@include img_set-PC2(0, -30px);
+			color: #efefef;
+			font-size: 14px;
+			line-height: 28px;
+
+			&:hover {
+				text-decoration: none;
+			}
 		}
+		.toProfileBtn {
+			display: block;
+			height: 23px;
+			padding-top: 5px;
+			padding-left: 32px;
+			@include img_set-PC2(0, -58px);
+			color: #efefef;
+			font-size: 14px;
+			line-height: 23px;
+
+			&:hover {
+				text-decoration: none;
+			}
+		}
+		.notify {
+			display: block;
+			position: relative;
+			height: 24px;
+			padding-top: 4px;
+			padding-left: 32px;
+			@include img_set-PC2(0, -90px);
+			color: #efefef;
+			font-size: 14px;
+			line-height: 24px;
+
+			&:hover {
+				text-decoration: none;
+			}
+			&Num {
+				display: block;
+				position: absolute;
+				top: -3px;
+				left: 10px;
+				padding: 3px;
+				@include border-radius(3px);
+				background: $color_green;
+				font-size: 10px;
+				line-height: 1.0;
+			}
+		}
+	}
+	.profImgWrap {
+		float: right;
+		margin-right: 33px;
+		border: 1px solid #c9c9ca;
+		@include border-radius(2px);
+		line-height: 0;
 	}
 }
 
 /*---   .mainContent   ---------------------------*/
 .mainContent {
+	min-height: 450px;
+	
 	/*---   .postBox   ----------*/
 	.postBox {
 		width: $cntWidth;
 		margin: 0 auto 18px;
 		padding: 10px;
+		border: 1px solid #e6e6e6;
 		@include border-radius(3px);
 		@include box-sizing;
 		background: #fff;
@@ -75,66 +167,185 @@ a:hover {
 				margin-right: 10px;
 			}
 			.account {
-				color: #000;
-				font-size: 14px;
+				color: #3c3c3c;
+				font-weight: bold;
+				font-size: 12px;
 				line-height: 1.0;
 			}
-			.time {
-				font-size: 10px;
+			.gameTtl {
+				overflow: hidden;
+				width: 410px;
+				color: $color-green;
+				font-weight: bold;
+				font-size: 16px;
+				line-height: 1.5;
 			}
-			.status {
+			.statusPlayed {
 				position: absolute;
 				top: 0;
 				right: 0;
 				width: 88px;
 				height: 30px;
+				@include border-radius(3px);
+				background: $color-blue;
+				color: #fff;
+				font-weight: bold;
+				font-size: 14px;
 				line-height: 30px;
 				text-align: center;
-				background: #bfbfbf;
 			}
-		}
-		/*---   .gameTtl   ---*/
-		.gameTtl {
-			margin-bottom: 18px;
-			font-size: 18px;
-			line-height: 1.5;
+			.statusPlaying {
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 88px;
+				height: 30px;
+				@include border-radius(3px);
+				background: $color-red;
+				color: #fff;
+				font-weight: bold;
+				font-size: 14px;
+				line-height: 30px;
+				text-align: center;
+			}
+			.statusReady {
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 88px;
+				height: 30px;
+				@include border-radius(3px);
+				background: $color-yellow;
+				color: #fff;
+				font-weight: bold;
+				font-size: 14px;
+				line-height: 30px;
+				text-align: center;
+			}
 		}
 		/*---   .postTxt   ---*/
 		.postTxt {
 			margin-bottom: 14px;
+			padding-left: 54px;
+			color: #4a4a4a;
+			font-size: 14px;
 			line-height: 1.5;
 		}
 		/*---   .thumbnail   ---*/
 		.thumbnail {
+			display: none;
+
 			&Img {
 				width: 100%;
 			}
 		}
+		/*---   .time   ---*/
+		.time {
+			float: right;
+			color: #888;
+			font-size: 12px;
+		}
 		/*---   .actionList   ---*/
 		.actionList {
-			margin-top: 25px;
+			margin-top: 46px;
+			padding-left: 54px;
 			@include clearfix;
 
-			.item {
+			.cmtBtn {
 				float: left;
-				position: relative;
-				padding-left: 35px;
-				line-height: 27px;
+				margin-right: 32px;
+				padding-left: 28px;
+				@include img_set-PC2(0, -128px);
+				color: #929292;
+				font-weight: bold;
+				font-size: 12px;
+				line-height: 20px;
 				cursor: pointer;
+			}
+			.fvrBtn {
+				float: left;
+				padding-left: 26px;
+				@include img_set-PC2(0, -155px);
+				color: #929292;
+				font-weight: bold;
+				font-size: 12px;
+				line-height: 20px;
+				cursor: pointer;
+			}
+			.deleteBtn {
+				float: right;
+				@include img_set-PC4(17px, 18px, 0, -183px);
+				@include substitute;
+				cursor: pointer;
+			}
+		}
+		/*---   .commentBox   ---*/
+		.commentBox {
+			margin-top: 10px;
+			padding-top: 8px;
+			border-top: 1px solid #dcdcdc;
+			@include clearfix;
 
-				&:before {
-					display: block;
-					position: absolute;
-					top: 0;
-					left: 0;
-					width: 27px;
-					height: 27px;
-					background: #bfbfbf;
-					content: "";
+			.profImgWrap {
+				float: left;
+				margin-right: 15px;
+			}
+			.commentList {
+				.item {
+					margin-bottom: 8px;
+				}
+				.commentInfo {
+					line-height: 0.8;
+					@include clearfix;
+
+					.account {
+						display: inline-block;
+						color: #3c3c3c;
+						font-weight: bold;
+						font-size: 12px;
+					}
+					.commentTime {
+						display: inline-block;
+						color: #888;
+						font-size: 12px;
+					}
+					.fvrBtn {
+						display: inline-block;
+						color: #888;
+						font-weight: bold;
+						font-size: 12px;
+						cursor: pointer;
+
+						&:hover {
+							text-decoration: underline;
+						}
+					}
+					.userComment {
+						margin-top: 9px;
+						color: #3c3c3c;
+						font-size: 12px;
+					}
 				}
 			}
-			.cmtBtn {
-				margin-right: 34px;
+			.commentWrap {
+				float: left;
+			}
+			.comment {
+				overflow: hidden;
+				width: 510px;
+				height: 30px;
+				padding: 5px;
+				border: none;
+				@include box-sizing;
+				@include appearance;
+				resize: none;
+				outline: 0;
+
+				&::-webkit-input-placeholder {
+					padding: 3px;
+					color: #c6c6c6;
+					font-size: 12px;
+				}
 			}
 		}
 	}
@@ -143,7 +354,6 @@ a:hover {
 /*---   .footer   ---------------------------*/
 .footer {
 	width: 100%;
-	margin-top: 40px;
 	padding: 38px 0;
 	background: #5e5e5e;
 	color: #d68356;

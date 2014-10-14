@@ -3,53 +3,70 @@
 //= require ../../views/notification_view.js
 //= require ../../views/notifications_view.js
 
+
 (function () {
-  $(function () {
+  var HeaderView = Backbone.View.extend({
+    el: $("header"),
+    events: {
+      "click .notify": "showNotifications"
+    },
+    initialize: function () {
+      var that = this;
+      _.bindAll(this, "hideNotifications");
 
-    var HeaderView = Backbone.View.extend({
-      el: $("header"),
-      events: {
-        "click .notify": "showNotifications"
-      },
-      initialize: function () {
-        this.notification_collection = new Notifications();
-        this.getNotificationCount();
-      },
-      getNotificationCount: function () {
-        var that = this;
-        $.ajax({
-          type: "GET",
-          url: "/api/notifications/count",
-          success: function (data) {
-            if (data.count > 0) {
-              that.$el.find(".notifyNum").html(data.count);
-            } else {
-              that.$el.find(".notifyNum").css("display", "none");
-            }
-          },
-          error: function () {
+      this.notification_collection = new Notifications();
+      this.getNotificationCount();
 
-          }
-        })
-      },
-      showNotifications: function (e) {
-        e.preventDefault();
+      event_handle.discribe("hideNotifications", this.hideNotifications);
 
-        $(".notification-modal").css("display", "block");
-        $(".layer").css("display", "block");
-        this.$el.find(".notifyNum").html(0);
 
-        this.notifications_view = new NotificationsView({collection: this.notification_collection});
-      },
-      hideNotifications: function () {
-        $(".notification-modal").css("display", "none");
-        $(".layer").css("display", "none");
-        $("notification-list").html("");
+      notification_socket.callback = function (data) {
+        var new_notification_count;
+        if (that.$el.find(".notifyNum").css("display") == "none") {
+          new_notification_count = 1;
+        } else {
+          new_notification_count = parseInt(that.$el.find(".notifyNum").html()) + 1;
+        }
 
-        this.notifications_view = null;
+        that.$el.find(".notifyNum").css("display", "block").html(new_notification_count);
       }
-    })
+    },
+    getNotificationCount: function () {
+      var that = this;
+      $.ajax({
+        type: "GET",
+        url: "/api/notifications/count",
+        success: function (data) {
+          if (data.count > 0) {
+            that.$el.find(".notifyNum").css("display", "block");
+            that.$el.find(".notifyNum").html(data.count);
+          } else {
+            that.$el.find(".notifyNum").css("display", "none");
+          }
+        },
+        error: function () {
 
-    var header_view = new HeaderView();
+        }
+      })
+    },
+    showNotifications: function (e) {
+      e.preventDefault();
+
+      $(".notification-modal").css("display", "block");
+      $(".layer").css("display", "block");
+      this.$el.find(".notifyNum").css("display", "none");
+      this.$el.find(".notifyNum").html(0);
+
+      this.notifications_view = new NotificationsView({collection: this.notification_collection});
+    },
+    hideNotifications: function () {
+      $(".notification-modal").css("display", "none");
+      $(".layer").css("display", "none");
+      $("notification-list").html("");
+
+      this.notifications_view = null;
+    }
   })
+
+  var header_view = new HeaderView();
 })();

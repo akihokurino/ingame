@@ -1,3 +1,4 @@
+//= require ../../libs/socket.js
 //= require ../../models/log.js
 //= require ../../models/post.js
 //= require ../../models/user.js

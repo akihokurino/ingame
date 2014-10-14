@@ -25,21 +25,21 @@ class User < ActiveRecord::Base
     where("username LIKE ?", "%#{username}%").select(:id, :username, :photo_path)
   }
 
-  attr_accessor :i_followed, :follow_num, :follower_num
+  attr_accessor :i_followed, :follow_num, :follower_num, :clip_width, :clip_height
 
 
-	def update_with(user_params)
-  	user_params[:photo_path] = self.class.file_upload(user_params[:photo_path], "user") unless user_params[:photo_path].nil?
+	def update_with(user_params, clip = {})
+  	user_params[:photo_path] = self.class.file_upload(user_params[:photo_path], "user", clip) unless user_params[:photo_path].nil?
   	self.update(user_params) ? true : false
   end
 
-  def update_with_url(user_params)
-    user_params[:photo_path] = self.class.url_upload(user_params[:photo_path], "user") unless user_params[:photo_path].nil?
+  def update_with_url(user_params, clip = {})
+    user_params[:photo_path] = self.class.url_upload(user_params[:photo_path], "user", clip) unless user_params[:photo_path].nil?
     self.update(user_params) ? true : false
   end
 
   def check_follow(current_user)
-    if Follow.where(from_user_id: current_user[:id]).pluck(:to_user_id).include?(self[:id])
+    if Follow.where(from_user_id: self[:id]).pluck(:to_user_id).include?(self[:id])
       self.i_followed = true
     else
       self.i_followed = false
@@ -49,16 +49,26 @@ class User < ActiveRecord::Base
     self.follower_num = Follow.where(to_user_id: self[:id]).count
   end
 
+  def follow_users
+    Follow.where(from_user_id: self[:id]).map { |follow| follow.to_user }
+  end
+
+  def follower_users
+    Follow.where(to_user_id: self[:id]).map { |follow| follow.from_user }
+  end
+
 	class << self
 		def create_with_omniauth(auth)
     	create! do |user|
       	user.provider = auth["provider"]
       	user.uid      = auth["uid"]
-
-      	if user.provider == "facebook"
-         	user.username = auth["info"]["name"]
-      	elsif user.provider == "twitter"
-         	user.username = auth["info"]["nickname"]
+        user.token    = auth["credentials"]["token"]
+        case user.provider
+        when "facebook"
+          user.username = auth["info"]["name"]
+        when "twitter"
+          user.username     = auth["info"]["nickname"]
+          user.secret_token = auth["credentials"]["secret"]
       	end
     	end
   	end
@@ -69,6 +79,7 @@ class User < ActiveRecord::Base
       users  = users.keep_if do |user|
         user[:id] != current_user[:id] && !current_user.follows.pluck(:to_user_id).include?(user[:id])
       end
+
       users
     end
 

@@ -37,6 +37,28 @@ class Post < ActiveRecord::Base
     end
   end
 
+  def facebook(current_user)
+    me = FbGraph::User.me(current_user.token)
+    me.feed!(
+      :message => self[:text],
+      #:picture => 'https://graph.facebook.com/matake/picture',
+      #:link => 'https://github.com/bussorenre',
+      :name => "Gameful",
+      :description => "Posted from Gameful"
+    )
+  end
+
+  def twitter(current_user)
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key        = "rfKeEqmpWn1KWj6XKoELR54YA"
+      config.consumer_secret     = "iUGETGMiVp4qCMRM9eK4H011pBdUtslVgSUPsbyZXfNUTAzOXU"
+      config.access_token        = current_user[:token]
+      config.access_token_secret = current_user[:secret_token]
+    end
+
+    client.update(self[:text])
+  end
+
   def datetime
     self[:created_at].strftime("%Y/%m/%d %H:%M:%S")
   end
@@ -71,7 +93,7 @@ class Post < ActiveRecord::Base
 
     def get_liker_posts_of_game(current_user_id, game_id, page)
       offset = (page - 1) * LIMIT
-      posts  = self.where(game_id: game_id).all_include.offset(offset).limit(LIMIT).order("post_likes_count DESC")
+      posts  = self.where(game_id: game_id).all_include.offset(offset).limit(LIMIT).reorder("post_likes_count DESC")
       posts  = self.i_like?(posts, current_user_id)
     end
 
