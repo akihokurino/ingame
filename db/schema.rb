@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140911143336) do
+ActiveRecord::Schema.define(version: 20141014143057) do
 
   create_table "admins", force: true do |t|
     t.string   "username"
@@ -21,9 +21,29 @@ ActiveRecord::Schema.define(version: 20140911143336) do
     t.datetime "updated_at"
   end
 
+  create_table "devices", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "follows", force: true do |t|
     t.integer  "from_user_id"
     t.integer  "to_user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "game_devices", force: true do |t|
+    t.integer  "game_id"
+    t.integer  "device_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "game_gametags", force: true do |t|
+    t.integer  "game_id"
+    t.integer  "game_tag_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -37,12 +57,20 @@ ActiveRecord::Schema.define(version: 20140911143336) do
 
   create_table "games", force: true do |t|
     t.string   "title"
+    t.string   "photo_url"
     t.string   "photo_path"
-    t.string   "device"
     t.string   "maker"
     t.integer  "game_likes_count", default: 0
     t.integer  "posts_count",      default: 0
     t.string   "amazon_url"
+    t.string   "provider"
+    t.string   "provider_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "gametags", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
