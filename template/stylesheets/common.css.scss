@@ -5,6 +5,7 @@ $cntWidth: 580px;
 
 /*---   common   ---------------------------*/
 html {
+	min-width: 960px;
 	background: #eee;
 	font-family:"Hiragino Kaku Gothic ProN", "Lucida Grande", Helvetica, "Meiryo", sans-serif;
 }
@@ -162,9 +163,12 @@ a:hover {
 			margin-bottom: 7px;
 			@include clearfix;
 
-			.profImg {
+			.profImgWrap {
 				float: left;
 				margin-right: 10px;
+			}
+			.profImg {
+				border: 1px solid #d3d3d3;
 			}
 			.account {
 				color: #3c3c3c;
@@ -289,6 +293,9 @@ a:hover {
 			.profImgWrap {
 				float: left;
 				margin-right: 15px;
+			}
+			.profImg {
+				border: 1px solid #d3d3d3;
 			}
 			.commentList {
 				.item {
