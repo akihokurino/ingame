@@ -1,20 +1,46 @@
 %script{type: "text/template", id: "post-template"}
   .topBox
     %figure.profImgWrap
-      %img.profImg{src: "../test_set/test02.png", width: "44", height: "44", alt: "ユーザー画像"}
-    %a.account{href: ""} Asuya Kono
-    %h2.gameTtl ゼルダの伝説 風のタクト HD
-    %p.statusPlayed クリア済み
+      %img.profImg{src: "/user_photos/{{= user.photo_path }}", width: "44", height: "44", alt: "ユーザー画像"}
+    %a.account{href: "/users/{{= user.id }}#logs"}
+      {{= user.username }}
+    %h2.gameTtl
+      %a{href: "/games/{{= game.id}}#all"}
+        {{= game.title }}
+    {{ if (status.id == 1) { }}
+    %p.statusReady 気になる
+    {{ } else if (status.id == 2) { }}
+    %p.statusPlaying プレイ中
+    {{ } else if (status.id == 3) { }}
+    %p.statusPlayed アーカイブ
+    {{ } }}
   %p.postTxt
-    高画質になって遊びやすくなってきたと感じます
-    %br
-    ＧＣの時の不満な点を改善したと思います
-    %br
-    しかしながら改善するなら削ったダンジョンを復活してほしかった
+    {{= text }}
   .thumbnail
-    %img.thumbnailImg{src: "", alt: "アップロードした写真"}
-  %p.time 3時間前
+    {{ for (var i = 0; i < post_photos.length; i++) { }}
+    %img{src: "/post_photos/{{= post_photos[i].photo_path }}"}
+    {{ } }}
+  %p.time {{= created_at }}
   %ul.actionList
-    %li.cmtBtn コメント
-    %li.fvrBtn いいね！
-    %li.deleteBtn 削除
+    %li.cmtBtn
+      コメント
+    %li.fvrBtn
+      いいね！
+    %li.deleteBtn
+      削除
+  .commentBox
+    %ul.commentList
+      - 2.times do |i|
+        %li.item
+          %figure.profImgWrap
+            %img.profImg{src: "../test_set/test02.png", width: "30", height: "30", alt: ""}
+          .commentInfo
+            %a.account{href: ""} Asuya Kono
+            %p.commentTime 3時間前
+            %p.fvrBtn いいね！
+            %p.userComment 俺も好きだよ！グラフィックがいいよね
+    .myCommentBox
+      %figure.profImgWrap
+        %img.profImg{src: "../test_set/test02.png", width: "30", height: "30", alt: ""}
+      %form.commentWrap
+        %textarea.comment{placeholder: "コメントする"}

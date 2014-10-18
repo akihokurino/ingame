@@ -6,13 +6,13 @@
 
 = render partial: "application/pc/default_header"
 
-%section.mainContent
+%section.mainContent.timeline-page
   %h1.mainTtl タイムライン
   .addPost
     %figure.profImgWrap
-      %img.profImg{src: "../test_set/test02.png", width: "44", height: "44", alt: "ユーザー画像"}
+      = image_tag "/user_photos/#{@current_user[:photo_path]}", width: 44, height: 44, alt: "ユーザー画像", class: "profImg"
     .addPostInner
-      %p.selectBtn ゲームを選ぶ
+      %p.selectBtn.show-select-modal ゲームを選ぶ
       %textarea{placeholder: "そのゲームについて、どうおもった？"}
       %ul.thumbnailList
         %li.thumbnail
@@ -40,4 +40,3 @@
 
 
 = render partial: "application/underscore/pc/timeline/post"
-= render partial: "application/underscore/pc/timeline/comment"
