@@ -1,6 +1,6 @@
 var UserResultView = Backbone.View.extend({
   tagName: "li",
-  className: "list",
+  className: "item",
   events: {
     "click .follow": "follow"
   },

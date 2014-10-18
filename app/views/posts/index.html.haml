@@ -1,11 +1,39 @@
 = content_for :head do
   = stylesheet_link_tag    "pc/timeline"
 
+= content_for :last do
+  = javascript_include_tag "main/pc/timeline"
+
 = render partial: "application/pc/default_header"
 
 %section.mainContent
   %h1.mainTtl タイムライン
-  %a.postBtn{href: ""} 投稿ボタン　(インタラクションはあとで相談させてくれ)
+  .addPost
+    %figure.profImgWrap
+      %img.profImg{src: "../test_set/test02.png", width: "44", height: "44", alt: "ユーザー画像"}
+    .addPostInner
+      %p.selectBtn ゲームを選ぶ
+      %textarea{placeholder: "そのゲームについて、どうおもった？"}
+      %ul.thumbnailList
+        %li.thumbnail
+          %img{src: "", width: "52", height: "52", alt: "ゲーム画像"}
+      .photoBtnWrap
+        %p.photoBtnText 写真を追加
+        %input.addPhoto{type: "file", href: ""}
+      %p.addPostBtn 投稿する
+      .selectModal
+        %p.playing プレイ中
+        %ul.gameList
+          - 3.times do |i|
+            %li.item ゲーム名ゲーム名ゲーム名ゲーム名
+        %p.ready 気になる
+        %ul.gameList
+          - 6.times do |i|
+            %li.item ゲーム名ゲーム名ゲーム名ゲーム名
+        %p.played クリア済み
+        %ul.gameList
+          - 8.times do |i|
+            %li.item ゲーム名ゲーム名ゲーム名ゲーム名
   .post-list
 
 = render partial: "application/pc/footer"
