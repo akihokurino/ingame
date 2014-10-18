@@ -24,8 +24,13 @@
   %ul.actionList
     %li.cmtBtn
       コメント
-    %li.fvrBtn
+    {{ if (!i_liked) { }}
+    %li.like.fvrBtn
       いいね！
+    {{ } else { }}
+    %li.unlike.fvrBtn.on
+      いいね！を取り消す
+    {{ } }}
     %li.deleteBtn
       削除
   .commentBox
