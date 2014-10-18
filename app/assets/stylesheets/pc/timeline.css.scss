@@ -110,9 +110,9 @@ $cntWidth: 580px;
       position: relative;
     }
     .photoBtnText {
-      padding-top: 3px;
+      padding-top: 5px;
       padding-left: 30px;
-      @include img_set-PC2(0, -347px);
+      @include img_set-PC2(0, -346px);
       color: #929292;
       font-size: 12px;
     }
