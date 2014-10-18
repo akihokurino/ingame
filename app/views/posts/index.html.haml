@@ -21,22 +21,20 @@
         %p.photoBtnText 写真を追加
         %input.addPhoto{type: "file", href: ""}
       %p.addPostBtn 投稿する
-      .selectModal
+      .selectModal.log-list
         %p.playing プレイ中
-        %ul.gameList
-          - 3.times do |i|
-            %li.item ゲーム名ゲーム名ゲーム名ゲーム名
+        %ul.gameList.playing-list
+
         %p.ready 気になる
-        %ul.gameList
-          - 6.times do |i|
-            %li.item ゲーム名ゲーム名ゲーム名ゲーム名
+        %ul.gameList.ready-list
+
         %p.played クリア済み
-        %ul.gameList
-          - 8.times do |i|
-            %li.item ゲーム名ゲーム名ゲーム名ゲーム名
+        %ul.gameList.played-list
+
   .post-list
 
 = render partial: "application/pc/footer"
 
 
+= render partial: "application/underscore/pc/timeline/log"
 = render partial: "application/underscore/pc/timeline/post"

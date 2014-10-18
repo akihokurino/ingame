@@ -1,8 +1,12 @@
 //= require ../../libs/socket.js
 //= require ../../models/post.js
+//= require ../../models/log.js
 //= require ../../collections/posts.js
+//= require ../../collections/logs.js
 //= require ../../views/post_view.js
 //= require ../../views/posts_view.js
+//= require ../../views/log_view.js
+//= require ../../views/logs_view.js
 
 
 
@@ -19,8 +23,11 @@
       var that                = this;
       this.post_collection    = new Posts();
       this.posts_view         = new PostsView({collection: this.post_collection});
+      this.log_collection     = new Logs();
+      this.logs_view          = new LogsView({el: ".log-list", collection: this.log_collection, attributes: {type: "select"}});
 
       this.comment_input      = this.$(".comment-input");
+      this.user_id            = $("#wrapper").data("userid");
       this.page               = 1;
 
       event_handle.discribe("showComment", this.showComment);
@@ -68,6 +75,19 @@
         });
       }
       */
+
+      this.log_collection.fetch({
+        data: {user_id: this.user_id},
+        success: function (model, response, options) {
+          for (var i = 0; i < response.logs.length; i++) {
+            var log = new Log(response.logs[i]);
+            that.logs_view.collection.add(log);
+          }
+        },
+        error: function () {
+
+        }
+      })
 
 
       this.post_collection.fetch({
