@@ -30,17 +30,20 @@
       削除
   .commentBox
     %ul.commentList
-      - 2.times do |i|
-        %li.item
-          %figure.profImgWrap
-            %img.profImg{src: "../test_set/test02.png", width: "30", height: "30", alt: ""}
-          .commentInfo
-            %a.account{href: ""} Asuya Kono
-            %p.commentTime 3時間前
-            %p.fvrBtn いいね！
-            %p.userComment 俺も好きだよ！グラフィックがいいよね
+      {{ for (var i = 0; i < post_comments.length; i++) { }}
+      %li.item
+        %figure.profImgWrap
+          %img.profImg{src: "/user_photos/{{= post_comments[i].user.photo_path }}", width: "30", height: "30", alt: ""}
+        .commentInfo
+          %a.account{href: ""}
+            {{= post_comments[i].user.username }}
+          %p.commentTime 3時間前
+          %p.fvrBtn いいね！
+          %p.userComment
+            {{= post_comments[i].text }}
+      {{ } }}
     .myCommentBox
       %figure.profImgWrap
-        %img.profImg{src: "../test_set/test02.png", width: "30", height: "30", alt: ""}
+        %img.profImg{src: "/user_photos/#{@current_user[:photo_path]}", width: "30", height: "30", alt: ""}
       %form.commentWrap
-        %textarea.comment{placeholder: "コメントする"}
+        %textarea.comment.comment-input{placeholder: "コメントする"}
