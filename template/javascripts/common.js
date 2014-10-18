@@ -102,7 +102,66 @@ $(function(){
   })();
   var selectModal = APP.UI.selectModal;
 
+  APP.UI.profileSelect = (function(){
+    var _game = $('.gameNum'),
+        _post = $('.postNum'),
+        _follow = $('.followNum'),
+        _follower = $('.followerNum'),
+        _gameCnt = $('.gameListBox'),
+        _postCnt = $('.postBoxWrap'),
+        _followCnt = $('.friendListBox'),
+        _followerCnt = $('.friendListBox');
+
+    function _hideCnt(){
+      _gameCnt.hide();
+      _postCnt.hide();
+      _followCnt.hide();
+      _followerCnt.hide();
+    }
+    function _removeCurrent(){
+      _game.removeClass('current');
+      _post.removeClass('current');
+      _follow.removeClass('current');
+      _follower.removeClass('current');
+    }
+    function _switchCnt(){
+      _game.on('click', function(){
+        _removeCurrent();
+        _hideCnt();
+        _game.addClass('current');
+        _gameCnt.show();
+      });
+      _post.on('click', function(){
+        _removeCurrent();
+        _hideCnt();
+        _post.addClass('current');
+        _postCnt.show();
+      });
+      _follow.on('click', function(){
+        _removeCurrent();
+        _hideCnt();
+        _follow.addClass('current');
+        _followCnt.show();
+      });
+      _follower.on('click', function(){
+        _removeCurrent();
+        _hideCnt();
+        _follower.addClass('current');
+        _followerCnt.show();
+      });
+    }
+    //初期化
+    function _init(){
+      _switchCnt();
+    }
+    return {
+      init: _init
+    }
+  })();
+  var profileSelect = APP.UI.profileSelect;
+
   Menu.init();
   ProfImg.init();
   selectModal.init();
+  profileSelect.init();
 });

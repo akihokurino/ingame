@@ -7,15 +7,17 @@ $cntWidth: 580px;
 .mainContent {
 	/*---   .profileBox   ----------*/
 	.profileBox {
-		margin-bottom: 36px;
-		background: #bfbfbf;
+		background: url(../../test_set/test04.jpg) no-repeat top center;
+		background-size: cover;
 
 		/*---   .profileBoxInner   ---*/
 		&Inner {
 			position: relative;
 			width: $width;
+			height: 300px;
 			margin: 0 auto;
 			padding: 72px 0 32px 20px;
+			@include box-sizing;
 			color: #fff;
 			@include clearfix;
 		}
@@ -25,7 +27,8 @@ $cntWidth: 580px;
 			margin-right: 32px;
 		}
 		.profImg {
-			border: 1px solid #eee;
+			border: 4px solid #fff;
+			@include border-radius(5px);
 		}
 		/*---   .userName   ---*/
 		.userName {
@@ -37,61 +40,241 @@ $cntWidth: 580px;
 			width: 716px;
 			line-height: 1.5;
 		}
-		/*---   .followBtn   ---*/
-		.followBtn {
-			display: block;
-			position: absolute;
-			right: 0;
-			bottom: 20px;
-			width: 194px;
-			height: 40px;
-			background: #a0a0a0;
-			color: #3e3e3e;
-			font-weight: bold;
-			font-size: 14px;
-			text-align: center;
-			line-height: 40px;
-			cursor: pointer;
-		}
 		/*---   .countList   ---*/
 		.countListWrap {
-			background: #dadada;
+			position: relative;
+			background: #fff;
 		}
 		.countList {
 			width: $width;
 			margin: 0 auto;
 			font-size: 0;
 		}
-		.gameNum, .postNum, .followNum, .followerNum {
+		.gameNum {
 			display: inline-block;
-			width: 240px;
-			padding: 13px 0 19px;
+			width: 111px;
+			margin-right: 311px;
+			padding: 16px 0 14px;
 			@include box-sizing;
 			color: #3e3e3e;
-			font-weight: bold;
 			font-size: 12px;
 			text-align: center;
 			cursor: pointer;
 
 			.count {
 				display: block;
-				font-size: 16px;
+				color: $color_green;
+				font-weight: bold;
+				font-size: 20px;
 			}
 			&.current {
 				position: relative;
 
 				&:after {
+					display: block;
 					position: absolute;
 					bottom: 0;
-					left: 50%;
-					margin-left: -6px;
-					border-top: 12px solid transparent;
-					border-right: 12px solid transparent;
-					border-bottom: 12px solid #eee;
-					border-left: 12px solid transparent;
+					width: 100%;
+					border-bottom: 3px solid $color_green;
 					content: "";
 				}
 			}
+		}
+		.postNum {
+			display: inline-block;
+			width: 111px;
+			padding: 16px 0 14px;
+			@include box-sizing;
+			color: #3e3e3e;
+			font-size: 12px;
+			text-align: center;
+			cursor: pointer;
+
+			.count {
+				display: block;
+				color: $color_green;
+				font-weight: bold;
+				font-size: 20px;
+			}
+			&.current {
+				position: relative;
+
+				&:after {
+					display: block;
+					position: absolute;
+					bottom: 0;
+					width: 100%;
+					border-bottom: 3px solid $color_green;
+					content: "";
+				}
+			}
+		}
+		.followNum {
+			display: inline-block;
+			width: 111px;
+			padding: 16px 0 14px;
+			@include box-sizing;
+			color: #3e3e3e;
+			font-size: 12px;
+			text-align: center;
+			cursor: pointer;
+
+			.count {
+				display: block;
+				color: $color_green;
+				font-weight: bold;
+				font-size: 20px;
+			}
+			&.current {
+				position: relative;
+
+				&:after {
+					display: block;
+					position: absolute;
+					bottom: 0;
+					width: 100%;
+					border-bottom: 3px solid $color_green;
+					content: "";
+				}
+			}
+		}
+		.followerNum {
+			display: inline-block;
+			width: 111px;
+			padding: 16px 0 14px;
+			@include box-sizing;
+			color: #3e3e3e;
+			font-size: 12px;
+			text-align: center;
+			cursor: pointer;
+
+			.count {
+				display: block;
+				color: $color_green;
+				font-weight: bold;
+				font-size: 20px;
+			}
+			&.current {
+				position: relative;
+
+				&:after {
+					display: block;
+					position: absolute;
+					bottom: 0;
+					width: 100%;
+					border-bottom: 3px solid $color_green;
+					content: "";
+				}
+			}
+		}
+		/*---   .libSearchWrap   ---*/
+		.libSearchWrap {
+			position: absolute;
+			top: 30px;
+			right: 50%;
+			margin-right: 64px;
+		}
+		.libSearch {
+			width: 290px;
+			height: 20px;
+			padding-left: 30px;
+			border: none;
+			@include box-sizing;
+			@include img_set-PC2(0, 0);
+			@include appearance;
+			outline: 0;
+
+			&::-webkit-input-placeholder {
+				color: #cbcbcb;
+				font-size: 14px;
+			}
+		}
+		/*---   .followBtn   ---*/
+		.followBtn {
+			display: block;
+			position: absolute;
+			left: 50%;
+			top: 16px;
+			width: 194px;
+			height: 40px;
+			margin-left: 287px;
+			@include box-shadow(0, 3px, 0, 0, #41b985);
+			@include border-radius(3px);
+			background: $color-green;
+			color: #fff;
+			font-weight: bold;
+			font-size: 18px;
+			text-align: center;
+			line-height: 40px;
+			cursor: pointer;
+		}
+		.followBtnOn {
+			display: block;
+			position: absolute;
+			left: 50%;
+			top: 16px;
+			width: 194px;
+			height: 40px;
+			margin-left: 287px;
+			@include box-shadow(0, 3px, 0, 0, #41b985);
+			@include border-radius(3px);
+			background: #666;
+			color: #fff;
+			font-weight: bold;
+			font-size: 18px;
+			text-align: center;
+			line-height: 40px;
+			cursor: pointer;
+		}
+	}
+	/*---   .gameListBox   ---*/
+	.gameListBox {
+		display: none;
+		margin-top: 0;
+
+		.gameListWrap {
+			margin-left: -7px;
+		}
+	}
+	/*---   .friendListBox   ---*/
+	.friendListBox {
+		display: none;
+		margin-top: 0;
+	}
+	.playingBox {
+		width: $width;
+		margin: 0 auto 42px;
+
+		.playing {
+			margin-bottom: 26px;
+			padding-left: 18px;
+			border-left: 5px solid $color-red;
+			color: $color-black;
+			font-size: 24px;
+		}
+	}
+	.readyBox {
+		width: $width;
+		margin: 0 auto 42px;
+
+		.ready {
+			margin-bottom: 26px;
+			padding-left: 18px;
+			border-left: 5px solid $color-yellow;
+			color: $color-black;
+			font-size: 24px;
+		}
+	}
+	.playedBox {
+		width: $width;
+		margin: 0 auto 42px;
+
+		.played {
+			margin-bottom: 26px;
+			padding-left: 18px;
+			border-left: 5px solid $color-blue;
+			color: $color-black;
+			font-size: 24px;
 		}
 	}
 }
