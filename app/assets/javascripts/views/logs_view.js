@@ -1,12 +1,14 @@
 var LogsView = Backbone.View.extend({
   initialize: function () {
-    this.type = this.attributes.type;
+    if (this.attributes && this.attributes.type) {
+      this.type = this.attributes.type;
+    }
     this.listenTo(this.collection, "add", this.addLog);
   },
   addLog: function (log) {
     if (log.id) {
       if (this.type == "select") {
-        var log_view = new LogView({model: log});
+        var log_view = new LogView({model: log, attributes: {type: "select"}});
         switch (log.get("status").id) {
           case 1:
             this.$el.find(".ready-list").prepend(log_view.render().el);

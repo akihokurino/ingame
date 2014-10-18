@@ -13,23 +13,15 @@
       = image_tag "/user_photos/#{@current_user[:photo_path]}", width: 44, height: 44, alt: "ユーザー画像", class: "profImg"
     .addPostInner
       %p.selectBtn.show-select-modal ゲームを選ぶ
-      %textarea{placeholder: "そのゲームについて、どうおもった？"}
+      %textarea.post-input{placeholder: "そのゲームについて、どうおもった？"}
       %ul.thumbnailList
-        %li.thumbnail
-          %img{src: "", width: "52", height: "52", alt: "ゲーム画像"}
+
       .photoBtnWrap
         %p.photoBtnText 写真を追加
         %input.addPhoto{type: "file", href: ""}
-      %p.addPostBtn 投稿する
-      .selectModal.log-list
-        %p.playing プレイ中
-        %ul.gameList.playing-list
+      %p.addPostBtn.post-btn 投稿する
 
-        %p.ready 気になる
-        %ul.gameList.ready-list
-
-        %p.played クリア済み
-        %ul.gameList.played-list
+      = render partial: "log_select"
 
   .post-list
 
@@ -38,3 +30,4 @@
 
 = render partial: "application/underscore/pc/timeline/log"
 = render partial: "application/underscore/pc/timeline/post"
+= render partial: "application/underscore/pc/timeline/game_thumbnail"

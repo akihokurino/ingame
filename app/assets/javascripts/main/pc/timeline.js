@@ -14,11 +14,13 @@
   var AppView = Backbone.View.extend({
     el: ".timeline-page",
     events: {
+      "click .submit-post-btn":    "post",
       "click .submit-comment-btn": "postComment",
-      "click .show-select-modal": "toggleSelectModal"
+      "click .show-select-modal":  "toggleSelectModal",
+      "click .post-btn":           "post"
     },
     initialize: function () {
-      _.bindAll(this, "pagenation");
+      _.bindAll(this, "pagenation", "selectLog");
 
       var that                = this;
       this.post_collection    = new Posts();
@@ -26,11 +28,15 @@
       this.log_collection     = new Logs();
       this.logs_view          = new LogsView({el: ".log-list", collection: this.log_collection, attributes: {type: "select"}});
 
+      this.post_input         = this.$(".post-input");
+      this.select_log_id      = null;
+      this.select_game_id     = null;
+      this.provider           = null;
       this.comment_input      = this.$(".comment-input");
       this.user_id            = $("#wrapper").data("userid");
       this.page               = 1;
 
-      event_handle.discribe("showComment", this.showComment);
+      event_handle.discribe("selectLog", this.selectLog);
 
 
       like_socket.callback = function (data) {
@@ -139,6 +145,40 @@
         $(".selectModal").css("display", "block");
       } else {
         $(".selectModal").css("display", "none");
+      }
+    },
+    selectLog: function (model) {
+      var template        = _.template($("#game-thumbnail-template").html());
+      template            = template(model.toJSON());
+      this.$("ul.thumbnailList").html("").html(template);
+      this.toggleSelectModal();
+      this.select_log_id  = model.id;
+      this.select_game_id = model.get("game").id;
+    },
+    post: function (e) {
+      e.preventDefault();
+      if (this.post_input.val() != "" && this.select_log_id) {
+        var that = this;
+        var data = {
+          "post": {
+            "game_id":  this.select_game_id,
+            "log_id":   this.select_log_id,
+            "text":     this.post_input.val(),
+            "provider": this.provider
+          }
+        }
+
+        this.post_collection.create(data, {
+          method: "POST",
+          success: function (response) {
+            var post      = new Post(response.get("last_post"));
+            that.posts_view.collection.add(post, {silent: true});
+            var post_view = new PostView({model: post});
+            that.posts_view.$el.prepend(post_view.render().el);
+          },
+          error: function () {
+          }
+        })
       }
     }
   })
