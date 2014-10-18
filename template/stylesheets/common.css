@@ -1,1 +1,596 @@
-html{min-width:960px;background:#eee;font-family:"Hiragino Kaku Gothic ProN", "Lucida Grande", Helvetica, "Meiryo", sans-serif}#wrapper{line-height:1.0}a{text-decoration:none}a:hover{text-decoration:underline}.header{padding:13px 0 10px;background:#393c3f}.headerInner{width:960px;margin:0 auto;color:#fff;*zoom:1}.headerInner:before,.headerInner:after{display:table;content:""}.headerInner:after{clear:both}.header .logo{float:left;margin-right:40px;padding-left:30px;color:#24d387;font-size:28px}.header .searchWrap{position:relative;float:left;margin-top:3px;margin-right:16px;-moz-border-radius:2px;-webkit-border-radius:2px;border-radius:2px;background:#fff}.header .searchWrap:after{position:absolute;top:4px;left:33px;height:26px;border-left:1px solid #cecece;content:""}.header .search{width:390px;height:34px;padding-left:40px;border:none;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;background:url(../images/img_set.png) no-repeat 6px 7px;-moz-appearance:none;-webkit-appearance:none;outline:0}.header .search::-webkit-input-placeholder{color:#cbcbcb;font-size:14px}.header .gnavi{float:left;*zoom:1}.header .gnavi:before,.header .gnavi:after{display:table;content:""}.header .gnavi:after{clear:both}.header .gnaviList{line-height:1.0}.header .gnaviList .item{display:inline-block}.header .gnavi .toTimelineBtn{display:block;height:28px;padding-left:32px;background:url(../images/img_set.png) no-repeat 0 -30px;color:#efefef;font-size:14px;line-height:28px}.header .gnavi .toTimelineBtn:hover{text-decoration:none}.header .gnavi .toProfileBtn{display:block;height:23px;padding-top:5px;padding-left:32px;background:url(../images/img_set.png) no-repeat 0 -58px;color:#efefef;font-size:14px;line-height:23px}.header .gnavi .toProfileBtn:hover{text-decoration:none}.header .gnavi .notify{display:block;position:relative;height:24px;padding-top:4px;padding-left:32px;background:url(../images/img_set.png) no-repeat 0 -90px;color:#efefef;font-size:14px;line-height:24px}.header .gnavi .notify:hover{text-decoration:none}.header .gnavi .notifyNum{display:block;position:absolute;top:-3px;left:10px;padding:3px;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;background:#24d387;font-size:10px;line-height:1.0}.header .profImgWrap{float:right;margin-right:33px;border:1px solid #c9c9ca;-moz-border-radius:2px;-webkit-border-radius:2px;border-radius:2px;line-height:0}.mainContent{min-height:450px}.mainContent .postBoxWrap{width:100%;padding:20px 0 40px;border-top:1px solid #e6e6e6;background:#f2f2f2}.mainContent .postBox{width:580px;margin:0 auto 18px;padding:10px;border:1px solid #e6e6e6;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;background:#fff}.mainContent .postBox .topBox{position:relative;margin-bottom:7px;*zoom:1}.mainContent .postBox .topBox:before,.mainContent .postBox .topBox:after{display:table;content:""}.mainContent .postBox .topBox:after{clear:both}.mainContent .postBox .topBox .profImgWrap{float:left;margin-right:10px}.mainContent .postBox .topBox .profImg{border:1px solid #d3d3d3}.mainContent .postBox .topBox .account{color:#3c3c3c;font-weight:bold;font-size:12px;line-height:1.0}.mainContent .postBox .topBox .gameTtl{overflow:hidden;width:410px;color:#24d387;font-weight:bold;font-size:16px;line-height:1.5}.mainContent .postBox .topBox .statusPlayed{position:absolute;top:0;right:0;width:88px;height:30px;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;background:#69a8e9;color:#fff;font-weight:bold;font-size:14px;line-height:30px;text-align:center}.mainContent .postBox .topBox .statusPlaying{position:absolute;top:0;right:0;width:88px;height:30px;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;background:#e96969;color:#fff;font-weight:bold;font-size:14px;line-height:30px;text-align:center}.mainContent .postBox .topBox .statusReady{position:absolute;top:0;right:0;width:88px;height:30px;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;background:#e9d31d;color:#fff;font-weight:bold;font-size:14px;line-height:30px;text-align:center}.mainContent .postBox .postTxt{margin-bottom:14px;padding-left:54px;color:#4a4a4a;font-size:14px;line-height:1.5}.mainContent .postBox .thumbnail{display:none}.mainContent .postBox .thumbnailImg{width:100%}.mainContent .postBox .time{float:right;color:#888;font-size:12px}.mainContent .postBox .actionList{margin-top:46px;padding-left:54px;*zoom:1}.mainContent .postBox .actionList:before,.mainContent .postBox .actionList:after{display:table;content:""}.mainContent .postBox .actionList:after{clear:both}.mainContent .postBox .actionList .cmtBtn{float:left;margin-right:32px;padding-left:28px;background:url(../images/img_set.png) no-repeat 0 -128px;color:#929292;font-weight:bold;font-size:12px;line-height:20px;cursor:pointer}.mainContent .postBox .actionList .fvrBtn{float:left;padding-left:26px;background:url(../images/img_set.png) no-repeat 0 -155px;color:#929292;font-weight:bold;font-size:12px;line-height:20px;cursor:pointer}.mainContent .postBox .actionList .deleteBtn{float:right;width:17px;height:18px;background:url(../images/img_set.png) no-repeat 0 -183px;overflow:hidden;text-indent:100%;white-space:nowrap;cursor:pointer}.mainContent .postBox .commentBox{margin-top:10px;padding-top:8px;border-top:1px solid #dcdcdc;*zoom:1}.mainContent .postBox .commentBox:before,.mainContent .postBox .commentBox:after{display:table;content:""}.mainContent .postBox .commentBox:after{clear:both}.mainContent .postBox .commentBox .profImgWrap{float:left;margin-right:15px}.mainContent .postBox .commentBox .profImg{border:1px solid #d3d3d3}.mainContent .postBox .commentBox .commentList .item{margin-bottom:8px}.mainContent .postBox .commentBox .commentList .commentInfo{line-height:0.8;*zoom:1}.mainContent .postBox .commentBox .commentList .commentInfo:before,.mainContent .postBox .commentBox .commentList .commentInfo:after{display:table;content:""}.mainContent .postBox .commentBox .commentList .commentInfo:after{clear:both}.mainContent .postBox .commentBox .commentList .commentInfo .account{display:inline-block;color:#3c3c3c;font-weight:bold;font-size:12px}.mainContent .postBox .commentBox .commentList .commentInfo .commentTime{display:inline-block;color:#888;font-size:12px}.mainContent .postBox .commentBox .commentList .commentInfo .fvrBtn{display:inline-block;color:#888;font-weight:bold;font-size:12px;cursor:pointer}.mainContent .postBox .commentBox .commentList .commentInfo .fvrBtn:hover{text-decoration:underline}.mainContent .postBox .commentBox .commentList .commentInfo .userComment{margin-top:9px;color:#3c3c3c;font-size:12px}.mainContent .postBox .commentBox .commentWrap{float:left}.mainContent .postBox .commentBox .comment{overflow:hidden;width:510px;height:30px;padding:5px;border:none;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;-moz-appearance:none;-webkit-appearance:none;resize:none;outline:0}.mainContent .postBox .commentBox .comment::-webkit-input-placeholder{padding:3px;color:#c6c6c6;font-size:12px}.mainContent .friendListBox{width:100%;margin-top:23px;padding:20px 0 40px;border-top:1px solid #e6e6e6;background:#f2f2f2}.mainContent .friendListBox .friendListWrap{width:580px;margin:0 auto;font-size:0}.mainContent .friendListBox .friendListWrap .item{margin:10px;padding:10px;border:1px solid #e6e6e6;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;background:#fff;*zoom:1}.mainContent .friendListBox .friendListWrap .item:before,.mainContent .friendListBox .friendListWrap .item:after{display:table;content:""}.mainContent .friendListBox .friendListWrap .item:after{clear:both}.mainContent .friendListBox .friendList{position:relative}.mainContent .friendListBox .friendList .userImgWrap{float:left;border:1px solid #cfcfcf}.mainContent .friendListBox .friendList .userName{margin-bottom:5px;margin-left:54px;padding-top:4px;color:#373737;font-weight:bold;font-size:12px}.mainContent .friendListBox .friendList .userProf{margin-left:54px;color:#7e7e7e;font-size:12px}.mainContent .friendListBox .friendList .followBtn{position:absolute;top:5px;right:0;width:88px;height:30px;-moz-border-radius:2px;-webkit-border-radius:2px;border-radius:2px;background:#24d387;color:#fff;font-weight:bold;font-size:14px;text-align:center;line-height:30px;cursor:pointer}.mainContent .friendListBox .friendList .followBtnOn{position:absolute;top:5px;right:0;width:88px;height:30px;-moz-border-radius:2px;-webkit-border-radius:2px;border-radius:2px;background:#666;color:#fff;font-weight:bold;font-size:14px;text-align:center;line-height:30px;cursor:pointer}.mainContent .gameListBox{width:100%;margin-top:23px;padding:20px 0 40px;border-top:1px solid #e6e6e6;background:#f2f2f2}.mainContent .gameListBox .gameListWrap{width:960px;margin:0 auto;font-size:0}.mainContent .gameListBox .gameListWrap .item{display:inline-block;width:123px;height:214px;margin:7px;border:1px solid #e6e6e6;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;background:#fff}.mainContent .gameListBox .gameList .gameImgWrap{overflow:hidden;width:121px;height:176px}.mainContent .gameListBox .gameList .gameImg{-moz-border-radius:3px 3px 0 0;-webkit-border-radius:3px 3px 0 0;border-radius:3px 3px 0 0}.mainContent .gameListBox .starList{width:107px;margin:7px auto 0}.mainContent .gameListBox .starList .starOn{display:inline-block;width:18px;height:18px;background:url(../images/img_set.png) no-repeat 0 -293px;margin-right:4px}.mainContent .gameListBox .starList .starOn:last-child{margin-right:0}.mainContent .gameListBox .starList .starOff{display:inline-block;width:18px;height:18px;background:url(../images/img_set.png) no-repeat 0 -320px;margin-right:4px}.mainContent .gameListBox .starList .starOff:last-child{margin-right:0}.footer{width:100%;padding:38px 0;background:#5e5e5e;color:#d68356;font-size:16px;text-align:center}.footer .ftList{*zoom:1;width:385px;margin:0 auto 34px}.footer .ftList:before,.footer .ftList:after{display:table;content:""}.footer .ftList:after{clear:both}.footer .ftList .item,.footer .ftList .lastItem{float:left}.footer .ftList .item{margin-right:20px}.footer .ftLink{color:#d68356}
+@charset "UTF-8";
+/*---   common   ---------------------------*/
+html {
+  min-width: 960px;
+  background: #eee;
+  font-family: "Hiragino Kaku Gothic ProN", "Lucida Grande", Helvetica, "Meiryo", sans-serif;
+}
+
+#wrapper {
+  line-height: 1.0;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/*---   .header   ---------------------------*/
+.header {
+  padding: 13px 0 10px;
+  background: #393c3f;
+}
+.headerInner {
+  width: 960px;
+  margin: 0 auto;
+  color: #fff;
+  *zoom: 1;
+}
+.headerInner:before, .headerInner:after {
+  display: table;
+  content: "";
+}
+.headerInner:after {
+  clear: both;
+}
+.header .logo {
+  float: left;
+  margin-right: 40px;
+  padding-left: 30px;
+  color: #24d387;
+  font-size: 28px;
+}
+.header .searchWrap {
+  position: relative;
+  float: left;
+  margin-top: 3px;
+  margin-right: 16px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  background: #fff;
+}
+.header .searchWrap:after {
+  position: absolute;
+  top: 4px;
+  left: 33px;
+  height: 26px;
+  border-left: 1px solid #cecece;
+  content: "";
+}
+.header .search {
+  width: 390px;
+  height: 34px;
+  padding-left: 40px;
+  border: none;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background: url(../images/img_set.png) no-repeat 6px 7px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  outline: 0;
+}
+.header .search::-webkit-input-placeholder {
+  color: #cbcbcb;
+  font-size: 14px;
+}
+.header .gnavi {
+  float: left;
+  *zoom: 1;
+}
+.header .gnavi:before, .header .gnavi:after {
+  display: table;
+  content: "";
+}
+.header .gnavi:after {
+  clear: both;
+}
+.header .gnaviList {
+  line-height: 1.0;
+}
+.header .gnaviList .item {
+  display: inline-block;
+  margin-right: 14px;
+  padding-top: 6px;
+}
+.header .gnavi .toTimelineBtn {
+  display: block;
+  height: 28px;
+  padding-left: 26px;
+  background: url(../images/img_set.png) no-repeat 0 -30px;
+  color: #efefef;
+  font-size: 12px;
+  line-height: 28px;
+}
+.header .gnavi .toTimelineBtn:hover {
+  text-decoration: none;
+}
+.header .gnavi .toProfileBtn {
+  display: block;
+  height: 23px;
+  padding-top: 5px;
+  padding-left: 26px;
+  background: url(../images/img_set.png) no-repeat 0 -58px;
+  color: #efefef;
+  font-size: 12px;
+  line-height: 23px;
+}
+.header .gnavi .toProfileBtn:hover {
+  text-decoration: none;
+}
+.header .gnavi .notify {
+  display: block;
+  position: relative;
+  height: 24px;
+  padding-top: 4px;
+  padding-left: 26px;
+  background: url(../images/img_set.png) no-repeat 0 -90px;
+  color: #efefef;
+  font-size: 12px;
+  line-height: 24px;
+}
+.header .gnavi .notify:hover {
+  text-decoration: none;
+}
+.header .gnavi .notifyNum {
+  display: block;
+  position: absolute;
+  top: -3px;
+  left: 10px;
+  padding: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  background: #24d387;
+  font-size: 10px;
+  line-height: 1.0;
+}
+.header .profImgWrap {
+  float: right;
+  margin-right: 33px;
+  border: 1px solid #c9c9ca;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  line-height: 0;
+}
+
+/*---   .mainContent   ---------------------------*/
+.mainContent {
+  min-height: 450px;
+  /*---   .postBox   ----------*/
+  /*---   .friendList   ----------*/
+  /*---   .gameList   ----------*/
+}
+.mainContent .postBoxWrap {
+  width: 100%;
+  padding: 20px 0 40px;
+  border-top: 1px solid #e6e6e6;
+  background: #f2f2f2;
+}
+.mainContent .postBox {
+  width: 580px;
+  margin: 0 auto 18px;
+  padding: 10px;
+  border: 1px solid #e6e6e6;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background: #fff;
+  /*---   .topBox   ---*/
+  /*---   .postTxt   ---*/
+  /*---   .thumbnail   ---*/
+  /*---   .time   ---*/
+  /*---   .actionList   ---*/
+  /*---   .commentBox   ---*/
+}
+.mainContent .postBox .topBox {
+  position: relative;
+  margin-bottom: 7px;
+  *zoom: 1;
+}
+.mainContent .postBox .topBox:before, .mainContent .postBox .topBox:after {
+  display: table;
+  content: "";
+}
+.mainContent .postBox .topBox:after {
+  clear: both;
+}
+.mainContent .postBox .topBox .profImgWrap {
+  float: left;
+  margin-right: 10px;
+}
+.mainContent .postBox .topBox .profImg {
+  border: 1px solid #d3d3d3;
+}
+.mainContent .postBox .topBox .account {
+  color: #3c3c3c;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 1.0;
+}
+.mainContent .postBox .topBox .gameTtl {
+  overflow: hidden;
+  width: 410px;
+  color: #24d387;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.mainContent .postBox .topBox .statusPlayed {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 88px;
+  height: 30px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  background: #69a8e9;
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 30px;
+  text-align: center;
+}
+.mainContent .postBox .topBox .statusPlaying {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 88px;
+  height: 30px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  background: #e96969;
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 30px;
+  text-align: center;
+}
+.mainContent .postBox .topBox .statusReady {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 88px;
+  height: 30px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  background: #e9d31d;
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 30px;
+  text-align: center;
+}
+.mainContent .postBox .postTxt {
+  margin-bottom: 14px;
+  padding-left: 54px;
+  color: #4a4a4a;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.mainContent .postBox .thumbnail {
+  display: none;
+}
+.mainContent .postBox .thumbnailImg {
+  width: 100%;
+}
+.mainContent .postBox .time {
+  float: right;
+  color: #888;
+  font-size: 12px;
+}
+.mainContent .postBox .actionList {
+  margin-top: 46px;
+  padding-left: 54px;
+  *zoom: 1;
+}
+.mainContent .postBox .actionList:before, .mainContent .postBox .actionList:after {
+  display: table;
+  content: "";
+}
+.mainContent .postBox .actionList:after {
+  clear: both;
+}
+.mainContent .postBox .actionList .cmtBtn {
+  float: left;
+  margin-right: 32px;
+  padding-left: 28px;
+  background: url(../images/img_set.png) no-repeat 0 -128px;
+  color: #929292;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 20px;
+  cursor: pointer;
+}
+.mainContent .postBox .actionList .fvrBtn {
+  float: left;
+  padding-left: 26px;
+  background: url(../images/img_set.png) no-repeat 0 -155px;
+  color: #929292;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 20px;
+  cursor: pointer;
+}
+.mainContent .postBox .actionList .deleteBtn {
+  float: right;
+  width: 17px;
+  height: 18px;
+  background: url(../images/img_set.png) no-repeat 0 -183px;
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.mainContent .postBox .commentBox {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid #dcdcdc;
+  *zoom: 1;
+}
+.mainContent .postBox .commentBox:before, .mainContent .postBox .commentBox:after {
+  display: table;
+  content: "";
+}
+.mainContent .postBox .commentBox:after {
+  clear: both;
+}
+.mainContent .postBox .commentBox .profImgWrap {
+  float: left;
+  margin-right: 15px;
+}
+.mainContent .postBox .commentBox .profImg {
+  border: 1px solid #d3d3d3;
+}
+.mainContent .postBox .commentBox .commentList .item {
+  margin-bottom: 8px;
+}
+.mainContent .postBox .commentBox .commentList .commentInfo {
+  line-height: 0.8;
+  *zoom: 1;
+}
+.mainContent .postBox .commentBox .commentList .commentInfo:before, .mainContent .postBox .commentBox .commentList .commentInfo:after {
+  display: table;
+  content: "";
+}
+.mainContent .postBox .commentBox .commentList .commentInfo:after {
+  clear: both;
+}
+.mainContent .postBox .commentBox .commentList .commentInfo .account {
+  display: inline-block;
+  color: #3c3c3c;
+  font-weight: bold;
+  font-size: 12px;
+}
+.mainContent .postBox .commentBox .commentList .commentInfo .commentTime {
+  display: inline-block;
+  color: #888;
+  font-size: 12px;
+}
+.mainContent .postBox .commentBox .commentList .commentInfo .fvrBtn {
+  display: inline-block;
+  color: #888;
+  font-weight: bold;
+  font-size: 12px;
+  cursor: pointer;
+}
+.mainContent .postBox .commentBox .commentList .commentInfo .fvrBtn:hover {
+  text-decoration: underline;
+}
+.mainContent .postBox .commentBox .commentList .commentInfo .userComment {
+  margin-top: 9px;
+  color: #3c3c3c;
+  font-size: 12px;
+}
+.mainContent .postBox .commentBox .commentWrap {
+  float: left;
+}
+.mainContent .postBox .commentBox .comment {
+  overflow: hidden;
+  width: 510px;
+  height: 30px;
+  padding: 5px;
+  border: none;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  resize: none;
+  outline: 0;
+}
+.mainContent .postBox .commentBox .comment::-webkit-input-placeholder {
+  padding: 3px;
+  color: #c6c6c6;
+  font-size: 12px;
+}
+.mainContent .friendListBox {
+  width: 100%;
+  margin-top: 23px;
+  padding: 20px 0 40px;
+  border-top: 1px solid #e6e6e6;
+  background: #f2f2f2;
+}
+.mainContent .friendListBox .friendListWrap {
+  width: 580px;
+  margin: 0 auto;
+  font-size: 0;
+  /* inline-block用 */
+}
+.mainContent .friendListBox .friendListWrap .item {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #e6e6e6;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background: #fff;
+  *zoom: 1;
+}
+.mainContent .friendListBox .friendListWrap .item:before, .mainContent .friendListBox .friendListWrap .item:after {
+  display: table;
+  content: "";
+}
+.mainContent .friendListBox .friendListWrap .item:after {
+  clear: both;
+}
+.mainContent .friendListBox .friendList {
+  position: relative;
+}
+.mainContent .friendListBox .friendList .userImgWrap {
+  float: left;
+  border: 1px solid #cfcfcf;
+}
+.mainContent .friendListBox .friendList .userName {
+  margin-bottom: 5px;
+  margin-left: 54px;
+  padding-top: 4px;
+  color: #373737;
+  font-weight: bold;
+  font-size: 12px;
+}
+.mainContent .friendListBox .friendList .userProf {
+  margin-left: 54px;
+  color: #7e7e7e;
+  font-size: 12px;
+}
+.mainContent .friendListBox .friendList .followBtn {
+  position: absolute;
+  top: 5px;
+  right: 0;
+  width: 88px;
+  height: 30px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  background: #24d387;
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: center;
+  line-height: 30px;
+  cursor: pointer;
+}
+.mainContent .friendListBox .friendList .followBtnOn {
+  position: absolute;
+  top: 5px;
+  right: 0;
+  width: 88px;
+  height: 30px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  background: #666;
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: center;
+  line-height: 30px;
+  cursor: pointer;
+}
+.mainContent .gameListBox {
+  width: 100%;
+  margin-top: 23px;
+  padding: 20px 0 40px;
+  border-top: 1px solid #e6e6e6;
+  background: #f2f2f2;
+}
+.mainContent .gameListBox .gameListWrap {
+  width: 960px;
+  margin: 0 auto;
+  font-size: 0;
+  /* inline-block用 */
+}
+.mainContent .gameListBox .gameListWrap .item {
+  display: inline-block;
+  width: 123px;
+  height: 214px;
+  margin: 7px;
+  border: 1px solid #e6e6e6;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  background: #fff;
+}
+.mainContent .gameListBox .gameList .gameImgWrap {
+  overflow: hidden;
+  width: 121px;
+  height: 176px;
+}
+.mainContent .gameListBox .gameList .gameImg {
+  -moz-border-radius: 3px 3px 0 0;
+  -webkit-border-radius: 3px 3px 0 0;
+  border-radius: 3px 3px 0 0;
+}
+.mainContent .gameListBox .starList {
+  width: 107px;
+  margin: 7px auto 0;
+}
+.mainContent .gameListBox .starList .starOn {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background: url(../images/img_set.png) no-repeat 0 -293px;
+  margin-right: 4px;
+}
+.mainContent .gameListBox .starList .starOn:last-child {
+  margin-right: 0;
+}
+.mainContent .gameListBox .starList .starOff {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background: url(../images/img_set.png) no-repeat 0 -320px;
+  margin-right: 4px;
+}
+.mainContent .gameListBox .starList .starOff:last-child {
+  margin-right: 0;
+}
+
+/*---   .footer   ---------------------------*/
+.footer {
+  width: 100%;
+  padding: 38px 0;
+  background: #5e5e5e;
+  color: #d68356;
+  font-size: 16px;
+  text-align: center;
+}
+.footer .ftList {
+  *zoom: 1;
+  width: 385px;
+  margin: 0 auto 34px;
+}
+.footer .ftList:before, .footer .ftList:after {
+  display: table;
+  content: "";
+}
+.footer .ftList:after {
+  clear: both;
+}
+.footer .ftList .item, .footer .ftList .lastItem {
+  float: left;
+}
+.footer .ftList .item {
+  margin-right: 20px;
+}
+.footer .ftLink {
+  color: #d68356;
+}
