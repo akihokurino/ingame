@@ -5,10 +5,24 @@ namespace :famituu do
 	task :get => :environment do
 		require 'open-uri'
 		require 'nokogiri'
+    # なんとなくここで、連続アクセスではじかれた時用の処理しとく。
     def get(url)
       # url開いてソースを文字列で返す。
-      html = open(url){|f| f.read}
-      return html
+      html = nil
+      status = nil
+      for i in 1..5
+        open(url){|f|
+          html = f.read
+          status = f.status[0].to_i
+        }
+        if status == 200
+          return html
+        else
+          sleep i
+        end
+      end
+      warn "[status:#{status}] #{url}"
+      exit 1
     end
 		def search(date)
       # 日付を引数に取るよう、そのうち書き直す。
