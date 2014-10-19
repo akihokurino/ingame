@@ -366,6 +366,7 @@ a:hover {
 				padding: 5px;
 				border: none;
 				@include box-sizing;
+				font-size: 12px;
 				@include appearance;
 				resize: none;
 				outline: 0;
