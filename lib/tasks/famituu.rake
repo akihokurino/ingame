@@ -24,27 +24,29 @@ namespace :famituu do
       isAlready = {}
 			searchResults.each do |row|
 				result = {}
+        result[:provider] = "famituu"
+        result[:released] = date.strftime("%Y-%m-%d")
         game_url = nil
 
         # デバイス,IDの取得
-        device = []
+        devices = []
         row.css("h3.itemName > a").each do |a|
           href = a.attr("href")
           if href.index("http://www.famitsu.com/cominy/")
             isGame = true
-            result[:id] = href.gsub(/^.*title_id=/, '')
+            result[:provider_id] = href.gsub(/^.*title_id=/, '').to_i
             game_url = href
           else
             name = href.gsub(/^.*calendar\//, '').gsub(/\/.*$/, '')
-            device << name unless name == "all"
+            devices << name unless name == "all"
           end
         end
-        result[:device] = device
+        result[:devices] = devices
         next unless game_url # コントローラとかを除外。
-        next if isAlready[result[:id]] # （ダウンロード版）とかを除外。
-        isAlready[result[:id]] = true
+        next if isAlready[result[:provider_id]] # （ダウンロード版）とかを除外。
+        isAlready[result[:provider_id]] = true
 
-				result[:price] = row.css("span.price").text.gsub("価格：", "").gsub(/円.*$/, "")
+				result[:price] = row.css("span.price").text.gsub("価格：", "").gsub(/円.*$/, "").to_i
 
         # ジャンルとタイトルと発売元と画像取るために
         # 個別ページまで潜る。
@@ -55,9 +57,9 @@ namespace :famituu do
         result[:title] = game_doc.css("h1").css("span").text
         img_src = game_doc.css("span.preview").css("img").attr("src").text
         img_src = nil if img_src == "img/img.gif"
-				result[:image] = img_src
-				result[:tags] = game_doc.css("dl.genre").css("dd").text
-        result[:publisher] = game_doc.css("dt.maker")[0].next_element.text
+				result[:photo_url] = img_src
+				result[:tags] = [game_doc.css("dl.genre").css("dd").text]
+        result[:maker] = game_doc.css("dt.maker")[0].next_element.text
 
 				p result
 			end

@@ -19,11 +19,13 @@ namespace :steam do
 			break if searchResults.length == 0
 			searchResults.each do |row|
 				result = {}
+        result[:provider] = "steam"
+        result[:provider_id] = row.attributes["href"].text.gsub(/^.*\/app\//, '').gsub(/\/.*$/, '').to_i
 				result[:title] = row.css("span.title").text
 				result[:devices] = row.css("span.platform_img").map {|span| span["class"].split[1]}
-				result[:released] = row.css("div.search_released").text
-				result[:price] = ((tmp = row.css("div.search_price").children[-1]) and tmp.text).gsub("\t","").gsub("¥ ", "").gsub(",", "") # なぜか()を外すと動かないぞ。
-				result[:image] = row.css("div.search_capsule > img")[0].attributes["src"].value.gsub(/\?.*/, "").gsub('capsule_sm_120', 'header')
+				result[:released] = row.css("div.search_released").text.gsub(/[年月]/, "-").gsub("日", "")
+				result[:price] = ((tmp = row.css("div.search_price").children[-1]) and tmp.text).gsub("¥ ", "").gsub(",", "").gsub(/\s*/, '').to_i
+				result[:photo_url] = row.css("div.search_capsule > img")[0].attributes["src"].value.gsub(/\?.*/, "").gsub('capsule_sm_120', 'header')
 
         # tagsとpublisher取るために潜る。これらをあきらめるともっと速い。
         game_url = row.attributes["href"].text + "&l=japanese"
@@ -33,11 +35,11 @@ namespace :steam do
         game_dom = Nokogiri::HTML.parse(game_html)
 				result[:tags] = game_dom.css("a.app_tag").map {|a| a.text.gsub /\s/, ""}
 
-        publisher = game_html_lines.grep(/store.steampowered.com\/publisher\//)[0]
-        unless publisher
-          publisher = game_html_lines.grep(/store.steampowered.com\/search\/\?developer/)[0]
+        maker = game_html_lines.grep(/store.steampowered.com\/publisher\//)[0]
+        unless maker
+          maker = game_html_lines.grep(/store.steampowered.com\/search\/\?developer/)[0]
         end
-        result[:publisher] = publisher.gsub(/^[^>]*>/, '').gsub(/<.*$/, '')
+        result[:maker] = maker.gsub(/^[^>]*>/, '').gsub(/<.*$/, '')
 
 				p result
 			end
