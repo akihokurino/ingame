@@ -95,7 +95,7 @@ var PostView = Backbone.View.extend({
     event_handle.publish("showComment", this.model);
   },
   comment: function (e) {
-    if (e.which == 13) {
+    if (e.which == 13 && !e.shiftKey && this.$(".comment-input").val().replace(/^\s+|\s+$/g, "") != "") {
       var that = this;
       var data = {
         "post_comment": {

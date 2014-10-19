@@ -30,6 +30,7 @@ json.posts do |json|
       json.array!(post.post_comments) do |post_comment|
         json.id post_comment[:id]
         json.text post_comment[:text]
+        json.created_at post_comment.datetime
         json.user do |json|
           json.id post_comment.user[:id]
           json.username post_comment.user[:username]

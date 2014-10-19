@@ -10,6 +10,7 @@ var CommentsView = Backbone.View.extend({
   },
   addComment: function (comment) {
     if (comment.id) {
+      comment.sanitize();
       var comment_view = new CommentView({model: comment});
       this.$el.append(comment_view.render().el);
     }

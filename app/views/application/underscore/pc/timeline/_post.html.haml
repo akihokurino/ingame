@@ -42,7 +42,7 @@
         .commentInfo
           %a.account{href: ""}
             {{= post_comments[i].user.username }}
-          %p.commentTime 3時間前
+          %p.commentTime {{= post_comments[i].created_at }}
           %p.fvrBtn いいね！
           %p.userComment
             {{= post_comments[i].text }}
