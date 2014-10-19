@@ -120,6 +120,7 @@ a:hover {
 			color: #efefef;
 			font-size: 12px;
 			line-height: 24px;
+			cursor: pointer;
 
 			&:hover {
 				text-decoration: none;
@@ -143,6 +144,7 @@ a:hover {
 		border: 1px solid #c9c9ca;
 		@include border-radius(2px);
 		line-height: 0;
+		cursor: pointer;
 	}
 }
 
