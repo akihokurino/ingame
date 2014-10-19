@@ -80,6 +80,7 @@ a:hover {
 				display: inline-block;
 				margin-right:14px;
 				padding-top:6px;
+
 			}
 		}
 		.toTimelineBtn {
@@ -119,7 +120,6 @@ a:hover {
 			color: #efefef;
 			font-size: 12px;
 			line-height: 24px;
-			cursor: pointer;
 
 			&:hover {
 				text-decoration: none;
@@ -143,14 +143,13 @@ a:hover {
 		border: 1px solid #c9c9ca;
 		@include border-radius(2px);
 		line-height: 0;
-		cursor: pointer;
 	}
 }
 
 /*---   .mainContent   ---------------------------*/
 .mainContent {
 	min-height: 450px;
-
+	
 	/*---   .postBox   ----------*/
 	.postBoxWrap {
 		width: 100%;
@@ -188,7 +187,7 @@ a:hover {
 			}
 			.gameTtl {
 				overflow: hidden;
-				width: 408px;
+				width: 410px;
 				color: $color-green;
 				font-weight: bold;
 				font-size: 16px;
@@ -275,30 +274,20 @@ a:hover {
 				font-size: 12px;
 				line-height: 20px;
 				cursor: pointer;
-
-				&.on {
-					background-position: 0 -400px;
-					color: $color-green;
-				}
 			}
 			.fvrBtn {
 				float: left;
 				padding-left: 26px;
-				@include img_set-PC2(0, -156px);
+				@include img_set-PC2(0, -155px);
 				color: #929292;
 				font-weight: bold;
 				font-size: 12px;
 				line-height: 20px;
 				cursor: pointer;
-
-				&.on {
-					background-position: 0 -373px;
-					color: $color-green;
-				}
 			}
 			.deleteBtn {
 				float: right;
-				@include img_set-PC4(17px, 19px, 0, -183px);
+				@include img_set-PC4(17px, 18px, 0, -183px);
 				@include substitute;
 				cursor: pointer;
 			}
@@ -348,11 +337,9 @@ a:hover {
 						}
 					}
 					.userComment {
-						overflow: hidden;
 						margin-top: 9px;
 						color: #3c3c3c;
 						font-size: 12px;
-						line-height: 1.5;
 					}
 				}
 			}
@@ -366,7 +353,6 @@ a:hover {
 				padding: 5px;
 				border: none;
 				@include box-sizing;
-				font-size: 12px;
 				@include appearance;
 				resize: none;
 				outline: 0;
