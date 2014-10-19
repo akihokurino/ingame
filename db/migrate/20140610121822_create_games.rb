@@ -10,8 +10,9 @@ class CreateGames < ActiveRecord::Migration
       t.string :device, :index => true
 
       t.string :provider    # steamとかfamituuとか
-      t.string :provider_id # いるかどうか謎だが、一応
+      t.integer :provider_id # いるかどうか謎だが、一応
                             # steam/famituu上でのID。URLから取得。
+      t.date :release_day
 
       t.integer :game_likes_count, :default => 0
       t.integer :posts_count, :default => 0

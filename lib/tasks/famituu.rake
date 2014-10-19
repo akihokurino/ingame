@@ -25,7 +25,7 @@ namespace :famituu do
 			searchResults.each do |row|
 				result = {}
         result[:provider] = "famituu"
-        result[:released] = date.strftime("%Y-%m-%d")
+        result[:release_day] = date.strftime("%Y-%m-%d")
         game_url = nil
 
         # デバイス,IDの取得

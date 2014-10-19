@@ -30,13 +30,13 @@ ActiveRecord::Schema.define(version: 20141014143030) do
 
   create_table "game_gametags", force: true do |t|
     t.integer  "game_id"
-    t.integer  "game_tag_id"
+    t.integer  "gametag_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "game_gametags", ["game_id"], name: "index_game_gametags_on_game_id", using: :btree
-  add_index "game_gametags", ["game_tag_id"], name: "index_game_gametags_on_game_tag_id", using: :btree
+  add_index "game_gametags", ["gametag_id"], name: "index_game_gametags_on_gametag_id", using: :btree
 
   create_table "game_likes", force: true do |t|
     t.integer  "game_id"
@@ -53,7 +53,8 @@ ActiveRecord::Schema.define(version: 20141014143030) do
     t.string   "amazon_url"
     t.string   "device"
     t.string   "provider"
-    t.string   "provider_id"
+    t.integer  "provider_id"
+    t.date     "release_day"
     t.integer  "game_likes_count", default: 0
     t.integer  "posts_count",      default: 0
     t.datetime "created_at"
