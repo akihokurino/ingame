@@ -24,12 +24,15 @@
   %ul.actionList
     %li.cmtBtn
       コメント
+      %span.cmtNum 10件
     {{ if (!i_liked) { }}
     %li.like.fvrBtn
       いいね！
+      %span.likeNum 10件
     {{ } else { }}
     %li.unlike.fvrBtn.on
       いいね！を取り消す
+      %span.likeNum 10件
     {{ } }}
     %li.deleteBtn
       削除
