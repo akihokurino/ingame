@@ -78,17 +78,15 @@ a:hover {
 
 			.item {
 				display: inline-block;
-				margin-right:14px;
-				padding-top:6px;
 			}
 		}
 		.toTimelineBtn {
 			display: block;
 			height: 28px;
-			padding-left: 26px;
+			padding-left: 32px;
 			@include img_set-PC2(0, -30px);
 			color: #efefef;
-			font-size: 12px;
+			font-size: 14px;
 			line-height: 28px;
 
 			&:hover {
@@ -99,10 +97,10 @@ a:hover {
 			display: block;
 			height: 23px;
 			padding-top: 5px;
-			padding-left: 26px;
+			padding-left: 32px;
 			@include img_set-PC2(0, -58px);
 			color: #efefef;
-			font-size: 12px;
+			font-size: 14px;
 			line-height: 23px;
 
 			&:hover {
@@ -114,10 +112,10 @@ a:hover {
 			position: relative;
 			height: 24px;
 			padding-top: 4px;
-			padding-left: 26px;
+			padding-left: 32px;
 			@include img_set-PC2(0, -90px);
 			color: #efefef;
-			font-size: 12px;
+			font-size: 14px;
 			line-height: 24px;
 
 			&:hover {
