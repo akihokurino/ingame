@@ -5,6 +5,7 @@ $cntWidth: 580px;
 
 /*---   common   ---------------------------*/
 html {
+	min-width: 960px;
 	background: #eee;
 	font-family:"Hiragino Kaku Gothic ProN", "Lucida Grande", Helvetica, "Meiryo", sans-serif;
 }
@@ -147,6 +148,12 @@ a:hover {
 	min-height: 450px;
 	
 	/*---   .postBox   ----------*/
+	.postBoxWrap {
+		width: 100%;
+		padding: 20px 0 40px;
+		border-top: 1px solid #e6e6e6;
+		background: #f2f2f2;
+	}
 	.postBox {
 		width: $cntWidth;
 		margin: 0 auto 18px;
@@ -162,9 +169,12 @@ a:hover {
 			margin-bottom: 7px;
 			@include clearfix;
 
-			.profImg {
+			.profImgWrap {
 				float: left;
 				margin-right: 10px;
+			}
+			.profImg {
+				border: 1px solid #d3d3d3;
 			}
 			.account {
 				color: #3c3c3c;
@@ -290,6 +300,9 @@ a:hover {
 				float: left;
 				margin-right: 15px;
 			}
+			.profImg {
+				border: 1px solid #d3d3d3;
+			}
 			.commentList {
 				.item {
 					margin-bottom: 8px;
@@ -345,6 +358,139 @@ a:hover {
 					padding: 3px;
 					color: #c6c6c6;
 					font-size: 12px;
+				}
+			}
+		}
+	}
+	/*---   .friendList   ----------*/
+	.friendListBox {
+		width: 100%;
+		margin-top: 23px;
+		padding: 20px 0 40px;
+		border-top: 1px solid #e6e6e6;
+		background: #f2f2f2;
+
+		.friendListWrap {
+			width: 580px;
+			margin: 0 auto;
+			font-size: 0; /* inline-block用 */
+
+			.item {
+				margin: 10px;
+				padding: 10px;
+				border: 1px solid #e6e6e6;
+				@include border-radius(3px);
+				@include box-sizing;
+				background: #fff;
+				@include clearfix;
+			}
+		}
+		.friendList {
+			position: relative;
+
+			.userImgWrap {
+				float: left;
+				border: 1px solid #cfcfcf;
+			}
+			.userName {
+				margin-bottom: 5px;
+				margin-left: 54px;
+				padding-top: 4px;
+				color: #373737;
+				font-weight: bold;
+				font-size: 12px;
+			}
+			.userProf {
+				margin-left: 54px;
+				color: #7e7e7e;
+				font-size: 12px;
+			}
+			.followBtn {
+				position: absolute;
+				top: 5px;
+				right: 0;
+				width: 88px;
+				height: 30px;
+				@include border-radius(2px);
+				background: $color-green;
+				color: #fff;
+				font-weight: bold;
+				font-size: 14px;
+				text-align: center;
+				line-height: 30px;
+				cursor: pointer;
+			}
+			.followBtnOn {
+				position: absolute;
+				top: 5px;
+				right: 0;
+				width: 88px;
+				height: 30px;
+				@include border-radius(2px);
+				background: #666;
+				color: #fff;
+				font-weight: bold;
+				font-size: 14px;
+				text-align: center;
+				line-height: 30px;
+				cursor: pointer;
+			}
+		}
+	}
+	/*---   .gameList   ----------*/
+	.gameListBox {
+		width: 100%;
+		margin-top: 23px;
+		padding: 20px 0 40px;
+		border-top: 1px solid #e6e6e6;
+		background: #f2f2f2;
+
+		.gameListWrap {
+			width: 960px;
+			margin: 0 auto;
+			font-size: 0; /* inline-block用 */
+
+			.item {
+				display: inline-block;
+				width: 123px;
+				height: 214px;
+				margin: 7px;
+				border: 1px solid #e6e6e6;
+				@include box-sizing;
+				@include border-radius(3px);
+				background: #fff;
+			}
+		}
+		.gameList {
+			.gameImgWrap {
+				overflow: hidden;
+				width: 121px;
+				height: 176px;
+			}
+			.gameImg {
+				@include border-radius(3px 3px 0 0);
+			}
+		}
+		.starList {
+			width: 107px;
+			margin: 7px auto 0;
+
+			.starOn {
+				display: inline-block;
+				@include img_set-PC4(18px, 18px, 0, -293px);
+				margin-right: 4px;
+
+				&:last-child {
+					margin-right: 0;
+				}
+			}
+			.starOff {
+				display: inline-block;
+				@include img_set-PC4(18px, 18px, 0, -320px);
+				margin-right: 4px;
+
+				&:last-child {
+					margin-right: 0;
 				}
 			}
 		}

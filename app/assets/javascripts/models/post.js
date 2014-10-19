@@ -31,5 +31,13 @@ var Post = Backbone.Model.extend({
       new_title             += "...";
       this.get("game").title = new_title;
     }
+
+    return this;
+  },
+  sanitize: function () {
+    var text = this.get("text").replace(/\n/g, '<br>');
+    this.set("text", text);
+
+    return this;
   }
 })

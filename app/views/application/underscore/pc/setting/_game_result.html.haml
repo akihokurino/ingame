@@ -1,2 +1,9 @@
 %script{src: "text/template", id: "game-result-template"}
   %article.gameList
+    %article.gameList
+      %figure.gameImgWrap
+        %img.gameImg{src: "", width: "121", alt: ""}
+      %ul.starList
+        - 4.times do |i|
+          %li.starOn ★
+        %li.starOff ☆

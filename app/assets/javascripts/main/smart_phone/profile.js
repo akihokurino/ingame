@@ -44,6 +44,7 @@
       this.log_collection.fetch({
         data: {user_id: this.user_id},
         success: function (model, response, options) {
+          console.log(response)
           for (var i = 0; i < response.logs.length; i++) {
             var log = new Log(response.logs[i]);
             switch (log.get("status").id) {

@@ -2,10 +2,11 @@ var PostView = Backbone.View.extend({
   tagName: "article",
   className: "postBox",
   events: {
-    "click .delete":      "destroy",
-    "click .like" :       "like",
-    "click .unlike":      "unlike",
-    "click .comment-btn": "showComment",
+    "click .delete":          "destroy",
+    "click .like":            "like",
+    "click .unlike":          "unlike",
+    "click .comment-btn":     "showComment",
+    "keydown .comment-input": "comment"
   },
   initialize: function () {
     this.listenTo(this.model, "destroy", this.remove);
@@ -92,5 +93,32 @@ var PostView = Backbone.View.extend({
   showComment: function (e) {
     e.preventDefault();
     event_handle.publish("showComment", this.model);
+  },
+  comment: function (e) {
+    if (e.which == 13 && !e.shiftKey && this.$(".comment-input").val().replace(/^\s+|\s+$/g, "") != "") {
+      var that = this;
+      var data = {
+        "post_comment": {
+          "post_id":    this.model.id,
+          "text":       this.$(".comment-input").val(),
+          "to_user_id": this.model.get("user").id
+        }
+      }
+
+      $.ajax({
+        type: "POST",
+        url: "/api/post_comments",
+        data: data,
+        success: function (data) {
+          that.model.get("post_comments").push(data.comment);
+          that.render();
+        },
+        error: function () {
+
+        }
+      })
+
+      this.$(".comment-input").val("");
+    }
   }
 })

@@ -1,14 +1,57 @@
 %script{type: "text/template", id: "post-template"}
   .topBox
-    %figure.profImg
-      %img{src: "", width: "44", height: "44", alt: "ユーザー画像"}
-    %a.account{href: ""} ユーザーネーム
-    %p.time 投稿時間
-    %p.status ステータス
-  %h2.gameTtl ゲームタイトル。ゲームタイトル。ゲームタイトル。ゲームタイトル。
-  %p.postTxt コメント本文。コメント本文。コメント本文。コメント本文。コメント本文。コメント本文。コメント本文。コメント本文。コメント本文。コメント本文。コメント本文。コメント本文。
+    %figure.profImgWrap
+      %img.profImg{src: "/user_photos/{{= user.photo_path }}", width: "44", height: "44", alt: "ユーザー画像"}
+    %a.account{href: "/users/{{= user.id }}#logs"}
+      {{= user.username }}
+    %h2.gameTtl
+      %a{href: "/games/{{= game.id}}#all"}
+        {{= game.title }}
+    {{ if (status.id == 1) { }}
+    %p.statusReady 気になる
+    {{ } else if (status.id == 2) { }}
+    %p.statusPlaying プレイ中
+    {{ } else if (status.id == 3) { }}
+    %p.statusPlayed アーカイブ
+    {{ } }}
+  %p.postTxt
+    {{= text }}
   .thumbnail
-    %img.thumbnailImg{src: "", alt: "アップロードした写真"}
+    {{ for (var i = 0; i < post_photos.length; i++) { }}
+    %img{src: "/post_photos/{{= post_photos[i].photo_path }}"}
+    {{ } }}
+  %p.time {{= created_at }}
   %ul.actionList
-    %li.item.cmtBtn コメント
-    %li.item.fvrBtn いいね
+    %li.cmtBtn
+      コメント
+      %span.cmtNum 10件
+    {{ if (!i_liked) { }}
+    %li.like.fvrBtn
+      いいね！
+      %span.likeNum 10件
+    {{ } else { }}
+    %li.unlike.fvrBtn.on
+      いいね！を取り消す
+      %span.likeNum 10件
+    {{ } }}
+    %li.deleteBtn
+      削除
+  .commentBox
+    %ul.commentList
+      {{ for (var i = 0; i < post_comments.length; i++) { }}
+      %li.item
+        %figure.profImgWrap
+          %img.profImg{src: "/user_photos/{{= post_comments[i].user.photo_path }}", width: "30", height: "30", alt: ""}
+        .commentInfo
+          %a.account{href: ""}
+            {{= post_comments[i].user.username }}
+          %p.commentTime {{= post_comments[i].created_at }}
+          %p.fvrBtn いいね！
+          %p.userComment
+            {{= post_comments[i].text }}
+      {{ } }}
+    .myCommentBox
+      %figure.profImgWrap
+        %img.profImg{src: "/user_photos/#{@current_user[:photo_path]}", width: "30", height: "30", alt: ""}
+      %form.commentWrap
+        %textarea.comment.comment-input{placeholder: "コメントする"}

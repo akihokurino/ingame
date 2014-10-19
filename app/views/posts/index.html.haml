@@ -1,15 +1,33 @@
 = content_for :head do
   = stylesheet_link_tag    "pc/timeline"
 
+= content_for :last do
+  = javascript_include_tag "main/pc/timeline"
+
 = render partial: "application/pc/default_header"
 
-%section.mainContent
+%section.mainContent.timeline-page
   %h1.mainTtl タイムライン
-  %a.postBtn{href: ""} 投稿ボタン　(インタラクションはあとで相談させてくれ)
+  .addPost
+    %figure.profImgWrap
+      = image_tag "/user_photos/#{@current_user[:photo_path]}", width: 44, height: 44, alt: "ユーザー画像", class: "profImg"
+    .addPostInner
+      %p.selectBtn.show-select-modal ゲームを選ぶ
+      %textarea.post-input{placeholder: "そのゲームについて、どうおもった？"}
+      %ul.thumbnailList
+
+      .photoBtnWrap
+        %p.photoBtnText 写真を追加
+        %input.addPhoto{type: "file", href: ""}
+      %p.addPostBtn.post-btn 投稿する
+
+      = render partial: "log_select"
+
   .post-list
 
 = render partial: "application/pc/footer"
 
 
+= render partial: "application/underscore/pc/timeline/log"
 = render partial: "application/underscore/pc/timeline/post"
-= render partial: "application/underscore/pc/timeline/comment"
+= render partial: "application/underscore/pc/timeline/game_thumbnail"
