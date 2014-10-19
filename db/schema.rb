@@ -11,18 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141014143057) do
+ActiveRecord::Schema.define(version: 20141014143030) do
 
   create_table "admins", force: true do |t|
     t.string   "username"
     t.string   "password"
     t.integer  "salt"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "devices", force: true do |t|
-    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -34,19 +28,15 @@ ActiveRecord::Schema.define(version: 20141014143057) do
     t.datetime "updated_at"
   end
 
-  create_table "game_devices", force: true do |t|
-    t.integer  "game_id"
-    t.integer  "device_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "game_gametags", force: true do |t|
     t.integer  "game_id"
     t.integer  "game_tag_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "game_gametags", ["game_id"], name: "index_game_gametags_on_game_id", using: :btree
+  add_index "game_gametags", ["game_tag_id"], name: "index_game_gametags_on_game_tag_id", using: :btree
 
   create_table "game_likes", force: true do |t|
     t.integer  "game_id"
@@ -60,11 +50,12 @@ ActiveRecord::Schema.define(version: 20141014143057) do
     t.string   "photo_url"
     t.string   "photo_path"
     t.string   "maker"
-    t.integer  "game_likes_count", default: 0
-    t.integer  "posts_count",      default: 0
     t.string   "amazon_url"
+    t.string   "device"
     t.string   "provider"
     t.string   "provider_id"
+    t.integer  "game_likes_count", default: 0
+    t.integer  "posts_count",      default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -127,11 +118,11 @@ ActiveRecord::Schema.define(version: 20141014143057) do
 
   create_table "posts", force: true do |t|
     t.text     "text"
+    t.integer  "user_id"
+    t.integer  "log_id"
+    t.integer  "game_id"
     t.integer  "post_likes_count",    default: 0
     t.integer  "post_comments_count", default: 0
-    t.integer  "user_id"
-    t.integer  "game_id"
-    t.integer  "log_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
