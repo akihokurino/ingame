@@ -14,8 +14,6 @@
   var AppView = Backbone.View.extend({
     el: ".timeline-page",
     events: {
-      "click .submit-post-btn":    "post",
-      "click .submit-comment-btn": "postComment",
       "click .show-select-modal":  "toggleSelectModal",
       "click .post-btn":           "post"
     },

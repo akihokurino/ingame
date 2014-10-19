@@ -1,130 +1,121 @@
 = content_for :head do
   = stylesheet_link_tag    "pc/game"
 
+= content_for :last do
+  = javascript_include_tag "main/pc/game"
+
 
 = render partial: "application/pc/default_header"
 
-%section.mainContent
+%section.mainContent.game-page{"data-gameid" => @game[:id]}
   .gameBox
     .gameBoxInner
-      %h1.gameTtl ゼルダの伝説 風のタクト HD
+      %h1.gameTtl
+        = @game.title
       %figure.gameImgWrap
-        %img{src: "../test_set/test01.jpg", width: "195", alt: "ゲームパッケージ画像"}
+        - if !@game.amazon_url.nil?
+          %a.gameInner{href: @game.amazon_url}
+            = image_tag "/game_photos/#{@game.photo_path}", width: 195, class: "gameImg", alt: "ゲームパッケージ画像"
       .gameInfoBox
         %ul.gameInfoList
-          %li.item メーカー：ほげほげ
-          %li.item ジャンル：ほげほげ
-          %li.item ハード：ほげほげ
-          %li.item リリース日：ほげほげ
+          %li.item
+            メーカー：
+            = @game.maker
+          %li.item
+            ジャンル：ほげほげ
+          %li.item
+            ハード：
+            = @game.device
+          %li.item
+            リリース日：ほげほげ
         %a.amazonBtn{href: ""} Amazonで見る
         .reviewBox
           %ul.starList
             - 4.times do |i|
               %li.starOn ★
             %li.starOff ☆
-          %p.value 3.0
+          %p.value
+            = @game.avg_rate
         %ul.gameBtnList
-          %li.item
-            %select{size: "1"}
-              %option{value: ""} 評価
-              %option{value: "1"} ★☆☆☆☆
-              %option{value: "2"} ★★☆☆☆
-              %option{value: "3"} ★★★☆☆
-              %option{value: "4"} ★★★★☆
-              %option{value: "5"} ★★★★★
-          %li.item
-            %select{size: "1"}
-              %option{value: ""} ステータス
-              %option{value: "1"} 気になる
-              %option{value: "2"} プレイ中
-              %option{value: "3"} アーカイブ
+          - if @game.i_registed
+            %li.item
+              %select.stars.my_rate{name: "stars", size: 1}
+                - case @game.my_rate.to_i
+                - when 1
+                  %option{value: ""} レビュー
+                  %option{value: 1, selected: "selected"} ★☆☆☆☆
+                  %option{value: 2} ★★☆☆☆
+                  %option{value: 3} ★★★☆☆
+                  %option{value: 4} ★★★★☆
+                  %option{value: 5} ★★★★★
+                - when 2
+                  %option{value: ""} レビュー
+                  %option{value: 1} ★☆☆☆☆
+                  %option{value: 2, selected: "selected"} ★★☆☆☆
+                  %option{value: 3} ★★★☆☆
+                  %option{value: 4} ★★★★☆
+                  %option{value: 5} ★★★★★
+                - when 3
+                  %option{value: ""} レビュー
+                  %option{value: 1} ★☆☆☆☆
+                  %option{value: 2} ★★☆☆☆
+                  %option{value: 3, selected: "selected"} ★★★☆☆
+                  %option{value: 4} ★★★★☆
+                  %option{value: 5} ★★★★★
+                - when 4
+                  %option{value: ""} レビュー
+                  %option{value: 1} ★☆☆☆☆
+                  %option{value: 2} ★★☆☆☆
+                  %option{value: 3} ★★★☆☆
+                  %option{value: 4, selected: "selected"} ★★★★☆
+                  %option{value: 5} ★★★★★
+                - when 5
+                  %option{value: ""} レビュー
+                  %option{value: 1} ★☆☆☆☆
+                  %option{value: 2} ★★☆☆☆
+                  %option{value: 3} ★★★☆☆
+                  %option{value: 4} ★★★★☆
+                  %option{value: 5, selected: "selected"} ★★★★★
+                - else
+                  %option{value: ""} レビュー
+                  %option{value: 1} ★☆☆☆☆
+                  %option{value: 2} ★★☆☆☆
+                  %option{value: 3} ★★★☆☆
+                  %option{value: 4} ★★★★☆
+                  %option{value: 5} ★★★★★
+              %li.item
+                - unless @game.i_registed
+                  %select.new_status{name: "status", size: "1"}
+                    %option{value: ""} ステータス
+                    %option{value: "1"} 気になる
+                    %option{value: "2"} プレイ中
+                    %option{value: "3"} クリア済
+                - else
+                  %select.my_status{name: "status", size: "1"}
+                    - [{value: "", name: "ステータス"}, {value: "1", name: "気になる"}, {value: "2", name: "プレイ中"}, {value: "3", name: "アーカイブ"}].each do |obj|
+                      - if obj[:value].to_i == @game.my_status_id.to_i
+                        %option{value: obj[:value], selected: "selected"}
+                          = obj[:name]
+                      - else
+                        %option{value: obj[:value]}
+                          = obj[:name]
       %section.sortBox
         %h3.sortTtl このゲームに対するポスト
         %ul.sortList
-          %li.item.current フォロー中のユーザー
-          %li.item すべてのユーザー
-          %li.item いいね順
-  %article.postBox
-    .topBox
-      %figure.profImgWrap
-        %img.profImg{src: "../test_set/test02.png", width: "44", height: "44", alt: "ユーザー画像"}
-      %a.account{href: ""} Asuya Kono
-      %h2.gameTtl ゼルダの伝説 風のタクト HD
-      %p.statusPlayed クリア済み
-    %p.postTxt
-      高画質になって遊びやすくなってきたと感じます
-      %br
-      ＧＣの時の不満な点を改善したと思います
-      %br
-      しかしながら改善するなら削ったダンジョンを復活してほしかった
-    .thumbnail
-      %img.thumbnailImg{src: "", alt: "アップロードした写真"}
-    %p.time 3時間前
-    %ul.actionList
-      %li.cmtBtn コメント
-      %li.fvrBtn いいね！
-      %li.deleteBtn 削除
-  %article.postBox
-    .topBox
-      %figure.profImgWrap
-        %img.profImg{src: "../test_set/test02.png", width: "44", height: "44", alt: "ユーザー画像"}
-      %a.account{href: ""} Asuya Kono
-      %h2.gameTtl ゼルダの伝説 風のタクト HD
-      %p.statusPlaying プレイ中
-    %p.postTxt
-      内容は最近のゲームの中でトップでした。グラフィックも非常に綺麗でかなり満足しました。
-      %br
-      …ですがシステム面に不満があり、この評価です。
-      %br
-      ・処理落ちが酷い（敵が多数出現した場合戦うのが苦痛です）
-      %br
-      ・アイテムが無いとボスが強すぎる（逆にあると非常に楽勝です）
-      %br
-      ・一度クリアしてもステージセレクトができない
-      %br
-      でも最後までクリアできたのはやはりシナリオのおかげです。（一度クリアするのに40時間ほどかかりました）ストーリを楽しみたい人にはいいゲームだと思います。
-    .thumbnail
-      %img.thumbnailImg{src: "", alt: "アップロードした写真"}
-    %p.time 3時間前
-    %ul.actionList
-      %li.cmtBtn コメント
-      %li.fvrBtn いいね！
-      %li.deleteBtn 削除
-    .commentBox
-      %figure.profImgWrap
-        %img.profImg{src: "../test_set/test02.png", width: "30", height: "30", alt: ""}
-      %form.commentWrap
-        %textarea.comment{placeholder: "コメントする"}
-  %article.postBox
-    .topBox
-      %figure.profImgWrap
-        %img.profImg{src: "../test_set/test02.png", width: "44", height: "44", alt: "ユーザー画像"}
-      %a.account{href: ""} Asuya Kono
-      %h2.gameTtl ゼルダの伝説 風のタクト HD
-      %p.statusReady 気になる
-    %p.postTxt 気になってます。気になってます。気になってます。気になってます。気になってます。気になってます。
-    .thumbnail
-      %img.thumbnailImg{src: "", alt: "アップロードした写真"}
-    %p.time 3時間前
-    %ul.actionList
-      %li.cmtBtn コメント
-      %li.fvrBtn いいね！
-      %li.deleteBtn 削除
-    .commentBox
-      %ul.commentList
-        - 2.times do |i|
-          %li.item
-            %figure.profImgWrap
-              %img.profImg{src: "../test_set/test02.png", width: "30", height: "30", alt: ""}
-            .commentInfo
-              %a.account{href: ""} Asuya Kono
-              %p.commentTime 3時間前
-              %p.fvrBtn いいね！
-              %p.userComment 俺も好きだよ！グラフィックがいいよね
-      .myCommentBox
-        %figure.profImgWrap
-          %img.profImg{src: "../test_set/test02.png", width: "30", height: "30", alt: ""}
-        %form.commentWrap
-          %textarea.comment{placeholder: "コメントする"}
+          %li.item.current.follower_posts
+            %a.follow{href: "/games/#{@game[:id]}#follower"} フォロー中のユーザー
+          %li.item.all_posts
+            %a.all{href: "/games/#{@game[:id]}#all"} すべてのユーザー
+          %li.item.liker_posts
+            %a.star{href: "/games/#{@game[:id]}#liker"} いいね順
+
+      .game-timeline
+        .post-list
+        = image_tag "gif-load.gif", class: "loading-gif"
+
+
 
 = render partial: "application/pc/footer"
+
+= render partial: "application/underscore/pc/game/post"
+

@@ -111,6 +111,7 @@ var PostView = Backbone.View.extend({
         data: data,
         success: function (data) {
           that.model.get("post_comments").push(data.comment);
+          that.model.set("post_comments_count", that.model.get("post_comments_count") + 1);
           that.render();
         },
         error: function () {
