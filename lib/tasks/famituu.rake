@@ -61,7 +61,7 @@ namespace :famituu do
 				result[:tags] = [game_doc.css("dl.genre").css("dd").text]
         result[:maker] = game_doc.css("dt.maker")[0].next_element.text
 
-				p result
+				Game.create_from_scraping result
 			end
 		end
 	end
