@@ -20,7 +20,7 @@ namespace :steam do
           sleep i
         end
       end
-      warn "[status:#{status}] #{url}"
+      puts "ERROR! [status:#{status}] #{url}"
       exit 1
     end
 		def search(i)
@@ -28,11 +28,27 @@ namespace :steam do
 			url = "http://store.steampowered.com/search/?l=japanese&sort_by=Released&sort_order=DESC&category1=998&page=#{i}"
 			return get url
 		end
-		for i in 1..1#1000
+
+    # スクレイピングルール。
+    # 1. ゲームリストの1ページ目から順に見てく
+    # 2. ゆえに、IDとrelease_dayは相関しない
+    # 3. 既に登録済みのゲームが5つ出現したらexit 0
+    # 4. 探してるページにゲームが一つも載ってなかったらexit 0
+    i = 0
+    already_count = 0
+    while true
+      i += 1
 			doc = Nokogiri::HTML.parse(search i)
 			searchResults = doc.css("a.search_result_row")
-			break if searchResults.length == 0
+			if searchResults.length == 0
+        puts "This is the end of steam game lists. XD"
+        exit 0
+      end
 			searchResults.each do |row|
+        if already_count >= 5
+          puts "5 games are already exists in our database XD"
+          exit 0
+        end
 				result = {}
         result[:provider] = "steam"
         result[:provider_id] = row.attributes["href"].text.gsub(/^.*\/app\//, '').gsub(/\/.*$/, '').to_i
@@ -41,6 +57,12 @@ namespace :steam do
 				result[:release_day] = row.css("div.search_released").text.gsub(/[年月]/, "-").gsub("日", "")
 				result[:price] = ((tmp = row.css("div.search_price").children[-1]) and tmp.text).gsub("¥ ", "").gsub(",", "").gsub(/\s*/, '').to_i
 				result[:photo_url] = row.css("div.search_capsule > img")[0].attributes["src"].value.gsub(/\?.*/, "").gsub('capsule_sm_120', 'header')
+
+        if Game.find_by provider: "steam", provider_id: result[:provider_id]
+          puts "This is already exists #{result[:title]} from [#{result[:provider]}]"
+          already_count += 1
+          next
+        end
 
         # tagsとpublisher取るために潜る。これらをあきらめるともっと速い。
         game_url = row.attributes["href"].text + "&l=japanese"
@@ -56,7 +78,10 @@ namespace :steam do
         end
         result[:maker] = maker.gsub(/^[^>]*>/, '').gsub(/<.*$/, '')
 
-				Game.create_from_scraping result
+        # 不要になったが、とりあえず残しとく。
+				unless Game.create_from_scraping result
+          already_count += 1
+        end
 			end
 		end
 	end

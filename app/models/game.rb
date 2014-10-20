@@ -152,6 +152,7 @@ class Game < ActiveRecord::Base
       create_flag = false
       for device in hash[:devices]
         already = Game.find_by(title: hash[:title], device: device, provider: hash[:provider])
+        # ここは呼ばれないようにする。
         if already
           puts "This is already exists #{hash[:title]} (#{device}) from [#{hash[:provider]}]"
           next
