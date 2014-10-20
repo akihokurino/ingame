@@ -116,7 +116,6 @@ namespace :famituu do
         pivot_date = Game.where(provider: "famituu").order("release_day DESC").first.release_day
         pivot_date = today if pivot_date > today
       end
-      pivot_date = Date.parse("2014/6/1")
       current = pivot_date.change day: 1
       while current <= today
         puts "now collecting games on #{current}"
