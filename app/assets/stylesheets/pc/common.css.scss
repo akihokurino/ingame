@@ -189,7 +189,7 @@ a:hover {
 			}
 			.gameTtl {
 				overflow: hidden;
-				width: 410px;
+				width: 408px;
 				color: $color-green;
 				font-weight: bold;
 				font-size: 16px;
@@ -276,20 +276,30 @@ a:hover {
 				font-size: 12px;
 				line-height: 20px;
 				cursor: pointer;
+
+				&.on {
+					background-position: 0 -400px;
+					color: $color-green;
+				}
 			}
 			.fvrBtn {
 				float: left;
 				padding-left: 26px;
-				@include img_set-PC2(0, -155px);
+				@include img_set-PC2(0, -156px);
 				color: #929292;
 				font-weight: bold;
 				font-size: 12px;
 				line-height: 20px;
 				cursor: pointer;
+
+				&.on {
+					background-position: 0 -373px;
+					color: $color-green;
+				}
 			}
 			.deleteBtn {
 				float: right;
-				@include img_set-PC4(17px, 18px, 0, -183px);
+				@include img_set-PC4(17px, 19px, 0, -183px);
 				@include substitute;
 				cursor: pointer;
 			}
