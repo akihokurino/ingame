@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   end
 
   def check_follow(current_user)
-    if Follow.where(from_user_id: self[:id]).pluck(:to_user_id).include?(self[:id])
+    if Follow.where(from_user_id: current_user[:id]).pluck(:to_user_id).include?(self[:id])
       self.i_followed = true
     else
       self.i_followed = false

@@ -17,9 +17,6 @@
   var LogListView = Backbone.View.extend({
     el: ".profile-page",
     events: {
-      "click .playing":       "setPlaying",
-      "click .ready":         "setAttention",
-      "click .played":        "setArchive",
       "keypress .search-log": "search"
     },
     template: _.template($("#log-list-template").html()),
@@ -31,71 +28,24 @@
 
       var that               = this;
       this.log_collection    = new Logs();
-      this.logs_view         = new LogsView({el: ".log-list", collection: this.log_collection});
+      this.logs_view         = new LogsView({el: ".log-list", collection: this.log_collection, attributes: {type: "select"}});
 
-      this.attentions        = [];
-      this.playings          = [];
-      this.archives          = [];
 
       this.search_log_title  = this.$(".search-log");
-      this.current_tab       = null;
       this.user_id           = this.$el.data("userid");
 
       this.log_collection.fetch({
         data: {user_id: this.user_id},
         success: function (model, response, options) {
-          console.log(response)
           for (var i = 0; i < response.logs.length; i++) {
             var log = new Log(response.logs[i]);
-            switch (log.get("status").id) {
-              case 1:
-                that.attentions.push(log);
-                that.logs_view.collection.add(log);
-                that.current_tab = 1
-                break;
-              case 2:
-                that.playings.push(log);
-                break;
-              case 3:
-                that.archives.push(log);
-                break;
-            }
+            that.logs_view.collection.add(log);
           }
         },
         error: function () {
 
         }
       })
-    },
-    setAttention: function () {
-      this.logs_view.collection.reset();
-      this.logs_view.removeLogs();
-      this.$el.find("ul.sortBox li").removeClass("current");
-      for (var i = 0; i < this.attentions.length; i++) {
-        this.logs_view.collection.add(this.attentions[i]);
-      }
-      this.$el.find("ul.sortBox li.ready-li").addClass("current");
-      this.current_tab = 1
-    },
-    setPlaying: function () {
-      this.logs_view.collection.reset();
-      this.logs_view.removeLogs();
-      this.$el.find("ul.sortBox li").removeClass("current");
-      for (var i = 0; i < this.playings.length; i++) {
-        this.logs_view.collection.add(this.playings[i]);
-      }
-      this.$el.find("ul.sortBox li.playing-li").addClass("current");
-      this.current_tab = 2
-    },
-    setArchive: function () {
-      this.logs_view.collection.reset();
-      this.logs_view.removeLogs();
-      this.$el.find("ul.sortBox li").removeClass("current");
-      for (var i = 0; i < this.archives.length; i++) {
-        this.logs_view.collection.add(this.archives[i]);
-      }
-      this.$el.find("ul.sortBox li.played-li").addClass("current");
-      this.current_tab = 3
     },
     search: function (e) {
       if (e.which == 13 && this.search_log_title.val() != "") {
