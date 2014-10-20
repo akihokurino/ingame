@@ -18,6 +18,11 @@ a {
 a:hover {
 	text-decoration: underline;
 }
+.loading-gif {
+	display: block;
+	width: 80px;
+	margin: 0 auto;
+}
 
 /*---   .header   ---------------------------*/
 .header {
@@ -25,6 +30,7 @@ a:hover {
 	background: $color_black;
 
 	&Inner {
+		position: relative;
 		width: $width;
 		margin: 0 auto;
 		color: #fff;
@@ -139,12 +145,68 @@ a:hover {
 		}
 	}
 	.profImgWrap {
+		position: relative;
 		float: right;
 		margin-right: 33px;
 		border: 1px solid #c9c9ca;
 		@include border-radius(2px);
 		line-height: 0;
 		cursor: pointer;
+
+		&:after {
+			display: block;
+			position: absolute;
+			right: -30px;
+			top: 50%;
+			width: 10px;
+			height: 10px;
+			margin-top: -7px;
+			border-top: 4px solid #fff;
+			border-right: 4px solid #fff;
+			-webkit-transform: rotate(135deg);
+			transform: rotate(135deg);
+			content:"";
+		}
+	}
+	.openMenu {
+		position: absolute;
+		top: 42px;
+		right: -10px;
+		padding: 8px;
+		@include border-radius(3px);
+		@include box-shadow(0, 0, 16px, 0, rgba(0, 0, 0, 0.2));
+		background: #fff;
+		font-weight: bold;
+		font-size: 12px;
+
+		&:after {
+			display: block;
+			position: absolute;
+			top: -14px;
+			right: 12px;
+			border-top: 7px solid transparent;
+			border-right: 8px solid transparent;
+			border-bottom: 7px solid #fff;
+			border-left: 8px solid transparent;
+			content: "";
+		}
+		.item:first-child {
+			margin-bottom: 10px;
+		}
+		.toProfileEdit {
+			display: block;
+			padding-left: 30px;
+			@include img_set-PC2(0, -429px);
+			color: $color_black;
+			line-height: 20px;
+		}
+		.menuItemLogout {
+			display: block;
+			padding-left: 30px;
+			@include img_set-PC2(3px, -458px);
+			color: $color_black;
+			line-height: 20px;
+		}
 	}
 }
 
@@ -189,7 +251,7 @@ a:hover {
 			}
 			.gameTtl {
 				overflow: hidden;
-				width: 410px;
+				width: 408px;
 				color: $color-green;
 				font-weight: bold;
 				font-size: 16px;
@@ -276,20 +338,30 @@ a:hover {
 				font-size: 12px;
 				line-height: 20px;
 				cursor: pointer;
+
+				&.on {
+					background-position: 0 -400px;
+					color: $color-green;
+				}
 			}
 			.fvrBtn {
 				float: left;
 				padding-left: 26px;
-				@include img_set-PC2(0, -155px);
+				@include img_set-PC2(0, -156px);
 				color: #929292;
 				font-weight: bold;
 				font-size: 12px;
 				line-height: 20px;
 				cursor: pointer;
+
+				&.on {
+					background-position: 0 -373px;
+					color: $color-green;
+				}
 			}
 			.deleteBtn {
 				float: right;
-				@include img_set-PC4(17px, 18px, 0, -183px);
+				@include img_set-PC4(17px, 19px, 0, -183px);
 				@include substitute;
 				cursor: pointer;
 			}
@@ -339,9 +411,11 @@ a:hover {
 						}
 					}
 					.userComment {
+						overflow: hidden;
 						margin-top: 9px;
 						color: #3c3c3c;
 						font-size: 12px;
+						line-height: 1.5;
 					}
 				}
 			}
