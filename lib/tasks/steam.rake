@@ -76,7 +76,11 @@ namespace :steam do
         unless maker
           maker = game_html_lines.grep(/store.steampowered.com\/search\/\?developer/)[0]
         end
-        result[:maker] = maker.gsub(/^[^>]*>/, '').gsub(/<.*$/, '')
+        if maker
+          result[:maker] = maker.gsub(/^[^>]*>/, '').gsub(/<.*$/, '')
+        else
+          result[:maker] = ""
+        end
 
         # 不要になったが、とりあえず残しとく。
 				unless Game.create_from_scraping result

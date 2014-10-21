@@ -94,7 +94,11 @@ namespace :famituu do
           img_src = nil if img_src == "img/img.gif"
           result[:photo_url] = img_src
           result[:tags] = [game_doc.css("dl.genre").css("dd").text]
-          result[:maker] = game_doc.css("dt.maker")[0].next_element.text
+          begin
+            result[:maker] = game_doc.css("dt.maker")[0].next_element.text
+          rescue
+            result[:maker] = ""
+          end
 
           Game.create_from_scraping result
         end
