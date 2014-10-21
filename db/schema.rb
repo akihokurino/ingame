@@ -11,12 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140911143336) do
+ActiveRecord::Schema.define(version: 20141021154447) do
 
   create_table "admins", force: true do |t|
     t.string   "username"
     t.string   "password"
     t.integer  "salt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "comment_likes", force: true do |t|
+    t.integer  "post_comment_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -75,6 +82,7 @@ ActiveRecord::Schema.define(version: 20140911143336) do
   create_table "post_comments", force: true do |t|
     t.integer  "user_id"
     t.integer  "post_id"
+    t.integer  "comment_likes_count", default: 0
     t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -7,3 +7,11 @@
         - 4.times do |i|
           %li.starOn ★
         %li.starOff ☆
+      %ul.btnList
+        %li.item
+          %select.status{name: "status", size: 1}
+            %option{value: ""} ステータス
+            %option{value: 1} 気になる
+            %option{value: 2} プレイ中
+            %option{value: 3} クリア済
+

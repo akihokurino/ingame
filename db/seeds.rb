@@ -18,6 +18,7 @@ end
   をフォローしました
   のポストにいいね！と言っています
   のポストにコメントしました
+  のコメントにいいね！と言っています
 ).each do |value|
   NotificationType.create(value: value)
 end

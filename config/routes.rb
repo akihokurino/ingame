@@ -37,6 +37,7 @@ Ingame::Application.routes.draw do
     end
     resources :follows, only: ["create", "destroy"], format: "json"
     resources :post_comments, only: ["create", "destory"], format: "json"
+    resources :comment_likes, only: ["create", "destroy"], format: "json"
     resources :notifications, only: ["index"], format: "json" do
       collection do
         get "count"

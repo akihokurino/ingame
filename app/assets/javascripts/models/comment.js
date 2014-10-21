@@ -2,6 +2,7 @@ var Comment = Backbone.Model.extend({
   defaults: {
     "id": "",
     "text": "",
+    "comment_likes_count": "",
     "created_at": "",
     "user": {
       "id": "",

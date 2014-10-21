@@ -125,8 +125,12 @@ namespace :amazon do
 			end
 		end
 
-
-
+		#PS2
+		crawl_amazon("http://www.amazon.co.jp/s/ref=sr_nr_n_0?rh=n%3A637394%2Cn%3A%21637872%2Cn%3A637874%2Cn%3A2228409051&bbn=637874&ie=UTF8&qid=1403177762&rnid=637874")
+		#PS3
+		crawl_amazon("http://www.amazon.co.jp/s/ref=sr_pg_1?rh=n%3A637394%2Cn%3A%21637872%2Cn%3A15782591%2Cn%3A2228410051&bbn=15782591&ie=UTF8&qid=1403140719")
+		#PS4
+		crawl_amazon("http://www.amazon.co.jp/s/ref=lp_2494234051_nr_n_0?rh=n%3A637394%2Cn%3A%21637872%2Cn%3A2494234051%2Cn%3A2494235051&bbn=2494234051&ie=UTF8&qid=1403177798&rnid=2494234051")
 		#PSP
 		crawl_amazon("http://www.amazon.co.jp/s/ref=sr_nr_n_0?rh=n%3A637394%2Cn%3A%21637872%2Cn%3A13305031%2Cn%3A2228404051&bbn=13305031&ie=UTF8&qid=1403177835&rnid=13305031")
 		#PS VITA
@@ -145,11 +149,6 @@ namespace :amazon do
 		crawl_amazon("http://www.amazon.co.jp/s/ref=lp_15783231_nr_n_0?rh=n%3A637394%2Cn%3A%21637872%2Cn%3A15783231%2Cn%3A2228406051&bbn=15783231&ie=UTF8&qid=1403178118&rnid=15783231")
 		#PC Game
 		#crawl_amazon("http://www.amazon.co.jp/s/ref=sr_nr_n_12?rh=n%3A637394%2Cn%3A%21637872%2Cn%3A689132&bbn=637872&ie=UTF8&qid=1403509187&rnid=637872")
-		#PS2
-		crawl_amazon("http://www.amazon.co.jp/s/ref=sr_nr_n_0?rh=n%3A637394%2Cn%3A%21637872%2Cn%3A637874%2Cn%3A2228409051&bbn=637874&ie=UTF8&qid=1403177762&rnid=637874")
-		#PS3
-		crawl_amazon("http://www.amazon.co.jp/s/ref=sr_pg_1?rh=n%3A637394%2Cn%3A%21637872%2Cn%3A15782591%2Cn%3A2228410051&bbn=15782591&ie=UTF8&qid=1403140719")
-		#PS4
-		crawl_amazon("http://www.amazon.co.jp/s/ref=lp_2494234051_nr_n_0?rh=n%3A637394%2Cn%3A%21637872%2Cn%3A2494234051%2Cn%3A2494235051&bbn=2494234051&ie=UTF8&qid=1403177798&rnid=2494234051")
+
   end
 end
