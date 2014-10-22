@@ -6,17 +6,17 @@
     %nav.gnavi
       %ul.gnaviList
         %li.item
-          %a.toTimelineBtn{href: ""} タイムライン
+          = link_to "タイムライン", posts_path, class: "toTimelineBtn"
         %li.item
-          %a.toProfileBtn{href: ""} マイページ
+          = link_to "マイページ", "/users/#{@current_user[:id]}#logs", class: "toProfileBtn"
         %li.item
           %span.notify
             通知
             %span.notifyNum 1
     %figure.profImgWrap
-      %img.profImg{src: "/user_photos/default.png", width: "35", height: "35", alt: ""}
+      = image_tag "/user_photos/#{@current_user[:photo_path]}", class: "profImg", width: 35, height: 35, alt: ""
     %ul.openMenu
       %li.item
-        %a.toProfileEdit{href: ""} プロフィール設定
+        = link_to "プロフィール設定", edit_user_path(@current_user), class: "toProfileEdit"
       %li.item
-        %a.menuItemLogout{href: ""} ログアウト
+        = link_to "ログアウト", logout_users_path, class: "menuItemLogout"
