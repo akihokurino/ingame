@@ -13,6 +13,8 @@ class Game < ActiveRecord::Base
   has_many :game_gametags
   has_many :gametags, :through => :game_gametags
 
+  default_scope { includes(:gametags) }
+
 	validates :title,
 		presence: true,
 		length: {maximum: 255}
