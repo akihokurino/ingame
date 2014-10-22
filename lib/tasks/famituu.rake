@@ -90,6 +90,7 @@ namespace :famituu do
           game_doc = Nokogiri::HTML.parse game_html
 
           result[:title] = game_doc.css("h1").css("span").text
+          next if result[:title] == ""
           img_src = game_doc.css("span.preview").css("img").attr("src").text
           img_src = nil if img_src == "img/img.gif"
           result[:photo_url] = img_src
