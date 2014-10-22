@@ -1,0 +1,15 @@
+%script{type: "text/template", id: "game-search-template"}
+  .searchBox
+    %form.searchWrap
+      %input.search.game-title-input{type: "text", placeholder: "キーワードでゲームを探す"}
+    %p.searchBtn.search-btn{href: ""} 検索
+  %ul.sortList
+    %li.item.current ゲーム検索
+    %li.item
+      %a{href: "/users/#{@current_user[:id]}/search_game_or_user#user"} ユーザー検索
+  .gameListBox
+    %p.searchTtl
+      %span.searchTtlInner オーディンスフィ
+      でヒットした ゲーム 15件
+    %ul.gameListWrap.result-list
+    = image_tag "gif-load.gif", class: "loading-gif"

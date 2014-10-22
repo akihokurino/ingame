@@ -1,6 +1,5 @@
 class Api::PostCommentsController < ApplicationController
   def create
-    p "test"
     params[:post_comment][:user_id] = @current_user[:id]
     @comment                        = PostComment.create post_comment_params
 

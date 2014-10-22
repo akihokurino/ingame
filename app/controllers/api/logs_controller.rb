@@ -4,12 +4,12 @@ class Api::LogsController < ApplicationController
   end
 
   def create
-    if(params[:amazon_url])
+    if params[:amazon_url]
       result = Game.get_from_amazon(params[:amazon_url])
       @log   = Log.create_with(result, @current_user)
     else
       params[:log][:user_id] = @current_user[:id]
-      @log                   = Log.last if Log.create(log_params)
+      @log                   = Log.create(log_params)
     end
   end
 
