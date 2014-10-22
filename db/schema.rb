@@ -35,6 +35,16 @@ ActiveRecord::Schema.define(version: 20141021154447) do
     t.datetime "updated_at"
   end
 
+  create_table "game_gametags", force: true do |t|
+    t.integer  "game_id"
+    t.integer  "gametag_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "game_gametags", ["game_id"], name: "index_game_gametags_on_game_id", using: :btree
+  add_index "game_gametags", ["gametag_id"], name: "index_game_gametags_on_gametag_id", using: :btree
+
   create_table "game_likes", force: true do |t|
     t.integer  "game_id"
     t.integer  "user_id"
@@ -44,12 +54,22 @@ ActiveRecord::Schema.define(version: 20141021154447) do
 
   create_table "games", force: true do |t|
     t.string   "title"
+    t.string   "photo_url"
     t.string   "photo_path"
-    t.string   "device"
     t.string   "maker"
+    t.string   "amazon_url"
+    t.string   "device"
+    t.string   "provider"
+    t.integer  "provider_id"
+    t.date     "release_day"
     t.integer  "game_likes_count", default: 0
     t.integer  "posts_count",      default: 0
-    t.string   "amazon_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "gametags", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -107,11 +127,11 @@ ActiveRecord::Schema.define(version: 20141021154447) do
 
   create_table "posts", force: true do |t|
     t.text     "text"
+    t.integer  "user_id"
+    t.integer  "log_id"
+    t.integer  "game_id"
     t.integer  "post_likes_count",    default: 0
     t.integer  "post_comments_count", default: 0
-    t.integer  "user_id"
-    t.integer  "game_id"
-    t.integer  "log_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
