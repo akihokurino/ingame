@@ -115,15 +115,7 @@ class Game < ActiveRecord::Base
 		end
 
 		def find_or_create!(result)
-			if self.exists?(title: result[:title])
-				game = self.find_by(title: result[:title])
-			else
-				result[:release_day] = result[:release_day]
-				self.create!(result)
-				game                 = self.last
-			end
-
-			game
+			game = self.find_or_create_by! result
 		end
 
 		def search(search_title, page, current_user)

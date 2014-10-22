@@ -478,8 +478,8 @@
         type: "POST",
         url: "/api/logs",
         data: data,
-        success: function () {
-
+        success: function (data) {
+          console.log(data);
         },
         error: function () {
 
