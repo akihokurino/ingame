@@ -119,10 +119,6 @@ class Game < ActiveRecord::Base
 			end
 		end
 
-		def find_or_create!(result)
-			game = self.find_or_create_by! result
-		end
-
 		def search(search_title, page, current_user)
 			offset = (page - 1) * LIMIT
 			self.where("title LIKE ?", "%#{self.escape(search_title)}%").order("created_at DESC").offset(offset).limit(LIMIT).keep_if do |game|
