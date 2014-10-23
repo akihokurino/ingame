@@ -8,8 +8,9 @@
   var HeaderView = Backbone.View.extend({
     el: $("header"),
     events: {
-      "click .notify": "showNotifications",
-      "click .menu-btn": "toggleMenu"
+      "click .notify":                 "showNotifications",
+      "click .menu-btn":               "toggleMenu",
+      "keypress .header-search-input": "search"
     },
     initialize: function () {
       var that = this;
@@ -17,6 +18,9 @@
 
       this.notification_collection = new Notifications();
       this.getNotificationCount();
+
+      this.search_input = this.$(".header-search-input");
+      this.user_id      = $("#wrapper").data("userid");
 
       event_handle.discribe("hideNotifications", this.hideNotifications);
 
@@ -72,6 +76,12 @@
         this.$(".openMenu").css("display", "block");
       } else {
         this.$(".openMenu").css("display", "none");
+      }
+    },
+    search: function (e) {
+      if (e.which == 13 && this.search_input.val() != "") {
+        e.preventDefault();
+        location.href = "/users/" + this.user_id + "/search_game_or_user?search_word=" + this.search_input.val() + "#game";
       }
     }
   })

@@ -7,9 +7,6 @@
     %li.item
       %a{href: "/users/#{@current_user[:id]}/search_game_or_user#game"} ゲーム検索
     %li.item.current ユーザー検索
-  .userListBox
-    %p.searchTtl
-      %span.searchTtlInner オーディンスフィ
-      でヒットした ゲーム 15件
+  .userListBox.result-area
     %ul.userListWrap.result-list
     = image_tag "gif-load.gif", class: "loading-gif"
