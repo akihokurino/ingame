@@ -28,7 +28,7 @@ var NotificationsView = Backbone.View.extend({
     }
   },
   createText: function (notification) {
-    var text = "<a href='/users/" + notification.from_user.id + "'>" + notification.from_user.username + "さん</a>があなた" + notification.text;
+    var text = "<a href='/users/" + notification.from_user.id + "#logs'>" + notification.from_user.username + "さん</a>があなた" + notification.text;
     return text;
   },
   hideNotifications: function () {

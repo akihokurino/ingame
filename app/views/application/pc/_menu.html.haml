@@ -1,0 +1,5 @@
+%ul.openMenu
+  %li.item
+    = link_to "プロフィール設定", edit_user_path(@current_user), class: "toProfileEdit"
+  %li.item
+    = link_to "ログアウト", logout_users_path, class: "menuItemLogout"

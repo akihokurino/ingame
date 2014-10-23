@@ -1,3 +1,6 @@
+= content_for :last do
+  = javascript_include_tag "main/pc/header"
+
 %header.header
   .headerInner
     %h1.logo Gameful
@@ -13,10 +16,10 @@
           %span.notify
             通知
             %span.notifyNum 1
-    %figure.profImgWrap
+    %figure.profImgWrap.menu-btn
       = image_tag "/user_photos/#{@current_user[:photo_path]}", class: "profImg", width: 35, height: 35, alt: ""
-    %ul.openMenu
-      %li.item
-        = link_to "プロフィール設定", edit_user_path(@current_user), class: "toProfileEdit"
-      %li.item
-        = link_to "ログアウト", logout_users_path, class: "menuItemLogout"
+    = render partial: "application/pc/menu"
+
+
+= render partial: "application/pc/notifications_modal"
+= render partial: "application/underscore/pc/header/notification"
