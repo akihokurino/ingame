@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 20141021154447) do
   create_table "post_comments", force: true do |t|
     t.integer  "user_id"
     t.integer  "post_id"
+    t.integer  "comment_likes_count", default: 0
     t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
