@@ -10,9 +10,11 @@
   .gameBox
     .gameTopBox
       %figure.gameWrap
-        - if !@game.amazon_url.nil?
-          %a.gameInner{href: @game.amazon_url}
-            = image_tag "/game_photos/#{@game.photo_path}", height: 96, class: "gameImg"
+        /
+          - if !@game.amazon_url.nil?
+            %a.gameInner{href: @game.amazon_url}
+              = image_tag "/game_photos/#{@game.photo_path}", height: 96, class: "gameImg"
+        = image_tag @game.photo_path, height: 96, class: "gameImg"
       .gameInfoWrap
         %ul.gameInfo
           %li.item.maker
@@ -21,6 +23,8 @@
             = @game.device
           %li.item.hard
             = @game.device
+          %li.item.releaseDay
+            = @game.release_day
         %h1.ttl
           = @game.title
         %p.review

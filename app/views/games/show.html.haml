@@ -13,9 +13,11 @@
       %h1.gameTtl
         = @game.title
       %figure.gameImgWrap
-        - if !@game.amazon_url.nil?
-          %a.gameInner{href: @game.amazon_url}
-            = image_tag "/game_photos/#{@game.photo_path}", width: 195, class: "gameImg", alt: "ゲームパッケージ画像"
+        /
+          - if !@game.amazon_url.nil?
+            %a.gameInner{href: @game.amazon_url}
+              = image_tag "/game_photos/#{@game.photo_path}", width: 195, class: "gameImg", alt: "ゲームパッケージ画像"
+        = image_tag @game.photo_url, width: 195, class: "gameImg", alt: "ゲームパッケージ画像"
       .gameInfoBox
         %ul.gameInfoList
           %li.item
@@ -27,7 +29,8 @@
             ハード：
             = @game.device
           %li.item
-            リリース日：ほげほげ
+            リリース日：
+            = @game.release_day
         %a.amazonBtn{href: ""} Amazonで見る
         .reviewBox
           %ul.starList

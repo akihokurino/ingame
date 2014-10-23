@@ -2,7 +2,8 @@
   %article.gameList
     %figure.gameImgWrap
       .gameImgInner
-        %img.gameImg{src: "/game_photos/{{= photo_path }}", height: 88}
+        / %img.gameImg{src: "/game_photos/{{= photo_path }}", height: 88}
+        %img.gameImg{src: "{{= photo_url }}", height: 88}
     %section.gameInfo
       %h1.ttl
         {{= title }}

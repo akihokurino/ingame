@@ -7,6 +7,7 @@ json.logs do |json|
       json.id log.game[:id]
       json.title log.game[:title]
       json.photo_path log.game[:photo_path]
+      json.photo_url log.game[:photo_url]
       json.device log.game[:device]
       json.price log.game[:price]
       json.maker log.game[:maker]
