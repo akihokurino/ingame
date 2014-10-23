@@ -40,16 +40,33 @@
       like_socket.callback = function (data) {
         that.post_collection.find(function (model) {
           if (model.id == data.post_id) {
-            var new_like_count;
             if (data.type == "like") {
-              new_like_count = parseInt(model.get("post_likes_count")) + 1;
+              model.set({
+                "post_likes_count": parseInt(model.get("post_likes_count")) + 1
+              });
             } else if (data.type == "unlike") {
-              new_like_count = parseInt(model.get("post_likes_count")) - 1;
+              model.set({
+                "post_likes_count": parseInt(model.get("post_likes_count")) - 1
+              });
             }
 
-            model.set({
-              "post_likes_count": new_like_count
-            });
+            /*
+            if (data.type == "comment_like") {
+              for (var i = 0; i < model.get("post_comments").length; i++) {
+                var comment = model.get("post_comments")[i];
+                if (comment.id == data.post_comment_id) {
+                  new_comment_like_count = parseInt(comment.get("comment_likes_count")) + 1;
+                }
+              }
+            } else if (data.type == "comment_unlike") {
+              for (var i = 0; i < model.get("post_comments").length; i++) {
+                var comment = model.get("post_comments")[i];
+                if (comment.id == data.post_comment_id) {
+                  new_comment_like_count = parseInt(comment.get("comment_likes_count")) - 1;
+                }
+              }
+            }
+            */
           }
         });
       }
@@ -61,13 +78,13 @@
         that.posts_view.$el.prepend(post_view.render().el);
       }
 
-      /*
       comment_socket.callback = function (data) {
         that.post_collection.find(function (model) {
           if (model.id == data.post_id) {
             var new_comment_count;
             if (data.type == "comment") {
-              new_comment_count = parseInt(model.get("post_comments_count")) + 1
+              new_comment_count = parseInt(model.get("post_comments_count")) + 1;
+              model.get("post_comments").push(data.comment);
             } else if (data.type == "uncomment") {
               new_comment_count = parseInt(model.get("post_comments_count")) - 1;
             }
@@ -78,7 +95,6 @@
           }
         });
       }
-      */
 
       this.log_collection.fetch({
         data: {user_id: this.user_id},
@@ -97,7 +113,6 @@
       this.post_collection.fetch({
         data: {page: this.page},
         success: function (model, response, options) {
-          console.log(response)
           for (var i = 0; i < response.posts.length; i++) {
             var post = new Post(response.posts[i]);
             that.posts_view.collection.add(post);
@@ -174,6 +189,14 @@
             that.posts_view.collection.add(post, {silent: true});
             var post_view = new PostView({model: post});
             that.posts_view.$el.prepend(post_view.render().el);
+
+            var data = {
+              type: "post",
+              post: response.get("last_post"),
+              from_user_id: post_socket.user_id
+            }
+
+            post_socket.send(data);
           },
           error: function () {
           }
