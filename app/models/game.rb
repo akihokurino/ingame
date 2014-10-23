@@ -10,13 +10,18 @@ class Game < ActiveRecord::Base
 	has_many :users, :through => :logs
 	has_many :game_likes
 	has_many :posts
+  has_many :game_gametags
+  has_many :gametags, :through => :game_gametags
+
+  default_scope { includes(:gametags) }
 
 	validates :title,
 		presence: true,
 		length: {maximum: 255}
-	validates :photo_path,
-		presence: true,
-		length: {maximum: 255}
+  # すまんがちょっとコメントアウトする
+  #validates :photo_path,
+  #		presence: true,
+  #		length: {maximum: 255}
 	validates :device,
 		length: {maximum: 255}
 	validates :maker,
@@ -114,15 +119,42 @@ class Game < ActiveRecord::Base
 			end
 		end
 
-		def find_or_create!(result)
-			game = self.find_or_create_by! result
-		end
-
 		def search(search_title, page, current_user)
 			offset = (page - 1) * LIMIT
 			self.where("title LIKE ?", "%#{self.escape(search_title)}%").order("created_at DESC").offset(offset).limit(LIMIT).keep_if do |game|
 				!current_user.logs.pluck(:game_id).include?(game.id)
 			end
 		end
+
+    def create_from_scraping(hash)
+      # if already exist return false else return true
+      # ここで入れるattributes
+      game_attr = {
+        title: 1,
+        photo_url: 1,
+        maker: 1,
+        device: 1,
+        provider: 1,
+        provider_id: 1,
+        release_day: 1
+      }
+      tags = hash[:tags].map {|tag| Gametag.find_or_create_by! name: tag}
+      create_flag = false
+      for device in hash[:devices]
+        already = Game.find_by(title: hash[:title], device: device, provider: hash[:provider])
+        # ここは呼ばれないようにする。
+        if already
+          puts "This is already exists #{hash[:title]} (#{device}) from [#{hash[:provider]}]"
+          next
+        end
+        create_flag = true
+        puts "creating #{hash[:title]} (#{device}) from [#{hash[:provider]}]"
+        game = Game.find_or_create_by! hash.select{|key,_| game_attr[key]}.merge(device: device)
+        tags.each do |tag|
+          GameGametag.find_or_create_by! game: game, gametag: tag
+        end
+      end
+      return create_flag
+    end
 	end
 end
