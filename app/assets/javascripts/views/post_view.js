@@ -6,7 +6,9 @@ var PostView = Backbone.View.extend({
     "click .like":            "like",
     "click .unlike":          "unlike",
     "click .comment-btn":     "showComment",
-    "keydown .comment-input": "comment"
+    "keydown .comment-input": "comment",
+    "click .comment-like":    "commentLike",
+    "click .comment-unlike":  "commentUnlike"
   },
   initialize: function () {
     this.listenTo(this.model, "destroy", this.remove);
@@ -121,5 +123,78 @@ var PostView = Backbone.View.extend({
 
       this.$(".comment-input").val("");
     }
-  }
+  },
+  commentLike: function (e) {
+    var index   = $(e.currentTarget).data("commentindex");
+    var comment = this.model.get("post_comments")[index];
+    var that    = this;
+    var data = {
+      "comment_like": {
+        "post_comment_id": comment.id,
+        "user_id": null,
+        "to_user_id": comment.user.id
+      }
+    };
+
+    $.ajax({
+      type: "POST",
+        url: "/api/comment_likes",
+        data: data,
+        success: function (data) {
+          if (data) {
+            comment.i_liked           = true;
+            comment.comment_likes_count += 1;
+            that.render();
+          }
+
+          /*
+          var data = {
+            type: "like",
+            post_id: that.model.id,
+            from_user_id: like_socket.user_id,
+            to_user_id: that.model.get("user").id
+          }
+
+          like_socket.send(data);
+          */
+        },
+        error: function () {
+
+        }
+    })
+  },
+  commentUnlike: function (e) {
+    var index   = $(e.currentTarget).data("commentindex");
+    var comment = this.model.get("post_comments")[index];
+    var that    = this;
+
+    $.ajax({
+      type: "DELETE",
+      url: "/api/comment_likes/" + comment.id,
+      data: {},
+      success: function (data) {
+        if (data) {
+          comment.i_liked           = false;
+          if (comment.comment_likes_count > 0) {
+            comment.comment_likes_count -= 1;
+          }
+          that.render();
+        }
+
+        /*
+        var data = {
+          type: "unlike",
+          post_id: that.model.id,
+          from_user_id: like_socket.user_id,
+          to_user_id: that.model.get("user").id
+        }
+
+        like_socket.send(data);
+        */
+      },
+      error: function () {
+
+      }
+    })
+  },
 })

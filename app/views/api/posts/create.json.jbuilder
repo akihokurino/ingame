@@ -30,6 +30,7 @@ json.last_post do |json|
       json.id post_comment[:id]
       json.text post_comment[:text]
       json.comment_likes_count post_comment[:comment_likes_count]
+      json.i_liked post_comment.i_liked
       json.created_at post_comment.datetime
       json.user do |json|
         json.id post_comment.user[:id]

@@ -2,7 +2,7 @@ class CommentLike < ActiveRecord::Base
   belongs_to :post_comment, counter_cache: true
   belongs_to :user
 
-  validates :comment_id,
+  validates :post_comment_id,
     presence: true,
     numericality: true
   validates :user_id,

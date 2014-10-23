@@ -49,7 +49,17 @@
           %a.account{href: ""}
             {{= post_comments[i].user.username }}
           %p.commentTime {{= post_comments[i].created_at }}
-          %p.fvrBtn いいね！
+          {{ if (!post_comments[i].i_liked) { }}
+          %p.comment-like.fvrBtn{"data-commentindex" => "{{= i }}"}
+            いいね！
+            %span.likeNum
+              {{= post_comments[i].comment_likes_count }}
+          {{ } else { }}
+          %p.comment-unlike.fvrBtn.on{"data-commentindex" => "{{= i }}"}
+            いいね！を取り消す
+            %span.likeNum
+              {{= post_comments[i].comment_likes_count }}
+          {{ } }}
           %p.userComment
             {{= post_comments[i].text }}
       {{ } }}
