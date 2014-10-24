@@ -23,7 +23,7 @@ class SocketsController < WebsocketRails::BaseController
       WebsocketRails[user[:id]].trigger "like", message unless user[:id] == message[:from_user_id]
     end
 
-    if @to_user[:id] != message[:from_user_id] && message[:type] == "like"
+    if @to_user[:id] != message[:from_user_id] && (message[:type] == "like" || message[:type] == "comment_like")
       WebsocketRails[message[:to_user_id]].trigger "notification", message
     end
   end
