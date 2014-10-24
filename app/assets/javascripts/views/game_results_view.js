@@ -6,7 +6,7 @@ var GameResultsView = Backbone.View.extend({
     if (game.id) {
       game.strimWidth(40);
       var game_result_view = new GameResultView({model: game});
-      this.$el.prepend(game_result_view.render().el);
+      this.$el.append(game_result_view.render().el);
     }
   }
 })
