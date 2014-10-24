@@ -152,7 +152,7 @@ var PostView = Backbone.View.extend({
         data: data,
         success: function (data) {
           if (data) {
-            comment.i_liked           = true;
+            comment.i_liked = true;
             comment.comment_likes_count += 1;
             that.render();
           }
@@ -183,7 +183,7 @@ var PostView = Backbone.View.extend({
       data: {},
       success: function (data) {
         if (data) {
-          comment.i_liked           = false;
+          comment.i_liked = false;
           if (comment.comment_likes_count > 0) {
             comment.comment_likes_count -= 1;
           }
