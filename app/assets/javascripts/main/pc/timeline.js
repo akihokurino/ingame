@@ -7,6 +7,7 @@
 //= require ../../views/posts_view.js
 //= require ../../views/log_view.js
 //= require ../../views/logs_view.js
+//= require ../../libs/post_upload.js
 
 
 
@@ -35,6 +36,8 @@
       this.page               = 1;
 
       event_handle.discribe("selectLog", this.selectLog);
+
+      this.upload             = new PostUpload("upload-btn", "thumbnail");
 
 
       like_socket.callback = function (data) {
@@ -113,6 +116,7 @@
       this.post_collection.fetch({
         data: {page: this.page},
         success: function (model, response, options) {
+          console.log(response);
           for (var i = 0; i < response.posts.length; i++) {
             var post = new Post(response.posts[i]);
             that.posts_view.collection.add(post);
@@ -178,6 +182,7 @@
             "game_id":  this.select_game_id,
             "log_id":   this.select_log_id,
             "text":     this.post_input.val(),
+            "files":    this.upload.files,
             "provider": this.provider
           }
         }
@@ -197,6 +202,12 @@
             }
 
             post_socket.send(data);
+
+            that.post_input.val("");
+            that.$("ul.thumbnailList").html("");
+            that.select_log_id  = null;
+            that.select_game_id = null;
+            $("#thumbnail").html("");
           },
           error: function () {
           }

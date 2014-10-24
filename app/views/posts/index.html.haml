@@ -16,9 +16,11 @@
       %textarea.post-input{placeholder: "そのゲームについて、どうおもった？"}
       %ul.thumbnailList
 
+      #thumbnail
+
       .photoBtnWrap
         %p.photoBtnText 写真を追加
-        %input.addPhoto{type: "file", href: ""}
+        %input.addPhoto#upload-btn{type: "file", href: ""}
       %p.addPostBtn.post-btn 投稿する
 
       = render partial: "log_select"
