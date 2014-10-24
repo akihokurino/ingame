@@ -28,9 +28,11 @@
   .post-list
   = image_tag "gif-load.gif", class: "loading-gif"
 
+
+
 = render partial: "application/pc/footer"
 
-
+= render partial: "application/underscore/pc/common/delete_confirm"
 = render partial: "application/underscore/pc/timeline/log"
 = render partial: "application/underscore/pc/timeline/post"
 = render partial: "application/underscore/pc/timeline/game_thumbnail"

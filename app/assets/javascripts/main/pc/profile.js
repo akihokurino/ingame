@@ -5,6 +5,7 @@
 //= require ../../collections/logs.js
 //= require ../../collections/posts.js
 //= require ../../collections/users.js
+//= require ../../views/delete_confirm_view.js
 //= require ../../views/log_view.js
 //= require ../../views/logs_view.js
 //= require ../../views/post_view.js

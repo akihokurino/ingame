@@ -13,5 +13,6 @@
     #wrapper{"data-userid" => @current_user ? @current_user[:id] : nil}
       = yield
     .layer
+    .delete-confirm-wrap
 
     = yield :last

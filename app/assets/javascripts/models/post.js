@@ -24,6 +24,7 @@ var Post = Backbone.Model.extend({
     "post_comments": [],
     "current_user_id": ""
   },
+  url: "/api/posts/",
   strimWidth: function (limit) {
     var title = this.get("game").title;
     if (title.length > limit) {

@@ -1,6 +1,7 @@
 //= require ../../libs/socket.js
 //= require ../../models/post.js
 //= require ../../collections/posts.js
+//= require ../../views/delete_confirm_view.js
 //= require ../../views/post_view.js
 //= require ../../views/posts_view.js
 

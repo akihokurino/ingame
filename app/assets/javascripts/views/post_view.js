@@ -8,13 +8,15 @@ var PostView = Backbone.View.extend({
     "click .comment-btn":     "showComment",
     "keydown .comment-input": "comment",
     "click .comment-like":    "commentLike",
-    "click .comment-unlike":  "commentUnlike"
+    "click .comment-unlike":  "commentUnlike",
+    "click .delete-btn":      "showDeleteConfirm"
   },
   initialize: function () {
     this.listenTo(this.model, "destroy", this.remove);
     this.listenTo(this.model, "change", this.render);
   },
   destroy: function () {
+    this.model.url += this.model.id;
     this.model.destroy();
   },
   remove: function () {
@@ -205,4 +207,9 @@ var PostView = Backbone.View.extend({
       }
     })
   },
+  showDeleteConfirm: function () {
+    $(".delete-confirm-wrap").css("display", "block");
+    $(".layer").css("display", "block");
+    var delete_confirm_view = new DeleteConfirmView({attributes: {view: this, target: "投稿"}});
+  }
 })

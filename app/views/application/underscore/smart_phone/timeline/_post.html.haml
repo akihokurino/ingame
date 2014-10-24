@@ -34,3 +34,7 @@
     %span.unlike.favBtn.on
       {{= post_likes_count }}
     {{ } }}
+    {{ if (current_user_id == user.id) { }}
+    %li.deleteBtn.delete-btn
+      削除
+    {{ } }}

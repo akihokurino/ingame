@@ -3,6 +3,7 @@
 //= require ../../models/log.js
 //= require ../../collections/posts.js
 //= require ../../collections/logs.js
+//= require ../../views/delete_confirm_view.js
 //= require ../../views/post_view.js
 //= require ../../views/posts_view.js
 //= require ../../views/log_view.js
@@ -116,7 +117,6 @@
       this.post_collection.fetch({
         data: {page: this.page},
         success: function (model, response, options) {
-          console.log(response);
           for (var i = 0; i < response.posts.length; i++) {
             var post = new Post(response.posts[i]);
             that.posts_view.collection.add(post);

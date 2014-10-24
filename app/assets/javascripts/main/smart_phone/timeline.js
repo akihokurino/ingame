@@ -3,6 +3,7 @@
 //= require ../../models/comment.js
 //= require ../../collections/posts.js
 //= require ../../collections/comments.js
+//= require ../../views/delete_confirm_view.js
 //= require ../../views/post_view.js
 //= require ../../views/posts_view.js
 //= require ../../views/comment_view.js

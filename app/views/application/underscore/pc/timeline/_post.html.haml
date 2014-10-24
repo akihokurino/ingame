@@ -37,8 +37,10 @@
       %span.likeNum
         {{= post_likes_count }}
     {{ } }}
-    %li.deleteBtn
+    {{ if (current_user_id == user.id) { }}
+    %li.deleteBtn.delete-btn
       削除
+    {{ } }}
   .commentBox
     %ul.commentList
       {{ for (var i = 0; i < post_comments.length; i++) { }}
