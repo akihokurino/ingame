@@ -1,7 +1,14 @@
 var CommentView = Backbone.View.extend({
   tagName: "li",
   className: "comment",
+  events: {
+    "click .like":   "like",
+    "click .unlike": "unlike"
+  },
   template: _.template($("#comment-template").html()),
+  initialize: function () {
+    this.listenTo(this.model, "change", this.render);
+  },
   render: function () {
     var template = this.template(this.model.toJSON());
     this.$el.html(template);
@@ -30,7 +37,6 @@ var CommentView = Backbone.View.extend({
             });
           }
 
-          /*
           var data = {
             type: "comment_like",
             comment_id: that.model.id,
@@ -39,7 +45,6 @@ var CommentView = Backbone.View.extend({
           }
 
           like_socket.send(data);
-          */
         },
         error: function () {
 
@@ -61,7 +66,6 @@ var CommentView = Backbone.View.extend({
           });
         }
 
-        /*
         var data = {
           type: "comment_unlike",
           comment_id: that.model.id,
@@ -70,7 +74,6 @@ var CommentView = Backbone.View.extend({
         }
 
         like_socket.send(data);
-        */
       },
       error: function () {
 

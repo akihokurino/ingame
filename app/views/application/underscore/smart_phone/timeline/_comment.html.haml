@@ -6,3 +6,12 @@
         {{= user.username }}
       %p
         {{= text }}
+      {{ if (!i_liked) { }}
+      %span.like.favBtn
+        いいね
+        {{= comment_likes_count }}
+      {{ } else { }}
+      %span.unlike.favBtn.on
+        いいねを取り消す
+        {{= comment_likes_count }}
+      {{ } }}

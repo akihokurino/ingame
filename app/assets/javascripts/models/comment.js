@@ -3,6 +3,7 @@ var Comment = Backbone.Model.extend({
     "id": "",
     "text": "",
     "comment_likes_count": "",
+    "i_liked": "",
     "created_at": "",
     "user": {
       "id": "",
