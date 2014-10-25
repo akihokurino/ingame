@@ -541,6 +541,9 @@ a:hover {
 			}
 		}
 		.gameList {
+			position: relative;
+			cursor: pointer;
+
 			.gameImgWrap {
 				overflow: hidden;
 				width: 121px;
@@ -571,6 +574,59 @@ a:hover {
 				&:last-child {
 					margin-right: 0;
 				}
+			}
+		}
+		.gameDeleteBtn {
+			display: block;
+			position: absolute;
+			top: -17px;
+			right: -17px;
+			width: 35px;
+			height: 35px;
+			@include border-radius(18px);
+			background-color: #888;
+			color: #fff;
+			font-weight: bold;
+			font-size: 30px;
+			text-align: center;
+			cursor: pointer;
+		}
+		.gameDeleteBox {
+			position: absolute;
+			top: 32px;
+			left: 18px;
+			width: 210px;
+			height: 80px;
+			padding: 12px 0 10px;
+			@include border-radius(2px);
+			@include box-sizing;
+			background: rgba(0, 0, 0, 0.8);
+			color: #fff;
+			font-size: 14px;
+			text-align: center;
+
+			.gameDeleteTxt {
+				margin-bottom: 16px;
+			}
+			.cancelBtn {
+				display: inline-block;
+				width: 90px;
+				height: 28px;
+				@include border-radius(2px);
+				background: $color_blue;
+				font-weight: bold;
+				line-height: 28px;
+				cursor: pointer;
+			}
+			.deleteBtn {
+				display: inline-block;
+				width: 90px;
+				height: 28px;
+				@include border-radius(2px);
+				background: $color_red;
+				font-weight: bold;
+				line-height: 28px;
+				cursor: pointer;
 			}
 		}
 	}
