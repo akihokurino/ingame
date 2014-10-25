@@ -7,11 +7,33 @@
   %section.mainContent
     %h1.mainTtl ようそこ、Gamefulへ。
     %p.mainTxt
-      まずはお気に入りのゲームをライブラリに登録しましょう。
+      登録はすぐに終了します。
       %br
-      ゲームは、後から好きなだけ追加することができます。
-    %form.searchWrap
-      %input.search.search-title-input{type: "text", placeholder: "キーワードでゲームを探す"}
-    %a.nextBtn.next-page{href: ""} 次へ
-    .gameListBox
-      %ul.gameListWrap.result-list
+      プロフィール画像と、簡単な自己紹介を入力しましょう。
+      %br
+      （もちろん、スキップしてもいいですよ）
+    #thumbnail
+      = image_tag "pc/default_profImg.png", width: "165", height: "165", alt: "", class: "thumbnailImg"
+    .uploadBtnWrap
+      .uploadBtnTxt 写真をアップロード
+      %form
+        %input.uploadBtn#upload-btn{type: "file", value: "写真をアップロード"}
+    .profileEditBox
+      %dl.editList
+        %dt.editListTtl ユーザーネーム
+        %dd.editElm
+          %form.userNameWrap
+            %input.userName{type: "text"}
+      %dl.editList
+        %dt.editListTtl 場所
+        %dd.editElm
+          %form.placeWrap
+            %input.place{type: "text"}
+      %dl.editList
+        %dt.editListTtl 自己紹介(200文字)
+        %dd.editElm
+          %textarea.userInfo
+      %label.agreeTxt
+        %input.agreeCheck{type: "checkbox"}
+        当サービスの利用規約とプライバシーポリシーに同意する
+    %a.nextBtn01.next-page{href: ""} 次へ

@@ -89,6 +89,7 @@ html {
 		margin-bottom: 60px;
 		color: #3d3d3d;
 		font-size: 18px;
+		line-height: 1.5;
 		text-align: center;
 	}
 	/*---   .search   ----------*/
@@ -144,13 +145,11 @@ html {
 		&:hover {
 			text-decoration: none;
 		}
-		&03 {
-			position: absolute;
-			bottom: 202px;
-			left: 50%;
+		&01 {
+			display: block;
 			width: 88px;
 			height: 30px;
-			margin-left: 247px;
+			margin: 0 auto 40px;
 			@include border-radius(2px);
 			background: $color-green;
 			color: #fff;
@@ -162,7 +161,7 @@ html {
 	}
 	/*---   #thumbnail   ----------*/
 	#thumbnail {
-		width: 157px;
+		width: 165px;
 		margin: 0 auto 34px;
 		border: 4px solid #ccc;
 		@include border-radius(5px);
@@ -171,11 +170,10 @@ html {
 	/*---   .uploadBtnWrap   ----------*/
 	.uploadBtnWrap {
 		position: relative;
-		padding-bottom: 200px;
 	}
 	.uploadBtnTxt {
-		width: 190px;
-		height: 36px;
+		width: 155px;
+		height: 32px;
 		margin: 0 auto;
 		border: none;
 		@include border-radius(3px);
@@ -183,7 +181,7 @@ html {
 		@include box-shadow(0, 2px, 0, 0, #3eb07e);
 		background: $color-green;
 		color: #fff;
-		font-size: 18px;
+		font-size: 14px;
 		text-align: center;
 		line-height: 36px;
 		cursor: pointer;
@@ -201,6 +199,83 @@ html {
 		background: $color-green;
 		cursor: pointer;
 		outline: 0;
+	}
+	/*---   .profileBox   ----------*/
+	.profileEditBox {
+		position: relative;
+		width: 580px;
+		margin: 0 auto 30px;
+		padding: 0 10px;
+		@include box-sizing;
+		background: #fff;
+		color: #3f3f3f;
+
+		.profileEditTtl {
+			font-weight: bold;
+			font-size: 18px;
+		}
+		.editList {
+			margin: 40px 0;
+			@include clearfix;
+		}
+		.editListTtl {
+			float: left;
+			width: 125px;
+			margin-right: 15px;
+			font-size: 14px;
+			text-align: right;
+			line-height: 36px;
+
+			&Prof {
+				line-height: 98px;
+			}
+			&Cover {
+				line-height: 55px;
+			}
+		}
+		.userName {
+			width: 280px;
+			height: 36px;
+			padding-left: 5px;
+			border: 1px solid #ccc;
+			@include border-radius(3px);
+			@include box-sizing;
+			font-size: 14px;
+			outline: 0;
+		}
+		.place {
+			width: 280px;
+			height: 36px;
+			padding-left: 5px;
+			border: 1px solid #ccc;
+			@include border-radius(3px);
+			@include box-sizing;
+			font-size: 14px;
+			outline: 0;
+		}
+		textarea {
+			width: 280px;
+			height: 146px;
+			padding: 5px;
+			border: 1px solid #ccc;
+			@include border-radius(3px);
+			@include box-sizing;
+			font-size: 14px;
+			outline: 0;
+			resize: none;
+		}
+		.agreeTxt {
+			margin-left: 80px;
+			color: #515151;
+			font-weight: bold;
+			font-size: 14px;
+			cursor: pointer;
+		}
+		.agreeCheck {
+			width: 15px;
+			height: 15px;
+			@include border-radius(10px);
+		}
 	}
 	/*---   .gameList   ----------*/
 	.gameListBox {
