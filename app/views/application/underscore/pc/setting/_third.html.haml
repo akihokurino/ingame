@@ -5,13 +5,15 @@
       .stepBar03
       %p.stepTxt あと少しで終わりますよ
   %section.mainContent
-    %h1.mainTtl 様々な人がGamefulを使っています。
+    %h1.mainTtl 写真は重要です。ゲーマーにとっても。
     %p.mainTxt
-      twitterやFacebookのお友達を検索して、フォローしましょう。
+      プロフィール写真を設定すれば、友達や他のユーザーから発見されやすくなります。
       %br
-      有名なゲーマーや、尊敬するクリエイターも使っているかもしれません。
-    %form.searchWrap
-      %input.search.user-input{type: "text", placeholder: "キーワードでユーザーを探す"}
-    %a.nextBtn.next-page{href: ""} 次へ
-    .friendListBox
-      %ul.friendListWrap.user-list
+      オンラインゲームにおける、アバターアイコンと同じですね。
+    #thumbnail
+      = image_tag "pc/default_profImg.png", width: "157", height: "157", alt: "", class: "thumbnailImg"
+    .uploadBtnWrap
+      .uploadBtnTxt 写真をアップロード
+      %form
+        %input.uploadBtn#upload-btn{type: "file", value: "写真をアップロード"}
+    %a.nextBtn03.next-page{href: ""} 次へ
