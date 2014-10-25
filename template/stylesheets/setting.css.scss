@@ -247,4 +247,57 @@ html {
 			}
 		}
 	}
+	/*---   .privacyBox   ----------*/
+	.privacyBox {
+		width: 100%;
+		margin-top: 23px;
+		padding: 20px 0 40px;
+		border-top: 1px solid #e6e6e6;
+		background: #f2f2f2;
+
+		&Inner {
+			width: 960px;
+			margin: 0 auto;
+			padding: 16px 30px;
+			@include border-radius(3px);
+			@include box-sizing;
+			background: #fff;
+		}
+		.item {
+			margin-bottom: 28px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+		.privacyTtl {
+			font-weight: bold;
+			font-size: 18px;
+		}
+		.tprivacySubTtl {
+			font-weight: bold;
+			font-size: 14px;
+		}
+		.privacyTxt {
+			color: #626262;
+			font-size: 14px;
+		}
+		.privacyLink {
+			color: #516ea4;
+			text-decoration: underline;
+
+			&:hover {
+				text-decoration: none;
+			}
+		}
+		.numList {
+			color: #626262;
+			font-size: 14px;
+
+			&Item {
+				margin-left: 1.5em;
+				list-style: decimal;
+			}
+		}
+	}
 }
