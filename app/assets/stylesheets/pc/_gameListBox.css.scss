@@ -25,6 +25,11 @@
 	.gameList {
 		position: relative;
 
+		&:hover {
+			.gameDeleteBtn {
+				display: block;
+			}
+		}
 		.gameImgWrap {
 			overflow: hidden;
 			width: 121px;
@@ -96,7 +101,7 @@
         outline: 0;
 	}
 	.gameDeleteBtn {
-		display: block;
+		display: none;
 		position: absolute;
 		top: -17px;
 		right: -17px;
