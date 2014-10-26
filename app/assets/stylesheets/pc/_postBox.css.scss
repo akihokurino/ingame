@@ -1,0 +1,227 @@
+@import "../_function.css.scss";
+
+/*---   .postBox   ----------*/
+.postBoxWrap {
+	width: 100%;
+	padding: 20px 0 40px;
+	border-top: 1px solid #e6e6e6;
+	background: #f2f2f2;
+}
+.postBox {
+	width: $cntWidth;
+	margin: 0 auto 18px;
+	padding: 10px;
+	border: 1px solid #e6e6e6;
+	@include border-radius(3px);
+	@include box-sizing;
+	background: #fff;
+
+	/*---   .topBox   ---*/
+	.topBox {
+		position: relative;
+		margin-bottom: 7px;
+		@include clearfix;
+
+		.profImgWrap {
+			float: left;
+			margin-right: 10px;
+		}
+		.profImg {
+			border: 1px solid #d3d3d3;
+		}
+		.account {
+			color: #3c3c3c;
+			font-weight: bold;
+			font-size: 12px;
+			line-height: 1.0;
+		}
+		.gameTtl {
+			overflow: hidden;
+			width: 408px;
+			color: $color-green;
+			font-weight: bold;
+			font-size: 16px;
+			line-height: 1.5;
+		}
+		.statusPlayed {
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 88px;
+			height: 30px;
+			@include border-radius(3px);
+			background: $color-blue;
+			color: #fff;
+			font-weight: bold;
+			font-size: 14px;
+			line-height: 30px;
+			text-align: center;
+		}
+		.statusPlaying {
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 88px;
+			height: 30px;
+			@include border-radius(3px);
+			background: $color-red;
+			color: #fff;
+			font-weight: bold;
+			font-size: 14px;
+			line-height: 30px;
+			text-align: center;
+		}
+		.statusReady {
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 88px;
+			height: 30px;
+			@include border-radius(3px);
+			background: $color-yellow;
+			color: #fff;
+			font-weight: bold;
+			font-size: 14px;
+			line-height: 30px;
+			text-align: center;
+		}
+	}
+	/*---   .postTxt   ---*/
+	.postTxt {
+		margin-bottom: 14px;
+		padding-left: 54px;
+		color: #4a4a4a;
+		font-size: 14px;
+		line-height: 1.5;
+	}
+	/*---   .thumbnail   ---*/
+	.thumbnail {
+		&Img {
+			width: 100%;
+		}
+	}
+	/*---   .time   ---*/
+	.time {
+		float: right;
+		color: #888;
+		font-size: 12px;
+	}
+	/*---   .actionList   ---*/
+	.actionList {
+		margin-top: 46px;
+		padding-left: 54px;
+		@include clearfix;
+
+		.cmtBtn {
+			float: left;
+			margin-right: 32px;
+			padding-left: 28px;
+			@include img_set-PC2(0, -128px);
+			color: #929292;
+			font-weight: bold;
+			font-size: 12px;
+			line-height: 20px;
+			cursor: pointer;
+
+			&.on {
+				background-position: 0 -400px;
+				color: $color-green;
+			}
+		}
+		.fvrBtn {
+			float: left;
+			padding-left: 26px;
+			@include img_set-PC2(0, -156px);
+			color: #929292;
+			font-weight: bold;
+			font-size: 12px;
+			line-height: 20px;
+			cursor: pointer;
+
+			&.on {
+				background-position: 0 -373px;
+				color: $color-green;
+			}
+		}
+		.deleteBtn {
+			float: right;
+			@include img_set-PC4(17px, 19px, 0, -183px);
+			@include substitute;
+			cursor: pointer;
+		}
+	}
+	/*---   .commentBox   ---*/
+	.commentBox {
+		margin-top: 10px;
+		padding-top: 8px;
+		border-top: 1px solid #dcdcdc;
+		@include clearfix;
+
+		.profImgWrap {
+			float: left;
+			margin-right: 15px;
+		}
+		.profImg {
+			border: 1px solid #d3d3d3;
+		}
+		.commentList {
+			.item {
+				margin-bottom: 8px;
+			}
+			.commentInfo {
+				line-height: 0.8;
+				@include clearfix;
+
+				.account {
+					display: inline-block;
+					color: #3c3c3c;
+					font-weight: bold;
+					font-size: 12px;
+				}
+				.commentTime {
+					display: inline-block;
+					color: #888;
+					font-size: 12px;
+				}
+				.fvrBtn {
+					display: inline-block;
+					color: #888;
+					font-weight: bold;
+					font-size: 12px;
+					cursor: pointer;
+
+					&:hover {
+						text-decoration: underline;
+					}
+				}
+				.userComment {
+					overflow: hidden;
+					margin-top: 9px;
+					color: #3c3c3c;
+					font-size: 12px;
+					line-height: 1.5;
+				}
+			}
+		}
+		.commentWrap {
+			float: left;
+		}
+		.comment {
+			overflow: hidden;
+			width: 510px;
+			height: 30px;
+			padding: 5px;
+			border: none;
+			@include box-sizing;
+			@include appearance;
+			resize: none;
+			outline: 0;
+
+			&::-webkit-input-placeholder {
+				padding: 3px;
+				color: #c6c6c6;
+				font-size: 12px;
+			}
+		}
+	}
+}

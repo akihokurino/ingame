@@ -1,7 +1,7 @@
 @import "../_function.css.scss";
-
-$width: 960px !default;
-$cntWidth: 580px;
+@import "_postBox.css.scss";
+@import "_gameListBox.css.scss";
+@import "_friendListBox.css.scss";
 
 /*---   .mainContent   ---------------------------*/
 .mainContent {
@@ -49,12 +49,21 @@ $cntWidth: 580px;
       width: $width;
       margin: 0 auto;
       font-size: 0;
+
+      &Link {
+        display: block;
+        padding: 16px 0 14px;
+        color: #3e3e3e;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
     }
     .gameNum {
       display: inline-block;
       width: 111px;
       margin-right: 311px;
-      padding: 16px 0 14px;
       @include box-sizing;
       color: #3e3e3e;
       font-size: 12px;
@@ -63,6 +72,7 @@ $cntWidth: 580px;
 
       .count {
         display: block;
+        margin-top: 5px;
         color: $color_green;
         font-weight: bold;
         font-size: 20px;
@@ -83,7 +93,6 @@ $cntWidth: 580px;
     .postNum {
       display: inline-block;
       width: 111px;
-      padding: 16px 0 14px;
       @include box-sizing;
       color: #3e3e3e;
       font-size: 12px;
@@ -92,6 +101,7 @@ $cntWidth: 580px;
 
       .count {
         display: block;
+        margin-top: 5px;
         color: $color_green;
         font-weight: bold;
         font-size: 20px;
@@ -112,7 +122,6 @@ $cntWidth: 580px;
     .followNum {
       display: inline-block;
       width: 111px;
-      padding: 16px 0 14px;
       @include box-sizing;
       color: #3e3e3e;
       font-size: 12px;
@@ -121,6 +130,7 @@ $cntWidth: 580px;
 
       .count {
         display: block;
+        margin-top: 5px;
         color: $color_green;
         font-weight: bold;
         font-size: 20px;
@@ -141,7 +151,6 @@ $cntWidth: 580px;
     .followerNum {
       display: inline-block;
       width: 111px;
-      padding: 16px 0 14px;
       @include box-sizing;
       color: #3e3e3e;
       font-size: 12px;
@@ -150,6 +159,7 @@ $cntWidth: 580px;
 
       .count {
         display: block;
+        margin-top: 5px;
         color: $color_green;
         font-weight: bold;
         font-size: 20px;
@@ -185,6 +195,7 @@ $cntWidth: 580px;
       outline: 0;
 
       &::-webkit-input-placeholder {
+        padding-top: 5px;
         color: #cbcbcb;
         font-size: 14px;
       }

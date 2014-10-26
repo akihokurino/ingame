@@ -1,16 +1,23 @@
 @import "../_function.css.scss";
+@import "_friendListBox.css.scss";
 
 /*---   common   ---------------------------*/
-$width: 960px !default;
-$cntWidth: 580px;
 html {
-  background: #fff;
+    height:100%;
+    background: #5e5e5e;
+}
+body {
+    height:100%;
+}
+#wrapper {
+    height:100%;
 }
 
 /*---   .mainContent   ---------------------------*/
 .mainContent {
   position: relative;
   padding-top: 32px;
+  background: #fff;
 
   /*---   .search   ----------*/
   .searchBox {
@@ -46,6 +53,7 @@ html {
     outline: 0;
 
     &::-webkit-input-placeholder {
+      padding-top: 5px;
       color: #cbcbcb;
       font-size: 14px;
     }
@@ -81,12 +89,12 @@ html {
     .item {
       display: inline-block;
       width: 118px;
-      padding-bottom: 18px;
       text-align: center;
       cursor: pointer;
 
       &.current {
         position: relative;
+        padding-bottom: 18px;
         color: $color-green;
 
         &:after {
@@ -98,6 +106,15 @@ html {
           border-bottom: 4px solid $color-green;
           content: "";
         }
+      }
+    }
+    &Link {
+      display: block;
+      padding-bottom: 18px;
+      color: #3e3e3e;
+
+      &:hover {
+        text-decoration: none;
       }
     }
   }

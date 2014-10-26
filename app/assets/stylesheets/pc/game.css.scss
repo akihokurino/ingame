@@ -151,7 +151,6 @@ $cntWidth: 580px;
         .item {
           display: inline-block;
           width: 173px;
-          padding-bottom: 18px;
           text-align: center;
           cursor: pointer;
 
@@ -168,6 +167,33 @@ $cntWidth: 580px;
               border-bottom: 4px solid $color-green;
               content: "";
             }
+          }
+        }
+        .follow {
+          display: block;
+          padding-bottom: 18px;
+          color: #3e3e3e;
+
+          &:hover {
+            text-decoration: none;
+          }
+        }
+        .all {
+          display: block;
+          padding-bottom: 18px;
+          color: #3e3e3e;
+
+          &:hover {
+            text-decoration: none;
+          }
+        }
+        .star {
+          display: block;
+          padding-bottom: 18px;
+          color: #3e3e3e;
+
+          &:hover {
+            text-decoration: none;
           }
         }
       }

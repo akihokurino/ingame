@@ -1,0 +1,154 @@
+@import "../_function.css.scss";
+
+/*---   .gameList   ----------*/
+.gameListBox {
+	width: 100%;
+	margin-top: 23px;
+	padding: 20px 0 40px;
+	border-top: 1px solid #e6e6e6;
+	background: #f2f2f2;
+
+	.gameListWrap {
+		width: 960px;
+		margin: 0 auto;
+		font-size: 0; /* inline-block用 */
+
+		.item {
+			display: inline-block;
+			width: 123px;
+			height: 214px;
+			margin: 7px;
+			margin-bottom: 60px;
+			border: 1px solid #e6e6e6;
+			@include box-sizing;
+			@include border-radius(3px);
+			background: #fff;
+		}
+	}
+	.gameList {
+		position: relative;
+
+		.gameImgWrap {
+			overflow: hidden;
+			width: 121px;
+			height: 176px;
+		}
+		.gameImg {
+			@include border-radius(3px 3px 0 0);
+		}
+	}
+	.starList {
+		width: 107px;
+		margin: 7px auto 0;
+
+		.starOn {
+			display: inline-block;
+			@include img_set-PC4(18px, 18px, 0, -293px);
+			margin-right: 4px;
+
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+		.starOff {
+			display: inline-block;
+			@include img_set-PC4(18px, 18px, 0, -320px);
+			margin-right: 4px;
+
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+	}
+	.statusWrap {
+		display: inline-block;
+		position: relative;
+		width: 122px;
+		height: 33px;
+		margin-top: 15px;
+		-moz-border-radius: 3px;
+		-webkit-border-radius: 3px;
+		border-radius: 3px;
+		background: #24d387;
+		cursor: pointer;
+
+        &:after {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          width: 6px;
+          height: 6px;
+          border-right: 3px solid #fff;
+          border-bottom: 3px solid #fff;
+          -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+          content: "";
+        }
+	}
+	.status {
+        display: block;
+        width: 100px;
+        height: 33px;
+        margin: 0 auto;
+        border: none;
+        background: none;
+        color: #fff;
+        font-size: 14px;
+        @include appearance;
+        cursor: pointer;
+        outline: 0;
+	}
+	.gameDeleteBtn {
+		display: block;
+		position: absolute;
+		top: -17px;
+		right: -17px;
+		width: 35px;
+		height: 35px;
+		@include border-radius(18px);
+		background-color: #888;
+		color: #fff;
+		font-weight: bold;
+		font-size: 30px;
+		text-align: center;
+		cursor: pointer;
+	}
+	.gameDeleteBox {
+		position: absolute;
+		top: 32px;
+		left: 18px;
+		width: 210px;
+		height: 80px;
+		padding: 12px 0 10px;
+		@include border-radius(2px);
+		@include box-sizing;
+		background: rgba(0, 0, 0, 0.8);
+		color: #fff;
+		font-size: 14px;
+		text-align: center;
+
+		.gameDeleteTxt {
+			margin-bottom: 16px;
+		}
+		.cancelBtn {
+			display: inline-block;
+			width: 90px;
+			height: 28px;
+			@include border-radius(2px);
+			background: $color_blue;
+			font-weight: bold;
+			line-height: 28px;
+			cursor: pointer;
+		}
+		.deleteBtn {
+			display: inline-block;
+			width: 90px;
+			height: 28px;
+			@include border-radius(2px);
+			background: $color_red;
+			font-weight: bold;
+			line-height: 28px;
+			cursor: pointer;
+		}
+	}
+}

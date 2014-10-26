@@ -21,22 +21,22 @@
     .countListWrap
       %ul.countList.count-box
         %li.gameNum.logs-li.current
-          %a{href: "/users/#{@user[:id]}#logs"}
+          %a.countListLink{href: "/users/#{@user[:id]}#logs"}
             ライブラリ
             %span.count
               = @user.logs.count
         %li.postNum.posts-li
-          %a{href: "/users/#{@user[:id]}#posts"}
+          %a.countListLink{href: "/users/#{@user[:id]}#posts"}
             ポスト
             %span.count
               = @user.posts.count
         %li.followNum.follows-li
-          %a{href: "/users/#{@user[:id]}#follows"}
+          %a.countListLink{href: "/users/#{@user[:id]}#follows"}
             フォロー
             %span.count
               = @user.follow_num
         %li.followerNum.followers-li
-          %a{href: "/users/#{@user[:id]}#followers"}
+          %a.countListLink{href: "/users/#{@user[:id]}#followers"}
             フォロワー
             %span.count
               = @user.follower_num

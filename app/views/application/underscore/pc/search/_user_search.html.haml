@@ -5,7 +5,7 @@
     %p.searchBtn.search-btn{href: ""} 検索
   %ul.sortList
     %li.item
-      %a{href: "/users/#{@current_user[:id]}/search_game_or_user#game"} ゲーム検索
+      %a.sortListLink{href: "/users/#{@current_user[:id]}/search_game_or_user#game"} ゲーム検索
     %li.item.current ユーザー検索
   .userListBox.result-area
     %ul.userListWrap.result-list

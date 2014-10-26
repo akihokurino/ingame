@@ -1,6 +1,5 @@
 @import "../_function.css.scss";
-
-$cntWidth: 580px;
+@import "_postBox.css.scss";
 
 /*---   .mainContent   ---------------------------*/
 .mainContent {
@@ -74,7 +73,7 @@ $cntWidth: 580px;
         display: block;
         position: absolute;
         right: 10px;
-        top: 6px;
+        top: 2px;
         width: 6px;
         height: 6px;
         border-top: 3px solid $color_green;
