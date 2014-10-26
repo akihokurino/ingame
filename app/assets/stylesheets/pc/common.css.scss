@@ -1,5 +1,6 @@
 @import "../_function.css.scss";
 @import "_header.css.scss";
+@import "_notification.css.scss";
 @import "_footer.css.scss";
 
 /*---   common   ---------------------------*/
@@ -48,73 +49,6 @@ a:hover {
 	width: 30px;
 	height: 30px;
 	margin: 0 auto;
-}
-
-.notification-modal {
-	display: none;
-	overflow: scroll;
-	position: fixed;
-	top: 46px;
-	left: 50%;
-	z-index: 100;
-	width: 95%;
-	height: 500px;
-	margin-left: -47.5%;
-	//border: solid 1px #e2e2e2;
-	@include border-radius(5px);
-	background-color: #fff;
-
-	.modal-header {
-		position: relative;
-		width: 100%;
-		height: 40px;
-		border-bottom: solid 1px #999;
-		background: #10b5a3;
-		color: #fff;
-		font-size: 18px;
-		font-family: Helvetica;
-		text-decoration: none;
-		@include font-weight(1px, #fff);
-		text-align: center;
-		line-height: 40px;
-
-		.close-btn {
-			position: absolute;
-			top: 9px;
-			right: 10px;
-			width: 46px;
-			height: 20px;
-			border: solid 1px #e2e2e2;
-			@include border-radius(3px);
-			background: #fff;
-			color: #999;
-			font-size: 13px;
-			@include font-weight(0, #fff);
-			text-align: center;
-			line-height: 20px;
-		}
-	}
-	.notification-list {
-		width: 90%;
-		margin: 20px auto;
-
-		li {
-			margin-bottom: 20px;
-			@include clearfix;
-		}
-		.leftBox {
-			float: left;
-			margin-right: 15px;
-		}
-		.rightBox {
-			color: #404040;
-			font-size: 13px;
-			line-height: 1.6;
-		}
-		.profImg {
-			@include border-radius(29px);
-		}
-	}
 }
 
 .delete-confirm-wrap {
