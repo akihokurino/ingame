@@ -210,6 +210,6 @@ var PostView = Backbone.View.extend({
   showDeleteConfirm: function () {
     $(".delete-confirm-wrap").css("display", "block");
     $(".layer").css("display", "block");
-    var delete_confirm_view = new DeleteConfirmView({attributes: {view: this, target: "投稿"}});
+    var delete_confirm_view = new DeleteConfirmView({attributes: {view: this, target: "投稿", desc: null}});
   }
 })

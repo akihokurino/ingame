@@ -8,6 +8,7 @@ var DeleteConfirmView = Backbone.View.extend({
   initialize: function () {
     var that          = this;
     this.target       = this.attributes.target;
+    this.desc         = this.attributes.desc;
     this.current_view = this.attributes.view;
     this.render();
 
@@ -16,7 +17,7 @@ var DeleteConfirmView = Backbone.View.extend({
     })
   },
   render: function () {
-    var template = this.template({target: this.target});
+    var template = this.template({target: this.target, desc: this.desc});
     this.$el.html(template);
     return this;
   },
