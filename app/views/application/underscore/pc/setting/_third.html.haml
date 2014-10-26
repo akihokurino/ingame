@@ -18,3 +18,11 @@
         %form
           %input.uploadBtn#upload-btn{type: "file", value: "写真をアップロード"}
       %a.nextBtn03.next-page{href: ""} 次へ
+      .clipBox
+        %h2.clipTtl 画像の位置をドラッグで変更
+        %figure.clipImgWrap
+          %img.clipImg{src: "/user_photos/default.png", height: "300", alt: ""}
+          .clipArea
+        %ul.clipBtnLis
+          %li.cancel キャンセル
+          %li.done 決定
