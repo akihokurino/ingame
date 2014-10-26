@@ -59,11 +59,11 @@
               var game_result = new GameResult(response.results[i]);
               that.game_results_view.collection.add(game_result);
             }
-
-            that.$(".result-area").html((that.text_template({
-              search_title: that.current_game_title, target: "ユーザー"
-            })));
           }
+
+          that.$(".result-area").html((that.text_template({
+            search_title: that.current_game_title, target: "ゲーム"
+          })));
         },
         error: function () {
 
@@ -166,11 +166,11 @@
               var user_result = new UserResult(response.results[i]);
               that.user_results_view.collection.add(user_result);
             }
-
-            that.$(".result-area").html((that.text_template({
-              search_title: that.current_username, target: "ユーザー"
-            })));
           }
+
+          that.$(".result-area").html((that.text_template({
+            search_title: that.current_username, target: "ユーザー"
+          })));
         },
         error: function () {
 
