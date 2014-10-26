@@ -2,7 +2,7 @@
   = stylesheet_link_tag    "pc/profile_edit"
 
 = content_for :last do
-  /= javascript_include_tag "main/pc/profile_edit"
+  = javascript_include_tag "main/pc/profile_edit"
 
 = render partial: "application/pc/default_header"
 
@@ -19,38 +19,40 @@
         = @user.introduction
   .profileEditBox
     %h1.profileEditTtl プロフィール設定
-    %dl.editList
-      %dt.editListTtl.editListTtlProf プロフィール画像
-      %dd.editProf
-        %figure.profImgWrap
-          %img.profImg{src: "../test_set/test02.png", width: "98", height: "98", alt: "プロフィール画像"}
-        .uploadBtnWrap
-          .uploadBtnTxt ファイルを選択
-          %form
-            %input.uploadBtn{type: "file", value: "ファイルを選択"}
-    %dl.editList
-      %dt.editListTtl.editListTtlCover カバー写真
-      %dd.editCover
-        %figure.coverImgWrap
-          %img.coverImg{src: "../test_set/test04.jpg", width: "220", height: "55", alt: "カバー写真"}
-        .uploadBtnWrap
-          .uploadBtnTxt ファイルを選択
-          %form
-            %input.uploadBtn{type: "file", value: "ファイルを選択"}
-    %dl.editList
-      %dt.editListTtl ユーザーネーム
-      %dd.editElm
-        %form.userNameWrap
-          %input.userName{type: "text"}
-    %dl.editList
-      %dt.editListTtl 場所
-      %dd.editElm
-        %form.placeWrap
-          %input.place{type: "text"}
-    %dl.editList
-      %dt.editListTtl 自己紹介(200文字)
-      %dd.editElm
-        %textarea.userInfo
-    %p.editBtn 変更を保存
+    = form_for @user do |f|
+      = f.hidden_field :clip_width, id: "clip-width"
+      = f.hidden_field :clip_height, id: "clip-height"
+      %dl.editList
+        %dt.editListTtl.editListTtlProf プロフィール画像
+        %dd.editProf
+          %figure.profImgWrap
+            %img.profImg{src: "../test_set/test02.png", width: "98", height: "98", alt: "プロフィール画像"}
+          .uploadBtnWrap
+            .uploadBtnTxt ファイルを選択
+            = f.file_field :photo_path, id: "upload-btn", class: "uploadBtn"
+      /
+        %dl.editList
+          %dt.editListTtl.editListTtlCover カバー写真
+          %dd.editCover
+            %figure.coverImgWrap
+              %img.coverImg{src: "../test_set/test04.jpg", width: "220", height: "55", alt: "カバー写真"}
+            .uploadBtnWrap
+              .uploadBtnTxt ファイルを選択
+              %input.uploadBtn{type: "file", value: "ファイルを選択"}
+      %dl.editList
+        %dt.editListTtl ユーザーネーム
+        %dd.editElm
+          = f.text_field :username, class: "userName"
+      %dl.editList
+        %dt.editListTtl 場所
+        %dd.editElm
+          = f.text_field :place, clss: "place"
+      %dl.editList
+        %dt.editListTtl 自己紹介(200文字)
+        %dd.editElm
+          = f.text_area :introduction, class: "userInfo"
+      = f.submit "変更を保存", class: "editBtn"
+
+  #clip
 
 = render partial: "application/pc/footer"
