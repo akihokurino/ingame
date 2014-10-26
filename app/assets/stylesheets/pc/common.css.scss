@@ -71,6 +71,7 @@ a:hover {
 		outline: 0;
 
 		&::-webkit-input-placeholder {
+			padding-top: 5px;
 			color: #cbcbcb;
 			font-size: 14px;
 		}
@@ -777,6 +778,7 @@ a:hover {
 		font-size: 14px;
 		line-height: 28px;
 		text-align: center;
+		cursor: pointer;
 	}
 	.done {
 		display: inline-block;
@@ -789,6 +791,7 @@ a:hover {
 		font-size: 14px;
 		line-height: 28px;
 		text-align: center;
+		cursor: pointer;
 	}
 }
 .delete-confirmTxt {
