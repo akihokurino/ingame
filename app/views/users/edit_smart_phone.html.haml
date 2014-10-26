@@ -9,6 +9,23 @@
     %h1.ttl ユーザー編集
     %span.cancelWrap
     = link_to "戻る", "/users/#{@current_user[:id]}#logs", class: "cancel"
-  = render "form"
+  = form_for @user do |f|
+    = f.hidden_field :clip_width, id: "clip-width"
+    = f.hidden_field :clip_height, id: "clip-height"
+    .file-input
+      #thumbnail
+        = image_tag "/user_photos/#{@user.photo_path}", class: "profile-img"
+      %span プロフィール画像
+      = f.file_field :photo_path, id: "upload-btn"
+    .username-input
+      %span 名前
+      = f.text_field :username
+    .place-input
+      %span 場所
+      = f.text_field :place
+    .introduction-input
+      %span 紹介
+      = f.text_field :introduction
+    = f.submit "変更", class: "edit"
 
   #clip
