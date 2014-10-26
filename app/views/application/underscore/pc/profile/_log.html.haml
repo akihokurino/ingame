@@ -1,10 +1,11 @@
 %script{type: "text/template", id: "log-template"}
-  %article.gameList
-    %figure.gameImgWrap
-      / %img.gameImg{src: "/game_photos/{{= game.photo_path}}", width: "121", alt: ""}
-      %img.gameImg{src: "{{= game.photo_url }}", width: "121", alt: ""}
-    %ul.starList
-      - 4.times do |i|
-        %li.starOn ★
-      %li.starOff ☆
-    %span.gameDeleteBtn.delete-btn ×
+  %a.articleWrap{href: "/games/{{= game.id }}#all", style: "display: block;"}
+    %article.gameList
+      %figure.gameImgWrap
+        / %img.gameImg{src: "/game_photos/{{= game.photo_path}}", width: "121", alt: ""}
+        %img.gameImg{src: "{{= game.photo_url }}", width: "121", alt: ""}
+      %ul.starList
+        - 4.times do |i|
+          %li.starOn ★
+        %li.starOff ☆
+      %span.gameDeleteBtn.delete-btn ×

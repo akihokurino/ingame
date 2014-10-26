@@ -60,8 +60,8 @@
               that.game_results_view.collection.add(game_result);
             }
 
-            that.$(".result-area").prepend((that.text_template({
-              search_title: that.current_game_title
+            that.$(".result-area").html((that.text_template({
+              search_title: that.current_game_title, target: "ユーザー"
             })));
           }
         },
@@ -167,8 +167,8 @@
               that.user_results_view.collection.add(user_result);
             }
 
-            that.$(".result-area").prepend((that.text_template({
-              search_title: that.current_username
+            that.$(".result-area").html((that.text_template({
+              search_title: that.current_username, target: "ユーザー"
             })));
           }
         },
