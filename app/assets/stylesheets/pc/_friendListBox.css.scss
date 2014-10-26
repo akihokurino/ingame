@@ -1,0 +1,77 @@
+@import "../_function.css.scss";
+
+/*---   .friendList   ----------*/
+.friendListBox {
+	width: 100%;
+	margin-top: 23px;
+	padding: 20px 0 40px;
+	border-top: 1px solid #e6e6e6;
+	background: #f2f2f2;
+
+	.friendListWrap {
+		width: 580px;
+		margin: 0 auto;
+		font-size: 0; /* inline-block用 */
+
+		.item {
+			margin: 10px;
+			padding: 10px;
+			border: 1px solid #e6e6e6;
+			@include border-radius(3px);
+			@include box-sizing;
+			background: #fff;
+			@include clearfix;
+		}
+	}
+	.friendList {
+		position: relative;
+
+		.userImgWrap {
+			float: left;
+			border: 1px solid #cfcfcf;
+		}
+		.userName {
+			margin-bottom: 5px;
+			margin-left: 54px;
+			padding-top: 4px;
+			color: #373737;
+			font-weight: bold;
+			font-size: 12px;
+		}
+		.userProf {
+			margin-left: 54px;
+			color: #7e7e7e;
+			font-size: 12px;
+		}
+		.followBtn {
+			position: absolute;
+			top: 5px;
+			right: 0;
+			width: 88px;
+			height: 30px;
+			@include border-radius(2px);
+			background: $color-green;
+			color: #fff;
+			font-weight: bold;
+			font-size: 14px;
+			text-align: center;
+			line-height: 30px;
+			cursor: pointer;
+		}
+		.followBtnOn {
+			position: absolute;
+			top: 5px;
+			right: 0;
+			width: 88px;
+			height: 30px;
+			@include border-radius(2px);
+			background: #666;
+			color: #fff;
+			font-weight: bold;
+			font-size: 14px;
+			text-align: center;
+			line-height: 30px;
+			cursor: pointer;
+		}
+	}
+}

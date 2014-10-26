@@ -1,7 +1,7 @@
 @import "../_function.css.scss";
-
-$width: 960px !default;
-$cntWidth: 580px;
+@import "_postBox.css.scss";
+@import "_gameListBox.css.scss";
+@import "_friendListBox.css.scss";
 
 /*---   .mainContent   ---------------------------*/
 .mainContent {
