@@ -6,7 +6,7 @@
   %ul.sortList
     %li.item.current ゲーム検索
     %li.item
-      %a{href: "/users/#{@current_user[:id]}/search_game_or_user#user"} ユーザー検索
+      %a.sortListLink{href: "/users/#{@current_user[:id]}/search_game_or_user#user"} ユーザー検索
   .gameListBox.result-area
     %ul.gameListWrap.result-list
     = image_tag "gif-load.gif", class: "loading-gif"
