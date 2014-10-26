@@ -3,7 +3,14 @@
 /*---   common   ---------------------------*/
 $width: 960px !default;
 html {
-	background: #fff;
+    height:100%;
+	background: #5e5e5e;
+}
+body {
+    height:100%;
+}
+#wrapper {
+    height:100%;
 }
 
 /*---   .settingHeader   ---------------------------*/
@@ -76,6 +83,7 @@ html {
 .mainContent {
 	position: relative;
 	padding-top: 32px;
+	background: #fff;
 
 	/*---   .mainTtl   ----------*/
 	.mainTtl {
@@ -122,6 +130,7 @@ html {
 		outline: 0;
 
 		&::-webkit-input-placeholder {
+			padding-top: 5px;
 			color: #cbcbcb;
 			font-size: 14px;
 		}
@@ -129,7 +138,7 @@ html {
 	/*---   .nextBtn   ----------*/
 	.nextBtn {
 		position: absolute;
-		top: 243px;
+		top: 224px;
 		left: 50%;
 		width: 88px;
 		height: 30px;
@@ -159,6 +168,10 @@ html {
 			font-size: 14px;
 			text-align: center;
 			line-height: 30px;
+
+			&:hover {
+				text-decoration: none;
+			}
 		}
 	}
 	/*---   #thumbnail   ----------*/
