@@ -65,8 +65,6 @@
             this.logs_view.collection.add(log);
           }
         }
-
-        this.search_log_title.val("");
       }
     }
   })

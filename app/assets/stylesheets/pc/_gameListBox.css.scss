@@ -3,10 +3,7 @@
 /*---   .gameList   ----------*/
 .gameListBox {
 	width: 100%;
-	margin-top: 23px;
 	padding: 20px 0 40px;
-	border-top: 1px solid #e6e6e6;
-	background: #f2f2f2;
 
 	.gameListWrap {
 		width: 960px;
@@ -28,6 +25,11 @@
 	.gameList {
 		position: relative;
 
+		&:hover {
+			.gameDeleteBtn {
+				display: block;
+			}
+		}
 		.gameImgWrap {
 			overflow: hidden;
 			width: 121px;
@@ -99,7 +101,7 @@
         outline: 0;
 	}
 	.gameDeleteBtn {
-		display: block;
+		display: none;
 		position: absolute;
 		top: -17px;
 		right: -17px;

@@ -134,8 +134,6 @@
             }
             break;
         }
-
-        this.search_log_title.val("");
       }
     }
   })
