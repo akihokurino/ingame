@@ -28,5 +28,10 @@ var LogsView = Backbone.View.extend({
   },
   removeLogs: function () {
     this.$el.html("");
+  },
+  removeEachLogs: function () {
+    this.$el.find(".ready-list").html("");
+    this.$el.find(".playing-list").html("");
+    this.$el.find(".played-list").html("");
   }
 })

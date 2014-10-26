@@ -30,6 +30,7 @@
       var that               = this;
       this.log_collection    = new Logs();
       this.logs_view         = new LogsView({el: ".log-list", collection: this.log_collection, attributes: {type: "select"}});
+      this.tmp_log_list      = [];
 
 
       this.search_log_title  = this.$(".search-log");
@@ -41,6 +42,7 @@
           for (var i = 0; i < response.logs.length; i++) {
             var log = new Log(response.logs[i]);
             that.logs_view.collection.add(log);
+            that.tmp_log_list.push(log);
           }
         },
         error: function () {
@@ -53,36 +55,15 @@
         e.preventDefault();
 
         this.logs_view.collection.reset();
-        this.logs_view.removeLogs();
-        this.$el.find("ul.sortBox li").removeClass("current");
+        this.logs_view.removeEachLogs();
 
         var keyword = new RegExp(this.search_log_title.val(), "i");
 
-        switch (this.current_tab) {
-          case 1:
-            for (var i = 0; i < this.attentions.length; i++) {
-              var log = this.attentions[i]
-              if (log.get("game").title.match(keyword)) {
-                this.logs_view.collection.add(log);
-              }
-            }
-            break;
-          case 2:
-            for (var i = 0; i < this.playings.length; i++) {
-              var log = this.playings[i]
-              if (log.get("game").title.match(keyword)) {
-                this.logs_view.collection.add(log);
-              }
-            }
-            break;
-          case 3:
-            for (var i = 0; i < this.archives.length; i++) {
-              var log = this.archives[i]
-              if (log.get("game").title.match(keyword)) {
-                this.logs_view.collection.add(log);
-              }
-            }
-            break;
+        for (var i = 0; i < this.tmp_log_list.length; i++) {
+          var log = this.tmp_log_list[i];
+          if (log.get("game").title.match(keyword)) {
+            this.logs_view.collection.add(log);
+          }
         }
 
         this.search_log_title.val("");

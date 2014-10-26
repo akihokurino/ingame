@@ -41,7 +41,7 @@
             %span.count
               = @user.follower_num
       %form.libSearchWrap
-        %input.libSearch{placeholder: "ライブラリ内をキーワードで検索"}
+        %input.libSearch.search-log{placeholder: "ライブラリ内をキーワードで検索"}
       - unless current_user?(@user)
         %span.follow-wrap
           - if @user.i_followed
