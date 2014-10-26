@@ -4,15 +4,19 @@
 = content_for :last do
   /= javascript_include_tag "main/pc/profile_edit"
 
+= render partial: "application/pc/default_header"
 
 %section.mainContent
   .profileBox
     .profileBoxInner
       %figure.profImgWrap
-        %img.profImg{src: "../test_set/test05.jpg", width: "135", height: "135", alt: "ユーザー画像"}
-      %h1.userName ユーザーネーム
-      %p.userPlace 場所
-      %p.userInfo プロフィールテキストプロフィールテキストプロフィールテキストプロフィールテキストプロフィールテキストプロフィールテキストプロフィールテキストプロフィールテキスト
+        = image_tag "/user_photos/#{@user[:photo_path]}", class: "profImg", width: 135, hieght: 135, alt: "ユーザー画像"
+      %h1.userName
+        = @user.username
+      %p.userPlace
+        = @user.place
+      %p.userInfo
+        = @user.introduction
   .profileEditBox
     %h1.profileEditTtl プロフィール設定
     %dl.editList
@@ -48,3 +52,5 @@
       %dd.editElm
         %textarea.userInfo
     %p.editBtn 変更を保存
+
+= render partial: "application/pc/footer"
