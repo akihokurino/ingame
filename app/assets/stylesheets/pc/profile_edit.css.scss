@@ -1,0 +1,165 @@
+@import "../_function.css.scss";
+
+$width: 960px !default;
+$cntWidth: 580px;
+
+/*---   .mainContent   ---------------------------*/
+.mainContent {
+  /*---   .profileBox   ----------*/
+  .profileBox {
+    background: url(../../test_set/test04.jpg) no-repeat top center;
+    background-size: cover;
+
+    /*---   .profileBoxInner   ---*/
+    &Inner {
+      position: relative;
+      width: $width;
+      height: 300px;
+      margin: 0 auto;
+      padding: 72px 0 32px 20px;
+      @include box-sizing;
+      color: #fff;
+      @include clearfix;
+    }
+    /*---   .profImg   ---*/
+    .profImgWrap {
+      float: left;
+      margin-right: 32px;
+    }
+    .profImg {
+      border: 4px solid #fff;
+      @include border-radius(5px);
+    }
+    /*---   .userName   ---*/
+    .userName {
+      font-weight: bold;
+      font-size: 18px;
+    }
+    /*---   .userInfo   ---*/
+    .userInfo {
+      width: 716px;
+      line-height: 1.5;
+    }
+  }
+  /*---   .profileBox   ----------*/
+  .profileEditBox {
+    position: relative;
+    width: 580px;
+    margin: 28px auto 100px;
+    padding: 10px 10px 30px;
+    border: 1px solid #e2e2e2;
+    @include border-radius(3px);
+    @include box-sizing;
+    background: #fff;
+    color: #3f3f3f;
+
+    .profileEditTtl {
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .editList {
+      margin: 40px 0;
+      @include clearfix;
+    }
+    .editListTtl {
+      float: left;
+      width: 125px;
+      margin-right: 15px;
+      font-size: 14px;
+      text-align: right;
+      line-height: 36px;
+
+      &Prof {
+        line-height: 98px;
+      }
+      &Cover {
+        line-height: 55px;
+      }
+    }
+    .profImg {
+      border: 1px solid #cfcfcf;
+    }
+    .coverImg {
+      border: 1px solid #cfcfcf;
+    }
+    .uploadBtnTxt {
+      position: absolute;
+      width: 140px;
+      height: 30px;
+      @include border-radius(2px);
+      background: $color_green;
+      color: #fff;
+      font-weight: bold;
+      font-size: 14px;
+      text-align: center;
+      line-height: 30px;
+    }
+    .uploadBtn {
+      opacity: 0;
+      position: absolute;
+      width: 140px;
+      height: 30px;
+      outline: 0;
+    }
+    .editProf {
+      position: relative;
+
+      .uploadBtnTxt {
+        top: 34px;
+        left: 253px;
+      }
+      .uploadBtn {
+        top: 34px;
+        left: 253px;
+      }
+    }
+    .editCover {
+      position: relative;
+
+      .uploadBtnTxt {
+        top: 13px;
+        left: 377px;
+      }
+      .uploadBtn {
+        top: 13px;
+        left: 377px;
+      }
+    }
+    input {
+      width: 280px;
+      height: 36px;
+      padding-left: 5px;
+      border: 1px solid #ccc;
+      @include border-radius(3px);
+      @include box-sizing;
+      font-size: 14px;
+      outline: 0;
+    }
+    textarea {
+      width: 400px;
+      height: 146px;
+      padding: 5px;
+      border: 1px solid #ccc;
+      @include border-radius(3px);
+      @include box-sizing;
+      font-size: 14px;
+      outline: 0;
+      resize: none;
+    }
+    .editBtn {
+      position: absolute;
+      right: 33px;
+      bottom: 20px;
+      width: 140px;
+      height: 30px;
+      @include border-radius(2px);
+      background: $color_green;
+      color: #fff;
+      font-weight: bold;
+      font-size: 14px;
+      text-align: center;
+      line-height: 30px;
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,50 @@
+= content_for :head do
+  = stylesheet_link_tag    "pc/profile_edit"
+
+= content_for :last do
+  /= javascript_include_tag "main/pc/profile_edit"
+
+
+%section.mainContent
+  .profileBox
+    .profileBoxInner
+      %figure.profImgWrap
+        %img.profImg{src: "../test_set/test05.jpg", width: "135", height: "135", alt: "ユーザー画像"}
+      %h1.userName ユーザーネーム
+      %p.userPlace 場所
+      %p.userInfo プロフィールテキストプロフィールテキストプロフィールテキストプロフィールテキストプロフィールテキストプロフィールテキストプロフィールテキストプロフィールテキスト
+  .profileEditBox
+    %h1.profileEditTtl プロフィール設定
+    %dl.editList
+      %dt.editListTtl.editListTtlProf プロフィール画像
+      %dd.editProf
+        %figure.profImgWrap
+          %img.profImg{src: "../test_set/test02.png", width: "98", height: "98", alt: "プロフィール画像"}
+        .uploadBtnWrap
+          .uploadBtnTxt ファイルを選択
+          %form
+            %input.uploadBtn{type: "file", value: "ファイルを選択"}
+    %dl.editList
+      %dt.editListTtl.editListTtlCover カバー写真
+      %dd.editCover
+        %figure.coverImgWrap
+          %img.coverImg{src: "../test_set/test04.jpg", width: "220", height: "55", alt: "カバー写真"}
+        .uploadBtnWrap
+          .uploadBtnTxt ファイルを選択
+          %form
+            %input.uploadBtn{type: "file", value: "ファイルを選択"}
+    %dl.editList
+      %dt.editListTtl ユーザーネーム
+      %dd.editElm
+        %form.userNameWrap
+          %input.userName{type: "text"}
+    %dl.editList
+      %dt.editListTtl 場所
+      %dd.editElm
+        %form.placeWrap
+          %input.place{type: "text"}
+    %dl.editList
+      %dt.editListTtl 自己紹介(200文字)
+      %dd.editElm
+        %textarea.userInfo
+    %p.editBtn 変更を保存
