@@ -5,13 +5,14 @@
       .stepBar01
       %p.stepTxt 登録は簡単です
   %section.mainContent
-    %h1.mainTtl ようそこ、Gamefulへ。
-    %p.mainTxt
-      まずはお気に入りのゲームをライブラリに登録しましょう。
-      %br
-      ゲームは、後から好きなだけ追加することができます。
-    %form.searchWrap
-      %input.search.search-title-input{type: "text", placeholder: "キーワードでゲームを探す"}
-    %a.nextBtn.next-page{href: ""} 次へ
+    .settingTopBox
+      %h1.mainTtl ようそこ、Gamefulへ。
+      %p.mainTxt
+        まずはお気に入りのゲームをライブラリに登録しましょう。
+        %br
+        ゲームは、後から好きなだけ追加することができます。
+      %form.searchWrap
+        %input.search.search-title-input{type: "text", placeholder: "キーワードでゲームを探す"}
+      %a.nextBtn.next-page{href: ""} 次へ
     .gameListBox
       %ul.gameListWrap.result-list

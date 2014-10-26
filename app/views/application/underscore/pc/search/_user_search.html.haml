@@ -1,13 +1,14 @@
 %script{type: "text/template", id: "user-search-template"}
-  .searchBox
-    %form.searchWrap
-      %input.search.username-input{type: "text", placeholder: "キーワードでユーザーを探す"}
-    %p.searchBtn.search-btn{href: ""} 検索
-  %ul.sortList
-    %li.item
-      %a.sortListLink{href: "/users/#{@current_user[:id]}/search_game_or_user#game"} ゲーム検索
-    %li.item.current ユーザー検索
-  .userListBox
+  .searchTopBox
+    .searchBox
+      %form.searchWrap
+        %input.search.username-input{type: "text", placeholder: "キーワードでユーザーを探す"}
+      %p.searchBtn.search-btn{href: ""} 検索
+    %ul.sortList
+      %li.item
+        %a.sortListLink{href: "/users/#{@current_user[:id]}/search_game_or_user#game"} ゲーム検索
+      %li.item.current ユーザー検索
+  .friendListBox
     .result-area
-    %ul.userListWrap.result-list
-    = image_tag "gif-load.gif", class: "loading-gif"
+    %ul.friendListWrap.result-list
+    = image_tag "gif-load-pc.gif", class: "loading-gif"
