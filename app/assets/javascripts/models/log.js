@@ -16,6 +16,7 @@ var Log = Backbone.Model.extend({
       "name": ""
     }
   },
+  url: "/api/logs/",
   strimWidth: function (limit) {
     var title = this.get("game").title;
     if (title.length > limit) {

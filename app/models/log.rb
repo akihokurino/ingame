@@ -2,6 +2,7 @@ class Log < ActiveRecord::Base
 	belongs_to :game
 	belongs_to :status
 	belongs_to :user, counter_cache: true
+	has_many :posts, dependent: :destroy
 
 	validates :game_id,
 		presence: true,
