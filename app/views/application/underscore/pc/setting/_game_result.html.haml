@@ -1,18 +1,16 @@
 %script{src: "text/template", id: "game-result-template"}
   %article.gameList
-    %article.gameList
-      %figure.gameImgWrap
-        / %img.gameImg{src: "/game_photos/{{= photo_path }}", width: "121", alt: ""}
-        %img.gameImg{src: "{{= photo_url }}", width: "121", alt: ""}
-      %ul.starList
-        - 4.times do |i|
-          %li.starOn ★
-        %li.starOff ☆
-      %ul.btnList
-        %li.item
-          %select.status{name: "status", size: 1}
-            %option{value: ""} ステータス
-            %option{value: 1} 気になる
-            %option{value: 2} プレイ中
-            %option{value: 3} クリア済
+    %figure.gameImgWrap
+      / %img.gameImg{src: "/game_photos/{{= photo_path }}", width: "121", alt: ""}
+      %img.gameImg{src: "{{= photo_url }}", width: "121", alt: ""}
+    %ul.starList
+      - 4.times do |i|
+        %li.starOn ★
+      %li.starOff ☆
+    .statusWrap
+      %select.status{name: "status", size: 1}
+        %option{value: ""} ステータス
+        %option{value: 1} 気になる
+        %option{value: 2} プレイ中
+        %option{value: 3} クリア済
 

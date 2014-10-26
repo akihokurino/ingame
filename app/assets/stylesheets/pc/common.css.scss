@@ -577,6 +577,44 @@ a:hover {
 				}
 			}
 		}
+		.statusWrap {
+			display: inline-block;
+			position: relative;
+			width: 122px;
+			height: 33px;
+			margin-top: 15px;
+			-moz-border-radius: 3px;
+			-webkit-border-radius: 3px;
+			border-radius: 3px;
+			background: #24d387;
+			cursor: pointer;
+
+	        &:after {
+	          position: absolute;
+	          top: 10px;
+	          right: 10px;
+	          width: 6px;
+	          height: 6px;
+	          border-right: 3px solid #fff;
+	          border-bottom: 3px solid #fff;
+	          -webkit-transform: rotate(45deg);
+	          transform: rotate(45deg);
+	          content: "";
+	        }
+		}
+		.status {
+	        display: block;
+	        width: 100px;
+	        height: 33px;
+	        margin: 0 auto;
+	        border: none;
+	        background: none;
+	        color: #fff;
+	        font-size: 14px;
+	        @include appearance;
+	        cursor: pointer;
+	        outline: 0;
+		}
 		.gameDeleteBtn {
 			display: block;
 			position: absolute;
