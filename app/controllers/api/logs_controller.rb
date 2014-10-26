@@ -13,13 +13,13 @@ class Api::LogsController < ApplicationController
     end
   end
 
+  def update
+  end
+
   def destroy
     log = Log.find(params[:id])
     log.destroy
     render nothing: true
-  end
-
-  def update
   end
 
   def update_status_or_rate

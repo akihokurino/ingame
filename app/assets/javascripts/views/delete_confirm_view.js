@@ -21,6 +21,7 @@ var DeleteConfirmView = Backbone.View.extend({
     return this;
   },
   done: function () {
+    this.unbindEvent();
     this.current_view.destroy();
     $(".delete-confirm-wrap").css("display", "none");
     $(".layer").css("display", "none");
