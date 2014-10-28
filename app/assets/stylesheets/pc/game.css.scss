@@ -1,13 +1,16 @@
 @import "../_function.css.scss";
+@import "_postBox.css.scss";
 
-$width: 960px !default;
-$cntWidth: 580px;
+html {
+  background: #5e5e5e;
+}
 
 /*---   .mainContent   ---------------------------*/
 .mainContent {
+  background: #eee;
+
   /*---   .gameBox   ----------*/
   .gameBox {
-    margin-bottom: 24px;
     border-bottom: 1px solid #e6e6e6;
     background: #fff;
     @include clearfix;
@@ -198,5 +201,8 @@ $cntWidth: 580px;
         }
       }
     }
+  }
+  .game-timeline {
+    padding: 24px 0;
   }
 }
