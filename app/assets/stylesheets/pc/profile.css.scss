@@ -13,6 +13,7 @@ html {
 
   /*---   .profileBox   ----------*/
   .profileBox {
+    background: url(/assets/pc/default_cover.png) no-repeat top center;
     background-size: cover;
 
     /*---   .profileBoxInner   ---*/
@@ -30,10 +31,10 @@ html {
     .profImgWrap {
       float: left;
       margin-right: 32px;
-    }
-    .profImg {
       border: 4px solid #fff;
       @include border-radius(5px);
+      @include box-shadow(0, 0, 20px, 0, #000);
+      line-height: 0;
     }
     /*---   .userName   ---*/
     .userName {
