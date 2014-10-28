@@ -35,7 +35,8 @@ class User < ActiveRecord::Base
 
   def update_with_url(user_params, clip = {})
     user_params[:photo_path] = self.class.url_upload(user_params[:photo_path], "user", clip) unless user_params[:photo_path].nil?
-    self.update(user_params) ? true : false
+    self.update(user_params)
+    self
   end
 
   def check_follow(current_user)

@@ -15,6 +15,7 @@
 	@include box-sizing;
 	background: #fff;
 	@include clearfix;
+	display: none;
 
 	.clipTtl {
 		margin-bottom: 20px;

@@ -12,17 +12,18 @@
         %br
         オンラインゲームにおける、アバターアイコンと同じですね。
       #thumbnail
-        = image_tag "pc/default_profImg.png", width: "157", height: "157", alt: "", class: "thumbnailImg"
+        = image_tag "/user_photos/default.png", width: "157", height: "157", alt: "", class: "thumbnailImg"
       .uploadBtnWrap
         .uploadBtnTxt 写真をアップロード
         %form
           %input.uploadBtn#upload-btn{type: "file", value: "写真をアップロード"}
       %a.nextBtn03.next-page{href: ""} 次へ
-      .clipBox
+
+      .clipBox.clip-box
         %h2.clipTtl 画像の位置をドラッグで変更
         %figure.clipImgWrap
-          %img.clipImg{src: "/user_photos/default.png", height: "300", alt: ""}
-          .clipArea
+          /%img.clipImg{src: "/user_photos/default.png", height: "300", alt: ""}
+          .clipArea#clip-area
         %ul.clipBtnLis
-          %li.cancel キャンセル
-          %li.done 決定
+          %li.cancel.cancel-clip キャンセル
+          %li.done.done-clip 決定

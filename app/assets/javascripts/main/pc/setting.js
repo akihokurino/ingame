@@ -6,6 +6,7 @@
 //= require ../../views/game_results_view.js
 //= require ../../views/user_result_view.js
 //= require ../../views/user_results_view.js
+//= require ../../vendors/draggable_background.js
 //= require ../../libs/profile_upload.js
 
 (function () {
@@ -192,7 +193,10 @@
   var ThirdView = Backbone.View.extend({
     el: $(".setting-page"),
     events: {
-      "click .next-page": "next"
+      "click .next-page":   "next",
+      "change #upload-btn": "showClipModal",
+      "click .cancel-clip": "hideClipModal",
+      "click .done-clip":   "clip"
     },
     template: _.template($("#third-template").html()),
     initialize: function () {
@@ -202,32 +206,46 @@
       var tmp      = location.href.split("#")[0].split("/");
       this.user_id = tmp.pop() && tmp.pop();
 
-      this.upload  = new ProfileUpload("upload-btn", "clip", null, null);
+      this.upload  = new ProfileUpload("upload-btn", "clip-area", this.user_id, null, "ajax");
     },
     next: function (e) {
       e.preventDefault();
+
+      location.href = "/posts";
+    },
+    showClipModal: function () {
+      this.$(".clip-box").css("display", "block");
+    },
+    hideClipModal: function () {
+      this.upload.reset();
+      this.$(".clip-box").css("display", "none");
+    },
+    clip: function () {
+      var that = this;
+      $(".next-page").val("アップロード");
 
       if (this.upload.file) {
         var data = {
           "user": {
             "photo_path": this.upload.file,
-            "clip_width": this.upload.clip_width,
-            "clip_height": this.upload.clip_height
+            "clip_x":     this.upload.clip_x,
+            "clip_y":     this.upload.clip_y
           }
         }
+
         $.ajax({
           type: "PUT",
           url: "/api/users/" + this.user_id,
           data: data,
-          success: function () {
-            location.href = "/posts";
+          success: function (data) {
+            that.hideClipModal();
+            var img = $("<img src='/user_photos/" + data.result.photo_path + "' width='157' height='157'>");
+            $("#thumbnail").html(img);
           },
           error: function () {
 
           }
         })
-      } else {
-        location.href = "/posts";
       }
     }
   })

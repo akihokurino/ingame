@@ -42,7 +42,7 @@ module CostomUpload
 
       case type
       when "user"
-        file = Magick::Image.read("public/#{type}_photos/#{photo_path}").first.crop(clip[:width], clip[:height], 200, 200)
+        file = Magick::Image.read("public/#{type}_photos/#{photo_path}").first.crop(clip[:x], clip[:y], 200, 200)
         file.write("public/#{type}_photos/#{photo_path}")
       end
 

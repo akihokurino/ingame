@@ -1,12 +1,14 @@
-var ProfileUpload = function (input_id, output_id, user_id, clip) {
+var ProfileUpload = function (input_id, output_id, user_id, clip, type) {
   var that         = this;
   this._input      = document.getElementById(input_id);
   this._output     = document.getElementById(output_id);
   this.user_id     = user_id;
   this.file        = null;
   this.clip        = clip;
-  this.clip_width  = null;
-  this.clip_height = null;
+  this.clip_x      = 0;
+  this.clip_y      = 0;
+  this.type        = type;
+
   if(this._input != null){
     this._input.addEventListener("change", function () {
       that.changeFile();
@@ -42,26 +44,29 @@ ProfileUpload.prototype = {
     reader.readAsDataURL(file);
   },
   render: function (data, name) {
-    var that               = this;
-    this._output.innerHTML = "";
-    var img                = document.createElement("img");
-    img.src                = data;
-    this._output.appendChild(img);
+    var that = this;
 
-    if (this.clip) {
-      var width  = "#" + this.clip.clip_width;
-      var height = "#" + this.clip.clip_height;
+    $(this._output).css({"background-image": "url(" + data + ")", "background-repeat": "no-repeat"});
 
-      this._output.addEventListener("scroll", function () {
-        $(height).val($(this).scrollTop());
-        $(width).val($(this).scrollLeft());
-      }, false);
-    } else {
-      $(".next-page").val("アップロード");
-      this._output.addEventListener("scroll", function () {
-        that.clip_height = $(this).scrollTop();
-        that.clip_width  = $(this).scrollLeft();
-      }, false);
+    if (this.type == "ajax") {
+      $(this._output).backgroundDraggable({
+        done: function() {
+          that.clip_x = parseInt($(that._output).css('background-position-x')) * -1;
+          that.clip_y = parseInt($(that._output).css('background-position-y')) * -1;
+        }
+      });
+    } else if (this.clip) {
+      var clip_x_id = "#" + this.clip.clip_x_input;
+      var clip_y_id = "#" + this.clip.clip_y_input;
+
+      $(this._output).backgroundDraggable({
+        done: function() {
+          var x = parseInt($(that._output).css('background-position-x')) * -1;
+          var y = parseInt($(that._output).css('background-position-y')) * -1;
+          $(clip_x_id).val(x);
+          $(clip_y_id).val(y);
+        }
+      });
     }
   },
   isVideo: function (file) {
@@ -92,5 +97,12 @@ ProfileUpload.prototype = {
         $("#validate-message").css("display", "block");
         break;
     }
+  },
+  reset: function () {
+    this.file         = null;
+    this.clip_x       = 0;
+    this.clip_y       = 0;
+    this._input.files = [];
+    $(this._output).css("background-image", "none");
   }
 }
