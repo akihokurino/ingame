@@ -6,7 +6,7 @@
 
 = render partial: "application/pc/default_header"
 
-%section.mainContent
+%section.mainContent.user-edit-page
   .profileBox
     .profileBoxInner
       %figure.profImgWrap
@@ -20,16 +20,17 @@
   .profileEditBox
     %h1.profileEditTtl プロフィール設定
     = form_for @user do |f|
-      = f.hidden_field :clip_width, id: "clip-width"
-      = f.hidden_field :clip_height, id: "clip-height"
+      = f.hidden_field :clip_x, id: "clip-x"
+      = f.hidden_field :clip_y, id: "clip-y"
       %dl.editList
         %dt.editListTtl.editListTtlProf プロフィール画像
         %dd.editProf
-          %figure.profImgWrap
-            %img.profImg{src: "../test_set/test02.png", width: "98", height: "98", alt: "プロフィール画像"}
+          %figure.profImgWrap#thumbnail
+            = image_tag "/user_photos/#{@user[:photo_path]}", class: "profImg", width: 98, hieght: 98, alt: "ユーザー画像"
           .uploadBtnWrap
             .uploadBtnTxt ファイルを選択
-            = f.file_field :photo_path, id: "upload-btn", class: "uploadBtn"
+            /= f.file_field :photo_path, id: "upload-btn", class: "uploadBtn"
+            = f.file_field :tmp_photo_path, id: "upload-btn", class: "uploadBtn"
       /
         %dl.editList
           %dt.editListTtl.editListTtlCover カバー写真
@@ -53,6 +54,6 @@
           = f.text_area :introduction, class: "userInfo"
       = f.submit "変更を保存", class: "editBtn"
 
-  #clip
+  = render partial: "application/pc/clip_modal"
 
 = render partial: "application/pc/footer"

@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    clip = {width: params[:user][:clip_width].to_i, height: params[:user][:clip_height].to_i}
+    clip = {x: params[:user][:clip_x].to_i, y: params[:user][:clip_y].to_i}
     if @user.update_with(user_params, clip)
       redirect_to posts_path, notice: "ユーザー情報を変更しました"
     else

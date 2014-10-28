@@ -19,10 +19,4 @@
           %input.uploadBtn#upload-btn{type: "file", value: "写真をアップロード"}
       %a.nextBtn03.next-page{href: ""} 次へ
 
-      .clipBox.clip-box
-        %h2.clipTtl 画像の位置をドラッグで変更
-        %figure.clipImgWrap
-          .clipArea#clip-area
-        %ul.clipBtnLis
-          %li.cancel.cancel-clip キャンセル
-          %li.done.done-clip 決定
+    = render partial: "application/pc/clip_modal"

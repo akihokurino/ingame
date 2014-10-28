@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
     where("username LIKE ?", "%#{username}%").select(:id, :username, :photo_path)
   }
 
-  attr_accessor :i_followed, :follow_num, :follower_num, :clip_width, :clip_height
+  attr_accessor :i_followed, :follow_num, :follower_num, :clip_x, :clip_y, :tmp_photo_path
 
 
 	def update_with(user_params, clip = {})

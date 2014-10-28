@@ -10,13 +10,14 @@
     %span.cancelWrap
     = link_to "戻る", "/users/#{@current_user[:id]}#logs", class: "cancel"
   = form_for @user do |f|
-    = f.hidden_field :clip_width, id: "clip-width"
-    = f.hidden_field :clip_height, id: "clip-height"
+    = f.hidden_field :clip_x, id: "clip-x"
+    = f.hidden_field :clip_y, id: "clip-y"
     .file-input
       #thumbnail
         = image_tag "/user_photos/#{@user.photo_path}", class: "profile-img"
       %span プロフィール画像
-      = f.file_field :photo_path, id: "upload-btn"
+      /= f.file_field :photo_path, id: "upload-btn"
+      = f.file_field :tmp_photo_path, id: "upload-btn"
     .username-input
       %span 名前
       = f.text_field :username
@@ -28,4 +29,4 @@
       = f.text_field :introduction
     = f.submit "変更", class: "edit"
 
-  #clip
+  = render partial: "application/smart_phone/clip_modal"
