@@ -57,11 +57,9 @@ a:hover {
 	left: 50%;
 	top: 50%;
 	z-index: 10;
-	width: 210px;
-	height: 80px;
 	margin-left: -105px;
 	margin-top: -40px;
-	padding: 12px 0 10px;
+	padding: 12px 10px 10px;
 	border: 1px solid #ababab;
 	@include border-radius(3px);
 	@include box-sizing;
@@ -99,5 +97,10 @@ a:hover {
 	margin-bottom: 8px;
 	color: #3d3d3d;
 	font-size: 14px;
+}
+.descTxt {
+	margin-bottom: 8px;
+	color: #3d3d3d;
+	font-size: 10px;
 }
 
