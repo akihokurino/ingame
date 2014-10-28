@@ -3,7 +3,7 @@
     %h2.setting03Ttl プロフィール写真を設定
     .uploadBox
       #thumbnail{width: 96, height: 96}
-        %img.profImg{src: "/assets/smart_phone/setting03__profImg.png", width: 96, height: 96}
+        = image_tag "/user_photos/default.png", width: "96", height: "96", alt: "", class: "profImg"
       .btnWrap
         %p.btnText 写真をアップロード
         %form
@@ -14,4 +14,11 @@
       %li.progress--off
       %li.progress--off
       %li.progress--on
-    #clip
+
+    .clipBox.clip-box
+      %h2.clipTtl 画像の位置をドラッグで変更
+      %figure.clipImgWrap
+        .clipArea#clip-area
+      %ul.clipBtnLis
+        %li.cancel.cancel-clip キャンセル
+        %li.done.done-clip 決定
