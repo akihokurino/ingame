@@ -40,7 +40,7 @@ header {
 	background: #2d3e58;
 
 	.ttl {
-		display: block;
+		display: none;
 		width: 68px;
 		margin: 0 auto;
 		color: #ffffff;
@@ -80,7 +80,7 @@ header {
 			right: 1px;
 			width: 17px;
 			height: 17px;
-			@include border-radius(6px);
+			@include border-radius(2px);
 			background: #22c0a4;
 			color: #fff;
 			font-family: Helvetica;
@@ -186,7 +186,7 @@ header {
 	height: 500px;
 	margin-left: -47.5%;
 	//border: solid 1px #e2e2e2;
-	@include border-radius(5px);
+	@include border-radius(2px);
 	background-color: #fff;
 
 	.modal-header {
@@ -194,7 +194,7 @@ header {
 		width: 100%;
 		height: 40px;
 		border-bottom: solid 1px #999;
-		background: #10b5a3;
+		background: $color_green;
 		color: #fff;
 		font-size: 18px;
 		font-family: Helvetica;
@@ -205,18 +205,18 @@ header {
 
 		.close-btn {
 			position: absolute;
-			top: 9px;
+			top: 8px;
 			right: 10px;
-			width: 46px;
-			height: 20px;
+			width: 56px;
+			height: 24px;
 			border: solid 1px #e2e2e2;
-			@include border-radius(3px);
+			@include border-radius(2px);
 			background: #fff;
 			color: #999;
 			font-size: 13px;
 			@include font-weight(0, #fff);
 			text-align: center;
-			line-height: 20px;
+			line-height: 26px;
 		}
 	}
 	.notification-list {
