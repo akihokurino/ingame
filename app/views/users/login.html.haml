@@ -2,54 +2,69 @@
   = stylesheet_link_tag "pc/login"
 
 %header.lpHeader
-  %h1.ttl Gameful
-  %p.catchcopy キャッチコピー｡キャッチコピー｡
+  .lpHeaderTop
+    .lpHeaderTopInner
+      %h1.ttl Gameful
+  %p.catchcopy 遊ぶべきゲームに出会おう。
+  %p.lpHeaderTxt
+    Gamefulは、まだ見ぬゲームに出逢うゲーマー向けのSNSです。
+    %br
+    遊んでいるゲームや気になるゲームを記録し、感想を共有することで、
+    %br
+    あなたにピッタリのゲーム、そっくりなゲーマーを探す事ができます。
+  %p.snsListTxt ソーシャルアカウントで簡単登録！
   %ul.snsList
     %li.item
-      %a.twBtn{href: "/auth/twitter"} Twitterでログイン
+      %a.twBtn{href: "/auth/twitter"} Twitter
     %li.item
-      %a.fbBtn{href: "/auth/facebook"} Facebookでログイン
-%section.contentBox01
-  %h2.ttl
-    機能の説明機能の説明
-    %br
-    機能の説明
-  .cntInner
-    %figure.cntImg
-      = image_tag "pc/lp_img02.png", width: "172", height: "322", alt: ""
-    %p.txt 機能を詳細に説明機能を詳細に説明機能を詳細に説明機能を詳細に説明機能を詳細に説明機能を詳細に説明機能を詳細に説明機能を詳
-%section.contentBox02
-  %h2.ttl
-    機能の説明機能の説明
-    %br
-    機能の説明
-  %figure.cntImg
-    = image_tag "pc/lp_img03.png", width: "816", height: "235", alt: ""
-%section.contentBox03
-  .cntInner
-    .cntLeft
-      %h2.ttl
-        機能の説明機能の説明
-        %br
-        機能の説明
-      %p.txt 機能を詳細に説明機能を詳細に説明機能を詳細に説明機能を詳細に説明機能を詳細に説明機能を詳細に説明機能を詳細に説明機能を詳
-    %figure.cntImg
-      = image_tag "pc/lp_img02.png", width: "172", height: "322", alt: ""
-%section.contentBox04
-  %h2.ttl 今すぐ始めよう的な文言
-  %ul.snsList
-    %li.item
-      %a.twBtn{href: "/auth/twitter"} Twitterでログイン
-    %li.item
-      %a.fbBtn{href: "/auth/facebook"} Facebookでログイン
+      %a.fbBtn{href: "/auth/facebook"} Facebook
+.contentBox
+  %h1.contentBoxTtl Gamefulの特徴   
+  %section.contentBox01
+    .cntInner
+      .cntLeft
+        %figure.cntImg
+          = image_tag "pc/lp_img01.jpg", width: "466", height: "273", alt: ""
+      %h2.ttl 自分だけのゲーム歴をつくる。
+      %p.txt ○○作品以上のデーターベースから好きなゲームを検索して、ライブラリに登録することができます。
+      %p.txt 「気になる」「プレイ中」「クリア済」という３つのステータスを使い分けて、ゲーム歴をスマートに記録・管理しよう。
+      %p.txt 「気になる」に登録されているゲームは、発売日が近づいた時にお知らせします。
+  %section.contentBox02
+    .cntInner
+      .cntLeft
+        %h2.ttl ゲームの感想をシェア。
+        %p.txt
+          遊びはじめた時、ボスを倒した時、そしてクリアした時。
+          %br
+          本や映画と違って、ゲームには感動ポイントがたくさんあります。
+        %p.txt
+          些細なつぶやきでも、濃厚なレビューでもご自由に。
+          %br
+          一つのゲームについて、何度でも感想をポストすることができます。
+          %br
+          TwitterやFacebookにだって、簡単にシェアできます。
+      %figure.cntImg
+        = image_tag "pc/lp_img02.png", width: "432", height: "377", alt: ""
+  %section.contentBox03
+    .cntInner
+      .cntLeft
+        %figure.cntImg
+          = image_tag "pc/lp_img03.jpg", width: "451", height: "273", alt: ""
+      %h2.ttl 信頼できる情報を参考に。
+      %p.txt １つのゲームには、レビューの様にユーザーのポストが集まります。
+      %p.txt 趣味が近いユーザーや、気の合うユーザーをフォローしておけば、そのユーザーのポストだけを参考にすることもできます。
+  %section.contentBox04
+    %h2.ttl Gamefulでまだ見ぬ神ゲーに出会おう。
+    %p.snsListTxt ソーシャルアカウントで簡単登録！
+    %ul.snsList
+      %li.item
+        %a.twBtn{href: "/auth/twitter"} Twitter
+      %li.item
+        %a.fbBtn{href: "/auth/facebook"} Facebook
 %footer.footer
   %ul.ftList
     %li.item
-      %a.ftLink{href: ""} 免責事項とか
-    %li.item
-      %a.ftLink{href: ""} リンクとか
-    %li.item
-      %a.ftLink{href: ""} いろいろ
-    %li.item
-      %a.ftLink{href: ""} フッター
+      %a.ftLink{href: ""} 利用規約
+    %li.lastItem
+      %a.ftLink{href: ""} プライバシーポリシー
   %small.copyright &copy; 2014 Gameful.

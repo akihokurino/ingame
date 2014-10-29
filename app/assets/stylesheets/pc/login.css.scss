@@ -1,126 +1,189 @@
 @import "_function.css.scss";
 
 /*---   common   ---------------------------*/
+html {
+	background: #fff;
+}
 .snsList {
-	width: 384px;
+	width: 428px;
 	margin: 0 auto;
 	color: #fff;
-	font-size: 24px;
-	font-weight: bold;
+	font-style: 18px;
 	text-align: center;
 
-	.twBtn, .fbBtn {
-		display: block;
-		padding: 12px 0;
-		color: #fff;
+	&Txt {
+		margin-bottom: 18px;
+		font-size: 14px;
+	}
+	.item {
+		display: inline-block;
+		width: 193px;
 	}
 	.twBtn {
-		margin-bottom: 20px;
+		display: block;
+		position: relative;
+		height: 42px;
+		margin-right: 20px;
+		@include border-radius(3px);
+		@include box-shadow(0, 4px, 0, 0, #4285b7);
 		background: #55acee;
+		color: #fff;
+		line-height: 42px;
+
+		&:before {
+			position: absolute;
+			top: 10px;
+			left: 15px;
+			@include img_set-PC4(28px, 25px, 0, -528px);
+			content: "";
+		}
 	}
 	.fbBtn {
+		display: block;
+		position: relative;
+		height: 42px;
+		@include border-radius(3px);
+		@include box-shadow(0, 4px, 0, 0, #24355e);
 		background: #3b5998;
+		color: #fff;
+		line-height: 42px;
+
+		&:before {
+			position: absolute;
+			top: 6px;
+			left: 15px;
+			@include img_set-PC4(18px, 30px, 0, -564px);
+			content: "";
+		}
 	}
 }
 
 /*---   .header   ---------------------------*/
 .lpHeader {
 	width: 100%;
-	padding: 160px 0 80px;
-	background: #009e96;
+	height: 534px;
+	padding-bottom: 80px;
+	@include box-sizing;
+	background: url(/assets/pc/lp_img04.jpg) no-repeat top center;
+	background-size: cover;
 	color: #fff;
-	font-weight: bold;
 	text-align: center;
 
+	&Top {
+		width: 100%;
+		height: 60px;
+		padding-top: 13px;
+		@include box-sizing;
+		background: $color_black;
+
+		&Inner {
+			width: 960px;
+			margin: 0 auto;
+		}
+	}
 	.ttl {
-		width: 350px;
-		margin: 0 auto 24px;
-		background: url(../images/lp_img01.png) no-repeat left top;
-		font-size: 60px;
-		text-align: right;
+		@include img_set-PC4(219px, 35px, 0, -484px);
+		@include substitute;
 	}
 	.catchcopy {
-		margin-bottom: 78px;
+		margin: 90px 0 30px;
+		font-weight: bold;
 		font-size: 36px;
+	}
+	&Txt {
+		margin-bottom: 80px;
+		font-size: 16px;
+		line-height: 1.5;
 	}
 }
 
 /*---   .contentBox   ---------------------------*/
-$cntNum: 4;
-@for $i from 1 through $cntNum {
-	.contentBox0#{$i} {
+.contentBox {
+	position: relative;
+
+	&Ttl {
+		position: absolute;
+		top: -57px;
+		left: 50%;
+		width: 242px;
+		height: 57px;
+		margin-left: -121px;
+		@include border-radius(10px 10px 0 0);
+		@include box-sizing;
+		background: #fff;
+		color: #009e8d;
+		font-size: 24px;
 		text-align: center;
-
-		.cntInner {
-			@include clearfix;
-		}
-		.ttl {
-			color: #009e8d;
-			font-size: 36px;
-			line-height: 48px;
-		}
-		.txt {
-			color: #878787;
-			font-size: 18px;
-			text-align: left;
-			line-height: 48px;
-		}
+		line-height: 57px;
 	}
-}
-/*---   .contentBox01   ----------*/
-.contentBox01 {
-	padding: 34px 0 38px;
-	background: #fff;
-
 	.cntInner {
-		width: 656px;
+		width: $width;
 		margin: 0 auto;
+		color: #fff;
+		@include clearfix;
 	}
-	.ttl {
-		margin-bottom: 32px;
-	}
-	.cntImg {
-		float: left;
-		margin-right: 104px;
-	}
-}
-/*---   .contentBox02   ----------*/
-.contentBox02 {
-	padding: 34px 0 84px;
-	background: #f3f3f3;
-
 	.ttl {
 		margin-bottom: 26px;
-	}
-}
-/*---   .contentBox03   ----------*/
-.contentBox03 {
-	padding: 34px 0 54px;
-	background: #fff;
-
-	.cntInner {
-		width: 656px;
-		margin: 0 auto;
-	}
-	.cntLeft {
-		float: left;
-		width: 378px;
-		padding-top: 54px;
-	}
-	.ttl {
-		margin-bottom: 40px;
+		font-weight: bold;
+		font-size: 32px;
 		text-align: left;
 	}
-	.cntImg {
-		float: right;
+	.txt {
+		margin-bottom: 1em;
+		font-size: 16px;
+		line-height: 1.5;
+		text-align: left;
 	}
-}
-/*---   .contentBox04   ----------*/
-.contentBox04 {
-	padding: 34px 0 108px;
-	background: #f3f3f3;
+	/*---   .contentBox01   ----------*/
+	&01 {
+		padding: 60px 0 50px;
+		background: $color-green;
+		text-align: center;
 
-	.ttl {
-		margin-bottom: 38px;
+		.cntLeft {
+			float: left;
+			margin-right: 28px;
+			padding-top: 16px;
+		}
+	}
+	/*---   .contentBox02   ----------*/
+	&02 {
+		padding-top: 23px;
+		background: $color-red;
+		text-align: center;
+
+		.cntLeft {
+			float: left;
+			padding-top: 50px;
+		}
+		.cntImg {
+			line-height: 0;
+		}
+	}
+	/*---   .contentBox03   ----------*/
+	&03 {
+		padding: 65px 0 50px;
+		background: $color-blue;
+		text-align: center;
+
+		.cntLeft {
+			float: left;
+			padding-top: 12px;
+		}
+		.cntImg {
+			float: right;
+		}
+	}
+	/*---   .contentBox04   ----------*/
+	&04 {
+		padding: 34px 0 108px;
+		text-align: center;
+
+		.ttl {
+			color: #009e96;
+			font-weight: normal;
+			font-size: 36px;
+			text-align: center;
+		}
 	}
 }
