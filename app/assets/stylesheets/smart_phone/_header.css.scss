@@ -1,0 +1,124 @@
+@import "../../stylesheets/_function.css.scss";
+
+/*---   header   ---------------------------*/
+header {
+	position: relative;
+	z-index: 1;
+	width: 100%;
+	height: 46px;
+	padding-top: 11px;
+	@include box-sizing;
+	background: $color_black;
+
+	.ttl {
+		width: 68px;
+		margin:0 auto;
+		color: #ffffff;
+		font-size: 18px;
+		font-family: Helvetica;
+		text-decoration: none;
+		@include font-weight(1px, #ffffff);
+	}
+	.menuWrap {
+		display: block;
+		position: absolute;
+		top: 14px;
+		left: 8px;
+	}
+	.menu {
+		display: block;
+		width: 22px;
+		height: 19px;
+		@include iconSprite2(0, 0);
+		cursor: pointer;
+	}
+	.notify {
+		display: block;
+		position: absolute;
+		padding:4px;
+		top: 14px;
+		right: 70px;
+		width: 21px;
+		height: 21px;
+		@include iconSprite2(0, -26px);
+		cursor: pointer;
+
+		&Num {
+			display: none;
+			position: absolute;
+			top: -2px;
+			right: 1px;
+			width: 17px;
+			height: 17px;
+			@include border-radius(2px);
+			background: #22c0a4;
+			color: #fff;
+			font-family: Helvetica;
+			font-size: 12px;
+			@include font-weight(1px, #fff);
+			line-height: 17px;
+			text-align: center;
+		}
+	}
+	.profile {
+		display: block;
+		position: absolute;
+		top: 14px;
+		right: 24px;
+		width: 20px;
+		height: 19px;
+		@include iconSprite2(0, -55px);
+		cursor: pointer;
+	}
+	.openMenuWrap {
+		display: none;
+
+		&:before {
+			position: absolute;
+			top: 30px;
+			left: 16px;
+			z-index: 5;
+			width: 0;
+			height: 0;
+			border-top: 8px solid transparent;
+			border-right: 9px solid transparent;
+			border-bottom: 8px solid #fff;
+			border-left: 9px solid transparent;
+			content: '';
+		}
+	}
+	.openMenu {
+		display: none;
+		position: absolute;
+		top: 46px;
+		left: 4px;
+		padding: 17px 16px;
+		@include border-radius(2px);
+		@include box-sizing;
+		@include box-shadow(0, 0, 5px, 0, rgba(0, 0, 0, 0.75));
+		background: #ffffff;
+		text-align: left;
+	}
+	.menuItemSearch, .menuItemLibrary, .menuItemAccount, .menuItemLogout {
+		display: block;
+		padding-left: 25px;
+		color: #626262;
+		font-size: 12px;
+		@include font-weight(0.5px, #626262);
+	}
+	.menuItemSearch {
+		margin-bottom: 5px;
+		@include iconSprite2(left, -212px);
+	}
+	.menuItemLibrary {
+		margin-bottom: 5px;
+		@include iconSprite2(left, -233px);
+	}
+	.menuItemAccount {
+		margin-bottom: 5px;
+		@include iconSprite2(left, -252px);
+	}
+	.menuItemLogout {
+		@include iconSprite2(left, -274px);
+	}
+}
