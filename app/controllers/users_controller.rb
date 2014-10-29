@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :auth, only: [:login]
+  skip_before_action :auth, only: [:login, :term, :privacy]
   before_action :set_user, only: [:show, :edit, :update]
 
   def login
@@ -30,6 +30,12 @@ class UsersController < ApplicationController
   def logout
     reset_session
     redirect_to login_users_path
+  end
+
+  def term
+  end
+
+  def privacy
   end
 
   private

@@ -5,6 +5,8 @@ Ingame::Application.routes.draw do
     collection do
       get "login"
       get "logout"
+      get "term"
+      get "privacy"
     end
     member do
       get "setting"
