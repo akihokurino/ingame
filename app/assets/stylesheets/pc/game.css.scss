@@ -108,6 +108,15 @@ html {
         &:first-child {
           margin-right: 10px;
         }
+        &:before {
+          position: absolute;
+          top: 0;
+          right: 15px;
+          width: 20px;
+          height: 100%;
+          background: $color_green;
+          content: "";
+        }
         &:after {
           position: absolute;
           top: 12px;
