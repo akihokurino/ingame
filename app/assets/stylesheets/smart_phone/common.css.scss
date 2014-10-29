@@ -10,8 +10,10 @@ body {
     -webkit-overflow-scrolling : touch;
 }
 a {
+	color:$color_green;
 	text-decoration: none;
 }
+
 #headerGraylayer {
 	position: absolute;
 	top: 0;
@@ -37,10 +39,9 @@ header {
 	height: 46px;
 	padding-top: 11px;
 	@include box-sizing;
-	background: #2d3e58;
+	background: $color_black;
 
 	.ttl {
-		display: none;
 		width: 68px;
 		margin: 0 auto;
 		color: #ffffff;
@@ -123,7 +124,7 @@ header {
 		top: 46px;
 		left: 4px;
 		padding: 17px 16px;
-		@include border-radius(5px);
+		@include border-radius(2px);
 		@include box-sizing;
 		@include box-shadow(0, 0, 5px, 0, rgba(0, 0, 0, 0.75));
 		background: #ffffff;
@@ -254,22 +255,24 @@ header {
 	top: 50px;
 	left: 50%;
 	margin-left: -48%;
-	border: solid 1px #e2e2e2;
+	@include border-radius(2px);
+	border: solid 1px $color_border;
 	background-color: #fff;
 	display: none;
 	.modal-header {
 		width: 96%;
 		height: 40px;
 		margin: 0 auto;
-		border-bottom: solid 1px #e2e2e2;
+		border-bottom: solid 1px $color_border;
 		overflow: hidden;
 		.cancel-modal-btn {
 			width: 70px;
 			height: 30px;
 			line-height: 30px;
+			color:#797979;
 			text-align: center;
 			border: solid 1px #e2e2e2;
-			border-radius: 3px;
+			@include border-radius(2px);
 			float: right;
 			margin-top: 4px;
 			margin-right: 5px;
@@ -337,7 +340,7 @@ header {
 			margin-top: 4px;
 			padding: 5px;
 			border: solid 1px #e2e2e2;
-			@include border-radius(3px);
+			@include border-radius(2px);
 			@include box-sizing;
 		}
 		.submit-comment-btn {
