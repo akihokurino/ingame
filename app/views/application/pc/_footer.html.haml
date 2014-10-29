@@ -1,7 +1,7 @@
 %footer.footer
   %ul.ftList
     %li.item
-      %a.ftLink{href: ""} 利用規約
-    %li.lastItem
-      %a.ftLink{href: ""} プライバシーポリシー
+      = link_to "利用規約", term_users_path, class: "ftLink"
+    %li.item
+      = link_to "プライバシーポリシー", privacy_users_path, class: "ftLink"
   %small.copyright &copy; 2014 Gameful.
