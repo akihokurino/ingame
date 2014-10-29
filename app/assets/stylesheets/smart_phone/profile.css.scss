@@ -45,11 +45,11 @@
 		font-size: 12px;
 	}
 	.personalEdit {
-		width: 100px;
+		width: 70px;
 		height: 28px;
+		border: 1px solid #ffffff;
 		@include border-radius(2px);
-		background: #d2d2d2;
-		color:#000;
+		color:#ffffff;
 		line-height: 28px;
 		text-align: center;
 	}

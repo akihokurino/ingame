@@ -92,7 +92,7 @@
 				height: 30px;
 				margin: 12px 14px 20px;
 				border: none;
-				@include border-radius(5px);
+				@include border-radius(2px);
 				@include box-sizing;
 				background: #10b5a4;
 				@include box-shadow(0, 1px, 0, 0, #0d9183);
@@ -201,13 +201,16 @@
 		}
 	}
 	/*---   .postBox   ----------*/
+	.post-list{
+		background-color: #eeeeee;
+	}
 	.postBox {
-		margin: 0 10px 8px;
-		padding: 15px 13px;
+		margin: 10px 10px;
+		padding: 10px;
 		@include box-shadow(0, 1px, 1px, 0, #d6d2d2);
 		@include box-sizing;
 		@include border-radius(3px);
-		background: #fbfbfb;
+		background: #ffffff;
 
 		.topBox {
 			margin-bottom: 15px;
