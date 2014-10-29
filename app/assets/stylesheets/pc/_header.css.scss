@@ -15,9 +15,8 @@
 	.logo {
 		float: left;
 		margin-right: 40px;
-		padding-left: 30px;
-		color: $color_green;
-		font-size: 28px;
+		@include img_set-PC4(219px, 35px, 0, -484px);
+		@include substitute;
 	}
 	.searchWrap {
 		position: relative;
@@ -37,7 +36,7 @@
 		}
 	}
 	.search {
-		width: 390px;
+		width: 320px;
 		height: 34px;
 		padding-left: 40px;
 		border: none;
