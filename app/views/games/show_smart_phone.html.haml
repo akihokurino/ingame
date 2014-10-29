@@ -89,7 +89,7 @@
             %option{value: "3"} クリア済
         - else
           %select.my_status{name: "status", size: "1"}
-            - [{value: "", name: "ステータス"}, {value: "1", name: "気になる"}, {value: "2", name: "プレイ中"}, {value: "3", name: "アーカイブ"}].each do |obj|
+            - [{value: "", name: "ステータス"}, {value: "1", name: "気になる"}, {value: "2", name: "プレイ中"}, {value: "3", name: "クリア済"}].each do |obj|
               - if obj[:value].to_i == @game.my_status_id.to_i
                 %option{value: obj[:value], selected: "selected"}
                   = obj[:name]

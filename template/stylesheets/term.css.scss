@@ -1,0 +1,47 @@
+@import "_function.css.scss";
+
+/*---   .termBox   ----------*/
+.termBox {
+	width: 100%;
+	margin-top: 23px;
+	padding: 20px 0 40px;
+	border-top: 1px solid #e6e6e6;
+	background: #f2f2f2;
+
+	&Inner {
+		width: 960px;
+		margin: 0 auto;
+		padding: 16px 30px;
+		@include border-radius(3px);
+		@include box-sizing;
+		background: #fff;
+	}
+	.item {
+		margin-bottom: 28px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+	.termTtl {
+		font-weight: bold;
+		font-size: 18px;
+	}
+	.termSubTtl {
+		font-weight: bold;
+		font-size: 14px;
+	}
+	.termTxt {
+		color: #626262;
+		font-size: 14px;
+	}
+	.numList {
+		color: #626262;
+		font-size: 14px;
+
+		&Item {
+			margin-left: 1.5em;
+			list-style: decimal;
+		}
+	}
+}
