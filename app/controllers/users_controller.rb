@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :auth, only: [:login]
+  skip_before_action :auth, only: [:login, :term, :privacy]
   before_action :set_user, only: [:show, :edit, :update]
 
   def login
