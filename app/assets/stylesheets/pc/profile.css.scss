@@ -38,11 +38,17 @@ html {
     }
     /*---   .userName   ---*/
     .userName {
+      margin-bottom: 8px;
       font-weight: bold;
       font-size: 18px;
     }
+    /*---   .userPlace   ---*/
+    .userPlace {
+      margin-bottom: 8px;
+    }
     /*---   .userInfo   ---*/
     .userInfo {
+      overflow: hidden;
       width: 716px;
       line-height: 1.5;
     }
