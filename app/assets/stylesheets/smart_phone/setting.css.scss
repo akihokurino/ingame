@@ -76,7 +76,7 @@ body {
 			@include border-radius(18px);
 			@include box-sizing;
 			border: none;
-			@include iconSprite4(100%, 32px, 10px, -178px);
+			@include img_set-SP4(100%, 32px, 10px, -178px);
 			@include appearance;
 			outline: 0;
 
@@ -178,7 +178,7 @@ body {
 					position: absolute;
 					top: 5px;
 					right: 5px;
-					@include iconSprite4(8px, 8px, 0, -313px);
+					@include img_set-SP4(8px, 8px, 0, -313px);
 					content: "";
 				}
 			}
@@ -330,7 +330,7 @@ body {
 			@include border-radius(18px);
 			@include box-sizing;
 			border: none;
-			@include iconSprite4(100%, 32px, 10px, -178px);
+			@include img_set-SP4(100%, 32px, 10px, -178px);
 			@include appearance;
 			outline: 0;
 

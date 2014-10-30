@@ -27,7 +27,7 @@ html {
 			border: none;
 			@include border-radius(2px);
 			box-sizing: border-box;
-			@include iconSprite2(8px, -75px);
+			@include img_set-SP2(8px, -75px);
 			color: #bcbcbc;
 			font-size: 14px;
 			@include appearance;

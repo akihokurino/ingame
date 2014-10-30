@@ -32,7 +32,7 @@ header {
 		display: block;
 		width: 22px;
 		height: 19px;
-		@include iconSprite2(0, 0);
+		@include img_set-SP2(0, 0);
 		cursor: pointer;
 	}
 	.notify {
@@ -43,7 +43,7 @@ header {
 		right: 70px;
 		width: 21px;
 		height: 21px;
-		@include iconSprite2(0, -26px);
+		@include img_set-SP2(0, -26px);
 		cursor: pointer;
 
 		&Num {
@@ -70,7 +70,7 @@ header {
 		right: 24px;
 		width: 20px;
 		height: 19px;
-		@include iconSprite2(0, -55px);
+		@include img_set-SP2(0, -55px);
 		cursor: pointer;
 	}
 	.openMenuWrap {
@@ -111,17 +111,17 @@ header {
 	}
 	.menuItemSearch {
 		margin-bottom: 5px;
-		@include iconSprite2(left, -212px);
+		@include img_set-SP2(left, -212px);
 	}
 	.menuItemLibrary {
 		margin-bottom: 5px;
-		@include iconSprite2(left, -233px);
+		@include img_set-SP2(left, -233px);
 	}
 	.menuItemAccount {
 		margin-bottom: 5px;
-		@include iconSprite2(left, -252px);
+		@include img_set-SP2(left, -252px);
 	}
 	.menuItemLogout {
-		@include iconSprite2(left, -274px);
+		@include img_set-SP2(left, -274px);
 	}
 }

@@ -384,7 +384,7 @@ a {
 				@include border-radius(2px);
 				@include box-sizing;
 				border: none;
-				@include iconSprite4(100%, 32px, 10px, -178px);
+				@include img_set-SP4(100%, 32px, 10px, -178px);
 				@include appearance;
 				outline: 0;
 
@@ -491,7 +491,7 @@ a {
 					top: 6px;
 					right: 6px;
 					z-index: 5;
-					@include iconSprite4(8px, 8px, 0, -313px);
+					@include img_set-SP4(8px, 8px, 0, -313px);
 					content: "";
 				}
 			}
