@@ -35,10 +35,10 @@
 			line-height: 1.1;
 		}
 		.ready {
-			border-radius: 2px 0 0 2px;
+			border-radius: 1px 0 0 1px;
 		}
 		.played {
-			border-radius: 0 2px 2px 0;
+			border-radius: 0 1px 1px 0;
 		}
 		.current {
 			@at-root {
@@ -49,25 +49,22 @@
 			.playing{
 				background: $color_red;
 				color: #ffffff;
-				@include font-weight(1px, #ffffff);
 			}
 			.ready{
 				background: $color_yellow;
 				color: #ffffff;
-				@include font-weight(1px, #ffffff);
 
 			}
 			.played {
 				background: $color_blue;
 				color: #ffffff;
-				@include font-weight(1px, #ffffff);
 
 			}
 		}
 	}
 	.searchBox {
 		width: 300px;
-		height: 30px;
+		height: 32px;
 		margin: 0 auto 15px;
 		border: 1px solid $color_border;
 		@include border-radius(2px);
@@ -78,7 +75,7 @@
 			@include border-radius(2px);
 			@include box-sizing;
 			border: none;
-			@include img_set-SP4(100%, 32px, 10px, -426px);
+			@include img_set-SP4(100%, 32px, 10px, -424px);
 			@include appearance;
 			outline: 0;
 
@@ -97,10 +94,9 @@
 			display: inline-block;
 			overflow: hidden;
 			position: relative;
-			margin-bottom: 5px;
 			width: 94px;
 			height: 160px;
-			margin: 0 12px 6px;
+			margin: 0 2px 2px;
 			border: 1px solid $color_border;
 			@include border-radius(2px);
 			@include box-sizing;

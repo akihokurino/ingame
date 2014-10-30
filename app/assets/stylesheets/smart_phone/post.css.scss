@@ -89,10 +89,10 @@ a {
 				line-height: 1.1;
 			}
 			.ready {
-				border-radius: 2px 0 0 2px;
+				@include border-radius(1px 0 0 1px);
 			}
 			.played {
-				border-radius: 0 2px 2px 0;
+				@include border-radius(0 1px 1px 0);
 			}
 			.current {
 				position: relative;
@@ -105,23 +105,21 @@ a {
 				.playing{
 					background: $color_red;
 					color: #ffffff;
-					@include font-weight(1px, #ffffff);
 				}
 				.ready{
 					background: $color_yellow;
 					color: #ffffff;
-					@include font-weight(1px, #ffffff);
 
 				}
 				.played {
 					background: $color_blue;
 					color: #ffffff;
-					@include font-weight(1px, #ffffff);
 				}
 			}
 		}
 		.gameList {
 			background: #ffffff;
+			border: solid 1px $color_border;
 
 			.item {
 				padding: 9px 0;
@@ -139,9 +137,8 @@ a {
 			figcaption {
 				overflow: hidden;
 				padding-top: 4px;
-				color: #1ba189;
+				color: $color_green;
 				font-size: 14px;
-				@include font-weight(1px, #1ba189);
 			}
 		}
 	}
