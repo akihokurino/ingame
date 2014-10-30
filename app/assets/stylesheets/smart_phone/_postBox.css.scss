@@ -104,4 +104,8 @@
 			}
 		}
 	}
+	.deleteBtn {
+		float: right;
+		@include substitute;
+	}
 }

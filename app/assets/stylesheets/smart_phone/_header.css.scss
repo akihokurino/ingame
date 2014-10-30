@@ -10,6 +10,9 @@ header {
 	@include box-sizing;
 	background: $color_black;
 
+	.ttlWrap {
+		text-align: center;
+	}
 	.ttl {
 		width: 68px;
 		margin:0 auto;
