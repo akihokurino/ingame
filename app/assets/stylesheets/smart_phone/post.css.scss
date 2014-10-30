@@ -345,14 +345,14 @@ a {
 		margin-bottom: 15px;
 		padding: 12px 0 13px;
 		border-bottom: 1px solid #a0a0a0;
-		color: #ffffff;
-			font-size: 14px;
+		color: #fff;
+		font-size: 14px;
 		text-align: center;
 
 		.ttl {
 			width: auto;
 			font-size: 14px;
-			@include font-weight(1px, #ffffff);
+			@include font-weight(1px, #fff);
 		}
 	    .cancelWrap {
 	      display: block;
@@ -367,7 +367,7 @@ a {
 	      top: 12px;
 	      left: 18px;
 	      width: 40px;
-	      color: #ffffff;
+	      color: #fff;
 	    }
 		.addGame {
 			position: absolute;
@@ -375,7 +375,7 @@ a {
 			right: 10px;
 			color: #ffffff;
 			font-size: 30px;
-			@include font-weight(1px, #ffffff);
+			@include font-weight(1px, #fff);
 		}
 	}
 	.mainCnt {
@@ -392,7 +392,7 @@ a {
 				@include border-radius(2px);
 				@include box-sizing;
 				border: none;
-				@include img_set-SP4(100%, 32px, 10px, -178px);
+				@include img_set-SP4(100%, 32px, 10px, -426px);
 				@include appearance;
 				outline: 0;
 

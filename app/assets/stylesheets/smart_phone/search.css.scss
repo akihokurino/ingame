@@ -21,16 +21,15 @@
 	.to-game-search {
 		float: left;
 		border-right: 1px solid $color_green;
-		@include border-radius(3px 0 0 3px);
+		@include border-radius(1px 0 0 1px);
 	}
 	.to-user-search {
 		float: right;
-		@include border-radius(0 3px 3px 0);
+		@include border-radius(0 1px 1px 0);
 	}
 	div.to-game-search, div.to-user-search {
 		background: $color_green;
 		color: #fff;
-		@include font-weight(1px, #fff);
 	}
 	a.to-game-search, a.to-user-search {
 		display: block;
@@ -40,18 +39,18 @@
 	/*---   .search-form   ----------*/
 	.search-form {
 		width: 250px;
-		height: 33px;
+		height: 32px;
 		margin: 0 auto 15px;
-		border: 1px solid #b3b2b3;
-		@include border-radius(18px);
+		border: 1px solid $color_border;
+		@include border-radius(2px);
 		background: #ffffff;
 	}
 	.game-title-input, .username-input {
 		padding-left: 45px;
-		@include border-radius(18px);
+		@include border-radius(2px);
 		@include box-sizing;
 		border: none;
-		@include img_set-SP4(100%, 32px, 10px, -426px);
+		@include img_set-SP4(100%, 32px, 10px, -424px);
 		@include appearance;
 		outline: 0;
 

@@ -51,7 +51,7 @@
 		height: 18px;
 		padding: 4px 0 0;
 		@include border-radius(2px);
-		color: #ffffff;
+		color: #fff;
 		font-size: 10px;
 		text-align: center;
 	}
@@ -93,7 +93,7 @@
 
 		&.on {
 			background-position: 0 -534px;
-			color: $color_red;
+			color: $color_green;
 		}
 	}
 	.favBtn {
@@ -108,7 +108,7 @@
 
 		&.on {
 			background-position: 0 -498px;
-			color: $color_red;
+			color: $color_green;
 		}
 	}
 	.deleteBtn {
