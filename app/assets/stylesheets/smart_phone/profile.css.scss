@@ -18,8 +18,8 @@
 		float: left;
 		width: 54px;
 		height: 54px;
-		border: 2px solid #fffcfc;
-		@include border-radius(44px);
+		margin: 12px 12px 0;
+		border: 1px solid #e6e6e6;
 	}
 	.profImg {
 		width: 100%;
@@ -88,8 +88,7 @@
 	}
 	.text {
 		clear: both;
-		margin-left: 12px;
-		padding-top: 19px;
+		padding: 19px 12px 0;
 		font-size: 12px;
 		text-align: left;
 	}
