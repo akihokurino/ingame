@@ -95,7 +95,7 @@
 				border: none;
 				@include border-radius(2px);
 				@include box-sizing;
-				background: #10b5a4;
+				background: $color_green;
 				@include box-shadow(0, 1px, 0, 0, #0d9183);
 
 				&:before {
@@ -107,14 +107,20 @@
 					border: 2px solid #fff;
 					@include border-radius(20px);
 					@include box-sizing;
-					background: #10b5a4;
+					background: $color_green;
 					content: "";
 				}
 				&:after {
+					display: block;
 					position: absolute;
 					top: 10px;
-					right: 10px;
-					@include img_set-SP4(8px, 8px, 0, -313px);
+					right: 11px;
+					width: 5px;
+					height: 5px;
+					border-top: 2px solid #fff;
+					border-right: 2px solid #fff;
+					-webkit-transform: rotate(135deg);
+					transform: rotate(135deg);
 					content: "";
 				}
 			}
@@ -151,14 +157,14 @@
 	.sortBox {
 		width: 300px;
 		margin: 0 auto;
-		border: 1px solid #10b5a3;
+		border: 1px solid $color_green;
 		@include border-radius(2px);
 		@include clearfix;
 
 		.item {
 			float: left;
 			width: 100px;
-			border-right: 1px solid #10b5a3;
+			border-right: 1px solid $color_green;
 			@include box-sizing;
 			background: #fff;
 			font-size: 12px;
@@ -173,7 +179,7 @@
 			height: 30px;
 			padding-top: 4px;
 			@include box-sizing;
-			color: #10ac9b;
+			color: $color_green;
 			text-align: center;
 			vertical-align: middle;
 			line-height: 1.1;
@@ -195,9 +201,9 @@
 				}
 			}
 			.follow, .all, .star {
-				background: #10ac9b;
-				color: #ffffff;
-				@include font-weight(1px, #ffffff);
+				background: $color_green;
+				color: #fff;
+				@include font-weight(1px, #fff);
 			}
 		}
 	}
