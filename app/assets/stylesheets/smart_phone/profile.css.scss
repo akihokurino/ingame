@@ -56,9 +56,8 @@
 		text-align: center;
 	}
 	.followBtn {
-		//display: none;
 		width: 100px;
-		height:28px;
+		height: 28px;
 		border: none;
 		@include border-radius(2px);
 		background: $color_green;
