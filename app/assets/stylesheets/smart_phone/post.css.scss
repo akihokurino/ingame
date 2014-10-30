@@ -1,5 +1,12 @@
 @import "../_function.css.scss";
 
+input[type="button"],
+input[type="text"],
+input[type="submit"],{
+  -webkit-appearance:none;
+  border-radius:0;
+}
+
 /*---   common   ---------------------------*/
 html {
 	//background: #dddcdc;
@@ -18,7 +25,6 @@ a {
 		position: relative;
 		margin-bottom: 15px;
 		padding: 12px 0 13px;
-		border-bottom: 1px solid #a0a0a0;
 		color: #ffffff;
 		font-size: 14px;
 		text-align: center;
@@ -143,11 +149,11 @@ a {
 
 /*---   .post02   ---------------------------*/
 .post02 {
+	background-color: #eee;
 	/*---   header   ----------*/
 	header {
 		position: relative;
 		padding: 12px 0 13px;
-		border-bottom: 1px solid #a0a0a0;
 		color: #ffffff;
 		font-size: 14px;
 		text-align: center;
@@ -179,7 +185,6 @@ a {
 			right: 10px;
 			padding: 6px 20px;
 			@include border-radius(2px);
-			box-shadow: 0 1px 0 rgba(0, 0, 0, 0.31) inset,  0 1px 0 #495b74;
 			background: $color_green;
 		}
 		.addGame {
@@ -191,6 +196,9 @@ a {
 		.gameBox {
 			position: relative;
 			padding: 10px;
+			margin:10px 0;
+			border: solid 1px $color_border;
+			background-color: #fff;
 			@include clearfix;
 		}
 		.gameImage {
@@ -224,15 +232,17 @@ a {
 			line-height: 0.7;
 		}
 		textarea {
-			width: 100%;
-			height: 122px;
-			padding: 10px;
-			border: none;
-			@include box-sizing;
-			background: #FFFFFF;
-			line-height: 1.3;
 			resize: none;
 			outline: 0;
+			padding: 10px;
+			width: 100%;
+			height: 122px;
+			@include box-sizing;
+			border:none;
+			border-radius:0;
+			background: #FFFFFF;
+			line-height: 1.3;
+			-webkit-appearance:none;
 		}
 		.btn {
 			position: absolute;
@@ -251,6 +261,7 @@ a {
 			position: relative;
 			padding: 10px;
 			background: #ffffff;
+			border-bottom: solid 1px $color_border;
 		}
 		.btnText {
 			width: 19px;
