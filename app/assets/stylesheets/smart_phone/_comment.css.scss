@@ -1,5 +1,12 @@
 @import "../_function.css.scss";
 
+input[type="button"],
+input[type="text"],
+input[type="submit"],{
+  -webkit-appearance:none;
+  border-radius:0;
+}
+
 /*---   .comment-modal   ---------------------------*/
 .comment-modal {
 	width: 96%;
@@ -90,7 +97,7 @@
 			display: block;
 			float: left;
 			width: 80%;
-			height: 40px;
+			height: 34px;
 			margin-top: 4px;
 			padding: 5px;
 			border: solid 1px #e2e2e2;
@@ -100,12 +107,12 @@
 		.submit-comment-btn {
 			float: right;
 			width: 17%;
-			height: 38px;
-			margin-top: 6px;
+			height: 34px;
+			margin-top: 4px;
 			@include border-radius(3px);
 			background-color: $color_green;
 			color: #fff;
-			line-height: 38px;
+			line-height: 34px;
 			text-align: center;
 		}
 	}
