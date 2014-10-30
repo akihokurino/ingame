@@ -185,7 +185,7 @@ html {
 		border: 1px solid #a09e9f;
 		@include border-radius(18px);
 		@include box-sizing;
-		@include iconSprite2(right 4px, top -177px);
+		@include img_set-SP2(right 4px, top -177px);
 		font-size: 14px;
 		outline: 0;
 	}
@@ -282,7 +282,7 @@ html {
 				margin-top: 1px;
 			}
 			.star {
-				@include iconSprite4(11px, 10px, 0, -260px);
+				@include img_set-SP4(11px, 10px, 0, -260px);
 			}
 		}
 	}

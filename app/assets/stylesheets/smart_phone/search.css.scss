@@ -7,7 +7,7 @@
 		width: 202px;
 		margin: 20px auto 10px;
 		border: 1px solid #10b5a3;
-		@include border-radius(5px);
+		@include border-radius(2px);
 		@include box-sizing;
 		text-align: center;
 		@include clearfix;
@@ -51,7 +51,7 @@
 		@include border-radius(18px);
 		@include box-sizing;
 		border: none;
-		@include iconSprite4(100%, 32px, 10px, -178px);
+		@include img_set-SP4(100%, 32px, 10px, -178px);
 		@include appearance;
 		outline: 0;
 
@@ -140,7 +140,7 @@
 					position: absolute;
 					top: 5px;
 					right: 5px;
-					@include iconSprite4(8px, 8px, 0, -313px);
+					@include img_set-SP4(8px, 8px, 0, -313px);
 					content: "";
 				}
 			}

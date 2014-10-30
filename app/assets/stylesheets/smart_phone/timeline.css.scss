@@ -20,14 +20,12 @@ html {
 
 		.comment {
 			display: block;
-			width: 100%;
-			height: 34px;
 			padding-top: 7px;
 			padding-left: 39px;
 			border: none;
 			@include border-radius(2px);
 			box-sizing: border-box;
-			@include iconSprite2(8px, -75px);
+			@include img_set-SP4(100%, 34px, 8px, -459px);
 			color: #bcbcbc;
 			font-size: 14px;
 			@include appearance;

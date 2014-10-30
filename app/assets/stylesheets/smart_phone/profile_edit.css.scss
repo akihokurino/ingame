@@ -28,6 +28,7 @@ input[type="submit"]{
       position: absolute;
       top: 10px;
       left: 7px;
+      @include img_set-SP4(53px ,25px, left, bottom);
       content: "";
     }
     .cancel {

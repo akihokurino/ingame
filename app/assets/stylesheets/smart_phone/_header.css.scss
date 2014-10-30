@@ -1,4 +1,4 @@
-@import "../../stylesheets/_function.css.scss";
+@import "../_function.css.scss";
 
 /*---   header   ---------------------------*/
 header {
@@ -15,7 +15,7 @@ header {
 	}
 	.ttl {
 		width: 68px;
-		margin:0 auto;
+		margin: 0 auto;
 		color: #ffffff;
 		font-size: 18px;
 		font-family: Helvetica;
@@ -25,26 +25,34 @@ header {
 	.menuWrap {
 		display: block;
 		position: absolute;
-		top: 14px;
-		left: 8px;
+		top: 0;
+		left: 0;
 	}
 	.menu {
 		display: block;
-		width: 22px;
-		height: 19px;
-		@include iconSprite2(0, 0);
-		cursor: pointer;
+		@include img_set-SP4(46px, 46px, 8px, 12px);
+	}
+	.profile {
+		display: block;
+		position: absolute;
+		top: 0;
+		right: 92px;
+		@include img_set-SP4(46px, 46px, 10px, -108px);
+	}
+	.search {
+		display: block;
+		position: absolute;
+		top: 0;
+		right: 46px;
+		@include img_set-SP4(46px, 46px, 10px, -68px);
+		@include substitute;
 	}
 	.notify {
 		display: block;
 		position: absolute;
-		padding:4px;
-		top: 14px;
-		right: 70px;
-		width: 21px;
-		height: 21px;
-		@include iconSprite2(0, -26px);
-		cursor: pointer;
+		top: 0;
+		right: 0;
+		@include img_set-SP4(46px, 46px, 11px, -28px);
 
 		&Num {
 			display: none;
@@ -62,16 +70,6 @@ header {
 			line-height: 17px;
 			text-align: center;
 		}
-	}
-	.profile {
-		display: block;
-		position: absolute;
-		top: 14px;
-		right: 24px;
-		width: 20px;
-		height: 19px;
-		@include iconSprite2(0, -55px);
-		cursor: pointer;
 	}
 	.openMenuWrap {
 		display: none;
@@ -102,26 +100,32 @@ header {
 		background: #ffffff;
 		text-align: left;
 	}
-	.menuItemSearch, .menuItemLibrary, .menuItemAccount, .menuItemLogout {
+	.menuItemAccount, .menuItemLogout {
 		display: block;
 		padding-left: 25px;
 		color: #626262;
 		font-size: 12px;
 		@include font-weight(0.5px, #626262);
 	}
-	.menuItemSearch {
-		margin-bottom: 5px;
-		@include iconSprite2(left, -212px);
-	}
-	.menuItemLibrary {
-		margin-bottom: 5px;
-		@include iconSprite2(left, -233px);
-	}
 	.menuItemAccount {
-		margin-bottom: 5px;
-		@include iconSprite2(left, -252px);
+		display: block;
+		height: 27px;
+		margin-bottom: 10px;
+		padding-left: 40px;
+		@include img_set-SP2(0, -158px);
+		color: #626262;
+		font-size: 12px;
+		@include font-weight(0.5px, #626262);
+		line-height: 27px;
 	}
 	.menuItemLogout {
-		@include iconSprite2(left, -274px);
+		display: block;
+		height: 27px;
+		padding-left: 40px;
+		@include img_set-SP2(3px, -197px);
+		color: #626262;
+		font-size: 12px;
+		@include font-weight(0.5px, #626262);
+		line-height: 27px;
 	}
 }
