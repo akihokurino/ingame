@@ -6,7 +6,7 @@
 	.tabs {
 		width: 202px;
 		margin: 20px auto 10px;
-		border: 1px solid #10b5a3;
+		border: 1px solid $color_green;
 		@include border-radius(2px);
 		@include box-sizing;
 		text-align: center;
@@ -20,7 +20,7 @@
 	}
 	.to-game-search {
 		float: left;
-		border-right: 1px solid #10b5a3;
+		border-right: 1px solid $color_green;
 		@include border-radius(3px 0 0 3px);
 	}
 	.to-user-search {
@@ -28,14 +28,14 @@
 		@include border-radius(0 3px 3px 0);
 	}
 	div.to-game-search, div.to-user-search {
-		background: #10b5a3;
+		background: $color_green;
 		color: #fff;
 		@include font-weight(1px, #fff);
 	}
 	a.to-game-search, a.to-user-search {
 		display: block;
 		background: #fff;
-		color: #10b5a3;
+		color: $color_green;
 	}
 	/*---   .search-form   ----------*/
 	.search-form {
@@ -51,7 +51,7 @@
 		@include border-radius(18px);
 		@include box-sizing;
 		border: none;
-		@include img_set-SP4(100%, 32px, 10px, -178px);
+		@include img_set-SP4(100%, 32px, 10px, -426px);
 		@include appearance;
 		outline: 0;
 
@@ -102,9 +102,9 @@
 		.ttl {
 			overflow: hidden;
 			height: 43px;
-			color: #10b5a3;
+			color: $color_green;
 			font-size: 14px;
-			@include font-weight(1px, #10b5a3);
+			@include font-weight(1px, $color_green);
 			text-align: left;
 			text-shadow: 1px 1px 0 #cacbcb;
 		}
@@ -121,7 +121,7 @@
 				border: none;
 				@include border-radius(5px);
 				@include box-sizing;
-				background: #10b5a4;
+				background: $color_green;
 				@include box-shadow(0, 1px, 0, 0, #0d9183);
 
 				&:before {
@@ -133,14 +133,20 @@
 					border: 1px solid #fff;
 					@include border-radius(20px);
 					@include box-sizing;
-					background: #10b5a4;
+					background: $color_green;
 					content: "";
 				}
 				&:after {
+					display: block;
 					position: absolute;
 					top: 5px;
-					right: 5px;
-					@include img_set-SP4(8px, 8px, 0, -313px);
+					right: 6px;
+					width: 5px;
+					height: 5px;
+					border-top: 2px solid #fff;
+					border-right: 2px solid #fff;
+					-webkit-transform: rotate(135deg);
+					transform: rotate(135deg);
 					content: "";
 				}
 			}
@@ -202,10 +208,10 @@
 			width: 70px;
 			height: 21px;
 			padding-top: 1px;
-			border: 1px solid #10ac9b;
+			border: 1px solid $color_green;
 			@include border-radius(3px);
 			@include box-sizing;
-			color: #10ac9b;
+			color: $color_green;
 			font-size: 12px;
 			text-align: center;
 			text-decoration: none;
