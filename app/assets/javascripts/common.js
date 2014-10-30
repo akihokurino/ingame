@@ -20,7 +20,7 @@ $(function(){
       else{
         $('#graylayer').remove();
         $('#headerGraylayer').remove();
-        _header.css({'background' : '#2d3e58'});
+        _header.css({'background' : '#393c3f'});
       }
     }
     //メニューのスライドアニメーション
