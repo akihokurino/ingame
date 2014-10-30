@@ -95,11 +95,11 @@ $support-opera  : true;
 }
 @mixin img_set-SP2($bpl, $bpt) {
     background: url(/assets/smart_phone/img_set.png) no-repeat $bpl $bpt;
-    background-size: 29px 486px;
+    background-size: 29px 555px;
 }
 @mixin img_set-SP4($width, $height, $bpl, $bpt) {
     width: $width;
     height: $height;
     background: url(/assets/smart_phone/img_set.png) no-repeat $bpl $bpt;
-    background-size: 29px 486px;
+    background-size: 29px 555px;
 }

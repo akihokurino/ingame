@@ -1,10 +1,6 @@
 .openMenuWrap
   %ul.openMenu
     %li.item
-      = link_to "ゲームを検索", "/users/#{@current_user[:id]}/search_game_or_user#game", class: "menuItemSearch"
-    %li.item
-      %a.menuItemLibrary{href: ""} ライブラリ
-    %li.item
       = link_to "アカウント設定", user_path(@current_user), class: "menuItemAccount"
     %li.item
       = link_to "ログアウト", logout_users_path, class: "menuItemLogout"

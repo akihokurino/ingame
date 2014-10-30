@@ -6,10 +6,10 @@
     = link_to "Gameful", posts_path, class: "ttl"
   %span.menuWrap
     %span.menu{href: ""}
+  = link_to "", "/users/#{@current_user[:id]}#logs", class: "profile"
   = link_to "ゲームを検索", "/users/#{@current_user[:id]}/search_game_or_user#game", class: "search"
   %span.notify{href: ""}
     %span.notifyNum
-  = link_to "", "/users/#{@current_user[:id]}#logs", class: "profile"
   = render partial: "application/smart_phone/menu"
 
 = render partial: "application/smart_phone/notifications_modal"
