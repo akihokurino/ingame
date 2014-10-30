@@ -90,16 +90,17 @@
 		}
 	}
 	.gameList {
-		@include flexbox;
 		background-color: #EEEEEE;
 		padding: 10px;
 
 		.item {
+			display: inline-block;
 			overflow: hidden;
 			position: relative;
-			margin-bottom:5px;
-			width:94px;
+			margin-bottom: 5px;
+			width: 94px;
 			height: 160px;
+			margin: 0 12px 6px;
 			border: 1px solid $color_border;
 			@include border-radius(2px);
 			@include box-sizing;
@@ -108,11 +109,13 @@
 		.articleWrap {
 			line-height: 1.0;
 		}
+		.game {
+			text-align: center;
+		}
 		.gameImg {
 			height: 132px;
 			border-bottom: 1px solid $color_border;
 			@include box-sizing;
-			//background: url(/assets/smart_phone/game.jpg) no-repeat top center;
 		}
 		.review {
 			padding: 5px 0;
