@@ -1,0 +1,94 @@
+@import "../_function.css.scss";
+
+/*---   .gameList   ----------*/
+.gameList {
+	position: relative;
+	width: 320px;
+	margin: 10px auto 0;
+
+	.gameImgWrap {
+		position: absolute;
+		top: 12px;
+		left: 15px;
+		@include box-sizing;
+		text-align: center;
+	}
+	.gameInfo {
+		width: 250px;
+		height: 124px;
+		margin: 0 3px 0 auto;
+		padding: 22px 0 0 53px;
+		border-bottom: 1px solid #bbbbbc;
+		@include box-sizing;
+	}
+	.ttl {
+		overflow: hidden;
+		height: 43px;
+		color: $color_green;
+		font-size: 14px;
+		@include font-weight(1px, $color_green);
+		text-align: left;
+		text-shadow: 1px 1px 0 #cacbcb;
+	}
+	.btnList {
+		position: absolute;
+		bottom: 17px;
+		@include flexbox;
+
+		.item {
+			position: relative;
+			width: 80px;
+			height: 20px;
+			margin: 12px 0 20px;
+			border: none;
+			@include border-radius(5px);
+			@include box-sizing;
+			background: $color_green;
+			@include box-shadow(0, 1px, 0, 0, #0d9183);
+
+			&:before {
+				position: absolute;
+				top: 2px;
+				right: 2px;
+				width: 15px;
+				height: 15px;
+				border: 1px solid #fff;
+				@include border-radius(20px);
+				@include box-sizing;
+				background: $color_green;
+				content: "";
+			}
+			&:after {
+				display: block;
+				position: absolute;
+				top: 5px;
+				right: 6px;
+				width: 5px;
+				height: 5px;
+				border-top: 2px solid #fff;
+				border-right: 2px solid #fff;
+				-webkit-transform: rotate(135deg);
+				transform: rotate(135deg);
+				content: "";
+			}
+		}
+		select {
+			display: block;
+			width: 75px;
+			height: 20px;
+			margin-left: auto;
+			border: none;
+			@include border-radius(18px);
+			@include box-sizing;
+			background: none;
+			color: #fff;
+			font-size: 11px;
+			text-align: center;
+			outline: 0;
+			@include appearance;
+		}
+		.stars {
+			text-align: -webkit-center;
+		}
+	}
+}

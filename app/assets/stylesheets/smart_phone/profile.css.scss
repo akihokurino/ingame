@@ -1,6 +1,7 @@
 @import "../_function.css.scss";
 @import "_gameBox.css.scss";
 @import "_postBox.css.scss";
+@import "_followList.css.scss";
 
 /*---   .personalBox   ---------------------------*/
 .personalBoxWrap {
@@ -139,41 +140,6 @@
 			font-size: 18px;
 			@include font-weight(1.5px, #22c0a4);
 		}
-	}
-}
-
-/*---   .follows-list   ---------------------------*/
-.follows-list {
-	//@include flexbox;
-	width: 70%;
-	margin: 0 auto;
-	@include clearfix;
-
-	.item {
-		position: relative;
-		margin-bottom: 15px;
-		padding-bottom: 15px;
-		border-bottom: 1px solid #ccc;
-		@include clearfix;
-
-		&:last-child {
-			margin-right: 0;
-		}
-	}
-	.profImg {
-		float: left;
-		width: 63px;
-		height: 63px;
-		margin-right: 24px;
-		@include border-radius(32px);
-		@include box-sizing;
-	}
-	.name {
-		float: left;
-		color: #404040;
-		font-size: 16px;
-		@include font-weight(1px, #404040);
-		line-height: 63px;
 	}
 }
 
