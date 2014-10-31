@@ -1,4 +1,5 @@
 @import "../_function.css.scss";
+@import "_clipBox.css.scss";
 
 input[type="button"],
 input[type="text"],
@@ -22,14 +23,6 @@ input[type="submit"]{
       width: auto;
       font-size: 14px;
       @include font-weight(1px, #ffffff);
-    }
-    .cancelWrap {
-      display: block;
-      position: absolute;
-      top: 10px;
-      left: 7px;
-      @include img_set-SP4(53px ,25px, left, bottom);
-      content: "";
     }
     .cancel {
       display: block;
@@ -123,78 +116,5 @@ input[type="submit"]{
     background: $color_green;
     font-size:14px;
     z-index: 10;
-  }
-}
-
-/*---   .clipBox   ----------*/
-.clipBox {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 360px;
-  height: 450px;
-  margin-top: -120px;
-  margin-left: -225px;
-  padding: 20px 18px;
-  border: 1px solid  #bdbdbd;
-  @include border-radius(3px);
-  @include box-sizing;
-  background: #fff;
-  @include clearfix;
-  display: none;
-
-  .clipTtl {
-    margin-bottom: 20px;
-    color: $color_green;
-    font-size: 16px;
-    text-align: center;
-  }
-  .clipImgWrap {
-    position: relative;
-    height: 320px;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  .clipArea {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 300px;
-    height: 300px;
-    margin-top: -160px;
-    margin-left: -150px;
-    border-top: 30px solid rgba(255, 255, 255, 0.76);
-    border-right: 30px solid rgba(255, 255, 255, 0.76);
-    border-bottom: 30px solid rgba(255, 255, 255, 0.76);
-    border-left: 30px solid rgba(255, 255, 255, 0.76);
-    @include box-sizing;
-    cursor: move;
-  }
-  .clipBtnLis {
-    float: right;
-  }
-  .cancel {
-    display: inline-block;
-    width: 108px;
-    height: 30px;
-    @include border-radius(3px);
-    background: #a0a0a0;
-    color: #fff;
-    font-weight: bold;
-    line-height: 30px;
-    text-align: center;
-    cursor: pointer;
-  }
-  .done {
-    display: inline-block;
-    width: 108px;
-    height: 30px;
-    @include border-radius(3px);
-    background: $color_green;
-    color: #fff;
-    font-weight: bold;
-    line-height: 30px;
-    text-align: center;
-    cursor: pointer;
   }
 }
