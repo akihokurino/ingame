@@ -1,6 +1,7 @@
 var GameResult = Backbone.Model.extend({
   urlRoot: "/api/logs",
   defaults: {
+    "id":         "",
     "title":      "",
     "photo_path": "",
     "device":     "",

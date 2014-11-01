@@ -1,18 +1,19 @@
 %script{type: "text/template", id: "game-result-template"}
   %article.gameList
-    %figure.gameImgWrap
-      / %img.gameImg{src: "/game_photos/{{= photo_path }}", width: "121", alt: ""}
-      %img.gameImg{src: "{{= photo_url }}", width: "121", alt: ""}
-    %h1.ttl
-      {{= title }}
-    %ul.starList
-      {{ diff = 5 - avg_rate }}
-      {{ for (var i = 0; i < avg_rate; i++) { }}
-      %li.starOn ★
-      {{ } }}
-      {{ for (var i = 0; i < diff; i++) { }}
-      %li.starOff ☆
-      {{ } }}
+    %a{href: "/games/{{= id }}#all"}
+      %figure.gameImgWrap
+        / %img.gameImg{src: "/game_photos/{{= photo_path }}", width: "121", alt: ""}
+        %img.gameImg{src: "{{= photo_url }}", width: "121", alt: ""}
+      %h1.ttl
+        {{= title }}
+      %ul.starList
+        {{ diff = 5 - avg_rate }}
+        {{ for (var i = 0; i < avg_rate; i++) { }}
+        %li.starOn ★
+        {{ } }}
+        {{ for (var i = 0; i < diff; i++) { }}
+        %li.starOff ☆
+        {{ } }}
     .statusWrap
       %select.status{name: "status", size: 1}
         %option{value: ""} ステータス
