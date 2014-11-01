@@ -56,13 +56,21 @@ class Game < ActiveRecord::Base
 		end
 
 		begin
-			self.avg_rate = sprintf("%.1f", (sum_rate / sum_log))
+			self.avg_rate = sprintf("%d", (sum_rate / sum_log))
 		rescue
 			self.avg_rate = 0
 		end
 	end
 
 	class << self
+    def search(search_title, page, current_user)
+      offset = (page - 1) * LIMIT
+      self.where("title LIKE ?", "%#{self.escape(search_title)}%").order("created_at DESC").offset(offset).limit(LIMIT).keep_if do |game|
+        game.check_rate(current_user)
+        !current_user.logs.pluck(:game_id).include?(game.id)
+      end
+    end
+
 		def get_from_amazon(url)
 			result = {
 				amazon_url: URI.unescape(url)
@@ -115,13 +123,6 @@ class Game < ActiveRecord::Base
 				end
 
 				return false
-			end
-		end
-
-		def search(search_title, page, current_user)
-			offset = (page - 1) * LIMIT
-			self.where("title LIKE ?", "%#{self.escape(search_title)}%").order("created_at DESC").offset(offset).limit(LIMIT).keep_if do |game|
-				!current_user.logs.pluck(:game_id).include?(game.id)
 			end
 		end
 

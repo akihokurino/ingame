@@ -34,9 +34,11 @@
         %a.amazonBtn{href: ""} Amazonで見る
         .reviewBox
           %ul.starList
-            - 4.times do |i|
+            - diff = 5 - @game.avg_rate.to_i
+            - @game.avg_rate.to_i.times do |i|
               %li.starOn ★
-            %li.starOff ☆
+            - diff.times do |i|
+              %li.starOff ☆
           %p.value
             = @game.avg_rate
         %ul.gameBtnList

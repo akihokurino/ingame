@@ -6,9 +6,13 @@
     %h1.ttl
       {{= title }}
     %ul.starList
-      - 4.times do |i|
-        %li.starOn ★
+      {{ diff = 5 - avg_rate }}
+      {{ for (var i = 0; i < avg_rate; i++) { }}
+      %li.starOn ★
+      {{ } }}
+      {{ for (var i = 0; i < diff; i++) { }}
       %li.starOff ☆
+      {{ } }}
     .statusWrap
       %select.status{name: "status", size: 1}
         %option{value: ""} ステータス

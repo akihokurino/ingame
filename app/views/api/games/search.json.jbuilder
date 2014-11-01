@@ -7,5 +7,6 @@ json.results do |json|
     json.device result[:device]
     json.maker result[:maker]
     json.release_day result[:release_day]
+    json.avg_rate result.avg_rate
   end
 end
