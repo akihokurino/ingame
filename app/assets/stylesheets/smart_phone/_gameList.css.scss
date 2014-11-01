@@ -25,10 +25,8 @@
 		overflow: hidden;
 		height: 43px;
 		color: $color_green;
-		font-size: 14px;
-		@include font-weight(1px, $color_green);
+		font-size: 12px;
 		text-align: left;
-		text-shadow: 1px 1px 0 #cacbcb;
 	}
 	.btnList {
 		position: absolute;
