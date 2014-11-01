@@ -3,6 +3,8 @@
     %figure.gameImgWrap
       / %img.gameImg{src: "/game_photos/{{= photo_path }}", width: "121", alt: ""}
       %img.gameImg{src: "{{= photo_url }}", width: "121", alt: ""}
+    %h1.ttl
+      {{= title }}
     %ul.starList
       - 4.times do |i|
         %li.starOn ★
