@@ -76,6 +76,7 @@
     searchWithEnter: function (e) {
       if (e.which == 13) {
         e.preventDefault();
+        this.search(e, null);
       }
     },
     pagenation: function () {
@@ -183,6 +184,7 @@
     searchWithEnter: function (e) {
       if (e.which == 13) {
         e.preventDefault();
+        this.search(e);
       }
     },
     pagenation: function () {
