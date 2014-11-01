@@ -1,12 +1,14 @@
 %script{type: "text/template", id: "game-result-template"}
   %article.gameList
-    %figure.gameImgWrap
-      .gameImgInner
-        / %img.gameImg{src: "/game_photos/{{= photo_path }}", height: 88}
-        %img.gameImg{src: "{{= photo_url }}", height: 88}
+    %a{href: "/games/{{= id }}#all"}
+      %figure.gameImgWrap
+        .gameImgInner
+          / %img.gameImg{src: "/game_photos/{{= photo_path }}", height: 88}
+          %img.gameImg{src: "{{= photo_url }}", height: 88}
     %section.gameInfo
-      %h1.ttl
-        {{= title }}
+      %a{href: "/games/{{= id }}#all"}
+        %h1.ttl
+          {{= title }}
       %ul.btnList
         %li.item
           %select.status{name: "status", size: 1}

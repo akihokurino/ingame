@@ -14,7 +14,8 @@
           - if !@game.amazon_url.nil?
             %a.gameInner{href: @game.amazon_url}
               = image_tag "/game_photos/#{@game.photo_path}", height: 96, class: "gameImg"
-        = image_tag @game.photo_path, height: 96, class: "gameImg"
+        /= image_tag @game.photo_path, height: 96, class: "gameImg"
+        = image_tag @game.photo_url, height: 96, class: "gameImg"
       .gameInfoWrap
         %ul.gameInfo
           %li.item.maker
