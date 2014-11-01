@@ -18,8 +18,7 @@ class Game < ActiveRecord::Base
 	validates :title,
 		presence: true,
 		length: {maximum: 255}
-  # すまんがちょっとコメントアウトする
-  #validates :photo_path,
+  # validates :photo_path,
   #		presence: true,
   #		length: {maximum: 255}
 	validates :device,
@@ -138,8 +137,10 @@ class Game < ActiveRecord::Base
         provider_id: 1,
         release_day: 1
       }
-      tags = hash[:tags].map {|tag| Gametag.find_or_create_by! name: tag}
+
+      tags        = hash[:tags].map { |tag| Gametag.find_or_create_by! name: tag }
       create_flag = false
+
       for device in hash[:devices]
         already = Game.find_by(title: hash[:title], device: device, provider: hash[:provider])
         # ここは呼ばれないようにする。
@@ -147,14 +148,16 @@ class Game < ActiveRecord::Base
           puts "This is already exists #{hash[:title]} (#{device}) from [#{hash[:provider]}]"
           next
         end
+
         create_flag = true
         puts "creating #{hash[:title]} (#{device}) from [#{hash[:provider]}]"
-        game = Game.find_or_create_by! hash.select{|key,_| game_attr[key]}.merge(device: device)
+        game        = Game.find_or_create_by! hash.select{ |key, _| game_attr[key] }.merge(device: device)
         tags.each do |tag|
           GameGametag.find_or_create_by! game: game, gametag: tag
         end
       end
-      return create_flag
+
+      create_flag
     end
 	end
 end
