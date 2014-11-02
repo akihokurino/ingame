@@ -96,7 +96,6 @@
 				@include border-radius(2px);
 				@include box-sizing;
 				background: $color_green;
-				@include box-shadow(0, 1px, 0, 0, #0d9183);
 
 				&:before {
 					position: absolute;

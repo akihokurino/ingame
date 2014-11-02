@@ -153,13 +153,13 @@
 	/*---   .commentBox   ---*/
 	.commentBox {
 		margin-top: 10px;
-		padding-top: 8px;
+		padding-top: 10px;
 		border-top: 1px solid #dcdcdc;
 		@include clearfix;
 
 		.profImgWrap {
 			float: left;
-			margin-right: 15px;
+			margin-right: 10px;
 		}
 		.profImg {
 			border: 1px solid #d3d3d3;
