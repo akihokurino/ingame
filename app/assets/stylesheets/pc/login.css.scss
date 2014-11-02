@@ -17,22 +17,21 @@ html {
 	}
 	.item {
 		display: inline-block;
-		width: 193px;
+		width: 200px;
 	}
 	.twBtn {
 		display: block;
 		position: relative;
 		height: 42px;
-		margin-right: 20px;
-		@include border-radius(3px);
-		@include box-shadow(0, 4px, 0, 0, #4285b7);
+		@include border-radius(2px);
 		background: #55acee;
 		color: #fff;
 		line-height: 42px;
+		text-decoration: none;
 
 		&:before {
 			position: absolute;
-			top: 10px;
+			top: 8px;
 			left: 15px;
 			@include img_set-PC4(28px, 25px, 0, -528px);
 			content: "";
@@ -42,11 +41,11 @@ html {
 		display: block;
 		position: relative;
 		height: 42px;
-		@include border-radius(3px);
-		@include box-shadow(0, 4px, 0, 0, #24355e);
+		@include border-radius(2px);
 		background: #3b5998;
 		color: #fff;
 		line-height: 42px;
+		text-decoration: none;
 
 		&:before {
 			position: absolute;
@@ -110,8 +109,8 @@ html {
 		margin-left: -121px;
 		@include border-radius(10px 10px 0 0);
 		@include box-sizing;
-		background: #fff;
-		color: #009e8d;
+		background:rgba(0,0,0,0.5);
+		color: #fff;
 		font-size: 24px;
 		text-align: center;
 		line-height: 57px;
@@ -124,7 +123,6 @@ html {
 	}
 	.ttl {
 		margin-bottom: 26px;
-		font-weight: bold;
 		font-size: 32px;
 		text-align: left;
 	}

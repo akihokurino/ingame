@@ -119,12 +119,12 @@ html {
         }
         &:after {
           position: absolute;
-          top: 12px;
+          top: 16px;
           right: 12px;
-          width: 12px;
-          height: 12px;
-          border-right: 5px solid #fff;
-          border-bottom: 5px solid #fff;
+          width: 8px;
+          height: 8px;
+          border-right: 4px solid #fff;
+          border-bottom: 4px solid #fff;
           -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
           content: "";
