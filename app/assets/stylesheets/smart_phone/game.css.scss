@@ -5,12 +5,12 @@
 .mainCnt {
 	/*---   .gameBox   ----------*/
 	.gameBox {
-		padding-top: 14px;
+		// padding-top: 14px;
 		background: #fff;
 
 		.gameTopBox {
 			@include clearfix;
-			padding: 0 25px 15px;
+			// padding: 0 25px 15px;
 			border-bottom: 1px solid  #c3c3c3;
 		}
 		.gameInner {
@@ -21,17 +21,16 @@
 			line-height: 1.0;
 		}
 		.gameImg {
-			margin-left: -9px;
+			// margin-left: -9px;
 		}
 		.gameInfoWrap {
-			margin-left: 87px;
+			// margin-left: 87px;
+			margin: 10px;
 
 			.review {
-				float: left;
 				color: #6a45b7;
 				font-size: 21px;
 				@include font-weight(1px, #6a45b7);
-				text-shadow: 1px 1px 0 #cacbcb;
 
 				&Inner {
 					font-size: 14px;
@@ -63,8 +62,8 @@
 			margin-bottom: 10px;
 			color: #2d3e58;
 			font-size: 15px;
+			@include font-weight(1px,$color_black);
 			line-height: 1.0;
-			text-shadow: 1px 1px 0 #e1e5e5;
 		}
 		.amazonBtn {
 			display: block;
