@@ -1,6 +1,7 @@
-var Socket = function (url, useWebsocket, eventname, callback) {
+var Socket = function (useWebsocket, eventname, callback) {
   _.bindAll(this, "receive");
-  this.dispatcher = new WebSocketRails(url, useWebsocket);
+  console.log(window.location.hostname + ":/3001/websocket")
+  this.dispatcher = new WebSocketRails(window.location.hostname + ":3001/websocket", useWebsocket);
   this.eventname  = eventname;
   this.user_id    = $("#wrapper").data("userid");
   this.callback   = callback;
@@ -20,7 +21,7 @@ Socket.prototype = {
   }
 }
 
-var post_socket         = new Socket("localhost:3000/websocket", true, "post", null);
-var like_socket         = new Socket("localhost:3000/websocket", true, "like", null);
-var comment_socket      = new Socket("localhost:3000/websocket", true, "comment", null);
-var notification_socket = new Socket("localhost:3000/websocket", true, "notification", null);
+var post_socket         = new Socket(true, "post", null);
+var like_socket         = new Socket(true, "like", null);
+var comment_socket      = new Socket(true, "comment", null);
+var notification_socket = new Socket(true, "notification", null);
