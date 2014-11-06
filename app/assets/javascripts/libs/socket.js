@@ -1,6 +1,5 @@
 var Socket = function (useWebsocket, eventname, callback) {
   _.bindAll(this, "receive");
-  console.log(window.location.hostname + ":/3001/websocket")
   this.dispatcher = new WebSocketRails(window.location.hostname + ":3001/websocket", useWebsocket);
   this.eventname  = eventname;
   this.user_id    = $("#wrapper").data("userid");
