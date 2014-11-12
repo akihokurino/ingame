@@ -1,35 +1,56 @@
 @import "../_function.css.scss";
 
 /*---   .follows-list   ---------------------------*/
-.follows-list {
-	width: 70%;
+.follows-list,.followers-list{
 	margin: 0 auto;
+	padding:0 10px;
 	@include clearfix;
 
-	.item {
-		position: relative;
-		margin-bottom: 15px;
-		padding-bottom: 15px;
-		border-bottom: 1px solid #ccc;
-		@include clearfix;
+	ul.friendListWrap{
+	background-color: #fff;
+	li{
+		padding:10px 0;
+		border-bottom: 1px solid $color_border;
+	}
+	img{
+		@include border-radius(2px);
+	}
+	.followBtn{
+		float:right;
+		display:inline-block;
+		margin-top:6px;
+		padding:0 5px;
+		border: 1px solid $color_green;
+		@include border-radius(2px);
+		font-size:12px;
+		line-height:28px;
+	}
+	.follow,.reFollow{
+		color:$color_green;
+	}
+	.unFollow{
+		color:#fff;
+		background-color: $color_green;
 
-		&:last-child {
-			margin-right: 0;
+	}
+	.userImgWrap{
+		display:inline-block;
+		height: 40px;
+		vertical-align: middle;
+	}
+	.userInfo{
+		display:inline-block;
+		padding-left:10px;
+		height:100%;
+		font-size:12px;
+		line-height:1.1;
+		.userName{
+			color:$color_textBlack;
+			font-weight:bold;
+		}
+		.userPlace{
+			color: $color_textGray;
 		}
 	}
-	.profImg {
-		float: left;
-		width: 63px;
-		height: 63px;
-		margin-right: 24px;
-		border: 1px solid #e6e6e6;
-		@include box-sizing;
-	}
-	.name {
-		float: left;
-		color: #404040;
-		font-size: 16px;
-		@include font-weight(1px, #404040);
-		line-height: 63px;
-	}
+}
 }
