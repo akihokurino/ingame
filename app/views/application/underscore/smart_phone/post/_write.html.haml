@@ -13,11 +13,14 @@
         %input.addPhoto#upload-btn{type: "file", href: ""}
       #thumbnail
       %ul.snsBtn
-        %li.fb
-          %a.fbBtn.facebook{href: ""}
-            %span.fbInner
-            Facebook
-        %li.tw
-          %a.twBtn.twitter{href: ""}
-            %span.twInner
-            Twitter
+        - case @current_user[:provider]
+        - when "facebook"
+          %li.fb
+            %a.fbBtn.facebook{href: ""}
+              %span.fbInner
+              Facebook
+        - when "twitter"
+          %li.tw
+            %a.twBtn.twitter{href: ""}
+              %span.twInner
+              Twitter
