@@ -40,10 +40,10 @@
 	}
 	.userInfo{
 		display:inline-block;
+		vertical-align: middle;
 		padding-left:10px;
 		height:100%;
 		font-size:12px;
-		line-height:1.1;
 		.name{
 			color:$color_textBlack;
 			font-weight:bold;

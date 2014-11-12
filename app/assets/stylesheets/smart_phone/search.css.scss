@@ -99,16 +99,16 @@
 				vertical-align: middle;
 			}
 			.userInfo{
+				vertical-align: middle;
 				display:inline-block;
 				padding-left:10px;
 				height:100%;
 				font-size:12px;
-				line-height:1.1;
-				.userName{
+				.name{
 					color:$color_textBlack;
 					font-weight:bold;
 				}
-				.userPlace{
+				.place{
 					color: $color_textGray;
 				}
 			}
