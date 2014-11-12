@@ -126,6 +126,90 @@ class Game < ActiveRecord::Base
 			end
 		end
 
+    def get_from_famituu(url)
+      begin
+        html = open(url, "User-Agent" => "Mozilla/4.0"){|f| f.read }
+      rescue Exception
+        html = open(url, "r:binary", "User-Agent" => "Mozilla/4.0").read.encode("utf-8", "euc-jp", invalid: :replace, undef: :replace)
+      end
+
+      begin
+        doc = Nokogiri::HTML.parse(html.toutf8, nil, "UTF-8")
+      rescue
+        doc = Nokogiri::HTML.parse(html, nil)
+      end
+      p doc
+      searchResults = doc.css("li.listBgForword")
+      p searchResults
+      return false if searchResults.length == 0
+      isAlready     = {}
+
+      searchResults.each do |row|
+        result               = {}
+        result[:provider]    = "famituu"
+        result[:release_day] = date.strftime("%Y-%m-%d")
+        game_url             = nil
+        devices              = []
+
+        # デバイス,IDの取得
+        row.css("h3.itemName > a").each do |a|
+          href = a.attr("href")
+          if href.index("http://www.famitsu.com/cominy/")
+            isGame               = true
+            result[:provider_id] = href.gsub(/^.*title_id=/, '').to_i
+            game_url             = href
+          else
+            name = href.gsub(/^.*calendar\//, '').gsub(/\/.*$/, '')
+            devices << name unless name == "all"
+          end
+        end
+
+        next if devices.length == 0
+        result[:devices] = devices
+        next unless game_url
+        next if isAlready[result[:provider_id]] # （ダウンロード版）とかを除外。
+        isAlready[result[:provider_id]] = true
+
+        result[:price] = row.css("span.price").text.gsub("価格：", "").gsub(/円.*$/, "").to_i
+
+        if Game.find_by provider: "famituu", provider_id: result[:provider_id], device: devices[0]
+          puts "Already existing game (#{devices[0]}) from [#{result[:provider]}]"
+          next
+        end
+
+        # ジャンルとタイトルと発売元と画像取るために
+        # 個別ページまで潜る。
+
+        begin
+          html = open(game_url, "User-Agent" => "Mozilla/4.0"){|f| f.read }
+        rescue Exception
+          html = open(game_url, "r:binary", "User-Agent" => "Mozilla/4.0").read.encode("utf-8", "euc-jp", invalid: :replace, undef: :replace)
+        end
+
+        begin
+          doc = Nokogiri::HTML.parse(html.toutf8, nil, "UTF-8")
+        rescue
+          doc = Nokogiri::HTML.parse(html, nil)
+        end
+        result[:title] = doc.css("h1").css("span").text
+
+        next if result[:title] == ""
+
+        img_src            = doc.css("span.preview").css("img").attr("src").text
+        img_src            = nil if img_src == "img/img.gif"
+        result[:photo_url] = img_src
+        result[:tags]      = [doc.css("dl.genre").css("dd").text]
+        begin
+          result[:maker] = game_doc.css("dt.maker")[0].next_element.text
+        rescue
+          result[:maker] = ""
+        end
+
+        p result
+        #Game.create_from_scraping result
+      end
+    end
+
     def create_from_scraping(hash)
       # if already exist return false else return true
       # ここで入れるattributes
