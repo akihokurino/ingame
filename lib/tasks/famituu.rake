@@ -158,6 +158,8 @@ namespace :famituu do
       end
     end
 
-    scrape
+    #scrape
+
+    Game.get_from_famituu "http://www.famitsu.com/cominy/?m=pc&a=page_h_title&title_id=1157"
   end
 end
