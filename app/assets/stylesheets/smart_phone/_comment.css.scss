@@ -40,44 +40,43 @@ input[type="submit"],{
 		}
 	}
 	.modal-body {
-		width: 96%;
 		height: 325px;
 		overflow: scroll;
 		margin: 0 auto;
 
 		.comment-list {
 			width: 100%;
+			padding:0 10px;
 			list-style-type: none;
 
 			.comment {
-				overflow: hidden;
-				padding-top: 5px;
-				padding-bottom: 5px;
-				border-bottom: solid 1px #e2e2e2;
-
-				img {
-					float: left;
+				padding-top:10px;
+				border-bottom:1px solid $color_border;
+				.commentImgWrap{
+					display:inline-block;
+					width: 40px;
+					vertical-align:top;
+				}
+				img{
+					border: 1px solid $color_border;
+					@include border-radius(2px);
 					width: 40px;
 					height: 40px;
-					border-radius: 20px;
 				}
-				.body {
-					float: right;
-					width: 100%;
-					margin-left: -40px;
-
-					.inner-body {
-						margin-left: 50px;
-
-						a {
-							display: block;
-							font-size: 12px;
-							text-align: left;
-						}
-						p {
-							font-size: 12px;
-							text-align: left;
-						}
+				.commentText{
+					display:inline-block;
+					font-size:12px;
+					a{
+						padding:10px 0;
+						font-weight:bold;
+					}
+					.favBtn{
+						padding:10px 0 10px 10px;
+						color: $color_textGray;
+						font-weight:bold;
+					}
+					.on{
+						color: $color_green;
 					}
 				}
 			}
@@ -109,10 +108,11 @@ input[type="submit"],{
 			width: 17%;
 			height: 34px;
 			margin-top: 4px;
-			@include border-radius(3px);
+			@include border-radius(2px);
 			background-color: $color_green;
 			color: #fff;
-			line-height: 34px;
+			font-size:14px;
+			line-height: 2.5;
 			text-align: center;
 		}
 	}

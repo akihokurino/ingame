@@ -4,6 +4,6 @@
     = link_to "ユーザー", "/users/#{@current_user[:id]}/search_game_or_user#user", class: "to-user-search"
   %section.game-search
     %form.search-form.entryBox
-      %input.game-title-input.search{type: "text", name: "game_title", placeholder: "search"}
+      %input.game-title-input.search{type: "search", name: "game_title", placeholder: "search"}
     %ul.result-list.gameList
     = image_tag "gif-load-pc.gif", class: "loading-gif"
