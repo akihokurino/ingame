@@ -1,5 +1,8 @@
 %script{type: "text/template", id: "user-result-template"}
-  %img.profImg{src: "/user_photos/{{= photo_path }}", width: 48, height: 48}
-  %p.name
-    {{= username }}
-  %a.btn.follow{href: "#"} フォロー
+	.followBtn.follow フォローする
+	%figure.userImgWrap
+		%img.profImg{src:"/user_photos/{{= photo_path }}" , height: 40, height: 40}
+	.userInfo
+		.name
+			%a{href: "/users/{{= id }}#logs"} {{= username }}
+		.place Tokyo,Japan

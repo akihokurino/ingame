@@ -1,7 +1,8 @@
 var User = Backbone.Model.extend({
   defaults: {
-    "id":         "",
-    "username":   "",
-    "photo_path": ""
+    "id":           "",
+    "username":     "",
+    "introduction": "",
+    "photo_path":   ""
   }
 })
