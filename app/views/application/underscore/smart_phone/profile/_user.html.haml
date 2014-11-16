@@ -5,10 +5,10 @@
       .followBtn.unfollow フォローを外す
     {{ } else { }}
     %li.item
-      {{ if (type && type == "followers-list") { }}
-      .followBtn.follow フォローする
-      {{ } else { }}
+      {{ if (i_followered) { }}
       .followBtn.follow フォロー仕返す
+      {{ } else { }}
+      .followBtn.follow フォローする
       {{ } }}
     {{ } }}
     %figure.userImgWrap

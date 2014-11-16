@@ -12,8 +12,6 @@ class Api::UsersController < ApplicationController
     when "followers"
       @users = User.get_followers(@current_user, params[:user_id], page)
     end
-
-    p @users
   end
 
   def update
