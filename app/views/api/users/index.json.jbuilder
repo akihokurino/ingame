@@ -6,5 +6,6 @@ json.users do |json|
     json.photo_path user[:photo_path]
     json.place user[:place]
     json.i_followed user.i_followed
+    json.i_followered user.i_followered
   end
 end
