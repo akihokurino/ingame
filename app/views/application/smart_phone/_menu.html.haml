@@ -1,6 +1,10 @@
 .openMenuWrap
   %ul.openMenu
     %li.item
-      = link_to "アカウント設定", user_path(@current_user), class: "menuItemAccount"
+      %a.menuItemAccount
+        %span.icon-setting
+        %span アカウント設定
     %li.item
-      = link_to "ログアウト", logout_users_path, class: "menuItemLogout"
+      %a.menuItemLogout
+        %span.icon-logout
+        %span ログアウト
