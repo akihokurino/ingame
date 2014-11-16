@@ -15,7 +15,7 @@ class Api::UsersController < ApplicationController
   end
 
   def update
-    clip = {x: params[:user][:clip_x].to_i, y: params[:user][:clip_y].to_i}
+    clip    = {x: params[:user][:clip_x].to_i, y: params[:user][:clip_y].to_i}
     @result = @user.update_with_url(user_params, clip)
   end
 
