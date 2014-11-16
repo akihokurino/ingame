@@ -50,8 +50,8 @@ class Post < ActiveRecord::Base
 
   def twitter(current_user)
     client = Twitter::REST::Client.new do |config|
-      config.consumer_key        = "rfKeEqmpWn1KWj6XKoELR54YA"
-      config.consumer_secret     = "iUGETGMiVp4qCMRM9eK4H011pBdUtslVgSUPsbyZXfNUTAzOXU"
+      config.consumer_key        = "o0oeDXJ131ufgroZv1ur7sZ6E"
+      config.consumer_secret     = "e3yyRbH2s4eI4AuFrtMMKwxGTi7ZHF00qslNWbYKzClMWgmWJf"
       config.access_token        = current_user[:token]
       config.access_token_secret = current_user[:secret_token]
     end

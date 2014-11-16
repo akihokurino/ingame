@@ -21,6 +21,7 @@
 		height: 40px;
 		margin-right: 10px;
 		border: 1px solid $color_border;
+		@include border-radius(4px);
 	}
 	.postArea {
 		position: relative;
@@ -83,7 +84,7 @@
 		display: inline-block;
 		height: 23px;
 		margin-right: 10px;
-		padding-left: 34px;
+		padding-left: 25px;
 		@include img_set-SP2(0, -269px);
 		color: #8d8e8e;
 		font-size: 12px;
@@ -98,7 +99,7 @@
 	.favBtn {
 		display: inline-block;
 		height: 23px;
-		padding-left: 34px;
+		padding-left: 25px;
 		@include img_set-SP2(0, -234px);
 		color: #8d8e8e;
 		font-size: 12px;

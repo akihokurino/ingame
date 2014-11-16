@@ -85,13 +85,13 @@
       %li.item
         - unless @game.i_registed
           %select.new_status{name: "status", size: "1"}
-            %option{value: ""} ステータス
+            %option{value: ""} 登録する
             %option{value: "1"} 気になる
             %option{value: "2"} プレイ中
             %option{value: "3"} クリア済
         - else
           %select.my_status{name: "status", size: "1"}
-            - [{value: "", name: "ステータス"}, {value: "1", name: "気になる"}, {value: "2", name: "プレイ中"}, {value: "3", name: "クリア済"}].each do |obj|
+            - [{value: "", name: "登録する"}, {value: "1", name: "気になる"}, {value: "2", name: "プレイ中"}, {value: "3", name: "クリア済"}].each do |obj|
               - if obj[:value].to_i == @game.my_status_id.to_i
                 %option{value: obj[:value], selected: "selected"}
                   = obj[:name]
@@ -102,11 +102,11 @@
   .sortBoxWrap
     %ul.sortBox
       %li.item.current.follower_posts
-        %a.follow{href: "/games/#{@game[:id]}#follower"} フォロー中のユーザー
+        %a.follow{href: "/games/#{@game[:id]}#follower"} フォロー中
       %li.item.all_posts
         %a.all{href: "/games/#{@game[:id]}#all"} 全てのユーザー
       %li.item.liker_posts
-        %a.star{href: "/games/#{@game[:id]}#liker"} いいね順
+        %a.star{href: "/games/#{@game[:id]}#liker"} いいね!順
 
   .game-timeline
     .post-list
