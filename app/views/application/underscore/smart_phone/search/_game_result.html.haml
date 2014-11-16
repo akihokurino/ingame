@@ -4,8 +4,15 @@
       %a.gameTitle{href: "/games/{{= id }}#all"}
         {{= title }}
         %br
-        %span.device Nintendo 3DS
-        .star ★★★★★(134)
+        %span.device {{= device }}
+        %ul.starList
+          {{ diff = 5 - avg_rate }}
+          {{ for (var i = 0; i < avg_rate; i++) { }}
+          %li.starOn ★
+          {{ } }}
+          {{ for (var i = 0; i < diff; i++) { }}
+          %li.starOff ☆
+          {{ } }}
     .gameModule
       %figure
         %a{href: "/games/{{= id }}#all"}
