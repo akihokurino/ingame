@@ -7,5 +7,8 @@ var User = Backbone.Model.extend({
     "place":        "",
     "i_followed":   "",
     "i_followered": ""
+  },
+  isCurrentUser: function () {
+    return $("#wrapper").data("userid") == this.id ? true : false
   }
 })
