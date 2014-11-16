@@ -21,8 +21,7 @@
 		border-bottom: solid 1px #999;
 		background: $color_green;
 		color: #fff;
-		font-size: 18px;
-		font-family: Helvetica;
+		font-size: 14px;
 		text-decoration: none;
 		@include font-weight(1px, #fff);
 		text-align: center;
@@ -45,24 +44,28 @@
 		}
 	}
 	.notification-list {
-		width: 90%;
-		margin: 20px auto;
+		padding:0 10px;
 
 		li {
-			margin-bottom: 20px;
+			padding:10px 0;
+			border-bottom: 1px solid $color_border;
 			@include clearfix;
 		}
-		.leftBox {
-			float: left;
-			margin-right: 15px;
+		.ntfImgWrap{
+			display:inline-block;
+			vertical-align:top;
 		}
-		.rightBox {
-			color: #404040;
-			font-size: 13px;
-			line-height: 1.6;
+		img{
+			width: 40px;
+			height: 40px;
+			border: 1px solid $color_border;
+			@include border-radius(2px);
 		}
-		.profImg {
-			@include border-radius(29px);
+		.ntfText{
+			display:inline-block;
+			width: 80%;
+			color: $color_textBlack;
+			font-size: 12px;
 		}
 	}
 }

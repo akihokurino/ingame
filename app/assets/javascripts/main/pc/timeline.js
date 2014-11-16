@@ -207,6 +207,7 @@
             that.$("ul.thumbnailList").html("");
             that.select_log_id  = null;
             that.select_game_id = null;
+            that.upload.files   = [];　　
             $("#thumbnail").html("");
           },
           error: function () {

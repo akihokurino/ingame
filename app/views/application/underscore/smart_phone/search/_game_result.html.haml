@@ -1,14 +1,24 @@
 %script{type: "text/template", id: "game-result-template"}
   %article
-    %figure
-      / %img.gameImg{src: "/game_photos/{{= photo_path }}", height: 88}
-      %a{href: "/games/{{= id }}#all"}
-        %img.gameImg{src: "{{= photo_url }}", height: "32"}
-      %a{href: "/games/{{= id }}#all"}
-        %figcaption {{= title }}
-    %span.mood
-      %select.status{name: "status", size: "1", class: "status"}
-        %option{value: ""} ステータス
-        %option{value: 1} 気になる
-        %option{value: 2} プレイ中
-        %option{value: 3} クリア済
+    .textArea
+      %a.gameTitle{href: "/games/{{= id }}#all"}
+        {{= title }}
+        %br
+        %span.device {{= device }}
+        %ul.starList
+          {{ diff = 5 - avg_rate }}
+          {{ for (var i = 0; i < avg_rate; i++) { }}
+          %li.starOn ★
+          {{ } }}
+          {{ for (var i = 0; i < diff; i++) { }}
+          %li.starOff ☆
+          {{ } }}
+    .gameModule
+      %figure
+        %a{href: "/games/{{= id }}#all"}
+          %img.gameImg{src: "{{= photo_url }}", width: "100"}
+        %select.status{name: "status", size: "1", class: "status"}
+          %option{value: ""} 登録する
+          %option{value: 1} 気になる
+          %option{value: 2} プレイ中
+          %option{value: 3} クリア済

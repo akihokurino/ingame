@@ -1,8 +1,19 @@
 %script{type: "text/template", id: "game-result-template"}
   %figure
     /%img.gameImg{src: "/game_photos/{{= photo_path}}", width: "32", height: "32", alt: ""}
-    %img.gameImg{src: "{{= photo_url }}", width: "32", height: "32", alt: ""}
-    %figcaption {{= title }}
+    %a{href: "/games/{{= id }}#all"}
+      %img.gameImg{src: "{{= photo_url }}", width: "100", alt: ""}
+    %a{href: "/games/{{= id }}#all"}
+      %figcaption {{= title }}
+  %span.device {{= device }}
+  %ul.starList
+    {{ diff = 5 - avg_rate }}
+    {{ for (var i = 0; i < avg_rate; i++) { }}
+    %li.starOn ★
+    {{ } }}
+    {{ for (var i = 0; i < diff; i++) { }}
+    %li.starOff ☆
+    {{ } }}
   %span.mood
     %select{name: "status", size: "1", class: "status"}
       %option{value: ""} ステータス
