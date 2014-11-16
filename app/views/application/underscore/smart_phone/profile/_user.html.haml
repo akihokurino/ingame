@@ -1,10 +1,19 @@
 %script{type: "text/template", id: "user-template"}
-	%ul.friendListWrap
-		%li.item
-			.followBtn.follow フォローする
-			%figure.userImgWrap
-				%img.profImg{src:"/user_photos/{{= photo_path }}" , height: 40, height: 40}
-			.userInfo
-				.name
-					%a{href: "/users/{{= id }}#logs"} {{= username }}
-				.place {{= place }}
+  %ul.friendListWrap
+    {{ if (i_followed) { }}
+    %li.item
+      .followBtn.unfollow フォローを外す
+    {{ } else { }}
+    %li.item
+      {{ if (type && type == "followers-list") { }}
+      .followBtn.follow フォローする
+      {{ } else { }}
+      .followBtn.follow フォロー仕返す
+      {{ } }}
+    {{ } }}
+    %figure.userImgWrap
+      %img.profImg{src:"/user_photos/{{= photo_path }}" , height: 40, height: 40}
+    .userInfo
+      .name
+        %a{href: "/users/{{= id }}#logs"} {{= username }}
+      .place {{= place }}

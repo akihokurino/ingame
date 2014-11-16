@@ -78,6 +78,7 @@ class User < ActiveRecord::Base
       offset = (page - 1) * LIMIT
       users  = self.search(self.escape(username)).offset(offset).limit(LIMIT)
       users  = users.keep_if do |user|
+        user.check_follow(current_user)
         user[:id] != current_user[:id] && !current_user.follows.pluck(:to_user_id).include?(user[:id])
       end
 
@@ -87,7 +88,9 @@ class User < ActiveRecord::Base
     def get_follows(current_user, user_id, page)
       offset = (page - 1) * LIMIT
       users  = Follow.where(from_user_id: user_id).offset(offset).limit(LIMIT).map do |follow|
-        follow.to_user
+        user = follow.to_user
+        user.check_follow(current_user) if user
+        user
       end
 
       users
@@ -96,7 +99,9 @@ class User < ActiveRecord::Base
     def get_followers(current_user, user_id, page)
       offset = (page - 1) * LIMIT
       users  = Follow.where(to_user_id: user_id).offset(offset).limit(LIMIT).map do |follow|
-        follow.from_user
+        user = follow.from_user
+        user.check_follow(current_user) if user
+        user
       end
 
       users
