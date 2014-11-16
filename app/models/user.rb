@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
     where("username LIKE ?", "%#{username}%").select(:id, :username, :photo_path, :place)
   }
 
-  attr_accessor :i_followed, :follow_num, :follower_num, :clip_x, :clip_y, :tmp_photo_path
+  attr_accessor :i_followed, :follow_num, :follower_num, :clip_x, :clip_y, :tmp_photo_path, :i_followered
 
 
 	def update_with(user_params, clip = {})
@@ -44,6 +44,12 @@ class User < ActiveRecord::Base
       self.i_followed = true
     else
       self.i_followed = false
+    end
+
+    if Follow.exists?(to_user_id: current_user, from_user_id: self[:id])
+      self.i_followered = true
+    else
+      self.i_followered = false
     end
 
     self.follow_num   = Follow.where(from_user_id: self[:id]).count
