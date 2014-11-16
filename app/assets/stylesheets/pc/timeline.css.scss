@@ -104,6 +104,10 @@
 
       .thumbnail {
         display: inline-block;
+
+        &Img {
+          width: 100%;
+        }
       }
     }
     .photoBtnWrap {
