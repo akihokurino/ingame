@@ -3,6 +3,8 @@ var User = Backbone.Model.extend({
     "id":           "",
     "username":     "",
     "introduction": "",
-    "photo_path":   ""
+    "photo_path":   "",
+    "place":        "",
+    "i_followed":   ""
   }
 })
