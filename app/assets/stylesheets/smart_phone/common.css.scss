@@ -6,7 +6,8 @@
 
 /*---   common   ---------------------------*/
 html {
-	font-family:"Hiragino Kaku Gothic ProN", "Lucida Grande", Helvetica, "Meiryo", sans-serif;
+	font-family:'Helvetica Neue',Helvetica,Arial,sans-serif,"Hiragino Kaku Gothic ProN", "Lucida Grande", Meiryo, sans-serif;
+	-webkit-font-smoothing: antialiased;
 }
 body {
     overflow : scroll;

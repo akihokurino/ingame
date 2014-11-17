@@ -9,12 +9,12 @@ html {
 /*---   .mainCnt   ---------------------------*/
 .mainCnt {
 	text-align: left;
-	padding-bottom: 10px;
+	padding: 5px;
 
 	.commentWrap {
 		display:table;
 		width: 100%;
-		padding: 5px;
+		padding: 6px 0;
 		@include border-radius(2px);
 		@include box-sizing;
 		border: 1px solid $color_border;
@@ -26,10 +26,12 @@ html {
 		}
 		.comment {
 			display:table-cell;
+			padding-left:10px;
 			border: none;
 			@include border-radius(2px);
 			box-sizing: border-box;
-			font-size: 14px;
+			color: $color_textGray;
+			font-size: 12px;
 			vertical-align: middle;
 			@include appearance;
 		}

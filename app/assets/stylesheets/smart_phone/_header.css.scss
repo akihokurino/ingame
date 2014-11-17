@@ -9,7 +9,7 @@ header {
 
 	.headerNav{
 	padding:5px;
-	font-size:24px;
+	font-size:20px;
 	background-color: #222222;
 	box-shadow:0 0 3px 1px rgba(0,0,0,0.4);
 	a{
@@ -59,16 +59,16 @@ header {
 				transition:transform 0.8s ease;
 			}
 			&:before{
-				transform: translate(0,6px) rotate(0deg);
+				transform: translate(0,8px) rotate(0deg);
 			}
 			&:after{
-				transform: translate(0,18px) rotate(0deg);
+				transform: translate(0,20px) rotate(0deg);
 			}
 			.show:before{
-				transform: translate(0,13px) rotate(-135deg);
+				transform: translate(0,15px) rotate(-135deg);
 			}
 			.show:after{
-				transform: translate(0,13px) rotate(135deg);
+				transform: translate(0,15px) rotate(135deg);
 			}
 		}
 	}

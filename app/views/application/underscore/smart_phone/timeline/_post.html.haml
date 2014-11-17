@@ -2,20 +2,23 @@
   .topBox
     %figure.profImgWrap
       %img.profImg{width: 58, src: "/user_photos/{{= user.photo_path }}"}
-    .postArea
-      %a.account{href: "/users/{{= user.id }}#logs"}
-        {{= user.username }}
-      %time.time {{= created_at }}
-      %h2.ttl
-        %a{href: "/games/{{= game.id }}#all"}
-          {{= game.title }}
+    %a.account{href: "/users/{{= user.id }}#logs"}
+      {{= user.username }}
+    %time.time
+      %span.icon-time
+      {{= created_at }}
       {{ if (status.id == 1) { }}
-      .mood_ready 気になる
+  .gameInfoBox
+    .statusBox
+      %span.mood_ready 気になる
       {{ } else if (status.id == 2) { }}
-      .mood_playing プレイ中
+      %span.mood_playing プレイ中
       {{ } else if (status.id == 3) { }}
-      .mood_played クリア済
+      %span.mood_played クリア済
       {{ } }}
+    %h2.ttl
+      %a{href: "/games/{{= game.id }}#all"}
+        {{= game.title }}
   %p.text
     {{= text }}
   .thumbnail
