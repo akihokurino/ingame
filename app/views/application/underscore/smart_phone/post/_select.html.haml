@@ -2,9 +2,11 @@
   .post01
     %header
       %h1.ttl ゲームを選択
-      = link_to "戻る", posts_path, class: "cancel"
-      %a.addGame{href: "/posts/new#add"} +
+      = link_to "", posts_path, class: "icon-allow"
     .select-page.mainCnt
+      %div.addGame
+        %a.icon-plus{href: "/posts/new#add"}
+          %span ゲームを追加する
       %ul.sortBox
         %li.item.current.ready-li
           %span.ready 気になる

@@ -20,9 +20,8 @@ input[type="submit"],{
 	/*---   header   ----------*/
 	header {
 		position: relative;
-		margin-bottom: 15px;
 		padding: 12px 0 13px;
-		background: #222;
+		background: $color_textBlack;
 		color: #ffffff;
 		font-size: 14px;
 		text-align: center;
@@ -39,23 +38,33 @@ input[type="submit"],{
 	      left: 7px;
 	      content: "";
 	    }
-	    .cancel {
+	    .icon-allow {
 	      display: block;
 	      position: absolute;
-	      top: 12px;
-	      left: 18px;
-	      width: 40px;
 	      color: #ffffff;
+	      font-size:30px;
+	      top: 8px;
+	      left: 10px;
+	      width: 40px;
 	    }
-		.addGame {
-			position: absolute;
-			top: -3px;
-			right: 10px;
-			color: #ffffff;
-			font-size: 30px;
-		}
 	}
 	.mainCnt {
+		.addGame{
+			display:inline-block;
+			padding:10px;
+			width: 100%;
+			border-bottom: 1px solid $color_border;
+			box-sizing:border-box;
+			text-align: right;
+		}
+		.icon-plus {
+			color: $color_green;
+			font-size: 18px;
+			span{
+				font-size:14px;
+				color:$color-textGray;
+			}
+		}
 		.sortBox {
 			width: 300px;
 			margin:13px auto;
@@ -149,6 +158,7 @@ input[type="submit"],{
 	header {
 		position: relative;
 		padding: 12px 0 13px;
+		background-color: $color_textBlack;
 		color: #ffffff;
 		font-size: 14px;
 		text-align: center;
@@ -165,13 +175,14 @@ input[type="submit"],{
 	      left: 7px;
 	      content: "";
 	    }
-	    .cancel {
+	    .icon-allow {
 	      display: block;
 	      position: absolute;
-	      top: 12px;
-	      left: 18px;
-	      width: 40px;
 	      color: #ffffff;
+	      font-size:30px;
+	      top: 8px;
+	      left: 10px;
+	      width: 40px;
 	    }
 		.addGameWrap {
 			display: block;
@@ -343,7 +354,8 @@ input[type="submit"],{
 		margin-bottom: 15px;
 		padding: 12px 0 13px;
 		border-bottom: 1px solid #a0a0a0;
-		color: #fff;
+		background-color: $color_textBlack;
+		color:#fff;
 		font-size: 14px;
 		text-align: center;
 
@@ -359,13 +371,14 @@ input[type="submit"],{
 	      left: 7px;
 	      content: "";
 	    }
-	    .cancel {
+	    .icon-allow {
 	      display: block;
 	      position: absolute;
-	      top: 12px;
-	      left: 18px;
+	      color: #ffffff;
+	      font-size:30px;
+	      top: 8px;
+	      left: 10px;
 	      width: 40px;
-	      color: #fff;
 	    }
 		.addGame {
 			position: absolute;
