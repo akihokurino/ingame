@@ -9,32 +9,33 @@
 .game-page.mainCnt{"data-gameid" => @game[:id]}
   .gameBox
     .gameTopBox
-      %figure.gameWrap
-        /
+      %h1.ttl
+        = @game.title
+      .gameWrap
+        %figure.imgWrap
+          /
+            - if !@game.amazon_url.nil?
+              %a.gameInner{href: @game.amazon_url}
+                = image_tag "/game_photos/#{@game.photo_path}", height: 96, class: "gameImg"
+          /= image_tag @game.photo_path, height: 96, class: "gameImg"
+          / = image_tag @game.photo_url, width:"100%", class: "gameImg"
+          = image_tag @game.photo_url, width:"120", class: "gameImg"
+        .gameInfoWrap
+          %ul.gameInfo
+            %li.item.maker
+              = @game.maker
+            %li.item.data
+              = @game.device
+            %li.item.hard
+              = @game.device
+            %li.item.releaseDay
+              = @game.release_day
+          %p.review
+            %span.reviewInner.icon-star
+            = @game.avg_rate
           - if !@game.amazon_url.nil?
-            %a.gameInner{href: @game.amazon_url}
-              = image_tag "/game_photos/#{@game.photo_path}", height: 96, class: "gameImg"
-        /= image_tag @game.photo_path, height: 96, class: "gameImg"
-        / = image_tag @game.photo_url, width:"100%", class: "gameImg"
-        = image_tag @game.photo_url, width:"100%", class: "gameImg"
-      .gameInfoWrap
-        %ul.gameInfo
-          %li.item.maker
-            = @game.maker
-          %li.item.data
-            = @game.device
-          %li.item.hard
-            = @game.device
-          %li.item.releaseDay
-            = @game.release_day
-        %h1.ttl
-          = @game.title
-        %p.review
-          %span.reviewInner ☆
-          = @game.avg_rate
-        - if !@game.amazon_url.nil?
-          %p
-            %a.amazonBtn{href: @game.amazon_url} Amazonへ
+            %p
+              %a.amazonBtn{href: @game.amazon_url} Amazonへ
     %ul.btnList
       - if @game.i_registed
         %li.item
@@ -85,28 +86,29 @@
       %li.item
         - unless @game.i_registed
           %select.new_status{name: "status", size: "1"}
-            %option{value: ""} ステータス
+            %option{value: ""} 登録する
             %option{value: "1"} 気になる
             %option{value: "2"} プレイ中
             %option{value: "3"} クリア済
         - else
           %select.my_status{name: "status", size: "1"}
-            - [{value: "", name: "ステータス"}, {value: "1", name: "気になる"}, {value: "2", name: "プレイ中"}, {value: "3", name: "クリア済"}].each do |obj|
+            - [{value: "", name: "登録する"}, {value: "1", name: "気になる"}, {value: "2", name: "プレイ中"}, {value: "3", name: "クリア済"}].each do |obj|
               - if obj[:value].to_i == @game.my_status_id.to_i
                 %option{value: obj[:value], selected: "selected"}
                   = obj[:name]
               - else
                 %option{value: obj[:value]}
                   = obj[:name]
-
+  .boxTtl
+    %h2.boxTtl このゲームに対するポスト
   .sortBoxWrap
     %ul.sortBox
       %li.item.current.follower_posts
-        %a.follow{href: "/games/#{@game[:id]}#follower"} フォロー中のユーザー
+        %a.follow{href: "/games/#{@game[:id]}#follower"} フォロー中
       %li.item.all_posts
         %a.all{href: "/games/#{@game[:id]}#all"} 全てのユーザー
       %li.item.liker_posts
-        %a.star{href: "/games/#{@game[:id]}#liker"} いいね順
+        %a.star{href: "/games/#{@game[:id]}#liker"} いいね!順
 
   .game-timeline
     .post-list

@@ -1,3 +1,4 @@
+//= require ../../vendors/masonry.pkgd.min.js
 //= require ../../libs/socket.js
 //= require ../../models/log.js
 //= require ../../models/post.js
@@ -45,7 +46,6 @@
       this.log_collection.fetch({
         data: {user_id: this.user_id},
         success: function (model, response, options) {
-          console.log(response)
           for (var i = 0; i < response.logs.length; i++) {
             var log = new Log(response.logs[i]);
             switch (log.get("status").id) {
@@ -215,7 +215,7 @@
 
       var that             = this;
       this.user_collection = new Users();
-      this.users_view      = new UsersView({el: ".follows-list", collection: this.user_collection});
+      this.users_view      = new UsersView({el: ".follows-list", collection: this.user_collection, attributes: {type: "follows-list"}});
 
       this.user_id         = this.$el.data("userid");
       this.page            = 1;
@@ -279,7 +279,7 @@
 
       var that             = this;
       this.user_collection = new Users();
-      this.users_view      = new UsersView({el: ".followers-list", collection: this.user_collection});
+      this.users_view      = new UsersView({el: ".followers-list", collection: this.user_collection, attributes: {type: "followers-list"}});
 
       this.user_id         = this.$el.data("userid");
       this.page            = 1;

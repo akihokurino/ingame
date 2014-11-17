@@ -2,15 +2,21 @@
   = javascript_include_tag "main/smart_phone/header"
 
 %header
-  %h1.ttlWrap
-    = link_to "Gameful", posts_path, class: "ttl"
-  %span.menuWrap
-    %span.menu{href: ""}
-  = link_to "", "/users/#{@current_user[:id]}#logs", class: "profile"
-  = link_to "ゲームを検索", "/users/#{@current_user[:id]}/search_game_or_user#game", class: "search"
-  %span.notify{href: ""}
-    %span.notifyNum
-  = render partial: "application/smart_phone/menu"
+  %nav.headerNav
+    %ul
+      %li.home
+        = link_to "", posts_path, class: "icon-home"
+      %li.search
+        = link_to "", "/users/#{@current_user[:id]}/search_game_or_user#game", class: "icon-search"
+      %li.profile
+        = link_to "", "/users/#{@current_user[:id]}#logs", class: "icon-user"
+      %li.notify
+        %a{href: ""}
+          %span.icon-bell
+            %span.icon-bellNum
+          = render partial: "application/smart_phone/menu"
+      %li.menuWrap
+        %a.menu
 
 = render partial: "application/smart_phone/notifications_modal"
 = render partial: "application/underscore/smart_phone/header/notification"

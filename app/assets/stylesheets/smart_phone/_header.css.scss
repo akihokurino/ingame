@@ -5,129 +5,104 @@ header {
 	position: relative;
 	z-index: 1;
 	width: 100%;
-	height: 46px;
-	padding-top: 11px;
 	@include box-sizing;
-	background: $color_black;
 
-	.ttlWrap {
-		text-align: center;
+	.headerNav{
+	padding:5px;
+	font-size:24px;
+	background-color: #222222;
+	box-shadow:0 0 3px 1px rgba(0,0,0,0.4);
+	a{
+		color:#fff;
+		text-decoration:none;
 	}
-	.ttl {
-		width: 68px;
-		margin: 0 auto;
-		padding-right: 50px;
-		color: #ffffff;
-		font-size: 18px;
-		font-family: Helvetica;
-		text-decoration: none;
-		@include font-weight(1px, #ffffff);
-	}
-	.menuWrap {
-		display: block;
-		position: absolute;
-		top: 0;
-		left: 0;
-	}
-	.menu {
-		display: block;
-		margin-left:5px;
-		@include img_set-SP4(46px, 46px, 8px, 12px);
-	}
-	.profile {
-		display: block;
-		position: absolute;
-		top: 0;
-		right: 102px;
-		@include img_set-SP4(46px, 46px, 10px, -108px);
-	}
-	.search {
-		display: block;
-		position: absolute;
-		top: 0;
-		right: 50px;
-		@include img_set-SP4(46px, 46px, 10px, -68px);
-		@include substitute;
-	}
-	.notify {
-		display: block;
-		position: absolute;
-		top: 0;
-		right: 2px;
-		@include img_set-SP4(46px, 46px, 11px, -28px);
-
-		&Num {
-			display: none;
-			position: absolute;
-			top: -2px;
-			right: 1px;
-			width: 17px;
-			height: 17px;
-			@include border-radius(2px);
-			background: #22c0a4;
-			color: #fff;
-			font-family: Helvetica;
-			font-size: 12px;
-			@include font-weight(1px, #fff);
-			line-height: 17px;
-			text-align: center;
+	ul{
+		display:table;
+		float:right;
+		li{
+			display:table-cell;
+			padding:2px 10px;
+		}
+		.icon-bell{
+			&Num{
+				display: none;
+				position: absolute;
+				top: -2px;
+				right: 1px;
+				width: 17px;
+				height: 17px;
+				@include border-radius(2px);
+				background: #22c0a4;
+				color: #fff;
+				font-family: Helvetica;
+				font-size: 12px;
+				@include font-weight(1px, #fff);
+				line-height: 17px;
+				text-align: center;
+			}
+		}
+		.menu{
+			position: relative;
+			display:inline-block;
+			width: 24px;
+			height: 24px;
+			cursor:pointer;
+			&:before,&:after{
+				display: block;
+				position: absolute;
+				content: "";
+				width: 24px;
+				height: 3px;
+				background-color: #fff;
+				top: 0;
+				left: 0;
+				transition:transform 0.8s ease;
+			}
+			&:before{
+				transform: translate(0,6px) rotate(0deg);
+			}
+			&:after{
+				transform: translate(0,18px) rotate(0deg);
+			}
+			.show:before{
+				transform: translate(0,13px) rotate(-135deg);
+			}
+			.show:after{
+				transform: translate(0,13px) rotate(135deg);
+			}
 		}
 	}
-	.openMenuWrap {
-		display: none;
+	&:after{
+		content:"";
+		display:block;
+		clear:both;
+	}
 
-		&:before {
-			position: absolute;
-			top: 30px;
-			left: 16px;
-			z-index: 5;
-			width: 0;
-			height: 0;
-			border-top: 8px solid transparent;
-			border-right: 9px solid transparent;
-			border-bottom: 8px solid #fff;
-			border-left: 9px solid transparent;
-			content: '';
-		}
+}
+
+.openMenuWrap {
+	display: none;
+}
+.openMenu {
+	display: none;
+	position: absolute;
+	display:table;
+	width: 100%;
+	top:50px;
+	left: 0;
+	padding: 10px;
+	@include box-sizing;
+	@include box-shadow(0, 0, 5px, 0, rgba(0, 0, 0, 0.75));
+	background: #ffffff;
+	color: $color_textGray;
+	font-size:14px;
+	text-align: left;
+	a{
+		color:#000;
 	}
-	.openMenu {
-		display: none;
-		position: absolute;
-		top: 46px;
-		left: 4px;
-		padding: 17px 16px;
-		@include border-radius(2px);
-		@include box-sizing;
-		@include box-shadow(0, 0, 5px, 0, rgba(0, 0, 0, 0.75));
-		background: #ffffff;
-		text-align: left;
-	}
-	.menuItemAccount, .menuItemLogout {
-		display: block;
-		padding-left: 25px;
-		color: #626262;
-		font-size: 12px;
-		@include font-weight(0.5px, #626262);
-	}
-	.menuItemAccount {
-		display: block;
-		height: 27px;
-		margin-bottom: 10px;
-		padding-left: 40px;
-		@include img_set-SP2(0, -158px);
-		color: #626262;
-		font-size: 12px;
-		@include font-weight(0.5px, #626262);
-		line-height: 27px;
-	}
-	.menuItemLogout {
-		display: block;
-		height: 27px;
-		padding-left: 40px;
-		@include img_set-SP2(3px, -197px);
-		color: #626262;
-		font-size: 12px;
-		@include font-weight(0.5px, #626262);
-		line-height: 27px;
-	}
+}
+.menuItemAccount, .menuItemLogout {
+	display:table-cell;
+	color: #626262;
+}
 }

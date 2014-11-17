@@ -6,7 +6,6 @@
 /*---   .personalBox   ---------------------------*/
 .personalBoxWrap {
 	position: relative;
-	margin-bottom: 13px;
 	background: url(/assets/smart_phone/profile__bg.jpg) repeat top center;
 	background-size: cover;
 
@@ -286,3 +285,10 @@
 		}
 	}
 }
+
+/*---   .profile-timeline   ---------------------*/
+
+.post-list{
+	margin-top:10px;
+}
+

@@ -1,4 +1,21 @@
 %script{type: "text/template", id: "user-template"}
-  %img.profImg{src: "/user_photos/{{= photo_path }}", width: 48, height: 48}
-  %p.name
-    {{= username }}
+  %ul.friendListWrap
+    {{ if (!isCurrentUser) { }}
+    {{ if (i_followed) { }}
+    %li.item
+      .followBtn.unfollow フォローを外す
+    {{ } else { }}
+    %li.item
+      {{ if (i_followered) { }}
+      .followBtn.follow フォロー仕返す
+      {{ } else { }}
+      .followBtn.follow フォローする
+      {{ } }}
+    {{ } }}
+    {{ } }}
+    %figure.userImgWrap
+      %img.profImg{src:"/user_photos/{{= photo_path }}" , height: 40, height: 40}
+    .userInfo
+      .name
+        %a{href: "/users/{{= id }}#logs"} {{= username }}
+      .place {{= place }}

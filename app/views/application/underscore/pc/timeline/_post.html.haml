@@ -18,7 +18,7 @@
     {{= text }}
   .thumbnail
     {{ for (var i = 0; i < post_photos.length; i++) { }}
-    %img{src: "/post_photos/{{= post_photos[i].photo_path }}"}
+    %img.thumbnailImg{src: "/post_photos/{{= post_photos[i].photo_path }}"}
     {{ } }}
   %p.time {{= created_at }}
   %ul.actionList
