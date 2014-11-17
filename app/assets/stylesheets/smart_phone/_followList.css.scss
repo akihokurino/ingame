@@ -5,52 +5,65 @@
 	margin: 0 auto;
 	padding:0 10px;
 	@include clearfix;
-
 	ul.friendListWrap{
-	background-color: #fff;
-	li{
-		padding:10px 0;
-		border-bottom: 1px solid $color_border;
-	}
-	img{
-		@include border-radius(2px);
-	}
-	.followBtn{
-		float:right;
-		display:inline-block;
-		margin-top:6px;
-		padding:0 5px;
-		border: 1px solid $color_green;
-		@include border-radius(2px);
-		font-size:12px;
-		line-height:28px;
-	}
-	.follow,.reFollow{
-		color:$color_green;
-	}
-	.unFollow{
-		color:#fff;
-		background-color: $color_green;
+		background-color: #fff;
+		.item{
+			margin:10px 0;
+			border-bottom: 1px solid $color_border;
+		}
+		img{
+			@include border-radius(2px);
+		}
+		.followBtn{
+			float:right;
+			display:inline-block;
+			margin-top:15px;
+			padding:0 5px;
+			border: 1px solid $color_green;
+			@include border-radius(2px);
+			font-size:12px;
+			line-height:28px;
+		}
+		.follow,.reFollow{
+			color:$color_green;
+		}
+		.unFollow{
+			color:#fff;
+			background-color: $color_green;
 
-	}
-	.userImgWrap{
-		display:inline-block;
-		height: 40px;
-		vertical-align: middle;
-	}
-	.userInfo{
-		display:inline-block;
-		vertical-align: middle;
-		padding-left:10px;
-		height:100%;
-		font-size:12px;
-		.name{
-			color:$color_textBlack;
-			font-weight:bold;
 		}
-		.place{
-			color: $color_textGray;
+		.userImgWrap{
+			display:inline-block;
+			height: 40px;
+			vertical-align: middle;
+		}
+		.userInfo{
+			display:inline-block;
+			vertical-align: middle;
+			padding-left:10px;
+			height:100%;
+			font-size:12px;
+			.name{
+				color:$color_textBlack;
+				font-weight:bold;
+				line-height:1.6;
+			}
+			.icon-place{
+				display:inline-block;
+				margin-left:-2px;
+				color:$color_textGray;
+				font-size:14px;
+			}
+			.place{
+				display:inline-block;
+				color: $color_textGray;
+				vertical-align: top;
+			}
+		}
+		&:after{
+			content:"";
+			display:block;
+			@include clearfix;
 		}
 	}
-}
 }

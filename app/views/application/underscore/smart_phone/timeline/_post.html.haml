@@ -27,17 +27,19 @@
     {{ } }}
   .stateBox
     %a.commentBtn.comment-btn{href: "#"}
+      %span.icon-comment
       コメント
       %span.commentCnt
         {{= post_comments_count }}
     {{ if (!i_liked) { }}
     %span.like.favBtn
+      %span.icon-like
       {{= post_likes_count }}
     {{ } else { }}
     %span.unlike.favBtn.on
+      %span.icon-like
       {{= post_likes_count }}
     {{ } }}
     {{ if (current_user_id == user.id) { }}
-    %span.deleteBtn.delete-btn
-      削除
+    %span.icon-option.delete-btn
     {{ } }}

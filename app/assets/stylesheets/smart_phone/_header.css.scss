@@ -59,16 +59,24 @@ header {
 				transition:transform 0.8s ease;
 			}
 			&:before{
-				transform: translate(0,6px) rotate(0deg);
+				-webkit-transform: translate(0,6px) rotate(0deg);
+					-ms-transform: translate(0,6px) rotate(0deg);
+						transform: translate(0,6px) rotate(0deg);
 			}
 			&:after{
-				transform: translate(0,18px) rotate(0deg);
+				-webkit-transform: translate(0,18px) rotate(0deg);
+					-ms-transform: translate(0,18px) rotate(0deg);
+						transform: translate(0,18px) rotate(0deg);
 			}
 			.show:before{
-				transform: translate(0,13px) rotate(-135deg);
+				-webkit-transform: translate(0,13px) rotate(0deg);
+					-ms-transform: translate(0,13px) rotate(0deg);
+						transform: translate(0,13px) rotate(-135deg);
 			}
 			.show:after{
-				transform: translate(0,13px) rotate(135deg);
+				-webkit-transform: translate(0,13px) rotate(0deg);
+					-ms-transform: translate(0,13px) rotate(0deg);
+						transform: translate(0,13px) rotate(135deg);
 			}
 		}
 	}
@@ -84,24 +92,29 @@ header {
 	display: none;
 }
 .openMenu {
-	display: none;
 	position: absolute;
+	display: none;
 	width: 100%;
-	top:50px;
+	top:44px;
 	left: 0;
-	padding: 10px;
+	padding: 13px;
 	@include box-sizing;
 	@include box-shadow(0, 0, 5px, 0, rgba(0, 0, 0, 0.75));
 	background: #ffffff;
 	color: $color_textGray;
 	font-size:14px;
 	text-align: left;
+	z-index:-1;
 	a{
 		color:#000;
 	}
+	.item{
+		display:inline-block;
+		text-align: center;
+	}
 }
+
 .menuItemAccount, .menuItemLogout {
-	display:table-cell;
 	color: #626262;
 }
 }

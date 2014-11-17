@@ -47,42 +47,42 @@
               %select.stars.my_rate{name: "stars", size: 1}
                 - case @game.my_rate.to_i
                 - when 1
-                  %option{value: ""} ★で評価
+                  %option{value: ""}
                   %option{value: 1, selected: "selected"} ★☆☆☆☆
                   %option{value: 2} ★★☆☆☆
                   %option{value: 3} ★★★☆☆
                   %option{value: 4} ★★★★☆
                   %option{value: 5} ★★★★★
                 - when 2
-                  %option{value: ""} ★で評価
+                  %option{value: ""}
                   %option{value: 1} ★☆☆☆☆
                   %option{value: 2, selected: "selected"} ★★☆☆☆
                   %option{value: 3} ★★★☆☆
                   %option{value: 4} ★★★★☆
                   %option{value: 5} ★★★★★
                 - when 3
-                  %option{value: ""} ★で評価
+                  %option{value: ""}
                   %option{value: 1} ★☆☆☆☆
                   %option{value: 2} ★★☆☆☆
                   %option{value: 3, selected: "selected"} ★★★☆☆
                   %option{value: 4} ★★★★☆
                   %option{value: 5} ★★★★★
                 - when 4
-                  %option{value: ""} ★で評価
+                  %option{value: ""}
                   %option{value: 1} ★☆☆☆☆
                   %option{value: 2} ★★☆☆☆
                   %option{value: 3} ★★★☆☆
                   %option{value: 4, selected: "selected"} ★★★★☆
                   %option{value: 5} ★★★★★
                 - when 5
-                  %option{value: ""} ★で評価
+                  %option{value: ""}
                   %option{value: 1} ★☆☆☆☆
                   %option{value: 2} ★★☆☆☆
                   %option{value: 3} ★★★☆☆
                   %option{value: 4} ★★★★☆
                   %option{value: 5, selected: "selected"} ★★★★★
                 - else
-                  %option{value: ""} ★で評価
+                  %option{value: ""}
                   %option{value: 1} ★☆☆☆☆
                   %option{value: 2} ★★☆☆☆
                   %option{value: 3} ★★★☆☆

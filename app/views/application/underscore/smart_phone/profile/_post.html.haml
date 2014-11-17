@@ -2,20 +2,23 @@
   .topBox
     %figure.profImgWrap
       %img.profImg{width: 58, src: "/user_photos/{{= user.photo_path }}"}
-    .postArea
-      %a.account{href: "/users/{{= user.id }}#logs"}
-        {{= user.username }}
-      %time.time {{= created_at }}
-      %h2.ttl
-        %a{href: "/games/{{= game.id}}#all"}
-          {{= game.title }}
+    %a.account{href: "/games/{{= game.id}}#all"}
+      {{= user.username }}
+    %time.time
+      %span.icon-time
+      {{= created_at }}
       {{ if (status.id == 1) { }}
-      .mood_ready 気になる
+  .gameInfoBox
+    .statusBox
+      %span.mood_ready 気になる
       {{ } else if (status.id == 2) { }}
-      .mood_playing プレイ中
+      %span.mood_playing プレイ中
       {{ } else if (status.id == 3) { }}
-      .mood_played クリア済
+      %span.mood_played クリア済
       {{ } }}
+    %h2.ttl
+      %a{href: "/games/{{= game.id}}#all"}
+        {{= game.title }}
   %p.text
     {{= text }}
   .thumbnail
@@ -24,17 +27,19 @@
     {{ } }}
   .stateBox
     %a.commentBtn.comment-btn{href: "#"}
+      %span.icon-comment
       コメント
       %span.commentCnt
         {{= post_comments_count }}
     {{ if (!i_liked) { }}
     %span.like.favBtn
+      %span.icon-like
       {{= post_likes_count }}
     {{ } else { }}
     %span.unlike.favBtn.on
+      %span.icon-like
       {{= post_likes_count }}
     {{ } }}
     {{ if (current_user_id == user.id) { }}
-    %li.deleteBtn.delete-btn
-      削除
+    %span.icon-option.delete-btn
     {{ } }}
