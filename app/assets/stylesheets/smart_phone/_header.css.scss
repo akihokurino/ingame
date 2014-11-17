@@ -10,7 +10,7 @@ header {
 	.headerNav{
 	padding:5px;
 	font-size:24px;
-	background-color: #222222;
+	background-color: #222;
 	box-shadow:0 0 3px 1px rgba(0,0,0,0.4);
 	a{
 		color:#fff;
@@ -86,7 +86,6 @@ header {
 .openMenu {
 	display: none;
 	position: absolute;
-	display:table;
 	width: 100%;
 	top:50px;
 	left: 0;
