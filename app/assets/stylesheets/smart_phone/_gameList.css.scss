@@ -32,10 +32,20 @@
 			font-size:12px;
 			line-height:2.5;
 		}
-		.star{
-			color:yellow;
-			font-size:10px;
-			line-height:2.5;
+		.starList{
+			display:table;
+			font-size:18px;
+			line-height:2;
+			li{
+				display:table-cell;
+				padding-right:4px;
+			}
+			.starOn{
+				color:orange;
+			}
+			.starOff{
+				color:color_border;
+			}
 		}
 	}
 	.gameModule{
@@ -60,63 +70,4 @@
 			line-height:24px;
 		}
 	}
-	// .gameImg {
-	// 	float: left;
-	// 	min-width: 30px;
-	// 	margin: 0 12px 0 11px;
-	// }
-	// figcaption {
-	// 	float: left;
-	// 	width: 47%;
-	// 	color: $color_textBlack;
-	// 	font-size: 16px;
-	// }
-	// .mood {
-	// 	display: block;
-	// 	position: absolute;
-	// 	top: 50%;
-	// 	padding:0 0 4px 4px;
-	// 	right: 13px;
-	// 	width: 86px;
-	// 	margin-top: -14px;
-	// 	padding-top: 6px;
-	// 	border: none;
-	// 	@include border-radius(2px);
-	// 	@include box-sizing;
-	// 	background: $color_green;
-	// 	font-size: 12px;
-
-	// 	&:after {
-	// 		content:"";
-	// 		display: block;
-	// 		width: 6px;
-	// 		height: 6px;
-	// 		border-right: solid 3px;
-	// 		border-bottom: solid 3px;
-	// 		border-color:#fff;
-	// 		top:9px;
-	// 		-webkit-transform: rotate(45deg);
-	// 		   -moz-transform: rotate(45deg);
-	// 		    -ms-transform: rotate(45deg);
-	// 		     -o-transform: rotate(45deg);
-	// 		        transform: rotate(45deg);
-	// 		position: absolute;
-	// 		right: 6px;
-	// 		z-index: 5;
-	// 		content: "";
-	// 	}
-	// }
-	// select {
-	// 	position: relative;
-	// 	width: 80px;
-	// 	height: 20px;
-	// 	border: none;
-	// 	@include border-radius(2px);
-	// 	@include box-sizing;
-	// 	background: $color_green;
-	// 	color: #fff;
-	// 	outline: 0;
-	// 	-webkit-appearance:none;
-	// 	border-radius:0;
-	// }
 }
