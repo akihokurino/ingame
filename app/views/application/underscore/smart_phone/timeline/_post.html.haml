@@ -7,17 +7,13 @@
     %time.time
       %span.icon-time
       {{= created_at }}
-      {{ if (status.id == 1) { }}
   .gameInfoBox
     .statusBox
+      {{ if (status.id == 1) { }}
       %span.mood_ready 気になる
       {{ } else if (status.id == 2) { }}
-  .gameInfoBox
-    .statusBox
       %span.mood_playing プレイ中
       {{ } else if (status.id == 3) { }}
-  .gameInfoBox
-    .statusBox
       %span.mood_played クリア済
       {{ } }}
     %h2.ttl

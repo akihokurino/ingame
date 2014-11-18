@@ -3,8 +3,8 @@
     %li.item
       %a.menuItemAccount
         %span.icon-setting
-        %span アカウント設定
+        = link_to "アカウント設定", edit_user_path(@current_user)
     %li.item
       %a.menuItemLogout
         %span.icon-logout
-        %span ログアウト
+        = link_to "ログアウト", logout_users_path
