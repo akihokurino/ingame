@@ -1,15 +1,15 @@
 %script{type: "text/template", id: "write-template"}
   .post02
     %header
-      %h1.ttl ポスト
-      %a.cancel{href: "/posts/new#select"} 戻る
+      %h1.ttl 投稿する
+      %a.icon-allow{href: "/posts/new#select"}
       %span.addGameWrap
         %a.addGame.submit{href: ""} 投稿
     .write-page.mainCnt
       %form.textareaWrap.post-form
         %textarea{placeholder: "そのゲームについて、どう思った？"}
       .btnWrap
-        %p.btnText 写真をアップロード
+        %p.icon-photo
         %input.addPhoto#upload-btn{type: "file", href: ""}
       #thumbnail
       %ul.snsBtn
@@ -17,10 +17,12 @@
         - when "facebook"
           %li.fb
             %a.fbBtn.facebook{href: ""}
+              %span.icon-facebook
               %span.fbInner
               Facebook
         - when "twitter"
           %li.tw
             %a.twBtn.twitter{href: ""}
+              %span.icon-twitter
               %span.twInner
               Twitter

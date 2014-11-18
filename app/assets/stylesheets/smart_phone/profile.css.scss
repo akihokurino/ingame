@@ -6,9 +6,6 @@
 /*---   .personalBox   ---------------------------*/
 .personalBoxWrap {
 	position: relative;
-	background: url(/assets/smart_phone/profile__bg.jpg) repeat top center;
-	background-size: cover;
-
 	.bgOverlayer {
 		width: 100%;
 		@include box-sizing;
@@ -137,7 +134,7 @@
 			display: block;
 			color: $color_green;
 			font-size: 18px;
-			@include font-weight(1.5px, #22c0a4);
+			font-weight:bold;
 		}
 	}
 }

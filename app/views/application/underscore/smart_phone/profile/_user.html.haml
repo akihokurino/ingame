@@ -3,7 +3,7 @@
     {{ if (!isCurrentUser) { }}
     {{ if (i_followed) { }}
     %li.item
-      .followBtn.unfollow フォローを外す
+      .followBtn.unFollow フォローを外す
     {{ } else { }}
     %li.item
       {{ if (i_followered) { }}
@@ -18,4 +18,5 @@
     .userInfo
       .name
         %a{href: "/users/{{= id }}#logs"} {{= username }}
+      %span.icon-place
       .place {{= place }}

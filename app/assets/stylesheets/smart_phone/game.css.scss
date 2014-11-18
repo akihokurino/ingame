@@ -18,7 +18,7 @@
 			border-left: 5px solid blue;
 			color: #2d3e58;
 			font-size: 18px;
-			@include font-weight(1.5px,$color_black);
+			font-weight:bold;
 			line-height: 1.2;
 		}
 		.gameWrap{
@@ -34,11 +34,11 @@
 		.gameInfoWrap {
 			display:table-cell;
 			padding-left:10px;
+			font-size: 10px;
 			vertical-align:top;
 			.review {
 				color: orange;
 				font-size: 22px;
-				@include font-weight(1px, orange);
 			}
 			.icon-star{
 				font-size:21px;
@@ -65,45 +65,47 @@
 			background: #fc9a18;
 			color: #ffffff;
 			font-size: 12px;
-			text-align: center;
 			line-height: 22px;
 		}
 		.btnList {
-			font-size: 14px;
 			display:table;
+			width: 100%;
+			margin-top:10px;
+			font-size: 14px;
 			.item {
-				position: relative;
 				display:table-cell;
-				width: 120px;
-				height: 33px;
-				border: none;
-				@include border-radius(2px);
-				@include box-sizing;
-				background: $color_green;
+				// position: relative;
+				// display:table-cell;
+				// width: 120px;
+				// height: 33px;
+				// border: none;
+				// @include border-radius(2px);
+				// @include box-sizing;
+				// background: $color_green;
 
-				&:before {
-					position: absolute;
-					top: 5px;
-					right: 5px;
-					width: 20px;
-					height: 20px;
-					@include box-sizing;
-					background: $color_green;
-					content: "";
-				}
-				&:after {
-					display: block;
-					position: absolute;
-					top: 10px;
-					right: 11px;
-					width: 5px;
-					height: 5px;
-					border-top: 2px solid #fff;
-					border-right: 2px solid #fff;
-					-webkit-transform: rotate(135deg);
-					transform: rotate(135deg);
-					content: "";
-				}
+				// &:before {
+				// 	position: absolute;
+				// 	top: 5px;
+				// 	right: 5px;
+				// 	width: 20px;
+				// 	height: 20px;
+				// 	@include box-sizing;
+				// 	background: $color_green;
+				// 	content: "";
+				// }
+				// &:after {
+				// 	display: block;
+				// 	position: absolute;
+				// 	top: 10px;
+				// 	right: 11px;
+				// 	width: 5px;
+				// 	height: 5px;
+				// 	border-top: 2px solid #fff;
+				// 	border-right: 2px solid #fff;
+				// 	-webkit-transform: rotate(135deg);
+				// 	transform: rotate(135deg);
+				// 	content: "";
+				// }
 			}
 		}
 		.comment {
@@ -116,17 +118,17 @@
 			text-align: center;
 		}
 		.new_status, .my_status, .my_rate {
-			display: block;
-			width: 97px;
-			height: 30px;
-			margin-left: auto;
-			border: none;
-			background: none;
-			color: #ffffff;
-			outline: 0;
-		}
-		.stars {
-			height: 30px;
+			@include appearance;
+			display: inline-block;
+			width: 124px;
+			padding: 4px 0 4px 26px;
+			border: 1px solid #24d387;
+			@include border-radius(2px);
+			border-radius: 2px;
+			background-color: #fff;
+			color: #24d387;
+			font-size: 12px;
+			line-height: 24px;
 		}
 	}
 	/*---   .sortBox   ----------*/
@@ -134,7 +136,9 @@
 		background-color: #ddd;
 		color: $color_textGray;
 		font-size:14px;
+		font-weight: bold;
 		text-align:center;
+		text-shadow:1px 1px 0 #f2f2f2;
 		padding:5px 0;
 	}
 	.sortBoxWrap {
@@ -193,5 +197,8 @@
 				@include font-weight(1px, #fff);
 			}
 		}
+	}
+	.game-timeline{
+		background-color: #000;
 	}
 }

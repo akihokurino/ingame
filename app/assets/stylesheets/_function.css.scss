@@ -8,7 +8,7 @@ $cntWidth: 580px;
 //カラーコード
 $color_textBlack: #4a4a4a;
 $color_textGray: #797979;
-$color_black: #393c3f;
+$color_black: #343434;;
 $color_white: #dddcdc;
 $color_green: #24d387;
 $color_yellow: #e9d31d;
@@ -70,7 +70,7 @@ $support-opera  : true;
   box-shadow: $side $top $shade $spread $color;
 }
 @mixin font-weight($size, $color) {
-    -webkit-text-stroke: $size $color;
+    // -webkit-text-stroke: $size $color;
 }
 @mixin appearance {
     -moz-appearance: none;
