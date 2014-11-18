@@ -2,7 +2,12 @@
   %a.articleWrap{href: "/games/{{= game.id }}#all", style: "display: block;"}
     %figure.game
       / %img.gameImg{src: "/game_photos/{{= game.photo_path }}"}
+      {{ if (game.photo_url) { }}
       %img.gameImg{src: "{{= game.photo_url }}"}
+      {{ } else { }}
+      %img.gameImg{src: "/game_photos/default.png"}
+      {{ } }}
+      {{= game.title }}
       %figcaption.review
         {{ if (rate) { }}
         ☆

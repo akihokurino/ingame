@@ -2,7 +2,11 @@
   %figure
     /%img.gameImg{src: "/game_photos/{{= photo_path}}", width: "32", height: "32", alt: ""}
     %a{href: "/games/{{= id }}#all"}
+      {{ if (photo_url) { }}
       %img.gameImg{src: "{{= photo_url }}", width: "100", alt: ""}
+      {{ } else { }}
+      %img.gameImg{src: "/game_photos/default.png", width: "100", alt: ""}
+      {{ } }}
     %a{href: "/games/{{= id }}#all"}
       %figcaption {{= title }}
   %span.device {{= device }}

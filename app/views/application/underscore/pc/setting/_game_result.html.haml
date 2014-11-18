@@ -2,7 +2,11 @@
   %article.gameList
     %figure.gameImgWrap
       / %img.gameImg{src: "/game_photos/{{= photo_path }}", width: "121", alt: ""}
+      {{ if (photo_url) { }}
       %img.gameImg{src: "{{= photo_url }}", width: "121", alt: ""}
+      {{ } else { }}
+      %img.gameImg{src: "/game_photos/default.png", width: "121", alt: ""}
+      {{ } }}
     %h1.ttl
       {{= title }}
     %ul.starList
