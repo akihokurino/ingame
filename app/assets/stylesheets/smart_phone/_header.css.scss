@@ -2,18 +2,19 @@
 
 /*---   header   ---------------------------*/
 header {
-	position: relative;
-	z-index: 1;
+	position:fixed;
+	top:0;
+	left:0;
 	width: 100%;
+	z-index: 1;
 	@include box-sizing;
-
 	.headerNav{
 	padding:5px;
-	font-size:24px;
-	background-color: #fff;
-	box-shadow:0 0 3px 1px rgba(0,0,0,0.4);
+	font-size:22px;
+	background-color: rgba($main_color,.94);
+	box-shadow:0 0 1px 1px rgba(0,0,0,0.2);
 	a{
-		color:#1649ED;
+		color:#fff;
 		text-decoration:none;
 	}
 	ul{
@@ -54,10 +55,10 @@ header {
 				width: 24px;
 				height: 4px;
 				@include border-radius(4px);
-				background-color: #1649ED;
+				background-color: #fff;
 				top: 0;
 				left: 0;
-				transition:transform 0.8s ease;
+				transition:transform 0.5s ease;
 			}
 			&:before{
 				-webkit-transform: translate(0,6px) rotate(0deg);

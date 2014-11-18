@@ -2,7 +2,7 @@
 
 /*---   .postBox   ---------------------------*/
 .postBox {
-	margin-top:5px;
+	margin:5px;
 	padding: 10px 10px 0 10px;
 	@include box-sizing;
 	@include border-radius(2px);
@@ -103,7 +103,7 @@
 		display: inline-block;
 		padding: 10px;
 		color: #8d8e8e;
-		font-size: 13px;
+		font-size: 14px;
 		text-decoration: none;
 		line-height: 1;
 
@@ -116,7 +116,7 @@
 		display: inline-block;
 		padding: 10px;
 		color: #8d8e8e;
-		font-size: 13px;
+		font-size: 14px;
 		text-decoration: none;
 		line-height: 1;
 
@@ -128,7 +128,7 @@
 		display: inline-block;
 		padding: 10px;
 		color: #8d8e8e;
-		font-size: 13px;
+		font-size: 14px;
 		line-height: 1;
 	}
 }
