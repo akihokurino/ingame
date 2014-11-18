@@ -2,6 +2,7 @@ var Log = Backbone.Model.extend({
   defaults: {
     "id": "",
     "text": "",
+    "user_id": "",
     "rate": "",
     "game": {
       "id": "",
@@ -24,5 +25,8 @@ var Log = Backbone.Model.extend({
       new_title             += "...";
       this.get("game").title = new_title;
     }
+  },
+  isCurrentUserLog: function () {
+    return $("#wrapper").data("userid") == this.get("user_id") ? true : false
   }
 })

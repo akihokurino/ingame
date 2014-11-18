@@ -18,7 +18,11 @@
     .gameModule
       %figure
         %a{href: "/games/{{= id }}#all"}
+          {{ if (photo_url) { }}
           %img.gameImg{src: "{{= photo_url }}", width: "100"}
+          {{ } else { }}
+          %img.gameImg{src: "/game_photos/default.png", width: "100"}
+          {{ } }}
         %select.status{name: "status", size: "1", class: "status"}
           %option{value: ""} 登録する
           %option{value: 1} 気になる

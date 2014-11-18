@@ -2,6 +2,10 @@
   %a{href: "/posts/new#write/{{= game.id }}/{{= id }}"}
     %figure
       / %img.gameImg{src: "/game_photos/{{= game.photo_path }}", height: 32, alt: ""}
+      {{ if (game.photo_url) { }}
       %img.gameImg{src: "{{= game.photo_url }}", width: 100, alt: ""}
+      {{ } else { }}
+      %img.gameImg{src: "/game_photos/default.png", width: 100, alt: ""}
+      {{ } }}
       %figcaption
         {{= game.title }}

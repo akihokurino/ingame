@@ -3,9 +3,14 @@
     %a.articleWrap{href: "/games/{{= game.id }}#all", style: "display: block;"}
       %figure.gameImgWrap
         / %img.gameImg{src: "/game_photos/{{= game.photo_path}}", width: "121", alt: ""}
+        {{ if (game.photo_url) { }}
         %img.gameImg{src: "{{= game.photo_url }}", width: "121", alt: ""}
+        {{ } else { }}
+        %img.gameImg{src: "/game_photos/default.png", width: "121", alt: ""}
+        {{ } }}
       %h1.ttl
         {{= game.title }}
+        {{= isCurrentUserLog }}
       %ul.starList
         {{ diff = 5 - rate }}
         {{ for (var i = 0; i < rate; i++) { }}
@@ -14,4 +19,6 @@
         {{ for (var i = 0; i < diff; i++) { }}
         %li.starOff ☆
         {{ } }}
+    {{ if (isCurrentUserLog) { }}
     %span.gameDeleteBtn.delete-btn ×
+    {{ } }}

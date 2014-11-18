@@ -1,6 +1,7 @@
 json.log do |json|
   json.id @log[:id]
   json.text @log[:text]
+  json.user_id @log[:user_id]
   json.game do |json|
   	json.id @log.game[:id]
   	json.title @log.game[:title]

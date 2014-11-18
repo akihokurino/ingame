@@ -7,6 +7,7 @@ var LogsView = Backbone.View.extend({
   },
   addLog: function (log) {
     if (log.id) {
+      log.set("isCurrentUserLog", log.isCurrentUserLog());
       if (this.type == "select") {
         var log_view = new LogView({model: log, attributes: {type: "select"}});
         switch (log.get("status").id) {

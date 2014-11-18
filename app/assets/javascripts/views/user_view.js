@@ -7,6 +7,11 @@ var UserView = Backbone.View.extend({
   },
   template: _.template($("#user-template").html()),
   initialize: function () {
+    if ($("#follow-btn-template").html() && $("#unfollow-btn-template").html()) {
+      this.follow_btn_template   = _.template($("#follow-btn-template").html());
+      this.unfollow_btn_template = _.template($("#unfollow-btn-template").html());
+    }
+
     if (this.attributes && this.attributes.type) {
       this.type = this.attributes.type;
     }
@@ -32,8 +37,13 @@ var UserView = Backbone.View.extend({
       data: data,
       success: function (data) {
         if (data.result) {
-          if (this.type == "follows-list") {
+          if (that.type == "follows-list") {
             that.$el.remove();
+          }
+
+          if (that.type == "followers-list") {
+            that.$el.find("ul.friendListWrap li.item").html("");
+            that.$el.find("ul.friendListWrap li.item").append(that.unfollow_btn_template);
           }
         }
       },
@@ -52,8 +62,13 @@ var UserView = Backbone.View.extend({
       data: {},
       success: function (data) {
         if (data.result) {
-          if (this.type == "follows-list") {
+          if (that.type == "follows-list") {
             that.$el.remove();
+          }
+
+          if (that.type == "followers-list") {
+            that.$el.find("ul.friendListWrap li.item").html("");
+            that.$el.find("ul.friendListWrap li.item").append(that.follow_btn_template({text: "フォローを仕返す"}));
           }
         }
       },
