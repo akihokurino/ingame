@@ -6,6 +6,7 @@
         %img.gameImg{src: "{{= game.photo_url }}", width: "121", alt: ""}
       %h1.ttl
         {{= game.title }}
+        {{= isCurrentUserLog }}
       %ul.starList
         {{ diff = 5 - rate }}
         {{ for (var i = 0; i < rate; i++) { }}
@@ -14,4 +15,6 @@
         {{ for (var i = 0; i < diff; i++) { }}
         %li.starOff ☆
         {{ } }}
+    {{ if (isCurrentUserLog) { }}
     %span.gameDeleteBtn.delete-btn ×
+    {{ } }}

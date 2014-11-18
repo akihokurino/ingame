@@ -2,6 +2,7 @@ json.logs do |json|
   json.array!(@logs) do |log|
   	json.id log[:id]
   	json.text log[:text]
+    json.user_id log[:user_id]
     json.rate log[:rate]
   	json.game do |json|
       json.id log.game[:id]
