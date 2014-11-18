@@ -6,23 +6,24 @@
     .write-page.mainCnt
       %form.textareaWrap.post-form
         %textarea{placeholder: "そのゲームについて、どう思った？"}
-      .btnWrap
-        %p.icon-photo
-        %input.addPhoto#upload-btn{type: "file", href: ""}
       #thumbnail
-      %ul.snsBtn
-        - case @current_user[:provider]
-        - when "facebook"
-          %li.fb
-            %a.fbBtn.facebook{href: ""}
-              %span.icon-facebook
-              %span.fbInner
-              Facebook
-        - when "twitter"
-          %li.tw
-            %a.twBtn.twitter{href: ""}
-              %span.icon-twitter
-              %span.twInner
-              Twitter
+      .btnWrap
+        %ul.subBtn
+          - case @current_user[:provider]
+          - when "facebook"
+            %li.fb
+              %a.fbBtn.facebook{href: ""}
+                %span.icon-facebook
+                %span.fbInner
+                Facebook
+          - when "twitter"
+            %li.tw
+              %a.twBtn.twitter{href: ""}
+                %span.icon-twitter
+                %span.twInner
+                Twitter
+          .photoBtnWrap
+            %p.icon-photo
+            %input.addPhoto#upload-btn{type: "file", href: ""}
       %a.addGame.submit{href: ""}
         %span.icon-post 投稿

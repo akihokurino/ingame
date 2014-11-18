@@ -108,15 +108,20 @@ header {
 	text-align: left;
 	z-index:-1;
 	a{
-		color:#000;
+		color:$color_textGray;
 	}
 	.item{
-		display:inline-block;
-		text-align: center;
+		display:block;
+		width: 100%;
+		padding:10px;
+		font-size:24px;
+		text-align: left;
 	}
 }
 
 .menuItemAccount, .menuItemLogout {
+	display:block;
+	width: 100%;
 	color: #626262;
 }
 }
