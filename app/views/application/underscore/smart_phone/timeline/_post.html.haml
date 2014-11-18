@@ -29,16 +29,13 @@
     {{ if (current_user_id == user.id) { }}
     %span.icon-option.delete-btn
     {{ } }}
-    %a.commentBtn.comment-btn{href: "#"}
-      %span.icon-comment
+    %a.commentBtn.comment-btn.icon-comment{href: "#"}
       %span.commentCnt
         {{= post_comments_count }}
     {{ if (!i_liked) { }}
-    %span.like.favBtn
-      %span.icon-like
+    %span.like.favBtn.icon-like
       {{= post_likes_count }}
     {{ } else { }}
-    %span.unlike.favBtn.on
-      %span.icon-like
+    %span.unlike.favBtn.on.icon-like
       {{= post_likes_count }}
     {{ } }}

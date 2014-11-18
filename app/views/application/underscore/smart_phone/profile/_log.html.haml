@@ -7,12 +7,13 @@
       {{ } else { }}
       %img.gameImg{src: "/game_photos/default.png"}
       {{ } }}
-      {{= game.title }}
-      %figcaption.review
-        {{ if (rate) { }}
-        ☆
-        %span.reviewAve {{= rate }}.0
-        {{ } else { }}
-        %span.reviewAve 評価なし
-        {{ } }}
-        %span.gameDeleteBtn.delete-btn ×
+      .gameTitle
+        {{= game.title }}
+      / %figcaption.review
+      /   {{ if (rate) { }}
+      /   ☆
+      /   %span.reviewAve {{= rate }}.0
+      /   {{ } else { }}
+      /   %span.reviewAve 評価なし
+      /   {{ } }}
+      /   %span.gameDeleteBtn.delete-btn ×

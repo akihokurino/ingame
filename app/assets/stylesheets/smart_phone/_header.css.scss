@@ -88,40 +88,44 @@ header {
 		clear:both;
 	}
 
-}
-
-.openMenuWrap {
-	display: none;
-}
-.openMenu {
-	position: absolute;
-	display: none;
-	width: 100%;
-	top:44px;
-	left: 0;
-	padding: 13px;
-	@include box-sizing;
-	@include box-shadow(0, 0, 5px, 0, rgba(0, 0, 0, 0.75));
-	background: #ffffff;
-	color: $color_textGray;
-	font-size:14px;
-	text-align: left;
-	z-index:-1;
-	a{
-		color:$color_textGray;
 	}
-	.item{
-		display:block;
+
+	.openMenuWrap {
+		display: none;
+	}
+	.openMenu {
+		position: absolute;
+		display: none;
 		width: 100%;
-		padding:10px;
-		font-size:24px;
+		top:44px;
+		left: 0;
+		padding: 13px;
+		@include box-sizing;
+		@include box-shadow(0, 0, 5px, 0, rgba(0, 0, 0, 0.75));
+		background: #ffffff;
+		color: $color_textGray;
+		font-size:14px;
 		text-align: left;
+		z-index:-1;
+		a{
+			color:$color_textGray;
+		}
+		.item{
+			display:block;
+			width: 100%;
+			padding:10px;
+			font-size:22px;
+			text-align: left;
+			@include box-sizing;
+		}
 	}
-}
 
-.menuItemAccount, .menuItemLogout {
-	display:block;
-	width: 100%;
-	color: #626262;
-}
+	.icon-setting, .icon-logout{
+		display:block;
+		padding-left:10px;
+		width: 100%;
+		&:before{
+			padding-right:10px;
+		}
+	}
 }

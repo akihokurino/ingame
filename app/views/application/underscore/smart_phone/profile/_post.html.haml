@@ -7,9 +7,9 @@
     %time.time
       %span.icon-time
       {{= created_at }}
-      {{ if (status.id == 1) { }}
   .gameInfoBox
     .statusBox
+      {{ if (status.id == 1) { }}
       %span.mood_ready 気になる
       {{ } else if (status.id == 2) { }}
       %span.mood_playing プレイ中
@@ -17,29 +17,25 @@
       %span.mood_played クリア済
       {{ } }}
     %h2.ttl
-      %a{href: "/games/{{= game.id}}#all"}
+      %a{href: "/games/{{= game.id }}#all"}
         {{= game.title }}
   %p.text
     {{= text }}
   .thumbnail
     {{ for (var i = 0; i < post_photos.length; i++) { }}
-    %img{src: "/post_photos/{{= post_photos[i].photo_path }}"}
+    %img.thumbnailImg{src: "/post_photos/{{= post_photos[i].photo_path }}"}
     {{ } }}
   .stateBox
-    %a.commentBtn.comment-btn{href: "#"}
-      %span.icon-comment
-      コメント
+    {{ if (current_user_id == user.id) { }}
+    %span.icon-option.delete-btn
+    {{ } }}
+    %a.commentBtn.comment-btn.icon-comment{href: "#"}
       %span.commentCnt
         {{= post_comments_count }}
     {{ if (!i_liked) { }}
-    %span.like.favBtn
-      %span.icon-like
+    %span.like.favBtn.icon-like
       {{= post_likes_count }}
     {{ } else { }}
-    %span.unlike.favBtn.on
-      %span.icon-like
+    %span.unlike.favBtn.on.icon-like
       {{= post_likes_count }}
-    {{ } }}
-    {{ if (current_user_id == user.id) { }}
-    %span.icon-option.delete-btn
     {{ } }}

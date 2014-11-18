@@ -2,7 +2,7 @@
 @import "_gameList.css.scss";
 
 .search-page {
-
+	padding-top:44px;
 	/*---   .tabs   ----------*/
 	.tabs {
 		width: 202px;
@@ -40,25 +40,29 @@
 	/*---   .search-form   ----------*/
 	.search-form-box{
 		padding-bottom:10px;
-		border-bottom:1px solid $color_border;
 	}
 	.search-form {
 		width: 250px;
-		height: 32px;
+		height: 27px;
 		margin:10px auto;
+		padding:3px 0 0 7px;
 		border: 1px solid $color_border;
 		@include border-radius(2px);
 		background: #ffffff;
 	}
+	.icon-search{
+		color:$color_textGray;
+		font-size:22px;
+		vertical-align: middle;
+	}
 	.game-title-input, .username-input {
-		padding-left: 45px;
+		margin-top:1px;
 		@include border-radius(2px);
 		@include box-sizing;
 		border: none;
-		@include img_set-SP4(100%, 32px, 10px, -424px);
 		@include appearance;
 		outline: 0;
-
+		vertical-align: middle;
 		&::-webkit-input-placeholder {
 			color: #8d8d8d;
 			font-size: 12px;

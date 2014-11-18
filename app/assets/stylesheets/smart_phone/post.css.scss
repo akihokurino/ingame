@@ -55,21 +55,23 @@ input[type="submit"],{
 	    }
 	}
 	.mainCnt {
+		padding-top:44px;
 		.addGame{
 			display:inline-block;
 			padding:10px;
 			width: 100%;
 			border-bottom: 1px solid $color_border;
 			box-sizing:border-box;
-			background-color: $main_color;
+			color:$main_color;
 			text-align: right;
 		}
 		.icon-plus {
 			color: #fff;
-			font-size: 18px;
-			span{
-				font-size:14px;
-				color:#fff;
+			font-size:12px;
+			color:$color_textGray;
+			&:before{
+				font-size:16px;
+				padding-top:2px;
 			}
 		}
 		.sortBox {
@@ -132,27 +134,42 @@ input[type="submit"],{
 			}
 		}
 		.gameList {
-			background: #ffffff;
-			border: solid 1px $color_border;
-
+			background-color: #fcfcfc;
+			padding:2px 1px;
 			.item {
-				padding: 9px 0;
-				border-top: 1px solid $color_border;
-				@include clearfix;
-
-				&:first-child {
-					border-top: none;
-				}
+				display: inline-block;
+				position: relative;
+				margin:1px;
+				padding:0;
+				width: 32.5%;
+				border: 1px solid $color_border;
+				@include border-radius(2px);
+				@include box-sizing;
+				background: #ffffff;
+			}
+			.articleWrap {
+				line-height: 1.0;
+			}
+			.game {
+				text-align: center;
 			}
 			.gameImg {
-				float: left;
-				margin: 0 10px 0 10px;
+				width: 100%;
+				@include box-sizing;
 			}
-			figcaption {
-				overflow: hidden;
-				padding-top: 4px;
-				color: $color_green;
-				font-size: 14px;
+			.gameTitle{
+				padding-bottom:4px;
+				font-size:10px;
+				color:$color_textGray;
+			}
+			.review {
+				padding: 5px 0;
+				color: #10b5a3;
+				font-size: 11px;
+				text-align: center;
+				&Ave {
+					margin-left: 3px;
+				}
 			}
 		}
 	}
@@ -350,16 +367,18 @@ input[type="submit"],{
 .post03 {
 	/*---   header   ----------*/
 	header {
-		position: relative;
-		margin-bottom: 15px;
+		position: fixed;
+		top:0;
+		left:0;
+		width: 100%;
+		height:44px;
 		padding: 12px 0 13px;
-		background-color: #fff;
-		color:$main_color;
+		background-color: rgba($main_color,.94);
+		color: #fff;
 		font-size: 14px;
 		text-align: center;
 		box-shadow:0 0 1px 1px rgba(0,0,0,0.2);
-
-
+		
 		.ttl {
 			width: auto;
 			font-size: 14px;
@@ -375,7 +394,7 @@ input[type="submit"],{
 	    .icon-allow {
 	      display: block;
 	      position: absolute;
-	      color: $main_color;
+	      color: #fff;
 	      font-size:26px;
 	      top: 8px;
 	      left: 10px;
@@ -391,10 +410,12 @@ input[type="submit"],{
 		}
 	}
 	.mainCnt {
+		padding-top:44px;
 		.searchWrap {
 			width: 300px;
-			height: 30px;
-			margin: 0 auto 15px;
+			height: 27px;
+			margin: 10px auto;
+			padding:3px 0 0 7px;
 			border: 1px solid $color_border;
 			@include border-radius(2px);
 			background: #ffffff;
@@ -478,6 +499,7 @@ input[type="submit"],{
 				width: 100%;
 				vertical-align: top;
 				.gameTitle{
+					color:$color_green;
 					font-size:16px;
 					line-height:1.5;
 				}
@@ -502,7 +524,7 @@ input[type="submit"],{
 						color:orange;
 					}
 					.starOff{
-						color:color_border;
+						color:$color_textGray;
 					}
 				}
 			}

@@ -43,10 +43,12 @@
 			padding-left:10px;
 			height:100%;
 			font-size:12px;
-			.name{
-				color:$color_textBlack;
+			.nameWrap{
 				font-weight:bold;
 				line-height:1.6;
+				.name{
+					color:$color_textBlack;
+				}
 			}
 			.icon-place{
 				display:inline-block;

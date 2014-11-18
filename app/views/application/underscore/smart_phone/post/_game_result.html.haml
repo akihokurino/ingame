@@ -8,12 +8,10 @@
         %ul.starList
           {{ diff = 5 - avg_rate }}
           {{ for (var i = 0; i < avg_rate; i++) { }}
-          %li.starOn
-            %span.icon-star
+          %li.starOn.icon-star
             {{ } }}
             {{ for (var i = 0; i < diff; i++) { }}
-          %li.starOff
-            %span.icon-star
+          %li.starOff.icon-star
             {{ } }}
     .gameModule
       %figure

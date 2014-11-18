@@ -1,11 +1,19 @@
 %script{type: "text/template", id: "log-template"}
   %a{href: "/posts/new#write/{{= game.id }}/{{= id }}"}
-    %figure
-      / %img.gameImg{src: "/game_photos/{{= game.photo_path }}", height: 32, alt: ""}
+    %figure.game
+      / %img.gameImg{src: "/game_photos/{{= game.photo_path }}"}
       {{ if (game.photo_url) { }}
-      %img.gameImg{src: "{{= game.photo_url }}", width: 100, alt: ""}
+      %img.gameImg{src: "{{= game.photo_url }}"}
       {{ } else { }}
-      %img.gameImg{src: "/game_photos/default.png", width: 100, alt: ""}
+      %img.gameImg{src: "/game_photos/default.png"}
       {{ } }}
-      %figcaption
+      .gameTitle
         {{= game.title }}
+      / %figcaption.review
+      /   {{ if (rate) { }}
+      /   ☆
+      /   %span.reviewAve {{= rate }}.0
+      /   {{ } else { }}
+      /   %span.reviewAve 評価なし
+      /   {{ } }}
+      /   %span.gameDeleteBtn.delete-btn ×
