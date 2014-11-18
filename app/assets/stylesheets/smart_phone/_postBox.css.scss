@@ -80,7 +80,7 @@
 		line-height: 1.2;
 		text-align: justify;
 		vertical-align: middle;
-		a{
+		a {
 			color: $color_green;
 		}
 	}
@@ -91,20 +91,22 @@
 		line-height: 1.6;
 	}
 	.thumbnail {
-		img {
+		&Img {
 			width: 100%;
 			margin-bottom: 5px;
 		}
 	}
 	.stateBox {
+		text-align: right;
 	}
 	.commentBtn {
 		display: inline-block;
-		padding: 10px 10px 10px 0;
+		padding: 10px;
 		color: #8d8e8e;
 		font-size: 13px;
 		text-decoration: none;
 		line-height: 1;
+
 		&.on {
 			background-position: 0 -534px;
 			color: $color_green;
@@ -124,9 +126,9 @@
 	}
 	.icon-option{
 		display: inline-block;
-		padding:10px;
+		padding: 10px;
 		color: #8d8e8e;
-		font-size:13px;
+		font-size: 13px;
 		line-height: 1;
 	}
 }

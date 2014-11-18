@@ -52,7 +52,8 @@ header {
 				position: absolute;
 				content: "";
 				width: 24px;
-				height: 3px;
+				height: 4px;
+				@include border-radius(4px);
 				background-color: #1649ED;
 				top: 0;
 				left: 0;
@@ -68,16 +69,16 @@ header {
 					-ms-transform: translate(0,18px) rotate(0deg);
 						transform: translate(0,18px) rotate(0deg);
 			}
-			.show:before{
-				-webkit-transform: translate(0,13px) rotate(0deg);
-					-ms-transform: translate(0,13px) rotate(0deg);
-						transform: translate(0,13px) rotate(-135deg);
-			}
-			.show:after{
-				-webkit-transform: translate(0,13px) rotate(0deg);
-					-ms-transform: translate(0,13px) rotate(0deg);
-						transform: translate(0,13px) rotate(135deg);
-			}
+		}
+		.show:before{
+			-webkit-transform: translate(0,13px) rotate(0deg);
+				-ms-transform: translate(0,13px) rotate(0deg);
+					transform: translate(0,13px) rotate(-135deg);
+		}
+		.show:after{
+			-webkit-transform: translate(0,13px) rotate(0deg);
+				-ms-transform: translate(0,13px) rotate(0deg);
+					transform: translate(0,13px) rotate(135deg);
 		}
 	}
 	&:after{

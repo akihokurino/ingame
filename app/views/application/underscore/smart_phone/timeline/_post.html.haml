@@ -12,8 +12,12 @@
     .statusBox
       %span.mood_ready 気になる
       {{ } else if (status.id == 2) { }}
+  .gameInfoBox
+    .statusBox
       %span.mood_playing プレイ中
       {{ } else if (status.id == 3) { }}
+  .gameInfoBox
+    .statusBox
       %span.mood_played クリア済
       {{ } }}
     %h2.ttl
@@ -23,12 +27,14 @@
     {{= text }}
   .thumbnail
     {{ for (var i = 0; i < post_photos.length; i++) { }}
-    %img{src: "/post_photos/{{= post_photos[i].photo_path }}"}
+    %img.thumbnailImg{src: "/post_photos/{{= post_photos[i].photo_path }}"}
     {{ } }}
   .stateBox
+    {{ if (current_user_id == user.id) { }}
+    %span.icon-option.delete-btn
+    {{ } }}
     %a.commentBtn.comment-btn{href: "#"}
       %span.icon-comment
-      コメント
       %span.commentCnt
         {{= post_comments_count }}
     {{ if (!i_liked) { }}
@@ -39,7 +45,4 @@
     %span.unlike.favBtn.on
       %span.icon-like
       {{= post_likes_count }}
-    {{ } }}
-    {{ if (current_user_id == user.id) { }}
-    %span.icon-option.delete-btn
     {{ } }}

@@ -184,25 +184,11 @@ input[type="submit"],{
 	      left: 10px;
 	      width: 40px;
 	    }
-		.addGameWrap {
-			display: block;
-			position: absolute;
-			top: 5px;
-			right: 10px;
-			padding: 6px 20px;
-			@include border-radius(2px);
-			background: $color_green;
-		}
-		.addGame {
-			color: #ffffff;
-			font-size: 14px;
-		}
 	}
 	.mainCnt {
 		.gameBox {
 			position: relative;
 			padding: 10px;
-			margin:10px 0;
 			border: solid 1px $color_border;
 			background-color: #fff;
 			@include clearfix;
@@ -215,8 +201,9 @@ input[type="submit"],{
 			overflow: hidden;
 			height: 18px;
 			padding-top: 5px;
-			color: $color_textGray;
-			font-size: 14px;
+			color: $color_textBlack;
+			font-weight:bold;
+			font-size: 16px;
 		}
 		.gameSelect {
 			display: block;
@@ -234,7 +221,6 @@ input[type="submit"],{
 		.textareaWrap {
 			clear: both;
 			position: relative;
-			border-top: 1px solid $color_border;
 			line-height: 0.7;
 		}
 		textarea {
@@ -266,27 +252,17 @@ input[type="submit"],{
 		.btnWrap {
 			position: relative;
 			padding: 10px;
-			background: #ffffff;
+			background-color: #fff;
 			border-bottom: solid 1px $color_border;
 		}
-		.btnText {
-			width: 19px;
-			height: 13px;
-			margin-left: 10px;
-			border: none;
-			@include box-sizing;
-			background: url(/assets/smart_phone/sns_set.png) no-repeat 0 0;
-			background-size: 24px 68px;
-			@include substitute;
-			cursor: pointer;
+		.icon-photo {
+			display:inline-block;
+			color:$color_border;
+			font-size:33px;
+			border: 1px solid $color_border;
+			@include border-radius(2px);
 		}
 		.addPhoto {
-			opacity: 0;
-			position: absolute;
-			top: 0;
-			left: 10px;
-			width: 20px;
-			height: 15px;
 			@include box-sizing;
 			cursor: pointer;
 			outline: 0;
@@ -305,7 +281,7 @@ input[type="submit"],{
 		}
 		.snsBtn {
 			font-size: 0;
-			background-color: #EEEEEE;
+			background-color: #fff;
 		}
 		.fb, .tw {
 			display: inline-block;
@@ -330,7 +306,6 @@ input[type="submit"],{
 			width: 20px;
 			height: 20px;
 			margin-right: 10px;
-			background: url(/assets/smart_phone/sns_set.png) no-repeat 0 -20px;
 			background-size: 24px 68px;
 		}
 		.twInner {
@@ -339,8 +314,20 @@ input[type="submit"],{
 			width: 24px;
 			height: 20px;
 			margin-right: 10px;
-			background: url(/assets/smart_phone/sns_set.png) no-repeat 0 -47px;
 			background-size: 24px 68px;
+		}
+		.addGameWrap {
+			display: block;
+			position: absolute;
+			top: 5px;
+			right: 10px;
+			padding: 6px 20px;
+			@include border-radius(2px);
+			background: $color_green;
+		}
+		.addGame {
+			color: #ffffff;
+			font-size: 14px;
 		}
 	}
 }

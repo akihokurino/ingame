@@ -6,27 +6,24 @@ $(function(){
     APP.UI = {};
   }
   APP.UI.menu = (function(){
-    var _menu = $('.menuWrap'),
+    var _menuWrap = $('.menuWrap'),
+        _menu = $('.menu'),
         _header = $('header'),
         _glFlg = true;
 
     //#graylayerの切り替え
-    function _toggleGlaylayer(){
+    function _toggleMenuIcon(){
       if(_glFlg){
-        $('body').append('<div id="graylayer">');
-        _header.append('<div id="headerGraylayer">')
-              .css({'background' : '#0d121a'});
+        _menu.addClass('show');
       }
       else{
-        $('#graylayer').remove();
-        $('#headerGraylayer').remove();
-        _header.css({'background' : '#393c3f'});
+        _menu.removeClass('show');
       }
     }
     //メニューのスライドアニメーション
     function _showMenu(){
-      _menu.on('click', function(){
-          _toggleGlaylayer();
+      _menuWrap.on('click', function(){
+          _toggleMenuIcon();
 
         $('.openMenuWrap').slideToggle(200);
         $('.openMenu').slideToggle(200, function(){
