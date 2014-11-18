@@ -374,7 +374,7 @@
         success: function (data) {
           if (data.result) {
             that.$el.find(".follow-wrap").html("");
-            that.$el.find(".follow-wrap").append(that.follow_btn_template);
+            that.$el.find(".follow-wrap").append(that.follow_btn_template({text: "フォロー"}));
           }
         },
         error: function () {
