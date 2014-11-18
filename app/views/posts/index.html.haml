@@ -7,7 +7,6 @@
 = render partial: "application/pc/default_header"
 
 %section.mainContent.timeline-page
-  %h1.mainTtl タイムライン
   .addPost
     %figure.profImgWrap
       = image_tag "/user_photos/#{@current_user[:photo_path]}", width: 44, height: 44, alt: "ユーザー画像", class: "profImg"
