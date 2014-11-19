@@ -5,4 +5,17 @@
     %p.userName
       %a{href: "/users/{{= id }}#logs"} {{= username }}
     %p.userProf {{= introduction }}
-    %p.followBtn フォロー
+    %ul.friendListWrap
+      {{ if (!isCurrentUser) { }}
+      {{ if (i_followed) { }}
+      %li.followBtnWrap
+        .followBtn.unFollow.unfollow フォローを外す
+      {{ } else { }}
+      %li.followBtnWrap
+        {{ if (i_followered) { }}
+        .followBtn.follow フォロー仕返す
+        {{ } else { }}
+        .followBtn.follow フォローする
+        {{ } }}
+      {{ } }}
+      {{ } }}
