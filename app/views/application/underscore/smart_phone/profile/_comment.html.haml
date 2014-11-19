@@ -1,0 +1,18 @@
+%script{type: "text/template", id: "comment-template"}
+  .commentImgWrap
+    %img{src: "/user_photos/{{= user.photo_path }}"}
+  .commentText
+    %a{href: "/users/{{= user.id }}"}
+      {{= user.username }}
+    {{ if (!i_liked) { }}
+    %span.like.favBtn
+      いいね！
+      {{= comment_likes_count }}
+    {{ } else { }}
+    %span.unlike.favBtn.on
+      いいね！を取り消す
+      {{= comment_likes_count }}
+    {{ } }}
+    %p
+      {{= text }} 
+    
