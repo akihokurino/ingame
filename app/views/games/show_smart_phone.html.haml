@@ -23,13 +23,19 @@
         .gameInfoWrap
           %ul.gameInfo
             %li.item.maker
-              = @game.maker
-            %li.item.data
-              = @game.device
+              メーカー
+              %p.infoInner
+                = @game.maker
+            / %li.item.data
+            /   = @game.device
             %li.item.hard
-              = @game.device
+              ハード
+              %p.infoInner
+                = @game.device
             %li.item.releaseDay
-              = @game.release_day
+              発売日
+              %p.infoInner
+                = @game.release_day
           %p.review
             %span.reviewInner.icon-star
             = @game.avg_rate
