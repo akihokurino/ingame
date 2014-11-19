@@ -5,7 +5,7 @@
     %p.userName
       %a{href: "/users/{{= id }}#logs"} {{= username }}
     %p.userProf {{= introduction }}
-    %ul.friendListWrap
+    %ul.btnList
       {{ if (!isCurrentUser) { }}
       {{ if (i_followed) { }}
       %li.followBtnWrap

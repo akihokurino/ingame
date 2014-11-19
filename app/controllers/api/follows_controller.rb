@@ -1,9 +1,13 @@
 class Api::FollowsController < ApplicationController
   def create
     params[:follow][:from_user_id] = @current_user[:id]
-    @result                        = Follow.create_unless_exists?(follow_params)
+    unless params[:follow][:from_user_id].to_i == params[:follow][:to_user_id].to_i
+      @result = Follow.create_unless_exists?(follow_params)
 
-    Notification.create(from_user_id: @current_user[:id], to_user_id: params[:follow][:to_user_id], notification_type_id: 1)
+      Notification.create(from_user_id: @current_user[:id], to_user_id: params[:follow][:to_user_id], notification_type_id: 1)
+    else
+      @result = false
+    end
   end
 
   def destroy
