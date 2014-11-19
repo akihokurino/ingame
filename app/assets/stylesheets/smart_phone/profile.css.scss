@@ -5,138 +5,85 @@
 
 /*---   .personalBox   ---------------------------*/
 .personalBoxWrap {
-	position: relative;
-	padding-top:44px;
+	margin-top:44px;
 	.bgOverlayer {
+		padding-top:10px;
 		width: 100%;
 		@include box-sizing;
-		@include gradient(rgba(20, 91, 57, 0.5), rgba(38, 18, 68, 0.5));
+		background-color: #292747;	
 	}
 	.profImgWrap {
-		float: left;
-		width: 54px;
-		height: 54px;
-		margin: 12px 12px 0;
-		border: 1px solid #e6e6e6;
+		width: 60px;
+		height: 60px;
+		margin:0 auto;
+		border: 2px solid #e6e6e6;
+		@include border-radius(2px);
 	}
 	.profImg {
 		width: 100%;
 	}
-	.followBtn {
-		position: absolute;
-		top: 14px;
-		right: 8px;
-		width: 74px;
-		height: 23px;
-		line-height: 23px;
+	.followBtn,.edit-btn{
+		padding:10px 20px;
 		@include border-radius(2px);
 		@include box-sizing;
-		color: #ffffff;
-		font-size: 10px;
-		text-align: center;
-	}
-	.personalEdit, .followBtn {
-		position: absolute;
-		top: 14px;
-		right: 8px;
-		height: 20px;
-		@include box-sizing;
+		background-color: $main_color;
 		color: #fff;
-		font-size: 12px;
-	}
-	.personalEdit {
-		width: 70px;
-		height: 28px;
-		border: 1px solid #ffffff;
-		@include border-radius(2px);
-		color:#ffffff;
-		line-height: 28px;
+		font-size: 14px;
 		text-align: center;
-	}
-	.followBtn {
-		width: 100px;
-		height: 28px;
-		border: none;
-		@include border-radius(2px);
-		background: $color_green;
-		line-height: 28px;
+		line-height: 42px;
 	}
 }
 .personalBox {
 	z-index: 5;
 	@include box-sizing;
 	color: #ffffff;
+	text-align:center;
 
 	.name {
-		padding-top: 8px;
-		font-size: 14px;
+		font-size: 16px;
+		line-height:32px;
 	}
 	.place {
-		font-size: 12px;
-		opacity: .8;
-	}
-	.town {
-		&:after {
-			content: "";
-		}
-	}
-	.country {
-		margin-left: -5px;
+		font-size: 14px;
 	}
 	.text {
-		clear: both;
-		padding: 19px 12px 0;
+		padding:10px;
 		font-size: 12px;
-		text-align: left;
 	}
 	.countBox {
-		width: 100%;
-		margin: 20px auto 0;
-		background: rgba(0, 0, 0, 0.5);
-		@include clearfix;
-
-		.item {
-			float: left;
-			position: relative;
-			padding:2px 0;
-			width: 25%;
+			display:table;
 			@include box-sizing;
-
+			width: 100%;
+			padding:10px 5px 5px 5px;
+		.item {
+			display:table-cell;
+			@include box-sizing;
+			text-align:center;
 			&.current {
-				background: #fff;
-
-				.followNum, .followerNum, .gameNum, .postNum, .count {
-					color: #333;
-				}
-				.count {
-					@include font-weight(1.5px, #333);
-				}
-				.count:after {
-					position: absolute;
-					bottom: 0;
-					left: 50%;
-					width: 60px;
-					margin-left: -30px;
-					content: "";
-				}
-			}
-			&:last-child {
-				border: none;
+				color:$color_green;
 			}
 		}
 		.followNum, .followerNum, .gameNum, .postNum {
-			display: block;
 			@include box-sizing;
 			color: #ffffff;
-			font-size: 10px;
-			text-align: center;
+			font-size: 12px;
 		}
-		.count {
-			display: block;
-			color: $color_green;
-			font-size: 18px;
-			font-weight:bold;
-		}
+	}
+}
+.myGameBox{
+	padding:10px;
+	background-color: $main_color;
+	color:#fff;
+	font-size:12px;
+	text-align:center;
+	.gameNum{
+		color:#fff;
+	}
+	.myGameCount{
+		color:#fff;
+		font-size:42px;
+		@include font-weight(bold,#fff);
+		text-shadow:1px 1px 0 #000;
 	}
 }
 

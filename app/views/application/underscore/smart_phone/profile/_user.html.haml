@@ -2,10 +2,10 @@
   %ul.friendListWrap
     {{ if (!isCurrentUser) { }}
     {{ if (i_followed) { }}
-    %li.item
+    %li.followBtnWrap
       .followBtn.unFollow フォローを外す
     {{ } else { }}
-    %li.item
+    %li.followBtnWrap
       {{ if (i_followered) { }}
       .followBtn.follow フォロー仕返す
       {{ } else { }}

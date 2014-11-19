@@ -5,19 +5,19 @@
 	margin: 0 auto;
 	padding:0 10px;
 	@include clearfix;
+	.item{
+		padding:10px 0;
+		border-bottom: 1px solid $color_border;
+	}
 	ul.friendListWrap{
 		background-color: #fff;
-		.item{
-			margin:10px 0;
-			border-bottom: 1px solid $color_border;
-		}
 		img{
 			@include border-radius(2px);
 		}
 		.followBtn{
 			float:right;
 			display:inline-block;
-			margin-top:15px;
+			margin-top:4px;
 			padding:0 5px;
 			border: 1px solid $color_green;
 			@include border-radius(2px);

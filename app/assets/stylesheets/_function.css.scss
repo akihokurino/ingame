@@ -72,7 +72,8 @@ $support-opera  : true;
   box-shadow: $side $top $shade $spread $color;
 }
 @mixin font-weight($size, $color) {
-    // -webkit-text-stroke: $size $color;
+    font-weight:$size;
+    -webkit-text-stroke: $size $color;
 }
 @mixin appearance {
     -moz-appearance: none;
