@@ -8,7 +8,7 @@
   %header
     %h1.ttl ユーザー編集
     %span.cancelWrap
-    = link_to "戻る", "/users/#{@current_user[:id]}#logs", class: "cancel"
+    = link_to "", "/users/#{@current_user[:id]}#logs", class: "icon-allow"
   = form_for @user do |f|
     = f.hidden_field :clip_x, id: "clip-x"
     = f.hidden_field :clip_y, id: "clip-y"
@@ -19,13 +19,13 @@
       /= f.file_field :photo_path, id: "upload-btn"
       = f.file_field :tmp_photo_path, id: "upload-btn"
     .username-input
-      %span 名前
+      %span.icon-user
       = f.text_field :username
     .place-input
-      %span 場所
+      %span.icon-place
       = f.text_field :place
     .introduction-input
-      %span 紹介
+      %span.icon-info
       = f.text_field :introduction
     = f.submit "変更", class: "edit"
 
