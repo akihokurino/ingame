@@ -9,12 +9,12 @@ html {
 /*---   .mainCnt   ---------------------------*/
 .mainCnt {
 	text-align: left;
-	padding: 5px;
+	padding-top: 44px;
+	box-sizing:border-box;
 
 	.commentWrap {
-		display:table;
-		width: 100%;
 		padding: 6px 0;
+		margin:5px;
 		@include border-radius(2px);
 		@include box-sizing;
 		border: 1px solid $color_border;
@@ -22,7 +22,7 @@ html {
 		.icon-post{
 			display:table-cell;
 			padding-left:10px;
-			color:$color_green;
+			color:$main_color;
 			font-size:32px;
 		}
 		.comment {

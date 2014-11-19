@@ -2,19 +2,24 @@
 
 /*---   header   ---------------------------*/
 header {
-	position: relative;
-	z-index: 1;
+	position:fixed;
+	top:0;
+	left:0;
 	width: 100%;
+	z-index: 1;
 	@include box-sizing;
-
 	.headerNav{
 	padding:5px;
-	font-size:24px;
-	background-color: #fff;
-	box-shadow:0 0 3px 1px rgba(0,0,0,0.4);
+	font-size:22px;
+	background-color: rgba($main_color,.94);
+	box-shadow:0 0 1px 1px rgba(0,0,0,0.2);
 	a{
-		color:#1649ED;
+		color:#fff;
 		text-decoration:none;
+	}
+	.title{
+		color:#fff;
+		text-align: center;
 	}
 	ul{
 		display:table;
@@ -54,10 +59,12 @@ header {
 				width: 24px;
 				height: 4px;
 				@include border-radius(4px);
-				background-color: #1649ED;
+				background-color: #fff;
 				top: 0;
 				left: 0;
-				transition:transform 0.8s ease;
+				-webkit-transition:0.5s ease;
+					-ms-transition:0.5s ease;
+						transition:0.5s ease;
 			}
 			&:before{
 				-webkit-transform: translate(0,6px) rotate(0deg);
@@ -71,13 +78,13 @@ header {
 			}
 		}
 		.show:before{
-			-webkit-transform: translate(0,13px) rotate(0deg);
-				-ms-transform: translate(0,13px) rotate(0deg);
+			-webkit-transform: translate(0,13px) rotate(-135deg);
+				-ms-transform: translate(0,13px) rotate(-135deg);
 					transform: translate(0,13px) rotate(-135deg);
 		}
 		.show:after{
-			-webkit-transform: translate(0,13px) rotate(0deg);
-				-ms-transform: translate(0,13px) rotate(0deg);
+			-webkit-transform: translate(0,13px) rotate(135deg);
+				-ms-transform: translate(0,13px) rotate(135deg);
 					transform: translate(0,13px) rotate(135deg);
 		}
 	}
@@ -87,35 +94,43 @@ header {
 		clear:both;
 	}
 
-}
-
-.openMenuWrap {
-	display: none;
-}
-.openMenu {
-	position: absolute;
-	display: none;
-	width: 100%;
-	top:44px;
-	left: 0;
-	padding: 13px;
-	@include box-sizing;
-	@include box-shadow(0, 0, 5px, 0, rgba(0, 0, 0, 0.75));
-	background: #ffffff;
-	color: $color_textGray;
-	font-size:14px;
-	text-align: left;
-	z-index:-1;
-	a{
-		color:#000;
 	}
-	.item{
-		display:inline-block;
-		text-align: center;
-	}
-}
 
-.menuItemAccount, .menuItemLogout {
-	color: #626262;
-}
+	.openMenuWrap {
+		display: none;
+	}
+	.openMenu {
+		position: absolute;
+		display: none;
+		width: 100%;
+		top:44px;
+		left: 0;
+		@include box-sizing;
+		@include box-shadow(0, 0, 5px, 0, rgba(0, 0, 0, 0.75));
+		background: #ffffff;
+		color: $color_textGray;
+		font-size:14px;
+		text-align: left;
+		z-index:-1;
+		a{
+			color:$color_textGray;
+		}
+		.item{
+			display:block;
+			width: 100%;
+			padding:10px;
+			font-size:22px;
+			text-align: left;
+			@include box-sizing;
+		}
+	}
+
+	.icon-setting, .icon-logout{
+		display:block;
+		padding-left:10px;
+		width: 100%;
+		&:before{
+			padding-right:10px;
+		}
+	}
 }

@@ -1,12 +1,11 @@
 %script{type: "text/template", id: "select-template"}
   .post01
     %header
-      %h1.ttl ゲームを選択
       = link_to "", posts_path, class: "icon-allow"
+      %h1.ttl ゲームを選択
     .select-page.mainCnt
-      %div.addGame
-        %a.icon-plus{href: "/posts/new#add"}
-          %span ゲームを追加する
+      %a.addGame{href: "/posts/new#add"}
+        %span.icon-plus マイゲームに新しいゲームを追加する
       %ul.sortBox
         %li.item.current.ready-li
           %span.ready 気になる

@@ -15,9 +15,8 @@
         %h1.name
           = @user.username
         - if @user.place
-          %p.place
-            %span.town
-              = @user.place
+          %p.place.icon-place
+            = @user.place
         %p.text
           = @user.introduction
         - unless current_user?(@user)
@@ -29,11 +28,11 @@
         - else
           = link_to "編集", edit_user_path(@user), class: "edit-btn personalEdit"
         %ul.countBox.count-box
-          %li.item.logs-li.current
-            %a.gameNum{href: "/users/#{@user[:id]}#logs"}
-              %span.count
-                = @user.logs.count
-              ライブラリ
+          / %li.item.logs-li.current
+          /   %a.gameNum{href: "/users/#{@user[:id]}#logs"}
+          /     %span.count
+          /       = @user.logs.count
+          /     ライブラリ
           %li.item.posts-li
             %a.postNum{href: "/users/#{@user[:id]}#posts"}
               %span.count
@@ -49,6 +48,12 @@
               %span.count
                 = @user.follower_num
               フォロワー
+      .myGameBox
+        %a.gameNum{href: "/users/#{@user[:id]}#logs"}
+          マイゲーム
+          %p.myGameCount
+            = @user.logs.count
+            
   .profile-timeline
 
   = render partial: "application/smart_phone/comments_modal"

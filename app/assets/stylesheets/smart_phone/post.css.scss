@@ -19,12 +19,18 @@ input[type="submit"],{
 .post01 {
 	/*---   header   ----------*/
 	header {
-		position: relative;
+		position: fixed;
+		top:0;
+		left:0;
+		width: 100%;
+		height:44px;
 		padding: 12px 0 13px;
-		background: $color_textBlack;
-		color: #ffffff;
+		background-color: rgba($main_color,.94);
+		color: #fff;
 		font-size: 14px;
 		text-align: center;
+		box-shadow:0 0 1px 1px rgba(0,0,0,0.2);
+
 
 		.ttl {
 			width: auto;
@@ -41,28 +47,32 @@ input[type="submit"],{
 	    .icon-allow {
 	      display: block;
 	      position: absolute;
-	      color: #ffffff;
-	      font-size:30px;
-	      top: 8px;
+	      color: #fff;
+	      font-size:20px;
+	      top: 10px;
 	      left: 10px;
 	      width: 40px;
 	    }
 	}
 	.mainCnt {
+		padding-top:44px;
 		.addGame{
 			display:inline-block;
 			padding:10px;
 			width: 100%;
 			border-bottom: 1px solid $color_border;
 			box-sizing:border-box;
+			color:$main_color;
 			text-align: right;
 		}
 		.icon-plus {
-			color: $color_green;
-			font-size: 18px;
-			span{
-				font-size:14px;
-				color:$color-textGray;
+			color: #fff;
+			font-size:12px;
+			color:$color_textGray;
+			&:before{
+				font-size:16px;
+				padding-top:2px;
+				vertical-align: -2px;
 			}
 		}
 		.sortBox {
@@ -125,27 +135,42 @@ input[type="submit"],{
 			}
 		}
 		.gameList {
-			background: #ffffff;
-			border: solid 1px $color_border;
-
+			background-color: #fcfcfc;
+			padding:2px 1px;
 			.item {
-				padding: 9px 0;
-				border-top: 1px solid $color_border;
-				@include clearfix;
-
-				&:first-child {
-					border-top: none;
-				}
+				display: inline-block;
+				position: relative;
+				margin:1px;
+				padding:0;
+				width: 32.5%;
+				border: 1px solid $color_border;
+				@include border-radius(2px);
+				@include box-sizing;
+				background: #ffffff;
+			}
+			.articleWrap {
+				line-height: 1.0;
+			}
+			.game {
+				text-align: center;
 			}
 			.gameImg {
-				float: left;
-				margin: 0 10px 0 10px;
+				width: 100%;
+				@include box-sizing;
 			}
-			figcaption {
-				overflow: hidden;
-				padding-top: 4px;
-				color: $color_green;
-				font-size: 14px;
+			.gameTitle{
+				padding-bottom:4px;
+				font-size:10px;
+				color:$color_textGray;
+			}
+			.review {
+				padding: 5px 0;
+				color: #10b5a3;
+				font-size: 11px;
+				text-align: center;
+				&Ave {
+					margin-left: 3px;
+				}
 			}
 		}
 	}
@@ -156,13 +181,17 @@ input[type="submit"],{
 	background-color: #eee;
 	/*---   header   ----------*/
 	header {
-		position: relative;
+		position: fixed;
+		top:0;
+		left:0;
+		width: 100%;
+		height:44px;
 		padding: 12px 0 13px;
-		background-color: $color_textBlack;
-		color: #ffffff;
+		background-color: rgba($main_color,.94);
+		color: #fff;
 		font-size: 14px;
 		text-align: center;
-
+		box-shadow:0 0 1px 1px rgba(0,0,0,0.2);
 		.ttl {
 			width: auto;
 			font-size: 14px;
@@ -178,17 +207,17 @@ input[type="submit"],{
 	    .icon-allow {
 	      display: block;
 	      position: absolute;
-	      color: #ffffff;
-	      font-size:30px;
-	      top: 8px;
+	      color: #fff;
+	      font-size:20px;
+	      top: 10px;
 	      left: 10px;
 	      width: 40px;
 	    }
 	}
 	.mainCnt {
+		padding-top:44px;
 		.gameBox {
 			position: relative;
-			padding: 10px;
 			border: solid 1px $color_border;
 			background-color: #fff;
 			@include clearfix;
@@ -198,25 +227,9 @@ input[type="submit"],{
 			margin-right: 7px;
 		}
 		.gameTtl {
-			overflow: hidden;
-			height: 18px;
-			padding-top: 5px;
 			color: $color_textBlack;
-			font-weight:bold;
 			font-size: 16px;
-		}
-		.gameSelect {
-			display: block;
-			position: absolute;
-			top: 50%;
-			right: 5px;
-			margin-top: -13px;
-			padding: 5px 10px;
-			@include border-radius(18px);
-			background: #10b5a3;
-			color: #ffffff;
-			font-size: 7px;
-			text-align: center;
+			vertical-align: middle;
 		}
 		.textareaWrap {
 			clear: both;
@@ -236,37 +249,6 @@ input[type="submit"],{
 			line-height: 1.3;
 			-webkit-appearance:none;
 		}
-		.btn {
-			position: absolute;
-			top: 274px;
-			width: 100%;
-			padding: 26px 0;
-			border: none;
-			background: #949292;
-			color: #ffffff;
-			font-size: 18px;
-			text-align: center;
-			@include appearance;
-			cursor: pointer;
-		}
-		.btnWrap {
-			position: relative;
-			padding: 10px;
-			background-color: #fff;
-			border-bottom: solid 1px $color_border;
-		}
-		.icon-photo {
-			display:inline-block;
-			color:$color_border;
-			font-size:33px;
-			border: 1px solid $color_border;
-			@include border-radius(2px);
-		}
-		.addPhoto {
-			@include box-sizing;
-			cursor: pointer;
-			outline: 0;
-		}
 		#thumbnail {
 			background: #EEEEEE;
 			text-align: center;
@@ -279,14 +261,45 @@ input[type="submit"],{
 
 			}
 		}
-		.snsBtn {
+		.btnWrap{
+			@include clearfix;
+			background-color: #fff;
+		}
+		.subBtn {
+			float:right;
+			padding:5px;
 			font-size: 0;
 			background-color: #fff;
 		}
+		.photoBtnWrap{
+			display:inline-block;
+			position:relative;
+			.icon-photo {
+				display:inline-block;
+				padding:2px;
+				border: 1px solid $color_border;
+				@include border-radius(2px);
+				color:$color_border;
+				font-size:32px;
+				vertical-align: middle;
+			}
+			.addPhoto {
+				position:absolute;
+				@include box-sizing;
+				cursor: pointer;
+				width: 40px;
+				height: 40px;
+				top: 0;
+				left: 0;
+				outline: 0;
+				opacity:0;
+			}
+		}
 		.fb, .tw {
 			display: inline-block;
-			width: 50%;
+			width: 160px;
 			@include box-sizing;
+			vertical-align: middle;
 		}
 		.fbBtn, .twBtn {
 			display: block;
@@ -316,20 +329,21 @@ input[type="submit"],{
 			margin-right: 10px;
 			background-size: 24px 68px;
 		}
-		.addGameWrap {
-			display: block;
-			position: absolute;
-			top: 5px;
-			right: 10px;
-			padding: 6px 20px;
-			@include border-radius(2px);
-			background: $color_green;
-		}
-		.addGame {
-			color: #ffffff;
-			font-size: 14px;
-		}
 	}
+	.addGame {
+		display:block;
+		padding:10px;
+		background-color: $main_color;
+		color: #ffffff;
+		font-size: 16px;
+		font-weight:bold;
+		text-align: center;
+	}
+	.icon-post{
+		color:#fff;
+		font-size:24x;
+	}
+	
 }
 
 
@@ -337,15 +351,18 @@ input[type="submit"],{
 .post03 {
 	/*---   header   ----------*/
 	header {
-		position: relative;
-		margin-bottom: 15px;
+		position: fixed;
+		top:0;
+		left:0;
+		width: 100%;
+		height:44px;
 		padding: 12px 0 13px;
-		border-bottom: 1px solid #a0a0a0;
-		background-color: $color_textBlack;
-		color:#fff;
+		background-color: rgba($main_color,.94);
+		color: #fff;
 		font-size: 14px;
 		text-align: center;
-
+		box-shadow:0 0 1px 1px rgba(0,0,0,0.2);
+		
 		.ttl {
 			width: auto;
 			font-size: 14px;
@@ -361,9 +378,9 @@ input[type="submit"],{
 	    .icon-allow {
 	      display: block;
 	      position: absolute;
-	      color: #ffffff;
-	      font-size:30px;
-	      top: 8px;
+	      color: #fff;
+	      font-size:20px;
+	      top: 10px;
 	      left: 10px;
 	      width: 40px;
 	    }
@@ -377,28 +394,32 @@ input[type="submit"],{
 		}
 	}
 	.mainCnt {
+		padding-top:44px;
 		.searchWrap {
 			width: 300px;
-			height: 30px;
-			margin: 0 auto 15px;
+			height: 27px;
+			margin: 10px;
 			border: 1px solid $color_border;
 			@include border-radius(2px);
 			background: #ffffff;
-
+			.icon-search{
+				color:$color_textGray;
+				font-size:18px;
+				vertical-align:-6px;
+			}
 			input {
-				padding-left: 45px;
-				@include border-radius(2px);
-				@include box-sizing;
-				border: none;
-				@include img_set-SP4(100%, 32px, 10px, -426px);
+				position:relative;
 				@include appearance;
-				outline: 0;
-
-				&::-webkit-input-placeholder {
-					color: #8d8d8d;
-					font-size: 12px;
-					line-height: 24px;
-				}
+				@include box-sizing;
+				width: 100%;
+				height: 40px;
+				padding: 0 8px;
+				border: 1px solid $color_border;
+				@include border-radius(2px);
+				background: #fff;
+				color: #666;
+				font-size: 13px;
+				line-height: 40px;
 			}
 		}
 		.playing, .ready, .played {
@@ -447,68 +468,71 @@ input[type="submit"],{
 			background: #ffffff;
 
 			.item {
-				position: relative;
-				padding: 9px 0;
-				border-top: 1px solid $color_border;
-				@include clearfix;
+				display:table;
+				width: 100%;
+				padding:10px;
+				box-sizing: border-box;
+				border-bottom: 1px solid $color_border;
 			}
-			.gameImg {
-				float: left;
-				margin: 0 12px 0 11px;
+			article{
+				width: 100%;
 			}
-			figcaption {
-				float: left;
-				width: 50%;
-				color: $color_green;
-				font-size: 12px;
-			}
-			.mood {
-				display: block;
-				position: absolute;
-				top: 50%;
-				padding:0 0 4px 4px;
-				right: 13px;
-				width: 86px;
-				margin-top: -14px;
-				padding-top: 6px;
-				border: none;
-				@include border-radius(2px);
-				@include box-sizing;
-				background: $color_green;
-				font-size: 12px;
-
-				&:after {
-					content:"";
-					display: block;
-					width: 6px;
-					height: 6px;
-					border-right: solid 3px;
-					border-bottom: solid 3px;
-					border-color:#fff;
-					top:9px;
-					-webkit-transform: rotate(45deg);
-					   -moz-transform: rotate(45deg);
-					    -ms-transform: rotate(45deg);
-					     -o-transform: rotate(45deg);
-					        transform: rotate(45deg);
-					position: absolute;
-					right: 6px;
-					z-index: 5;
-					content: "";
+			.textArea{
+				display:table-cell;
+				padding-right:10px;
+				width: 100%;
+				vertical-align: top;
+				.gameTitle{
+					color:$color_textBlack;
+					font-size:16px;
+					line-height:1.5;
+				}
+				.device{
+					padding:2px;
+					width: 100%;
+					border:1px solid #A8A8A8;
+					@include border-radius(2px);
+					color: #A8A8A8;
+					font-size:12px;
+					line-height:2.5;
+				}
+				.starList{
+					display:table;
+					font-size:18px;
+					line-height:2;
+					li{
+						display:table-cell;
+						padding-right:4px;
+					}
+					.starOn{
+						color:orange;
+					}
+					.starOff{
+						color:$color_textGray;
+					}
 				}
 			}
-			select {
-				position: relative;
-				width: 80px;
-				height: 20px;
-				border: none;
-				@include border-radius(2px);
+			.gameModule{
+				display:table-cell;
+				width: 100px;
+				margin-left:auto;
 				@include box-sizing;
-				background: $color_green;
-				color: #fff;
-				outline: 0;
-				-webkit-appearance:none;
-				border-radius:0;
+				a{
+					display:inline-block;
+				}
+				.status{
+					@include appearance;
+					display:inline-block;
+					width: 100px;
+					padding: 4px 0 4px 26px;
+					border: 1px solid $color_green;
+					@include border-radius(2px);
+					background-color: #fff;
+					color:$color_green;
+					font-size:12px;
+					text-align: center;
+					line-height:24px;
+				}
 			}
 		}
 	}
