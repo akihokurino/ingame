@@ -52,7 +52,7 @@
 	.statusBox{
 		width: 55px;
 	}
-	.mood_ready, {
+	.moodReady, {
 		display:table-cell;
 		padding: 0 6px;
 		@include border-radius(2px);
@@ -62,13 +62,13 @@
 		color:$color_yellow;
 		border: 1px solid $color_yellow;
 	}
-	.mood_playing {
-		@extend .mood_ready;
+	.moodPlaying {
+		@extend .moodReady;
 		color:$color_red;
 		border: 1px solid $color_red;
 	}
-	.mood_played {
-		@extend .mood_ready;
+	.moodPlayed {
+		@extend .moodReady;
 		color:$color_blue;
 		border: 1px solid $color_blue;
 	}
