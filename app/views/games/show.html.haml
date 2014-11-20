@@ -4,7 +4,6 @@
 = content_for :last do
   = javascript_include_tag "main/pc/game"
 
-
 = render partial: "application/pc/default_header"
 
 %section.mainContent.game-page{"data-gameid" => @game[:id]}
@@ -13,10 +12,7 @@
       %h1.gameTtl
         = @game.title
       %figure.gameImgWrap
-        /
-          - if !@game.amazon_url.nil?
-            %a.gameInner{href: @game.amazon_url}
-              = image_tag "/game_photos/#{@game.photo_path}", width: 195, class: "gameImg", alt: "ゲームパッケージ画像"
+        /= image_tag "/game_photos/#{@game.photo_path}", width: 195, class: "gameImg", alt: "ゲームパッケージ画像"
         = image_tag @game.photo_url, width: 195, class: "gameImg", alt: "ゲームパッケージ画像"
       .gameInfoBox
         %ul.gameInfoList
