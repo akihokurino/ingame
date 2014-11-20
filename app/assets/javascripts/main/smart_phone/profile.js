@@ -23,9 +23,9 @@
   var LogListView = Backbone.View.extend({
     el: ".profile-page",
     events: {
-      "click .playing":       "setPlaying",
-      "click .ready":         "setAttention",
-      "click .played":        "setArchive",
+      "click .playing-tab":   "setPlaying",
+      "click .ready-tab":     "setAttention",
+      "click .played-tab":    "setArchive",
       "keypress .search-log": "search"
     },
     template: _.template($("#log-list-template").html()),
@@ -75,31 +75,31 @@
     setAttention: function () {
       this.logs_view.collection.reset();
       this.logs_view.removeLogs();
-      this.$el.find("ul.sortBox li").removeClass("current");
+      this.$el.find("ul.sort-box li").removeClass("current");
       for (var i = 0; i < this.attentions.length; i++) {
         this.logs_view.collection.add(this.attentions[i]);
       }
-      this.$el.find("ul.sortBox li.ready-li").addClass("current");
+      this.$el.find("ul.sort-box li.ready-li").addClass("current");
       this.current_tab = 1
     },
     setPlaying: function () {
       this.logs_view.collection.reset();
       this.logs_view.removeLogs();
-      this.$el.find("ul.sortBox li").removeClass("current");
+      this.$el.find("ul.sort-box li").removeClass("current");
       for (var i = 0; i < this.playings.length; i++) {
         this.logs_view.collection.add(this.playings[i]);
       }
-      this.$el.find("ul.sortBox li.playing-li").addClass("current");
+      this.$el.find("ul.sort-box li.playing-li").addClass("current");
       this.current_tab = 2
     },
     setArchive: function () {
       this.logs_view.collection.reset();
       this.logs_view.removeLogs();
-      this.$el.find("ul.sortBox li").removeClass("current");
+      this.$el.find("ul.sort-box li").removeClass("current");
       for (var i = 0; i < this.archives.length; i++) {
         this.logs_view.collection.add(this.archives[i]);
       }
-      this.$el.find("ul.sortBox li.played-li").addClass("current");
+      this.$el.find("ul.sort-box li.played-li").addClass("current");
       this.current_tab = 3
     },
     search: function (e) {
@@ -108,7 +108,7 @@
 
         this.logs_view.collection.reset();
         this.logs_view.removeLogs();
-        this.$el.find("ul.sortBox li").removeClass("current");
+        this.$el.find("ul.sort-box li").removeClass("current");
 
         var keyword = new RegExp(this.search_log_title.val(), "i");
 
