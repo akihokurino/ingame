@@ -13,8 +13,8 @@
   var FirstView = Backbone.View.extend({
     el: $(".setting-page"),
     events: {
-      "keypress .search": "search",
-      "click .next-page": "next"
+      "keypress .search-title-input": "search",
+      "click .next-page":             "next"
     },
     template: _.template($("#first-template").html()),
     initialize: function () {
