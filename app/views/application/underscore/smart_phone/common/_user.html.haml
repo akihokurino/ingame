@@ -1,15 +1,15 @@
 %script{type: "text/template", id: "user-template"}
-  %ul.friendListWrap.btnList
+  %ul.friendListWrap.btn-list
     {{ if (!isCurrentUser) { }}
     {{ if (i_followed) { }}
     %li.followBtnWrap
-      .followBtn.unFollow.unfollow フォローを外す
+      .followBtn.unFollow.unfollow-btn フォローを外す
     {{ } else { }}
     %li.followBtnWrap
       {{ if (i_followered) { }}
-      .followBtn.follow フォロー仕返す
+      .followBtn.follow-btn フォロー仕返す
       {{ } else { }}
-      .followBtn.follow フォローする
+      .followBtn.follow-btn フォローする
       {{ } }}
     {{ } }}
     {{ } }}
