@@ -26,7 +26,7 @@
       this.post_collection    = new Posts();
       this.posts_view         = new PostsView({collection: this.post_collection});
       this.log_collection     = new Logs();
-      this.logs_view          = new LogsView({el: ".log-list", collection: this.log_collection, attributes: {type: "select"}});
+      this.logs_view          = new LogsView({el: ".select-log-list", collection: this.log_collection, attributes: {type: "select"}});
 
       this.post_input         = this.$(".post-input");
       this.select_log_id      = null;
@@ -159,16 +159,16 @@
       }
     },
     toggleSelectModal: function () {
-      if ($(".selectModal").css("display") == "none") {
-        $(".selectModal").css("display", "block");
+      if ($(".select-log-list").css("display") == "none") {
+        $(".select-log-list").css("display", "block");
       } else {
-        $(".selectModal").css("display", "none");
+        $(".select-log-list").css("display", "none");
       }
     },
     selectLog: function (model) {
       var template        = _.template($("#game-thumbnail-template").html());
       template            = template(model.toJSON());
-      this.$("ul.thumbnailList").html("").html(template);
+      this.$("ul.thumbnail-list").html("").html(template);
       this.toggleSelectModal();
       this.select_log_id  = model.id;
       this.select_game_id = model.get("game").id;
@@ -204,7 +204,7 @@
             post_socket.send(data);
 
             that.post_input.val("");
-            that.$("ul.thumbnailList").html("");
+            that.$("ul.thumbnail-list").html("");
             that.select_log_id  = null;
             that.select_game_id = null;
             that.upload.files   = [];　　
