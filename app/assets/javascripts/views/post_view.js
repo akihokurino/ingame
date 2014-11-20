@@ -3,8 +3,8 @@ var PostView = Backbone.View.extend({
   className: "postBox",
   events: {
     "click .delete":          "destroy",
-    "click .like":            "like",
-    "click .unlike":          "unlike",
+    "click .like-btn":        "like",
+    "click .unlike-btn":      "unlike",
     "click .comment-btn":     "showComment",
     "keydown .comment-input": "comment",
     "click .comment-like":    "commentLike",

@@ -2,7 +2,7 @@ var UserResultView = Backbone.View.extend({
   tagName: "li",
   className: "item",
   events: {
-    "click .follow": "follow"
+    "click .follow-btn": "follow"
   },
   template: _.template($("#user-result-template").html()),
   render: function () {

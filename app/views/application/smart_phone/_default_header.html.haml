@@ -10,10 +10,10 @@
         = link_to "", "/users/#{@current_user[:id]}/search_game_or_user#game", class: "icon-search"
       %li.profile
         = link_to "", "/users/#{@current_user[:id]}#logs", class: "icon-user"
-      %li.notify
+      %li.notify.my-notify
         %a{href: ""}
           %span.icon-bell
-            %span.icon-bellNum
+            %span.icon-bellNum.notify-num
       %li.menuWrap
         %a.menu
   = render partial: "application/smart_phone/menu"

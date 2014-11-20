@@ -13,7 +13,7 @@
   var GameSearchView = Backbone.View.extend({
     el: $(".search-page"),
     events: {
-      "keypress .search": "search"
+      "keypress .game-title-input": "search"
     },
     template: _.template($("#game-search-template").html()),
     initialize: function () {
@@ -95,7 +95,7 @@
   var UserSearchView = Backbone.View.extend({
     el: $(".search-page"),
     events: {
-      "keypress .search": "search"
+      "keypress .username-input": "search"
     },
     template: _.template($("#user-search-template").html()),
     initialize: function () {

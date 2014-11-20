@@ -8,7 +8,7 @@
   var HeaderView = Backbone.View.extend({
     el: $("header"),
     events: {
-      "click .notify":                 "showNotifications",
+      "click .my-notify":              "showNotifications",
       "click .menu-btn":               "toggleMenu",
       "keypress .header-search-input": "search"
     },
@@ -27,10 +27,10 @@
 
       notification_socket.callback = function (data) {
         var new_notification_count;
-        if (that.$el.find(".notifyNum").css("display") == "none") {
+        if (that.$el.find(".notify-num").css("display") == "none") {
           new_notification_count = 1;
         } else {
-          new_notification_count = parseInt(that.$el.find(".notifyNum").html()) + 1;
+          new_notification_count = parseInt(that.$el.find(".notify-num").html()) + 1;
         }
 
         that.$el.find(".notifyNum").css("display", "block").html(new_notification_count);
@@ -43,10 +43,10 @@
         url: "/api/notifications/count",
         success: function (data) {
           if (data.count > 0) {
-            that.$el.find(".notifyNum").css("display", "block");
-            that.$el.find(".notifyNum").html(data.count);
+            that.$el.find(".notify-num").css("display", "block");
+            that.$el.find(".notify-num").html(data.count);
           } else {
-            that.$el.find(".notifyNum").css("display", "none");
+            that.$el.find(".notify-num").css("display", "none");
           }
         },
         error: function () {
@@ -59,8 +59,8 @@
 
       $(".notification-modal").css("display", "block");
       $(".layer").css("display", "block");
-      this.$el.find(".notifyNum").css("display", "none");
-      this.$el.find(".notifyNum").html(0);
+      this.$el.find(".notify-num").css("display", "none");
+      this.$el.find(".notify-num").html(0);
 
       this.notifications_view = new NotificationsView({collection: this.notification_collection});
     },
