@@ -20,8 +20,8 @@
     },
     initialize: function () {
       this.$(".post-list").html("");
-      this.$el.find("ul.sortBox li").removeClass("current");
-      this.$el.find("ul.sortBox li.all_posts").addClass("current");
+      this.$el.find("ul.sort-box li").removeClass("current");
+      this.$el.find("ul.sort-box li.all-posts").addClass("current");
 
       _.bindAll(this, "pagenation", "showComment");
 
@@ -152,8 +152,8 @@
     },
     initialize: function () {
       this.$(".post-list").html("");
-      this.$el.find("ul.sortBox li").removeClass("current");
-      this.$el.find("ul.sortBox li.follower_posts").addClass("current");
+      this.$el.find("ul.sort-box li").removeClass("current");
+      this.$el.find("ul.sort-box li.follower-posts").addClass("current");
 
       _.bindAll(this, "pagenation", "showComment");
 
@@ -285,8 +285,8 @@
     },
     initialize: function () {
       this.$(".post-list").html("");
-      this.$el.find("ul.sortBox li").removeClass("current");
-      this.$el.find("ul.sortBox li.liker_posts").addClass("current");
+      this.$el.find("ul.sort-box li").removeClass("current");
+      this.$el.find("ul.sort-box li.liker-posts").addClass("current");
 
       _.bindAll(this, "pagenation", "showComment");
 
@@ -413,17 +413,17 @@
   var AppView = Backbone.View.extend({
     el: ".game-page",
     events: {
-      "change .my_status":  "changeStatus",
-      "change .new_status": "registLog",
-      "change .my_rate":    "changeRate",
+      "change .my-status":  "changeStatus",
+      "change .new-status": "registLog",
+      "change .my-rate":    "changeRate",
     },
     initialize: function () {
       var that               = this;
       this.game_id           = $(".game-page").data("gameid");
 
-      this.my_status_select  = $(".my_status");
-      this.new_status_select = $(".new_status");
-      this.my_rate_select    = $(".my_rate");
+      this.my_status_select  = $(".my-status");
+      this.new_status_select = $(".new-status");
+      this.my_rate_select    = $(".my-rate");
     },
     changeRate: function () {
       if (this.my_rate_select.val() != "") {
