@@ -1,10 +1,10 @@
 %script{type: "text/template", id: "first-template"}
   %section.setting01_01
-    %h2.setting01_01Ttl 好きなゲームを登録
-    %form.search-form.entryBox
-      .searchWrap
+    %h2.setting01_01Ttl まずは、マイゲームにいくつかゲームを登録してみましょう。
+    %section.searchWrap
+      %form.search-form.entryBox
         %input.search-title-input.search{type: "text", name: "search_title", placeholder: "ゲーム名で検索"}
-      %input.submit-btn.btn.next-page{type: "submit", value: "スキップ"}
+    %input.submit-btn.btn.next-page{type: "submit", value: "スキップ"}
     %ul.progress
       %li.progress--on
       %li.progress--off

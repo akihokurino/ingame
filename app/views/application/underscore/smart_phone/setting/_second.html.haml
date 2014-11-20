@@ -1,22 +1,14 @@
 %script{type: "text/template", id: "second-template"}
   %section.setting02
-    %h2.setting02Ttl 友達を検索
-    %p.setting02Text 友達かも？
-    %form.entryBox
-      .friendWrap
-        %input.user-input.friend{type: "text", placeholder: "友達を検索"}
+    %h2.setting02Ttl 次は、使っていそうな友達を検索してみましょう。
+    %section.searchWrap
+      %form.search-form.entryBox
+        %input.user-input.search{type: "text", placeholder: "友達をユーザー名で検索"}
       %input.btn.next-page{type: "submit", value: "スキップ"}
     %ul.progress
       %li.progress--off
       %li.progress--on
       %li.progress--off
     .friendBox
-      %a.leftBtn{href: "#"}
-        %span.tri
-
       / 検索した結果のユーザーが入る
       %ul.user-list.listWrap
-
-      %a.rightBtn{href: "#"}
-        %span.tri
-

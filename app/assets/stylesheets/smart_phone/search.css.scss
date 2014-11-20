@@ -38,13 +38,13 @@
 		color: $color_green;
 	}
 	/*---   .search-form   ----------*/
-	.search-form-box{
+	.searchWrap{
 		padding-bottom:10px;
 	}
-	.search-form {
+	.entryBox {
 		padding:10px;
 	}
-	.game-title-input, .username-input {
+	.search {
 		position:relative;
 		@include appearance;
 		@include box-sizing;

@@ -3,7 +3,7 @@
 		= link_to "ゲーム", "/users/#{@current_user[:id]}/search_game_or_user#game", class: "to-game-search"
 		.to-user-search ユーザー
 	%section.user-search
-		.search-form-box
+		.search-form-box.searchWrap
 			%form.search-form.entryBox
 				%input.username-input.search{type: "text", name: "username", placeholder: "ユーザーを検索"}
 		%ul.result-list
