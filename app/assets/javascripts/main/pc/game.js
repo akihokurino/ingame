@@ -15,8 +15,8 @@
     },
     initialize: function () {
       this.$(".post-list").html("");
-      this.$el.find("ul.sortList li").removeClass("current");
-      this.$el.find("ul.sortList li.all_posts").addClass("current");
+      this.$el.find("ul.sort-list li").removeClass("current");
+      this.$el.find("ul.sort-list li.all-posts").addClass("current");
 
       _.bindAll(this, "pagenation");
 
@@ -85,8 +85,8 @@
     },
     initialize: function () {
       this.$(".post-list").html("");
-      this.$el.find("ul.sortList li").removeClass("current");
-      this.$el.find("ul.sortList li.follower_posts").addClass("current");
+      this.$el.find("ul.sort-list li").removeClass("current");
+      this.$el.find("ul.sort-list li.follower-posts").addClass("current");
 
       _.bindAll(this, "pagenation");
 
@@ -158,8 +158,8 @@
     },
     initialize: function () {
       this.$(".post-list").html("");
-      this.$el.find("ul.sortList li").removeClass("current");
-      this.$el.find("ul.sortList li.liker_posts").addClass("current");
+      this.$el.find("ul.sort-list li").removeClass("current");
+      this.$el.find("ul.sort-list li.liker-posts").addClass("current");
 
       _.bindAll(this, "pagenation");
 
@@ -224,17 +224,17 @@
   var AppView = Backbone.View.extend({
     el: ".game-page",
     events: {
-      "change .my_status":  "changeStatus",
-      "change .new_status": "registLog",
-      "change .my_rate":    "changeRate",
+      "change .my-status":  "changeStatus",
+      "change .new-status": "registLog",
+      "change .my-rate":    "changeRate",
     },
     initialize: function () {
       var that               = this;
       this.game_id           = $(".game-page").data("gameid");
 
-      this.my_status_select  = $(".my_status");
-      this.new_status_select = $(".new_status");
-      this.my_rate_select    = $(".my_rate");
+      this.my_status_select  = $(".my-status");
+      this.new_status_select = $(".new-status");
+      this.my_rate_select    = $(".my-rate");
     },
     changeRate: function () {
       if (this.my_rate_select.val() != "") {
