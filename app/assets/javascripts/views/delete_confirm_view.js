@@ -1,8 +1,8 @@
 var DeleteConfirmView = Backbone.View.extend({
   el: ".delete-confirm-wrap",
   events: {
-    "click .cancel": "cancel",
-    "click .done":   "done"
+    "click .cancel-btn": "cancel",
+    "click .done-btn":   "done"
   },
   template: _.template($("#delete-confirm-template").html()),
   initialize: function () {
@@ -35,7 +35,7 @@ var DeleteConfirmView = Backbone.View.extend({
     this.$el.html("");
   },
   unbindEvent: function () {
-    $(this.el).undelegate('.cancel', 'click');
-    $(this.el).undelegate('.done', 'click');
+    $(this.el).undelegate('.cancel-btn', 'click');
+    $(this.el).undelegate('.done-btn', 'click');
   }
 })

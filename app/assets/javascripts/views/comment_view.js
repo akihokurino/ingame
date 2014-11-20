@@ -2,8 +2,8 @@ var CommentView = Backbone.View.extend({
   tagName: "li",
   className: "comment",
   events: {
-    "click .like":   "like",
-    "click .unlike": "unlike"
+    "click .like-btn":   "like",
+    "click .unlike-btn": "unlike"
   },
   template: _.template($("#comment-template").html()),
   initialize: function () {

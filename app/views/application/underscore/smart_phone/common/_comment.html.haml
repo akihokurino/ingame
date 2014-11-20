@@ -5,14 +5,13 @@
     %a{href: "/users/{{= user.id }}"}
       {{= user.username }}
     {{ if (!i_liked) { }}
-    %span.like.favBtn
+    %span.like-btn.favBtn
       いいね！
       {{= comment_likes_count }}
     {{ } else { }}
-    %span.unlike.favBtn.on
+    %span.unlike-btn.favBtn.on
       いいね！を取り消す
       {{= comment_likes_count }}
     {{ } }}
     %p
-      {{= text }} 
-    
+      {{= text }}

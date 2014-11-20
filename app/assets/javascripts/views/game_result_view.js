@@ -2,7 +2,7 @@ var GameResultView = Backbone.View.extend({
   tagName: "li",
   className: "item",
   events: {
-    "change .status": "regist"
+    "change .my-status": "regist"
   },
   initialize: function () {
 

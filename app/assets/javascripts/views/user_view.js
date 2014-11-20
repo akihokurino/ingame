@@ -2,8 +2,8 @@ var UserView = Backbone.View.extend({
   tagName: "li",
   className: "item",
   events: {
-    "click .follow":   "follow",
-    "click .unfollow": "unfollow"
+    "click .follow-btn":   "follow",
+    "click .unfollow-btn": "unfollow"
   },
   template: _.template($("#user-template").html()),
   initialize: function () {
@@ -42,8 +42,8 @@ var UserView = Backbone.View.extend({
           }
 
           if (that.type == "followers-list") {
-            that.$el.find("ul.btnList li").html("");
-            that.$el.find("ul.btnList li").append(that.unfollow_btn_template);
+            that.$el.find("ul.btn-list li").html("");
+            that.$el.find("ul.btn-list li").append(that.unfollow_btn_template);
           }
         }
       },
@@ -67,8 +67,8 @@ var UserView = Backbone.View.extend({
           }
 
           if (that.type == "followers-list") {
-            that.$el.find("ul.btnList li").html("");
-            that.$el.find("ul.btnList li").append(that.follow_btn_template({text: "フォローを仕返す"}));
+            that.$el.find("ul.btn-list li").html("");
+            that.$el.find("ul.btn-list li").append(that.follow_btn_template({text: "フォローを仕返す"}));
           }
         }
       },
