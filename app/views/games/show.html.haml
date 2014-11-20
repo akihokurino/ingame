@@ -40,7 +40,7 @@
         %ul.gameBtnList
           - if @game.i_registed
             %li.item
-              %select.stars.my_rate{name: "stars", size: 1}
+              %select.stars.my-rate{name: "stars", size: 1}
                 - case @game.my_rate.to_i
                 - when 1
                   %option{value: ""}
@@ -86,13 +86,13 @@
                   %option{value: 5} ★★★★★
           %li.item
             - unless @game.i_registed
-              %select.new_status{name: "status", size: "1"}
+              %select.new-status{name: "status", size: "1"}
                 %option{value: ""} 登録する
                 %option{value: "1"} 気になる
                 %option{value: "2"} プレイ中
                 %option{value: "3"} クリア済
             - else
-              %select.my_status{name: "status", size: "1"}
+              %select.my-status{name: "status", size: "1"}
                 - [{value: "", name: "登録する"}, {value: "1", name: "気になる"}, {value: "2", name: "プレイ中"}, {value: "3", name: "クリア済"}].each do |obj|
                   - if obj[:value].to_i == @game.my_status_id.to_i
                     %option{value: obj[:value], selected: "selected"}
@@ -102,12 +102,12 @@
                       = obj[:name]
       %section.sortBox
         %h3.sortTtl このゲームに対するポスト
-        %ul.sortList
-          %li.item.current.follower_posts
+        %ul.sortList.sort-list
+          %li.item.current.follower-posts
             %a.follow{href: "/games/#{@game[:id]}#follower"} フォロー中のユーザー
-          %li.item.all_posts
+          %li.item.all-posts
             %a.all{href: "/games/#{@game[:id]}#all"} すべてのユーザー
-          %li.item.liker_posts
+          %li.item.liker-posts
             %a.star{href: "/games/#{@game[:id]}#liker"} いいね順
 
   .game-timeline
