@@ -85,7 +85,20 @@
 		color:#fff;
 		font-size:42px;
 		@include font-weight(bold,#fff);
-		text-shadow:1px 1px 0 rgba(#000,0.7);
+		text-shadow: rgb(110, 73, 184) 1px 1px,
+	    rgb(110, 73, 184) 2px 2px,
+	    rgb(110, 73, 184) 3px 3px,
+	    rgb(110, 73, 184) 4px 4px,
+	    rgb(110, 73, 184) 5px 5px,
+	    rgb(111, 73, 186) 6px 6px,
+	    rgb(112, 74, 188) 7px 7px,
+	    rgb(113, 75, 190) 8px 8px,
+	    rgb(114, 76, 192) 9px 9px,
+	    rgb(116, 76, 194) 10px 10px,
+	    rgb(117, 77, 196) 11px 11px,
+	    rgb(118, 78, 198) 12px 12px,
+	    rgb(119, 79, 200) 13px 13px,
+	    rgb(121, 80, 202) 14px 14px;
 	}
 }
 

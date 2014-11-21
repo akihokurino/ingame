@@ -108,18 +108,18 @@ header {
 		padding:10px 0;
 		@include box-sizing;
 		@include box-shadow(0, 0, 5px, 0, rgba(0, 0, 0, 0.75));
-		background: #ffffff;
-		color: $color_textGray;
+		background: rgba($main_color,0.9);
+		color: #fff;
 		font-size:14px;
 		text-align: left;
 		z-index:-1;
 		a{
-			color:$color_textGray;
+			color:#fff;
 		}
 		.item{
 			display:block;
 			width: 100%;
-			padding:10px;
+			padding:10px 10px 10px 20px;
 			font-size:22px;
 			text-align: left;
 			@include box-sizing;
