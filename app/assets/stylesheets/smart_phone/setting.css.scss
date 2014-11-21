@@ -115,17 +115,17 @@ body {
 			display:inline-block;
 			margin-top:4px;
 			padding:0 5px;
-			border: 1px solid $color_green;
-			@include border-radius(2px);
+			border: 1px solid $main_color;
+			color:$main_color;
 			font-size:12px;
 			line-height:28px;
 		}
 		.follow,.reFollow{
-			color:$color_green;
+			color:$main_color;
 		}
 		.unFollow{
 			color:#fff;
-			background-color: $color_green;
+			background-color: $main_color;
 
 		}
 		.userImgWrap{
@@ -166,141 +166,7 @@ body {
 	}
 }
 }
-// 	.friendBox {
-// 		position: relative;
-// 		margin: 30px 5px 30px;
-// 		@include clearfix;
 
-// 		.leftBtn {
-// 			display: none;
-// 			position: absolute;
-// 			top: 40px;
-// 			left: 5px;
-// 			width: 26px;
-// 			height: 26px;
-// 			border: 1px solid $color_green;
-// 			@include border-radius(14px);
-
-// 			.tri {
-// 				display: block;
-// 				position: absolute;
-// 				top: 8px;
-// 				right: 9px;
-// 				border-top: 6px solid transparent;
-// 				border-right: 10px solid #1cd4a2;
-// 				border-bottom: 6px solid transparent;
-// 				border-left: 10px solid transparent;
-// 			}
-// 		}
-// 		.rightBtn {
-// 			display: none;
-// 			position: absolute;
-// 			top: 40px;
-// 			right: 5px;
-// 			width: 26px;
-// 			height: 26px;
-// 			border: 1px solid #1cd4a2;
-// 			@include border-radius(14px);
-
-// 			.tri {
-// 				display: block;
-// 				position: absolute;
-// 				top: 8px;
-// 				left: 9px;
-// 				border-top: 6px solid transparent;
-// 				border-right: 10px solid transparent;
-// 				border-bottom: 6px solid transparent;
-// 				border-left: 10px solid $color_green;
-// 			}
-// 		}
-// 		.listWrap {
-// 			width: 70%;
-// 			margin: 0 auto;
-// 			@include clearfix;
-// 		}
-// 		.item {
-// 			position: relative;
-// 			margin-bottom: 25px;
-// 			@include clearfix;
-
-// 			&:last-child {
-// 				margin-right: 0;
-// 			}
-// 		}
-// 		.profImg {
-// 			float: left;
-// 			width: 63px;
-// 			height: 63px;
-// 			margin-right: 24px;
-// 			border: 1px solid #e6e6e6;
-// 			@include box-sizing;
-// 		}
-// 		.name {
-// 			float: left;
-// 			margin-bottom: 8px;
-// 			color: #404040;
-// 			font-size: 12px;
-// 			font-weight: bold;
-// 		}
-// 		.btn {
-// 			display: block;
-// 			position: absolute;
-// 			left: 87px;
-// 			bottom: 10px;
-// 			width: 70px;
-// 			height: 21px;
-// 			padding-top: 1px;
-// 			border: 1px solid $color_green;
-// 			@include border-radius(3px);
-// 			@include box-sizing;
-// 			color: $color_green;
-// 			font-size: 12px;
-// 			text-align: center;
-// 			text-decoration: none;
-// 		}
-// 	}
-// 	.entryBox {
-// 		width: 250px;
-// 		margin: 0 auto 28px;
-
-// 		.friendWrap {
-// 			width: 200px;
-// 			height: 33px;
-// 			margin: 0 auto 15px;
-// 			border: 1px solid #b3b2b3;
-// 			@include border-radius(2px);
-// 			background: #ffffff;
-// 		}
-// 		.friend {
-// 			padding-left: 45px;
-// 			@include border-radius(18px);
-// 			@include box-sizing;
-// 			border: none;
-// 			@include img_set-SP4(100%, 32px, 10px, -424px);
-// 			@include appearance;
-// 			outline: 0;
-
-// 			&::-webkit-input-placeholder {
-// 				color: #8d8d8d;
-// 				font-size: 12px;
-// 				line-height: 24px;
-// 			}
-// 		}
-// 		.btn {
-// 			width: 79px;
-// 			height: 29px;
-// 			border: none;
-// 			@include border-radius(3px);
-// 			@include box-sizing;
-// 			background: $color_green;
-// 			color: #ffffff;
-// 			font-size: 14px;
-// 			text-align: center;
-// 			cursor: pointer;
-// 			outline: 0;
-// 		}
-// 	}
-// }
 
 /*---   .setting03   ---------------------------*/
 .setting03 {
