@@ -16,11 +16,12 @@
       {{ } else if (status.id == 3) { }}
       %span.moodPlayed クリア済
       {{ } }}
+    .textWrap
     %h2.ttl
       %a{href: "/games/{{= game.id }}#all"}
         {{= game.title }}
-  %p.text
-    {{= text }}
+    %p.text
+      {{= text }}
   .thumbnail
     {{ for (var i = 0; i < post_photos.length; i++) { }}
     %img.thumbnailImg{src: "/post_photos/{{= post_photos[i].photo_path }}"}
