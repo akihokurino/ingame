@@ -12,29 +12,30 @@
 	ul.friendListWrap{
 		background-color: #fff;
 		img{
-			@include border-radius(2px);
+			border:1px solid $color_border;
+			@include border-radius(50%);
 		}
 		.followBtn{
 			float:right;
 			display:inline-block;
 			margin-top:4px;
-			padding:0 5px;
-			border: 1px solid $color_green;
-			@include border-radius(2px);
-			font-size:12px;
-			line-height:28px;
+			padding:0 10px;
+			font-size:14px;
+			line-height:36px;
 		}
 		.follow,.reFollow{
-			color:$color_green;
+			background-color: #fff;
+			color:$main_color;
 		}
 		.unFollow{
 			color:#fff;
-			background-color: $color_green;
+			background-color: $main_color;
 
 		}
 		.userImgWrap{
 			display:inline-block;
 			height: 40px;
+			@include border-radius(50%);
 			vertical-align: middle;
 		}
 		.userInfo{

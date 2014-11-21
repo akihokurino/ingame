@@ -59,6 +59,7 @@ input[type="submit"]{
         height: 50px;
         margin:10px;
         border: solid 1px $color_border;
+        @include border-radius(50%);
       }
     }
     span, input {

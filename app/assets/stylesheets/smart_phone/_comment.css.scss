@@ -16,27 +16,26 @@ input[type="submit"],{
 	top: 50px;
 	left: 50%;
 	margin-left: -48%;
-	@include border-radius(2px);
-	border: solid 1px $color_border;
 	background-color: #fff;
 	display: none;
 	.modal-header {
-		width: 96%;
+		position:relative;
 		height: 40px;
-		margin: 0 auto;
 		border-bottom: solid 1px $color_border;
+		text-align:center;
 		overflow: hidden;
-		.cancel-modal-btn {
-			width: 70px;
-			height: 30px;
-			line-height: 30px;
-			color:#797979;
+		.modalTitle{
+			padding:10px;
+			color:$color_textBlack;
+		}
+		.icon-delete {
+			position: absolute;
+			top: 6px;
+			right: 6px;
+			color: $color_border;
+			font-size: 34px;
 			text-align: center;
-			border: solid 1px #e2e2e2;
-			@include border-radius(2px);
-			float: right;
-			margin-top: 4px;
-			margin-right: 5px;
+			line-height: 26px;
 		}
 	}
 	.modal-body {
@@ -45,29 +44,31 @@ input[type="submit"],{
 		margin: 0 auto;
 
 		.comment-list {
-			padding:0 10px;
+			padding:5px;
 			list-style-type: none;
 
 			.comment {
-				padding-top:10px;
 				border-bottom:1px solid $color_border;
 				.commentImgWrap{
 					display:inline-block;
 					width: 40px;
 					vertical-align:top;
+					margin-right:5px;
 				}
 				img{
 					width: 40px;
 					height: 40px;
 					border: 1px solid $color_border;
-					@include border-radius(2px);
+					@include border-radius(50%);
 				}
 				.commentText{
 					display:inline-block;
 					width: 80%;
+					color:$color_textBlack;
 					font-size:12px;
-					a{
+					.userName{
 						padding:10px 0;
+						color: $color_textBlack;
 						font-weight:bold;
 					}
 					.favBtn{

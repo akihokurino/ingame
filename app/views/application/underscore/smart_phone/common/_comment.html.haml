@@ -2,7 +2,7 @@
   .commentImgWrap
     %img{src: "/user_photos/{{= user.photo_path }}"}
   .commentText
-    %a{href: "/users/{{= user.id }}"}
+    %a.userName{href: "/users/{{= user.id }}"}
       {{= user.username }}
     {{ if (!i_liked) { }}
     %span.like-btn.favBtn

@@ -1,13 +1,13 @@
 %script{type: "text/template", id: "first-template"}
   %section.setting01_01
-    %h2.setting01_01Ttl まずは、マイゲームにいくつかゲームを登録してみましょう。
-    %section.searchWrap
-      %form.search-form.entryBox
-        %input.search-title-input.search{type: "text", name: "search_title", placeholder: "ゲーム名で検索"}
-    %input.submit-btn.btn.next-page{type: "submit", value: "スキップ"}
     %ul.progress
       %li.progress--on
       %li.progress--off
       %li.progress--off
+    %h2.setting01_01Ttl まずは、マイゲームにいくつかゲームを登録してみましょう。
+    %input.submit-btn.btn.next-page{type: "submit", value: "登録せずに進む"}
+    %section.searchWrap
+      %form.search-form.entryBox
+        %input.search-title-input.search{type: "text", name: "search_title", placeholder: "ゲーム名で検索"}
     %ul.result-list.gameList
     = image_tag "gif-load.gif", class: "loading-gif"

@@ -15,9 +15,7 @@ html {
 	.commentWrap {
 		padding: 6px 0;
 		margin:5px;
-		@include border-radius(2px);
 		@include box-sizing;
-		border: 1px solid $color_border;
 		background: #ffffff;
 		.icon-post{
 			display:table-cell;
@@ -29,7 +27,6 @@ html {
 			display:table-cell;
 			padding-left:10px;
 			border: none;
-			@include border-radius(2px);
 			box-sizing: border-box;
 			color: $color_textGray;
 			font-size: 12px;

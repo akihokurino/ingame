@@ -1,18 +1,21 @@
 %script{type: "text/template", id: "third-template"}
   %section.setting03
-    %h2.setting03Ttl プロフィール写真を設定
-    .uploadBox
-      #thumbnail{width: 96, height: 96}
-        = image_tag "/user_photos/default.png", width: "96", height: "96", alt: "", class: "profImg"
-      .btnWrap
-        %p.btnText 写真をアップロード
-        %form
-          %input.btn#upload-btn{type: "file", value: "写真をアップロード"}
-    %form.entryBox
-      %input.btn.next-page{type: "submit", value: "スキップ"}
     %ul.progress
       %li.progress--off
       %li.progress--off
       %li.progress--on
+    %h2.setting03Ttl
+      これで最後です。
+      %br
+      プロフィール写真を設定しましょう。
+    .uploadBox
+      #thumbnail{width: 96, height: 96}
+        = image_tag "/user_photos/default.png", width: "96", height: "96", alt: "", class: "profImg"
+      .btnBox
+        %form.btnWrap
+          写真を選択
+          %input.btn#upload-btn{type: "file", value: "写真をアップロード"}
+    %form.entryBox
+      %input.btn.next-page{type: "submit", value: "設定せずに進む"}
 
     = render partial: "application/smart_phone/clip_modal"

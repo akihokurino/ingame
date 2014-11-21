@@ -7,7 +7,7 @@
 	.tabs {
 		width: 202px;
 		margin: 20px auto 10px;
-		border: 1px solid $color_green;
+		border: 1px solid $main_color;
 		@include border-radius(2px);
 		@include box-sizing;
 		text-align: center;
@@ -21,7 +21,7 @@
 	}
 	.to-game-search {
 		float: left;
-		border-right: 1px solid $color_green;
+		border-right: 1px solid $main_color;
 		@include border-radius(1px 0 0 1px);
 	}
 	.to-user-search {
@@ -29,13 +29,13 @@
 		@include border-radius(0 1px 1px 0);
 	}
 	div.to-game-search, div.to-user-search {
-		background: $color_green;
+		background: $main_color;
 		color: #fff;
 	}
 	a.to-game-search, a.to-user-search {
 		display: block;
 		background: #fff;
-		color: $color_green;
+		color: $main_color;
 	}
 	/*---   .search-form   ----------*/
 	.searchWrap{
@@ -73,17 +73,20 @@
 				display:inline-block;
 				margin-top:6px;
 				padding:0 5px;
-				border: 1px solid $color_green;
-				@include border-radius(2px);
-				font-size:12px;
-				line-height:28px;
+				border: 1px solid $main_color;
+				color:$main_color;
+				font-size:14px;
+				line-height:36px;
 			}
 			.follow,.reFollow{
-				color:$color_green;
+				background-color: #fff;
+				border:solid 1px $main_color;
+				color: $main_color;
+
 			}
 			.unFollow{
 				color:#fff;
-				background-color: $color_green;
+				background-color: $main_color;
 
 			}
 			.userImgWrap{

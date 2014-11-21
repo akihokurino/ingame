@@ -14,7 +14,7 @@
       .gameWrap
         %figure.imgWrap
           /= image_tag "/game_photos/#{@game.photo_path}", height: 120, class: "gameImg"
-          = image_tag @game.photo_url, width:"120", class: "gameImg"
+          = image_tag @game.photo_url, width:"100%", class: "gameImg"
         .gameInfoWrap
           %ul.gameInfo
             %li.item.maker
@@ -29,9 +29,11 @@
               発売日
               %p.infoInner
                 = @game.release_day
-          %p.review
+          %p.review.reviewWrap
+            ユーザーの評価
+            %br
             %span.reviewInner.icon-star
-            = @game.avg_rate
+              = @game.avg_rate
           - if !@game.amazon_url.nil?
             %p
               %a.amazonBtn{href: @game.amazon_url} Amazonへ
@@ -107,7 +109,7 @@
       %li.item.all-posts
         %a.all{href: "/games/#{@game[:id]}#all"} 全てのユーザー
       %li.item.liker-posts
-        %a.star{href: "/games/#{@game[:id]}#liker"} いいね!順
+        %a.star{href: "/games/#{@game[:id]}#liker"} いいね！順
 
   .game-timeline
     .post-list

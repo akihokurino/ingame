@@ -26,22 +26,16 @@
 		}
 		.imgWrap{
 			display:table-cell;
-			width: 120px;
-		}
-		.gameImg{
-			border: 2px solid $color_border;
+			width: 50%;
+			.gameImg{
+				width: 100%;
+			}
 		}
 		.gameInfoWrap {
 			display:table-cell;
+			width: 50%;
 			padding-left:10px;
 			vertical-align:top;
-			.review {
-				color: orange;
-				font-size: 22px;
-			}
-			.icon-star{
-				font-size:21px;
-			}
 		}
 		.gameInfo {
 			margin-bottom: 9px;
@@ -56,11 +50,21 @@
 			.infoInner{
 				display:block;
 				background-color: #CACACA;
-				@include border-radius(2px);
 				color:#fff;
 				font-size:14px;
-				padding:2px;
+				padding:2px 4px;
 			}
+		}
+		.reviewWrap{
+			color:#8f9ea1;
+			font-size:10px;
+		}
+		.reviewInner{
+			color: orange;
+			font-size: 22px;
+		}
+		.icon-star{
+			font-size:21px;
 		}
 		.amazonBtn {
 			display: block;
@@ -95,18 +99,17 @@
 			color: #ffffff;
 			text-align: center;
 		}
-		.new_status, .my_status, .my_rate {
+		.new-status, .my-status, .my-rate {
 			@include appearance;
 			display: inline-block;
 			width: 124px;
-			padding: 4px 0 4px 26px;
-			border: 1px solid #24d387;
-			@include border-radius(2px);
-			border-radius: 2px;
-			background-color: #fff;
-			color: #24d387;
-			font-size: 12px;
-			line-height: 24px;
+			padding:0 10px 0 20px;
+			border:none;
+			border-radius:0;
+			background-color: $main_color;
+			color: #fff;
+			font-size: 14px;
+			line-height: 36px;
 		}
 	}
 	/*---   .sortBox   ----------*/
@@ -126,14 +129,14 @@
 	.sortBox {
 		width: 300px;
 		margin: 0 auto;
-		border: 1px solid $color_green;
+		border: 1px solid $main_color;
 		@include border-radius(2px);
 		@include clearfix;
 
 		.item {
 			float: left;
 			width: 100px;
-			border-right: 1px solid $color_green;
+			border-right: 1px solid $main_color;
 			@include box-sizing;
 			background: #fff;
 			font-size: 12px;
@@ -148,7 +151,7 @@
 			height: 30px;
 			padding-top: 4px;
 			@include box-sizing;
-			color: $color_green;
+			color: $main_color;
 			text-align: center;
 			vertical-align: middle;
 			line-height: 1.1;
@@ -170,9 +173,8 @@
 				}
 			}
 			.follow, .all, .star {
-				background: $color_green;
+				background: $main_color;
 				color: #fff;
-				@include font-weight(1px, #fff);
 			}
 		}
 	}

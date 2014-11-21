@@ -3,10 +3,8 @@
 /*---   .postBox   ---------------------------*/
 .postBox {
 	margin:5px;
-	padding: 10px 10px 0 10px;
+	padding: 5px 5px 0 5px;
 	@include box-sizing;
-	@include border-radius(2px);
-	border:1px solid $color_border;
 	background: #ffffff;
 
 	.topBox {
@@ -24,7 +22,7 @@
 		height: 30px;
 		margin-right: 10px;
 		border: 1px solid $color_border;
-		@include border-radius(4px);
+		@include border-radius(50%);
 	}
 	.account {
 		display: table-cell;
@@ -101,7 +99,7 @@
 	.commentBtn,.favBtn,.icon-option{
 		display:inline-block;
 		padding:10px;
-		font-size:16px;
+		font-size:18px;
 		color:$color_textGray;
 		line-height: 1;
 	}
