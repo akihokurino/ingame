@@ -51,7 +51,7 @@
 			width: 40px;
 			height: 40px;
 			border: 1px solid $color_border;
-			@include border-radius(2px);
+			@include border-radius(50%);
 		}
 		.ntfText{
 			display:inline-block;
