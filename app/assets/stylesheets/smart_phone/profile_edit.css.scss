@@ -87,6 +87,12 @@ input[type="submit"]{
     width: 100%;
     margin:5px 0;
 
+    .icon-user,.icon-place,.icon-info{
+      &:before{
+        font-size:20px;
+      }
+    }
+
     span {
       display: inline-block;
       position: absolute;

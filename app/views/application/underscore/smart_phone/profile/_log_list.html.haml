@@ -7,6 +7,7 @@
         %span.playing.playing-tab プレイ中
       %li.item.played-li
         %span.played.played-tab クリア済
-    %form.searchBox
-      %input{input: "search", placeholder: "ゲーム名で検索", role: "textarea", class: "search-log"}
+    %searchWrap
+      %form.entryBox
+        %input.search{input: "search", placeholder: "ゲーム名で検索", role: "textarea", class: "search-log"}
     %ul.gameList.log-list

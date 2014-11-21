@@ -62,7 +62,9 @@
 			text-align:center;
 			width: 33%;
 			&.current {
-				color:$color_green;
+				.followNum, .followerNum, .gameNum, .postNum {
+					color:$sub_color;
+				}
 			}
 		}
 		.followNum, .followerNum, .gameNum, .postNum {
