@@ -2,17 +2,30 @@
   = stylesheet_link_tag "smart_phone/login"
 
 %section.mainVisual
-  %h1.ttl Gameful
+  %h1.ttl 
+    %span.G G
+    %span.A A
+    %span.M M
+    %span.R R
+  %h2.mainCopy 好きなゲームで、自分を語る。
+  %p.subCopy
+    GAMRは、気になるゲームや遊んだゲームを記録し
+    %br
+    友達に共有できるウェブサービスです。
+    %br
+    信頼できるゲーマーや趣味の合う友達をフォローして
+    %br
+    まだ見ぬ神ゲーに出会おう。
 %section.loginBox
-  %h1.ttl 知らないゲームに出会おう。
+  %h1.ttl ソーシャルアカウントで簡単ログイン
   %ul.snsList
     %li.item
       %a.tw{href: "/auth/twitter"}
-        %span.iconWrap
-          %span.icon
-        Twitterでログイン
+        %span.icon-twitter
+        %span Twitterでログイン
     %li.item
       %a.fb{href: "/auth/facebook"}
-        %span.iconWrap
-          %span.icon
-        Facebookでログイン
+        %span.icon-facebook
+        %span Facebookでログイン
+%section.point
+  %section

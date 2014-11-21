@@ -8,36 +8,47 @@ a {
 	text-decoration: none;
 }
 
-/*---   .mainVisual   ---------------------------*/
+/*---   .mainVisual   ---------------------------*/	
 .mainVisual {
-	padding: 85px 0 75px;
-	@include gradient(#610d84, #464b85);
-	font-family: Helvetica;
-	@include font-weight(2px, #ffffff);
+	padding: 55px 0 55px;
+	background: linear-gradient(rgba($main_color,0.9), rgba($main_color,0.97)), url('/assets/smart_phone/login-bg.jpg');
+	background-size:cover;
+	font-family: arial;
 	text-align: center;
+	color:#fff;
 
 	 .ttl {
-	 	color: #ffffff;
-	 	font-size: 43px;
+	 	font-size: 50px;
+	 }
+	 .mainCopy{
+	 	padding:14px;
+	 	font-size:20px;
+	 }
+	 .subCopy{
+	 	padding:20px;
+	 	font-size:12px;
+	 }
+	 .snsCopy{
+	 	font-size:22px;
 	 }
 }
 
-/*---   .loginBox   ---------------------------*/
 .loginBox {
-	padding-top: 32px;
 	text-align: center;
 
 	.ttl {
-		margin-bottom: 35px;
+		padding:10px;
 		color: #242424;
-		font-size: 18px;
+		font-size: 16px;
+	}
+	.item{
+		margin-bottom:10px;
 	}
 	.tw, .fb {
 		display: block;
-		width: 204px;
-		margin: 14px auto;
-		padding: 10px 0;
-		@include border-radius(24px);
+		width: 200px;
+		margin: 0 auto;
+		padding: 10px;
 		@include box-sizing;
 		color: #ffffff;
 		font-size: 14px;
@@ -45,42 +56,12 @@ a {
 	}
 	.tw {
 		background: #01a0dc;
-
-		.iconWrap {
-			display: block;
-			float: left;
-			width: 43px;
-			height: 39px;
-			margin: -10px 7px 0 0;
-			@include border-radius(24px 0 0 24px);
-			background: #088ec1;
-		}
-		.icon {
-			display: block;
-			width: 43px;
-			height: 42px;
-			background: url(/assets/smart_phone/sns_set02.png) no-repeat 15px 13px;
-			background-size: 55px 20px;
-		}
 	}
 	.fb {
 		background: #405c95;
-
-		.iconWrap {
-			display: block;
-			float: left;
-			width: 43px;
-			height: 39px;
-			margin: -10px 7px 0 0;
-			@include border-radius(24px 0 0 24px);
-			background: #374e7e;
-		}
-		.icon {
-			display: block;
-			width: 43px;
-			height: 42px;
-			background: url(/assets/smart_phone/sns_set02.png) no-repeat -27px 11px;
-			background-size: 55px 20px;
-		}
+	}
+	.icon-twitter,.icon-facebook{
+		font-size:22px;
+		vertical-align:-3px;
 	}
 }
