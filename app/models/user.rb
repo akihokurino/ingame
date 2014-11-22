@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   LIMIT = 20
 
   scope :search, -> (username) {
-    where("username LIKE ?", "%#{username}%").select(:id, :username, :photo_path, :place)
+    where("username LIKE ?", "%#{username}%")
   }
 
   attr_accessor :i_followed, :follow_num, :follower_num, :clip_x, :clip_y, :tmp_photo_path, :i_followered
