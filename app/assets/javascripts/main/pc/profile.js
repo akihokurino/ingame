@@ -41,6 +41,8 @@
         success: function (model, response, options) {
           for (var i = 0; i < response.logs.length; i++) {
             var log = new Log(response.logs[i]);
+            var url = "/games/" + log.get("game").id + "#all";
+            log.set("url", url);
             that.logs_view.collection.add(log);
             that.tmp_log_list.push(log);
           }

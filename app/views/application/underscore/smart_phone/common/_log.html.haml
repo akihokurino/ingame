@@ -1,5 +1,5 @@
 %script{type: "text/template", id: "log-template"}
-  %a.articleWrap{href: "/games/{{= game.id }}#all", style: "display: block;"}
+  %a.articleWrap{href: "{{= url }}", style: "display: block;"}
     %figure.game
       / %img.gameImg{src: "/game_photos/{{= game.photo_path }}"}
       {{ if (game.photo_url) { }}
