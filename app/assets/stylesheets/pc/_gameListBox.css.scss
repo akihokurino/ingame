@@ -13,9 +13,8 @@
 		.item {
 			display: inline-block;
 			width: 123px;
-			height: 246px;
 			margin: 7px;
-			margin-bottom: 60px;
+			margin-bottom: 20px;
 			border: 1px solid #e6e6e6;
 			@include box-sizing;
 			@include border-radius(3px);
@@ -55,7 +54,6 @@
 		.gameImgWrap {
 			overflow: hidden;
 			width: 121px;
-			height: 176px;
 		}
 		.gameImg {
 			@include border-radius(3px 3px 0 0);
