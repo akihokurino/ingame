@@ -7,11 +7,11 @@
         {{ if (!isCurrentUser) { }}
         {{ if (i_followed) { }}
         %li.followBtnWrap
-          .followBtn.unFollow.unfollow-btn フォローを外す
+          .followBtn.unFollow.unfollow-btn フォロー中
         {{ } else { }}
         %li.followBtnWrap
           {{ if (i_followered) { }}
-          .followBtn.follow-btn フォロー仕返す
+          .followBtn.follow-btn フォロー中
           {{ } else { }}
           .followBtn.follow-btn フォローする
           {{ } }}

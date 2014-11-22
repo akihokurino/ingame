@@ -22,9 +22,9 @@
         - unless current_user?(@user)
           %span.follow-wrap
             - if @user.i_followed
-              %span.followBtn.unfollow-btn フォロー中
+              %span.followBtn.main-unfollow-btn フォロー中
             - else
-              %span.followBtn.follow-btn フォロー
+              %span.followBtn.main-follow-btn フォローする
         - else
           = link_to "編集", edit_user_path(@user), class: "edit-btn personalEdit"
         %ul.countBox.count-box

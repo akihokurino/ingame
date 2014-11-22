@@ -267,8 +267,8 @@
   var AppView = Backbone.View.extend({
     el: ".profile-page",
     events: {
-      "click .follow-btn":   "follow",
-      "click .unfollow-btn": "unfollow"
+      "click .main-follow-btn":   "follow",
+      "click .main-unfollow-btn": "unfollow"
     },
     initialize: function () {
       this.follow_btn_template   = _.template($("#follow-btn-template").html());
