@@ -20,9 +20,9 @@ class Api::UsersController < ApplicationController
   end
 
   def search
-    page   = params[:page].to_i
+    page    = params[:page].to_i
     return false if page < 1
-    @users = User.search_with(params[:username], @current_user, page)
+    @result = User.search_with(params[:username], @current_user, page)
   end
 
   private

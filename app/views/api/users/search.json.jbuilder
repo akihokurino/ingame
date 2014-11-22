@@ -1,1 +1,2 @@
-json.results @users
+json.results @result[:users]
+json.count @result[:count]

@@ -18,9 +18,6 @@ class Game < ActiveRecord::Base
 	validates :title,
 		presence: true,
 		length: {maximum: 255}
-  # validates :photo_path,
-  #		presence: true,
-  #		length: {maximum: 255}
 	validates :device,
 		length: {maximum: 255}
 	validates :maker,
@@ -28,7 +25,11 @@ class Game < ActiveRecord::Base
 
 	attr_accessor :i_registed, :my_status_id, :my_rate, :avg_rate
 
-	LIMIT = 20
+  LIMIT = 20
+
+  scope :search, -> (title) {
+    where("title LIKE ?", "%#{title}%")
+  }
 
 	def check_regist(current_user)
 		self.i_registed = current_user.logs.pluck(:game_id).include?(self[:id]) ? true : false
@@ -63,12 +64,16 @@ class Game < ActiveRecord::Base
 	end
 
 	class << self
-    def search(search_title, page, current_user)
+    def search_with(search_title, page, current_user)
       offset = (page - 1) * LIMIT
-      self.where("title LIKE ?", "%#{self.escape(search_title)}%").order("created_at DESC").offset(offset).limit(LIMIT).keep_if do |game|
+      games  = self.search(self.escape(search_title)).order("created_at DESC").offset(offset).limit(LIMIT).keep_if do |game|
         game.check_rate(current_user)
         !current_user.logs.pluck(:game_id).include?(game.id)
       end
+
+      count = self.search(self.escape(search_title)).keep_if{|game| !current_user.logs.pluck(:game_id).include?(game.id)}.count
+
+      {count: count, games: games}
     end
 
 		def get_from_amazon(url)

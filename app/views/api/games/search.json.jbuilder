@@ -1,12 +1,14 @@
 json.results do |json|
-  json.array!(@results) do |result|
-  	json.id result[:id]
-  	json.title result[:title]
-    json.photo_path result[:photo_path]
-    json.photo_url result[:photo_url]
-    json.device result[:device]
-    json.maker result[:maker]
-    json.release_day result[:release_day]
-    json.avg_rate result.avg_rate
+  json.array!(@result[:games]) do |game|
+  	json.id game[:id]
+  	json.title game[:title]
+    json.photo_path game[:photo_path]
+    json.photo_url game[:photo_url]
+    json.device game[:device]
+    json.maker game[:maker]
+    json.release_day game[:release_day]
+    json.avg_rate game.avg_rate
   end
 end
+
+json.count @result[:count]

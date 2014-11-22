@@ -52,6 +52,7 @@
       this.game_result_collection.fetch({
         data: {search_title: this.current_game_title, page: this.page},
         success: function (model, response, options) {
+          console.log(response);
           that.game_result_collection.reset();
           that.game_results_view.$el.html("");
           if (response.results && response.results.length > 0) {
@@ -62,7 +63,7 @@
           }
 
           that.$(".result-area").html((that.text_template({
-            search_title: that.current_game_title, target: "ゲーム"
+            search_title: that.current_game_title, target: "ゲーム", result_count: response.count
           })));
         },
         error: function () {
@@ -170,7 +171,7 @@
           }
 
           that.$(".result-area").html((that.text_template({
-            search_title: that.current_username, target: "ユーザー"
+            search_title: that.current_username, target: "ユーザー", result_count: response.count
           })));
         },
         error: function () {
