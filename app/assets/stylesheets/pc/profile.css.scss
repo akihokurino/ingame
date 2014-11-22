@@ -257,6 +257,9 @@ html {
 
     .gameListWrap {
       margin-left: -7px;
+      -webkit-column-count: auto;
+      -moz-column-count: auto;
+      column-count: auto;
     }
   }
   /*---   .friendListBox   ---*/

@@ -9,12 +9,20 @@
 		width: 960px;
 		margin: 0 auto;
 		font-size: 0; /* inline-block用 */
+	    -webkit-column-count: 7;
+	    -webkit-column-gap: 10px;
+	    -webkit-column-fill: auto;
+	    -moz-column-count: 7;
+	    -moz-column-gap: 10px;
+	    -moz-column-fill: auto;
+	    column-count: 7;
+	    column-gap: 15px;
+	    column-fill: auto;
 
 		.item {
 			display: inline-block;
 			width: 123px;
 			margin: 7px;
-			margin-bottom: 20px;
 			border: 1px solid #e6e6e6;
 			@include box-sizing;
 			@include border-radius(3px);
