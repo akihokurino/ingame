@@ -18,5 +18,6 @@
 //= require ./underscore_template.js
 //= require ./common.js
 //= require ./libs/event_handle.js
+//= require ./vendors/masonry.pkgd.min.js
 
 

@@ -1,4 +1,3 @@
-//= require ../../vendors/masonry.pkgd.min.js
 //= require ../../libs/socket.js
 //= require ../../models/log.js
 //= require ../../models/post.js
