@@ -13,9 +13,6 @@
 	    -webkit-column-count: 6;
 	    -webkit-column-gap: 10px;
 	    -webkit-column-fill: auto;
-	    -moz-column-count: 6;
-	    -moz-column-gap: 10px;
-	    -moz-column-fill: auto;
 	    column-count: 6;
 	    column-gap: 15px;
 	    column-fill: auto;
@@ -105,6 +102,15 @@
 		background: #24d387;
 		cursor: pointer;
 
+        &:before {
+          position: absolute;
+          top: 0;
+          right: 10px;
+          width: 16px;
+          height: 33px;
+          background: $color-green;
+          content: "";
+        }
         &:after {
           position: absolute;
           top: 10px;
