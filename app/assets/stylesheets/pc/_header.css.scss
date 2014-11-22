@@ -8,6 +8,7 @@
 	width: 100%;
 	padding: 7px 0;
 	background: $color_black;
+	opacity: 0.95;
 
 	&Inner {
 		position: relative;
@@ -31,6 +32,15 @@
 		@include border-radius(2px);
 		background: #fff;
 
+		&:before {
+			position: absolute;
+			top: 6px;
+			left: 4px;
+			color: #888;
+			font-size: 24px;
+			font-family: 'icomoon';
+			content: "\e60c";
+		}
 		&:after {
 			position: absolute;
 			top: 4px;
@@ -47,7 +57,6 @@
 		padding-left: 40px;
 		border: none;
 		@include box-sizing;
-		@include img_set-PC2(6px, 7px);
 		@include appearance;
 		line-height: normal;
 		outline: 0;

@@ -18,6 +18,15 @@
     @include border-radius(7px);
     background: #fff;
 
+    &:before {
+      position: absolute;
+      top: 6px;
+      left: 4px;
+      color: #888;
+      font-size: 24px;
+      font-family: 'icomoon';
+      content: "\e60c";
+    }
     &:after {
       position: absolute;
       top: 4px;
@@ -34,8 +43,8 @@
     padding-top: 3px;
     padding-left: 40px;
     border: none;
+    @include border-radius(7px);
     @include box-sizing;
-    @include img_set-PC2(6px, 7px);
     @include appearance;
     line-height: normal;
     outline: 0;
