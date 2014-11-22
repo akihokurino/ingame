@@ -15,7 +15,7 @@
   /*---   .addPost   ----------*/
   .addPost {
     position: relative;
-    width: 580px;
+    width: 780px;
     margin: 0 auto 18px;
     padding-left: 10px;
     @include box-sizing;
@@ -33,7 +33,7 @@
     &Inner {
       position: relative;
       float: right;
-      width: 513px;
+      width: 713px;
       padding: 10px;
       border: 1px solid #e6e6e6;
       @include border-radius(3px);

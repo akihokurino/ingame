@@ -6,6 +6,7 @@
 	padding: 20px 0 40px;
 
 	.gameListWrap {
+		position: relative;
 		width: 960px;
 		margin: 0 auto;
 		font-size: 0; /* inline-block用 */
@@ -43,7 +44,7 @@
 			font-size: 10px;
 			line-height: 1.5;
 		}
-		&:hover {		
+		&:hover {
 			.articleWrap {
 				&:after {
 					display: block;
@@ -95,7 +96,7 @@
 	.statusWrap {
 		display: inline-block;
 		position: relative;
-		width: 122px;
+		width: 121px;
 		height: 33px;
 		margin-top: 5px;
 		-moz-border-radius: 3px;
