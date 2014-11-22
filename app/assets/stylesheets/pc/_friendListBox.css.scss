@@ -6,11 +6,15 @@
 	padding: 20px 0 40px;
 
 	.friendListWrap {
-		width: 580px;
+		@include clearfix;
+		width: 900px;
 		margin: 0 auto;
 		font-size: 0; /* inline-block用 */
 
 		.item {
+			display: inline-block;
+			float: left;
+			width: 280px;
 			margin: 10px;
 			padding: 10px;
 			border: 1px solid #e6e6e6;
@@ -22,48 +26,62 @@
 	}
 	.friendList {
 		position: relative;
+		min-height: 122px;
 
+		&TopBox {
+			@include clearfix;
+			margin-bottom: 8px;
+			padding: 10px;
+		    background: url(/assets/pc/default_cover.png) no-repeat top center;
+		    background-size: cover;
+		}
 		.userImgWrap {
 			float: left;
-			border: 1px solid #cfcfcf;
+			border: 3px solid #fff;
 		}
 		.userName {
-			margin-bottom: 5px;
-			margin-left: 54px;
+			margin-bottom: 10px;
 			padding-top: 4px;
-			color: #373737;
+			color: $color-green;
 			font-weight: bold;
-			font-size: 12px;
+			font-size: 14px;
+
+			&Link {
+				color: $color-green;
+			}
 		}
 		.userProf {
-			margin-left: 54px;
 			color: #7e7e7e;
 			font-size: 12px;
+			line-height: 1rem;
 		}
 		.followBtn {
-			position: absolute;
-			top: 5px;
-			right: 0;
-			width: 88px;
-			height: 30px;
+			margin-top: 52px;
+			margin-left: 92px;
+			border: 1px solid $color-green;
 			@include border-radius(2px);
-			background: $color-green;
-			color: #fff;
+			@include box-sizing;
+			background: #fff;
+			color: $color-green;
 			font-weight: bold;
 			font-size: 14px;
 			text-align: center;
 			line-height: 30px;
 			cursor: pointer;
+
+			&:hover {
+				border: 1px solid #fff;
+				@include border-radius(2px);
+				background: $color-green;
+				color: #fff;
+			}
 		}
 		.followBtnOn {
-			position: absolute;
-			top: 5px;
-			right: 0;
-			width: 88px;
-			height: 30px;
+			margin-top: 52px;
+			margin-left: 92px;
+			border: 1px solid $color-green;
 			@include border-radius(2px);
-			background: #666;
-			color: #fff;
+			background: #fff;
 			font-weight: bold;
 			font-size: 14px;
 			text-align: center;

@@ -31,15 +31,16 @@
     width: 390px;
     height: 34px;
     margin: 0 auto;
+    padding-top: 3px;
     padding-left: 40px;
     border: none;
     @include box-sizing;
     @include img_set-PC2(6px, 7px);
     @include appearance;
+    line-height: normal;
     outline: 0;
 
     &::-webkit-input-placeholder {
-      padding-top: 5px;
       color: #cbcbcb;
       font-size: 14px;
     }
