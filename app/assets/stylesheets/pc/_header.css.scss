@@ -4,6 +4,7 @@
 .header {
 	position: fixed;
 	top: 0;
+	z-index: 100;
 	width: 100%;
 	padding: 7px 0;
 	background: $color_black;
@@ -20,6 +21,7 @@
 		margin-right: 40px;
 		@include img_set-PC4(219px, 35px, 0, -484px);
 		@include substitute;
+		visibility: hidden;
 	}
 	.searchWrap {
 		position: relative;
