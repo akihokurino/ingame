@@ -37,14 +37,8 @@ var UserView = Backbone.View.extend({
       data: data,
       success: function (data) {
         if (data.result) {
-          if (that.type == "follows-list") {
-            that.$el.remove();
-          }
-
-          if (that.type == "followers-list") {
-            that.$el.find("ul.btn-list li").html("");
-            that.$el.find("ul.btn-list li").append(that.unfollow_btn_template);
-          }
+          that.$el.find("ul.btn-list li").html("");
+          that.$el.find("ul.btn-list li").append(that.unfollow_btn_template);
         }
       },
       error: function () {
@@ -62,14 +56,8 @@ var UserView = Backbone.View.extend({
       data: {},
       success: function (data) {
         if (data.result) {
-          if (that.type == "follows-list") {
-            that.$el.remove();
-          }
-
-          if (that.type == "followers-list") {
-            that.$el.find("ul.btn-list li").html("");
-            that.$el.find("ul.btn-list li").append(that.follow_btn_template({text: "フォローを仕返す"}));
-          }
+          that.$el.find("ul.btn-list li").html("");
+          that.$el.find("ul.btn-list li").append(that.follow_btn_template);
         }
       },
       error: function () {
