@@ -31,10 +31,11 @@ html {
 
 		&:before {
 			position: absolute;
-			top: 8px;
-			left: 15px;
-			@include img_set-PC4(28px, 25px, 0, -528px);
-			content: "";
+			top: -1px;
+			left: 25px;
+			font-size: 24px;
+			font-family: 'icomoon';
+			content: "\e610";
 		}
 	}
 	.fbBtn {
@@ -49,10 +50,11 @@ html {
 
 		&:before {
 			position: absolute;
-			top: 6px;
+			top: -1px;
 			left: 15px;
-			@include img_set-PC4(18px, 30px, 0, -564px);
-			content: "";
+			font-size: 26px;
+			font-family: 'icomoon';
+			content: "\e603";
 		}
 	}
 }

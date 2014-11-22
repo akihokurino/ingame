@@ -2,7 +2,7 @@
 
 /*---   .header   ---------------------------*/
 .header {
-	padding: 13px 0 10px;
+	padding: 13px 0;
 	background: $color_black;
 
 	&Inner {
@@ -38,15 +38,16 @@
 	.search {
 		width: 320px;
 		height: 34px;
+		padding-top: 3px;
 		padding-left: 40px;
 		border: none;
 		@include box-sizing;
 		@include img_set-PC2(6px, 7px);
 		@include appearance;
+		line-height: normal;
 		outline: 0;
 
 		&::-webkit-input-placeholder {
-			padding-top: 5px;
 			color: #cbcbcb;
 			font-size: 14px;
 		}
@@ -60,34 +61,50 @@
 
 			.item {
 				display: inline-block;
-				margin-right:14px;
-				padding-top:6px;
+				margin-right: 12px;
+				padding-top: 6px;
 
 			}
 		}
 		.toTimelineBtn {
 			display: block;
+			position: relative;
 			height: 28px;
-			padding-left: 26px;
-			@include img_set-PC2(0, -30px);
+			padding-left: 28px;
 			color: #efefef;
 			font-size: 12px;
 			line-height: 28px;
 
+			&:before {
+				position: absolute;
+				top: -4px;
+				left: 0;
+				font-size: 24px;
+				font-family: 'icomoon';
+				content: "\e604";
+			}
 			&:hover {
 				text-decoration: none;
 			}
 		}
 		.toProfileBtn {
 			display: block;
+			position: relative;
 			height: 23px;
 			padding-top: 5px;
-			padding-left: 26px;
-			@include img_set-PC2(0, -58px);
+			padding-left: 28px;
 			color: #efefef;
 			font-size: 12px;
 			line-height: 23px;
 
+			&:before {
+				position: absolute;
+				top: 3px;
+				left: 0;
+				font-size: 24px;
+				font-family: 'icomoon';
+				content: "\e611";
+			}
 			&:hover {
 				text-decoration: none;
 			}
@@ -97,13 +114,20 @@
 			position: relative;
 			height: 24px;
 			padding-top: 4px;
-			padding-left: 26px;
-			@include img_set-PC2(0, -90px);
+			padding-left: 28px;
 			color: #efefef;
 			font-size: 12px;
 			line-height: 24px;
 			cursor: pointer;
 
+			&:before {
+				position: absolute;
+				top: 1px;
+				left: 0;
+				font-size: 24px;
+				font-family: 'icomoon';
+				content: "\e601";
+			}
 			&:hover {
 				text-decoration: none;
 			}
@@ -126,6 +150,7 @@
 		margin-right: 33px;
 		border: 1px solid #c9c9ca;
 		@include border-radius(2px);
+		background: #fff;
 		line-height: 0;
 		cursor: pointer;
 

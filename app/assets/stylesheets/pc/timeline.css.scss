@@ -24,6 +24,8 @@
     .profImgWrap {
       float: left;
       margin-right: 10px;
+      background: #fff;
+      line-height: 0;
     }
     .profImg {
       border: 1px solid #d3d3d3;
@@ -116,9 +118,17 @@
     .photoBtnText {
       padding-top: 5px;
       padding-left: 30px;
-      @include img_set-PC2(0, -346px);
       color: #929292;
       font-size: 12px;
+
+      &:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 20px;
+        font-family: 'icomoon';
+        content: "\e608";
+      }
     }
     .addPhoto {
       position: absolute;
