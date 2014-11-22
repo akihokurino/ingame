@@ -19,7 +19,5 @@
     %figure.profImgWrap.menu-btn
       = image_tag "/user_photos/#{@current_user[:photo_path]}", class: "profImg", width: 35, height: 35, alt: ""
     = render partial: "application/pc/menu"
-
-
-= render partial: "application/pc/notifications_modal"
-= render partial: "application/underscore/pc/header/notification"
+    = render partial: "application/pc/notifications_modal"
+    = render partial: "application/underscore/pc/header/notification"
