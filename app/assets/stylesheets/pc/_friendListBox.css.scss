@@ -56,6 +56,7 @@
 			line-height: 1rem;
 		}
 		.followBtn {
+			display: block;
 			margin-top: 52px;
 			margin-left: 92px;
 			border: 1px solid $color-green;
@@ -77,6 +78,7 @@
 			}
 		}
 		.followBtnOn {
+			display: block;
 			margin-top: 52px;
 			margin-left: 92px;
 			border: 1px solid $color-green;
@@ -87,6 +89,13 @@
 			text-align: center;
 			line-height: 30px;
 			cursor: pointer;
+
+			&:hover {
+				border: 1px solid #fff;
+				@include border-radius(2px);
+				background: $color-green;
+				color: #fff;
+			}
 		}
 	}
 }
