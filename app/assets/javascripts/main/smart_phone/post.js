@@ -43,6 +43,8 @@
         success: function (model, response, options) {
           for (var i = 0; i < response.logs.length; i++) {
             var log = new Log(response.logs[i]);
+            var url = "/posts/new#write/" + log.get("game").id + "/" + log.id;
+            log.set("url", url);
             switch(log.get("status").id){
               case 1:
                 that.attentions.push(log);
