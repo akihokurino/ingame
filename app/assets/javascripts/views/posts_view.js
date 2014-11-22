@@ -5,7 +5,7 @@ var PostsView = Backbone.View.extend({
   },
   addPost: function (post) {
     if (post.id) {
-      post.strimWidth(40).sanitize();
+      post.strimWidth(40).sanitize().sanitizeComment();
       var post_view = new PostView({model: post});
       this.$el.append(post_view.render().el);
     }

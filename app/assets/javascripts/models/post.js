@@ -37,7 +37,17 @@ var Post = Backbone.Model.extend({
   },
   sanitize: function () {
     var text = this.get("text").replace(/\n/g, '<br>');
+    text     = text.replace(/((http:|https:)\/\/[\x21-\x26\x28-\x7e]+)/gi, "<a class='link-text' target='_blank' href='$1'>$1</a>");
     this.set("text", text);
+
+    return this;
+  },
+  sanitizeComment: function () {
+    for (var i = 0; i < this.get("post_comments").length; i++) {
+      var text = this.get("post_comments")[i]["text"].replace(/\n/g, '<br>');
+      text     = text.replace(/((http:|https:)\/\/[\x21-\x26\x28-\x7e]+)/gi, "<a class='link-text' target='_blank' href='$1'>$1</a>");
+      this.get("post_comments")[i]["text"] = text;
+    }
 
     return this;
   }

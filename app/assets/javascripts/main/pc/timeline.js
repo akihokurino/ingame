@@ -187,6 +187,8 @@
           }
         }
 
+        console.log(this.getUrl(data.post.text));
+
         this.post_collection.create(data, {
           method: "POST",
           success: function (response) {
@@ -214,6 +216,16 @@
           }
         })
       }
+    },
+    getUrl: function (str) {
+      var pat  = /(https?:\/\/[\x21-\x7e]+)/g;
+      var list = str.match(pat);
+
+      if (!list) {
+        return false;
+      }
+
+      return list;
     }
   })
 
