@@ -4,9 +4,7 @@
       %img.profImg{src: "/user_photos/{{= user.photo_path }}", width: "44", height: "44", alt: "ユーザー画像"}
     %a.account{href: "/users/{{= user.id }}#logs"}
       {{= user.username }}
-    %h2.gameTtl
-      %a{href: "/games/{{= game.id}}#all"}
-        {{= game.title }}
+    %p.time {{= created_at }}
     {{ if (status.id == 1) { }}
     %p.statusReady 気になる
     {{ } else if (status.id == 2) { }}
@@ -14,13 +12,15 @@
     {{ } else if (status.id == 3) { }}
     %p.statusPlayed クリア済
     {{ } }}
+  %h2.gameTtl
+    %a.gameTtlLink{href: "/games/{{= game.id}}#all"}
+      {{= game.title }}
   %p.postTxt
     {{= text }}
   .thumbnail
     {{ for (var i = 0; i < post_photos.length; i++) { }}
     %img.thumbnailImg{src: "/post_photos/{{= post_photos[i].photo_path }}"}
     {{ } }}
-  %p.time {{= created_at }}
   %ul.actionList
     %li.cmtBtn
       コメント

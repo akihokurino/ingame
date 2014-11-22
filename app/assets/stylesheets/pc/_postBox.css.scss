@@ -10,7 +10,7 @@
 .postBox {
 	width: $cntWidth;
 	margin: 0 auto 18px;
-	padding: 10px;
+	padding: 15px;
 	border: 1px solid #e6e6e6;
 	@include border-radius(3px);
 	@include box-sizing;
@@ -19,7 +19,7 @@
 	/*---   .topBox   ---*/
 	.topBox {
 		position: relative;
-		margin-bottom: 7px;
+		margin-bottom: 14px;
 		@include clearfix;
 
 		.profImgWrap {
@@ -32,16 +32,13 @@
 		.account {
 			color: #3c3c3c;
 			font-weight: bold;
-			font-size: 12px;
+			font-size: 14px;
 			line-height: 1.0;
 		}
-		.gameTtl {
-			overflow: hidden;
-			width: 408px;
-			color: $color-green;
-			font-weight: bold;
-			font-size: 16px;
-			line-height: 1.5;
+		.time {
+			margin-top: 8px;
+			color: #888;
+			font-size: 12px;
 		}
 		.statusPlayed {
 			position: absolute;
@@ -49,10 +46,9 @@
 			right: 0;
 			width: 88px;
 			height: 30px;
+			border: 1px solid $color-blue;
 			@include border-radius(3px);
-			background: $color-blue;
-			color: #fff;
-			font-weight: bold;
+			color: $color-blue;
 			font-size: 14px;
 			line-height: 30px;
 			text-align: center;
@@ -63,10 +59,9 @@
 			right: 0;
 			width: 88px;
 			height: 30px;
+			border: 1px solid $color-red;
 			@include border-radius(3px);
-			background: $color-red;
-			color: #fff;
-			font-weight: bold;
+			color: $color-red;
 			font-size: 14px;
 			line-height: 30px;
 			text-align: center;
@@ -77,19 +72,31 @@
 			right: 0;
 			width: 88px;
 			height: 30px;
+			border: 1px solid $color-yellow;
 			@include border-radius(3px);
-			background: $color-yellow;
-			color: #fff;
-			font-weight: bold;
+			color: $color-yellow;
 			font-size: 14px;
 			line-height: 30px;
 			text-align: center;
 		}
 	}
+	/*---   .gameTtl   ---*/
+	.gameTtl {
+		overflow: hidden;
+		width: 408px;
+		margin-bottom: 7px;
+		color: $color-green;
+		font-weight: bold;
+		font-size: 16px;
+		line-height: 1.5;
+
+		&Link {
+			color: $color-green;
+		}
+	}
 	/*---   .postTxt   ---*/
 	.postTxt {
 		margin-bottom: 14px;
-		padding-left: 54px;
 		color: #4a4a4a;
 		font-size: 14px;
 		line-height: 1.5;
@@ -100,16 +107,9 @@
 			width: 100%;
 		}
 	}
-	/*---   .time   ---*/
-	.time {
-		float: right;
-		color: #888;
-		font-size: 12px;
-	}
 	/*---   .actionList   ---*/
 	.actionList {
 		margin-top: 46px;
-		padding-left: 54px;
 		@include clearfix;
 
 		.cmtBtn {
@@ -160,10 +160,24 @@
 			}
 		}
 		.deleteBtn {
+			position: relative;
 			float: right;
-			@include img_set-PC4(17px, 19px, 0, -183px);
+			width: 20px;
+			height: 20px;
+			padding-right: 10px;
+			color: #929292;
 			@include substitute;
 			cursor: pointer;
+
+			&:before {
+				position: absolute;
+				top: -3px;
+				left: 0;
+				font-size: 20px;
+				font-family: 'icomoon';
+				text-indent: 0;
+				content: "\e607";
+			}
 		}
 	}
 	/*---   .commentBox   ---*/
@@ -224,7 +238,7 @@
 		}
 		.comment {
 			overflow: hidden;
-			width: 510px;
+			width: 500px;
 			height: 30px;
 			padding: 5px;
 			border: none;
