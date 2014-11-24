@@ -150,6 +150,8 @@
         }
       }
 
+      data.post.urls = this.getUrl(data.post.text);
+
       $.ajax({
         type: "POST",
         url: "/api/posts",
@@ -169,6 +171,16 @@
 
         }
       })
+    },
+    getUrl: function (str) {
+      var pat  = /(https?:\/\/[\x21-\x7e]+)/g;
+      var list = str.match(pat);
+
+      if (!list) {
+        return false;
+      }
+
+      return list;
     }
   })
 

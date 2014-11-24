@@ -93,6 +93,32 @@
 			margin-bottom: 5px;
 		}
 	}
+	/*---   .urlThumbnail   ----*/
+	.urlThumbnailWrap {
+		.urlThumbnail {
+			display: block;
+			padding: 10px;
+			overflow: hidden;
+			border: solid 1px #e2e2e2;
+			img {
+				width: 70px;
+				float: left;
+				display: inline-block;
+				margin-right: 10px;
+				border: solid 1px #e2e2e2;
+			}
+			.body {
+				float: left;
+				width: 200px;
+				.title {
+					margin-bottom: 15px;
+				}
+				.description {
+
+				}
+			}
+		}
+	}
 	.stateBox {
 		text-align: right;
 	}

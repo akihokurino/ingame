@@ -8,6 +8,7 @@ class Post < ActiveRecord::Base
   has_many   :post_likes
   has_many   :post_photos
   has_many   :post_comments
+  has_many   :post_urls
 
   validates :user_id,
     presence: true,

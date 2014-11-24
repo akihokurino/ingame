@@ -23,6 +23,12 @@ class Api::PostsController < ApplicationController
     params[:post][:user_id] = @current_user[:id]
     @last_post              = Post.create!(post_params)
 
+    unless params[:post][:urls].blank?
+      params[:post][:urls].each do |url|
+        PostUrl.create_thumbnail(url, @last_post)
+      end
+    end
+
     case params[:post][:provider]
     when "facebook"
       @last_post.facebook(@current_user)

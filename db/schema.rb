@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141021154447) do
+ActiveRecord::Schema.define(version: 20141124051028) do
 
   create_table "admins", force: true do |t|
     t.string   "username"
@@ -121,6 +121,16 @@ ActiveRecord::Schema.define(version: 20141021154447) do
   create_table "post_photos", force: true do |t|
     t.string   "photo_path"
     t.integer  "post_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "post_urls", force: true do |t|
+    t.integer  "post_id"
+    t.string   "title"
+    t.text     "description"
+    t.string   "thumbnail"
+    t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

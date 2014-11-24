@@ -40,6 +40,15 @@ json.posts do |json|
         end
       end
     end
+    json.post_urls do |json|
+      json.array!(post.post_urls) do |post_url|
+        json.id post_url[:id]
+        json.title post_url[:title]
+        json.description post_url[:description]
+        json.thumbnail post_url[:thumbnail]
+        json.url post_url[:url]
+      end
+    end
     json.current_user_id @current_user[:id]
   end
 end

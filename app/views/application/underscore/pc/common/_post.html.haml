@@ -21,6 +21,14 @@
     {{ for (var i = 0; i < post_photos.length; i++) { }}
     %img.thumbnailImg{src: "/post_photos/{{= post_photos[i].photo_path }}"}
     {{ } }}
+  .urlThumbnailWrap
+    {{ for (var i = 0; i < post_urls.length; i++) { }}
+    %a.urlThumbnail{href: "{{= post_urls[i].url }}", target: "blank"}
+      %img.thumbnailImg{src: "{{= post_urls[i].thumbnail }}"}
+      .body
+        %p.title {{= post_urls[i].title }}
+        %p.description {{= post_urls[i].description }}
+    {{ } }}
   %ul.actionList
     %li.cmtBtn
       コメント

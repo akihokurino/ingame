@@ -107,6 +107,33 @@
 			width: 100%;
 		}
 	}
+	/*---   .urlThumbnail   ----*/
+	.urlThumbnailWrap {
+		.urlThumbnail {
+			display: block;
+			padding: 10px;
+			overflow: hidden;
+			border: solid 1px #e2e2e2;
+			img {
+				width: 100px;
+				float: left;
+				display: inline-block;
+				margin-right: 10px;
+				border: solid 1px #e2e2e2;
+			}
+			.body {
+				float: left;
+				width: 600px;
+				.title {
+					margin-bottom: 15px;
+				}
+				.description {
+
+				}
+			}
+		}
+	}
+
 	/*---   .actionList   ---*/
 	.actionList {
 		margin-top: 46px;
