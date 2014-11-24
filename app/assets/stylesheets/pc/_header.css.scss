@@ -99,7 +99,7 @@
 				content: "\e604";
 			}
 			&:hover {
-				text-decoration: none;
+				text-decoration: underline;
 			}
 		}
 		.toProfileBtn {
@@ -121,7 +121,7 @@
 				content: "\e611";
 			}
 			&:hover {
-				text-decoration: none;
+				text-decoration: underline;
 			}
 		}
 		.notify {
@@ -144,7 +144,7 @@
 				content: "\e601";
 			}
 			&:hover {
-				text-decoration: none;
+				text-decoration: underline;
 			}
 			&Num {
 				display: none;
