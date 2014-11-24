@@ -96,25 +96,27 @@
 	/*---   .urlThumbnail   ----*/
 	.urlThumbnailWrap {
 		.urlThumbnail {
-			display: block;
-			padding: 10px;
-			overflow: hidden;
+			display: table;
 			border: solid 1px #e2e2e2;
 			img {
-				width: 70px;
-				float: left;
-				display: inline-block;
-				margin-right: 10px;
-				border: solid 1px #e2e2e2;
+				display:table-cell;
+				width: 90px;
+				margin-right: 5px;
+				margin-bottom:0;
+				border-right: solid 1px $color_border;
 			}
 			.body {
-				float: left;
-				width: 200px;
+				display:table-cell;
+				width: 100%;
+				vertical-align: top;
 				.title {
-					margin-bottom: 15px;
+					padding:5px;
+
 				}
 				.description {
-
+					padding:5px;
+					color:color_textGray;
+					font-size:12px;
 				}
 			}
 		}
