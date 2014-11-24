@@ -67,7 +67,7 @@
       position: relative;
       width: 125px;
       padding-bottom: 10px;
-      color: $color_green;
+      color: $main_color;
       font-size: 16px;
       cursor: pointer;
 
@@ -78,8 +78,8 @@
         top: 2px;
         width: 6px;
         height: 6px;
-        border-top: 3px solid $color_green;
-        border-right: 3px solid $color_green;
+        border-top: 3px solid $main_color;
+        border-right: 3px solid $main_color;
         -webkit-transform: rotate(135deg);
         transform: rotate(135deg);
         content: "";
@@ -163,7 +163,7 @@
         content: "\e60a";
       }
       &:hover {
-        background: $color-green;
+        background: $main_color;
       }
     }
     .selectModal {

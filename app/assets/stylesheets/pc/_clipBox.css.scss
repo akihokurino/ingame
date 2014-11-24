@@ -19,7 +19,7 @@
 
 	.clipTtl {
 		margin-bottom: 20px;
-		color: $color_green;
+		color: $main_color;
 		font-size: 16px;
 		text-align: center;
 	}
@@ -64,7 +64,7 @@
 		width: 108px;
 		height: 30px;
 		@include border-radius(3px);
-		background: $color_green;
+		background: $main_color;
 		color: #fff;
 		font-weight: bold;
 		line-height: 30px;

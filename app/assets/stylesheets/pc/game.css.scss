@@ -112,7 +112,7 @@ html {
         display: inline-block;
         position: relative;
         @include border-radius(3px);
-        background: $color_green;
+        background: $main_color;
         cursor: pointer;
 
         &:first-child {
@@ -136,6 +136,7 @@ html {
     /*---   .sortBox   ---*/
     .sortBox {
       clear: both;
+      padding-top: 30px;
 
       .sortTtl {
         margin-bottom: 26px;
@@ -156,7 +157,7 @@ html {
 
           &.current {
             position: relative;
-            color: $color-green;
+            color: $main_color;
 
             &:after {
               position: absolute;
@@ -164,17 +165,17 @@ html {
               left: 50%;
               width: 100%;
               margin-left: -50%;
-              border-bottom: 4px solid $color-green;
+              border-bottom: 4px solid $main_color;
               content: "";
             }
             .follow {
-              color: $color-green;
+              color: $main_color;
             }
             .all {
-              color: $color-green;
+              color: $main_color;
             }
             .star {
-              color: $color-green;
+              color: $main_color;
             }
           }
         }
@@ -184,7 +185,7 @@ html {
           color: #3e3e3e;
 
           &:hover {
-            color: $color-green;
+            color: $main_color;
             text-decoration: none;
           }
         }
@@ -194,7 +195,7 @@ html {
           color: #3e3e3e;
 
           &:hover {
-            color: $color-green;
+            color: $main_color;
             text-decoration: none;
           }
         }
@@ -204,7 +205,7 @@ html {
           color: #3e3e3e;
 
           &:hover {
-            color: $color-green;
+            color: $main_color;
             text-decoration: none;
           }
         }

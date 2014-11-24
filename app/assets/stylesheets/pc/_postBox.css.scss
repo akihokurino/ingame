@@ -85,13 +85,13 @@
 		overflow: hidden;
 		width: 408px;
 		margin-bottom: 7px;
-		color: $color-green;
+		color: $main_color;
 		font-weight: bold;
 		font-size: 16px;
 		line-height: 1.5;
 
 		&Link {
-			color: $color-green;
+			color: $color_green;
 		}
 	}
 	/*---   .postTxt   ---*/
@@ -166,7 +166,7 @@
 			}
 			&.on {
 				background-position: 0 -400px;
-				color: $color-green;
+				color: $main_color;
 			}
 		}
 		.fvrBtn {

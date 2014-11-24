@@ -9,7 +9,7 @@
 	/*---   .mainTtl   ----------*/
 	.mainTtl {
 		margin-bottom: 40px;
-		color: $color-green;
+		color: $main_color;
 		font-size: 36px;
 		text-align: center;
 	}
@@ -66,7 +66,7 @@
 		height: 30px;
 		margin-left: 247px;
 		@include border-radius(2px);
-		background: $color-green;
+		background: $main_color;
 		color: #fff;
 		font-weight: bold;
 		font-size: 14px;
@@ -84,7 +84,7 @@
 			height: 30px;
 			margin-left: 132px;
 			@include border-radius(2px);
-			background: $color-green;
+			background: $main_color;
 			color: #fff;
 			font-weight: bold;
 			font-size: 14px;
@@ -116,7 +116,7 @@
 		@include border-radius(3px);
 		@include box-sizing;
 		@include box-shadow(0, 2px, 0, 0, #3eb07e);
-		background: $color-green;
+		background: $main_color;
 		color: #fff;
 		font-size: 14px;
 		text-align: center;
@@ -133,7 +133,7 @@
 		margin-left: -95px;
 		border: none;
 		@include box-sizing;
-		background: $color-green;
+		background: $main_color;
 		cursor: pointer;
 		outline: 0;
 	}
