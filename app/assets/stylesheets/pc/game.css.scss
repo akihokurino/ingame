@@ -83,7 +83,7 @@ html {
       }
       .starOn {
         display: inline-block;
-        @include img_set-PC4(32px, 31px, 0, -211px);
+        @include img_set-PC4(32px, 33px, 0, -211px);
         margin-right: 8px;
 
         &:last-child {
@@ -92,7 +92,7 @@ html {
       }
       .starOff {
         display: inline-block;
-        @include img_set-PC4(32px, 31px, 0, -252px);
+        @include img_set-PC4(32px, 33px, 0, -252px);
         margin-right: 8px;
 
         &:last-child {
