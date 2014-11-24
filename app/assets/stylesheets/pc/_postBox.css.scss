@@ -100,6 +100,10 @@
 		color: #4a4a4a;
 		font-size: 14px;
 		line-height: 1.5;
+
+		.link-text {
+			display: none;
+		}
 	}
 	/*---   .thumbnail   ---*/
 	.thumbnail {
@@ -111,24 +115,26 @@
 	.urlThumbnailWrap {
 		.urlThumbnail {
 			display: block;
-			padding: 10px;
 			overflow: hidden;
 			border: solid 1px #e2e2e2;
+			color: #4a4a4a;
+
+			&:hover {
+				text-decoration: none;
+			}
 			img {
-				width: 100px;
-				float: left;
-				display: inline-block;
-				margin-right: 10px;
-				border: solid 1px #e2e2e2;
+				width: 100%;
+				border-bottom: solid 1px #e2e2e2;
 			}
 			.body {
-				float: left;
-				width: 600px;
+				padding: 10px;
+
 				.title {
 					margin-bottom: 15px;
 				}
 				.description {
-
+					font-size: 14px;
+					line-height: 1.5;
 				}
 			}
 		}
@@ -183,7 +189,7 @@
 			}
 			&.on {
 				background-position: 0 -373px;
-				color: $color-green;
+				color: $color-red;
 			}
 		}
 		.deleteBtn {
