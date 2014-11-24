@@ -42,12 +42,15 @@ html {
     }
     /*---   .gameInfoList   ---*/
     .gameInfoList {
+      max-width: 370px;
       color: #3e3e3e;
       font-size: 14px;
       line-height: 26px;
 
       .item {
         margin-bottom: 10px;
+        padding-left: 5rem;
+        text-indent: -5rem;
       }
       &ItemInner {
         margin-right: 10px;
