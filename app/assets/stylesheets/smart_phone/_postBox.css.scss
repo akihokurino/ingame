@@ -103,11 +103,11 @@
 				width: 90px;
 				margin-right: 5px;
 				margin-bottom:0;
-				border-right: solid 1px $color_border;
 			}
 			.body {
 				display:table-cell;
 				width: 100%;
+				border-left: solid 1px $color_border;
 				vertical-align: top;
 				.title {
 					padding:5px;
