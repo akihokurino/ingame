@@ -3,7 +3,7 @@
 /*---   .settingHeader   ---------------------------*/
 .settingHeader {
 	padding: 13px 0 10px;
-	background: $color-black;
+	background: $color_black;
 
 	/*---   .settingHeaderInner   ----------*/
 	&Inner {
@@ -14,7 +14,7 @@
 		/*---   .logo   ---*/
 		.logo {
 			float: left;
-			color: $color_green;
+			color: $main_color;
 			font-size: 28px;
 		}
 		/*---   .stepTxt   ---*/
@@ -43,7 +43,7 @@
 					left: 5px;
 					height: 16px;
 					@include border-radius(2px);
-					background: $color-green;
+					background: $main_color;
 					content: "";
 				}
 			}

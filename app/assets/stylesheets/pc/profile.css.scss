@@ -69,7 +69,7 @@ html {
         color: #3e3e3e;
 
         &:hover {
-          color: $color-green;
+          color: $main_color;
           text-decoration: none;
         }
       }
@@ -87,7 +87,7 @@ html {
       .count {
         display: block;
         margin-top: 5px;
-        color: $color_green;
+        color: $main_color;
         font-weight: bold;
         font-size: 20px;
       }
@@ -99,7 +99,7 @@ html {
           position: absolute;
           bottom: 0;
           width: 100%;
-          border-bottom: 3px solid $color_green;
+          border-bottom: 3px solid $main_color;
           content: "";
         }
       }
@@ -116,7 +116,7 @@ html {
       .count {
         display: block;
         margin-top: 5px;
-        color: $color_green;
+        color: $main_color;
         font-weight: bold;
         font-size: 20px;
       }
@@ -128,7 +128,7 @@ html {
           position: absolute;
           bottom: 0;
           width: 100%;
-          border-bottom: 3px solid $color_green;
+          border-bottom: 3px solid $main_color;
           content: "";
         }
       }
@@ -145,7 +145,7 @@ html {
       .count {
         display: block;
         margin-top: 5px;
-        color: $color_green;
+        color: $main_color;
         font-weight: bold;
         font-size: 20px;
       }
@@ -157,7 +157,7 @@ html {
           position: absolute;
           bottom: 0;
           width: 100%;
-          border-bottom: 3px solid $color_green;
+          border-bottom: 3px solid $main_color;
           content: "";
         }
       }
@@ -174,7 +174,7 @@ html {
       .count {
         display: block;
         margin-top: 5px;
-        color: $color_green;
+        color: $main_color;
         font-weight: bold;
         font-size: 20px;
       }
@@ -186,7 +186,7 @@ html {
           position: absolute;
           bottom: 0;
           width: 100%;
-          border-bottom: 3px solid $color_green;
+          border-bottom: 3px solid $main_color;
           content: "";
         }
       }
@@ -234,7 +234,7 @@ html {
       margin-left: 287px;
       @include box-shadow(0, 3px, 0, 0, #41b985);
       @include border-radius(3px);
-      background: $color-green;
+      background: $main_color;
       color: #fff;
       font-weight: bold;
       font-size: 18px;
@@ -284,7 +284,7 @@ html {
       margin-bottom: 26px;
       padding-left: 18px;
       border-left: 5px solid $color-red;
-      color: $color-black;
+      color: $color_black;
       font-size: 24px;
     }
   }
@@ -296,7 +296,7 @@ html {
       margin-bottom: 26px;
       padding-left: 18px;
       border-left: 5px solid $color-yellow;
-      color: $color-black;
+      color: $color_black;
       font-size: 24px;
     }
   }
@@ -308,7 +308,7 @@ html {
       margin-bottom: 26px;
       padding-left: 18px;
       border-left: 5px solid $color-blue;
-      color: $color-black;
+      color: $color_black;
       font-size: 24px;
     }
   }

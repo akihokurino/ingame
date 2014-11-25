@@ -99,7 +99,7 @@
 		-moz-border-radius: 3px;
 		-webkit-border-radius: 3px;
 		border-radius: 3px;
-		background: #24d387;
+		background: $main_color;
 		cursor: pointer;
 
         &:before {
@@ -108,7 +108,7 @@
           right: 10px;
           width: 16px;
           height: 33px;
-          background: $color-green;
+          background: $main_color;
           content: "";
         }
         &:after {

@@ -71,6 +71,7 @@ html {
 	text-align: center;
 
 	&Top {
+		display: none;
 		width: 100%;
 		height: 60px;
 		padding-top: 13px;
@@ -87,7 +88,7 @@ html {
 		@include substitute;
 	}
 	.catchcopy {
-		margin: 90px 0 30px;
+		padding: 90px 0 30px;
 		font-weight: bold;
 		font-size: 36px;
 	}
@@ -137,7 +138,7 @@ html {
 	/*---   .contentBox01   ----------*/
 	&01 {
 		padding: 60px 0 50px;
-		background: $color-green;
+		background: $color_green;
 		text-align: center;
 
 		.cntLeft {
