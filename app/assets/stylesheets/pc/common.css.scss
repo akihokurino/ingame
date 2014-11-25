@@ -4,6 +4,9 @@
 @import "_footer.css.scss";
 
 /*---   common   ---------------------------*/
+* {
+	@include box-sizing;
+}
 html {
 	min-width: 960px;
 	background: #eee;

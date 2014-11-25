@@ -1,8 +1,12 @@
 @import "../_function.css.scss";
+@import "_userActivity.css.scss";
 @import "_postBox.css.scss";
 
 /*---   .mainContent   ---------------------------*/
 .mainContent {
+  @include clearfix;
+  width: 960px;
+  margin: 38px auto 0;
   padding: 46px 0;
 
   /*---   .mainTtl   ----------*/
@@ -12,10 +16,18 @@
     font-size: 24px;
     text-align: center;
   }
+  .userColumn {
+    float: left;
+    width: 290px;
+  }
+  .postColumn {
+    float: right;
+    width: 650px;
+  }
   /*---   .addPost   ----------*/
   .addPost {
     position: relative;
-    width: 780px;
+    width: 650px;
     margin: 0 auto 18px;
     padding-left: 10px;
     @include box-sizing;
@@ -33,7 +45,7 @@
     &Inner {
       position: relative;
       float: right;
-      width: 713px;
+      width: 585px;
       padding: 10px;
       border: 1px solid #e6e6e6;
       @include border-radius(3px);
