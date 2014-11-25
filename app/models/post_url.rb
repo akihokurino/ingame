@@ -8,12 +8,6 @@ class PostUrl < ActiveRecord::Base
 
   class << self
     def create_thumbnail(url, post)
-      html = open(url) do |f|
-        charset = f.charset
-        f.read
-      end
-
-      doc  = Nokogiri::HTML.parse(html.toutf8, nil, "UTF-8")
       data = {
         post_id: nil,
         title: nil,
@@ -22,6 +16,28 @@ class PostUrl < ActiveRecord::Base
       }
 
       data[:post_id] = post[:id]
+      data           = self.scraping_url(url, data)
+
+      self.create data
+    end
+
+    def tmp_thumbnail(url)
+      data = {
+        title: nil,
+        description: nil,
+        thumbnail: nil
+      }
+
+      self.scraping_url(url, data)
+    end
+
+    def scraping_url(url, data)
+      html = open(url) do |f|
+        charset = f.charset
+        f.read
+      end
+
+      doc  = Nokogiri::HTML.parse(html.toutf8, nil, "UTF-8")
       data[:title]   = doc.title
       data[:url]     = url
 
@@ -67,7 +83,7 @@ class PostUrl < ActiveRecord::Base
         end
       end
 
-      self.create data
+      data
     end
   end
 end

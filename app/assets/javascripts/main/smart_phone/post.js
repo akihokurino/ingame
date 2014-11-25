@@ -177,7 +177,7 @@
       var list = str.match(pat);
 
       if (!list) {
-        return false;
+        return [];
       }
 
       return list;

@@ -45,6 +45,7 @@ Ingame::Application.routes.draw do
         get "count"
       end
     end
+    resources :post_urls, only: ["new"], format: "json"
   end
 
   match "/auth/:provider/callback", to: "sessions#callback", via: :get

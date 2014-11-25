@@ -16,8 +16,9 @@
   var AppView = Backbone.View.extend({
     el: ".timeline-page",
     events: {
-      "click .show-select-modal":  "toggleSelectModal",
-      "click .post-btn":           "post"
+      "click .show-select-modal": "toggleSelectModal",
+      "click .post-btn":          "post",
+      "keyup .post-input":        "checkUrl"
     },
     initialize: function () {
       _.bindAll(this, "pagenation", "selectLog");
@@ -35,6 +36,9 @@
       this.comment_input      = this.$(".comment-input");
       this.user_id            = $("#wrapper").data("userid");
       this.page               = 1;
+
+      this.current_access_url = null;
+      this.prev_access_url    = null;
 
       event_handle.discribe("selectLog", this.selectLog);
 
@@ -223,10 +227,39 @@
       var list = str.match(pat);
 
       if (!list) {
-        return false;
+        return [];
       }
 
       return list;
+    },
+    checkUrl: function () {
+      var that     = this;
+      var text     = this.post_input.val();
+      var url_list = this.getUrl(text);
+      if (url_list) {
+        this.current_access_url = url_list[url_list.length - 1];
+
+        if (this.current_access_url !== this.prev_access_url) {
+
+          if (req) {
+            req.abort();
+          }
+
+          var req = $.ajax({
+            type: "GET",
+            url: "/api/post_urls/new?url=" + this.current_access_url,
+            data: {},
+            success: function (data) {
+              that.prev_access_url = that.current_access_url;
+              req                  = null;
+              console.log(data);
+            },
+            error: function () {
+
+            }
+          })
+        }
+      }
     }
   })
 
