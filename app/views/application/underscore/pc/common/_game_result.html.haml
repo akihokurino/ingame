@@ -10,6 +10,7 @@
         {{ } }}
       %h1.ttl
         {{= title }}
+      %span.device {{= device }}
       %ul.starList
         {{ diff = 5 - avg_rate }}
         {{ for (var i = 0; i < avg_rate; i++) { }}
