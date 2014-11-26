@@ -7,11 +7,29 @@
 = render partial: "application/pc/default_header"
 
 %section.mainContent.timeline-page
-  .userColumn
-    .userActivity
-      %h1.userActivityTtl 最近登録したユーザー
-      %ul.userActivityList.user-activity-list
-
+  .profileColumn
+    %article.profile
+      .profileTopBox
+        %figure.userImgWrap
+          %img.userImg{src: "", width: "80", height: "80", alt: ""}
+        %p.userName user1
+      %ul.profileCountList.count-box
+        %li.gameNum.logs-li
+          %a.profileCountListLink{href: ""}
+            ライブラリ
+            %span.count 200
+        %li.postNum.posts-li
+          %a.profileCountListLink{href: ""}
+            ポスト
+            %span.count 200
+        %li.followNum.follows-li
+          %a.profileCountListLink{href: ""}
+            フォロー
+            %span.count 200
+        %li.followerNum.followers-li
+          %a.profileCountListLink{href: ""}
+            フォロワー
+            %span.count 200
   .postColumn
     .addPost
       %figure.profImgWrap
@@ -32,6 +50,11 @@
 
     .post-list
     = image_tag "gif-load-pc.gif", class: "loading-gif"
+
+  .userColumn
+    .userActivity
+      %h1.userActivityTtl 最近登録したユーザー
+      %ul.userActivityList.user-activity-list
 
 
 

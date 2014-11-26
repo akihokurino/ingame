@@ -13,7 +13,7 @@
 
 	&Inner {
 		position: relative;
-		width: $width;
+		width: 1080px;
 		margin: 0 auto;
 		color: #fff;
 		@include clearfix;
@@ -162,6 +162,7 @@
 	.profImgWrap {
 		position: relative;
 		float: right;
+		margin-right: 32px;
 		border: 1px solid #c9c9ca;
 		@include border-radius(2px);
 		background: #fff;

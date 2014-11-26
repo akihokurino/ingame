@@ -5,7 +5,7 @@
 /*---   .mainContent   ---------------------------*/
 .mainContent {
   @include clearfix;
-  width: 960px;
+  width: 1080px;
   margin: 38px auto 0;
   padding: 46px 0;
 
@@ -16,18 +16,136 @@
     font-size: 24px;
     text-align: center;
   }
-  .userColumn {
+  .profileColumn {
     float: left;
-    width: 290px;
+    width: 280px;
+    margin-right: 20px;
   }
   .postColumn {
+    float: left;
+    width: 480px;
+  }
+  .userColumn {
     float: right;
-    width: 650px;
+    width: 280px;
+  }
+  /*---   ---*/
+  .profile {
+    position: relative;
+    width: 280px;
+    min-height: 122px;
+    padding: 10px;
+    border: 1px solid #e6e6e6;
+    @include border-radius(3px);
+    @include box-sizing;
+    background: #fff;
+    @include clearfix;
+
+    &TopBox {
+      @include clearfix;
+      margin-bottom: 8px;
+      padding: 10px;
+      background: url(/assets/pc/default_cover.png) no-repeat top center;
+      background-size: cover;
+    }
+    .userImgWrap {
+      float: left;
+      margin-right: 24px;
+      border: 3px solid #fff;
+    }
+    .userName {
+      margin-bottom: 10px;
+      padding-top: 32px;
+      color: #fff;
+      font-weight: bold;
+      font-size: 20px;
+    }
+    .userProf {
+      color: #7e7e7e;
+      font-size: 12px;
+      line-height: 1rem;
+    }
+    &CountList {
+      @include flexbox;
+      margin: 0 auto;
+      font-size: 0;
+
+      &Link {
+        display: block;
+        padding: 8px 0 4px;
+        color: #3e3e3e;
+
+        &:hover {
+          color: $main_color;
+          text-decoration: none;
+        }
+      }
+    }
+    .gameNum {
+      @include box-sizing;
+      color: #3e3e3e;
+      font-size: 12px;
+      text-align: center;
+      cursor: pointer;
+
+      .count {
+        display: block;
+        margin-top: 5px;
+        color: $main_color;
+        font-weight: bold;
+        font-size: 12px;
+      }
+    }
+    .postNum {
+      @include box-sizing;
+      color: #3e3e3e;
+      font-size: 12px;
+      text-align: center;
+      cursor: pointer;
+
+      .count {
+        display: block;
+        margin-top: 5px;
+        color: $main_color;
+        font-weight: bold;
+        font-size: 12px;
+      }
+    }
+    .followNum {
+      @include box-sizing;
+      color: #3e3e3e;
+      font-size: 12px;
+      text-align: center;
+      cursor: pointer;
+
+      .count {
+        display: block;
+        margin-top: 5px;
+        color: $main_color;
+        font-weight: bold;
+        font-size: 12px;
+      }
+    }
+    .followerNum {
+      @include box-sizing;
+      color: #3e3e3e;
+      font-size: 12px;
+      text-align: center;
+      cursor: pointer;
+
+      .count {
+        display: block;
+        margin-top: 5px;
+        color: $main_color;
+        font-weight: bold;
+        font-size: 12px;
+      }
+    }
   }
   /*---   .addPost   ----------*/
   .addPost {
     position: relative;
-    width: 650px;
+    width: 480px;
     margin: 0 auto 18px;
     padding-left: 10px;
     @include box-sizing;
@@ -45,7 +163,7 @@
     &Inner {
       position: relative;
       float: right;
-      width: 585px;
+      width: 415px;
       padding: 10px;
       border: 1px solid #e6e6e6;
       @include border-radius(3px);
