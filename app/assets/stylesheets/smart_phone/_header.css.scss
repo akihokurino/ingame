@@ -8,95 +8,105 @@ header {
 	width: 100%;
 	z-index: 1;
 	@include box-sizing;
+
 	.headerNav{
-	padding:5px;
-	font-size:22px;
-	background-color: rgba($main_color,.94);
-	box-shadow:0 0 1px 1px rgba(0,0,0,0.2);
-	a{
-		color:#fff;
-		text-decoration:none;
-	}
-	.title{
-		color:#fff;
-		text-align: center;
-	}
-	ul{
-		display:table;
-		float:right;
-		li{
-			display:table-cell;
-			padding:2px 10px;
+		height:45px;
+		font-size:22px;
+		background-color: rgba($main_color,.94);
+		box-shadow:0 0 1px 1px rgba(0,0,0,0.2);
+		a{
+			color:#fff;
+			text-decoration:none;
 		}
-		.notify{
-			position:relative;
-			&Num{
-				display: none;
-				position: absolute;
-				top: 1px;
-				right: 2px;
-				width: 17px;
-				height: 17px;
-				@include border-radius(2px);
-				background: $sub_color;
-				color: #fff;
-				font-family: Helvetica;
-				font-size: 12px;
-				@include font-weight(1px, #fff);
-				line-height: 17px;
+		ul{
+			display:table;
+			text-align:center;
+			width: 100%;
+			li{
+				display:table-cell;
+			}
+			.title,.menuWrap,.notify,.search{
 				text-align: center;
+				vertical-align: middle;
+			}
+			.notify,.search{
+				width: 40px;
+			}
+			.menuWrap{
+				text-align:left;
+				padding-left:10px;
+				width: 70px;
+			}
+			.menu{
+				position: relative;
+				display:inline-block;
+				width: 22px;
+				height: 28px;
+				cursor:pointer;
+				&:before,&:after{
+					display: block;
+					position: absolute;
+					content: "";
+					width: 24px;
+					height: 4px;
+					@include border-radius(4px);
+					background-color: #fff;
+					top: 0;
+					left: 0;
+					-webkit-transition:0.3s ease;
+						-ms-transition:0.3s ease;
+							transition:0.3s ease;
+				}
+				&:before{
+					-webkit-transform: translate(0,6px) rotate(0deg);
+						-ms-transform: translate(0,6px) rotate(0deg);
+							transform: translate(0,6px) rotate(0deg);
+				}
+				&:after{
+					-webkit-transform: translate(0,18px) rotate(0deg);
+						-ms-transform: translate(0,18px) rotate(0deg);
+							transform: translate(0,18px) rotate(0deg);
+				}
+			}
+			.show:before{
+				-webkit-transform: translate(0,13px) rotate(-135deg);
+					-ms-transform: translate(0,13px) rotate(-135deg);
+						transform: translate(0,13px) rotate(-135deg);
+			}
+			.show:after{
+				-webkit-transform: translate(0,13px) rotate(135deg);
+					-ms-transform: translate(0,13px) rotate(135deg);
+						transform: translate(0,13px) rotate(135deg);
+			}
+			.notify{
+				position:relative;
+				&Num{
+					display: none;
+					position: absolute;
+					top: 1px;
+					right: 2px;
+					width: 17px;
+					height: 17px;
+					@include border-radius(2px);
+					background: $sub_color;
+					color: #fff;
+					font-family: Helvetica;
+					font-size: 12px;
+					@include font-weight(1px, #fff);
+					line-height: 17px;
+					text-align: center;
+				}
+			}
+			.icon-bell,.icon-search{
+				font-size:24px;
 			}
 		}
-		.menu{
-			position: relative;
-			display:inline-block;
-			width: 24px;
-			height: 24px;
-			cursor:pointer;
-			&:before,&:after{
-				display: block;
-				position: absolute;
-				content: "";
-				width: 24px;
-				height: 4px;
-				@include border-radius(4px);
-				background-color: #fff;
-				top: 0;
-				left: 0;
-				-webkit-transition:0.3s ease;
-					-ms-transition:0.3s ease;
-						transition:0.3s ease;
-			}
-			&:before{
-				-webkit-transform: translate(0,6px) rotate(0deg);
-					-ms-transform: translate(0,6px) rotate(0deg);
-						transform: translate(0,6px) rotate(0deg);
-			}
-			&:after{
-				-webkit-transform: translate(0,18px) rotate(0deg);
-					-ms-transform: translate(0,18px) rotate(0deg);
-						transform: translate(0,18px) rotate(0deg);
-			}
-		}
-		.show:before{
-			-webkit-transform: translate(0,13px) rotate(-135deg);
-				-ms-transform: translate(0,13px) rotate(-135deg);
-					transform: translate(0,13px) rotate(-135deg);
-		}
-		.show:after{
-			-webkit-transform: translate(0,13px) rotate(135deg);
-				-ms-transform: translate(0,13px) rotate(135deg);
-					transform: translate(0,13px) rotate(135deg);
+		&:after{
+			content:"";
+			display:block;
+			clear:both;
 		}
 	}
-	&:after{
-		content:"";
-		display:block;
-		clear:both;
-	}
-
-	}
-
 	.openMenuWrap {
 		display: none;
 	}
@@ -127,7 +137,7 @@ header {
 		}
 	}
 
-	.icon-setting, .icon-logout{
+	.icon-setting, .icon-logout,.icon-user{
 		display:block;
 		padding-left:10px;
 		width: 100%;

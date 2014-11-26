@@ -1,6 +1,8 @@
 .openMenuWrap
   %ul.openMenu
     %li.item
+      = link_to "マイページ", "/users/#{@current_user[:id]}#logs", class: "icon-user"
+    %li.item
       = link_to "アカウント設定", edit_user_path(@current_user), class: "icon-setting"
     %li.item
       = link_to "ログアウト", logout_users_path, class: "icon-logout"

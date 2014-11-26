@@ -4,18 +4,19 @@
 %header
   %nav.headerNav
     %ul
-      %li.home
-        = link_to "", posts_path, class: "icon-home"
-      %li.search
-        = link_to "", "/users/#{@current_user[:id]}/search_game_or_user#game", class: "icon-search"
-      %li.profile
-        = link_to "", "/users/#{@current_user[:id]}#logs", class: "icon-user"
+      %li.menuWrap
+        %a.menu
+      / %li.home
+      /   = link_to "", posts_path, class: "icon-home"
+      %li.title
+        = link_to image_tag('logo@2x.png', height:"45px"), posts_path
+        / %img{src:"/assets/logo.png", height:"45px"}
       %li.notify.my-notify
         %a{href: ""}
           %span.icon-bell
             %span.notifyNum.notify-num
-      %li.menuWrap
-        %a.menu
+      %li.search
+        = link_to "", "/users/#{@current_user[:id]}/search_game_or_user#game", class: "icon-search"
   = render partial: "application/smart_phone/menu"
 
 = render partial: "application/smart_phone/notifications_modal"
