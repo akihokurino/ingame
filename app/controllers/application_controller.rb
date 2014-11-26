@@ -26,6 +26,7 @@ class ApplicationController < ActionController::Base
 		if session[:current_user_id]
 			begin
 				@current_user = User.find(session[:current_user_id])
+				@current_user.check_follow_num
 			rescue ActiveRecord::RecordNotFound
 				reset_session
 			end

@@ -53,6 +53,10 @@ class User < ActiveRecord::Base
       self.i_followered = false
     end
 
+    self.check_follow_num
+  end
+
+  def check_follow_num
     self.follow_num   = Follow.where(from_user_id: self[:id]).count
     self.follower_num = Follow.where(to_user_id: self[:id]).count
   end
