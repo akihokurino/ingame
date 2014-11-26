@@ -1,12 +1,16 @@
 //= require ../../libs/socket.js
 //= require ../../models/game_result.js
 //= require ../../models/user_result.js
+//= require ../../models/user.js
 //= require ../../collections/game_results.js
 //= require ../../collections/user_results.js
+//= require ../../collections/users.js
 //= require ../../views/game_result_view
 //= require ../../views/game_results_view
 //= require ../../views/user_result_view
 //= require ../../views/user_results_view
+//= require ../../views/user_view
+//= require ../../views/users_view
 
 (function () {
 
@@ -106,9 +110,28 @@
 
       this.user_result_collection = new UserResults();
       this.user_results_view      = new UserResultsView({el: ".result-list", collection: this.user_result_collection});
+      this.user_collection        = new Users();
+      this.users_view             = new UsersView({el: ".user-activity-list", collection: this.user_collection, attributes: {template: "#user-activity-template"}});
+
       this.username               = this.$(".username-input");
       this.current_username       = null;
       this.page                   = 1;
+
+      var that = this;
+
+      this.user_collection.fetch({
+        data: {page: 1, type: "activity"},
+        success: function (model, response, options) {
+          for (var i = 0; i < response.users.length; i++) {
+            var user = new User(response.users[i]);
+            user.strimWidth(30);
+            that.users_view.collection.add(user);
+          }
+        },
+        error: function () {
+
+        }
+      })
     },
     search: function (e) {
       if (e.which == 13 && this.username.val()) {
@@ -121,6 +144,8 @@
         this.user_result_collection.fetch({
           data: {username: this.current_username, page: this.page},
           success: function (model, response, options) {
+            that.hideActivity();
+
             that.user_result_collection.reset();
             that.user_results_view.$el.html("");
             if (response.results && response.results.length > 0) {
@@ -171,6 +196,9 @@
           }
         });
       }
+    },
+    hideActivity: function () {
+      $(".user-activity-list-wrap").html("");
     }
   })
 

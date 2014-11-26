@@ -6,30 +6,11 @@
 		.search-form-box.searchWrap
 			%form.search-form.entryBox
 				%input.username-input.search{type: "text", name: "username", placeholder: "ユーザーを検索"}
-		.boxTtl
-			%h2.boxTtl  最近登録したユーザー
-		%ul.latestUserList
-			%li.item
-				%ul.friendListWrap.btn-list
-					%li.followBtnWrap
-						.followBtn.unFollow.unfollow-btn フォローする
-					%figure.userImgWrap
-						%img.profImg{src:"default.png" , height: 40, height: 40}
-					.userInfo
-						.nameWrap
-							%a.name{href: ""} username
-						%span.icon-place
-						.place place
-			%li.item
-				%ul.friendListWrap.btn-list
-					%li.followBtnWrap
-						.followBtn.unFollow.unfollow-btn フォローする
-					%figure.userImgWrap
-						%img.profImg{src:"default.png" , height: 40, height: 40}
-					.userInfo
-						.nameWrap
-							%a.name{href: ""} username
-						%span.icon-place
-						.place place
+
+		.user-activity-list-wrap
+			.boxTtl
+				%h2.boxTtl  最近登録したユーザー
+			%ul.latestUserList.user-activity-list
+
 		%ul.result-list
 		= image_tag "gif-load-pc.gif", class: "loading-gif"
