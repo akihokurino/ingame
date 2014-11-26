@@ -36,7 +36,7 @@
 
       var that               = this;
       this.log_collection    = new Logs();
-      this.logs_view         = new LogsView({el: ".log-list", collection: this.log_collection});
+      this.logs_view         = new LogsView({el: ".log-list", collection: this.log_collection, attributes: {template: "#log-template"}});
 
       this.attentions        = [];
       this.playings          = [];
@@ -445,7 +445,7 @@
         success: function (data) {
           if (data.result) {
             that.$el.find(".follow-wrap").html("");
-            that.$el.find(".follow-wrap").append(that.follow_btn_template({text: "フォロー"}));
+            that.$el.find(".follow-wrap").append(that.follow_btn_template);
           }
         },
         error: function () {

@@ -10,6 +10,10 @@ var LogView = Backbone.View.extend({
       this.type = this.attributes.type;
     }
 
+    if (this.attributes && this.attributes.template) {
+      this.template = _.template($(this.attributes.template).html());
+    }
+
     this.listenTo(this.model, "destroy", this.remove);
   },
   destroy: function () {
@@ -19,7 +23,6 @@ var LogView = Backbone.View.extend({
   remove: function () {
     this.$el.remove();
   },
-  template: _.template($("#log-template").html()),
   render: function () {
     var template = this.template(this.model.toJSON());
     this.$el.html(template);

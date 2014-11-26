@@ -1,15 +1,21 @@
 var LogsView = Backbone.View.extend({
   initialize: function () {
+
     if (this.attributes && this.attributes.type) {
       this.type = this.attributes.type;
     }
+
+    if (this.attributes && this.attributes.template) {
+      this.template = this.attributes.template;
+    }
+
     this.listenTo(this.collection, "add", this.addLog);
   },
   addLog: function (log) {
     if (log.id) {
       log.set("isCurrentUserLog", log.isCurrentUserLog());
       if (this.type == "select") {
-        var log_view = new LogView({model: log, attributes: {type: "select"}});
+        var log_view = new LogView({model: log, attributes: {type: this.type, template: this.template}});
         switch (log.get("status").id) {
           case 1:
             this.$el.find(".ready-list").prepend(log_view.render().el);
@@ -22,7 +28,7 @@ var LogsView = Backbone.View.extend({
             break;
         }
       } else {
-        var log_view = new LogView({model: log});
+        var log_view = new LogView({model: log, attributes: {template: this.template}});
         this.$el.prepend(log_view.render().el);
       }
     }

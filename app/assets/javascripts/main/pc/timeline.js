@@ -31,7 +31,7 @@
       this.post_collection    = new Posts();
       this.posts_view         = new PostsView({collection: this.post_collection});
       this.log_collection     = new Logs();
-      this.logs_view          = new LogsView({el: ".select-log-list", collection: this.log_collection, attributes: {type: "select"}});
+      this.logs_view          = new LogsView({el: ".select-log-list", collection: this.log_collection, attributes: {type: "select", template: "#log-option-template"}});
       this.user_collection    = new Users();
       this.users_view         = new UsersView({el: ".user-activity-list", collection: this.user_collection, attributes: {type: "activity", template: "#user-activity-template"}});
 

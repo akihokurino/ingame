@@ -25,6 +25,9 @@ var UserView = Backbone.View.extend({
 
     return this;
   },
+  remove: function () {
+    this.$el.remove();
+  },
   follow: function (e) {
     e.preventDefault();
     var that = this;
@@ -41,7 +44,7 @@ var UserView = Backbone.View.extend({
       success: function (data) {
         if (data.result) {
           if (that.type == "activity") {
-            that.$el.remove();
+            that.remove();
           } else {
             that.$el.find("ul.btn-list li").html("");
             that.$el.find("ul.btn-list li").append(that.unfollow_btn_template);

@@ -29,7 +29,7 @@
 
       var that               = this;
       this.log_collection    = new Logs();
-      this.logs_view         = new LogsView({el: ".log-list", collection: this.log_collection, attributes: {type: "select"}});
+      this.logs_view         = new LogsView({el: ".log-list", collection: this.log_collection, attributes: {type: "select", template: "#log-template"}});
       this.tmp_log_list      = [];
 
 

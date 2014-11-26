@@ -27,7 +27,7 @@
       var that            = this;
 
       this.log_collection = new Logs();
-      this.logs_view      = new LogsView({el: ".gameList", collection: this.log_collection});
+      this.logs_view      = new LogsView({el: ".gameList", collection: this.log_collection, attributes: {template: "#log-template"}});
       this.$el.find(".select-page").append(this.logs_view.el);
 
       this.attentions     = [];
