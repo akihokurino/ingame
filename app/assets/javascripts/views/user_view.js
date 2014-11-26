@@ -5,7 +5,6 @@ var UserView = Backbone.View.extend({
     "click .follow-btn":   "follow",
     "click .unfollow-btn": "unfollow"
   },
-  template: _.template($("#user-template").html()),
   initialize: function () {
     if ($("#follow-btn-template").html() && $("#unfollow-btn-template").html()) {
       this.follow_btn_template   = _.template($("#follow-btn-template").html());
@@ -14,6 +13,10 @@ var UserView = Backbone.View.extend({
 
     if (this.attributes && this.attributes.type) {
       this.type = this.attributes.type;
+    }
+
+    if (this.attributes && this.attributes.template) {
+      this.template = _.template($(this.attributes.template).html());
     }
   },
   render: function () {
@@ -37,8 +40,12 @@ var UserView = Backbone.View.extend({
       data: data,
       success: function (data) {
         if (data.result) {
-          that.$el.find("ul.btn-list li").html("");
-          that.$el.find("ul.btn-list li").append(that.unfollow_btn_template);
+          if (that.type == "activity") {
+            that.$el.remove();
+          } else {
+            that.$el.find("ul.btn-list li").html("");
+            that.$el.find("ul.btn-list li").append(that.unfollow_btn_template);
+          }
         }
       },
       error: function () {

@@ -19,7 +19,8 @@ class User < ActiveRecord::Base
 	validates :place,
 		length: {maximum: 255}
 
-  LIMIT = 20
+  LIMIT          = 20
+  ACTIVITY_LIMIT = 20
 
   scope :search, -> (username) {
     where("username LIKE ?", "%#{username}%")
@@ -109,6 +110,15 @@ class User < ActiveRecord::Base
         user = follow.from_user
         user.check_follow(current_user) if user
         user
+      end
+
+      users
+    end
+
+    def get_activity(current_user)
+      users = User.where("created_at > ?", 2.week.ago).order("created_at DESC").limit(ACTIVITY_LIMIT).keep_if do |user|
+        user.check_follow(current_user)
+        user[:id] != current_user[:id] && !current_user.follows.pluck(:to_user_id).include?(user[:id])
       end
 
       users

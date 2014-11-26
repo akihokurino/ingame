@@ -11,6 +11,8 @@ class Api::UsersController < ApplicationController
       @users = User.get_follows(@current_user, params[:user_id], page)
     when "followers"
       @users = User.get_followers(@current_user, params[:user_id], page)
+    when "activity"
+      @users = User.get_activity(@current_user)
     end
   end
 

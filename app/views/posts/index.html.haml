@@ -54,13 +54,7 @@
   .userColumn
     .userActivity
       %h1.userActivityTtl 最近登録したユーザー
-      %ul.userActivityList
-        - 10.times do |i|
-          %li.userActivityListItem
-            %figure.userActivityImgWrap
-              %img.userActivityImg{src: "", width: "40", height: "40", alt: ""}
-            %a.userActivityUsername{href: ""} user1
-            %p.userActivityUserprof ダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミー
+      %ul.userActivityList.user-activity-list
 
 
 
@@ -69,5 +63,6 @@
 = render partial: "application/underscore/pc/common/delete_confirm"
 = render partial: "application/underscore/pc/timeline/log"
 = render partial: "application/underscore/pc/common/post"
+= render partial: "application/underscore/pc/common/user_activity"
 = render partial: "application/underscore/pc/timeline/game_thumbnail"
 = render partial: "application/underscore/pc/timeline/url_thumbnail"

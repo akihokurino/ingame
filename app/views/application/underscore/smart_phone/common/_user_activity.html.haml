@@ -1,0 +1,11 @@
+%script{type: "text/template", id: "user-activity-template"}
+  %ul.friendListWrap.btn-list
+    %li.followBtnWrap
+      .followBtn.follow-btn フォローする
+    %figure.userImgWrap
+      %img.profImg{src:"/user_photos/{{= photo_path }}" , height: 40, height: 40}
+    .userInfo
+      .nameWrap
+        %a.name{href: "/users/{{= id }}#logs"} {{= username }}
+      %span.icon-place
+      .place {{= place }}
