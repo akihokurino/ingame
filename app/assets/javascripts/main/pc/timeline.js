@@ -142,6 +142,7 @@
         success: function (model, response, options) {
           for (var i = 0; i < response.users.length; i++) {
             var user = new User(response.users[i]);
+            user.strimWidth(30);
             that.users_view.collection.add(user);
           }
         },
