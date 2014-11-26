@@ -148,7 +148,7 @@
 
       var that             = this;
       this.user_collection = new Users();
-      this.users_view      = new UsersView({el: ".follows-list", collection: this.user_collection, attributes: {type: "follows-list"}});
+      this.users_view      = new UsersView({el: ".follows-list", collection: this.user_collection, attributes: {type: "follows-list", template: "#user-template"}});
 
       this.user_id         = this.$el.data("userid");
       this.page            = 1;
@@ -212,7 +212,7 @@
 
       var that             = this;
       this.user_collection = new Users();
-      this.users_view      = new UsersView({el: ".followers-list", collection: this.user_collection, attributes: {type: "followers-list"}});
+      this.users_view      = new UsersView({el: ".followers-list", collection: this.user_collection, attributes: {type: "followers-list", template: "#user-template"}});
 
       this.user_id         = this.$el.data("userid");
       this.page            = 1;

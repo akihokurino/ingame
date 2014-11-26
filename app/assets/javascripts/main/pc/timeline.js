@@ -1,13 +1,17 @@
 //= require ../../libs/socket.js
 //= require ../../models/post.js
 //= require ../../models/log.js
+//= require ../../models/user.js
 //= require ../../collections/posts.js
 //= require ../../collections/logs.js
+//= require ../../collections/users.js
 //= require ../../views/delete_confirm_view.js
 //= require ../../views/post_view.js
 //= require ../../views/posts_view.js
 //= require ../../views/log_view.js
 //= require ../../views/logs_view.js
+//= require ../../views/user_view.js
+//= require ../../views/users_view.js
 //= require ../../libs/post_upload.js
 
 
@@ -28,6 +32,8 @@
       this.posts_view         = new PostsView({collection: this.post_collection});
       this.log_collection     = new Logs();
       this.logs_view          = new LogsView({el: ".select-log-list", collection: this.log_collection, attributes: {type: "select"}});
+      this.user_collection    = new Users();
+      this.users_view         = new UsersView({el: ".user-activity-list", collection: this.user_collection, attributes: {template: "#user-activity-template"}});
 
       this.post_input         = this.$(".post-input");
       this.select_log_id      = null;
@@ -130,6 +136,20 @@
 
         }
       })
+
+      this.user_collection.fetch({
+        data: {page: 1, type: "activity"},
+        success: function (model, response, options) {
+          for (var i = 0; i < response.users.length; i++) {
+            var user = new User(response.users[i]);
+            that.users_view.collection.add(user);
+          }
+        },
+        error: function () {
+
+        }
+      })
+
 
       $(window).bind("scroll", this.pagenation);
     },

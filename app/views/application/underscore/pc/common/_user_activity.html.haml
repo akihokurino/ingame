@@ -1,0 +1,6 @@
+%script{type: "text/template", id: "user-activity-template"}
+  %figure.userActivityImgWrap
+    %img.userActivityImg{src: "/user_photos/{{= photo_path }}", width: "40", height: "40", alt: ""}
+  %a.userActivityUsername{href: "/users/{{= id }}#logs"} {{= username }}
+  %p.userActivityUserprof {{= introduction }}
+
