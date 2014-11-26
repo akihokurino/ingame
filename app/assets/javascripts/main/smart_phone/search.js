@@ -111,7 +111,7 @@
       this.user_result_collection = new UserResults();
       this.user_results_view      = new UserResultsView({el: ".result-list", collection: this.user_result_collection});
       this.user_collection        = new Users();
-      this.users_view             = new UsersView({el: ".user-activity-list", collection: this.user_collection, attributes: {template: "#user-activity-template"}});
+      this.users_view             = new UsersView({el: ".user-activity-list", collection: this.user_collection, attributes: {type: "activity", template: "#user-activity-template"}});
 
       this.username               = this.$(".username-input");
       this.current_username       = null;

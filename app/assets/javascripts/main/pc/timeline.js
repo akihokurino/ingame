@@ -33,7 +33,7 @@
       this.log_collection     = new Logs();
       this.logs_view          = new LogsView({el: ".select-log-list", collection: this.log_collection, attributes: {type: "select"}});
       this.user_collection    = new Users();
-      this.users_view         = new UsersView({el: ".user-activity-list", collection: this.user_collection, attributes: {template: "#user-activity-template"}});
+      this.users_view         = new UsersView({el: ".user-activity-list", collection: this.user_collection, attributes: {type: "activity", template: "#user-activity-template"}});
 
       this.post_input         = this.$(".post-input");
       this.select_log_id      = null;

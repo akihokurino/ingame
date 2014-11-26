@@ -40,8 +40,12 @@ var UserView = Backbone.View.extend({
       data: data,
       success: function (data) {
         if (data.result) {
-          that.$el.find("ul.btn-list li").html("");
-          that.$el.find("ul.btn-list li").append(that.unfollow_btn_template);
+          if (that.type == "activity") {
+            that.$el.remove();
+          } else {
+            that.$el.find("ul.btn-list li").html("");
+            that.$el.find("ul.btn-list li").append(that.unfollow_btn_template);
+          }
         }
       },
       error: function () {
