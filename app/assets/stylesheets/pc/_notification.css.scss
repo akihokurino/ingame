@@ -3,8 +3,8 @@
 .notification-modal {
 	display: none;
 	position: absolute;
-	top: 50px;
-	right: 87px;
+	top: 40px;
+	right: 37px;
 	z-index: 100;
 	width: 330px;
 	@include border-radius(2px);
@@ -14,7 +14,7 @@
 	&:after {
 		display: block;
 		position: absolute;
-		top: -17px;
+		top: -16px;
 		right: 34px;
 		border-top: 9px solid transparent;
 		border-right: 10px solid transparent;

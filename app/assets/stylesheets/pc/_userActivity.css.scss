@@ -1,0 +1,43 @@
+@import "../_function.css.scss";
+
+/*---   .userActivity   ----------*/
+.userActivity {
+	padding: 15px;
+	border: 1px solid #e6e6e6;
+	@include border-radius(2px);
+	background: #fff;
+
+	&Ttl {
+		margin-bottom: 15px;
+	}
+	&List {
+		&Item {
+			@include clearfix;
+			margin-bottom: 15px;
+			padding-bottom: 15px;
+			border-bottom: 1px solid #dcdcdc;
+
+			&:last-child {
+				margin-bottom: 0;
+				padding-bottom: 0;
+				border-bottom: none;
+			}
+		}
+	}
+	&ImgWrap {
+		float: left;
+		margin-right: 15px;
+	}
+	&Username {
+		color: #7950ca;
+		font-weight: bold;
+		font-size: 14px;
+	}
+	&Userprof {
+		overflow: hidden;
+		margin-top: 10px;
+		color: #7e7e7e;
+		font-size: 12px;
+		line-height: 1rem;
+	}
+}

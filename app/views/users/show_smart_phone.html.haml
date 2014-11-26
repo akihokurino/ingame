@@ -28,11 +28,6 @@
         - else
           = link_to "編集", edit_user_path(@user), class: "edit-btn personalEdit"
         %ul.countBox.count-box
-          / %li.item.logs-li.current
-          /   %a.gameNum{href: "/users/#{@user[:id]}#logs"}
-          /     %span.count
-          /       = @user.logs.count
-          /     マイゲーム
           %li.item.posts-li
             %a.postNum{href: "/users/#{@user[:id]}#posts"}
               %span.count
