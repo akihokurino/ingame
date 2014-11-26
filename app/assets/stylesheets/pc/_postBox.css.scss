@@ -8,7 +8,7 @@
 	background: #f2f2f2;
 }
 .postBox {
-	width: 650px;
+	width: 480px;
 	margin: 0 auto 18px;
 	padding: 15px;
 	border: 1px solid #e6e6e6;
@@ -83,7 +83,7 @@
 	/*---   .gameTtl   ---*/
 	.gameTtl {
 		overflow: hidden;
-		width: 408px;
+		width: 100%;
 		margin-bottom: 7px;
 		color: $main_color;
 		font-weight: bold;
@@ -271,7 +271,7 @@
 		}
 		.comment {
 			overflow: hidden;
-			width: 530px;
+			width: 275px;
 			height: 30px;
 			padding: 5px;
 			border: none;
