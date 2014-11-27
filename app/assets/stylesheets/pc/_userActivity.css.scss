@@ -12,6 +12,7 @@
 	}
 	&List {
 		.item {
+			position: relative;
 			@include clearfix;
 			margin-bottom: 15px;
 			padding-bottom: 15px;
@@ -35,9 +36,32 @@
 	}
 	&Userprof {
 		overflow: hidden;
-		margin-top: 10px;
+		margin-top: 14px;
 		color: #7e7e7e;
 		font-size: 12px;
 		line-height: 1rem;
+	}
+	.follow-btn {
+		display: block;
+		position: absolute;
+		top: 0;
+		right: 0;
+		padding: 4px 6px;
+		border: 1px solid #7950ca;
+		@include border-radius(2px);
+		@include box-sizing;
+		background: #fff;
+		color: #7950ca;
+		font-weight: bold;
+		font-size: 10px;
+		text-align: center;
+		cursor: pointer;
+
+		&:hover {
+			border: 1px solid #fff;
+			@include border-radius(2px);
+			background: #7950ca;
+			color: #fff;
+		}
 	}
 }
