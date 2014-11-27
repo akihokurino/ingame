@@ -23,6 +23,7 @@ var Post = Backbone.Model.extend({
     "post_photos": [],
     "post_comments": [],
     "post_urls": [],
+    "post_youtubes": [],
     "current_user_id": ""
   },
   url: "/api/posts/",

@@ -52,6 +52,7 @@
 
       this.url_thumbnail          = null;
       this.url_thumbnail_template = _.template($("#url-thumbnail-template").html());
+      this.youtube_key            = null;
 
       $(".post-input").autosize();
 
@@ -217,7 +218,10 @@
             "files":    this.upload.files,
             "provider": this.provider
           },
-          "url_thumbnail": this.url_thumbnail
+          "url_thumbnail": this.url_thumbnail,
+          "post_youtube": {
+            "key": this.youtube_key
+          }
         }
 
         data.post.urls = this.getUrl(data.post.text);
@@ -239,16 +243,7 @@
 
             post_socket.send(data);
 
-            that.post_input.val("");
-            that.$("ul.thumbnail-list").html("");
-            that.select_log_id      = null;
-            that.select_game_id     = null;
-            that.url_thumbnail      = null;
-            that.current_access_url = null;
-            that.prev_access_url    = null;
-            that.upload.files       = [];
-            that.provider           = null;
-            $("#thumbnail").html("");
+            that.resetInput();
 
             $(".comment-input").autosize();
           },
@@ -256,6 +251,20 @@
           }
         })
       }
+    },
+    resetInput: function () {
+      this.post_input.val("");
+      this.$("ul.thumbnail-list").html("");
+      this.select_log_id      = null;
+      this.select_game_id     = null;
+      this.url_thumbnail      = null;
+      this.current_access_url = null;
+      this.prev_access_url    = null;
+      this.upload.files       = [];
+      this.provider           = null;
+      this.youtube_key        = null;
+      $("#thumbnail").html("");
+      this.$(".url-thumbnail-list").html("");
     },
     getUrl: function (str) {
       var pat  = /(https?:\/\/[\x21-\x7e]+)/g;
@@ -294,6 +303,20 @@
 
             }
           })
+
+          var re = new RegExp("https://www.youtube.com/", "i");
+          if (this.current_access_url.match(re)) {
+            try {
+              var youtube_url = this.current_access_url;
+              if (youtube_url.split("?")[1].split("=")[1]) {
+                this.youtube_key = youtube_url.split("?")[1].split("=")[1];
+              } else {
+                this.youtube_key = null;
+              }
+            } catch (e) {
+              this.youtube_key = null;
+            }
+          }
         }
       } else {
         this.$(".url-thumbnail-list").html("");
