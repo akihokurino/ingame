@@ -11,15 +11,10 @@
     %article.profile
       .profileTopBox
         %figure.userImgWrap
-          %img.userImg{src: "/user_photos/#{@current_user[:photo_path]}", width: "80", height: "80", alt: ""}
+          %img.userImg{src: "/user_photos/#{@current_user[:photo_path]}", width: "45", height: "45", alt: ""}
         %p.userName
           = @current_user[:username]
       %ul.profileCountList.count-box
-        %li.gameNum.logs-li
-          %a.profileCountListLink{href: ""}
-            ライブラリ
-            %span.count
-              = @current_user[:logs_count]
         %li.postNum.posts-li
           %a.profileCountListLink{href: ""}
             ポスト
@@ -35,6 +30,11 @@
             フォロワー
             %span.count
               = @current_user.follower_num
+        %li.gameNum.logs-li
+          %a.profileCountListLink{href: ""}
+            ライブラリ
+            %span.count
+              = @current_user[:logs_count]
   .postColumn
     .addPost
       %figure.profImgWrap

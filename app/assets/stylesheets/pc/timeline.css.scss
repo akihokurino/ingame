@@ -57,7 +57,7 @@
     .userName {
       display: inline-block;
       margin-bottom: 10px;
-      padding-top: 32px;
+      padding-top: 18px;
       color: #fff;
       font-weight: bold;
       font-size: 16px;
@@ -83,26 +83,9 @@
         }
       }
     }
-    .gameNum {
-      display: inline-block;
-      width: 50%;
-      @include box-sizing;
-      color: #3e3e3e;
-      font-size: 12px;
-      text-align: center;
-      cursor: pointer;
-
-      .count {
-        display: block;
-        margin-top: 5px;
-        color: $main_color;
-        font-weight: bold;
-        font-size: 12px;
-      }
-    }
     .postNum {
       display: inline-block;
-      width: 50%;
+      width: 33.33%;
       @include box-sizing;
       color: #3e3e3e;
       font-size: 12px;
@@ -119,7 +102,7 @@
     }
     .followNum {
       display: inline-block;
-      width: 50%;
+      width: 33.33%;
       @include box-sizing;
       color: #3e3e3e;
       font-size: 12px;
@@ -136,7 +119,7 @@
     }
     .followerNum {
       display: inline-block;
-      width: 50%;
+      width: 33.33%;
       @include box-sizing;
       color: #3e3e3e;
       font-size: 12px;
@@ -149,6 +132,23 @@
         color: $main_color;
         font-weight: bold;
         font-size: 12px;
+      }
+    }
+    .gameNum {
+      display: inline-block;
+      width: 100%;
+      @include box-sizing;
+      color: #3e3e3e;
+      font-size: 14px;
+      text-align: center;
+      cursor: pointer;
+
+      .count {
+        display: block;
+        margin-top: 5px;
+        color: $main_color;
+        font-weight: bold;
+        font-size: 14px;
       }
     }
   }
