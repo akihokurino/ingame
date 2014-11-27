@@ -5,10 +5,11 @@ class Post < ActiveRecord::Base
   belongs_to :user, counter_cache: true
   belongs_to :game, counter_cache: true
   belongs_to :log
-  has_many   :post_likes
-  has_many   :post_photos
-  has_many   :post_comments
-  has_many   :post_urls
+  has_many   :post_likes, dependent: :destroy
+  has_many   :post_photos, dependent: :destroy
+  has_many   :post_comments, dependent: :destroy
+  has_many   :post_urls, dependent: :destroy
+  has_many   :post_youtubes, dependent: :destroy
 
   validates :user_id,
     presence: true,
