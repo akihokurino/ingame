@@ -50,6 +50,9 @@
 
       this.upload             = new PostUpload("upload-btn", "thumbnail");
 
+      this.url_thumbnail          = null;
+      this.url_thumbnail_template = _.template($("#url-thumbnail-template").html());
+
 
       like_socket.callback = function (data) {
         that.post_collection.find(function (model) {
@@ -209,7 +212,8 @@
             "text":     this.post_input.val(),
             "files":    this.upload.files,
             "provider": this.provider
-          }
+          },
+          "url_thumbnail": this.url_thumbnail
         }
 
         data.post.urls = this.getUrl(data.post.text);
@@ -257,7 +261,7 @@
       var that     = this;
       var text     = this.post_input.val();
       var url_list = this.getUrl(text);
-      if (url_list) {
+      if (url_list.length > 0) {
         this.current_access_url = url_list[url_list.length - 1];
 
         if (this.current_access_url !== this.prev_access_url) {
@@ -273,13 +277,17 @@
             success: function (data) {
               that.prev_access_url = that.current_access_url;
               req                  = null;
-              console.log(data);
+              that.url_thumbnail   = data.result;
+              that.$(".url-thumbnail-list").html(that.url_thumbnail_template(data.result));
             },
             error: function () {
 
             }
           })
         }
+      } else {
+        this.$(".url-thumbnail-list").html("");
+        that.url_thumbnail = null;
       }
     }
   })

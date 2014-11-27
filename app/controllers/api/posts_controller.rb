@@ -23,10 +23,15 @@ class Api::PostsController < ApplicationController
     params[:post][:user_id] = @current_user[:id]
     @last_post              = Post.create!(post_params)
 
-    unless params[:post][:urls].blank?
-      params[:post][:urls].each do |url|
-        PostUrl.create_thumbnail(url, @last_post)
+    unless params[:url_thumbnail]
+      unless params[:post][:urls].blank?
+        params[:post][:urls].each do |url|
+          PostUrl.create_thumbnail(url, @last_post)
+        end
       end
+    else
+      params[:url_thumbnail][:post_id] = @last_post[:id]
+      PostUrl.create(post_url_params)
     end
 
     case params[:post][:provider]
@@ -50,5 +55,9 @@ class Api::PostsController < ApplicationController
   private
   def post_params
     params.require(:post).permit(:user_id, :game_id, :text, :log_id)
+  end
+
+  def post_url_params
+    params.require(:url_thumbnail).permit(:post_id, :title, :description, :thumbnail, :url)
   end
 end
