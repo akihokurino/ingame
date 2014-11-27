@@ -1,7 +1,7 @@
 @import "../_function.css.scss";
 
 /*---   .follows-list   ---------------------------*/
-.follows-list,.followers-list,.result-list,.latestUserList{
+.follows-list,.followers-list,.result-list,.userActivityList{
 	margin: 0 auto;
 	padding:0 10px;
 	@include clearfix;
