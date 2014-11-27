@@ -5,8 +5,12 @@
       %a.icon-allow{href: "/posts/new#select"}
     .write-page.mainCnt
       %form.textareaWrap.post-form
-        %textarea{placeholder: "そのゲームについて、どう思った？"}
+        %textarea.post-input{placeholder: "そのゲームについて、どう思った？"}
+
       #thumbnail
+
+      .url-thumbnail-list
+
       .btnWrap
         %ul.subBtn
           - case @current_user[:provider]
