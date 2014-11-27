@@ -114,6 +114,7 @@ var PostView = Backbone.View.extend({
         url: "/api/post_comments",
         data: data,
         success: function (data) {
+          data.comment.text = that.commentSanitize(data.comment.text);
           that.model.get("post_comments").push(data.comment);
           that.model.set("post_comments_count", that.model.get("post_comments_count") + 1);
           that.render();
@@ -211,5 +212,11 @@ var PostView = Backbone.View.extend({
     $(".delete-confirm-wrap").css("display", "block");
     $(".layer").css("display", "block");
     var delete_confirm_view = new DeleteConfirmView({attributes: {view: this, target: "投稿", desc: null}});
+  },
+  commentSanitize: function (text) {
+    var text = text.replace(/\n/g, '<br>');
+    text     = text.replace(/((http:|https:)\/\/[\x21-\x26\x28-\x7e]+)/gi, "<a class='link-text' target='_blank' href='$1'>$1</a>");
+
+    return text;
   }
 })
