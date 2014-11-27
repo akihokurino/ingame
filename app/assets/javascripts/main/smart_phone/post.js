@@ -97,9 +97,10 @@
     el: $(".post-new-page"),
     template: _.template($("#write-template").html()),
     events: {
-      "click .submit":   "post",
-      "click .facebook": "facebook",
-      "click .twitter":  "twitter"
+      "click .submit":     "post",
+      "click .facebook":   "facebook",
+      "click .twitter":    "twitter",
+      "keyup .post-input": "checkUrl"
     },
     initialize: function () {
       this.$el.html("");
@@ -109,10 +110,16 @@
       var tmp       = location.href.split("/");
       this.log_id   = tmp.pop();
       this.game_id  = tmp.pop();
-      this.text     = $("textarea");
+      this.text     = this.$(".post-input");
       this.provider = null;
 
       this.upload   = new PostUpload("upload-btn", "thumbnail");
+
+      this.current_access_url     = null;
+      this.prev_access_url        = null;
+
+      this.url_thumbnail          = null;
+      this.url_thumbnail_template = _.template($("#url-thumbnail-template").html());
 
       $.ajax({
         type: "GET",
@@ -147,7 +154,8 @@
           "text":     this.text.val(),
           "files":    this.upload.files,
           "provider": this.provider
-        }
+        },
+        "url_thumbnail": this.url_thumbnail
       }
 
       data.post.urls = this.getUrl(data.post.text);
@@ -181,6 +189,39 @@
       }
 
       return list;
+    },
+    checkUrl: function () {
+      var that     = this;
+      var text     = this.text.val();
+      var url_list = this.getUrl(text);
+      if (url_list.length > 0) {
+        this.current_access_url = url_list[url_list.length - 1];
+
+        if (this.current_access_url !== this.prev_access_url) {
+
+          if (req) {
+            req.abort();
+          }
+
+          var req = $.ajax({
+            type: "GET",
+            url: "/api/post_urls/new?url=" + this.current_access_url,
+            data: {},
+            success: function (data) {
+              that.prev_access_url = that.current_access_url;
+              req                  = null;
+              that.url_thumbnail   = data.result;
+              that.$(".url-thumbnail-list").html(that.url_thumbnail_template(data.result));
+            },
+            error: function () {
+
+            }
+          })
+        }
+      } else {
+        this.$(".url-thumbnail-list").html("");
+        that.url_thumbnail = null;
+      }
     }
   })
 

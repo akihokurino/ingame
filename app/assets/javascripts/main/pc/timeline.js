@@ -43,15 +43,17 @@
       this.user_id            = $("#wrapper").data("userid");
       this.page               = 1;
 
-      this.current_access_url = null;
-      this.prev_access_url    = null;
-
       event_handle.discribe("selectLog", this.selectLog);
 
       this.upload             = new PostUpload("upload-btn", "thumbnail");
 
+      this.current_access_url = null;
+      this.prev_access_url    = null;
+
       this.url_thumbnail          = null;
       this.url_thumbnail_template = _.template($("#url-thumbnail-template").html());
+
+      $(".post-input").autosize();
 
 
       like_socket.callback = function (data) {
@@ -134,6 +136,8 @@
             var post = new Post(response.posts[i]);
             that.posts_view.collection.add(post);
           }
+
+          $(".comment-input").autosize();
         },
         error: function () {
 
@@ -237,10 +241,16 @@
 
             that.post_input.val("");
             that.$("ul.thumbnail-list").html("");
-            that.select_log_id  = null;
-            that.select_game_id = null;
-            that.upload.files   = [];　　
+            that.select_log_id      = null;
+            that.select_game_id     = null;
+            that.url_thumbnail      = null;
+            that.current_access_url = null;
+            that.prev_access_url    = null;
+            that.upload.files       = [];
+            that.provider           = null;
             $("#thumbnail").html("");
+
+            $(".comment-input").autosize();
           },
           error: function () {
           }
