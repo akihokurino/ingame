@@ -178,32 +178,24 @@ input[type="submit"],{
 
 /*---   .post02   ---------------------------*/
 .post02 {
-	background-color: #eee;
+	background-color: $bg_color;
 	/*---   header   ----------*/
 	header {
 		position: fixed;
 		top:0;
 		left:0;
-		width: 100%;
-		height:44px;
+		height:45px;
 		padding: 12px 0 13px;
 		background-color: rgba($main_color,.94);
 		color: #fff;
 		font-size: 14px;
 		text-align: center;
 		box-shadow:0 0 1px 1px rgba(0,0,0,0.2);
+		@include box-sizing;
 		.ttl {
 			width: auto;
 			font-size: 14px;
-			@include font-weight(1px, #ffffff);
 		}
-	    .cancelWrap {
-	      display: block;
-	      position: absolute;
-	      top: 10px;
-	      left: 7px;
-	      content: "";
-	    }
 	    .icon-allow {
 	      display: block;
 	      position: absolute;
@@ -223,13 +215,15 @@ input[type="submit"],{
 			@include clearfix;
 		}
 		.gameImage {
-			float: left;
-			margin-right: 7px;
+			display:inline-block;
+			margin: 5px;
+			vertical-align: middle;
 		}
 		.gameTtl {
+			display: inline-block;
 			color: $color_textBlack;
 			font-size: 16px;
-			vertical-align: middle;
+			font-weight: bold;
 		}
 		.textareaWrap {
 			clear: both;
@@ -259,6 +253,34 @@ input[type="submit"],{
 				width: 60%;
 				border: 1px solid $color_border;
 
+			}
+		}
+		.url-thumbnail-list{
+			background-color: #fff;
+			padding:5px;
+		}
+		.urlThumbnail {
+			display: table;
+			padding:5px;
+			border: solid 1px $color_border;
+			img {
+				display:table-cell;
+				width: 90px;
+				margin-bottom:0;
+			}
+			.body {
+				display:table-cell;
+				padding-left:5px;
+				width: 100%;
+				vertical-align: top;
+				.title {
+					font-weight:bold;
+					font-size:12px;
+				}
+				.description {
+					color:color_textGray;
+					font-size:10px;
+				}
 			}
 		}
 		.btnWrap{
@@ -293,6 +315,7 @@ input[type="submit"],{
 				left: 0;
 				outline: 0;
 				opacity:0;
+				overflow: hidden;
 			}
 		}
 		.fb, .tw {

@@ -8,6 +8,9 @@
       %span.icon-time
       {{= created_at }}
   .gameInfoBox
+    %h2.ttl
+      %a{href: "/games/{{= game.id }}#all"}
+        {{= game.title }}
     .statusBox
       {{ if (status.id == 1) { }}
       %span.moodReady 気になる
@@ -17,23 +20,20 @@
       %span.moodPlayed クリア済
       {{ } }}
     .textWrap
-    %h2.ttl
-      %a{href: "/games/{{= game.id }}#all"}
-        {{= game.title }}
     %p.text
       {{= text }}
-  .thumbnail
-    {{ for (var i = 0; i < post_photos.length; i++) { }}
-    %img.thumbnailImg{src: "/post_photos/{{= post_photos[i].photo_path }}"}
-    {{ } }}
-  .urlThumbnailWrap
-    {{ for (var i = 0; i < post_urls.length; i++) { }}
-    %a.urlThumbnail{href: "{{= post_urls[i].url }}", target: "blank"}
-      %img.thumbnailImg{src: "{{= post_urls[i].thumbnail }}"}
-      .body
-        %p.title {{= post_urls[i].title }}
-        %p.description {{= post_urls[i].description }}
-    {{ } }}
+    .thumbnail
+      {{ for (var i = 0; i < post_photos.length; i++) { }}
+      %img.thumbnailImg{src: "/post_photos/{{= post_photos[i].photo_path }}"}
+      {{ } }}
+    .urlThumbnailWrap
+      {{ for (var i = 0; i < post_urls.length; i++) { }}
+      %a.urlThumbnail{href: "{{= post_urls[i].url }}", target: "blank"}
+        %img.thumbnailImg{src: "{{= post_urls[i].thumbnail }}"}
+        .body
+          %p.title {{= post_urls[i].title }}
+          %p.description {{= post_urls[i].description }}
+      {{ } }}
   .stateBox
     {{ if (current_user_id == user.id) { }}
     %span.icon-option.delete-btn
