@@ -121,6 +121,8 @@
       this.url_thumbnail          = null;
       this.url_thumbnail_template = _.template($("#url-thumbnail-template").html());
 
+      $(".post-input").autosize();
+
       $.ajax({
         type: "GET",
         url: "/api/games/" + this.game_id,

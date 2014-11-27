@@ -31,6 +31,8 @@
 
       event_handle.discribe("showComment", this.showComment);
 
+      //$(".comment-input").autosize();
+
 
       like_socket.callback = function (data) {
         that.post_collection.find(function (model) {
