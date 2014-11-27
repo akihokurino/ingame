@@ -35,7 +35,6 @@ input[type="submit"],{
 		.ttl {
 			width: auto;
 			font-size: 14px;
-			@include font-weight(1px, #ffffff);
 		}
 	    .cancelWrap {
 	      display: block;
@@ -61,6 +60,7 @@ input[type="submit"],{
 			padding:10px;
 			width: 100%;
 			border-bottom: 1px solid $color_border;
+			background-color: $bg_color;
 			box-sizing:border-box;
 			color:$main_color;
 			text-align: right;
@@ -211,12 +211,13 @@ input[type="submit"],{
 		.gameBox {
 			position: relative;
 			border: solid 1px $color_border;
-			background-color: #fff;
+			background-color: $bg_color;
 			@include clearfix;
 		}
 		.gameImage {
 			display:inline-block;
 			margin: 5px;
+			border: 2px solid #fff;
 			vertical-align: middle;
 		}
 		.gameTtl {
@@ -224,6 +225,7 @@ input[type="submit"],{
 			color: $color_textBlack;
 			font-size: 16px;
 			font-weight: bold;
+			text-shadow:1px 1px 1px #fff;
 		}
 		.textareaWrap {
 			clear: both;
@@ -336,6 +338,9 @@ input[type="submit"],{
 			font-size: 14px;
 			@include font-weight(1px, #595959);
 		}
+		.icon-twitter.icon-facebook{
+			font-size:20px;
+		}
 		.fbInner {
 			display: block;
 			float: left;
@@ -389,7 +394,6 @@ input[type="submit"],{
 		.ttl {
 			width: auto;
 			font-size: 14px;
-			@include font-weight(1px, #fff);
 		}
 	    .cancelWrap {
 	      display: block;
@@ -418,28 +422,34 @@ input[type="submit"],{
 	}
 	.mainCnt {
 		padding-top:44px;
-		.searchWrap {
-			padding:15px;
+		.searchWrap{
+			padding-bottom:10px;
+		}
+		.entryBox {
+			position:relative;
+			padding:10px;
+		}
+		.icon-search{
+			position:absolute;
+			color: $color_textGray;
+			font-size:24px;
+			top:18px;
+			right:18px;
+			z-index: 1;
+		}
+		.search{
+			position:relative;
+			@include appearance;
+			@include box-sizing;
+			width: 100%;
+			height: 40px;
+			padding: 0 8px;
+			border: 1px solid $color_border;
 			@include border-radius(2px);
-			background: #ffffff;
-			.icon-search{
-				color:$color_textGray;
-				font-size:18px;
-				vertical-align:-6px;
-			}
-			input {
-				position:relative;
-				@include box-sizing;
-				width: 100%;
-				height: 40px;
-				padding: 0 8px;
-				border: 1px solid $color_border;
-				@include border-radius(2px);
-				background: #fff;
-				color: #666;
-				font-size: 13px;
-				line-height: 40px;
-			}
+			background: #fff;
+			color: #666;
+			font-size: 13px;
+			line-height: 40px;
 		}
 		.playing, .ready, .played {
 			display: table-cell;
@@ -543,14 +553,14 @@ input[type="submit"],{
 					@include appearance;
 					display:inline-block;
 					width: 100px;
-					padding: 4px 0 4px 26px;
-					border: 1px solid $color_green;
-					@include border-radius(2px);
-					background-color: #fff;
-					color:$color_green;
-					font-size:12px;
+					padding-left:20px;
+					border:none;
+					@include border-radius(0px);
+					background-color: $main_color;
+					color:#fff;
+					font-size:14px;
 					text-align: center;
-					line-height:24px;
+					line-height:36px;
 				}
 			}
 		}

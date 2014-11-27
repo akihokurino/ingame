@@ -4,7 +4,9 @@
       %h1.ttl 新しいゲームを追加する
       %a.icon-allow{href: "/posts/new#select"}
     .add-page.mainCnt
-      %form.searchWrap
-        %input.search.search-title-input{type: "text", placeholder: "ゲーム名で検索"}
+      .searchWrap
+        %form.entryBox
+          %span.icon-search 
+          %input.search.search-title-input{type: "text", placeholder: "ゲーム名で検索"}
       %ul.gameList
     = image_tag "gif-load-pc.gif", class: "loading-gif"
