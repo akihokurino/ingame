@@ -45,10 +45,10 @@
 		}
 	}
 	.gameInfoBox{
-		display:table;
+		margin-left:40px;
 	}
 	.statusBox{
-		width: 55px;
+		margin:5px 0;
 	}
 	.moodReady, {
 		display:table-cell;
@@ -97,26 +97,25 @@
 	.urlThumbnailWrap {
 		.urlThumbnail {
 			display: table;
-			border: solid 1px #e2e2e2;
+			padding:5px;
+			border: solid 1px $color_border;
 			img {
 				display:table-cell;
 				width: 90px;
-				margin-right: 5px;
 				margin-bottom:0;
 			}
 			.body {
 				display:table-cell;
+				padding-left:5px;
 				width: 100%;
-				border-left: solid 1px $color_border;
 				vertical-align: top;
 				.title {
-					padding:5px;
-
+					font-weight:bold;
+					font-size:12px;
 				}
 				.description {
-					padding:5px;
 					color:color_textGray;
-					font-size:12px;
+					font-size:10px;
 				}
 			}
 		}

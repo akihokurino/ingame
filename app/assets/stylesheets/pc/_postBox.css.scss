@@ -277,13 +277,13 @@
 			border: none;
 			@include box-sizing;
 			@include appearance;
+			font-size: 14px;
 			resize: none;
 			outline: 0;
 
 			&::-webkit-input-placeholder {
 				padding: 3px;
 				color: #c6c6c6;
-				font-size: 12px;
 			}
 		}
 	}

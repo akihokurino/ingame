@@ -48,10 +48,11 @@ a {
 		display: block;
 		width: 200px;
 		margin: 0 auto;
-		padding: 10px;
+		padding:0 10px;
 		@include box-sizing;
 		color: #ffffff;
 		font-size: 14px;
+		line-height:2.5;
 		text-align: left;
 	}
 	.tw {
