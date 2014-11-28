@@ -3,7 +3,8 @@
 
 %header.header
   .headerInner
-    %h1.logo Gameful
+    %h1.logoWrap
+      = link_to "GAMR", posts_path, class: "logo"
     %form.searchWrap
       %input.search.header-search-input{placeholder: "キーワードでゲームを探す"}
     %figure.profImgWrap.menu-btn
@@ -13,8 +14,6 @@
     = render partial: "application/underscore/pc/header/notification"
     %nav.gnavi
       %ul.gnaviList
-        %li.item
-          = link_to "タイムライン", posts_path, class: "toTimelineBtn"
         %li.item
           = link_to "マイページ", "/users/#{@current_user[:id]}#logs", class: "toProfileBtn"
         %li.item
