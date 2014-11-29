@@ -10,59 +10,111 @@ a {
 
 /*---   .mainVisual   ---------------------------*/	
 .mainVisual {
-	padding: 40px 0;
+	padding-top:15px;
 	background: linear-gradient(rgba($main_color,0.9), rgba($main_color,0.95)), url('/assets/smart_phone/login-bg.jpg');
 	background-size:cover;
 	font-family: arial;
 	text-align: center;
 	color:#fff;
 
-	 .ttl {
-	 	font-size: 50px;
-	 }
+	.ttl{
+		margin:25px 0 20px 0;
+	}
+
 	 .mainCopy{
-	 	padding:14px;
-	 	font-size:20px;
+	 	margin:5px 20px;
+	 	padding:5px 0;
+	 	font-size:16px;
+	 	border-top: 1px solid #fff;
+	 	border-bottom: 1px solid #fff;
 	 }
 	 .subCopy{
-	 	padding:20px;
-	 	font-size:12px;
+	 	padding:0 20px;
+	 	font-size:14px;
+	 	line-height:1.5;
 	 }
 	 .snsCopy{
 	 	font-size:22px;
 	 }
 }
 
-.loginBox {
+.loginBox,.bottomBox {
 	text-align: center;
-
-	.ttl {
-		padding:10px;
-		color: #242424;
-		font-size: 16px;
-	}
+	padding:10px 0;
 	.item{
 		margin-bottom:10px;
 	}
 	.tw, .fb {
 		display: block;
-		width: 200px;
+		width: 70%;
 		margin: 0 auto;
 		padding:0 10px;
+		@include border-radius(2px);
 		@include box-sizing;
 		color: #ffffff;
 		font-size: 14px;
-		line-height:2.5;
-		text-align: left;
+		line-height:3;
+		text-align: center;
 	}
 	.tw {
-		background: #01a0dc;
+		background: $twitter_blue;
 	}
 	.fb {
-		background: #405c95;
+		background: $facebook_blue;
 	}
 	.icon-twitter,.icon-facebook{
-		font-size:22px;
-		vertical-align:-3px;
+		&:before{
+			font-size:25px;
+			vertical-align: middle;
+			margin-right:5px;
+		}
 	}
 }
+.points{
+	color: #4c4c4c;
+	text-align:center;
+	section{
+		padding:10px 0;
+	}
+	h1{
+		margin:10px;
+		font-size:32px;
+	}
+	.illust{
+		margin:0 auto;
+		width: 120px;
+		height: 120px;
+		border-radius:50%;
+		background-color: $color_green;
+	}
+	p{
+		margin:10px;
+		font-size:14px;
+	}
+	.annotation{
+		margin:0 30px;
+		font-size:10px;
+	}
+	.second{
+		background-color: $bg_color;
+	}
+
+}
+.bottomBox{
+	background-color: $bg_color;
+	h1{
+		color: #4c4c4c;
+		margin:10px;
+		font-size:28px;
+	}
+}
+
+footer{
+	padding:20px;
+	background-color: $color_textBlack;
+	color:$color_textGray;
+	font-size:12px;
+	text-align:center;
+}
+
+
