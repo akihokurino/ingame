@@ -57,7 +57,7 @@
     .userName {
       display: inline-block;
       margin-bottom: 10px;
-      padding-top: 32px;
+      padding-top: 18px;
       color: #fff;
       font-weight: bold;
       font-size: 16px;
@@ -71,43 +71,16 @@
       //@include flexbox;
       margin: 0 auto;
       font-size: 0;
-
-      &Link {
-        display: block;
-        padding: 8px 0 4px;
-        color: #3e3e3e;
-
-        &:hover {
-          color: $main_color;
-          text-decoration: none;
-        }
-      }
-    }
-    .gameNum {
-      display: inline-block;
-      width: 50%;
-      @include box-sizing;
       color: #3e3e3e;
-      font-size: 12px;
-      text-align: center;
-      cursor: pointer;
-
-      .count {
-        display: block;
-        margin-top: 5px;
-        color: $main_color;
-        font-weight: bold;
-        font-size: 12px;
-      }
     }
     .postNum {
       display: inline-block;
-      width: 50%;
+      width: 33.33%;
+      padding: 8px 0 4px;
       @include box-sizing;
       color: #3e3e3e;
       font-size: 12px;
       text-align: center;
-      cursor: pointer;
 
       .count {
         display: block;
@@ -119,12 +92,12 @@
     }
     .followNum {
       display: inline-block;
-      width: 50%;
+      width: 33.33%;
+      padding: 8px 0 4px;
       @include box-sizing;
       color: #3e3e3e;
       font-size: 12px;
       text-align: center;
-      cursor: pointer;
 
       .count {
         display: block;
@@ -136,12 +109,12 @@
     }
     .followerNum {
       display: inline-block;
-      width: 50%;
+      width: 33.33%;
+      padding: 8px 0 4px;
       @include box-sizing;
       color: #3e3e3e;
       font-size: 12px;
       text-align: center;
-      cursor: pointer;
 
       .count {
         display: block;
@@ -149,6 +122,23 @@
         color: $main_color;
         font-weight: bold;
         font-size: 12px;
+      }
+    }
+    .gameNum {
+      display: inline-block;
+      width: 100%;
+      padding: 8px 0 4px;
+      @include box-sizing;
+      color: #3e3e3e;
+      font-size: 14px;
+      text-align: center;
+
+      .count {
+        display: block;
+        margin-top: 5px;
+        color: $main_color;
+        font-weight: bold;
+        font-size: 14px;
       }
     }
   }

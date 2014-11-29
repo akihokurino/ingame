@@ -19,12 +19,15 @@
 		@include clearfix;
 	}
 	.logo {
-		display: none;
-		float: left;
-		margin-right: 40px;
-		@include img_set-PC4(219px, 35px, 0, -484px);
+		display: block;
+		position: fixed;
+		top: 7px;
+		left: 50%;
+		width: 72px;
+		height: 25px;
+		margin-left: -36px;
+		background: url(/assets/pc/logo.png) no-repeat -24px -11px;
 		@include substitute;
-		visibility: hidden;
 	}
 	.searchWrap {
 		position: relative;
