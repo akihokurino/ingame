@@ -8,7 +8,7 @@ namespace :famituu do
 
     # デバイス名の変更
     def device_rename(old)
-      device_table = {'3DO' => '3do', '3DS' => '3ds', 'AC' => 'ac', 'Web' => 'browser', 'DC' => 'dc', 'ETC' => 'etc', 'FC' => 'fc', 'GBA' => 'gba', 'GB' => 'gb', 'GC' => 'gc', 'GG' => 'gg', 'iPhone' => 'iphone', 'Linax' => 'linux', 'Mac' => 'mac', 'MD' => 'md', 'SegaMK3' => 'mk3', 'MSX' => 'msx', 'N64' => 'n64', 'NDS' => 'nds', 'NGP' => 'ngp', 'NG' => 'ng', 'PC8801' => 'pc8801', 'PCE' => 'pce', 'PC-FX' => 'pcfx', 'PC' => 'pc', 'PS2' => 'ps2', 'PS3' => 'ps3', 'PS4' => 'ps4', 'PSM' => 'psm', 'PSP' => 'psp', 'PSV' => 'psv', 'PS' => 'ps', 'SFC' => 'sfc', 'SS' => 'ss', 'STEAMPLAY' => 'steamplay', 'Wii U' => 'wiiu', 'Wii' => 'wii', 'WinMac' => 'winmac', 'Windows' => 'win', 'WS' => 'ws', 'Xbox360' => 'x360', 'XboxOne' => 'xboxone', 'Xbox' => 'xbox'}
+      device_table = {'3do' => '3DO', '3ds' => '3DS', 'ac' => 'AC', 'browser' => 'Web', 'dc' => 'DC', 'etc' => 'ETC', 'fc' => 'FC', 'gb' => 'GB', 'gba' => 'GBA', 'gc' => 'GC', 'gg' => 'GG', 'iphone' => 'iPhone', 'linux' => 'Linax', 'mac' => 'Mac', 'md' => 'MD', 'mk3' => 'SegaMK3', 'msx' => 'MSX', 'n64' => 'N64', 'nds' => 'NDS', 'ng' => 'NG', 'ngp' => 'NGP', 'pc' => 'PC', 'pc8801' => 'PC8801', 'pce' => 'PCE', 'pcfx' => 'PC-FX', 'ps' => 'PS', 'ps2' => 'PS2', 'ps3' => 'PS3', 'ps4' => 'PS4', 'psm' => 'PSM', 'psp' => 'PSP', 'psv' => 'PSV', 'sfc' => 'SFC', 'ss' => 'SS', 'steamplay' => 'STEAMPLAY', 'wii' => 'Wii', 'wiiu' => 'Wii U', 'win' => 'Windows', 'winmac' => 'WinMac', 'ws' => 'WS', 'x360' => 'Xbox360', 'xbox' => 'Xbox', 'xboxone' => 'XboxOne'}
       return (device_table[old] or old)
     end
 
