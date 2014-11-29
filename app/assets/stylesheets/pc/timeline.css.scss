@@ -34,7 +34,7 @@
     position: relative;
     width: 280px;
     min-height: 122px;
-    padding: 10px;
+    padding: 5px;
     border: 1px solid #e6e6e6;
     @include border-radius(3px);
     @include box-sizing;
@@ -43,7 +43,6 @@
 
     &TopBox {
       @include clearfix;
-      margin-bottom: 8px;
       padding: 10px;
       background: url(/assets/pc/default_cover.png) no-repeat top center;
       background-size: cover;
@@ -52,7 +51,8 @@
       display: inline-block;
       float: left;
       margin-right: 14px;
-      border: 3px solid #fff;
+      border: 2px solid #fff;
+      @include border-radius(2px);
       line-height: 0;
     }
     .userName {
@@ -72,14 +72,13 @@
       //@include flexbox;
       margin: 0 auto;
       font-size: 0;
-      color: #3e3e3e;
+      color: $color_textGray;
     }
     .postNum {
       display: inline-block;
       width: 33.33%;
       padding: 8px 0 4px;
       @include box-sizing;
-      color: #3e3e3e;
       font-size: 12px;
       text-align: center;
 
@@ -88,7 +87,7 @@
         margin-top: 5px;
         color: $main_color;
         font-weight: bold;
-        font-size: 12px;
+        font-size: 14px;
       }
     }
     .followNum {
@@ -96,7 +95,6 @@
       width: 33.33%;
       padding: 8px 0 4px;
       @include box-sizing;
-      color: #3e3e3e;
       font-size: 12px;
       text-align: center;
 
@@ -105,7 +103,7 @@
         margin-top: 5px;
         color: $main_color;
         font-weight: bold;
-        font-size: 12px;
+        font-size: 14px;
       }
     }
     .followerNum {
@@ -113,7 +111,6 @@
       width: 33.33%;
       padding: 8px 0 4px;
       @include box-sizing;
-      color: #3e3e3e;
       font-size: 12px;
       text-align: center;
 
@@ -122,7 +119,7 @@
         margin-top: 5px;
         color: $main_color;
         font-weight: bold;
-        font-size: 12px;
+        font-size: 14px;
       }
     }
     .gameNum {
@@ -148,12 +145,10 @@
     position: relative;
     width: 480px;
     margin: 0 auto 18px;
-    padding-left: 10px;
     @include box-sizing;
     @include clearfix;
 
     .profImgWrap {
-      float: left;
       margin-right: 10px;
       background: #fff;
       line-height: 0;
@@ -163,8 +158,6 @@
     }
     &Inner {
       position: relative;
-      float: right;
-      width: 415px;
       padding: 10px;
       border: 1px solid #e6e6e6;
       @include border-radius(3px);
@@ -175,7 +168,7 @@
         display: block;
         position: absolute;
         left: -17px;
-        top: 4px;
+        top: 30px;
         border-top: 9px solid transparent;
         border-right: 8px solid #e6e6e6;
         border-bottom: 9px solid transparent;
@@ -186,7 +179,7 @@
         display: block;
         position: absolute;
         left: -13px;
-        top: 6px;
+        top: 30px;
         border-top: 8px solid transparent;
         border-right: 7px solid #fff;
         border-bottom: 8px solid transparent;
@@ -321,11 +314,10 @@
     .selectModal {
       display: none;
       position: absolute;
-      top: 45px;
+      top: 37px;
       left: 0;
       z-index: 10;
-      @include border-radius(5px);
-      @include box-shadow(0, 0, 16px, 1px, rgba(0, 0, 0, 0.2));
+      @include box-shadow(1px, 1px, 3px, 3px, rgba(0, 0, 0, 0.2));
       background: #fff;
       font-weight: bold;
       font-size: 12px;

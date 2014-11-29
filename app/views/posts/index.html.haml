@@ -28,13 +28,11 @@
           %span.count
             = @current_user.follower_num
         %li.gameNum.logs-li
-          ライブラリ
+          マイゲーム
           %span.count
             = @current_user[:logs_count]
   .postColumn
     .addPost
-      %figure.profImgWrap
-        = image_tag "/user_photos/#{@current_user[:photo_path]}", width: 44, height: 44, alt: "ユーザー画像", class: "profImg"
       .addPostInner
         %p.selectBtn.show-select-modal ゲームを選ぶ
         %textarea.post-input{placeholder: "そのゲームについて、どうおもった？"}
