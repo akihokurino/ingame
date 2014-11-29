@@ -13,7 +13,7 @@ var User = Backbone.Model.extend({
   },
   strimWidth: function (limit) {
     var introduction = this.get("introduction");
-    if (introduction.length > limit) {
+    if (introduction && introduction.length > limit) {
       var new_introduction  = introduction.slice(0, limit);
       new_introduction     += "...";
       this.set("introduction", new_introduction);
