@@ -10,7 +10,16 @@ body {
 		padding:10px;
 	}
 .entryBox {
+	position: relative;
 	padding:10px;
+	.icon-search{
+		position:absolute;
+		color: $color_textGray;
+		font-size:24px;
+		top:18px;
+		right:18px;
+		z-index: 1;
+	}
 	.search {
 		position:relative;
 		@include appearance;
@@ -27,7 +36,9 @@ body {
 	}
 }
 .btn {
+	@include appearance;
 	border: none;
+	@include border-radius(2px);
 	@include box-sizing;
 	background: $main_color;
 	color: #ffffff;
