@@ -2,7 +2,7 @@
 
 /*---   .settingHeader   ---------------------------*/
 .settingHeader {
-	padding: 13px 0 10px;
+	padding: 12px;
 	background: $color_black;
 
 	/*---   .settingHeaderInner   ----------*/
@@ -14,13 +14,14 @@
 		/*---   .logo   ---*/
 		.logo {
 			float: left;
-			color: $main_color;
-			font-size: 28px;
+			width: 72px;
+			height: 25px;
+			background: url(/assets/pc/logo.png) no-repeat -24px -11px;
+			@include substitute;
 		}
 		/*---   .stepTxt   ---*/
 		.stepTxt {
 			float: right;
-			margin: 9px 10px 7px;
 			color: #fff;
 			font-size: 12px;
 			line-height: 26px;
@@ -33,7 +34,6 @@
 				position: relative;
 				width: 524px;
 				height: 24px;
-				margin: 9px 0;
 				@include border-radius(2px);
 				background: #222;
 
