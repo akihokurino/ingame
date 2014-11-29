@@ -1,7 +1,7 @@
 @import "../_function.css.scss";
 
 /*---   .follows-list   ---------------------------*/
-.follows-list,.followers-list,.userList,.userActivityList{
+.follows-list,.followers-list,.userList,.userAvtivityList{
 	margin: 0 auto;
 	padding:0 10px;
 	@include clearfix;
@@ -20,12 +20,14 @@
 			display:inline-block;
 			margin-top:4px;
 			padding:0 10px;
+			background-color: $main_color;
+			color:#fff;
 			font-size:14px;
 			line-height:36px;
 		}
 		.follow,.reFollow{
-			background-color: #fff;
-			color:$main_color;
+			color:#fff;
+			background-color: $main_color;
 		}
 		.unFollow{
 			color:#fff;

@@ -35,7 +35,7 @@
           %p.description {{= post_urls[i].description }}
       {{ } }}
     {{ for (var i = 0; i < post_youtubes.length; i++) { }}
-    %iframe{src: "http://www.youtube.com/embed/{{= post_youtubes[i].key }}"}
+    %iframe.movieWrap{src: "http://www.youtube.com/embed/{{= post_youtubes[i].key }}"}
     {{ } }}
   .stateBox
     {{ if (current_user_id == user.id) { }}

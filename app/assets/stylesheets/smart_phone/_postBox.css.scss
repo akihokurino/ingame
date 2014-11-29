@@ -86,6 +86,7 @@
 		color: #404040;
 		font-size: 13px;
 		line-height: 1.6;
+		word-break: break-word;
 	}
 	.thumbnail {
 		&Img {
@@ -110,6 +111,7 @@
 				width: 100%;
 				vertical-align: top;
 				.title {
+					color:$color_textBlack;
 					font-weight:bold;
 					font-size:12px;
 				}
@@ -119,6 +121,11 @@
 				}
 			}
 		}
+	}
+	.movieWrap{
+		@include box-sizing;
+		width:100%;
+		border:none;
 	}
 	.stateBox {
 		text-align: right;
