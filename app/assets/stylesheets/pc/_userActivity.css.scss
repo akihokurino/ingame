@@ -30,7 +30,7 @@
 		margin-right: 15px;
 	}
 	&Username {
-		color: #7950ca;
+		color: $main_color;
 		font-weight: bold;
 		font-size: 14px;
 	}
@@ -47,11 +47,11 @@
 		top: 0;
 		right: 0;
 		padding: 4px 6px;
-		border: 1px solid #7950ca;
+		border: 1px solid $main_color;
 		@include border-radius(2px);
 		@include box-sizing;
 		background: #fff;
-		color: #7950ca;
+		color: $main_color;
 		font-weight: bold;
 		font-size: 10px;
 		text-align: center;
@@ -60,7 +60,7 @@
 		&:hover {
 			border: 1px solid #fff;
 			@include border-radius(2px);
-			background: #7950ca;
+			background: $main_color;
 			color: #fff;
 		}
 	}
