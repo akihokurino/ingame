@@ -304,7 +304,7 @@ input[type="submit"],{
 				border: 1px solid $color_border;
 				@include border-radius(2px);
 				color:$color_border;
-				font-size:32px;
+				font-size:38px;
 				vertical-align: middle;
 			}
 			.addPhoto {
@@ -335,27 +335,14 @@ input[type="submit"],{
 			@include box-sizing;
 			background: #ffffff;
 			color: #595959;
-			font-size: 14px;
+			font-size: 16px;
 			@include font-weight(1px, #595959);
+			text-align: center;
 		}
-		.icon-twitter.icon-facebook{
-			font-size:20px;
-		}
-		.fbInner {
-			display: block;
-			float: left;
-			width: 20px;
-			height: 20px;
-			margin-right: 10px;
-			background-size: 24px 68px;
-		}
-		.twInner {
-			display: block;
-			float: left;
-			width: 24px;
-			height: 20px;
-			margin-right: 10px;
-			background-size: 24px 68px;
+		.icon-twitter,.icon-facebook{
+			display:inline-block;
+			font-size:24px;
+			vertical-align: -15%;
 		}
 	}
 	.addGame {
@@ -369,7 +356,12 @@ input[type="submit"],{
 	}
 	.icon-post{
 		color:#fff;
-		font-size:24x;
+		font-size:18px;
+		&:before{
+			display: inline-block;
+			font-size:28px;
+			vertical-align: -15%;
+		}
 	}
 	
 }
