@@ -4,6 +4,11 @@ namespace :steam do
 		require 'open-uri'
 		require 'nokogiri'
 
+    # デバイス名の変更
+    def device_rename(old)
+      device_table = {'3DO' => '3do', '3DS' => '3ds', 'AC' => 'ac', 'Web' => 'browser', 'DC' => 'dc', 'ETC' => 'etc', 'FC' => 'fc', 'GBA' => 'gba', 'GB' => 'gb', 'GC' => 'gc', 'GG' => 'gg', 'iPhone' => 'iphone', 'Linax' => 'linux', 'Mac' => 'mac', 'MD' => 'md', 'SegaMK3' => 'mk3', 'MSX' => 'msx', 'N64' => 'n64', 'NDS' => 'nds', 'NGP' => 'ngp', 'NG' => 'ng', 'PC8801' => 'pc8801', 'PCE' => 'pce', 'PC-FX' => 'pcfx', 'PC' => 'pc', 'PS2' => 'ps2', 'PS3' => 'ps3', 'PS4' => 'ps4', 'PSM' => 'psm', 'PSP' => 'psp', 'PSV' => 'psv', 'PS' => 'ps', 'SFC' => 'sfc', 'SS' => 'ss', 'STEAMPLAY' => 'steamplay', 'Wii U' => 'wiiu', 'Wii' => 'wii', 'WinMac' => 'winmac', 'Windows' => 'win', 'WS' => 'ws', 'Xbox360' => 'x360', 'XboxOne' => 'xboxone', 'Xbox' => 'xbox'}
+      return (device_table[old] or old)
+    end
     # なんとなくここで、連続アクセスではじかれた時用の処理しとく。
     def get(url)
       # url開いてソースを文字列で返す。
@@ -53,7 +58,7 @@ namespace :steam do
         result[:provider] = "steam"
         result[:provider_id] = row.attributes["href"].text.gsub(/^.*\/app\//, '').gsub(/\/.*$/, '').to_i
 				result[:title] = row.css("span.title").text
-				result[:devices] = row.css("span.platform_img").map {|span| span["class"].split[1]}
+				result[:devices] = row.css("span.platform_img").map {|span| device_rename(span["class"].split[1])}
 				result[:release_day] = row.css("div.search_released").text.gsub(/[年月]/, "-").gsub("日", "")
 				result[:price] = ((tmp = row.css("div.search_price").children[-1]) and tmp.text).gsub("¥ ", "").gsub(",", "").gsub(/\s*/, '').to_i
 				result[:photo_url] = row.css("div.search_capsule > img")[0].attributes["src"].value.gsub(/\?.*/, "").gsub('capsule_sm_120', 'header')
