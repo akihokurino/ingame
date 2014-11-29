@@ -23,10 +23,10 @@ class Api::PostsController < ApplicationController
     params[:post][:user_id] = @current_user[:id]
     @last_post              = Post.create!(post_params)
 
-    if params[:post_youtube][:key]
+    if !params[:post_youtube][:key].blank?
       params[:post_youtube][:post_id] = @last_post[:id]
       PostYoutube.create(post_youtube_params)
-    elsif params[:url_thumbnail]
+    elsif !params[:url_thumbnail].blank?
       params[:url_thumbnail][:post_id] = @last_post[:id]
       PostUrl.create(post_url_params)
     elsif !params[:post][:urls].blank?

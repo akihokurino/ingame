@@ -150,6 +150,8 @@
     post: function (e) {
       e.preventDefault();
 
+      var that = this;
+
       var data = {
         "post": {
           "game_id":  this.game_id,
@@ -179,12 +181,19 @@
 
           post_socket.send(data);
 
+          that.resetInput();
+
           location.href = "/posts";
         },
         error: function () {
 
         }
       })
+    },
+    resetInput: function () {
+      this.upload.files  = [];
+      this.youtube_key   = null;
+      this.url_thumbnail = null;
     },
     getUrl: function (str) {
       var pat  = /(https?:\/\/[\x21-\x7e]+)/g;
