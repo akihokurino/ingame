@@ -45,7 +45,7 @@ a {
 		margin-bottom:10px;
 	}
 	.tw, .fb {
-		display: block;
+		display: inline-block;
 		width: 70%;
 		margin: 0 auto;
 		padding:0 10px;
@@ -64,8 +64,9 @@ a {
 	}
 	.icon-twitter,.icon-facebook{
 		&:before{
+			display:inline-block;
 			font-size:25px;
-			vertical-align: middle;
+			vertical-align: -20%;
 			margin-right:5px;
 		}
 	}
