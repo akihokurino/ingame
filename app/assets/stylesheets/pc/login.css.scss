@@ -4,187 +4,111 @@
 html {
 	background: #fff;
 }
-.snsList {
-	width: 428px;
-	margin: 0 auto;
-	color: #fff;
-	font-style: 18px;
+.mainVisual {
+	padding-top:15px;
+	background: linear-gradient(rgba($main_color,0.9), rgba($main_color,0.95)), url('/assets/smart_phone/login-bg.jpg');
+	background-size:contain;
+	font-family: arial;
 	text-align: center;
+	color:#fff;
 
-	&Txt {
-		margin-bottom: 18px;
-		font-size: 14px;
+	.ttl{
+		margin:45px 0 40px 0;
 	}
-	.item {
+
+	 .mainCopy{
+	 	width: 760px;
+	 	margin:10px auto;
+	 	padding:20px 0;
+	 	font-size:32px;
+	 	border-top: 3px solid #fff;
+	 	border-bottom: 3px solid #fff;
+	 }
+	 .subCopy{
+	 	padding:0 20px;
+	 	font-size:22px;
+	 	line-height:1.5;
+	 }
+	 .snsCopy{
+	 	font-size:22px;
+	 }
+}
+
+.loginBox,.bottomBox {
+	text-align: center;
+	padding:30px 0;
+	.item{
+		margin-bottom:10px;
+	}
+	.tw, .fb {
 		display: inline-block;
-		width: 200px;
-	}
-	.twBtn {
-		display: block;
-		position: relative;
-		height: 42px;
-		@include border-radius(2px);
-		background: #55acee;
-		color: #fff;
-		line-height: 42px;
-		text-decoration: none;
-
-		&:before {
-			position: absolute;
-			top: -1px;
-			left: 25px;
-			font-size: 24px;
-			font-family: 'icomoon';
-			content: "\e610";
-		}
-	}
-	.fbBtn {
-		display: block;
-		position: relative;
-		height: 42px;
-		@include border-radius(2px);
-		background: #3b5998;
-		color: #fff;
-		line-height: 42px;
-		text-decoration: none;
-
-		&:before {
-			position: absolute;
-			top: -1px;
-			left: 15px;
-			font-size: 26px;
-			font-family: 'icomoon';
-			content: "\e603";
-		}
-	}
-}
-
-/*---   .header   ---------------------------*/
-.lpHeader {
-	width: 100%;
-	height: 534px;
-	padding-bottom: 80px;
-	@include box-sizing;
-	background: url(/assets/pc/lp_img04.jpg) no-repeat top center;
-	background-size: cover;
-	color: #fff;
-	text-align: center;
-
-	&Top {
-		display: none;
-		width: 100%;
-		height: 60px;
-		padding-top: 13px;
-		@include box-sizing;
-		background: $color_black;
-
-		&Inner {
-			width: 960px;
-			margin: 0 auto;
-		}
-	}
-	.ttl {
-		@include img_set-PC4(219px, 35px, 0, -484px);
-		@include substitute;
-	}
-	.catchcopy {
-		padding: 90px 0 30px;
-		font-weight: bold;
-		font-size: 36px;
-	}
-	&Txt {
-		margin-bottom: 80px;
-		font-size: 16px;
-		line-height: 1.5;
-	}
-}
-
-/*---   .contentBox   ---------------------------*/
-.contentBox {
-	position: relative;
-
-	&Ttl {
-		position: absolute;
-		top: -57px;
-		left: 50%;
-		width: 242px;
-		height: 57px;
-		margin-left: -121px;
-		@include border-radius(10px 10px 0 0);
-		@include box-sizing;
-		background:rgba(0,0,0,0.5);
-		color: #fff;
-		font-size: 24px;
-		text-align: center;
-		line-height: 57px;
-	}
-	.cntInner {
-		width: $width;
+		width: 320px;
 		margin: 0 auto;
-		color: #fff;
-		@include clearfix;
-	}
-	.ttl {
-		margin-bottom: 26px;
-		font-size: 32px;
-		text-align: left;
-	}
-	.txt {
-		margin-bottom: 1em;
-		font-size: 16px;
-		line-height: 1.5;
-		text-align: left;
-	}
-	/*---   .contentBox01   ----------*/
-	&01 {
-		padding: 60px 0 50px;
-		background: $color_green;
+		padding:0 10px;
+		@include border-radius(2px);
+		@include box-sizing;
+		color: #ffffff;
+		font-size: 18px;
+		line-height:3;
 		text-align: center;
-
-		.cntLeft {
-			float: left;
-			margin-right: 28px;
-			padding-top: 16px;
+	}
+	.tw {
+		background: $twitter_blue;
+		&:hover{
+			text-decoration:none;
+			background-color:lighten($twitter_blue,8%);
 		}
 	}
-	/*---   .contentBox02   ----------*/
-	&02 {
-		padding-top: 23px;
-		background: $color-red;
-		text-align: center;
-
-		.cntLeft {
-			float: left;
-			padding-top: 50px;
-		}
-		.cntImg {
-			line-height: 0;
+	.fb {
+		background: $facebook_blue;
+		&:hover{
+			text-decoration:none;
+			background-color:lighten($facebook_blue,10%);
 		}
 	}
-	/*---   .contentBox03   ----------*/
-	&03 {
-		padding: 65px 0 50px;
-		background: $color-blue;
-		text-align: center;
-
-		.cntLeft {
-			float: left;
-			padding-top: 12px;
-		}
-		.cntImg {
-			float: right;
-		}
-	}
-	/*---   .contentBox04   ----------*/
-	&04 {
-		padding: 34px 0 108px;
-		text-align: center;
-
-		.ttl {
-			color: #009e96;
-			font-weight: normal;
-			font-size: 36px;
-			text-align: center;
+	.icon-twitter,.icon-facebook{
+		&:before{
+			display:inline-block;
+			font-size:32px;
+			vertical-align: -20%;
+			margin-right:5px;
 		}
 	}
 }
+
+.points{
+	text-align: center;
+	section{
+		display:inline-block;
+		width: 30%;
+		color:$color_textBlack;
+		text-align: center;
+		vertical-align: top;
+
+		h1{
+			padding:20px 0;
+			font-size:28px;
+		}
+
+		p{
+			display:inline-block;
+			padding:10px 0;
+			width:90%;
+			font-size:16px;
+			line-height:1.5;
+		}
+		.annotation{
+			font-size:12px;
+		}
+	}
+}
+.bottomBox{
+	background-color: $bg_color;
+	h1{
+		color: #4c4c4c;
+		margin:20px;
+		font-size:28px;
+	}
+}
+
+

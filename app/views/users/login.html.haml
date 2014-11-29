@@ -1,65 +1,48 @@
 = content_for :head do
   = stylesheet_link_tag "pc/login"
 
-%header.lpHeader
-  .lpHeaderTop
-    .lpHeaderTopInner
-      %h1.ttl Gameful
-  %p.catchcopy 遊ぶべきゲームに出会おう。
-  %p.lpHeaderTxt
-    Gamefulは、まだ見ぬゲームに出逢うゲーマー向けのSNSです。
+%section.mainVisual
+  %h2.mainCopy たくさんのゲームを、遊んできた。
+  %h1.ttl 
+    = image_tag("logo@3x.png", width: "320")
+  %p.subCopy
+    GAMRは、ゲーマーによるゲーマーの為の
     %br
-    遊んでいるゲームや気になるゲームを記録し、感想を共有することで、
-    %br
-    あなたにピッタリのゲーム、そっくりなゲーマーを探す事ができます。
-  %p.snsListTxt ソーシャルアカウントで簡単登録！
-  %ul.snsList
-    %li.item
-      %a.twBtn{href: "/auth/twitter"} Twitter
-    %li.item
-      %a.fbBtn{href: "/auth/facebook"} Facebook
-.contentBox
-  %h1.contentBoxTtl Gamefulの特徴   
-  %section.contentBox01
-    .cntInner
-      .cntLeft
-        %figure.cntImg
-          = image_tag "pc/lp_img01.jpg", width: "466", height: "273", alt: ""
-      %h2.ttl 自分だけのゲーム歴をつくる。
-      %p.txt ○○作品以上のデーターベースから好きなゲームを検索して、ライブラリに登録することができます。
-      %p.txt 「気になる」「プレイ中」「クリア済」という３つのステータスを使い分けて、ゲーム歴をスマートに記録・管理しよう。
-      %p.txt 「気になる」に登録されているゲームは、発売日が近づいた時にお知らせします。
-  %section.contentBox02
-    .cntInner
-      .cntLeft
-        %h2.ttl ゲームの感想をシェア。
-        %p.txt
-          遊びはじめた時、ボスを倒した時、そしてクリアした時など、
-          %br
-          ゲームには感動ポイントがたくさんあります。
-        %p.txt
-          些細なつぶやきでも、濃厚なレビューでもご自由に。
-          %br
-          一つのゲームについて、何度でも感想をポストすることができます。
-          %br
-          TwitterやFacebookにだって、簡単にシェアできます。
-      %figure.cntImg
-        = image_tag "pc/lp_img02.png", width: "432", height: "377", alt: ""
-  %section.contentBox03
-    .cntInner
-      .cntLeft
-        %figure.cntImg
-          = image_tag "pc/lp_img03.jpg", width: "451", height: "273", alt: ""
-      %h2.ttl 信頼できる情報を参考に。
-      %p.txt １つのゲームには、Twitterのハッシュタグの様にユーザーのポストが集まります。
-      %p.txt 趣味が近いユーザーや、気の合うユーザーをフォローしておけば、そのユーザーのポストだけを参考にすることもできます。
-  %section.contentBox04
-    %h2.ttl Gamefulでまだ見ぬ神ゲーに出会おう。
-    %p.snsListTxt ソーシャルアカウントで簡単登録！
+    ゲームライフをより楽しくするSNSです。
+  %section.loginBox
     %ul.snsList
       %li.item
-        %a.twBtn{href: "/auth/twitter"} Twitter
+        %a.tw{href: "/auth/twitter"}
+          %span.icon-twitter Twitterでログイン
       %li.item
-        %a.fbBtn{href: "/auth/facebook"} Facebook
+        %a.fb{href: "/auth/facebook"}
+          %span.icon-facebook Facebookでログイン
+%section.points
+  %section.first
+    %h1 ゲームを記録
+    = image_tag("login_illust_01@2x.png", width: "50%")
+    %p 気になるゲームや遊んだゲームをマイゲームに登録することで、自分だけのオリジナルカタログ（のようなもの）が出来上がります。
+    %p.annotation
+      遊んできたゲームを見返したり、友達に共有することで、新たな発見があるかもしれません。
+  %section.second
+    %h1 瞬間をシェア
+    = image_tag("login_illust_02@2x.png", width: "50%")
+    %p 登録したゲームに対して、コメントを付与して何度でもポストする事ができます。
+    %p.annotation
+      ゲームを遊んでいる時って、感想をシェアしたくなる瞬間が何度も訪れたりしませんか？
+  %section.third
+    %h1 感想を調べる
+    = image_tag("login_illust_03@2x.png", width: "50%")
+    %p 気になるゲームを見つけたら、他のユーザーのコメントや、Tipsを見てみましょう。
+    %p.annotation あなたが遊ぶべきゲームは、あなたの友達が知っているかもしれません。
+%section.bottomBox
+  %h1 ゲームを本気で楽しもう。
+  %ul.snsList
+    %li.item
+      %a.tw{href: "/auth/twitter"}
+        %span.icon-twitter Twitterでログイン
+    %li.item
+      %a.fb{href: "/auth/facebook"}
+        %span.icon-facebook Facebookでログイン
         
 = render partial: "application/pc/footer"
