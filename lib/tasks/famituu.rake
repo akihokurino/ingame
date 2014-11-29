@@ -6,11 +6,17 @@ namespace :famituu do
 		require 'open-uri'
 		require 'nokogiri'
 
+    # デバイス名の変更
+    def device_rename(old)
+      device_table = {'3DO' => '3do', '3DS' => '3ds', 'AC' => 'ac', 'Web' => 'browser', 'DC' => 'dc', 'ETC' => 'etc', 'FC' => 'fc', 'GBA' => 'gba', 'GB' => 'gb', 'GC' => 'gc', 'GG' => 'gg', 'iPhone' => 'iphone', 'Linax' => 'linux', 'Mac' => 'mac', 'MD' => 'md', 'SegaMK3' => 'mk3', 'MSX' => 'msx', 'N64' => 'n64', 'NDS' => 'nds', 'NGP' => 'ngp', 'NG' => 'ng', 'PC8801' => 'pc8801', 'PCE' => 'pce', 'PC-FX' => 'pcfx', 'PC' => 'pc', 'PS2' => 'ps2', 'PS3' => 'ps3', 'PS4' => 'ps4', 'PSM' => 'psm', 'PSP' => 'psp', 'PSV' => 'psv', 'PS' => 'ps', 'SFC' => 'sfc', 'SS' => 'ss', 'STEAMPLAY' => 'steamplay', 'Wii U' => 'wiiu', 'Wii' => 'wii', 'WinMac' => 'winmac', 'Windows' => 'win', 'WS' => 'ws', 'Xbox360' => 'x360', 'XboxOne' => 'xboxone', 'Xbox' => 'xbox'}
+      return (device_table[old] or old)
+    end
+
     # url開いてソースを文字列で返す。
     def get(url)
       html   = nil
       status = nil
-
+      # なんとなくここで、連続アクセスではじかれた時用の処理しとく。
       for i in 1..5
         open(url){|f|
           html   = f.read
@@ -74,7 +80,7 @@ namespace :famituu do
               game_url             = href
             else
               name = href.gsub(/^.*calendar\//, '').gsub(/\/.*$/, '')
-              devices << name unless name == "all"
+              devices << device_rename(name) unless name == "all"
             end
           end
 
