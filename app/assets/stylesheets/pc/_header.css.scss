@@ -6,9 +6,9 @@
 	top: 0;
 	z-index: 100;
 	width: 100%;
-	padding: 5px 0;
+	padding: 10px 0;
 	@include box-shadow(0, 0, 5px, 0, #c9c9ca);
-	background: $main-color;
+	background: #fff;
 	opacity: 0.95;
 
 	&Inner {
@@ -21,12 +21,12 @@
 	.logo {
 		display: block;
 		position: fixed;
-		top: 7px;
+		top: 10px;
 		left: 50%;
-		width: 72px;
+		width: 120px;
 		height: 25px;
 		margin-left: -36px;
-		background: url(/assets/pc/logo.png) no-repeat -24px -11px;
+		background: url(/assets/logo_b.png) no-repeat -10px;
 		@include substitute;
 	}
 	.searchWrap {
@@ -89,7 +89,7 @@
 			position: relative;
 			height: 28px;
 			padding-left: 28px;
-			color: #fff;
+			color: $main_color;
 			font-size: 12px;
 			line-height: 28px;
 
@@ -111,8 +111,8 @@
 			height: 23px;
 			padding-top: 5px;
 			padding-left: 28px;
-			color: #fff;
-			font-size: 12px;
+			color: $main_color;
+			font-size: 14px;
 			line-height: 23px;
 
 			&:before {
@@ -133,8 +133,8 @@
 			height: 24px;
 			padding-top: 4px;
 			padding-left: 28px;
-			color: #fff;
-			font-size: 12px;
+			color: $main_color;
+			font-size: 14px;
 			line-height: 24px;
 			cursor: pointer;
 
@@ -180,8 +180,8 @@
 			width: 8px;
 			height: 8px;
 			margin-top: -7px;
-			border-top: 4px solid #fff;
-			border-right: 4px solid #fff;
+			border-top: 4px solid $main_color;
+			border-right: 4px solid $main_color;
 			-webkit-transform: rotate(135deg);
 			transform: rotate(135deg);
 			content:"";

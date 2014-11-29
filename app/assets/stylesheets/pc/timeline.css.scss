@@ -8,6 +8,7 @@
   width: 1080px;
   margin: 38px auto 0;
   padding: 20px 0 46px;
+  background-color: $bg_color;
 
   /*---   .mainTtl   ----------*/
   .mainTtl {
@@ -292,8 +293,8 @@
       height: 30px;
       padding-left: 35px;
       padding-right: 10px;
-      @include border-radius(3px);
-      background: #929292;
+      @include border-radius(2px);
+      background: $main_color;
       color: #fff;
       font-size: 14px;
       line-height: 30px;
