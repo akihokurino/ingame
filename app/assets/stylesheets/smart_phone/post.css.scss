@@ -66,9 +66,9 @@ input[type="submit"],{
 			text-align: right;
 		}
 		.icon-plus {
-			color: #fff;
-			font-size:12px;
-			color:$color_textGray;
+			color: $color-textGray;
+			font-size: 14px;
+			text-shadow: 1px 1px 1px #fff;
 			&:before{
 				display:inline-block;
 				font-size:16px;
@@ -305,7 +305,7 @@ input[type="submit"],{
 				border: 1px solid $color_border;
 				@include border-radius(2px);
 				color:$color_border;
-				font-size:38px;
+				font-size:30px;
 				vertical-align: middle;
 			}
 			.addPhoto {
@@ -330,7 +330,7 @@ input[type="submit"],{
 		.fbBtn, .twBtn {
 			display: block;
 			margin:5px;
-			padding: 10px 10px;
+			padding: 5px 10px;
 			border: 1px solid $color_border;
 			@include border-radius(2px);
 			@include box-sizing;
