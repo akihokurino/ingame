@@ -66,32 +66,17 @@
 		.icon-star{
 			font-size:21px;
 		}
-		.amazonBtn {
-			display: block;
-			float: right;
-			width: 83px;
-			height: 22px;
-			margin-top: 5px;
-			@include border-radius(5px);
-			@include box-shadow(0, 1px, 0, 0, #c47a17);
-			@include box-sizing;
-			background: #fc9a18;
-			color: #ffffff;
-			font-size: 12px;
-			line-height: 22px;
-		}
-		.btnList {
-			display:table;
+		.gameBtnList {
 			width: 100%;
 			margin-top:10px;
 			font-size: 14px;
+			text-align:right;
 			.item {
-				display:table-cell;
+				display:inline-block;
 				text-align:center;
 			}
 		}
 		.comment {
-			display: block;
 			width: 120px;
 			padding: 0;
 			@include border-radius(20px);
@@ -101,11 +86,10 @@
 		}
 		.new-status, .my-status, .my-rate {
 			@include appearance;
-			display: inline-block;
 			width: 124px;
-			padding:0 10px 0 20px;
+			padding-left:30px;
 			border:none;
-			border-radius:0;
+			border-radius:2px;
 			background-color: $main_color;
 			color: #fff;
 			font-size: 14px;
