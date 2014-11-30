@@ -222,7 +222,7 @@
     },
     clip: function () {
       var that = this;
-      $(".next-page").val("アップロード");
+      $(".next-page").val("初期設定を完了");
 
       if (this.upload.file) {
         var data = {

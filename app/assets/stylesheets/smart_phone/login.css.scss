@@ -10,15 +10,15 @@ a {
 
 /*---   .mainVisual   ---------------------------*/	
 .mainVisual {
-	padding-top:15px;
-	background: linear-gradient(rgba($main_color,0.9), rgba($main_color,0.95)), url('/assets/smart_phone/login-bg.jpg');
+	padding-top:35px;
+	background: linear-gradient(rgba(#000,0.4), rgba(#000,0.7)), url('/assets/smart_phone/login-bg.jpg');
 	background-size:cover;
 	font-family: arial;
 	text-align: center;
 	color:#fff;
 
 	.ttl{
-		margin:25px 0 20px 0;
+		margin:50px auto 45px auto;
 	}
 
 	 .mainCopy{
@@ -79,7 +79,7 @@ a {
 	}
 	h1{
 		margin:10px;
-		font-size:32px;
+		font-size:28px;
 	}
 	.illust{
 		margin:0 auto;
@@ -106,7 +106,7 @@ a {
 	h1{
 		color: #4c4c4c;
 		margin:10px;
-		font-size:28px;
+		font-size:24px;
 	}
 }
 

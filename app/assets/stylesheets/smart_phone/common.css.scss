@@ -17,6 +17,12 @@ a {
 	text-decoration: none;
 }
 
+input[type="button"],
+input[type="text"],
+input[type="submit"],{
+  -webkit-appearance:none;
+}
+
 /*------------------------------
 		systemClass
 ------------------------------*/
