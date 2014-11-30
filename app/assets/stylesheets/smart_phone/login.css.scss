@@ -11,8 +11,8 @@ a {
 /*---   .mainVisual   ---------------------------*/	
 .mainVisual {
 	padding-top:35px;
-	background: linear-gradient(rgba(#000,0.4), rgba(#000,0.7)), url('/assets/smart_phone/login-bg.jpg');
-	background-size:cover;
+	background: linear-gradient(rgba(#000,0.4), rgba(#000,0.7)), url('/assets/bg_login.png');
+	background-size:contain;
 	font-family: arial;
 	text-align: center;
 	color:#fff;
