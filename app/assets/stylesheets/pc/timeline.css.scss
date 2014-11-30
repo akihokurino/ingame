@@ -58,12 +58,16 @@
       line-height: 0;
     }
     .userName {
-      display: inline-block;
+      display: table-cell;
+      width: 180px;
+      height: 50px;
       margin-bottom: 10px;
       padding-top: 18px;
       color: #fff;
       font-weight: bold;
       font-size: 16px;
+      vertical-align: middle;
+      line-height: 1.2;
     }
     .userProf {
       color: #7e7e7e;

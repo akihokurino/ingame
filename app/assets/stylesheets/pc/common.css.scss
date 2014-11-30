@@ -6,6 +6,7 @@
 /*---   common   ---------------------------*/
 * {
 	@include box-sizing;
+	word-wrap: break-word;
 }
 html {
 	min-width: 960px;
