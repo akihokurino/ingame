@@ -1,4 +1,5 @@
 Ingame::Application.routes.draw do
+  root to: 'posts#index'
   match '/*path' => 'application#cors_preflight_check', :via => :options
 
   resources :users, only: ["show", "edit", "update"] do
