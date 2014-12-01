@@ -35,6 +35,7 @@ Ingame::Application.routes.draw do
     resources :users, only: ["index", "update"], format: "json" do
       collection do
         get "search"
+        post "tmp_upload"
       end
     end
     resources :follows, only: ["create", "destroy"], format: "json"

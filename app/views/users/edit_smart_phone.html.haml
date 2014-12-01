@@ -16,8 +16,7 @@
       #thumbnail
         = image_tag "/user_photos/#{@user.photo_path}", class: "profile-img"
       %span プロフィール画像
-      /= f.file_field :photo_path, id: "upload-btn"
-      = f.file_field :tmp_photo_path, id: "upload-btn"
+      = f.file_field :photo_path, id: "upload-btn"
     .username-input
       %span.icon-user
       = f.text_field :username
