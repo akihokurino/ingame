@@ -20,6 +20,7 @@
 /public/user_photos/*
 /public/game_photos/*
 /public/post_photos/*
+/public/tmp_photos/*
 
 # vim swap file
 .*.swp
