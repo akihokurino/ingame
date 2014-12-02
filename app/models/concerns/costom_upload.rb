@@ -14,8 +14,8 @@ module CostomUpload
         end
 
         case type
-        when "user"
-          file = Magick::Image.read("public/#{type}_photos/#{photo_path}").first.crop(clip[:x], clip[:y], 200, 200)
+        when "user", "tmp"
+          file = Magick::Image.read("public/#{type}_photos/#{photo_path}").first.crop(clip[:x], clip[:y], 240, 240)
           file.write("public/#{type}_photos/#{photo_path}")
         end
 
@@ -41,8 +41,8 @@ module CostomUpload
       end
 
       case type
-      when "user"
-        file = Magick::Image.read("public/#{type}_photos/#{photo_path}").first.crop(clip[:x], clip[:y], 200, 200)
+      when "user", "tmp"
+        file = Magick::Image.read("public/#{type}_photos/#{photo_path}").first.crop(clip[:x], clip[:y], 240, 240)
         file.write("public/#{type}_photos/#{photo_path}")
       end
 

@@ -206,7 +206,7 @@
       var tmp      = location.href.split("#")[0].split("/");
       this.user_id = tmp.pop() && tmp.pop();
 
-      this.upload  = new ProfileUpload("upload-btn", "clip-area", this.user_id, null, "ajax");
+      this.upload  = new ProfileUpload("upload-btn", "clip-area", this.user_id, null);
     },
     next: function (e) {
       e.preventDefault();

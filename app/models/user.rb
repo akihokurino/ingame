@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
     where("username LIKE ?", "%#{username}%")
   }
 
-  attr_accessor :i_followed, :follow_num, :follower_num, :clip_x, :clip_y, :tmp_photo_path, :i_followered
+  attr_accessor :i_followed, :i_followered, :follow_num, :follower_num, :clip_x, :clip_y
 
 
 	def update_with(user_params, clip = {})
@@ -126,6 +126,10 @@ class User < ActiveRecord::Base
       end
 
       users
+    end
+
+    def tmp_upload(tmp_data, clip)
+      self.url_upload(tmp_data, "tmp", clip)
     end
 	end
 end
