@@ -24,7 +24,7 @@
       _.bindAll(this, "pagenation");
 
       this.game_result_collection = new GameResults();
-      this.game_results_view      = new GameResultsView({el: ".result-list", collection: this.game_result_collection});
+      this.game_results_view      = new GameResultsView({el: ".result-list", collection: this.game_result_collection, attributes: {type: "setting"}});
       this.search_title           = this.$(".search-title-input");
       this.current_search_title   = null;
 
@@ -48,6 +48,8 @@
             if (response.results && response.results.length > 0) {
               for (var i = 0; i < response.results.length; i++) {
                 var game_result = new GameResult(response.results[i]);
+                var current_url = null;
+                game_result.set("current_url", current_url);
                 that.game_results_view.collection.add(game_result);
               }
             }
@@ -77,6 +79,8 @@
             if (response.results && response.results.length > 0) {
               for (var i = 0; i < response.results.length; i++) {
                 var game_result = new GameResult(response.results[i]);
+                var current_url = null;
+                game_result.set("current_url", current_url);
                 that.game_results_view.collection.add(game_result);
               }
             }
