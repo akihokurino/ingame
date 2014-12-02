@@ -17,21 +17,21 @@
 		.followBtn{
 			float:right;
 			display:inline-block;
-			margin-top:10px;
+			margin-top:6px;
 			padding:0 10px;
 			border: 1px solid $main_color;
-			@include border-radius(2px);
+			@include border-radius(4px);
 			color:$main_color;
 			font-size:14px;
 			line-height:36px;
 		}
 		.follow,.reFollow{
 			color:#fff;
-			background-color: $main_color;
+			background: linear-gradient(lighten($main_color,5%),$main_color);
 		}
 		.unFollow{
 			color:#fff;
-			background-color: $main_color;
+			background: linear-gradient(lighten($main_color,5%),$main_color);
 
 		}
 		.userImgWrap{
@@ -43,7 +43,7 @@
 		.userInfo{
 			display:inline-block;
 			vertical-align: middle;
-			padding-left:10px;
+			padding-left:5px;
 			height:100%;
 			font-size:14px;
 			line-height:1.5;

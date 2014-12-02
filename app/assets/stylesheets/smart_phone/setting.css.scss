@@ -40,11 +40,9 @@ body {
 	padding:0 20px;
 	margin:0 auto;
 	border: none;
-	@include border-radius(2px);
 	@include box-sizing;
-	background: $main_color;
-	border-top: 1px solid lighten($main_color,10%);
-	box-shadow:0 2px 0px darken($main_color,15%);
+	background: linear-gradient(lighten($main_color,5%),$main_color);
+	@include border-radius(4px);
 	color: #ffffff;
 	font-size: 14px;
 	line-height:36px;
@@ -128,7 +126,7 @@ body {
 			display:inline-block;
 			margin-top:4px;
 			padding:0 5px;
-			@include border-radius(2px);
+			@include border-radius(4px);
 			color:$main_color;
 			font-size:12px;
 			line-height:2.5;
@@ -211,10 +209,8 @@ body {
 			position: relative;
 			padding:0 10px;
 			@include box-sizing;
-			@include border-radius(2px);
-			background: $color_green;
-			border-top: 1px solid lighten($color_green,10%);
-			box-shadow:0 2px 0px darken($color_green,15%);
+			@include border-radius(4px);
+			background: linear-gradient(lighten($color_green,5%),$color_green);
 			color: #ffffff;
 			font-size: 14px;
 			line-height:36px;

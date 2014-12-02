@@ -90,7 +90,7 @@
 			padding-left:30px;
 			border:none;
 			border-radius:2px;
-			background-color: $main_color;
+			background: linear-gradient(lighten($main_color,5%),$main_color);
 			color: #fff;
 			font-size: 14px;
 			line-height: 36px;
