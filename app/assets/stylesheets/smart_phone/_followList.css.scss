@@ -17,7 +17,7 @@
 		.followBtn{
 			float:right;
 			display:inline-block;
-			margin-top:5px;
+			margin-top:10px;
 			padding:0 10px;
 			border: 1px solid $main_color;
 			@include border-radius(2px);
@@ -46,21 +46,14 @@
 			padding-left:10px;
 			height:100%;
 			font-size:14px;
+			line-height:1.5;
 			.nameWrap{
 				font-weight:bold;
-				line-height:1.6;
 				.name{
 					color:$color_textBlack;
 				}
 			}
-			.icon-place{
-				display:inline-block;
-				margin-left:-2px;
-				color:$color_textGray;
-				font-size:14px;
-			}
-			.place{
-				display:inline-block;
+			.myGame{
 				color: $color_textGray;
 				vertical-align: top;
 			}
