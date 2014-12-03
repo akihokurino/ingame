@@ -193,8 +193,10 @@
     toggleSelectModal: function () {
       if ($(".select-log-list").css("display") == "none") {
         $(".select-log-list").css("display", "block");
+        pageLayerView.show(".select-log-list");
       } else {
         $(".select-log-list").css("display", "none");
+        pageLayerView.hide();
       }
     },
     selectLog: function (model) {
