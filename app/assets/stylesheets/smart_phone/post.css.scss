@@ -143,6 +143,7 @@ input[type="submit"],{
 			@include pinterest-box(3,5px,auto);
 			.item {
 				display: inline-block;
+				margin-bottom: 5px;
 				border: 1px solid $color_border;
 				@include border-radius(2px);
 				@include box-sizing;
