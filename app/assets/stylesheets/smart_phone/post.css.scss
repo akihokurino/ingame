@@ -140,12 +140,11 @@ input[type="submit"],{
 		.gameList {
 			background-color: #fcfcfc;
 			padding:2px 1px;
+			@include pinterest-box(3,5px,auto);
 			.item {
 				display: inline-block;
-				position: relative;
 				margin:1px;
 				padding:0;
-				width: 32.5%;
 				border: 1px solid $color_border;
 				@include border-radius(2px);
 				@include box-sizing;

@@ -90,6 +90,17 @@ $support-opera  : true;
     -moz-appearance: none;
     -webkit-appearance: none;
 }
+@mixin pinterest-box($count,$margin,$space){
+    -webkit-column-count: $count;
+       -moz-column-count: $count;
+            column-count: $count;
+    -webkit-column-gap: $margin;
+       -moz-column-gap: $margin;
+            column-gap: $margin;
+    -webkit-column-fill: $space;
+       -moz-column-fill: $space;
+            column-fill: $space;
+}
 @mixin clearfix {
     &:before, &:after {
         display: table;
