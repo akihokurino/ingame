@@ -13,19 +13,20 @@ html {
 	box-sizing:border-box;
 
 	.postWrap {
-		padding: 5px;
+		padding: 5px 5px 0 5px;
 		@include box-sizing;
 		text-align: right;
 		.icon-post{
 			@include appearance;
 			display:inline-block;
-			padding:10px;
+			padding:0 10px;
 			border: none;
 			background: linear-gradient(lighten($main_color,5%),$main_color);
 			@include border-radius(4px);
 			box-sizing: border-box;
 			color: #fff;
 			font-size: 16px;
+			line-height:1.5;
 			&:before{
 				display:inline-block;
 				margin-right:5px;
