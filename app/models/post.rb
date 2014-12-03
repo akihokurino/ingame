@@ -9,7 +9,6 @@ class Post < ActiveRecord::Base
   has_many   :post_photos, dependent: :destroy
   has_many   :post_comments, dependent: :destroy
   has_many   :post_urls, dependent: :destroy
-  has_many   :post_youtubes, dependent: :destroy
 
   validates :user_id,
     presence: true,

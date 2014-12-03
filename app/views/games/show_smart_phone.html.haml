@@ -21,16 +21,16 @@
         .gameInfoWrap
           %ul.gameInfo
             %li.item.maker
-              メーカー
-              %p.infoInner
+              メーカー : 
+              %span 
                 = @game.maker
             %li.item.hard
-              ハード
-              %p.infoInner
+              ハード : 
+              %span 
                 = @game.device
             %li.item.releaseDay
-              発売日
-              %p.infoInner
+              発売日 : 
+              %span
                 = @game.release_day
           %p.review.reviewWrap
             ユーザーの評価
@@ -42,7 +42,7 @@
               %a.amazonBtn{href: @game.amazon_url} Amazonへ
     = render partial: "select_btns", locals: {game: @game}
   .boxTtl
-    %h2.boxTtl このゲームに対するポスト
+    %h2 このゲームに対するポスト" "件
   .sortBoxWrap
     %ul.sortBox.sort-box
       %li.item.current.follower-posts

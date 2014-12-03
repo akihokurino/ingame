@@ -42,6 +42,9 @@ body {
 	border: none;
 	@include box-sizing;
 	background: linear-gradient(lighten($main_color,5%),$main_color);
+	&:active{
+		background: linear-gradient($main_color,lighten($main_color,5%));
+		}
 	@include border-radius(4px);
 	color: #ffffff;
 	font-size: 14px;
@@ -137,6 +140,9 @@ body {
 		.unFollow{
 			color:#fff;
 			background-color: $main_color;
+			&:active{
+				background: linear-gradient($main_color,lighten($main_color,5%));
+		}
 
 		}
 		.userImgWrap{
@@ -211,6 +217,9 @@ body {
 			@include box-sizing;
 			@include border-radius(4px);
 			background: linear-gradient(lighten($color_green,5%),$color_green);
+			&:active{
+				background: linear-gradient($color_green,lighten($color_green,5%));
+			}
 			color: #ffffff;
 			font-size: 14px;
 			line-height:36px;

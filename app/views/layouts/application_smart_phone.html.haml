@@ -8,11 +8,13 @@
     = javascript_include_tag "application"
     = yield :head
     = csrf_meta_tags
+    = favicon_link_tag "/favicon.ico"
   %body
 
     #wrapper{"data-userid" => @current_user ? @current_user[:id] : nil}
       = yield
     .layer
+    .page-layer
     .delete-confirm-wrap
 
     = yield :last
