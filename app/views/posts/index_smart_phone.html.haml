@@ -7,8 +7,8 @@
 = render partial: "application/smart_phone/default_header"
 
 .timeline-page.mainCnt
-  .commentWrap
-    = link_to "新作への期待や、遊んだ感想を投稿しよう", "/posts/new#select", class: "icon-post"
+  .postWrap
+    = link_to "投稿", "/posts/new#select", class: "icon-post"
   .post-list
   = image_tag "gif-load.gif", class: "loading-gif"
 

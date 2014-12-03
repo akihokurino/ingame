@@ -89,21 +89,26 @@
 		font-size:42px;
 		@include font-weight(bold,#fff);
 		letter-spacing: 0.03em;
-		text-shadow: rgb(113, 87, 188) 1px 1px,
-	    rgb(113, 87, 188) 2px 2px,
-	    rgb(113, 87, 188) 3px 3px,
-	    rgb(113, 87, 189) 4px 4px,
-	    rgb(114, 88, 190) 5px 5px,
-	    rgb(115, 88, 191) 6px 6px,
-	    rgb(115, 89, 192) 7px 7px,
-	    rgb(116, 89, 193) 8px 8px,
-	    rgb(117, 90, 195) 9px 9px,
-	    rgb(117, 91, 196) 10px 10px,
-	    rgb(118, 91, 197) 11px 11px,
-	    rgb(119, 92, 198) 12px 12px,
-	    rgb(119, 92, 199) 13px 13px,
-	    rgb(120, 93, 200) 14px 14px,
-	    rgb(121, 94, 202) 15px 15px;
+		text-shadow: rgb(90, 82, 190) 1px 1px,
+		    rgb(90, 82, 190) 2px 2px,
+		    rgb(90, 82, 190) 3px 3px,
+		    rgb(90, 82, 190) 4px 4px,
+		    rgb(90, 82, 190) 5px 5px,
+		    rgb(90, 82, 190) 6px 6px,
+		    rgb(90, 82, 190) 7px 7px,
+		    rgb(90, 82, 190) 8px 8px,
+		    rgb(90, 82, 190) 9px 9px,
+		    rgb(90, 82, 190) 10px 10px,
+		    rgb(90, 82, 191) 11px 11px,
+		    rgb(91, 83, 192) 12px 12px,
+		    rgb(91, 83, 193) 13px 13px,
+		    rgb(92, 84, 194) 14px 14px,
+		    rgb(93, 84, 196) 15px 15px,
+		    rgb(93, 85, 197) 16px 16px,
+		    rgb(94, 85, 198) 17px 17px,
+		    rgb(94, 86, 199) 18px 18px,
+		    rgb(95, 86, 200) 19px 19px,
+		    rgb(96, 87, 202) 20px 20px;
 	}
 }
 

@@ -26,8 +26,9 @@
 			line-height:36px;
 		}
 		.follow,.reFollow{
-			color:#fff;
-			background: linear-gradient(lighten($main_color,5%),$main_color);
+			color:$main_color;
+			border: 1px solid $main_color;
+			@include border-radius(4px);
 		}
 		.unFollow{
 			color:#fff;
