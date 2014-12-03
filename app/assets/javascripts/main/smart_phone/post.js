@@ -120,7 +120,6 @@
 
       this.url_thumbnail          = null;
       this.url_thumbnail_template = _.template($("#url-thumbnail-template").html());
-      this.youtube_key            = null;
 
       $(".post-input").autosize();
 
@@ -161,9 +160,6 @@
           "provider": this.provider
         },
         "url_thumbnail": this.url_thumbnail,
-        "post_youtube": {
-          "key": this.youtube_key
-        }
       }
 
       data.post.urls = this.getUrl(data.post.text);
@@ -192,7 +188,6 @@
     },
     resetInput: function () {
       this.upload.files  = [];
-      this.youtube_key   = null;
       this.url_thumbnail = null;
     },
     getUrl: function (str) {
@@ -232,20 +227,6 @@
 
             }
           })
-
-          var re = new RegExp("https://www.youtube.com/", "i");
-          if (this.current_access_url.match(re)) {
-            try {
-              var youtube_url = this.current_access_url;
-              if (youtube_url.split("?")[1].split("=")[1]) {
-                this.youtube_key = youtube_url.split("?")[1].split("=")[1];
-              } else {
-                this.youtube_key = null;
-              }
-            } catch (e) {
-              this.youtube_key = null;
-            }
-          }
         }
       } else {
         this.$(".url-thumbnail-list").html("");

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141127150525) do
+ActiveRecord::Schema.define(version: 20141124051028) do
 
   create_table "admins", force: true do |t|
     t.string   "username"
@@ -131,13 +131,6 @@ ActiveRecord::Schema.define(version: 20141127150525) do
     t.text     "description"
     t.string   "thumbnail"
     t.string   "url"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "post_youtubes", force: true do |t|
-    t.integer  "post_id"
-    t.string   "key"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

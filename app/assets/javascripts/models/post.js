@@ -23,7 +23,6 @@ var Post = Backbone.Model.extend({
     "post_photos": [],
     "post_comments": [],
     "post_urls": [],
-    "post_youtubes": [],
     "current_user_id": ""
   },
   url: "/api/posts/",
@@ -46,8 +45,8 @@ var Post = Backbone.Model.extend({
   },
   sanitizeComment: function () {
     for (var i = 0; i < this.get("post_comments").length; i++) {
-      var text = this.get("post_comments")[i]["text"].replace(/\n/g, '<br>');
-      text     = text.replace(/((http:|https:)\/\/[\x21-\x26\x28-\x7e]+)/gi, "<a class='link-text' target='_blank' href='$1'>$1</a>");
+      var text                             = this.get("post_comments")[i]["text"].replace(/\n/g, '<br>');
+      text                                 = text.replace(/((http:|https:)\/\/[\x21-\x26\x28-\x7e]+)/gi, "<a class='link-text' target='_blank' href='$1'>$1</a>");
       this.get("post_comments")[i]["text"] = text;
     }
 

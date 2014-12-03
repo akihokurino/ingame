@@ -48,11 +48,5 @@ json.last_post do |json|
       json.url post_url[:url]
     end
   end
-  json.post_youtubes do |json|
-    json.array!(@last_post.post_youtubes) do |post_youtube|
-      json.id post_youtube[:id]
-      json.key post_youtube[:key]
-    end
-  end
   json.current_user_id @current_user[:id]
 end

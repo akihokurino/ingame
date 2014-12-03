@@ -23,10 +23,7 @@ class Api::PostsController < ApplicationController
     params[:post][:user_id] = @current_user[:id]
     @last_post              = Post.create!(post_params)
 
-    if !params[:post_youtube][:key].blank?
-      params[:post_youtube][:post_id] = @last_post[:id]
-      PostYoutube.create(post_youtube_params)
-    elsif !params[:url_thumbnail].blank?
+    if !params[:url_thumbnail].blank?
       params[:url_thumbnail][:post_id] = @last_post[:id]
       PostUrl.create(post_url_params)
     elsif !params[:post][:urls].blank?
@@ -60,9 +57,5 @@ class Api::PostsController < ApplicationController
 
   def post_url_params
     params.require(:url_thumbnail).permit(:post_id, :title, :description, :thumbnail, :url)
-  end
-
-  def post_youtube_params
-    params.require(:post_youtube).permit(:post_id, :key)
   end
 end
