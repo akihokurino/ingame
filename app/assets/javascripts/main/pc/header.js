@@ -2,6 +2,7 @@
 //= require ../../collections/notifications.js
 //= require ../../views/notification_view.js
 //= require ../../views/notifications_view.js
+//= require ../../views/page_layer_view.js
 
 
 (function () {
@@ -58,24 +59,26 @@
       e.preventDefault();
 
       $(".notification-modal").css("display", "block");
-      $(".layer").css("display", "block");
       this.$el.find(".notify-num").css("display", "none");
       this.$el.find(".notify-num").html(0);
 
       this.notifications_view = new NotificationsView({collection: this.notification_collection});
+      pageLayerView.show(".notification-modal");
     },
     hideNotifications: function () {
       $(".notification-modal").css("display", "none");
-      $(".layer").css("display", "none");
       $("notification-list").html("");
 
       this.notifications_view = null;
+      pageLayerView.hide();
     },
     toggleMenu: function () {
       if (this.$(".openMenu").css("display") == "none") {
         this.$(".openMenu").css("display", "block");
+        pageLayerView.show(".openMenu");
       } else {
         this.$(".openMenu").css("display", "none");
+        pageLayerView.hide();
       }
     },
     search: function (e) {
