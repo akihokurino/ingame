@@ -69,12 +69,16 @@
 		line-height: 40px;
 	}
 	.boxTtl{
-		background-color: #ddd;
-		color: $color_textGray;
-		font-size:14px;
-		font-weight: bold;
-		text-align:center;
-		text-shadow:1px 1px 0 #f2f2f2;
-		padding:5px 0;
+		h2{
+			border-top: 1px solid #f1f1f1;
+			border-bottom: 1px solid #ddd;
+			background-color: #f7f7f7;
+			color: $color_textGray;
+			font-size:14px;
+			font-weight: bold;
+			text-align:center;
+			line-height:3;
+			text-shadow:1px 1px 0 #f2f2f2;
+		}
 	}
 }

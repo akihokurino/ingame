@@ -40,9 +40,9 @@ body {
 	padding:0 20px;
 	margin:0 auto;
 	border: none;
-	@include border-radius(2px);
 	@include box-sizing;
-	background: $main_color;
+	background: linear-gradient(lighten($main_color,5%),$main_color);
+	@include border-radius(4px);
 	color: #ffffff;
 	font-size: 14px;
 	line-height:36px;
@@ -126,7 +126,7 @@ body {
 			display:inline-block;
 			margin-top:4px;
 			padding:0 5px;
-			@include border-radius(2px);
+			@include border-radius(4px);
 			color:$main_color;
 			font-size:12px;
 			line-height:2.5;
@@ -202,13 +202,15 @@ body {
 		}
 		.btnBox {
 			padding: 15px;
+			margin:0 auto;
+			width: 100px;
 		}
 		.btnWrap{
 			position: relative;
 			padding:0 10px;
 			@include box-sizing;
-			@include border-radius(2px);
-			background: $main_color;
+			@include border-radius(4px);
+			background: linear-gradient(lighten($color_green,5%),$color_green);
 			color: #ffffff;
 			font-size: 14px;
 			line-height:36px;

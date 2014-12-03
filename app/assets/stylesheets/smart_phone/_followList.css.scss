@@ -3,10 +3,9 @@
 /*---   .follows-list   ---------------------------*/
 .follows-list,.followers-list,.userList,.userAvtivityList{
 	margin: 0 auto;
-	padding:0 10px;
 	@include clearfix;
 	.item{
-		padding:10px 0;
+		padding:10px;
 		border-bottom: 1px solid $color_border;
 	}
 	ul.friendListWrap{
@@ -18,50 +17,43 @@
 		.followBtn{
 			float:right;
 			display:inline-block;
-			margin-top:4px;
+			margin-top:6px;
 			padding:0 10px;
-			@include border-radius(2px);
-			background-color: $main_color;
-			color:#fff;
+			border: 1px solid $main_color;
+			@include border-radius(4px);
+			color:$main_color;
 			font-size:14px;
 			line-height:36px;
 		}
 		.follow,.reFollow{
 			color:#fff;
-			background-color: $main_color;
+			background: linear-gradient(lighten($main_color,5%),$main_color);
 		}
 		.unFollow{
 			color:#fff;
-			background-color: $main_color;
+			background: linear-gradient(lighten($main_color,5%),$main_color);
 
 		}
 		.userImgWrap{
 			display:inline-block;
-			height: 40px;
+			height: 50px;
 			@include border-radius(50%);
 			vertical-align: middle;
 		}
 		.userInfo{
 			display:inline-block;
 			vertical-align: middle;
-			padding-left:10px;
+			padding-left:5px;
 			height:100%;
-			font-size:12px;
+			font-size:14px;
+			line-height:1.5;
 			.nameWrap{
 				font-weight:bold;
-				line-height:1.6;
 				.name{
 					color:$color_textBlack;
 				}
 			}
-			.icon-place{
-				display:inline-block;
-				margin-left:-2px;
-				color:$color_textGray;
-				font-size:14px;
-			}
-			.place{
-				display:inline-block;
+			.myGame{
 				color: $color_textGray;
 				vertical-align: top;
 			}
