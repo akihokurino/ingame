@@ -103,7 +103,10 @@
 			height: 34px;
 			margin-top: 4px;
 			@include border-radius(2px);
-			background-color: $color_green;
+			background-color: $main_color;
+			&:active{
+				background: linear-gradient($main_color,lighten($main_color,5%));
+			}
 			color: #fff;
 			font-size:14px;
 			line-height: 2.5;

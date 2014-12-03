@@ -6,9 +6,9 @@ $width: 960px !default;
 $cntWidth: 580px;
 
 //カラーコード
+$main_color: #6057ca;
 // $main_color: #7950CA;
-$main_color: #795ECA;
-
+// $main_color: #795ECA;
 // $main_color: #4D394B;
 // $main_color: #323844;
 // $main_color: #013376;
@@ -89,6 +89,17 @@ $support-opera  : true;
     appearance:none;
     -moz-appearance: none;
     -webkit-appearance: none;
+}
+@mixin pinterest-box($count,$margin,$space){
+    -webkit-column-count: $count;
+       -moz-column-count: $count;
+            column-count: $count;
+    -webkit-column-gap: $margin;
+       -moz-column-gap: $margin;
+            column-gap: $margin;
+    -webkit-column-fill: $space;
+       -moz-column-fill: $space;
+            column-fill: $space;
 }
 @mixin clearfix {
     &:before, &:after {

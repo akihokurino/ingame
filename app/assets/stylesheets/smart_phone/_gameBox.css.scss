@@ -15,7 +15,6 @@
 			border-right: 1px solid $color_border;
 			@include box-sizing;
 			font-size: 12px;
-
 			&:last-child {
 				border: none;
 			}
@@ -92,11 +91,10 @@
 	.gameList {
 		background-color: #fcfcfc;
 		padding: 1px;
+		@include pinterest-box(3,5px,auto);
 		.item {
 			display: inline-block;
-			position: relative;
-			margin:1px;
-			width: 32.5%;
+			margin-bottom: 5px;
 			border: 1px solid $color_border;
 			@include border-radius(2px);
 			@include box-sizing;
