@@ -29,8 +29,7 @@
             = image_tag "/user_photos/#{@user[:photo_path]}", class: "profImg", width: 98, hieght: 98, alt: "ユーザー画像"
           .uploadBtnWrap
             .uploadBtnTxt ファイルを選択
-            /= f.file_field :photo_path, id: "upload-btn", class: "uploadBtn"
-            = f.file_field :tmp_photo_path, id: "upload-btn", class: "uploadBtn"
+            = f.file_field :photo_path, id: "upload-btn", class: "uploadBtn"
       /
         %dl.editList
           %dt.editListTtl.editListTtlCover カバー写真

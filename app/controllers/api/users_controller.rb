@@ -27,6 +27,11 @@ class Api::UsersController < ApplicationController
     @result = User.search_with(params[:username], @current_user, page)
   end
 
+  def tmp_upload
+    clip    = {x: params[:user][:clip_x].to_i, y: params[:user][:clip_y].to_i}
+    @result = User.tmp_upload(params[:user][:tmp_data], clip)
+  end
+
   private
   def user_params
     params.require(:user).permit(:username, :introduction, :place, :photo_path, :place)

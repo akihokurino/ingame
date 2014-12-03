@@ -13,9 +13,7 @@
     initialize: function () {
       var tmp      = location.href.split("#")[0].split("/");
       this.user_id = tmp.pop() && tmp.pop();
-
-      //this.upload = new ProfileUpload("upload-btn", "clip-area", this.user_id, {clip_x_input: "clip-x", clip_y_input: "clip-y"}, null);
-      this.upload  = new ProfileUpload("upload-btn", "clip-area", this.user_id, null, "ajax");
+      this.upload  = new ProfileUpload("upload-btn", "clip-area", this.user_id, {clip_x_input: "clip-x", clip_y_input: "clip-y"});
     },
     showClipModal: function () {
       this.$(".clip-box").css("display", "block");
@@ -26,24 +24,23 @@
     },
     clip: function () {
       var that = this;
-      $(".next-page").val("アップロード");
 
       if (this.upload.file) {
         var data = {
           "user": {
-            "photo_path": this.upload.file,
-            "clip_x":     this.upload.clip_x,
-            "clip_y":     this.upload.clip_y
+            "tmp_data": this.upload.file,
+            "clip_x":   this.upload.clip_x,
+            "clip_y":   this.upload.clip_y
           }
         }
 
         $.ajax({
-          type: "PUT",
-          url: "/api/users/" + this.user_id,
+          type: "POST",
+          url: "/api/users/tmp_upload",
           data: data,
           success: function (data) {
-            that.hideClipModal();
-            var img = $("<img src='/user_photos/" + data.result.photo_path + "' width='98' height='98'>");
+            that.$(".clip-box").css("display", "none");
+            var img = $("<img src='/tmp_photos/" + data.result + "' width='98' height='98'>");
             $("#thumbnail").html(img);
           },
           error: function () {

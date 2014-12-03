@@ -50,9 +50,9 @@
         data: {user_id: this.user_id},
         success: function (model, response, options) {
           for (var i = 0; i < response.logs.length; i++) {
-            var log = new Log(response.logs[i]);
-            var url = "/games/" + log.get("game").id + "#all";
-            log.set("url", url);
+            var log         = new Log(response.logs[i]);
+            var current_url = "/games/" + log.get("game").id + "#all";
+            log.set("current_url", current_url);
             switch (log.get("status").id) {
               case 1:
                 that.attentions.push(log);

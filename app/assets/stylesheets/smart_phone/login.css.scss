@@ -10,23 +10,28 @@ a {
 
 /*---   .mainVisual   ---------------------------*/	
 .mainVisual {
-	padding-top:15px;
-	background: linear-gradient(rgba($main_color,0.9), rgba($main_color,0.95)), url('/assets/smart_phone/login-bg.jpg');
-	background-size:cover;
+	padding:40px 20px 20px 20px;
+	background: linear-gradient(rgba(#000,0.6), rgba(#000,0.8)), url('/assets/bg_login.png');
+	background-size:contain;
+	border-top: 3px solid $main_color;
 	font-family: arial;
 	text-align: center;
 	color:#fff;
 
 	.ttl{
-		margin:25px 0 20px 0;
+		margin:auto;
+		width: 180px;
+		border-top: 4px solid #fff;
+		border-right: 4px solid #c8c8c8;
+		border-bottom: 4px solid #c8c8c8;
+		border-left: 4px solid #fff;
 	}
 
 	 .mainCopy{
-	 	margin:5px 20px;
+	 	margin:40px 20px 40px 20px;
 	 	padding:5px 0;
-	 	font-size:16px;
-	 	border-top: 1px solid #fff;
-	 	border-bottom: 1px solid #fff;
+	 	font-size:28px;
+	 	font-weight:bold;
 	 }
 	 .subCopy{
 	 	padding:0 20px;
@@ -46,40 +51,60 @@ a {
 	}
 	.tw, .fb {
 		display: inline-block;
-		width: 70%;
+		width: 80%;
 		margin: 0 auto;
 		padding:0 10px;
-		@include border-radius(2px);
+		@include border-radius(4px);
 		@include box-sizing;
 		color: #ffffff;
-		font-size: 14px;
+		font-size: 16px;
 		line-height:3;
+		text-shadow: 0px -1px 0 rgba(0,0,0,0.35);
 		text-align: center;
 	}
 	.tw {
-		background: $twitter_blue;
+		background: linear-gradient(lighten($twitter_blue,7%),$twitter_blue);
+		border: 1px solid #000;
+		&:active{
+			background: linear-gradient($twitter_blue,lighten($twitter_blue,7%));
+		}
 	}
 	.fb {
-		background: $facebook_blue;
+		background: linear-gradient(lighten($facebook_blue,10%),$facebook_blue);
+		border: 1px solid #000;
+		&:active{
+			background: linear-gradient($facebook_blue,lighten($facebook_blue,7%));
+		}
 	}
 	.icon-twitter,.icon-facebook{
+		font-weight:bold;
 		&:before{
 			display:inline-block;
 			font-size:25px;
+			font-weight:normal;
 			vertical-align: -20%;
 			margin-right:5px;
 		}
 	}
+}
+.pointsTtl{
+	background: $main_color;
+	color:#fff;
+	font-size:24px;
+	line-height: 3;
+	text-shadow: 1px 1px 0 rgba(darken($main_color,20%),0.7);
+	text-align:center;
 }
 .points{
 	color: #4c4c4c;
 	text-align:center;
 	section{
 		padding:10px 0;
+		border-bottom: 1px solid $color_border;
 	}
 	h1{
 		margin:10px;
-		font-size:32px;
+		font-size:28px;
 	}
 	.illust{
 		margin:0 auto;
@@ -89,11 +114,14 @@ a {
 		background-color: $color_green;
 	}
 	p{
-		margin:10px;
+		margin:0 auto;
+		width: 300px;
 		font-size:14px;
+		text-align:left;
 	}
 	.annotation{
-		margin:0 30px;
+		margin:10px auto;
+		width: 300px;
 		font-size:10px;
 	}
 	.second{
@@ -106,7 +134,10 @@ a {
 	h1{
 		color: #4c4c4c;
 		margin:10px;
-		font-size:28px;
+		font-size:24px;
+	}
+	.tw,.fb{
+		border-color: none;
 	}
 }
 

@@ -4,14 +4,15 @@
 .notification-modal {
 	display: none;
 	overflow: scroll;
+	margin-left: -47.5%;
+	width: 95%;
+	height: 400px;
+	@include border-radius(2px);
+	background-color: #fff;
 	position: fixed;
 	top: 46px;
 	left: 50%;
 	z-index: 100;
-	width: 95%;
-	height: 400px;
-	margin-left: -47.5%;
-	background-color: #fff;
 
 	.modal-header {
 		position: relative;

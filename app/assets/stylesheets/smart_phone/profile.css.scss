@@ -27,8 +27,9 @@
 	.followBtn,.edit-btn{
 		display:inline-block;
 		padding:0 20px;
-		background-color: $main_color;
-		color: #fff;
+		border: 1px solid $main_color;
+		@include border-radius(2px);
+		color: $main_color;
 		font-size: 14px;
 		text-align: center;
 		line-height: 36px;

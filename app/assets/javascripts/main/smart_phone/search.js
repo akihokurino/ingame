@@ -48,6 +48,8 @@
             if (response.results && response.results.length > 0) {
               for (var i = 0; i < response.results.length; i++) {
                 var game_result = new GameResult(response.results[i]);
+                var current_url = "/games/" + game_result.id + "#all";
+                game_result.set("current_url", current_url);
                 that.game_results_view.collection.add(game_result);
               }
             }
@@ -78,6 +80,8 @@
             if (response.results && response.results.length > 0) {
               for (var i = 0; i < response.results.length; i++) {
                 var game_result = new GameResult(response.results[i]);
+                var current_url = "/games/" + game_result.id + "#all";
+                game_result.set("current_url", current_url);
                 that.game_results_view.collection.add(game_result);
               }
             }

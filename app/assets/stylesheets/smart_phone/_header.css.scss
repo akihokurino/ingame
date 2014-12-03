@@ -13,7 +13,6 @@ header {
 		height:45px;
 		font-size:22px;
 		background-color: rgba($main_color,.94);
-		box-shadow:0 0 1px 1px rgba(0,0,0,0.2);
 		a{
 			color:#fff;
 			text-decoration:none;
@@ -83,7 +82,7 @@ header {
 				&Num{
 					display: none;
 					position: absolute;
-					top: 1px;
+					top: 3px;
 					right: 2px;
 					width: 17px;
 					height: 17px;
@@ -118,8 +117,7 @@ header {
 		left: 0;
 		padding:10px 0;
 		@include box-sizing;
-		@include box-shadow(0, 0, 5px, 0, rgba(0, 0, 0, 0.75));
-		background: rgba($main_color,0.9);
+		background: rgba($main_color,0.94);
 		color: #fff;
 		font-size:14px;
 		text-align: left;

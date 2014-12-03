@@ -48,6 +48,8 @@
             if (response.results && response.results.length > 0) {
               for (var i = 0; i < response.results.length; i++) {
                 var game_result = new GameResult(response.results[i]);
+                var current_url = null;
+                game_result.set("current_url", current_url);
                 that.game_results_view.collection.add(game_result);
               }
             }
@@ -77,6 +79,8 @@
             if (response.results && response.results.length > 0) {
               for (var i = 0; i < response.results.length; i++) {
                 var game_result = new GameResult(response.results[i]);
+                var current_url = null;
+                game_result.set("current_url", current_url);
                 that.game_results_view.collection.add(game_result);
               }
             }
@@ -206,7 +210,7 @@
       var tmp      = location.href.split("#")[0].split("/");
       this.user_id = tmp.pop() && tmp.pop();
 
-      this.upload  = new ProfileUpload("upload-btn", "clip-area", this.user_id, null, "ajax");
+      this.upload  = new ProfileUpload("upload-btn", "clip-area", this.user_id, null);
     },
     next: function (e) {
       e.preventDefault();
@@ -222,7 +226,7 @@
     },
     clip: function () {
       var that = this;
-      $(".next-page").val("アップロード");
+      $(".next-page").val("初期設定を完了");
 
       if (this.upload.file) {
         var data = {

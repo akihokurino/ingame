@@ -59,20 +59,22 @@ input[type="submit"],{
 			display:inline-block;
 			padding:10px;
 			width: 100%;
-			border-bottom: 1px solid $color_border;
-			background-color: $bg_color;
+			background-color: #f7f7f7;
+			border-top: 1px solid #f1f1f1;
+			border-bottom: 1px solid #ddd;
 			box-sizing:border-box;
-			color:$main_color;
+			color: $color_textGray;
 			text-align: right;
 		}
 		.icon-plus {
-			color: #fff;
-			font-size:12px;
-			color:$color_textGray;
+			font-size: 14px;
+			font-weight:bold;
+			text-shadow:1px 1px 0 #f2f2f2;
 			&:before{
 				display:inline-block;
-				font-size:16px;
 				padding-top:2px;
+				font-size:18px;
+				font-weight:normal;
 				vertical-align: -10%;
 			}
 		}
@@ -163,6 +165,7 @@ input[type="submit"],{
 				padding-bottom:4px;
 				font-size:10px;
 				color:$color_textGray;
+				line-height: 1.2;
 			}
 			.review {
 				padding: 5px 0;
@@ -211,8 +214,10 @@ input[type="submit"],{
 		padding-top:44px;
 		.gameBox {
 			position: relative;
-			border: solid 1px $color_border;
-			background-color: $bg_color;
+			background-color: #f7f7f7;
+			border-top: 1px solid #f1f1f1;
+			border-bottom: 1px solid #ddd;
+			color: $color_textGray;
 			@include clearfix;
 		}
 		.gameImage {
@@ -305,7 +310,7 @@ input[type="submit"],{
 				border: 1px solid $color_border;
 				@include border-radius(2px);
 				color:$color_border;
-				font-size:38px;
+				font-size:30px;
 				vertical-align: middle;
 			}
 			.addPhoto {
@@ -330,7 +335,7 @@ input[type="submit"],{
 		.fbBtn, .twBtn {
 			display: block;
 			margin:5px;
-			padding: 10px 10px;
+			padding: 5px 10px;
 			border: 1px solid $color_border;
 			@include border-radius(2px);
 			@include box-sizing;
@@ -349,7 +354,7 @@ input[type="submit"],{
 	.addGame {
 		display:block;
 		padding:10px;
-		background-color: $main_color;
+		background: linear-gradient(lighten($main_color,5%),$main_color);
 		color: #ffffff;
 		font-size: 16px;
 		font-weight:bold;
@@ -548,7 +553,7 @@ input[type="submit"],{
 					width: 100px;
 					padding-left:20px;
 					border:none;
-					@include border-radius(0px);
+					@include border-radius(2px);
 					background-color: $main_color;
 					color:#fff;
 					font-size:14px;

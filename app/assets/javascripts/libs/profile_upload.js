@@ -1,4 +1,4 @@
-var ProfileUpload = function (input_id, output_id, user_id, clip, type) {
+var ProfileUpload = function (input_id, output_id, user_id, clip) {
   var that         = this;
   this._input      = document.getElementById(input_id);
   this._output     = document.getElementById(output_id);
@@ -7,7 +7,6 @@ var ProfileUpload = function (input_id, output_id, user_id, clip, type) {
   this.clip        = clip;
   this.clip_x      = 0;
   this.clip_y      = 0;
-  this.type        = type;
 
   if(this._input != null){
     this._input.addEventListener("change", function () {
@@ -48,25 +47,28 @@ ProfileUpload.prototype = {
 
     $(this._output).css({"background-image": "url(" + data + ")", "background-repeat": "no-repeat"});
 
-    if (this.type == "ajax") {
-      $(this._output).backgroundDraggable({
-        done: function() {
-          that.clip_x = parseInt($(that._output).css('background-position-x')) * -1;
-          that.clip_y = parseInt($(that._output).css('background-position-y')) * -1;
-        }
-      });
-    } else if (this.clip) {
-      var clip_x_id = "#" + this.clip.clip_x_input;
-      var clip_y_id = "#" + this.clip.clip_y_input;
+    $(this._output).backgroundDraggable({
+      done: function() {
+        var x       = parseInt($(that._output).css('background-position-x')) * -1;
+        var y       = parseInt($(that._output).css('background-position-y')) * -1;
+        that.clip_x = x;
+        that.clip_y = y;
 
-      $(this._output).backgroundDraggable({
-        done: function() {
-          var x = parseInt($(that._output).css('background-position-x')) * -1;
-          var y = parseInt($(that._output).css('background-position-y')) * -1;
-          $(clip_x_id).val(x);
-          $(clip_y_id).val(y);
+        if (that.clip) {
+          $("#" + that.clip.clip_x_input).val(x);
+          $("#" + that.clip.clip_y_input).val(y);
         }
-      });
+      }
+    });
+  },
+  setThumbnail: function () {
+    this._output.style.display = "block";
+    this.clip_x                = 0;
+    this.clip_y                = 0;
+    this.file                  = null;
+    if (this.clip) {
+      $("#" + this.clip.clip_x_input).val(0);
+      $("#" + this.clip.clip_y_input).val(0);
     }
   },
   isVideo: function (file) {
@@ -77,9 +79,6 @@ ProfileUpload.prototype = {
   },
   isOffice: function (file) {
     return file.type.match("application/vnd.*") ? true : false;
-  },
-  setThumbnail: function () {
-    this._output.style.display = "block";
   },
   valid: function (type) {
     if(this.uploads.length == 0){
@@ -99,10 +98,16 @@ ProfileUpload.prototype = {
     }
   },
   reset: function () {
+    $(this._output).css("background-image", "none");
+    $(this._output).css('background-position-x', 0);
+    $(this._output).css('background-position-y', 0);
     this.file         = null;
     this.clip_x       = 0;
     this.clip_y       = 0;
     this._input.files = [];
-    $(this._output).css("background-image", "none");
+    if (this.clip) {
+      $("#" + this.clip.clip_x_input).val(0);
+      $("#" + this.clip.clip_y_input).val(0);
+    }
   }
 }

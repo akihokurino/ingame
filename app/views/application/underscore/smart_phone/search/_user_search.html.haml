@@ -6,12 +6,13 @@
 		.search-form-box.searchWrap
 			%form.search-form.entryBox
 				%span.icon-search
-				%input.username-input.search{type: "text", name: "username", placeholder: "ユーザーを検索"}
+				%input.username-input.search{type: "search", name: "username", placeholder: "キーワードでユーザーを検索"}
 
 		.user-activity-list-wrap
 			.boxTtl
-				%h2.boxTtl  最近GAMRを始めたユーザー
+				%h2 最近GAMRを始めたユーザー
 			%ul.userAvtivityList.user-activity-list
-
-		%ul.result-list.userList
-		= image_tag "gif-load-pc.gif", class: "loading-gif"
+	.boxTtl
+		%h2 検索結果"　"件
+	%ul.result-list.userList
+	= image_tag "gif-load-pc.gif", class: "loading-gif"
