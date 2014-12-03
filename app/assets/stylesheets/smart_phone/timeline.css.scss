@@ -22,6 +22,9 @@ html {
 			padding:0 10px;
 			border: none;
 			background: linear-gradient(lighten($main_color,5%),$main_color);
+			&:active{
+				background: linear-gradient($main_color,lighten($main_color,5%));
+			}
 			@include border-radius(4px);
 			box-sizing: border-box;
 			color: #fff;
