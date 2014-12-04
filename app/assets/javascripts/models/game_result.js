@@ -6,7 +6,8 @@ var GameResult = Backbone.Model.extend({
     "photo_path": "",
     "device":     "",
     "maker":      "",
-    "avg_rate":   ""
+    "avg_rate":   "",
+    "is_regist":  false
   },
   strimWidth: function (limit) {
     var title = this.get("title");
