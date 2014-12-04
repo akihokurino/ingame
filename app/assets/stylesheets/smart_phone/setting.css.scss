@@ -130,12 +130,12 @@ body {
 			margin-top:4px;
 			padding:0 5px;
 			@include border-radius(4px);
-			color:$main_color;
 			font-size:12px;
 			line-height:2.5;
 		}
 		.follow,.reFollow{
 			color:$main_color;
+			border: 1px solid $main_color;
 		}
 		.unFollow{
 			color:#fff;
