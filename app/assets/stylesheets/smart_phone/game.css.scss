@@ -18,7 +18,7 @@
 			line-height: 1.5;
 		}
 		.gameWrap{
-			padding:10px;
+			padding:10px 10px 0 10px;
 		}
 		.imgWrap{
 			width: 100%;
@@ -30,7 +30,6 @@
 		.gameInfo {
 			border: 1px solid $color_border;
 			@include border-radius(2px);
-			margin-bottom: 9px;
 			line-height: 1.5;
 
 			.item {
@@ -44,18 +43,17 @@
 				}
 				.itemName{
 					display:table-cell;
-					display:inline-block;
 					width: 35%;
 					padding:10px 20px 10px 10px;
 					@include box-sizing;
 					color:$color_textBlack;
 					font-weight:bold;
-				}
+					vertical-align: middle;				}
 				.itemContent{
 					display:table-cell;
 					width: 65%;	
+					padding:10px 0 ;
 					color:$color_textBlack;
-					display:inline-block;
 					text-align:left;
 				}
 				.icon-star{
