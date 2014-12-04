@@ -8,12 +8,8 @@
 		padding-top: 44px;
 		background: #fff;
 
-		.gameTopBox {
-			@include clearfix;
-			// padding: 0 25px 15px;
-		}
 		.ttl {
-			padding:10px 5px;
+			padding:10px;
 			background: linear-gradient(lighten($main_color,10%),$main_color);
 			color: #fff;
 			text-shadow: 0 -1px 3px rgba(#000,0.8);
@@ -22,56 +18,52 @@
 			line-height: 1.5;
 		}
 		.gameWrap{
-			display:table;
-			padding:10px 5px;
+			padding:10px;
 		}
 		.imgWrap{
-			display:table-cell;
-			width: 50%;
+			width: 100%;
 			.gameImg{
 				width: 100%;
 				border: 1px solid #eee;
 			}
 		}
-		.gameInfoWrap {
-			display:table-cell;
-			width: 50%;
-			padding-left:5px;
-			vertical-align:top;
-		}
 		.gameInfo {
+			border: 1px solid $color_border;
+			@include border-radius(2px);
 			margin-bottom: 9px;
 			line-height: 1.5;
 
 			.item {
-				color: #8f9ea1;
+				display:table;
+				width: 100%;
 				font-size: 14px;
-				margin-bottom:3px;
-			}
-			.maker,.hard,.releaseDay{
-				color:$color_textGray;
-				span{
-					color:$main_color;
+				margin-bottom: 3px;
+				border-bottom: 1px solid $color_border;
+				&:last-child{
+					border:none;
+				}
+				.itemName{
+					display:table-cell;
+					display:inline-block;
+					width: 35%;
+					padding:10px 20px 10px 10px;
+					@include box-sizing;
+					color:$color_textBlack;
+					font-weight:bold;
+				}
+				.itemContent{
+					display:table-cell;
+					width: 65%;	
+					color:$color_textBlack;
+					display:inline-block;
+					text-align:left;
+				}
+				.icon-star{
+					color:orange;
+					font-size:24px;
+					vertical-align: -15%
 				}
 			}
-			.infoInner{
-				display:block;
-				background-color: #CACACA;
-				color:#fff;
-				font-size:14px;
-				padding:2px 4px;
-			}
-		}
-		.reviewWrap{
-			color:#8f9ea1;
-			font-size:14px;
-		}
-		.reviewInner{
-			color: orange;
-			font-size: 22px;
-		}
-		.icon-star{
-			font-size:21px;
 		}
 		.gameBtnList {
 			width: 100%;
