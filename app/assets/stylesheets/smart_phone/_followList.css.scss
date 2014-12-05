@@ -1,6 +1,28 @@
 @import "../_function.css.scss";
 
 /*---   .follows-list   ---------------------------*/
+@include keyframes(changeFollow){
+		0% {
+			margin: 5px -1px -1px -1px;
+			width: 94px;
+			height:40px;
+			background: #fff;
+			color:$main_color;
+		}
+		70% {
+			margin: 7px 1px 1px 1px;
+			width: 90px;
+			height:36px;
+		}
+		100% {
+			margin:6px 0 0 0;
+			padding:0 10px;
+			width: 92px;
+			height:38px;
+			background: linear-gradient(lighten($main_color,5%),$main_color);
+			color:#fff;
+		}
+	}
 .follows-list,.followers-list,.userList,.userAvtivityList{
 	margin: 0 auto;
 	@include clearfix;
@@ -14,7 +36,10 @@
 			border:1px solid $color_border;
 			@include border-radius(50%);
 		}
-		.followBtn{
+		.followBtnWrap{
+			text-align:center;
+		}
+		.followBtn,.follow-btn{
 			float:right;
 			display:inline-block;
 			margin-top:6px;
@@ -30,10 +55,8 @@
 			border: 1px solid $main_color;
 			@include border-radius(4px);
 		}
-		.unFollow{
-			color:#fff;
-			background: linear-gradient(lighten($main_color,5%),$main_color);
-
+		.unFollow,.unfollow-btn{
+			@include animation(changeFollow 0.2s ease-in-out forwards);
 		}
 		.userImgWrap{
 			display:inline-block;
