@@ -65,6 +65,7 @@ var GameResultView = Backbone.View.extend({
   setCurrentStatus: function () {
     if (this.model.get("my_status_id")) {
       this.$el.find(".my-status").val(this.model.get("my_status_id"));
+      this.$el.addClass("registed");
     }
   }
 })
