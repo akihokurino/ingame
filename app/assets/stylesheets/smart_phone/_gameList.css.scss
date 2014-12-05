@@ -3,23 +3,16 @@
 /*---   .gameList   ----------*/
 @include keyframes(changeStatus){
 		0% {
-			margin: -1px;
-			width: 102px;
-			height:40px;
-			background: #fff;
-			color:$main_color;
-		}
-		70% {
-			margin:1px;
 			width: 98px;
-			height:36px;
+			height:38px;
+			font-size:13px;
 		}
 		100% {
-			margin:0 auto;
 			width: 100px;
-			height:38px;
+			height:36px;
 			background: linear-gradient(lighten($main_color,5%),$main_color);
 			color:#fff;
+			font-size:14px;
 		}
 	}
 
@@ -88,7 +81,7 @@
 	}
 	.registed{
 		.status{
-			@include animation(changeStatus 0.1s ease-in-out forwards);
+			@include animation(changeStatus 0.33s ease-in-out forwards);
 	}
 	}
 	.gameModule{
