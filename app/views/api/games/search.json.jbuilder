@@ -8,6 +8,8 @@ json.results do |json|
     json.maker game[:maker]
     json.release_day game[:release_day]
     json.avg_rate game.avg_rate
+    json.i_registed game.i_registed
+    json.my_status_id game.my_status_id
   end
 end
 

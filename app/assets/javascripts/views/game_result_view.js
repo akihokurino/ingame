@@ -12,6 +12,8 @@ var GameResultView = Backbone.View.extend({
     var template = this.template(this.model.toJSON());
     this.$el.html(template);
 
+    this.setCurrentStatus();
+
     return this;
   },
   regist: function () {
@@ -19,7 +21,7 @@ var GameResultView = Backbone.View.extend({
 
       var that = this;
 
-      if (this.model.get("is_regist")) {
+      if (this.model.get("i_registed")) {
         var data = {
           "log": {
             "status_id": this.$el.find(".status").val()
@@ -50,7 +52,7 @@ var GameResultView = Backbone.View.extend({
           url: "/api/logs",
           data: data,
           success: function (data) {
-            that.model.set("is_regist", true);
+            that.model.set("i_registed", true);
             that.$el.addClass("registed");
           },
           error: function () {
@@ -58,6 +60,11 @@ var GameResultView = Backbone.View.extend({
           }
         })
       }
+    }
+  },
+  setCurrentStatus: function () {
+    if (this.model.get("my_status_id")) {
+      this.$el.find(".my-status").val(this.model.get("my_status_id"));
     }
   }
 })
