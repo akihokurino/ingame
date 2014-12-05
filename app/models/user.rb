@@ -89,10 +89,10 @@ class User < ActiveRecord::Base
       offset = (page - 1) * LIMIT
       users  = self.search(self.escape(username)).offset(offset).limit(LIMIT).keep_if do |user|
         user.check_follow(current_user)
-        user[:id] != current_user[:id] && !current_user.follows.pluck(:to_user_id).include?(user[:id])
+        user[:id] != current_user[:id]
       end
 
-      count = self.search(self.escape(username)).keep_if{|user| user[:id] != current_user[:id] && !current_user.follows.pluck(:to_user_id).include?(user[:id])}.count
+      count = self.search(self.escape(username)).keep_if{|user| user[:id] != current_user[:id]}.count
 
       {count: count, users: users}
     end
