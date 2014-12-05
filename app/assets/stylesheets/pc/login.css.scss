@@ -43,7 +43,7 @@ html {
 		display: inline-block;
 		margin-bottom: 10px;
 	}
-	.tw, .fb {
+	.tw, .fb, .gamr {
 		display: inline-block;
 		width: 250px;
 		margin: 0 10px;
@@ -69,6 +69,14 @@ html {
 		&:hover {
 			text-decoration: none;
 			background-color: lighten($facebook_blue, 10%);
+		}
+	}
+	.gamr {
+		background: $main_color;
+
+		&:hover {
+			text-decoration: none;
+			background-color: lighten($main_color, 10%);
 		}
 	}
 	.icon-twitter,.icon-facebook {
