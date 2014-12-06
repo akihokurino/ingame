@@ -2,7 +2,7 @@ Ingame::Application.routes.draw do
   root to: 'posts#index'
   match '/*path' => 'application#cors_preflight_check', :via => :options
 
-  resources :users, only: ["show", "edit", "update"] do
+  resources :users, only: ["show", "edit", "update", "new", "create"] do
     collection do
       get "login"
       get "logout"
@@ -50,7 +50,7 @@ Ingame::Application.routes.draw do
     resources :post_urls, only: ["new"], format: "json"
   end
 
-  match "/auth/:provider/callback", to: "sessions#callback", via: :get
+  match "/auth/:provider/callback", to: "user_providers#create", via: :get
   match "/logout", to: "sessions#destroy", :as => :logout, via: :get
 
 

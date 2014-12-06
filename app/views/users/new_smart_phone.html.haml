@@ -1,0 +1,12 @@
+= content_for :head do
+  = stylesheet_link_tag    "smart_phone/set_account"
+
+= content_for :last do
+  = javascript_include_tag "main/smart_phone/set_account"
+
+
+.set-account-page
+
+= render partial: "application/underscore/smart_phone/set_account/flow"
+= render partial: "application/underscore/smart_phone/set_account/signin"
+= render partial: "application/underscore/smart_phone/set_account/signup"

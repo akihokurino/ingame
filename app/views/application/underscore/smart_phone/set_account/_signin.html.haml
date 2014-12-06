@@ -1,0 +1,10 @@
+%script{type: "text/template", id: "signin-template"}
+  .signin
+    .loginBox
+      %h1 GAMRにログイン
+      %form.inputInfo
+        .inputWrap
+          %input.textInput{type: "text", name: "mail", placeholder: "メールアドレス"}
+        .inputWrap
+          %input.textInput{type: "text", name: "password", placeholder: "パスワード"}
+      %a{href:""} ログイン

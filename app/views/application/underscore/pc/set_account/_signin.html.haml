@@ -1,0 +1,10 @@
+%script{type: "text/template", id: "signin-template"}
+  %header.SigninHeader
+    %h1.SigninHeaderTtl GAMR
+  %section.Signin
+    %h1.SigninHeader GAMRとつなげる
+    %p.SigninText すでにお持ちのGAMRアカウントを入力してください。
+    %form
+      %input.SigninInput{type: "text", placeholder: "メールアドレス"}
+      %input.SigninInput{type: "password", placeholder: "パスワード"}
+      %input.SigninBtn{placeholder: "認証する"}

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  skip_before_action :auth, only: [:login, :term, :privacy]
+  skip_before_action :auth, only: [:login, :term, :privacy, :new, :create]
   before_action :set_user, only: [:show, :edit, :update]
+  before_action :auth_provider, only: [:new, :create]
 
   def login
   end
@@ -13,6 +14,13 @@ class UsersController < ApplicationController
 
   def show
     @user.check_follow(@current_user)
+  end
+
+  def new
+    p session[:current_provider_name]
+  end
+
+  def create
   end
 
   def edit
@@ -45,5 +53,11 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def auth_provider
+    unless session[:current_provider_name]
+      redirect_to login_users_path
+    end
   end
 end

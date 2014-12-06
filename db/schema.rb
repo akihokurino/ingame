@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141124051028) do
+ActiveRecord::Schema.define(version: 20141206051700) do
 
   create_table "admins", force: true do |t|
     t.string   "username"
@@ -152,6 +152,18 @@ ActiveRecord::Schema.define(version: 20141124051028) do
     t.datetime "updated_at"
   end
 
+  create_table "user_providers", force: true do |t|
+    t.integer  "user_id"
+    t.string   "uid"
+    t.string   "type"
+    t.text     "token"
+    t.text     "secret_token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_providers", ["user_id"], name: "index_user_providers_on_user_id", using: :btree
+
   create_table "users", force: true do |t|
     t.string   "username",     limit: 100
     t.string   "introduction"
@@ -160,10 +172,6 @@ ActiveRecord::Schema.define(version: 20141124051028) do
     t.string   "photo_path",               default: "default.png"
     t.string   "place"
     t.boolean  "is_first",                 default: true
-    t.string   "provider"
-    t.string   "uid"
-    t.text     "token"
-    t.text     "secret_token"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

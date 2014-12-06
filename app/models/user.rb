@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   include EscapeLike
   include CostomUpload
 
+  has_many :user_providers
 	has_many :posts
 	has_many :logs
   has_many :games, :through => :logs
@@ -70,21 +71,6 @@ class User < ActiveRecord::Base
   end
 
 	class << self
-		def create_with_omniauth(auth)
-    	create! do |user|
-      	user.provider = auth["provider"]
-      	user.uid      = auth["uid"]
-        user.token    = auth["credentials"]["token"]
-        case user.provider
-        when "facebook"
-          user.username = auth["info"]["name"]
-        when "twitter"
-          user.username     = auth["info"]["nickname"]
-          user.secret_token = auth["credentials"]["secret"]
-      	end
-    	end
-  	end
-
     def search_with(username, current_user, page)
       offset = (page - 1) * LIMIT
       users  = self.search(self.escape(username)).offset(offset).limit(LIMIT).keep_if do |user|
