@@ -63,7 +63,7 @@
     width: 88px;
     height: 30px;
     margin-left: 113px;
-    @include border-radius(2px);
+    @include border-radius(4px);
     @include bglinear(lighten($main_color, 5%), $main_color);
     color: #fff;
     font-weight: bold;
