@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   end
 
   def new
-    p session[:current_provider_name]
+    @current_provider_name = session[:current_provider_name]
   end
 
   def create
