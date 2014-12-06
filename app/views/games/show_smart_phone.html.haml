@@ -21,12 +21,12 @@
         .gameInfoWrap
           %ul.gameInfo
             %li.item.maker
-              .itemName メーカー 
-              .itemContent 
+              .itemName メーカー
+              .itemContent
                 = @game.maker
             %li.item.hard
               .itemName ハード
-              .itemContent 
+              .itemContent
                 = @game.device
             %li.item.releaseDay
               .itemName 発売日
@@ -42,7 +42,7 @@
               %a.amazonBtn{href: @game.amazon_url} Amazonへ
     = render partial: "select_btns", locals: {game: @game}
   .boxTtl
-    %h2 このゲームに対するポスト" "件
+    %h2 このゲームに対するポスト#{@game.posts_count}件
   .sortBoxWrap
     %ul.sortBox.sort-box
       %li.item.current.follower-posts
