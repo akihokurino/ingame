@@ -7,7 +7,7 @@ html {
 .mainVisual {
 	min-width: 960px;
 	padding-top: 15px;
-	background: linear-gradient(rgba($main_color,0.9), rgba($main_color,0.95)), url('/assets/smart_phone/login-bg.jpg');
+	background: linear-gradient(rgba(#000,0.6), rgba(#000,0.8)), url('/assets/bg_login.png');
 	background-size: contain;
 	font-family: arial;
 	text-align: center;
@@ -56,30 +56,33 @@ html {
 		text-align: center;
 	}
 	.tw {
-		background: $twitter_blue;
+		background: linear-gradient(lighten($twitter_blue,7%),$twitter_blue);
+		box-shadow: 0 2px 0 darken($twitter_blue,10%);
 
 		&:hover {
 			text-decoration: none;
-			background-color: lighten($twitter_blue, 8%);
+			background: linear-gradient($twitter_blue,lighten($twitter_blue,7%));
 		}
 	}
 	.fb {
-		background: $facebook_blue;
+		background: linear-gradient(lighten($facebook_blue,10%),$facebook_blue);
+		box-shadow: 0 2px 0 darken($facebook_blue,10%);
 
 		&:hover {
 			text-decoration: none;
-			background-color: lighten($facebook_blue, 10%);
+			background: linear-gradient($facebook_blue, lighten($facebook_blue, 10%));
 		}
 	}
 	.gamr {
-		background: $main_color;
+		background: linear-gradient(lighten($main_color,7%),$main_color);
+		box-shadow:0 2px 0 darken($main_color,10%);
 
 		&:hover {
 			text-decoration: none;
-			background-color: lighten($main_color, 10%);
+			background: linear-gradient($main_color,lighten($main_color,7%));
 		}
 	}
-	.icon-twitter,.icon-facebook {
+	.icon-twitter, .icon-facebook {
 		&:before {
 			display: inline-block;
 			font-size: 32px;
