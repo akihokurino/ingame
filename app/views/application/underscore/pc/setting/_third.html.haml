@@ -15,9 +15,10 @@
       #thumbnail
         = image_tag "/user_photos/default.png", width: "151", height: "151", alt: "", class: "thumbnailImg"
       .uploadBtnWrap
-        .uploadBtnTxt 写真をアップロード
+        .uploadBtnTxt 写真を選択
         %form
-          %input.uploadBtn#upload-btn{type: "file", value: "写真をアップロード"}
-      %a.nextBtn03.next-page{href: ""} 次へ
+          %input.uploadBtn#upload-btn{type: "file", value: "写真を選択"}
+      %p.nextBtnWrap03
+        %a.nextBtn03.next-page{href: ""} 設定せずに初期設定を完了
 
     = render partial: "application/pc/clip_modal"

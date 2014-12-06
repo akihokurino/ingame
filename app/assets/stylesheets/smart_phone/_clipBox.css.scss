@@ -42,7 +42,7 @@
 	.cancel {
 		display: inline-block;
 		padding:0 10px;
-		@include border-radius(2px);
+		@include border-radius(4px);
 		background: #a0a0a0;
 		color: #fff;
 		line-height: 2.5;
@@ -52,7 +52,7 @@
 	.done {
 		display: inline-block;
 		padding:0 25px;
-		@include border-radius(2px);
+		@include border-radius(4px);
 		background: $main_color;
 		&:active{
 			background: linear-gradient($main_color,lighten($main_color,5%));

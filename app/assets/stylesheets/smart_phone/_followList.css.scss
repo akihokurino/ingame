@@ -31,7 +31,7 @@
 		.followBtnWrap{
 			text-align:center;
 		}
-		.followBtn,.follow-btn{
+		.followBtn{
 			float:right;
 			display:inline-block;
 			margin-top:6px;
@@ -47,7 +47,7 @@
 			border: 1px solid $main_color;
 			@include border-radius(4px);
 		}
-		.unFollow,.unfollow-btn{
+		.unFollow{
 			@include animation(changeFollow 0.33s ease-in-out forwards);
 		}
 		.userImgWrap{

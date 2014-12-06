@@ -2,131 +2,140 @@
 
 /*---   common   ---------------------------*/
 html {
-	background: #fff;
+  background: #fff;
 }
 .mainVisual {
-	min-width: 960px;
-	padding-top: 15px;
-	background: linear-gradient(rgba($main_color,0.9), rgba($main_color,0.95)), url('/assets/smart_phone/login-bg.jpg');
-	background-size: contain;
-	font-family: arial;
-	text-align: center;
-	color: #fff;
+  min-width: 960px;
+  padding-top: 30px;
+  background: linear-gradient(rgba(#000,0.6), rgba(#000,0.8)), url('/assets/bg_login.png');
+  background-size: contain;
+  font-family: arial;
+  text-align: center;
+  color: #fff;
 
-	.ttl {
-		margin:45px 0 40px 0;
-	}
-
-	 .mainCopy {
-	 	width: 760px;
-	 	margin: 10px auto;
-	 	padding: 20px 0;
-	 	font-size: 32px;
-	 	border-top: 3px solid #fff;
-	 	border-bottom: 3px solid #fff;
-	 }
-	 .subCopy {
-	 	padding: 0 20px;
-	 	font-size: 22px;
-	 	line-height: 1.5;
-	 }
-	 .snsCopy {
-	 	font-size: 22px;
-	 }
+  .ttl {
+    margin:45px 0 40px 0;
+  }
+  .mainCopy {
+    width: 760px;
+    margin: 10px auto;
+    padding: 20px 0;
+    font-size: 32px;
+    border-top: 3px solid #fff;
+    border-bottom: 3px solid #fff;
+  }
+  .subCopy {
+    padding: 0 20px;
+    font-size: 22px;
+    line-height: 1.5;
+  }
+  .snsCopy {
+    font-size: 22px;
+  }
 }
-
 .loginBox, .bottomBox {
-	text-align: center;
-	padding: 30px 0;
+  text-align: center;
+  padding: 30px 0;
 
-	.item {
-		display: inline-block;
-		margin-bottom: 10px;
-	}
-	.tw, .fb, .gamr {
-		display: inline-block;
-		width: 250px;
-		margin: 0 10px;
-		padding: 0 10px;
-		@include border-radius(2px);
-		@include box-sizing;
-		color: #ffffff;
-		font-size: 18px;
-		line-height: 3;
-		text-align: center;
-	}
-	.tw {
-		background: $twitter_blue;
+  .item {
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  .tw, .fb, .gamr {
+    display: inline-block;
+    width: 250px;
+    margin: 0 10px;
+    padding: 0 10px;
+    @include border-radius(2px);
+    @include box-sizing;
+    color: #ffffff;
+    font-size: 1.125rem;
+    line-height: 3;
+    text-align: center;
+  }
+  .tw {
+    background: linear-gradient(lighten($twitter_blue,7%),$twitter_blue);
+    box-shadow: 0 2px 0 darken($twitter_blue,10%);
 
-		&:hover {
-			text-decoration: none;
-			background-color: lighten($twitter_blue, 8%);
-		}
-	}
-	.fb {
-		background: $facebook_blue;
+    &:hover {
+      text-decoration: none;
+      @include bglinear($twitter_blue, 7%);
+    }
+  }
+  .fb {
+    background: linear-gradient(lighten($facebook_blue,10%),$facebook_blue);
+    box-shadow: 0 2px 0 darken($facebook_blue,10%);
 
-		&:hover {
-			text-decoration: none;
-			background-color: lighten($facebook_blue, 10%);
-		}
-	}
-	.gamr {
-		background: $main_color;
+    &:hover {
+      text-decoration: none;
+      @include bglinear($facebook_blue, 10%);
+    }
+  }
+  .gamr {
+    background: linear-gradient(lighten($main_color,7%),$main_color);
+    box-shadow:0 2px 0 darken($main_color,10%);
 
-		&:hover {
-			text-decoration: none;
-			background-color: lighten($main_color, 10%);
-		}
-	}
-	.icon-twitter,.icon-facebook {
-		&:before {
-			display: inline-block;
-			font-size: 32px;
-			vertical-align: -20%;
-			margin-right: 5px;
-		}
-	}
+    &:hover {
+      text-decoration: none;
+      @include bglinear($main_color, 7%);
+    }
+  }
+  .icon-twitter, .icon-facebook {
+    &:before {
+      display: inline-block;
+      font-size: 32px;
+      vertical-align: -20%;
+      margin-right: 5px;
+    }
+  }
 }
-
 .points {
-	min-width: 960px;
-	text-align: center;
+  min-width: 960px;
+  text-align: center;
 
-	section {
-		display: inline-block;
-		width: 30%;
-		color: $color_textBlack;
-		text-align: center;
-		vertical-align: top;
+  &Ttl {
+    background: $main_color;
+    color: #fff;
+    font-size: 1.5rem;
+    line-height: 3;
+    text-shadow: 1px 1px 0 rgba(darken($main_color,20%),0.7);
+    text-align: center;
+  }
+  &Item {
+    display: inline-block;
+    width: 30%;
+    padding: 20px 0;
+    color: $color_textBlack;
+    text-align: center;
+    vertical-align: top;
 
-		h1 {
-			padding: 20px 0;
-			font-size: 28px;
-		}
+    &Ttl {
+      padding: 20px 0;
+      font-size: 1.75rem;
+    }
 
-		p {
-			display: inline-block;
-			padding: 10px 0;
-			width: 90%;
-			font-size: 16px;
-			line-height: 1.5;
-			text-align: left;
-		}
-		.annotation {
-			font-size: 12px;
-		}
-	}
+    &Text {
+      display: inline-block;
+      padding: 15px 10px;
+      font-size: 1rem;
+      line-height: 1.5rem;
+      text-align: left;
+    }
+    &Annotation {
+      padding: 0 10px;
+      font-size: 0.875rem;
+      line-height: 1.5rem;
+      text-align: left;
+    }
+  }
 }
 .bottomBox {
-	min-width: 960px;
-	background-color: $bg_color;
+  min-width: 960px;
+  background-color: $bg_color;
 
-	h1 {
-		color: #4c4c4c;
-		margin: 20px;
-		font-size: 28px;
-	}
+  &Ttl {
+    color: #4c4c4c;
+    margin: 20px 0 40px;
+    font-size: 1.75rem;
+  }
 }
-
-

@@ -32,6 +32,18 @@
 	article{
 		width: 100%;
 	}
+	.gameImg{
+		display:table-cell;
+		width: 100px;
+		margin-left:auto;
+		@include box-sizing;
+		a{
+			display:inline-block;
+		}
+		img{
+			box-shadow:0 1px 1px rgba(0,0,0,0.5);
+		}
+	}
 	.textArea{
 		display:table-cell;
 		padding-left:10px;
@@ -39,8 +51,9 @@
 		text-align:left;
 		vertical-align: top;
 		.gameTitle{
-			font-size:18px;
 			color:$color_textBlack;
+			font-weight:bold;
+			font-size:18px;
 		}
 		.device,.maker{
 			color: #A8A8A8;
@@ -83,14 +96,5 @@
 		.status{
 			@include animation(changeStatus 0.33s ease-in-out forwards);
 	}
-	}
-	.gameModule{
-		display:table-cell;
-		width: 100px;
-		margin-left:auto;
-		@include box-sizing;
-		a{
-			display:inline-block;
-		}
 	}
 }

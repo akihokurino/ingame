@@ -6,10 +6,8 @@
   %h1.ttl 
     = image_tag("logo@3x.png", width: "320")
   %p.subCopy
-    GAMRは、ゲーマーによるゲーマーの為の
-    %br
-    ゲームライフをより楽しくするSNSです。
-  %section.loginBox
+    GAMRはゲームライフをより楽しくするSNSです。
+  .loginBox
     %ul.snsList
       %li.item
         %a.tw{href: "/auth/twitter"}
@@ -19,27 +17,28 @@
           %span.icon-facebook Facebookでログイン
       %li.item
         %a.gamr{href: ""}
-          %span.icon-gamr GAMRのIDでログイン
+          %span.icon-gamr GAMR IDでログイン
 %section.points
-  %section.first
-    %h1 ゲームを記録
+  %h1.pointsTtl GAMRの使い方
+  %section.pointsItem
+    %h2.pointsItemTtl ゲームを記録
     = image_tag("login_illust_01@2x.png", width: "50%")
-    %p 気になるゲームや遊んだゲームをマイゲームに登録することで、自分だけのオリジナルカタログ（のようなもの）が出来上がります。
-    %p.annotation
+    %p.pointsItemText 気になるゲームや遊んだゲームをマイゲームに登録することで、自分だけのオリジナルカタログ（のようなもの）が出来上がります。
+    %p.pointsItemAnnotation
       遊んできたゲームを見返したり、友達に共有することで、新たな発見があるかもしれません。
-  %section.second
-    %h1 瞬間をシェア
+  %section.pointsItem
+    %h2.pointsItemTtl 瞬間をシェア
     = image_tag("login_illust_02@2x.png", width: "50%")
-    %p 登録したゲームに対して、コメントを付与して何度でもポストする事ができます。
-    %p.annotation
+    %p.pointsItemText 登録したゲームに対して、コメントを付与して何度でもポストする事ができます。
+    %p.pointsItemAnnotation
       ゲームを遊んでいる時って、感想をシェアしたくなる瞬間が何度も訪れたりしませんか？
-  %section.third
-    %h1 感想を調べる
+  %section.pointsItem
+    %h2.pointsItemTtl 感想を調べる
     = image_tag("login_illust_03@2x.png", width: "50%")
-    %p 気になるゲームを見つけたら、他のユーザーのコメントや、Tipsを見てみましょう。
-    %p.annotation あなたが遊ぶべきゲームは、あなたの友達が知っているかもしれません。
+    %p.pointsItemText 気になるゲームを見つけたら、他のユーザーのコメントや、Tipsを見てみましょう。
+    %p.pointsItemAnnotation あなたが遊ぶべきゲームは、あなたの友達が知っているかもしれません。
 %section.bottomBox
-  %h1 ゲームを本気で楽しもう。
+  %h1.bottomBoxTtl ゲームを本気で楽しもう。
   %ul.snsList
     %li.item
       %a.tw{href: "/auth/twitter"}

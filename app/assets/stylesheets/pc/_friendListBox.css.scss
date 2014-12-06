@@ -44,7 +44,7 @@
 			padding-top: 4px;
 			color: $main_color;
 			font-weight: bold;
-			font-size: 14px;
+			font-size: .875rem;
 
 			&Link {
 				color: $main_color;
@@ -65,14 +65,13 @@
 			background: #fff;
 			color: $main_color;
 			font-weight: bold;
-			font-size: 14px;
+			font-size: .875rem;
 			text-align: center;
 			line-height: 30px;
 			cursor: pointer;
 
 			&:hover {
 				border: 1px solid #fff;
-				@include border-radius(2px);
 				background: $main_color;
 				color: #fff;
 			}
@@ -85,16 +84,26 @@
 			@include border-radius(2px);
 			background: #fff;
 			font-weight: bold;
-			font-size: 14px;
+			font-size: .875rem;
 			text-align: center;
 			line-height: 30px;
 			cursor: pointer;
 
 			&:hover {
 				border: 1px solid #fff;
-				@include border-radius(2px);
 				background: $main_color;
 				color: #fff;
+			}
+		}
+		.unfollow, .unFollow {
+			border: 1px solid  #fff;
+			background: $main_color;
+			color: #fff;
+
+			&:hover {
+				border: 1px solid $main_color;
+				background: #fff;
+				color: $main_color;
 			}
 		}
 	}

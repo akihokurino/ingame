@@ -32,7 +32,7 @@
 		.account {
 			color: #3c3c3c;
 			font-weight: bold;
-			font-size: 14px;
+			font-size: .875rem;
 			line-height: 1.0;
 		}
 		.time {
@@ -49,7 +49,7 @@
 			border: 1px solid $color-blue;
 			@include border-radius(3px);
 			color: $color-blue;
-			font-size: 14px;
+			font-size: .875rem;
 			line-height: 30px;
 			text-align: center;
 		}
@@ -62,7 +62,7 @@
 			border: 1px solid $color-red;
 			@include border-radius(3px);
 			color: $color-red;
-			font-size: 14px;
+			font-size: .875rem;
 			line-height: 30px;
 			text-align: center;
 		}
@@ -75,7 +75,7 @@
 			border: 1px solid $color-yellow;
 			@include border-radius(3px);
 			color: $color-yellow;
-			font-size: 14px;
+			font-size: .875rem;
 			line-height: 30px;
 			text-align: center;
 		}
@@ -98,7 +98,7 @@
 	.postTxt {
 		margin-bottom: 14px;
 		color: #4a4a4a;
-		font-size: 14px;
+		font-size: .875rem;
 		line-height: 1.5;
 
 		.link-text {
@@ -133,7 +133,7 @@
 					margin-bottom: 15px;
 				}
 				.description {
-					font-size: 14px;
+					font-size: .875rem;
 					line-height: 1.5;
 				}
 			}
@@ -281,7 +281,7 @@
 			border: none;
 			@include box-sizing;
 			@include appearance;
-			font-size: 14px;
+			font-size: .875rem;
 			resize: none;
 			outline: 0;
 

@@ -7,14 +7,7 @@
 
 /*---   common   ---------------------------*/
 html {
-    height:100%;
-	background: #5e5e5e;
-}
-body {
-    height:100%;
-}
-#wrapper {
-    height:100%;
+	background: $main_color;
 }
 
 /*---   .mainContent   ---------------------------*/
@@ -35,7 +28,7 @@ body {
 
 		.profileEditTtl {
 			font-weight: bold;
-			font-size: 18px;
+			font-size: 1.125rem;
 		}
 		.editList {
 			margin: 40px 0;
@@ -45,7 +38,7 @@ body {
 			float: left;
 			width: 125px;
 			margin-right: 15px;
-			font-size: 14px;
+			font-size: .875rem;
 			text-align: right;
 			line-height: 36px;
 
@@ -63,7 +56,7 @@ body {
 			border: 1px solid #ccc;
 			@include border-radius(3px);
 			@include box-sizing;
-			font-size: 14px;
+			font-size: .875rem;
 			outline: 0;
 		}
 		.place {
@@ -73,7 +66,7 @@ body {
 			border: 1px solid #ccc;
 			@include border-radius(3px);
 			@include box-sizing;
-			font-size: 14px;
+			font-size: .875rem;
 			outline: 0;
 		}
 		textarea {
@@ -83,7 +76,7 @@ body {
 			border: 1px solid #ccc;
 			@include border-radius(3px);
 			@include box-sizing;
-			font-size: 14px;
+			font-size: .875rem;
 			outline: 0;
 			resize: none;
 		}
@@ -91,7 +84,7 @@ body {
 			margin-left: 80px;
 			color: #515151;
 			font-weight: bold;
-			font-size: 14px;
+			font-size: .875rem;
 			cursor: pointer;
 		}
 		.agreeCheck {
