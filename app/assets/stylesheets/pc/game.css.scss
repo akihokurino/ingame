@@ -17,94 +17,118 @@ html {
 
     /*---   .gameBoxInner   ---*/
     &Inner {
-      width: $cntWidth;
+      width:$width;
       margin: 0 auto;
       padding-top: 40px;
     }
     /*---   .gameTtl   ---*/
     .gameTtl {
       margin-bottom: 24px;
-      color: $color_green;
+      color: $color_textBlack;
       font-weight: bold;
       font-size: 1.5rem;
     }
     /*---   .gameImg   ---*/
     .gameImgWrap {
       float: left;
-      margin-right: 13px;
+      width: 240px;
+      margin-right: 10px;
+      @include box-shadow(0,2px,2px,0,rgba(0,0,0,0.5));
     }
     /*---   .gameInfoBox   ---*/
     .gameInfoBox {
       position: relative;
       float: left;
-      margin-bottom: 45px;
+      width: 400px;
       @include clearfix;
     }
     /*---   .gameInfoList   ---*/
     .gameInfoList {
-      max-width: 370px;
-      color: #3e3e3e;
-      font-size: .875rem;
-      line-height: 26px;
-
+      line-height: 1.5;
       .item {
-        margin-bottom: 10px;
-        padding-left: 5rem;
-        text-indent: -5rem;
-      }
-      &ItemInner {
-        margin-right: 10px;
-        padding: 3px 5px;
-        @include border-radius(3px);
-        background: #929292;
-        color: #fff;
+        display:table;
+        width: 100%;
+        @include border-radius(4px);
+        background-color: $color_border;
+        font-size: 14px;
+        margin-bottom: 5px;
+        &:nth-child(even){
+          background-color: lighten($color_border,5%);
+        }
+        .itemName{
+          display:table-cell;
+          width: 50%;
+          min-width:100px;
+          padding:10px 20px 10px 10px;
+          @include box-sizing;
+          color:$color_textBlack;
+          font-weight:bold;
+          vertical-align: middle;       }
+        .itemContent{
+          display:table-cell;
+          width: 60%; 
+          padding:10px 10px 10px 0 ;
+          color:$color_textBlack;
+          text-align:left;
+        }
+        .icon-star{
+          color:orange;
+          font-size:20px;
+        }
+        .starList {
+          float: left;
+          font-size:1.5rem;
+        }
+        .starOn {
+          display: inline-block;
+          color:orange;
+        }
+        .starOff {
+          display: inline-block;
+        }
+        .value {
+          padding:10px 20px 10px 10px;
+          margin-left:10px;
+          color: #3e3e3e;
+          font-weight: bold;
+          font-size: 14px;
+        }
       }
     }
     /*---   .amazonBtn   ---*/
-    .amazonBtn {
-      color: #2b518b;
-      font-weight: bold;
-      font-size: .875rem;
-      text-decoration: underline;
+    // .amazonBtn {
+    //   color: #2b518b;
+    //   font-weight: bold;
+    //   font-size: .875rem;
+    //   text-decoration: underline;
 
-      &:hover {
-        text-decoration: none;
-      }
-    }
+    //   &:hover {
+    //     text-decoration: none;
+    //   }
+    // }
     /*---   .review   ---*/
-    .reviewBox {
-      margin: 32px 0 28px;
-      @include clearfix;
-
-      .starList {
-        float: left;
-        margin-right: 24px;
-        font-size: 0;
+    .amazonBtn{
+      display:block;
+      margin:20px 0;
+      padding:8px 20px 8px 10px;
+      @include border-radius(4px);
+      background-color: #FFCC6E;
+      color:#fff;
+      font-size:1rem;
+      text-shadow:0 1px 1px rgba(0,0,0,0.2);
+      text-decoration:none;
+      &:hover{
+        background: lighten(#FFCC6E,5%);
+        text-decoration:underline;
       }
-      .starOn {
-        display: inline-block;
-        @include img_set-PC4(32px, 33px, 0, -211px);
-        margin-right: 8px;
-
-        &:last-child {
-          margin-right: 0;
+      .icon-search{
+        font-weight:bold;
+        &:before{
+          display: inline-block;
+          margin-right:10px;
+          font-size:1.5rem;
+          vertical-align: -15%;
         }
-      }
-      .starOff {
-        display: inline-block;
-        @include img_set-PC4(32px, 33px, 0, -252px);
-        margin-right: 8px;
-
-        &:last-child {
-          margin-right: 0;
-        }
-      }
-      .value {
-        float: left;
-        padding-top: 4px;
-        color: #3e3e3e;
-        font-weight: bold;
-        font-size: 26px;
       }
     }
     /*---   .gameBtnList   ---*/
