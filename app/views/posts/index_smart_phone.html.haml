@@ -8,7 +8,9 @@
 
 .timeline-page.mainCnt
   .postWrap
-    = link_to "感想を投稿", "/posts/new#select", class: "icon-post"
+    .imgWrap
+      = image_tag "smart_phone/default.png",width:40,height:40, class: "userImg"
+    = link_to "ゲームの感想を投稿", "/posts/new#select", class: "icon-post"
   .post-list
   = image_tag "gif-load.gif", class: "loading-gif"
 

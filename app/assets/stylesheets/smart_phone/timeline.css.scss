@@ -13,10 +13,19 @@ html {
 	box-sizing:border-box;
 
 	.postWrap {
-		padding: 5px 5px 0 5px;
+		padding: 10px;
 		@include box-sizing;
-		text-align: right;
+		background-color: #fff;
+		.imgWrap{
+			display:inline-block;
+			img{
+				@include border-radius(50%);
+				@include box-sizing;
+				box-shadow:0 2px 2px rgba(0,0,0,0.5);
+			}
+		}
 		.icon-post{
+			float:right;
 			@include appearance;
 			display:inline-block;
 			padding:0 10px;
