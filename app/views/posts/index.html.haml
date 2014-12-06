@@ -7,55 +7,56 @@
 = render partial: "application/pc/default_header"
 
 %section.mainContent.timeline-page
-  .profileColumn
-    %article.profile
-      .profileTopBox
-        %figure.userImgWrap
-          %img.userImg{src: "/user_photos/#{@current_user[:photo_path]}", width: "45", height: "45", alt: ""}
-        %p.userName
-          = @current_user[:username]
-      %ul.profileCountList.count-box
-        %li.gameNum.logs-li
-          マイゲーム
-          %span.count
-            = @current_user[:logs_count]
-        %li.postNum.posts-li
-          ポスト
-          %span.count
-            = @current_user[:posts_count]
-        %li.followNum.follows-li
-          フォロー
-          %span.count
-            = @current_user.follow_num
-        %li.followerNum.followers-li
-          フォロワー
-          %span.count
-            = @current_user.follower_num
-  .postColumn
-    .addPost
-      .addPostInner
-        %p.selectBtn.show-select-modal ゲームを選ぶ
-        %textarea.post-input{placeholder: "そのゲームについて、どうおもった？"}
-        %ul.thumbnailList.thumbnail-list
+  .mainContentInner
+    .profileColumn
+      %article.profile
+        .profileTopBox
+          %figure.userImgWrap
+            %img.userImg{src: "/user_photos/#{@current_user[:photo_path]}", width: "45", height: "45", alt: ""}
+          %p.userName
+            = @current_user[:username]
+        %ul.profileCountList.count-box
+          %li.gameNum.logs-li
+            マイゲーム
+            %span.count
+              = @current_user[:logs_count]
+          %li.postNum.posts-li
+            ポスト
+            %span.count
+              = @current_user[:posts_count]
+          %li.followNum.follows-li
+            フォロー
+            %span.count
+              = @current_user.follow_num
+          %li.followerNum.followers-li
+            フォロワー
+            %span.count
+              = @current_user.follower_num
+    .postColumn
+      .addPost
+        .addPostInner
+          %p.selectBtn.show-select-modal ゲームを選ぶ
+          %textarea.post-input{placeholder: "そのゲームについて、どうおもった？"}
+          %ul.thumbnailList.thumbnail-list
 
-        #thumbnail
+          #thumbnail
 
-        .url-thumbnail-list
+          .url-thumbnail-list
 
-        .photoBtnWrap
-          %p.photoBtnText 写真を追加
-          %input.addPhoto#upload-btn{type: "file", href: ""}
-        %p.addPostBtn.post-btn 投稿する
+          .photoBtnWrap
+            %p.photoBtnText 写真を追加
+            %input.addPhoto#upload-btn{type: "file", href: ""}
+          %p.addPostBtn.post-btn 投稿する
 
-        = render partial: "log_select"
+          = render partial: "log_select"
 
-    .post-list
-    = image_tag "gif-load-pc.gif", class: "loading-gif"
+      .post-list
+      = image_tag "gif-load-pc.gif", class: "loading-gif"
 
-  .userColumn
-    .userActivity
-      %h1.userActivityTtl 最近登録したユーザー
-      %ul.userActivityList.user-activity-list
+    .userColumn
+      .userActivity
+        %h1.userActivityTtl 最近登録したユーザー
+        %ul.userActivityList.user-activity-list
 
 
 

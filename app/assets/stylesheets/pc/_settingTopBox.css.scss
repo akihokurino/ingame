@@ -53,7 +53,6 @@
     width: 385px;
     height: 34px;
     margin: 0 auto;
-    padding-top: 3px;
     padding-left: 40px;
     border: none;
     @include box-sizing;
@@ -64,6 +63,7 @@
     &::-webkit-input-placeholder {
       color: #cbcbcb;
       font-size: .875rem;
+      line-height: 1.6rem;
     }
   }
   /*---   .nextBtn   ----------*/

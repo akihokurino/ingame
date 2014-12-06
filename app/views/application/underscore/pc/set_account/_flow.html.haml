@@ -4,7 +4,8 @@
   %section.Signup
     %h1.SignupTtl ようこそ！”username”さん
     %figure.SignupImgWrap
-      %img.SignupImg{src: "", width: "140", height: "140", alt: "アカウント画像"}
+      = image_tag "smart_phone/default.png", width:"140", height:"140", class: "SignupImg", alt: "アカウント画像"
+      .serviceLogo.icon-twitter
     %p.SignupBtnWrap
       %a.SignupBtn{href: "/users/new#signup"} 新しくアカウントをつくる
     %p.SignupText
