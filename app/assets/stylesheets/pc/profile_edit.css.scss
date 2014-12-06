@@ -33,7 +33,7 @@
     .userName {
       margin-bottom: 8px;
       font-weight: bold;
-      font-size: 18px;
+      font-size: 1.125rem;
     }
     /*---   .userPlace   ---*/
     .userPlace {
@@ -60,7 +60,7 @@
 
     .profileEditTtl {
       font-weight: bold;
-      font-size: 18px;
+      font-size: 1.125rem;
     }
     .editList {
       margin: 40px 0;
@@ -70,7 +70,7 @@
       float: left;
       width: 125px;
       margin-right: 15px;
-      font-size: 14px;
+      font-size: .875rem;
       text-align: right;
       line-height: 36px;
 
@@ -95,7 +95,7 @@
       background: $main_color;
       color: #fff;
       font-weight: bold;
-      font-size: 14px;
+      font-size: .875rem;
       text-align: center;
       line-height: 30px;
     }
@@ -137,7 +137,7 @@
       border: 1px solid #ccc;
       @include border-radius(3px);
       @include box-sizing;
-      font-size: 14px;
+      font-size: .875rem;
       outline: 0;
     }
     textarea {
@@ -147,7 +147,7 @@
       border: 1px solid #ccc;
       @include border-radius(3px);
       @include box-sizing;
-      font-size: 14px;
+      font-size: .875rem;
       outline: 0;
       resize: none;
     }
@@ -162,7 +162,7 @@
       background: #929292;
       color: #fff;
       font-weight: bold;
-      font-size: 14px;
+      font-size: .875rem;
       text-align: center;
       line-height: 30px;
       @include appearance;
