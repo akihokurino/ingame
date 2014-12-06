@@ -5,6 +5,7 @@ var User = Backbone.Model.extend({
     "introduction": "",
     "photo_path":   "",
     "place":        "",
+    "logs_count":   "",
     "i_followed":   "",
     "i_followered": ""
   },

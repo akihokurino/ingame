@@ -5,6 +5,7 @@ json.users do |json|
     json.introduction user[:introduction]
     json.photo_path user[:photo_path]
     json.place user[:place]
+    json.logs_count user[:logs_count]
     json.i_followed user.i_followed
     json.i_followered user.i_followered
   end
