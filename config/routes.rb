@@ -48,6 +48,7 @@ Ingame::Application.routes.draw do
       end
     end
     resources :post_urls, only: ["new"], format: "json"
+    resources :sessions, only: ["create"], format: "json"
   end
 
   match "/auth/:provider/callback", to: "user_providers#create", via: :get

@@ -58,9 +58,42 @@
   var SigninView = Backbone.View.extend({
     el: $(".set-account-page"),
     template: _.template($("#signin-template").html()),
+    events: {
+      "click .signin-btn": "signin"
+    },
     initialize: function () {
       this.$el.html("");
       this.$el.append(this.template);
+
+      this.username_input         = this.$(".username-input");
+      this.password_input         = this.$(".password-input");
+    },
+    signin: function (e) {
+      e.preventDefault();
+
+      if (this.username_input.val() != "" && this.password_input.val() != "") {
+
+        var data = {
+          "user": {
+            "username": this.username_input.val(),
+            "password": this.password_input.val()
+          }
+        }
+
+        $.ajax({
+          type: "POST",
+          url: "/api/sessions",
+          data: data,
+          success: function (data) {
+            if (data.result) {
+              location.href = data.result;
+            }
+          },
+          error: function () {
+
+          }
+        })
+      }
     }
   })
 

@@ -16,7 +16,7 @@ class UserProvidersController < ApplicationController
         session[:current_provider_id] = nil
 
         if current_user[:is_first]
-          redirect_to "/users/#{user[:id]}/setting#first"
+          redirect_to "/users/#{current_user[:id]}/setting#first"
         else
           redirect_to posts_path, :notice => "ログインしました。"
         end

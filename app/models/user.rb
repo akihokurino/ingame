@@ -77,6 +77,14 @@ class User < ActiveRecord::Base
     self.password = self.class.crypt_password(password, self.salt.to_s)
   end
 
+  def collect_password?(password)
+    self.class.crypt_password(password, self.salt.to_s) == self.password
+  end
+
+  def connect_with_provider(current_provider)
+    current_provider.update(user_id: self[:id])
+  end
+
 
 	class << self
     def create_with_provider(user_params, current_provider)
@@ -148,6 +156,19 @@ class User < ActiveRecord::Base
     def new_salt
       s = rand.to_s.tr('+', '.')
       s[0, if s.size > 32 then 32 else s.size end]
+    end
+
+    def authoricate(password)
+      self.crypt_password(password, self.salt.to_s) == self.password
+    end
+
+    def authenticate(username, password)
+      user = self.find_by(username: username)
+      if user && user.collect_password?(password)
+        user
+      else
+        false
+      end
     end
 	end
 end
