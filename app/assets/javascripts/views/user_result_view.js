@@ -35,6 +35,7 @@ var UserResultView = Backbone.View.extend({
         if (data.result) {
           that.$el.find("ul.btn-list li").html("");
           that.$el.find("ul.btn-list li").append(that.unfollow_btn_template);
+          $(".next-page").html("次へ");
         }
       },
       error: function () {
