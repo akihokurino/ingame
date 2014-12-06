@@ -29,9 +29,48 @@
 		line-height: 1.5rem;
 	}
 	&ImgWrap {
+		position: relative;
 		width: 140px;
 		height: 140px;
 		margin: 0 auto 30px;
+	}
+	&Img {
+		@include border-radius(70px);
+		@include box-shadow(0, 1px, 4px, 0, rgba(0,0,0,0.4));
+	}
+	.serviceLogo{
+		display: block;
+		overflow: hidden;
+		position: absolute;
+		top: -5px;
+		left: -5px;
+		z-index: 1;
+		width: 42px;
+		height: 42px;
+		border: 2px solid #fff;
+		@include border-radius(50%);
+		box-shadow:0 1px 4px rgba(0,0,0,0.4);
+	}
+	.icon-twitter{
+		display: block;
+		font-size: 1.938rem;
+		line-height: 42px;
+		background: linear-gradient(lighten($twitter_blue,7%),$twitter_blue);
+		color: #fff;
+		text-align: center;
+	}
+	.icon-facebook{
+		display: block;
+		margin-left: -1px;
+		background-color: #fff;
+		color: $facebook_blue;
+		font-size: 3.5rem;
+		text-align: center;
+		line-height: 42px;
+
+		&:before{
+			margin-left: -5px;
+		}
 	}
 	&Text {
 		margin-bottom: 15px;
