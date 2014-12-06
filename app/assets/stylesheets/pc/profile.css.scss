@@ -248,10 +248,10 @@ html {
   }
   .playingBox {
     width: 100%;
-    margin: 0 auto 42px;
+    margin: 0 auto 20px;
 
     .playing {
-      margin-bottom: 26px;
+      margin-bottom: 10px;
       padding-left: 18px;
       border-left: 5px solid $color-red;
       color: $color_black;
@@ -260,10 +260,10 @@ html {
   }
   .readyBox {
     width: 100%;
-    margin: 0 auto 42px;
+    margin: 0 auto 20px;
 
     .ready {
-      margin-bottom: 26px;
+      margin-bottom: 10px;
       padding-left: 18px;
       border-left: 5px solid $color-yellow;
       color: $color_black;
@@ -272,10 +272,10 @@ html {
   }
   .playedBox {
     width: 100%;
-    margin: 0 auto 42px;
+    margin: 0 auto 20px;
 
     .played {
-      margin-bottom: 26px;
+      margin-bottom: 10px;
       padding-left: 18px;
       border-left: 5px solid $color-blue;
       color: $color_black;
