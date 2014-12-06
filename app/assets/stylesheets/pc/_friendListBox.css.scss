@@ -2,109 +2,109 @@
 
 /*---   .friendList   ----------*/
 .friendListBox {
-	width: 100%;
-	padding: 20px 0 40px;
+  width: 100%;
+  padding: 20px 0 40px;
 
-	.friendListWrap {
-		@include clearfix;
-		width: 900px;
-		margin: 0 auto;
-		font-size: 0; /* inline-block用 */
+  .friendListWrap {
+    @include clearfix;
+    width: 900px;
+    margin: 0 auto;
+    font-size: 0; /* inline-block用 */
 
-		.item {
-			display: inline-block;
-			float: left;
-			width: 280px;
-			margin: 10px;
-			padding: 10px;
-			border: 1px solid #e6e6e6;
-			@include border-radius(3px);
-			@include box-sizing;
-			background: #fff;
-			@include clearfix;
-		}
-	}
-	.friendList {
-		position: relative;
-		min-height: 122px;
+    .item {
+      display: inline-block;
+      float: left;
+      width: 280px;
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #e6e6e6;
+      @include border-radius(3px);
+      @include box-sizing;
+      background: #fff;
+      @include clearfix;
+    }
+  }
+  .friendList {
+    position: relative;
+    min-height: 122px;
 
-		&TopBox {
-			@include clearfix;
-			margin-bottom: 8px;
-			padding: 10px;
-		    background: url(/assets/pc/default_cover.png) no-repeat top center;
-		    background-size: cover;
-		}
-		.userImgWrap {
-			float: left;
-			border: 3px solid #fff;
-		}
-		.userName {
-			margin-bottom: 10px;
-			padding-top: 4px;
-			color: $main_color;
-			font-weight: bold;
-			font-size: .875rem;
+    &TopBox {
+      @include clearfix;
+      margin-bottom: 8px;
+      padding: 10px;
+      background: url(/assets/pc/default_cover.png) no-repeat top center;
+      background-size: cover;
+    }
+    .userImgWrap {
+      float: left;
+      border: 3px solid #fff;
+    }
+    .userName {
+      margin-bottom: 10px;
+      padding-top: 4px;
+      color: $main_color;
+      font-weight: bold;
+      font-size: .875rem;
 
-			&Link {
-				color: $main_color;
-			}
-		}
-		.userProf {
-			color: #7e7e7e;
-			font-size: 12px;
-			line-height: 1rem;
-		}
-		.followBtn {
-			display: block;
-			margin-top: 52px;
-			margin-left: 92px;
-			border: 1px solid $main_color;
-			@include border-radius(2px);
-			@include box-sizing;
-			background: #fff;
-			color: $main_color;
-			font-weight: bold;
-			font-size: .875rem;
-			text-align: center;
-			line-height: 30px;
-			cursor: pointer;
+      &Link {
+        color: $main_color;
+      }
+    }
+    .userProf {
+      color: #7e7e7e;
+      font-size: 12px;
+      line-height: 1rem;
+    }
+    .followBtn {
+      display: block;
+      margin-top: 52px;
+      margin-left: 92px;
+      border: 1px solid $main_color;
+      @include border-radius(2px);
+      @include box-sizing;
+      background: #fff;
+      color: $main_color;
+      font-weight: bold;
+      font-size: .875rem;
+      text-align: center;
+      line-height: 30px;
+      cursor: pointer;
 
-			&:hover {
-				border: 1px solid #fff;
-				background: $main_color;
-				color: #fff;
-			}
-		}
-		.followBtnOn {
-			display: block;
-			margin-top: 52px;
-			margin-left: 92px;
-			border: 1px solid $main_color;
-			@include border-radius(2px);
-			background: #fff;
-			font-weight: bold;
-			font-size: .875rem;
-			text-align: center;
-			line-height: 30px;
-			cursor: pointer;
+        &:hover {
+        border: 1px solid #fff;
+        background: $main_color;
+        color: #fff;
+      }
+    }
+    .followBtnOn {
+      display: block;
+      margin-top: 52px;
+      margin-left: 92px;
+      border: 1px solid $main_color;
+      @include border-radius(2px);
+      background: #fff;
+      font-weight: bold;
+      font-size: .875rem;
+      text-align: center;
+      line-height: 30px;
+      cursor: pointer;
 
-			&:hover {
-				border: 1px solid #fff;
-				background: $main_color;
-				color: #fff;
-			}
-		}
-		.unfollow, .unFollow {
-			border: 1px solid  #fff;
-			background: $main_color;
-			color: #fff;
+      &:hover {
+        border: 1px solid #fff;
+        background: $main_color;
+        color: #fff;
+      }
+    }
+    .unfollow, .unFollow {
+      border: 1px solid  #fff;
+      background: $main_color;
+      color: #fff;
 
-			&:hover {
-				border: 1px solid $main_color;
-				background: #fff;
-				color: $main_color;
-			}
-		}
-	}
+      &:hover {
+        border: 1px solid $main_color;
+        background: #fff;
+        color: $main_color;
+      }
+    }
+  }
 }

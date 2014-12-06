@@ -2,26 +2,26 @@
 
 /*---   .footer   ---------------------------*/
 .footer {
-	width: 100%;
-	padding: 38px 0;
-	background: $main-color;
-	color: #fff;
-	font-size: 16px;
-	text-align: center;
+  width: 100%;
+  padding: 38px 0;
+  background: $main-color;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
 
-	.ftList {
-		@include clearfix;
-		width: 245px;
-		margin: 0 auto 34px;
+  .ftList {
+    @include clearfix;
+    width: 245px;
+    margin: 0 auto 34px;
 
-		.item, .lastItem {
-			float: left;
-		}
-		.item {
-			margin-right: 20px;
-		}
-	}
-	.ftLink {
-		color: #fff;
-	}
+    .item, .lastItem {
+      float: left;
+    }
+    .item {
+      margin-right: 20px;
+    }
+  }
+  .ftLink {
+    color: #fff;
+  }
 }
