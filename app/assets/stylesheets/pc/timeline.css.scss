@@ -180,17 +180,6 @@
         border-left: 9px solid transparent;
         content: "";
       }
-      &:after {
-        display: block;
-        position: absolute;
-        left: -13px;
-        top: 30px;
-        border-top: 8px solid transparent;
-        border-right: 7px solid #fff;
-        border-bottom: 8px solid transparent;
-        border-left: 7px solid transparent;
-        content: "";
-      }
     }
     .selectBtn {
       position: relative;
