@@ -7,7 +7,7 @@
       %h1 GAMRに登録する
       %form.inputInfo
         .inputWrap
-          %input.textInput.username-input{type: "text", name: "username", placeholder: "ユーザーネーム", value: @current_provider_name}
+          %input.textInput.username-input{type: "text", name: "username", placeholder: "ユーザーネーム", value: @current_provider[:username]}
         .inputWrap
           %input.textInput.password-input{type: "text", name: "password", placeholder: "パスワード"}
         .inputWrap

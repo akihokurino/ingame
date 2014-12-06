@@ -19,9 +19,10 @@ class Api::UsersController < ApplicationController
   end
 
   def create
-    user = User.create_with_password(user_params)
+    user = User.create_with_provider(user_params, @current_provider)
     if user
-      session[:current_user_id] = user[:id]
+      session[:current_user_id]     = user[:id]
+      session[:current_provider_id] = nil
       @result = user[:id]
     else
       @result = false

@@ -17,7 +17,6 @@ class UsersController < ApplicationController
   end
 
   def new
-    @current_provider_name = session[:current_provider_name]
   end
 
   def edit

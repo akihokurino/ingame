@@ -155,7 +155,8 @@ ActiveRecord::Schema.define(version: 20141206051700) do
   create_table "user_providers", force: true do |t|
     t.integer  "user_id"
     t.string   "uid"
-    t.string   "type"
+    t.string   "username"
+    t.string   "service_name"
     t.text     "token"
     t.text     "secret_token"
     t.datetime "created_at"

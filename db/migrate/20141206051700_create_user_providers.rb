@@ -3,7 +3,8 @@ class CreateUserProviders < ActiveRecord::Migration
     create_table :user_providers do |t|
       t.references :user, index: true
       t.string :uid
-      t.string :type
+      t.string :username
+      t.string :service_name
       t.text :token
       t.text :secret_token
 

@@ -73,17 +73,25 @@ class User < ActiveRecord::Base
   end
 
   def create_password(password)
-    self.salt                  = self.class.new_salt
-    self.password              = self.class.crypt_password(password, self.salt.to_s)
+    self.salt     = self.class.new_salt
+    self.password = self.class.crypt_password(password, self.salt.to_s)
   end
 
 
 	class << self
-    def create_with_password(user_params)
+    def create_with_provider(user_params, current_provider)
       user          = self.new
       user.create_password(user_params[:password])
       user.username = user_params[:username]
-      user.save ? user : false
+      begin
+        ActiveRecord::Base.transaction do
+          user.save!
+          current_provider.update(user_id: user[:id])
+          user
+        end
+      rescue
+        false
+      end
     end
 
     def search_with(username, current_user, page)
