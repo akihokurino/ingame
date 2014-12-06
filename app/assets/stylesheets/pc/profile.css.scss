@@ -20,6 +20,7 @@ html {
     &Inner {
       position: relative;
       width: $width;
+      min-height: 140px;
       margin: 0 auto;
       padding: 40px 0;
       @include box-sizing;
@@ -29,27 +30,15 @@ html {
     /*---   .profImg   ---*/
     .profImgWrap {
       float: left;
+      position: absolute;
+      bottom: -96px;
+      z-index: 5;
       margin-right: 32px;
       border: 4px solid #fff;
       @include border-radius(5px);
       @include box-shadow(0, 2px, 4px, 0, rgba(0, 0, 0, 0.5));
       background: #fff;
       line-height: 0;
-    }
-    /*---   .userName   ---*/
-    .userName {
-      margin-bottom: 8px;
-      font-size: 1.75rem;
-    }
-    /*---   .userPlace   ---*/
-    .userPlace {
-      margin-bottom: 8px;
-    }
-    /*---   .userInfo   ---*/
-    .userInfo {
-      overflow: hidden;
-      width: 716px;
-      line-height: 1.5;
     }
     /*---   .countList   ---*/
     .countListWrap {
@@ -59,6 +48,7 @@ html {
     .countList {
       width: $width;
       margin: 0 auto;
+      padding-left: 300px;
       font-size: 0;
 
       &Link {
@@ -75,7 +65,6 @@ html {
     .gameNum {
       display: inline-block;
       width: 111px;
-      margin-right: 311px;
       @include box-sizing;
       color: #3e3e3e;
       font-size: 12px;
@@ -226,19 +215,17 @@ html {
     .followBtn {
       display: block;
       position: absolute;
-      left: 50%;
-      top: 16px;
-      width: 194px;
-      height: 40px;
-      margin-left: 287px;
+      right: 50%;
+      top: 8px;
+      margin-right: -480px;
+      padding: 6px 15px;
       @include box-shadow(0, 2px, 0, 0, darken($main_color,10%));
       @include border-radius(4px);
       @include bglinear(lighten($main_color, 5%), $main_color);
       color: #fff;
       font-weight: bold;
-      font-size: 1.125rem;
+      font-size: .875rem;
       text-align: center;
-      line-height: 40px;
       cursor: pointer;
 
       &:hover {
@@ -251,6 +238,7 @@ html {
     margin-top: 0;
 
     .gameListWrap {
+      width: 100%;
       margin-left: -7px;
     }
   }
@@ -259,7 +247,7 @@ html {
     margin-top: 0;
   }
   .playingBox {
-    width: $width;
+    width: 100%;
     margin: 0 auto 42px;
 
     .playing {
@@ -271,7 +259,7 @@ html {
     }
   }
   .readyBox {
-    width: $width;
+    width: 100%;
     margin: 0 auto 42px;
 
     .ready {
@@ -283,7 +271,7 @@ html {
     }
   }
   .playedBox {
-    width: $width;
+    width: 100%;
     margin: 0 auto 42px;
 
     .played {
@@ -292,6 +280,63 @@ html {
       border-left: 5px solid $color-blue;
       color: $color_black;
       font-size: 1rem;
+    }
+  }
+  .profileColumnWrap {
+    @include clearfix;
+    width: 960px;
+    margin: 0 auto;
+  }
+  .profileLeftColumn {
+    float: left;
+    width: 300px;
+    padding-top: 80px;
+    padding-right: 40px;
+
+    /*---   .userName   ---*/
+    .userName {
+      margin-bottom: 16px;
+      color: $color_textBlack;
+      font-size: 1.5rem;
+    }
+    /*---   .userPlace   ---*/
+    .userPlace {
+      position: relative;
+      margin-bottom: 8px;
+      padding-left: 20px;
+      color: $color_textGray;
+      font-size: 0.875rem;
+
+      &:before {
+        position: absolute;
+        top: -1px;
+        left: 0;
+        color: #888;
+        font-size: 0.875rem;
+        font-family: 'icomoon';
+        content: "\e609";
+      }
+    }
+    /*---   .userInfo   ---*/
+    .userInfo {
+      overflow: hidden;
+      color: $color_textGray;
+      font-size: 0.875rem;
+      line-height: 1.5rem;
+    }
+  }
+  .profileRightColumn {
+    float: right;
+    width: 660px;
+
+    > * {
+      width: 100%;
+    }
+    .gameListBox {
+      width: 100%;
+    }
+    .friendListWrap {
+      width: 100%;
     }
   }
 }
