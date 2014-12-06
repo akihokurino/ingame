@@ -4,6 +4,23 @@
 @import "_followList.css.scss";
 
 /*---   .personalBox   ---------------------------*/
+@include keyframes(changeFollow){
+		0% {
+			margin-top:1px;
+			width: 68px;
+			height: 34px;
+			font-size:12px;
+		}
+		100% {
+			margin-top:0;
+			width: 70px;
+			height: 36px;
+			color:#fff;
+			font-size:13px;
+			background:$main_color;
+		}
+}
+
 .personalBoxWrap {
 	margin-top:44px;
 	.bgOverlayer {
@@ -26,13 +43,15 @@
 	}
 	.followBtn,.edit-btn{
 		display:inline-block;
-		padding:0 20px;
+		padding:0 10px;
 		border: 1px solid $main_color;
-		@include border-radius(2px);
-		color: $main_color;
-		font-size: 14px;
-		text-align: center;
-		line-height: 36px;
+		@include border-radius(4px);
+		color:$main_color;
+		font-size:13px;
+		line-height:36px;
+	}
+	.unFollow{
+		@include animation(changeFollow 0.33s ease-in-out forwards);
 	}
 }
 .personalBox {
