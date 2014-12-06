@@ -26,10 +26,20 @@
 		position: relative;
 		width: 390px;
 		margin: 0 auto;
+		padding: 1px;
 		border: 3px solid #ccc;
 		@include border-radius(7px);
 		background: #fff;
 
+		&:before {
+			position: absolute;
+			top: 6px;
+			left: 6px;
+			color: #888;
+			font-size: 20px;
+			font-family: 'icomoon';
+			content: "\e60c";
+		}
 		&:after {
 			position: absolute;
 			top: 4px;
@@ -40,14 +50,13 @@
 		}
 	}
 	.search {
-		width: 390px;
+		width: 385px;
 		height: 34px;
 		margin: 0 auto;
 		padding-top: 3px;
 		padding-left: 40px;
 		border: none;
 		@include box-sizing;
-		@include img_set-PC2(6px, 7px);
 		@include appearance;
 		line-height: normal;
 		outline: 0;
@@ -62,18 +71,17 @@
 		position: absolute;
 		top: 224px;
 		left: 50%;
-		width: 88px;
-		height: 30px;
 		margin-left: 247px;
-		@include border-radius(2px);
-		background: $main_color;
+		padding: 3px 20px;
+		@include border-radius(4px);
+		@include bglinear($main_color, 5%);
 		color: #fff;
-		font-weight: bold;
-		font-size: 14px;
+		font-size: 0.875rem;
 		text-align: center;
 		line-height: 30px;
 
 		&:hover {
+			@include bglinear($main_color, 5%);
 			text-decoration: none;
 		}
 		&03 {
