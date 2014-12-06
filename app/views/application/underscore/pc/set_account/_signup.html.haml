@@ -1,14 +1,15 @@
 %script{type: "text/template", id: "signup-template"}
-  %header.SignupHeader
-    %h1.SignupHeaderTtl GAMR
-  %section.Signup
-    %h1.SignupHeader GAMRに登録する
+  %header.SigninHeader
+    %h1.SigninHeaderTtl GAMR
+  %section.Signin
+    %h1.SigninTtl GAMRに登録する
     %form
-      %input.SignupInput.username-input{type: "text", name: "username", placeholder: "ユーザー名", value: @current_provider_name}
-      %input.SignupInput.password-input{type: "password", name: "password", placeholder: "パスワード"}
-      %input.SignupInput.password-confirm-input{type: "password", name: "password_confirm", placeholder: "パスワード（確認用）"}
-      %label
-        %input.SignupInput.rule-checkbox{type: "checkbox"}
+      %input.SigninInput.username-input{type: "text", name: "username", placeholder: "ユーザー名"}
+      %input.SigninInput.password-input{type: "password", name: "password", placeholder: "パスワード"}
+      %input.SigninInput.password-confirm-input{type: "password", name: "password_confirm", placeholder: "パスワード（確認用）"}
+      %label.SignupLabel
+        %input.SignupCheckbox.rule-checkbox{type: "checkbox"}
         %a.SignupLink{href: ""} 利用規約
         に同意する
-      %a.signup-btn{href: "#"} 登録する
+    %p.SigninBtnWrap
+      %a.SigninBtn.signin-btn{href: ""} 登録する

@@ -2,10 +2,16 @@
   %header.SignupHeader
     %h1.SignupHeaderTtl GAMR
   %section.Signup
-    %h1.SignupHeader TwitterでGAMRを始める
+    %h1.SignupTtl ようこそ！”username”さん
+    %figure.SignupImgWrap
+      %img.SignupImg{src: "", width: "140", height: "140", alt: "アカウント画像"}
     %p.SignupBtnWrap
-      %a.SignupBtn{href: "/users/new#signin"} GAMRとつなげる
-    %p.SignupText すでにGAMR IDをお持ちの場合は、Twitterアカウントと接続することで、TwitterアカウントでGAMRにログインできるようになります。
+      %a.SignupBtn{href: "/users/new#signin"} 新しくアカウントをつくる
+    %p.SignupText
+      新しくGAMRのアカウントを作成して、Twitterアカウントと接続します。
+      %br
+      作成したGAMRのアカウントには、Twitterアカウントでログインできます。
     %p.SignupBtnWrap
-      %a.SignupBtn{href: "/users/new#signup"} 新しくGAMR IDをつくる
-    %p.SignupText 新しくGAMR IDを作成して、Twitterアカウントと接続します。作成したGAMRアカウントにはTwitterアカウントでログインできます。
+      %a.SignupBtn{href: "/users/new#signup"} GAMRとつなげる
+    %p.SignupText
+      すでにGAMRのアカウントをお持ちの場合は、Twitterアカウントと接続することで、TwitterアカウントでGAMRにログインできるようになります。

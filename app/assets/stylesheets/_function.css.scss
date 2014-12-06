@@ -82,6 +82,11 @@ $support-opera  : true;
   -webkit-box-shadow: $side $top $shade $spread $color;
   box-shadow: $side $top $shade $spread $color;
 }
+@mixin bglinear($color, $lighten) {
+  background: -webkit-linear-gradient(lighten($color, $lighten), $color);
+  background: -o-linear-gradient(lighten($color, $lighten), $color);
+  background: linear-gradient(lighten($color, $lighten), $color);
+}
 @mixin font-weight($size, $color) {
     font-weight:$size;
     -webkit-text-stroke: $size $color;
