@@ -25,7 +25,7 @@
     },
     signup: function () {
       if (this.username_input.val() != "" && this.password_input.val() != "" && this.password_confirm_input.val() != "") {
-        if (this.password_input.val() == this.password_confirm_input.val()) {
+        if (this.password_input.val() === this.password_confirm_input.val()) {
 
         }
       }

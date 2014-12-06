@@ -1,5 +1,7 @@
 class Api::UsersController < ApplicationController
+  skip_before_action :auth, only: [:create]
   before_action :set_user, only: [:update]
+  before_action :auth_provider, only: [:create]
 
   def index
     type = params[:type]
@@ -13,6 +15,16 @@ class Api::UsersController < ApplicationController
       @users = User.get_followers(@current_user, params[:user_id], page)
     when "activity"
       @users = User.get_activity(@current_user)
+    end
+  end
+
+  def create
+    user = User.create_with_password(user_params)
+    if user
+      session[:current_user_id] = user[:id]
+      @result = user[:id]
+    else
+      @result = false
     end
   end
 
@@ -34,7 +46,7 @@ class Api::UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :introduction, :place, :photo_path, :place)
+    params.require(:user).permit(:username, :introduction, :place, :photo_path, :email, :password)
   end
 
   def set_user

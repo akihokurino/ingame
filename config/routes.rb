@@ -2,7 +2,7 @@ Ingame::Application.routes.draw do
   root to: 'posts#index'
   match '/*path' => 'application#cors_preflight_check', :via => :options
 
-  resources :users, only: ["show", "edit", "update", "new", "create"] do
+  resources :users, only: ["show", "edit", "update", "new"] do
     collection do
       get "login"
       get "logout"
@@ -33,7 +33,7 @@ Ingame::Application.routes.draw do
     end
     resources :post_likes, only: ["create", "destroy"], format: "json"
     resources :game_likes, only: ["create", "destroy"], format: "json"
-    resources :users, only: ["index", "update"], format: "json" do
+    resources :users, only: ["index", "update", "create"], format: "json" do
       collection do
         get "search"
         post "tmp_upload"

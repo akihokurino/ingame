@@ -34,6 +34,12 @@ class ApplicationController < ActionController::Base
 		redirect_to login_users_path unless @current_user
 	end
 
+	def auth_provider
+    unless session[:current_provider_name]
+      redirect_to login_users_path
+    end
+  end
+
 	def current_user?(user)
 		(@current_user[:id] == user[:id]) ? true : false
 	end

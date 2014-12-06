@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  skip_before_action :auth, only: [:login, :term, :privacy, :new, :create]
+  skip_before_action :auth, only: [:login, :term, :privacy, :new]
   before_action :set_user, only: [:show, :edit, :update]
-  before_action :auth_provider, only: [:new, :create]
+  before_action :auth_provider, only: [:new]
 
   def login
   end
@@ -18,9 +18,6 @@ class UsersController < ApplicationController
 
   def new
     @current_provider_name = session[:current_provider_name]
-  end
-
-  def create
   end
 
   def edit
@@ -48,16 +45,10 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :introduction, :place, :photo_path, :place)
+    params.require(:user).permit(:username, :introduction, :place, :photo_path, :email, :password)
   end
 
   def set_user
     @user = User.find(params[:id])
-  end
-
-  def auth_provider
-    unless session[:current_provider_name]
-      redirect_to login_users_path
-    end
   end
 end

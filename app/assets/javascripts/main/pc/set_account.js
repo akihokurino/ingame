@@ -12,9 +12,44 @@
   var SignupView = Backbone.View.extend({
     el: $(".set-account-page"),
     template: _.template($("#signup-template").html()),
+    events: {
+      "click .signup-btn": "signup"
+    },
     initialize: function () {
       this.$el.html("");
       this.$el.append(this.template);
+
+      this.username_input         = this.$(".username-input");
+      this.password_input         = this.$(".password-input");
+      this.password_confirm_input = this.$(".password-confirm-input");
+    },
+    signup: function () {
+      if (this.username_input.val() != "" && this.password_input.val() != "" && this.password_confirm_input.val() != "") {
+        if (this.password_input.val() === this.password_confirm_input.val()) {
+          var data = {
+            "user": {
+              "username": this.username_input.val(),
+              "password": this.password_input.val(),
+              "password_confirm": this.password_confirm_input.val()
+            }
+          }
+
+          $.ajax({
+            type: "POST",
+            url: "/api/users",
+            data: data,
+            success: function (data) {
+              if (data.result) {
+                location.href = "/users/" + data.result + "/setting#first";
+              }
+            },
+            error: function () {
+
+            }
+          })
+          console.log(data);
+        }
+      }
     }
   })
 
