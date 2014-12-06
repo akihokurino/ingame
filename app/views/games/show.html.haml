@@ -28,7 +28,7 @@
           %li.item
             %span.gameInfoListItemInner リリース日
             = @game.release_day
-        %a.amazonBtn{href: ""} Amazonで見る
+        %a.amazonBtn{href: "http://www.amazon.co.jp/s/ref=nb_sb_noss_1?__mk_ja_JP=カタカナ&url=search-alias%3Daps&field-keywords=#{@game.title}", target: "blank"} Amazonで検索する
         .reviewBox
           %ul.starList
             - diff = 5 - @game.avg_rate.to_i
