@@ -20,6 +20,7 @@
       "keypress .game-title-input": "search"
     },
     template: _.template($("#game-search-template").html()),
+    text_template: _.template($("#result-text-template").html()),
     initialize: function () {
       this.$el.html("");
       this.$el.append(this.template);
@@ -53,6 +54,10 @@
                 that.game_results_view.collection.add(game_result);
               }
             }
+
+            that.$(".result-area").html((that.text_template({
+              result_count: response.count
+            })));
           },
           error: function () {
 
@@ -106,6 +111,7 @@
       "keypress .username-input": "search"
     },
     template: _.template($("#user-search-template").html()),
+    text_template: _.template($("#result-text-template").html()),
     initialize: function () {
       this.$el.html("");
       this.$el.append(this.template);
@@ -158,6 +164,10 @@
                 that.user_results_view.collection.add(user_result);
               }
             }
+
+            that.$(".result-area").html((that.text_template({
+              result_count: response.count
+            })));
           },
           error: function () {
 
