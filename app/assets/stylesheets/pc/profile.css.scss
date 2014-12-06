@@ -234,7 +234,7 @@ html {
       margin-left: 287px;
       @include box-shadow(0, 2px, 0, 0, darken($main_color,10%));
       @include border-radius(3px);
-      @include bglinear($main_color, 5%);
+      @include bglinear(lighten($main_color, 5%), $main_color);
       color: #fff;
       font-weight: bold;
       font-size: 1.125rem;
@@ -243,9 +243,7 @@ html {
       cursor: pointer;
 
       &:hover {
-        background: -webkit-linear-gradient($main_color, lighten($main_color, 5%));
-        background: -o-linear-gradient($main_color, lighten($main_color, 5%));
-        background: linear-gradient($main_color, lighten($main_color, 5%));
+        @include bglinear($main_color, lighten($main_color, 5%));
       }
     }
   }

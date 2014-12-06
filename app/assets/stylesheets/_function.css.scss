@@ -82,10 +82,10 @@ $support-opera  : true;
   -webkit-box-shadow: $side $top $shade $spread $color;
   box-shadow: $side $top $shade $spread $color;
 }
-@mixin bglinear($color, $lighten) {
-  background: -webkit-linear-gradient(lighten($color, $lighten), $color);
-  background: -o-linear-gradient(lighten($color, $lighten), $color);
-  background: linear-gradient(lighten($color, $lighten), $color);
+@mixin bglinear($from, $to) {
+  background: -webkit-linear-gradient($from, $to);
+  background: -o-linear-gradient($from, $to);
+  background: linear-gradient($from, $to);
 }
 @mixin font-weight($size, $color) {
     font-weight:$size;

@@ -64,7 +64,7 @@
     height: 30px;
     margin-left: 113px;
     @include border-radius(2px);
-    @include bglinear($main_color, 5%);
+    @include bglinear(lighten($main_color, 5%), $main_color);
     color: #fff;
     font-weight: bold;
     font-size: .875rem;
@@ -74,9 +74,7 @@
 
     &:hover {
       text-decoration: none;
-      background: -webkit-linear-gradient($main_color, lighten($main_color, 5%));
-      background: -o-linear-gradient($main_color, lighten($main_color, 5%));
-      background: linear-gradient($main_color, lighten($main_color, 5%));
+      @include bglinear($main_color, lighten($main_color, 5%));
     }
   }
   /*---   .sortBox   ---*/
