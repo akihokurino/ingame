@@ -3,6 +3,9 @@
 
 /*---   .mainContent   ---------------------------*/
 .mainContent {
+  padding-bottom: 100px;
+  background: #eee;
+
   /*---   .profileBox   ----------*/
   .profileBox {
     background: url(/assets/pc/default_cover.png) no-repeat top center;
@@ -50,7 +53,7 @@
   .profileEditBox {
     position: relative;
     width: 580px;
-    margin: 28px auto 100px;
+    margin: 28px auto 0;
     padding: 10px 10px 30px;
     border: 1px solid #e2e2e2;
     @include border-radius(3px);
