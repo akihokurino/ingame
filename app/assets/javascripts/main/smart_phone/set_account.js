@@ -23,7 +23,7 @@
       this.password_input         = this.$(".password-input");
       this.password_confirm_input = this.$(".password-confirm-input");
     },
-    signup: function () {
+    signup: function (e) {
       e.preventDefault();
 
       if (this.username_input.val() != "" && this.password_input.val() != "" && this.password_confirm_input.val() != "") {
