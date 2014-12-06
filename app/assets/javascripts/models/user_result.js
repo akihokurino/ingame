@@ -4,7 +4,8 @@ var UserResult = Backbone.Model.extend({
     "username":     "",
     "introduction": "",
     "photo_path":   "",
+    "logs_count":   "",
     "place":        "",
-    "i_followed":   "",
+    "i_followed":   ""
   }
 })

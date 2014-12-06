@@ -13,7 +13,10 @@
     el: $(".set-account-page"),
     template: _.template($("#signup-template").html()),
     events: {
-      "click .signup-btn": "signup"
+      "click .signup-btn": "signup",
+      "keypress .username-input": "signupWithEnter",
+      "keypress .password-input": "signupWithEnter",
+      "keypress .password-confirm-input": "signupWithEnter"
     },
     initialize: function () {
       this.$el.html("");
@@ -23,9 +26,14 @@
       this.password_input         = this.$(".password-input");
       this.password_confirm_input = this.$(".password-confirm-input");
     },
+    signupWithEnter: function (e) {
+      if (e.which == 13) {
+        e.preventDefault();
+        this.signup(e);
+      }
+    },
     signup: function (e) {
       e.preventDefault();
-
       if (this.username_input.val() != "" && this.password_input.val() != "" && this.password_confirm_input.val() != "") {
         if (this.password_input.val() === this.password_confirm_input.val()) {
           var data = {
@@ -59,7 +67,9 @@
     el: $(".set-account-page"),
     template: _.template($("#signin-template").html()),
     events: {
-      "click .signin-btn": "signin"
+      "click .signin-btn": "signin",
+      "keypress .username-input": "signinWithEnter",
+      "keypress .password-input": "signinWithEnter"
     },
     initialize: function () {
       this.$el.html("");
@@ -67,6 +77,12 @@
 
       this.username_input         = this.$(".username-input");
       this.password_input         = this.$(".password-input");
+    },
+    signinWithEnter: function (e) {
+      if (e.which == 13) {
+        e.preventDefault();
+        this.signin(e);
+      }
     },
     signin: function (e) {
       e.preventDefault();

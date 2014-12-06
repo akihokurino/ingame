@@ -51,7 +51,7 @@ body {
 	}
 }
 .btn {
-	display:block;
+	display:inline-block;
 	padding:0 20px;
 	margin:0 auto;
 	border: none;
@@ -139,6 +139,10 @@ body {
 			@include clearfix;
 			padding:10px 0;
 			border-bottom: 1px solid $color_border;
+		}
+		img{
+			border:1px solid $color_border;
+			@include border-radius(50%);
 		}
 		.followBtn{
 			float:right;
