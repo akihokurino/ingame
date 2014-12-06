@@ -2,72 +2,72 @@
 
 /*---   .settingHeader   ---------------------------*/
 .settingHeader {
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 5;
-	width: 100%;
-	padding: 12px;
-	background: $color_black;
-	opacity: 0.95;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: 100%;
+  padding: 12px;
+  background: $color_black;
+  opacity: 0.95;
 
-	/*---   .settingHeaderInner   ----------*/
-	&Inner {
-		width: $width;
-		margin: 0 auto;
-		@include clearfix;
+  /*---   .settingHeaderInner   ----------*/
+  &Inner {
+    width: $width;
+    margin: 0 auto;
+    @include clearfix;
 
-		/*---   .logo   ---*/
-		.logo {
-			float: left;
-			width: 72px;
-			height: 25px;
-			background: url(/assets/pc/logo.png) no-repeat -24px -11px;
-			@include substitute;
-		}
-		/*---   .stepTxt   ---*/
-		.stepTxt {
-			float: right;
-			color: #fff;
-			font-size: 12px;
-			line-height: 26px;
-		}
-		/*---   .stepBar01, 02, 03   ---*/
-		$cntNum: 3;
-		@for $i from 1 through $cntNum {
-			.stepBar0#{$i} {
-				float: right;
-				position: relative;
-				width: 524px;
-				height: 24px;
-				@include border-radius(2px);
-				background: #222;
+    /*---   .logo   ---*/
+    .logo {
+      float: left;
+      width: 72px;
+      height: 25px;
+      background: url(/assets/pc/logo.png) no-repeat -24px -11px;
+      @include substitute;
+    }
+    /*---   .stepTxt   ---*/
+    .stepTxt {
+      float: right;
+      color: #fff;
+      font-size: 12px;
+      line-height: 26px;
+    }
+    /*---   .stepBar01, 02, 03   ---*/
+    $cntNum: 3;
+    @for $i from 1 through $cntNum {
+      .stepBar0#{$i} {
+        float: right;
+        position: relative;
+        width: 524px;
+        height: 24px;
+        @include border-radius(2px);
+        background: #222;
 
-				&:before {
-					position: absolute;
-					top: 4px;
-					left: 5px;
-					height: 16px;
-					@include border-radius(2px);
-					background: $main_color;
-					content: "";
-				}
-			}
-		}
-		.stepBar01 {
-			&:before {
-				width: 175px;
-			}
-		}
-		.stepBar02 {
-			&:before {
-				width: 350px;
-			}
-		}
-		.stepBar03 {
-			&:before {
-				width: 514px;
-			}
-		}
-	}
+        &:before {
+          position: absolute;
+          top: 4px;
+          left: 5px;
+          height: 16px;
+          @include border-radius(2px);
+          background: $main_color;
+          content: "";
+        }
+      }
+    }
+    .stepBar01 {
+      &:before {
+        width: 175px;
+      }
+    }
+    .stepBar02 {
+      &:before {
+        width: 350px;
+      }
+    }
+    .stepBar03 {
+      &:before {
+        width: 514px;
+      }
+    }
+  }
 }

@@ -5,49 +5,49 @@
 
 /*---   .mainContent   ----------*/
 .mainContent {
-	margin-top: 0;
+  margin-top: 0;
 }
 /*---   .termBox   ----------*/
 .termBox {
-	width: 100%;
-	padding: 20px 0 40px;
-	background: #f2f2f2;
-	line-height: 1.5;
+  width: 100%;
+  padding: 20px 0 40px;
+  background: #f2f2f2;
+  line-height: 1.5;
 
-	&Inner {
-		width: 960px;
-		margin: 0 auto;
-		padding: 16px 30px;
-		@include border-radius(3px);
-		@include box-sizing;
-		background: #fff;
-	}
-	.item {
-		margin-bottom: 28px;
+  &Inner {
+    width: 960px;
+    margin: 0 auto;
+    padding: 16px 30px;
+    @include border-radius(3px);
+    @include box-sizing;
+    background: #fff;
+  }
+  .item {
+    margin-bottom: 28px;
 
-		&:last-child {
-			margin-bottom: 0;
-		}
-	}
-	.termTtl {
-		font-weight: bold;
-		font-size: 1.125rem;
-	}
-	.termSubTtl {
-		font-weight: bold;
-		font-size: .875rem;
-	}
-	.termTxt {
-		color: #626262;
-		font-size: .875rem;
-	}
-	.numList {
-		color: #626262;
-		font-size: .875rem;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .termTtl {
+    font-weight: bold;
+    font-size: 1.125rem;
+  }
+  .termSubTtl {
+    font-weight: bold;
+    font-size: .875rem;
+  }
+  .termTxt {
+    color: #626262;
+    font-size: .875rem;
+  }
+  .numList {
+    color: #626262;
+    font-size: .875rem;
 
-		&Item {
-			margin-left: 1.5em;
-			list-style: decimal;
-		}
-	}
+    &Item {
+    margin-left: 1.5em;
+    list-style: decimal;
+    }
+  }
 }
