@@ -8,7 +8,7 @@
   width: 100%;
   padding: 10px 0;
   @include box-shadow(0, 0, 5px, 0, #c9c9ca);
-  background: $main_color;
+  background: $base_color;
   opacity: 0.95;
 
   &Inner {

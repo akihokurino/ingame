@@ -260,6 +260,9 @@
   				&:hover {
   					text-decoration: underline;
   				}
+          &.on {
+            color: $color_red;
+          }
   			}
   			.userComment {
   				overflow: hidden;
