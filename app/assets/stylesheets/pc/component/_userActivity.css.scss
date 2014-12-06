@@ -48,14 +48,14 @@
     font-size: 12px;
     line-height: 1rem;
   }
-  .follow-btn {
+  .followBtn {
     display: block;
     position: absolute;
     top: 0;
     right: 0;
     padding: 4px 6px;
     border: 1px solid $main_color;
-    @include border-radius(2px);
+    @include border-radius(4px);
     @include box-sizing;
     background: #fff;
     color: $main_color;
@@ -66,8 +66,17 @@
 
     &:hover {
       border: 1px solid #fff;
-      @include border-radius(2px);
-      background: $main_color;
+      @include bglinear($main_color, 5%);
+      color: #fff;
+    }
+  }
+  .unfollow {
+    border: 1px solid #fff;
+    @include bglinear($main_color, 5%);
+    color: #fff;
+
+    &:hover {
+      background: linear-gradient($main_color, lighten($main_color, 5%));
       color: #fff;
     }
   }

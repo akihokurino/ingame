@@ -74,7 +74,9 @@
 
     &:hover {
       text-decoration: none;
-      background: linear-gradient($main_color, lighten($main_color, 7%));;
+      background: -webkit-linear-gradient($main_color, lighten($main_color, 5%));
+      background: -o-linear-gradient($main_color, lighten($main_color, 5%));
+      background: linear-gradient($main_color, lighten($main_color, 5%));
     }
   }
   /*---   .sortBox   ---*/
