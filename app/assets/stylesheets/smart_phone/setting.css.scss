@@ -3,6 +3,21 @@
 @import "_clipBox.css.scss";
 
 /*---   common   ---------------------------*/
+@include keyframes(changeFollow){
+		0% {
+			width: 68px;
+			height: 34px;
+			font-size:12px;
+		}
+		100% {
+			width: 70px;
+			height: 36px;
+			color:#fff;
+			font-size:13px;
+			background:$main_color;
+		}
+}
+
 body {
 	text-align: center;
 }
@@ -120,59 +135,48 @@ body {
 		margin: 0 auto;
 		padding:0 10px;
 		text-align: left;
-		@include clearfix;
 		.item{
+			@include clearfix;
 			padding:10px 0;
 			border-bottom: 1px solid $color_border;
+		}
 		.followBtn{
 			float:right;
 			display:inline-block;
-			margin-top:4px;
-			padding:0 5px;
-			@include border-radius(4px);
-			font-size:12px;
-			line-height:2.5;
-		}
-		.follow,.reFollow{
-			color:$main_color;
+			margin-top:6px;
+			padding:0 10px;
 			border: 1px solid $main_color;
+			@include border-radius(4px);
+			color:$main_color;
+			font-size:13px;
+			line-height:36px;
 		}
 		.unFollow{
-			color:#fff;
-			background-color: $main_color;
-			&:active{
-				background: linear-gradient($main_color,lighten($main_color,5%));
-		}
-
+			@include animation(changeFollow 0.33s ease-in-out forwards);
 		}
 		.userImgWrap{
 			display:inline-block;
-			height: 40px;
+			height: 50px;
+			@include border-radius(50%);
 			vertical-align: middle;
 		}
 		.userInfo{
 			display:inline-block;
 			vertical-align: middle;
-			padding-left:10px;
+			padding-left:5px;
 			height:100%;
-			font-size:12px;
+			font-size:14px;
+			line-height:1.5;
 			.nameWrap{
 				font-weight:bold;
-				line-height:1.6;
 				.name{
 					color:$color_textBlack;
 				}
 			}
-			.icon-place{
-				display:inline-block;
-				margin-left:-2px;
-				color:$color_textGray;
-				font-size:14px;
-			}
-			.place{
-				display:inline-block;
+			.myGame{
 				color: $color_textGray;
 				vertical-align: top;
+				font-size:12px;
 			}
 		}
 		&:after{
@@ -181,7 +185,6 @@ body {
 			@include clearfix;
 		}
 	}
-}
 }
 
 
@@ -203,7 +206,6 @@ body {
 		@include clearfix;
 
 		.profImg {
-			border: 1px solid #e6e6e6;
 			@include border-radius(50%);
 		}
 		.btnBox {
@@ -259,10 +261,10 @@ body {
 
 	#thumbnail {
 		img {
-			width: 96px;
-			height: 96px;
-			border: 1px solid #e6e6e6;
+			width: 100px;
+			height: 100px;
 			@include border-radius(50%);
+			box-shadow:0 1px 4px rgba(0,0,0,0.4);
 		}
 	}
 }
