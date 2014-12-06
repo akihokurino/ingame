@@ -64,6 +64,9 @@
     initialize: function () {
       this.$el.html("");
       this.$el.append(this.template);
+
+      this.username_input = this.$(".username-input");
+      this.password_input = this.$(".password-input");
     },
     signin: function (e) {
       e.preventDefault();
