@@ -60,7 +60,7 @@
       margin-top: 52px;
       margin-left: 92px;
       border: 1px solid $main_color;
-      @include border-radius(2px);
+      @include border-radius(4px);
       @include box-sizing;
       background: #fff;
       color: $main_color;
