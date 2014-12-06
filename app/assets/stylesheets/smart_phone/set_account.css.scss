@@ -19,10 +19,12 @@ header{
 }
 .signup,.signin{
 	padding-top:45px;
+	background-color: $bg_color;
 }
 
 .loginBox{
 	padding:10px;
+	margin:5px;
 	background: #fff;
 	text-align: center;
 	@include box-sizing; 
@@ -64,7 +66,7 @@ header{
 			display:block;
 			font-size:22px;
 			line-height:30px;
-			background-color: $twitter_blue;
+			background: linear-gradient(lighten($twitter_blue,7%),$twitter_blue);
 			color:#fff;
 		}
 		.icon-facebook{
@@ -112,18 +114,19 @@ header{
 
 	.inputInfo{
 		text-align:center;
+		.inputWrap{
+			margin-bottom:10px;
+		}
+		input[placeholder],
+		[placeholder],
+		*[placeholder] {
+	      color: lighten($color_textGray,10%);
+	    }
+		input[type="text"]{
+			@include appearance;
+			color:$color_textBlack;
+		}
 	}
-	.inputWrap{
-		margin-bottom:10px;
-	}
-	input[type="text"]{
-		@include appearance;
-	}
-	input[placeholder],
-	[placeholder],
-	*[placeholder] {
-      color: lighten($color_textGray,10%);
-    }
 	.textInput{
 		display:block;
 		width: 100%;
