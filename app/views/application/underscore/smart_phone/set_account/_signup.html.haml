@@ -9,7 +9,9 @@
           %input.textInput.password-input{type: "text", name: "password", placeholder: "パスワード"}
         .inputWrap
           %input.textInput.password-confirm-input{type: "text", name: "password_confirm", placeholder: "パスワード（確認用）"}
-        %input.rule-checkbox{type:"checkbox"}
-        %a{href:""} 利用規約
-        同意する
-      %a.signup-btn{href:""} 登録する
+        .checkBoxWrap
+          %rabel
+            %input.rule-checkbox{type:"checkbox"}
+            %a{href:""} 利用規約
+            同意する
+      %a.signup-btn.btn{href:""} 登録する
