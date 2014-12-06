@@ -96,28 +96,39 @@ html {
 	min-width: 960px;
 	text-align: center;
 
-	section {
+	&Ttl {
+		background: $main_color;
+		color: #fff;
+		font-size: 1.5rem;
+		line-height: 3;
+		text-shadow: 1px 1px 0 rgba(darken($main_color,20%),0.7);
+		text-align: center;
+	}
+	&Item {
 		display: inline-block;
 		width: 30%;
+		padding: 20px 0;
 		color: $color_textBlack;
 		text-align: center;
 		vertical-align: top;
 
-		h1 {
+		&Ttl {
 			padding: 20px 0;
-			font-size: 28px;
+			font-size: 1.75rem;
 		}
 
-		p {
+		&Text {
 			display: inline-block;
-			padding: 10px 0;
-			width: 90%;
-			font-size: 16px;
-			line-height: 1.5;
+			padding: 15px 10px;
+			font-size: 1rem;
+			line-height: 1.5rem;
 			text-align: left;
 		}
-		.annotation {
-			font-size: 12px;
+		&Annotation {
+			padding: 0 10px;
+			font-size: 0.875rem;
+			line-height: 1.5rem;
+			text-align: left;
 		}
 	}
 }
@@ -125,10 +136,10 @@ html {
 	min-width: 960px;
 	background-color: $bg_color;
 
-	h1 {
+	&Ttl {
 		color: #4c4c4c;
-		margin: 20px;
-		font-size: 28px;
+		margin: 20px 0 40px;
+		font-size: 1.75rem;
 	}
 }
 
