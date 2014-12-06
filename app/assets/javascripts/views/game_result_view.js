@@ -54,6 +54,7 @@ var GameResultView = Backbone.View.extend({
           success: function (data) {
             that.model.set("i_registed", true);
             that.$el.addClass("registed");
+            $(".next-page").html("次へ");
           },
           error: function () {
 
