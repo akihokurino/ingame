@@ -4,11 +4,11 @@
   %section.Signup
     %h1.SignupHeader GAMRに登録する
     %form
-      %input.SignupInput.username-input{type: "text", placeholder: "ユーザーネーム", value: @current_provider_name}
-      %input.SignupInput{type: "password", name: "password", placeholder: "パスワード"}
-      %input.SignupInput{type: "password", name: "password_confirm", placeholder: "パスワード（確認用）"}
+      %input.SignupInput.username-input{type: "text", name: "username", placeholder: "ユーザー名", value: @current_provider_name}
+      %input.SignupInput.password-input{type: "password", name: "password", placeholder: "パスワード"}
+      %input.SignupInput.password-confirm-input{type: "password", name: "password_confirm", placeholder: "パスワード（確認用）"}
       %label
-        %input.SignupInput{type: "checkbox"}
+        %input.SignupInput.rule-checkbox{type: "checkbox"}
         %a.SignupLink{href: ""} 利用規約
         に同意する
-      %a{href: "#"} 登録する
+      %a.signup-btn{href: "#"} 登録する

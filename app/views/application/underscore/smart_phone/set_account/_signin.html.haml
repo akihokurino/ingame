@@ -4,7 +4,7 @@
       %h1 GAMRにログイン
       %form.inputInfo
         .inputWrap
-          %input.textInput{type: "text", name: "mail", placeholder: "メールアドレス"}
+          %input.textInput.username-input{type: "text", name: "username", placeholder: "ユーザー名"}
         .inputWrap
-          %input.textInput{type: "text", name: "password", placeholder: "パスワード"}
-      %a{href:""} ログイン
+          %input.textInput.password-input{type: "text", name: "password", placeholder: "パスワード"}
+      %a.signin-btn{href:""} ログイン
