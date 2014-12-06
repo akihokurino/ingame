@@ -271,8 +271,8 @@
       "click .main-unfollow-btn": "unfollow"
     },
     initialize: function () {
-      this.follow_btn_template   = _.template($("#follow-btn-template").html());
-      this.unfollow_btn_template = _.template($("#unfollow-btn-template").html());
+      this.follow_btn_template   = _.template($("#main-follow-btn-template").html());
+      this.unfollow_btn_template = _.template($("#main-unfollow-btn-template").html());
       this.user_id               = this.$el.data("userid");
     },
     follow: function () {
