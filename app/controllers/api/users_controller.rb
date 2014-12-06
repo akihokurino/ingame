@@ -23,7 +23,7 @@ class Api::UsersController < ApplicationController
     if current_user
       session[:current_user_id]     = current_user[:id]
       session[:current_provider_id] = nil
-      @result = user[:id]
+      @result = current_user[:id]
     else
       @result = false
     end
