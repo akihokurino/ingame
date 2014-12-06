@@ -161,8 +161,8 @@
       width: 140px;
       height: 30px;
       border: none;
-      @include border-radius(2px);
-      background: #929292;
+      @include border-radius(4px);
+      @include bglinear(lighten($main_color, 5%), $main_color);
       color: #fff;
       font-weight: bold;
       font-size: .875rem;
@@ -172,8 +172,7 @@
       cursor: pointer;
 
       &:hover {
-        @include bglinear(lighten($main_color, 5%), $main_color);
-        color: #fff;
+        @include bglinear($main_color, lighten($main_color, 5%));
       }
     }
   }
