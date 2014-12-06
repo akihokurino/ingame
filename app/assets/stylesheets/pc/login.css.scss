@@ -46,7 +46,7 @@ html {
     width: 250px;
     margin: 0 10px;
     padding: 0 10px;
-    @include border-radius(2px);
+    @include border-radius(4px);
     @include box-sizing;
     color: #ffffff;
     font-size: 1.125rem;
@@ -54,30 +54,30 @@ html {
     text-align: center;
   }
   .tw {
-    background: linear-gradient(lighten($twitter_blue,7%),$twitter_blue);
-    box-shadow: 0 2px 0 darken($twitter_blue,10%);
+    @include bglinear(lighten($twitter_blue, 7%), $twitter_blue);
+    @include box-shadow(0, 2px, 0, 0, darken($twitter_blue,10%));
 
     &:hover {
       text-decoration: none;
-      @include bglinear($twitter_blue, 7%);
+      @include bglinear($twitter_blue, lighten($twitter_blue, 7%));
     }
   }
   .fb {
-    background: linear-gradient(lighten($facebook_blue,10%),$facebook_blue);
-    box-shadow: 0 2px 0 darken($facebook_blue,10%);
+    @include bglinear(lighten($facebook_blue, 10%), $facebook_blue);
+    @include box-shadow(0, 2px, 0, 0, darken($facebook_blue, 10%));
 
     &:hover {
       text-decoration: none;
-      @include bglinear($facebook_blue, 10%);
+      @include bglinear($facebook_blue, lighten($facebook_blue, 10%));
     }
   }
   .gamr {
-    background: linear-gradient(lighten($main_color,7%),$main_color);
-    box-shadow:0 2px 0 darken($main_color,10%);
+    @include bglinear(lighten($main_color, 7%), $main_color);
+    @include box-shadow(0, 2px, 0, 0, darken($main_color, 10%));
 
     &:hover {
       text-decoration: none;
-      @include bglinear($main_color, 7%);
+      @include bglinear($main_color, lighten($main_color, 7%));
     }
   }
   .icon-twitter, .icon-facebook {

@@ -288,7 +288,7 @@
       padding-left: 35px;
       padding-right: 10px;
       border: 1px solid $main_color;
-      @include border-radius(2px);
+      @include border-radius(4px);
       background: #fff;
       color: $main_color;
       font-size: .875rem;
