@@ -9,8 +9,19 @@ a {
 }
 
 /*---   signUp01-03  ---------------------------*/	
+header{
+	height:45px;
+	background-color: $main_color;
+	.imgWrap{
+		width: 120px;
+		margin:0 auto;
+	}
+}
+.signup,.signin{
+	padding-top:45px;
+}
+
 .loginBox{
-	margin:10px 5px;
 	padding:10px;
 	background: #fff;
 	text-align: center;
@@ -29,9 +40,43 @@ a {
 		font-weight:bold;
 	}
 	.imgWrap{
+		position:relative;
+		width: 100px;
+		margin:0 auto;
 		img{
 			border-radius:50%;
 			box-shadow:0 1px 4px rgba(0,0,0,0.4);
+		}
+		.serviceLogo{
+			position:absolute;
+			overflow:hidden;
+			display:block;
+			width: 30px;
+			height: 30px;
+			border: 2px solid #fff;
+			@include border-radius(50%);
+			box-shadow:0 1px 4px rgba(0,0,0,0.4);
+			top:-5px;
+			left:-5px;
+			z-index:1;
+		}
+		.icon-twitter{
+			display:block;
+			font-size:22px;
+			line-height:30px;
+			background-color: $twitter_blue;
+			color:#fff;
+		}
+		.icon-facebook{
+			display:block;
+			font-size:40px;
+			line-height:30px;
+			margin-left:-1px;
+			background-color: #fff;
+			color:$facebook_blue;
+			&:before{
+				margin-left:-5px;
+			}
 		}
 	}
 	.btnWrap{
@@ -39,20 +84,20 @@ a {
 		font-size:14px;
 	}
 	.btn {
-	display: inline-block;
-	width: 80%;
-	margin: 0 auto;
-	padding:0 10px;
-	@include border-radius(4px);
-	@include box-sizing;
-	color: #ffffff;
-	font-size: 16px;
-	line-height:3;
-	text-shadow: 0px -1px 0 rgba(0,0,0,0.35);
-	text-align: center;
-	text-decoration: none;
-	background: linear-gradient(lighten($main_color,10%),$main_color);
-	border: 1px solid #000;
+		display: inline-block;
+		width: 80%;
+		margin: 0 auto;
+		padding:0 10px;
+		@include border-radius(4px);
+		@include box-sizing;
+		color: #ffffff;
+		font-size: 16px;
+		line-height:3;
+		text-shadow: 0px -1px 0 rgba(0,0,0,0.35);
+		text-align: center;
+		text-decoration: none;
+		background: linear-gradient(lighten($main_color,7%),$main_color);
+		box-shadow:0 2px 0 darken($main_color,10%);
 		&:active{
 			background: linear-gradient($main_color,lighten($main_color,7%));
 		}
@@ -96,5 +141,8 @@ a {
 		margin-bottom:10px;
 		color:$color_textGray;
 		font-size:12px;
+		a{
+			color:$color_textGray;
+		}
 	}
 }

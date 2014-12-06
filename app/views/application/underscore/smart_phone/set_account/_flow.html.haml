@@ -1,7 +1,14 @@
 %script{type: "text/template", id: "flow-template"}
   .signup
+    %header
+      .imgWrap
+        = image_tag("logo@2x.png", width:"120" )
     .loginBox
       %h1 ようこそ！”username”さん
+      .imgWrap
+        = image_tag("smart_phone/default.png", width:"100" )
+        .serviceLogo.icon-twitter
+      %h2 TwitterでGAMRにログイン
       .btnWrap
         %a.btn{href: "/users/new#signup"} 新しくアカウントをつくる
         %p 新しくGAMRのアカウントを作成して、Twitterアカウントと接続します。作成したGAMRのアカウントには、Twitterアカウントでログインできます。

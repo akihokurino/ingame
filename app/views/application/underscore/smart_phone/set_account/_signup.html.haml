@@ -1,5 +1,8 @@
 %script{type: "text/template", id: "signup-template"}
   .signup
+    %header
+      .imgWrap
+        = image_tag("logo@2x.png", width:"120" )
     .loginBox
       %h1 GAMRに登録する
       %form.inputInfo
@@ -13,5 +16,5 @@
           %rabel
             %input.rule-checkbox{type:"checkbox"}
             %a{href:""} 利用規約
-            同意する
+            %span に同意する
       %a.signup-btn.btn{href:""} 登録する
