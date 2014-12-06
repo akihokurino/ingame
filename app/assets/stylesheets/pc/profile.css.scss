@@ -233,7 +233,7 @@ html {
       height: 40px;
       margin-left: 287px;
       @include box-shadow(0, 2px, 0, 0, darken($main_color,10%));
-      @include border-radius(3px);
+      @include border-radius(4px);
       @include bglinear(lighten($main_color, 5%), $main_color);
       color: #fff;
       font-weight: bold;

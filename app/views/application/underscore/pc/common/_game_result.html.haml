@@ -1,7 +1,7 @@
 %script{type: "text/template", id: "game-result-template"}
   {{ if (current_url) { }}
   %article.gameList
-    %a{href: "{{= current_url }}"}
+    %a.gameListLink{href: "{{= current_url }}"}
       %figure.gameImgWrap
         / %img.gameImg{src: "/game_photos/{{= photo_path }}", width: "121", alt: ""}
         {{ if (photo_url) { }}

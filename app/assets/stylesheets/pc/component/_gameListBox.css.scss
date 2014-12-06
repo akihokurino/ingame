@@ -10,12 +10,6 @@
     width: 960px;
     margin: 0 auto;
     font-size: 0; /* inline-block用 */
-    //	    -webkit-column-count: 6;
-    //	    -webkit-column-gap: 10px;
-    //	    -webkit-column-fill: auto;
-    column-count: 6;
-    column-gap: 15px;
-    column-fill: auto;
 
     .item {
       display: inline-block;
@@ -31,12 +25,19 @@
   .gameList {
     position: relative;
 
+    &Link {
+      color: $color_textBlack;
+      
+      &:hover {
+        color: $main_color;
+        text-decoration: none;
+      }
+    }
     .ttl {
       overflow: hidden;
       height: 35px;
       padding: 5px;
       @include box-sizing;
-      color: #414141;
       font-weight: bold;
       font-size: 10px;
       line-height: 1.5;
@@ -47,7 +48,7 @@
       left: -8px;
       padding: 5px 10px;
       border-radius: 2px;
-      @include bglinear($main_color, 7%);
+      @include bglinear(lighten($main_color, 7%), $main_color);
       color: #fff;
       font-size: .875rem;
 
@@ -140,7 +141,7 @@
   }
   .registed .statusWrap {
     background: 1px solid #fff;
-    @include bglinear($main_color, 7%);
+    @include bglinear(lighten($main_color, 7%), $main_color);
   }
   .status {
     display: block;
