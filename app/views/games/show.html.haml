@@ -15,35 +15,36 @@
           = image_tag @game.photo_url, width: 240, class: "gameImg", alt: "ゲームパッケージ画像"
         - else
           = image_tag "/game_photos/default.png", width: 240, class: "gameImg", alt: "ゲームパッケージ画像"
+        .amazonLink
+          %a.amazonBtn{href: "http://www.amazon.co.jp/s/ref=nb_sb_noss_1?__mk_ja_JP=カタカナ&url=search-alias%3Daps&field-keywords=#{@game.title}", target: "blank"}
+            %span.icon-search Amazonで検索する
       .gameInfoBox
-        %h1.gameTtl
-          = @game.title
-        %ul.gameInfoList
-          %li.item.maker
-            .itemName メーカー
-            .itemContent
-              = @game.maker
-          %li.item.hard
-            .itemName ハード
-            .itemContent
-              = @game.device
-          %li.item.releaseDay
-            .itemName 発売日
-            .itemContent
-              = @game.release_day
-          %li.item.review
-            .itemName 評価
+        .gameInfoBoxInner
+          %h1.gameTtl
+            = @game.title
+          %ul.gameInfoList
+            %li.item.maker
+              .itemName メーカー
+              .itemContent
+                = @game.maker
+            %li.item.hard
+              .itemName ハード
+              .itemContent
+                = @game.device
+            %li.item.releaseDay
+              .itemName 発売日
+              .itemContent
+                = @game.release_day
+        .reviewBox
+          .review
+            %p.value
+              = @game.avg_rate
             %ul.starList
               - diff = 5 - @game.avg_rate.to_i
               - @game.avg_rate.to_i.times do |i|
                 %li.starOn.icon-star
               - diff.times do |i|
                 %li.starOff.icon-star
-            %span.value
-              = @game.avg_rate
-        .amazonLink
-          %a.amazonBtn{href: "http://www.amazon.co.jp/s/ref=nb_sb_noss_1?__mk_ja_JP=カタカナ&url=search-alias%3Daps&field-keywords=#{@game.title}", target: "blank"}
-            %span.icon-search Amazonで検索する
         = render partial: "select_btns", locals: {game: @game}
       %section.sortBox
         %h3.sortTtl このゲームに対するポスト
