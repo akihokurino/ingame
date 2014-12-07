@@ -151,4 +151,10 @@
     cursor: pointer;
     outline: 0;
   }
+  #thumbnail {
+    img {
+      width: 151px;
+      height: 151px;
+    }
+  }
 }
