@@ -22,8 +22,12 @@
 		}
 		.imgWrap{
 			width: 100%;
+			text-align: center;
+
 			.gameImg{
-				width: 100%;
+				max-width: 100%;
+				height: auto;
+				max-height: 300px;
 				border: 1px solid #eee;
 				@include box-sizing;
 			}
@@ -112,6 +116,64 @@
 			.item {
 				display:inline-block;
 				text-align:center;
+			}
+		}
+		.gameSummary{
+			label {
+				position: relative;
+			    display: inline-block;
+			    padding: 10px;
+			    margin-bottom: 10px;
+			    width:100%;
+			    @include box-sizing;
+			    border-bottom: 1px solid $color_border;
+			    color: $color_textBlack;
+			    font-size:16px;
+			    font-weight:bold;
+			    text-align:left;
+			    &:before{
+			    	position: relative;
+					content:"";
+					display:inline-block;
+					margin-right:10px;
+					width:8px;
+					height:8px;
+					border-color: $color_textBlack;
+					border-right:solid 2px;
+					border-bottom:solid 2px;
+					-webkit-transform: rotate(45deg);
+					   -moz-transform: rotate(45deg);
+					    -ms-transform: rotate(45deg);
+					     -o-transform: rotate(45deg);
+					        transform: rotate(45deg);
+					top:-4px;
+			    }
+			}
+
+			input[type="checkbox"].expand{
+			    display: none;
+			}
+
+			p{
+			    margin: 0;
+			    padding: 0 10px;
+				font-size:12px;
+				color:$color_textBlack;
+			    -webkit-transition: all 0.5s;
+			    -moz-transition: all 0.5s;
+			    -ms-transition: all 0.5s;
+			    -o-transition: all 0.5s;
+			    transition: all 0.5s;
+			    list-style: none;
+			}
+
+			input[type="checkbox"].expand + p{
+			    height: 0;
+			    overflow: hidden;
+			}
+
+			input[type="checkbox"].expand:checked + p{
+			    height: auto;
 			}
 		}
 		.comment {

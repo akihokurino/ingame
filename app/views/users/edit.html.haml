@@ -15,8 +15,9 @@
     .profileLeftColumn
       %h1.userName
         = @user.username
-      %p.userPlace
-        = @user.place
+      - if @user.place
+        %p.userPlace
+          = @user.place
       %p.userInfo
         = @user.introduction
     .profileEditBox
