@@ -44,13 +44,12 @@
     .profileLeftColumn
       %h1.userName
         = @user.username
-      %p.userPlace
-        = @user.place
+      - if @user.place
+        %p.userPlace
+          = @user.place
       %p.userInfo
         = @user.introduction
     .profileRightColumn.profile-timeline
-      %form.libSearchWrap
-        %input.libSearch.search-log{placeholder: "ライブラリ内をキーワードで検索"}
 
 
 
