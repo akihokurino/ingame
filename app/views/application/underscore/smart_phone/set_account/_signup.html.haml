@@ -18,7 +18,7 @@
         .checkBoxWrap
           %label
             %input.rule-checkbox{type:"checkbox"}
-            %a{href:""} 利用規約
+            = link_to "利用規約", term_users_path, target: "blank"
             %span に同意する
           %p.error-log.rule-error.errorMassage
       %a.signup-btn.btn{href:""} 登録する
