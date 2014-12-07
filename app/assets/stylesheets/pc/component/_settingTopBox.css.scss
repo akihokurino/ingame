@@ -33,7 +33,7 @@
 
     &:before {
       position: absolute;
-      top: 6px;
+      top: 8px;
       left: 6px;
       color: #888;
       font-size: 1.25rem;
@@ -91,7 +91,7 @@
     line-height: 30px;
 
     &:hover {
-      @include bglinear(lighten($main_color, 5%), $main_color);
+      @include bglinear($main_color, lighten($main_color, 5%));
       text-decoration: none;
     }
     &03 {
@@ -105,7 +105,7 @@
       line-height: 30px;
 
       &:hover {
-        @include bglinear(lighten($main_color, 5%), $main_color);
+        @include bglinear($main_color, lighten($main_color, 5%));
         text-decoration: none;
       }
     }
