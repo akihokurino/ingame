@@ -65,6 +65,8 @@
       var error = {};
       if (this.username_input.val() == "") {
         error.username = "empty";
+      } else if (this.username_input.val().length > 15) {
+        error.username = "toolong";
       }
       if (this.password_input.val() == "") {
         error.password = "empty";
@@ -87,6 +89,9 @@
             case "username":
               if (error[key] == "empty") {
                 this.$el.find(".username-error").html("ユーザー名を入力して下さい。");
+              }
+              if (error[key] == "toolong") {
+                this.$el.find(".username-error").html("ユーザー名は１５文字以内で入力して下さい。");
               }
               break;
             case "password":
