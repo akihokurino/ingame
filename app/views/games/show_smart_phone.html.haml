@@ -42,10 +42,12 @@
               %a.amazonBtn{href: "http://www.amazon.co.jp/s/ref=nb_sb_noss_1?__mk_ja_JP=カタカナ&url=search-alias%3Daps&field-keywords=#{@game.title}", target: "blank"} Amazonで検索する
             %li
               %a.youtubeBtn{href: "https://www.youtube.com/results?search_query=#{@game.title}", target: "blank"} Youtubeで検索する
-          .gameSummary
-            %label{for: "summary"} 概要
-            %input.expand{type: "checkbox", id: "summary"}
-            %p ここに概要。ここに概要。ここに概要。ここに概要。ここに概要。ここに概要。ここに概要。ここに概要。ここに概要。ここに概要。ここに概要。ここに概要。ここに概要。ここに概要。ここに概要。ここに概要。ここに概要。ここに概要。
+          - if @game.wiki
+            .gameSummary
+              %label{for: "summary"} 概要
+              %input.expand{type: "checkbox", id: "summary"}
+              %p
+                = @game.wiki
     = render partial: "select_btns", locals: {game: @game}
   .boxTtl
     %h2 このゲームに対するポスト#{@game.posts_count}件

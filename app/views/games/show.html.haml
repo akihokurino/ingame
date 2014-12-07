@@ -48,10 +48,12 @@
               .itemName 発売日
               .itemContent
                 = @game.release_day
-          .gameSummary
-            %label{for: "summary"} 概要
-            %input.expand{type: "checkbox", id: "summary"}
-            %p ここに概要。ここに概要。ここに概要。ここに概要。ここに概要。ここに概要。ここに概要。ここに概要。ここに概要。ここに概要。ここに概要。ここに概要。ここに概要。ここに概要。ここに概要。ここに概要。ここに概要。ここに概要。
+          - if @game.wiki
+            .gameSummary
+              %label{for: "summary"} 概要
+              %input.expand{type: "checkbox", id: "summary"}
+              %p
+                = @game.wiki
         = render partial: "select_btns", locals: {game: @game}
       %section.sortBox
         %h3.sortTtl このゲームに対するポスト
