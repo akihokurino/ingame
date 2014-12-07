@@ -291,27 +291,10 @@ html {
       font-size: 0.875rem;
       line-height: 1.5rem;
     }
-  }
-  .profileRightColumn {
-    float: right;
-    width: 660px;
-
-    > * {
-      width: 100%;
-    }
-    .gameListBox {
-      width: 100%;
-    }
-    .postBox {
-      margin: 0 auto 18px 0;
-    }
-    .friendListWrap {
-      width: 100%;
-    }
     /*---   .libSearchWrap   ---*/
     .libSearchWrap {
       position: relative;
-      width: 390px;
+      width: 100%;
       margin-top: 20px;
       padding: 1px;
       border: 3px solid #ccc;
@@ -337,7 +320,7 @@ html {
       }
     }
     .libSearch {
-      width: 380px;
+      width: 98%;
       height: 34px;
       margin: 0 auto;
       padding-left: 40px;
@@ -353,6 +336,23 @@ html {
         font-size: .875rem;
         line-height: 1.75rem;
       }
+    }
+  }
+  .profileRightColumn {
+    float: right;
+    width: 660px;
+
+    > * {
+      width: 100%;
+    }
+    .gameListBox {
+      width: 100%;
+    }
+    .postBox {
+      margin: 0 auto 18px 0;
+    }
+    .friendListWrap {
+      width: 100%;
     }
   }
 }
