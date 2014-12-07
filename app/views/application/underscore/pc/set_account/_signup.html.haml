@@ -5,11 +5,15 @@
     %h1.SignupTtl GAMRに登録する
     %form
       %input.SigninInput.username-input{type: "text", name: "username", placeholder: "ユーザー名", value: @current_provider[:username]}
+      %p.error-log.username-error
       %input.SigninInput.password-input{type: "password", name: "password", placeholder: "パスワード"}
+      %p.error-log.password-error
       %input.SigninInput.password-confirm-input{type: "password", name: "password_confirm", placeholder: "パスワード（確認用）"}
+      %p.error-log.password-confirm-error
       %label.SignupLabel
         %input.SignupCheckbox.rule-checkbox{type: "checkbox"}
         %a.SignupLink{href: ""} 利用規約
         に同意する
+      %p.error-log.rule-error
     %p.SignupBtnWrap
       %a.SignupBtn.signup-btn{href: ""} 登録する

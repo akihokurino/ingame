@@ -22,35 +22,92 @@
       this.username_input         = this.$(".username-input");
       this.password_input         = this.$(".password-input");
       this.password_confirm_input = this.$(".password-confirm-input");
+      this.rule_checkbox          = this.$(".rule-checkbox");
     },
     signup: function (e) {
       e.preventDefault();
 
-      if (this.username_input.val() != "" && this.password_input.val() != "" && this.password_confirm_input.val() != "") {
-        if (this.password_input.val() === this.password_confirm_input.val()) {
-          var data = {
-            "user": {
-              "username": this.username_input.val(),
-              "password": this.password_input.val(),
-              "password_confirm": this.password_confirm_input.val()
-            }
+      if (this.validate()) {
+        var data = {
+          "user": {
+            "username": this.username_input.val(),
+            "password": this.password_input.val(),
+            "password_confirm": this.password_confirm_input.val()
           }
-
-          $.ajax({
-            type: "POST",
-            url: "/api/users",
-            data: data,
-            success: function (data) {
-              if (data.result) {
-                location.href = "/users/" + data.result + "/setting#first";
-              }
-            },
-            error: function () {
-
-            }
-          })
         }
+
+        $.ajax({
+          type: "POST",
+          url: "/api/users",
+          data: data,
+          success: function (data) {
+            if (data.result) {
+              location.href = "/users/" + data.result + "/setting#first";
+            }
+          },
+          error: function () {
+
+          }
+        })
       }
+    },
+    validate: function () {
+      this.$el.find(".error-log").html("");
+      var error = {};
+      if (this.username_input.val() == "") {
+        error.username = "empty";
+      }
+      if (this.password_input.val() == "") {
+        error.password = "empty";
+      } else if (this.password_input.val().length < 8) {
+        error.password = "tooshort";
+      }
+      if (this.password_confirm_input.val() == "") {
+        error.password_confirm = "empty";
+      }
+      if (this.password_input.val() !== this.password_confirm_input.val()) {
+        error.password_confirm = "notsame";
+      }
+      if (!this.rule_checkbox.prop("checked")) {
+        error.rule = "uncheck";
+      }
+
+      if (Object.keys(error).length > 0) {
+        for (key in error) {
+          switch (key) {
+            case "username":
+              if (error[key] == "empty") {
+                this.$el.find(".username-error").html("ユーザー名を入力して下さい。");
+              }
+              break;
+            case "password":
+              if (error[key] == "empty") {
+                this.$el.find(".password-error").html("パスワードを入力して下さい。");
+              }
+              if (error[key] == "tooshort") {
+                this.$el.find(".password-error").html("パスワードは８文字以上で入力して下さい。");
+              }
+              break;
+            case "password_confirm":
+              if (error[key] == "empty") {
+                this.$el.find(".password-confirm-error").html("確認用のパスワードを入力して下さい。");
+              }
+              if (error[key] == "notsame") {
+                this.$el.find(".password-confirm-error").html("パスワードと確認用パスワードが違います。");
+              }
+              break;
+            case "rule":
+              if (error[key] == "uncheck") {
+                this.$el.find(".rule-error").html("利用規約に同意して下さい。");
+              }
+              break;
+          }
+        }
+
+        return false;
+      }
+
+      return true;
     }
   })
 
@@ -71,8 +128,7 @@
     signin: function (e) {
       e.preventDefault();
 
-      if (this.username_input.val() != "" && this.password_input.val() != "") {
-
+      if (this.validate()) {
         var data = {
           "user": {
             "username": this.username_input.val(),
@@ -94,6 +150,42 @@
           }
         })
       }
+    },
+    validate: function () {
+      this.$el.find(".error-log").html("");
+      var error = {};
+      if (this.username_input.val() == "") {
+        error.username = "empty";
+      }
+      if (this.password_input.val() == "") {
+        error.password = "empty";
+      } else if (this.password_input.val().length < 8) {
+        error.password = "tooshort";
+      }
+
+      if (Object.keys(error).length > 0) {
+        for (key in error) {
+          switch (key) {
+            case "username":
+              if (error[key] == "empty") {
+                this.$el.find(".username-error").html("ユーザー名を入力して下さい。");
+              }
+              break;
+            case "password":
+              if (error[key] == "empty") {
+                this.$el.find(".password-error").html("パスワードを入力して下さい。");
+              }
+              if (error[key] == "tooshort") {
+                this.$el.find(".password-error").html("パスワードは８文字以上で入力して下さい。");
+              }
+              break;
+          }
+        }
+
+        return false;
+      }
+
+      return true;
     }
   })
 
