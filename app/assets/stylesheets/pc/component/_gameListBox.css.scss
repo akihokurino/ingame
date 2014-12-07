@@ -138,7 +138,7 @@
         right: 10px;
         top: 50%;
         margin-top: -3px;
-        border-top: 5px solid #fff;
+        border-top: 5px solid $main_color;
         border-right: 4px solid transparent;
         border-bottom: 4px solid transparent;
         border-left: 5px solid transparent;
@@ -149,6 +149,21 @@
   .registed .statusWrap {
     border: none;
     @include bglinear(lighten($main_color, 7%), $main_color);
+
+    @-moz-document url-prefix() {
+      &:after {
+        display: block;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        margin-top: -3px;
+        border-top: 5px solid #fff;
+        border-right: 4px solid transparent;
+        border-bottom: 4px solid transparent;
+        border-left: 5px solid transparent;
+        content:"";
+      }
+    }
   }
   .status {
     display: block;
@@ -168,8 +183,8 @@
       display: none;
     }
     @-moz-document url-prefix() {
-      width: 136px;
-      padding-left: 5px;
+      width: 182px;
+      padding-left: 10px;
     }
   }
   .registed .status {
