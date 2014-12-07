@@ -1,5 +1,6 @@
 %script{type: "text/template", id: "game-thumbnail-template"}
   %li.thumbnail
+    %p.gameTitle {{= game.title }}
     / %img{src: "/game_photos/{{= game.photo_path }}", width: "52", height: "52", alt: "ゲーム画像"}
     {{ if (game.photo_url) { }}
     %img.thumbnailImg{src: "{{= game.photo_url }}", height: "52", alt: "ゲーム画像"}
