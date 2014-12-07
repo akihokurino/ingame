@@ -6,6 +6,7 @@ class CreateGames < ActiveRecord::Migration
       t.string :photo_path  # 自分でrmagickした画像のパス
       t.string :maker, :limit => 255, :index => true
       t.string :amazon_url  # <- どうやって補充するか未解決
+      t.text :wiki
 
       t.string :device, :index => true
 
