@@ -96,26 +96,36 @@
     }
   }
   .starList {
-    width: 107px;
+    width: 118px;
     margin: 7px auto 0;
     padding-bottom: 10px;
 
     .starOn {
       display: inline-block;
-      @include img_set-PC4(18px, 18px, 0, -293px);
       margin-right: 4px;
 
       &:last-child {
         margin-right: 0;
       }
+      &:before {
+        color: orange;
+        font-size: 1.25rem;
+        font-family: 'icomoon';
+        content: "\e60e";
+      }
     }
     .starOff {
       display: inline-block;
-      @include img_set-PC4(18px, 18px, 0, -320px);
       margin-right: 4px;
 
       &:last-child {
         margin-right: 0;
+      }
+      &:before {
+        color: #888;
+        font-size: 1.25rem;
+        font-family: 'icomoon';
+        content: "\e60e";
       }
     }
   }
