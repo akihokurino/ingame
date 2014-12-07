@@ -206,6 +206,7 @@
       this.toggleSelectModal();
       this.select_log_id  = model.id;
       this.select_game_id = model.get("game").id;
+      this.$el.find(".select-log-error").css("display", "none");
     },
     post: function (e) {
       e.preventDefault();
@@ -251,7 +252,7 @@
       }
     },
     validate: function () {
-      $(".error-log").css("display", "none").html("");
+      this.$el.find(".error-log").css("display", "none").html("");
       var error = {}
       if (this.post_input.val() == "") {
         error.post_text = "empty";
