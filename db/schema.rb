@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20141206051700) do
     t.string   "photo_path"
     t.string   "maker"
     t.string   "amazon_url"
+    t.text     "wiki"
     t.string   "device"
     t.string   "provider"
     t.integer  "provider_id"
