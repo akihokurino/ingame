@@ -39,9 +39,9 @@
                   = @game.avg_rate
           %ul.linkBtnWrap
             %li
-              %a.amazonBtn{href: "http://www.amazon.co.jp/s/ref=nb_sb_noss_1?__mk_ja_JP=カタカナ&url=search-alias%3Daps&field-keywords=#{@game.title}", target: "blank"} Amazonで検索する
+              %a.amazonBtn{href: "http://www.amazon.co.jp/s/ref=nb_sb_noss_1?__mk_ja_JP=カタカナ&url=search-alias%3Daps&field-keywords=#{@game.title}", target: "blank"} Amazonで検索
             %li
-              %a.youtubeBtn{href: "https://www.youtube.com/results?search_query=#{@game.title}", target: "blank"} Youtubeで検索する
+              %a.youtubeBtn{href: "https://www.youtube.com/results?search_query=#{@game.title}", target: "blank"} Youtubeで検索
           - if @game.wiki
             .gameSummary
               %label{for: "summary"} 概要
