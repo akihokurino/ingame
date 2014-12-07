@@ -38,7 +38,7 @@
   	.time {
   		margin-top: 8px;
   		color: #888;
-  		font-size: 12px;
+  		font-size: .75rem;
   	}
   	.statusPlayed {
   		position: absolute;
@@ -87,7 +87,7 @@
   	margin-bottom: 7px;
   	color: $main_color;
   	font-weight: bold;
-  	font-size: 16px;
+  	font-size: 1rem;
   	line-height: 1.5;
 
   	&Link {
@@ -156,7 +156,7 @@
   		padding-left: 28px;
   		color: #929292;
   		font-weight: bold;
-  		font-size: 12px;
+  		font-size: .75rem;
   		line-height: 20px;
   		cursor: pointer;
 
@@ -164,7 +164,7 @@
   			position: absolute;
   			top: -4px;
   			left: 0;
-  			font-size: 20px;
+  			font-size: 1.25rem;
   			font-family: 'icomoon';
   			content: "\e602";
   		}
@@ -179,7 +179,7 @@
   		padding-left: 26px;
   		color: #929292;
   		font-weight: bold;
-  		font-size: 12px;
+  		font-size: .75rem;
   		line-height: 20px;
   		cursor: pointer;
 
@@ -187,7 +187,7 @@
   			position: absolute;
   			top: -3px;
   			left: 0;
-  			font-size: 20px;
+  			font-size: 1.25rem;
   			font-family: 'icomoon';
   			content: "\e605";
   		}
@@ -210,7 +210,7 @@
   			position: absolute;
   			top: -3px;
   			left: 0;
-  			font-size: 20px;
+  			font-size: 1.25rem;
   			font-family: 'icomoon';
   			text-indent: 0;
   			content: "\e607";
@@ -243,18 +243,18 @@
   				display: inline-block;
   				color: #3c3c3c;
   				font-weight: bold;
-  				font-size: 12px;
+  				font-size: .75rem;
   			}
   			.commentTime {
   				display: inline-block;
   				color: #888;
-  				font-size: 12px;
+  				font-size: .75rem;
   			}
   			.fvrBtn {
   				display: inline-block;
   				color: #888;
   				font-weight: bold;
-  				font-size: 12px;
+  				font-size: .75rem;
   				cursor: pointer;
 
   				&:hover {
@@ -268,7 +268,7 @@
   				overflow: hidden;
   				margin-top: 9px;
   				color: #3c3c3c;
-  				font-size: 12px;
+  				font-size: .75rem;
   				line-height: 1.5;
   			}
   		}

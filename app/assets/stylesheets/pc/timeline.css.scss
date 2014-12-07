@@ -66,13 +66,14 @@
       margin-bottom: 10px;
       color: #fff;
       font-weight: bold;
-      font-size: 16px;
+      font-size: 1rem;
       vertical-align: middle;
       line-height: 1.2;
+      word-break: break-all;
     }
     .userProf {
       color: #7e7e7e;
-      font-size: 12px;
+      font-size: .75rem;
       line-height: 1rem;
     }
     &CountList {
@@ -85,7 +86,7 @@
       width: 33.33%;
       padding: 8px 0 4px;
       @include box-sizing;
-      font-size: 12px;
+      font-size: .75rem;
       text-align: center;
 
       .count {
@@ -101,7 +102,7 @@
       width: 33.33%;
       padding: 8px 0 4px;
       @include box-sizing;
-      font-size: 12px;
+      font-size: .75rem;
       text-align: center;
 
       .count {
@@ -117,7 +118,7 @@
       width: 33.33%;
       padding: 8px 0 4px;
       @include box-sizing;
-      font-size: 12px;
+      font-size: .75rem;
       text-align: center;
 
       .count {
@@ -133,7 +134,6 @@
       width: 100%;
       padding: 8px 0 4px;
       @include box-sizing;
-      color: #3e3e3e;
       font-size: .875rem;
       text-align: center;
 
@@ -187,7 +187,7 @@
       width: 125px;
       padding-bottom: 10px;
       color: $main_color;
-      font-size: 16px;
+      font-size: 1rem;
       cursor: pointer;
 
       &:after {
@@ -262,13 +262,13 @@
       padding-top: 5px;
       padding-left: 30px;
       color: #929292;
-      font-size: 12px;
+      font-size: .75rem;
 
       &:before {
         position: absolute;
         top: 0;
         left: 0;
-        font-size: 20px;
+        font-size: 1.25rem;
         font-family: 'icomoon';
         content: "\e608";
       }
@@ -298,7 +298,7 @@
         position: absolute;
         top: 0;
         left: 10px;
-        font-size: 20px;
+        font-size: 1.25rem;
         font-family: 'icomoon';
         content: "\e60a";
       }
@@ -316,7 +316,7 @@
       @include box-shadow(1px, 1px, 3px, 3px, rgba(0, 0, 0, 0.2));
       background: #fff;
       font-weight: bold;
-      font-size: 12px;
+      font-size: .75rem;
 
       .playing {
         padding: 10px 10px 0;
