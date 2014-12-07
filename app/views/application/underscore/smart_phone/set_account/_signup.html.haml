@@ -8,17 +8,17 @@
       %form.inputInfo
         .inputWrap
           %input.textInput.username-input{type: "text", name: "username", placeholder: "ユーザーネーム", value: @current_provider[:username]}
-          %p.error-log.username-error
+          %p.error-log.username-error.errorMassage
         .inputWrap
           %input.textInput.password-input{type: "password", name: "password", placeholder: "パスワード"}
-          %p.error-log.password-error
+          %p.error-log.password-error.errorMassage
         .inputWrap
           %input.textInput.password-confirm-input{type: "password", name: "password_confirm", placeholder: "パスワード（確認用）"}
-          %p.error-log.password-confirm-error
+          %p.error-log.password-confirm-error.errorMassage
         .checkBoxWrap
           %label
             %input.rule-checkbox{type:"checkbox"}
             %a{href:""} 利用規約
             %span に同意する
-          %p.error-log.rule-error
+          %p.error-log.rule-error.errorMassage
       %a.signup-btn.btn{href:""} 登録する
