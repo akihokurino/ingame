@@ -2,7 +2,10 @@
   %header.SignupHeader
     %h1.SignupHeaderTtl GAMR
   %section.Signup
-    %h1.SignupTtl ようこそ！#{@current_provider[:username]}さん
+    %h1.SignupTtl
+      ようこそ！
+      %br
+      #{@current_provider[:username]}さん
     %figure.SignupImgWrap
       = image_tag "smart_phone/default.png", width:"140", height:"140", class: "SignupImg", alt: "アカウント画像"
       - case @current_provider[:service_name]

@@ -90,7 +90,7 @@ html {
     padding: 0 10px;
     @include border-radius(4px);
     @include box-sizing;
-    @include bglinear($main_color, 10%);
+    @include bglinear(lighten($main_color, 7%), $main_color);
     color: #fff;
     font-size: .875rem;
     line-height: 3;
@@ -99,7 +99,7 @@ html {
     text-decoration: none;
 
     &:hover {
-      @include bglinear($main_color, 7%);
+      @include bglinear($main_color, lighten($main_color, 7%));
       text-decoration: none;
     }
   }
@@ -115,7 +115,7 @@ html {
 
     &::-webkit-input-placeholder {
       padding-top: 2px;
-      color: lighten($color_textGray,10%);
+      color: lighten($color_textGray, 10%);
       line-height: 1.7rem;
     }
   }
