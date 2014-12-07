@@ -37,9 +37,11 @@
               .itemContent
                 %span.reviewInner.icon-star
                   = @game.avg_rate
-          %p.linkBtnWrap
-            %a.amazonBtn{href: "http://www.amazon.co.jp/s/ref=nb_sb_noss_1?__mk_ja_JP=カタカナ&url=search-alias%3Daps&field-keywords=#{@game.title}", target: "blank"} Amazonで検索する
-            %a.youtubeBtn{href: "http://www.amazon.co.jp/s/ref=nb_sb_noss_1?__mk_ja_JP=カタカナ&url=search-alias%3Daps&field-keywords=#{@game.title}", target: "blank"} Youtubeで検索する
+          %ul.linkBtnWrap
+            %li
+              %a.amazonBtn{href: "http://www.amazon.co.jp/s/ref=nb_sb_noss_1?__mk_ja_JP=カタカナ&url=search-alias%3Daps&field-keywords=#{@game.title}", target: "blank"} Amazonで検索する
+            %li
+              %a.youtubeBtn{href: "http://www.amazon.co.jp/s/ref=nb_sb_noss_1?__mk_ja_JP=カタカナ&url=search-alias%3Daps&field-keywords=#{@game.title}", target: "blank"} Youtubeで検索する
     = render partial: "select_btns", locals: {game: @game}
   .boxTtl
     %h2 このゲームに対するポスト#{@game.posts_count}件

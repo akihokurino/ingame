@@ -65,13 +65,42 @@
 			}
 		}
 		.linkBtnWrap{
-			a{
+			margin:5px 0;
+			border: 1px solid $color_border;
+			@include border-radius(2px);
+			font-size:0;
+			li{
+				position: relative;
 				display:inline-block;
-				padding:6px 10px;
 				width: 50%;
-				border: 1px solid $color_border;
-				@include border-radius(4px);
+				font-size:14px;
 				@include box-sizing;
+				&:nth-child(odd){
+					border-right: 1px solid $color_border;
+				}
+				a{
+					display:inline-block;
+					padding:8px 10px;
+					color:$color_textBlack;
+					&:after{
+						position:absolute;
+						content:"";
+						display:inline-block;
+						margin-left:5px;
+						width:6px;
+						height:6px;
+						border-color: $color_textBlack;
+						border-top:solid 3px;
+						border-right:solid 3px;
+						-webkit-transform: rotate(45deg);
+						   -moz-transform: rotate(45deg);
+						    -ms-transform: rotate(45deg);
+						     -o-transform: rotate(45deg);
+						        transform: rotate(45deg);
+						top:14px;
+						right:10px;
+					}
+				}
 			}
 		}
 		.gameBtnList {
