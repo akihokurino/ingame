@@ -53,7 +53,7 @@
         %option{value: "2"} プレイ中
         %option{value: "3"} クリア済
     - else
-      %select.my-status{name: "status", size: "1"}
+      %select.my-status.registed{name: "status", size: "1"}
         - [{value: "", name: "登録する"}, {value: "1", name: "気になる"}, {value: "2", name: "プレイ中"}, {value: "3", name: "クリア済"}].each do |obj|
           - if obj[:value].to_i == game.my_status_id.to_i
             %option{value: obj[:value], selected: "selected"}
