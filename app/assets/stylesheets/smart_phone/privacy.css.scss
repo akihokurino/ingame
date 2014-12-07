@@ -1,0 +1,66 @@
+@import "../_function.css.scss";
+
+// term privacy
+body{
+	background-color: $bg_color;
+}
+header{
+	background-color: base_color;
+	.imgWrap{
+		width: 120px;
+		margin:0 auto;
+	}
+}
+.settingTopBox{
+	background: #fff;
+
+	.mainTtl{
+		padding: 20px 10px;
+		color:$color_textBlack;
+		font-size:20px;
+		font-weight:bold;
+		text-align:center;
+	}
+	.mainTxt{
+		padding:10px;
+		color:$color_textGray;
+		font-size:12px;
+		line-height:1.5;
+	}
+}
+
+.termBox,.privacyBox{
+	margin:5px;
+	color:$color_textBlack;
+	.item{
+		margin-bottom:5px;
+		padding:5px;
+		background-color: #fff;
+		.termTtl,.termSubTtl,.privacyTtl,{
+			margin:5px;
+			font-weight:bold;
+		}
+		.termSubTtl{
+			margin:5px;
+			font-size:14px;
+		}
+		.termTxt,.numList,.privacyTxt{
+			font-size:13px;
+			line-height:1.5;
+		}
+		.numList{
+			padding-left:25px;
+			list-style:decimal;
+			li{
+				margin-bottom:5px;
+			}
+		}
+	}
+}
+footer{
+	padding:20px;
+	background-color: $color_textBlack;
+	color:$color_textGray;
+	font-size:12px;
+	text-align:center;
+}
