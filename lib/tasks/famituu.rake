@@ -18,17 +18,18 @@ namespace :famituu do
       status = nil
       # なんとなくここで、連続アクセスではじかれた時用の処理しとく。
       for i in 1..5
-        open(url){|f|
-          html   = f.read
-          status = f.status[0].to_i
-        }
-
-        if status == 200
-          return html
-        elsif status == 404
-          return 404
-        else
-          sleep i
+        begin
+          open(url){|f|
+            html   = f.read
+            return html
+          }
+        rescue => ex
+          status = ex.io.status[0]
+          if status == "404"
+            return 404
+          else
+            sleep i
+          end
         end
       end
       warn "[status:#{status}] #{url}"
@@ -45,11 +46,11 @@ namespace :famituu do
 		end
 
     def pageEnd(doc)
-      ret = doc.css("a.pager")
+      ret = doc.css("div.pager > ul > li")
       if ret.length == 0
         ret = 1
       else
-        ret = ret.last.text.to_i
+        ret = ret[-2].child.text.to_i
       end
     end
 
@@ -60,11 +61,12 @@ namespace :famituu do
         puts "collecting #{date} / #{page}"
 
         doc           = Nokogiri::HTML.parse search(date, page)
-        searchResults = doc.css("li.listBgForword")
+        searchResults = doc.css("div.itemJacketBox")
         break if searchResults.length == 0
         isAlready     = {}
 
         searchResults.each do |row|
+          row = row.parent
           result               = {}
           result[:provider]    = "famituu"
           result[:release_day] = date.strftime("%Y-%m-%d")
@@ -72,7 +74,7 @@ namespace :famituu do
           devices              = []
 
           # デバイス,IDの取得
-          row.css("h3.itemName > a").each do |a|
+          row.css("div.gameTitle > a").each do |a|
             href = a.attr("href")
             if href.index("http://www.famitsu.com/cominy/")
               isGame               = true
@@ -147,9 +149,14 @@ namespace :famituu do
         doc          = Nokogiri::HTML.parse doc
         already_date = {}
 
-        pageEnd(doc).downto 1 do |page|
-          doc   = Nokogiri::HTML.parse search_by_range("#{current.year}/#{current.month}/-", page)
-          dates = doc.css("h2.heading03inner > a").map do |a|
+        # DOM構造が変わって最後のページ数が分からなくなった。
+        # 一ヶ月に500本以上のゲームは発売されないと考え、10決め打ちでいく。
+        # pageEnd(doc).downto 1 do |page|
+        10.downto 1 do |page|
+          html =  search_by_range("#{current.year}/#{current.month}/-", page)
+          next if html == 404
+          doc   = Nokogiri::HTML.parse html
+          dates = doc.css("h2 > a").map do |a|
             a.text.gsub(/\s*/, "").gsub(/[年月]/, "-").gsub("日", "")
           end
           dates.reverse!
