@@ -64,6 +64,16 @@
 				}
 			}
 		}
+		.linkBtnWrap{
+			a{
+				display:inline-block;
+				padding:6px 10px;
+				width: 50%;
+				border: 1px solid $color_border;
+				@include border-radius(4px);
+				@include box-sizing;
+			}
+		}
 		.gameBtnList {
 			width: 100%;
 			padding:10px;
