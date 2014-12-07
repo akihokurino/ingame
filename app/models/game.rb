@@ -35,8 +35,14 @@ class Game < ActiveRecord::Base
 		self.i_registed = current_user.logs.pluck(:game_id).include?(self[:id]) ? true : false
 
 		if self.i_registed
-			self.my_status_id = self.logs.find_by(user_id: current_user[:id]).status_id
-		end
+      begin
+			  self.my_status_id = self.logs.find_by(user_id: current_user[:id]).status_id
+      rescue Exception
+        self.my_status_id = nil
+      end
+		else
+      self.my_status_id = nil
+    end
 	end
 
 	def check_rate(current_user)
@@ -66,12 +72,13 @@ class Game < ActiveRecord::Base
 	class << self
     def search_with(search_title, page, current_user)
       offset = (page - 1) * LIMIT
-      games  = self.search(self.escape(search_title)).order("created_at DESC").offset(offset).limit(LIMIT).keep_if do |game|
+      games  = self.search(self.escape(search_title)).order("created_at DESC").offset(offset).limit(LIMIT).map do |game|
         game.check_rate(current_user)
-        !current_user.logs.pluck(:game_id).include?(game.id)
+        game.check_regist(current_user)
+        game
       end
 
-      count = self.search(self.escape(search_title)).keep_if{|game| !current_user.logs.pluck(:game_id).include?(game.id)}.count
+      count = self.search(self.escape(search_title)).count
 
       {count: count, games: games}
     end

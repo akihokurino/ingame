@@ -17,9 +17,6 @@
 
   var LogListView = Backbone.View.extend({
     el: ".profile-page",
-    events: {
-      "keypress .search-log": "search"
-    },
     template: _.template($("#log-list-template").html()),
     initialize: function () {
       this.$(".profile-timeline").html("");
@@ -27,14 +24,21 @@
       this.$(".count-box li").removeClass("current");
       this.$(".logs-li").addClass("current");
 
-      var that               = this;
-      this.log_collection    = new Logs();
-      this.logs_view         = new LogsView({el: ".log-list", collection: this.log_collection, attributes: {type: "select", template: "#log-template"}});
-      this.tmp_log_list      = [];
+      var that                  = this;
+      this.log_collection       = new Logs();
+      this.logs_view            = new LogsView({el: ".log-list", collection: this.log_collection, attributes: {type: "select", template: "#log-template"}});
+      this.tmp_log_list         = [];
+      this.user_id              = this.$el.data("userid");
+      this.type                 = null;
+      this.current_search_title = null;
 
+      if (this.attributes && this.attributes.type) {
+        this.type = this.attributes.type;
+      }
 
-      this.search_log_title  = this.$(".search-log");
-      this.user_id           = this.$el.data("userid");
+      if (this.attributes && this.attributes.search_title) {
+        this.current_search_title = this.attributes.search_title;
+      }
 
       this.log_collection.fetch({
         data: {user_id: this.user_id},
@@ -46,26 +50,26 @@
             that.logs_view.collection.add(log);
             that.tmp_log_list.push(log);
           }
+
+          if (that.type == "search") {
+            that.search(that.current_search_title);
+          }
         },
         error: function () {
 
         }
       })
     },
-    search: function (e) {
-      if (e.which == 13 && this.search_log_title.val() != "") {
-        e.preventDefault();
+    search: function (text) {
+      this.logs_view.collection.reset();
+      this.logs_view.removeEachLogs();
 
-        this.logs_view.collection.reset();
-        this.logs_view.removeEachLogs();
+      var keyword = new RegExp(text, "i");
 
-        var keyword = new RegExp(this.search_log_title.val(), "i");
-
-        for (var i = 0; i < this.tmp_log_list.length; i++) {
-          var log = this.tmp_log_list[i];
-          if (log.get("game").title.match(keyword)) {
-            this.logs_view.collection.add(log);
-          }
+      for (var i = 0; i < this.tmp_log_list.length; i++) {
+        var log = this.tmp_log_list[i];
+        if (log.get("game").title.match(keyword)) {
+          this.logs_view.collection.add(log);
         }
       }
     }
@@ -77,6 +81,7 @@
     initialize: function () {
       this.$(".profile-timeline").html("");
       this.$(".profile-timeline").append(this.template);
+      $(".search-log").val("");
       this.$(".count-box li").removeClass("current");
       this.$(".posts-li").addClass("current");
 
@@ -141,6 +146,7 @@
     initialize: function () {
       this.$(".profile-timeline").html("");
       this.$(".profile-timeline").append(this.template);
+      $(".search-log").val("");
       this.$(".count-box li").removeClass("current");
       this.$(".follows-li").addClass("current");
 
@@ -205,6 +211,7 @@
     initialize: function () {
       this.$(".profile-timeline").html("");
       this.$(".profile-timeline").append(this.template);
+      $(".search-log").val("");
       this.$(".count-box li").removeClass("current");
       this.$(".followers-li").addClass("current");
 
@@ -268,11 +275,13 @@
     el: ".profile-page",
     events: {
       "click .main-follow-btn":   "follow",
-      "click .main-unfollow-btn": "unfollow"
+      "click .main-unfollow-btn": "unfollow",
+      "keypress .search-log": "search"
     },
     initialize: function () {
-      this.follow_btn_template   = _.template($("#follow-btn-template").html());
-      this.unfollow_btn_template = _.template($("#unfollow-btn-template").html());
+      this.follow_btn_template   = _.template($("#main-follow-btn-template").html());
+      this.unfollow_btn_template = _.template($("#main-unfollow-btn-template").html());
+      this.search_log_title      = this.$(".search-log");
       this.user_id               = this.$el.data("userid");
     },
     follow: function () {
@@ -314,6 +323,13 @@
 
         }
       })
+    },
+    search: function (e) {
+      if (e.which == 13 && this.search_log_title.val() != "") {
+        e.preventDefault();
+
+        router.current_list = new LogListView({attributes: {type: "search", search_title: this.search_log_title.val()}});
+      }
     }
   })
 

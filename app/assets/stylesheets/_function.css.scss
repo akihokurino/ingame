@@ -6,6 +6,7 @@ $width: 960px !default;
 $cntWidth: 580px;
 
 //カラーコード
+$base_color: #2F2F2F;
 $main_color: #6057ca;
 // $main_color: #7950CA;
 // $main_color: #795ECA;
@@ -39,7 +40,7 @@ $support-opera  : true;
 
 @mixin substitute {
     overflow: hidden;
-    text-indent: 100%;
+    text-indent: 200%;
     white-space: nowrap;
 }
 @mixin flexbox {
@@ -81,14 +82,21 @@ $support-opera  : true;
   -webkit-box-shadow: $side $top $shade $spread $color;
   box-shadow: $side $top $shade $spread $color;
 }
+@mixin bglinear($from, $to) {
+  background: -webkit-linear-gradient($from, $to);
+  background: -o-linear-gradient($from, $to);
+  background: linear-gradient($from, $to);
+}
 @mixin font-weight($size, $color) {
     font-weight:$size;
     -webkit-text-stroke: $size $color;
 }
 @mixin appearance {
-    appearance:none;
-    -moz-appearance: none;
-    -webkit-appearance: none;
+  appearance:none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  text-indent: 0.01px;
+  text-overflow: "";
 }
 @mixin pinterest-box($count,$margin,$space){
     -webkit-column-count: $count;
@@ -113,6 +121,28 @@ $support-opera  : true;
         *zoom: 1;
     }
 }
+
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes $animation-name {
+    @content;
+  }
+  @-moz-keyframes $animation-name {
+    @content;
+  }  
+  @keyframes $animation-name {
+    @content;
+  }
+}
+
+@mixin animation($animation-name) {
+  -webkit-animation: $animation-name;
+  -moz-animation: $animation-name;
+  animation: $animation-name;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
 @mixin img_set-PC2($bpl, $bpt) {
     background: url(/assets/pc/img_set.png) no-repeat $bpl $bpt;
 }

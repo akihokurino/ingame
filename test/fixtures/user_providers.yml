@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  uid: MyString
+  type: 
+  token: MyText
+  secret_token: MyText
+
+two:
+  user_id: 
+  uid: MyString
+  type: 
+  token: MyText
+  secret_token: MyText

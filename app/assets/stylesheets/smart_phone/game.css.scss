@@ -8,69 +8,104 @@
 		padding-top: 44px;
 		background: #fff;
 
-		.gameTopBox {
-			@include clearfix;
-			// padding: 0 25px 15px;
-		}
 		.ttl {
-			padding:10px 5px;
-			background:$main_color;
+			padding:10px;
+			background: linear-gradient(lighten($main_color,10%),$main_color);
 			color: #fff;
+			text-shadow: 0 -1px 3px rgba(#000,0.8);
 			font-size: 18px;
 			font-weight:bold;
 			line-height: 1.5;
 		}
 		.gameWrap{
-			display:table;
-			padding:10px 5px;
+			padding:10px 10px 0 10px;
 		}
 		.imgWrap{
-			display:table-cell;
-			width: 50%;
+			width: 100%;
+			text-align: center;
+
 			.gameImg{
-				width: 100%;
+				max-width: 100%;
+				height: auto;
+				max-height: 300px;
 				border: 1px solid #eee;
+				@include box-sizing;
 			}
 		}
-		.gameInfoWrap {
-			display:table-cell;
-			width: 50%;
-			padding-left:5px;
-			vertical-align:top;
-		}
 		.gameInfo {
-			margin-bottom: 9px;
+			border: 1px solid $color_border;
+			@include border-radius(2px);
 			line-height: 1.5;
 
 			.item {
-				color: #8f9ea1;
+				display:table;
+				width: 100%;
 				font-size: 14px;
-				margin-bottom:3px;
-			}
-			.maker,.hard,.releaseDay{
-				color:$color_textGray;
-				span{
-					color:$main_color;
+				margin-bottom: 3px;
+				border-bottom: 1px solid $color_border;
+				&:last-child{
+					border:none;
+				}
+				.itemName{
+					display:table-cell;
+					width: 35%;
+					padding:10px 20px 10px 10px;
+					@include box-sizing;
+					color:$color_textBlack;
+					font-weight:bold;
+					vertical-align: middle;				}
+				.itemContent{
+					display:table-cell;
+					width: 65%;	
+					padding:10px 0 ;
+					color:$color_textBlack;
+					text-align:left;
+				}
+				.icon-star{
+					color:orange;
+					font-size:24px;
+					vertical-align: -15%
 				}
 			}
-			.infoInner{
-				display:block;
-				background-color: #CACACA;
-				color:#fff;
+		}
+		.linkBtnWrap{
+			margin:5px 0;
+			border: 1px solid $color_border;
+			@include border-radius(2px);
+			font-size:0;
+			li{
+				position: relative;
+				display:inline-block;
+				width: 50%;
 				font-size:14px;
-				padding:2px 4px;
+				@include box-sizing;
+				&:nth-child(odd){
+					border-right: 1px solid $color_border;
+				}
+				a{
+					display:inline-block;
+					padding:8px 10px;
+					color:$color_textBlack;
+					&:after{
+						position:absolute;
+						content:"";
+						display:inline-block;
+						margin-left:5px;
+						width:6px;
+						height:6px;
+						border-color: $color_textBlack;
+						border-top:solid 3px;
+						border-right:solid 3px;
+						-webkit-transform: rotate(45deg);
+						   -moz-transform: rotate(45deg);
+						    -ms-transform: rotate(45deg);
+						     -o-transform: rotate(45deg);
+						        transform: rotate(45deg);
+						top:14px;
+						right:10px;
+					}
+				}
 			}
-		}
-		.reviewWrap{
-			color:#8f9ea1;
-			font-size:14px;
-		}
-		.reviewInner{
-			color: orange;
-			font-size: 22px;
-		}
-		.icon-star{
-			font-size:21px;
 		}
 		.gameBtnList {
 			width: 100%;
@@ -81,6 +116,64 @@
 			.item {
 				display:inline-block;
 				text-align:center;
+			}
+		}
+		.gameSummary{
+			label {
+				position: relative;
+			    display: inline-block;
+			    padding: 10px;
+			    margin-bottom: 10px;
+			    width:100%;
+			    @include box-sizing;
+			    border-bottom: 1px solid $color_border;
+			    color: $color_textBlack;
+			    font-size:16px;
+			    font-weight:bold;
+			    text-align:left;
+			    &:before{
+			    	position: relative;
+					content:"";
+					display:inline-block;
+					margin-right:10px;
+					width:8px;
+					height:8px;
+					border-color: $color_textBlack;
+					border-right:solid 2px;
+					border-bottom:solid 2px;
+					-webkit-transform: rotate(45deg);
+					   -moz-transform: rotate(45deg);
+					    -ms-transform: rotate(45deg);
+					     -o-transform: rotate(45deg);
+					        transform: rotate(45deg);
+					top:-4px;
+			    }
+			}
+
+			input[type="checkbox"].expand{
+			    display: none;
+			}
+
+			p{
+			    margin: 0;
+			    padding: 0 10px;
+				font-size:12px;
+				color:$color_textBlack;
+			    -webkit-transition: all 0.5s;
+			    -moz-transition: all 0.5s;
+			    -ms-transition: all 0.5s;
+			    -o-transition: all 0.5s;
+			    transition: all 0.5s;
+			    list-style: none;
+			}
+
+			input[type="checkbox"].expand + p{
+			    height: 0;
+			    overflow: hidden;
+			}
+
+			input[type="checkbox"].expand:checked + p{
+			    height: auto;
 			}
 		}
 		.comment {
@@ -101,6 +194,10 @@
 			color:$main_color;
 			font-size: 14px;
 			line-height: 36px;
+		}
+		.registed{
+			background:$main_color;
+			color:#fff;
 		}
 	}
 	/*---   .sortBox   ----------*/

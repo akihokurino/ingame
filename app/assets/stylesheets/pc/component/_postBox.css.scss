@@ -1,0 +1,297 @@
+@import "../../_function.css.scss";
+
+/*---   .postBox   ----------*/
+.postBoxWrap {
+  width: 100%;
+  padding: 20px 0 40px;
+  border-top: 1px solid #e6e6e6;
+  background: #f2f2f2;
+}
+.postBox {
+  width: 480px;
+  margin: 0 auto 18px;
+  padding: 15px;
+  border: 1px solid #e6e6e6;
+  @include border-radius(3px);
+  @include box-sizing;
+  background: #fff;
+
+  /*---   .topBox   ---*/
+  .topBox {
+  	position: relative;
+  	margin-bottom: 14px;
+  	@include clearfix;
+
+  	.profImgWrap {
+  		float: left;
+  		margin-right: 10px;
+  	}
+  	.profImg {
+  		border: 1px solid #d3d3d3;
+  	}
+  	.account {
+  		color: #3c3c3c;
+  		font-weight: bold;
+  		font-size: .875rem;
+  		line-height: 1.0;
+  	}
+  	.time {
+  		margin-top: 8px;
+  		color: #888;
+  		font-size: .75rem;
+  	}
+  	.statusPlayed {
+  		position: absolute;
+  		top: 0;
+  		right: 0;
+  		width: 88px;
+  		height: 30px;
+  		border: 1px solid $color-blue;
+  		@include border-radius(3px);
+  		color: $color-blue;
+  		font-size: .875rem;
+  		line-height: 30px;
+  		text-align: center;
+  	}
+  	.statusPlaying {
+  		position: absolute;
+  		top: 0;
+  		right: 0;
+  		width: 88px;
+  		height: 30px;
+  		border: 1px solid $color-red;
+  		@include border-radius(3px);
+  		color: $color-red;
+  		font-size: .875rem;
+  		line-height: 30px;
+  		text-align: center;
+  	}
+  	.statusReady {
+  		position: absolute;
+  		top: 0;
+  		right: 0;
+  		width: 88px;
+  		height: 30px;
+  		border: 1px solid $color-yellow;
+  		@include border-radius(3px);
+  		color: $color-yellow;
+  		font-size: .875rem;
+  		line-height: 30px;
+  		text-align: center;
+  	}
+  }
+  /*---   .gameTtl   ---*/
+  .gameTtl {
+  	overflow: hidden;
+  	width: 100%;
+  	margin-bottom: 7px;
+  	color: $main_color;
+  	font-weight: bold;
+  	font-size: 1rem;
+  	line-height: 1.5;
+
+  	&Link {
+  		color: $main_color;
+  	}
+  }
+  /*---   .postTxt   ---*/
+  .postTxt {
+  	margin-bottom: 14px;
+  	color: #4a4a4a;
+  	font-size: .875rem;
+  	line-height: 1.5;
+
+  	.link-text {
+  		display: none;
+  	}
+  }
+  /*---   .thumbnail   ---*/
+  .thumbnail {
+  	&Img {
+  		width: 100%;
+  	}
+  }
+  /*---   .urlThumbnail   ----*/
+  .urlThumbnailWrap {
+  	.urlThumbnail {
+  		display: block;
+  		overflow: hidden;
+  		border: solid 1px #e2e2e2;
+  		color: #4a4a4a;
+
+  		&:hover {
+  			text-decoration: none;
+  		}
+  		img {
+  			width: 100%;
+  			border-bottom: solid 1px #e2e2e2;
+  		}
+  		.body {
+  			padding: 10px;
+
+  			.title {
+  				margin-bottom: 15px;
+  			}
+  			.description {
+  				font-size: .875rem;
+  				line-height: 1.5;
+  			}
+  		}
+  	}
+  }
+  /*---   iframe   ---*/
+  iframe {
+  	width: 100%;
+  	height: 272px;
+  }
+  /*---   .actionList   ---*/
+  .actionList {
+  	margin-top: 46px;
+  	@include clearfix;
+
+  	.cmtBtn {
+  		position: relative;
+  		float: left;
+  		margin-right: 32px;
+  		padding-left: 28px;
+  		color: #929292;
+  		font-weight: bold;
+  		font-size: .75rem;
+  		line-height: 20px;
+  		cursor: pointer;
+
+  		&:before {
+  			position: absolute;
+  			top: -4px;
+  			left: 0;
+  			font-size: 1.25rem;
+  			font-family: 'icomoon';
+  			content: "\e602";
+  		}
+  		&.on {
+  			background-position: 0 -400px;
+  			color: $main_color;
+  		}
+  	}
+  	.fvrBtn {
+  		position: relative;
+  		float: left;
+  		padding-left: 26px;
+  		color: #929292;
+  		font-weight: bold;
+  		font-size: .75rem;
+  		line-height: 20px;
+  		cursor: pointer;
+
+  		&:before {
+  			position: absolute;
+  			top: -3px;
+  			left: 0;
+  			font-size: 1.25rem;
+  			font-family: 'icomoon';
+  			content: "\e605";
+  		}
+  		&.on {
+  			background-position: 0 -373px;
+  			color: $color-red;
+  		}
+  	}
+  	.deleteBtn {
+  		position: relative;
+  		float: right;
+  		width: 20px;
+  		height: 20px;
+  		padding-right: 10px;
+  		color: #929292;
+  		@include substitute;
+  		cursor: pointer;
+
+  		&:before {
+  			position: absolute;
+  			top: -3px;
+  			left: 0;
+  			font-size: 1.25rem;
+  			font-family: 'icomoon';
+  			text-indent: 0;
+  			content: "\e607";
+  		}
+  	}
+  }
+  /*---   .commentBox   ---*/
+  .commentBox {
+  	margin-top: 10px;
+  	padding-top: 10px;
+  	border-top: 1px solid #dcdcdc;
+  	@include clearfix;
+
+  	.profImgWrap {
+  		float: left;
+  		margin-right: 10px;
+  	}
+  	.profImg {
+  		border: 1px solid #d3d3d3;
+  	}
+  	.commentList {
+  		.item {
+  			margin-bottom: 8px;
+  		}
+  		.commentInfo {
+  			line-height: 0.8;
+  			@include clearfix;
+
+  			.account {
+  				display: inline-block;
+  				color: #3c3c3c;
+  				font-weight: bold;
+  				font-size: .75rem;
+  			}
+  			.commentTime {
+  				display: inline-block;
+  				color: #888;
+  				font-size: .75rem;
+  			}
+  			.fvrBtn {
+  				display: inline-block;
+  				color: #888;
+  				font-weight: bold;
+  				font-size: .75rem;
+  				cursor: pointer;
+
+  				&:hover {
+  					text-decoration: underline;
+  				}
+          &.on {
+            color: $color_red;
+          }
+  			}
+  			.userComment {
+  				overflow: hidden;
+  				margin-top: 9px;
+  				color: #3c3c3c;
+  				font-size: .75rem;
+  				line-height: 1.5;
+  			}
+  		}
+  	}
+  	.commentWrap {
+  		float: left;
+  	}
+  	.comment {
+  		overflow: hidden;
+  		width: 275px;
+  		height: 30px;
+  		padding: 5px;
+  		border: none;
+  		@include box-sizing;
+  		@include appearance;
+  		font-size: .875rem;
+  		resize: none;
+  		outline: 0;
+
+  		&::-webkit-input-placeholder {
+  			padding: 3px;
+  			color: #c6c6c6;
+  		}
+  	}
+  }
+}

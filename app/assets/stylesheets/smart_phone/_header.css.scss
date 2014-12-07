@@ -6,13 +6,13 @@ header {
 	top:0;
 	left:0;
 	width: 100%;
-	z-index: 1;
+	z-index: 5;
 	@include box-sizing;
 
 	.headerNav{
 		height:45px;
 		font-size:22px;
-		background-color: rgba($main_color,.94);
+		background-color: rgba($base_color,.94);
 		a{
 			color:#fff;
 			text-decoration:none;
@@ -87,7 +87,7 @@ header {
 					width: 17px;
 					height: 17px;
 					@include border-radius(2px);
-					background: $sub_color;
+					background: $color_red;
 					color: #fff;
 					font-family: Helvetica;
 					font-size: 12px;
@@ -117,7 +117,7 @@ header {
 		left: 0;
 		padding:10px 0;
 		@include box-sizing;
-		background: rgba($main_color,0.94);
+		background-color: rgba($base_color,.94);
 		color: #fff;
 		font-size:14px;
 		text-align: left;
@@ -156,7 +156,7 @@ header {
 	height:44px;
 	z-index: 1;
 	@include box-sizing;
-	background-color: $main_color;
+	background-color: rgba($base_color,.94);
 	font-size:22px;
 	padding:10px;
 	.title{

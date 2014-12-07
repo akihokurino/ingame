@@ -6,13 +6,14 @@
       %p.stepTxt 登録は簡単です
   %section.mainContent
     .settingTopBox
-      %h1.mainTtl ようそこ、GAMRへ。
+      %h1.mainTtl ようこそ、GAMRへ。
       %p.mainTxt
-        まずはお気に入りのゲームをライブラリに登録しましょう。
+        まずはお気に入りのゲームをマイゲームに登録しましょう。
         %br
         ゲームは、後から好きなだけ追加することができます。
       %form.searchWrap
-        %input.search.search-title-input{type: "text", placeholder: "キーワードでゲームを探す"}
-      %a.nextBtn.next-page{href: ""} 次へ
+        %input.search.search-title-input{type: "text", placeholder: "ゲーム名で検索"}
+      %p.nextBtnWrap
+        %a.nextBtn.next-page{href: ""} 登録せずに進む
     .gameListBox
       %ul.gameListWrap.result-list

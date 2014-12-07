@@ -25,7 +25,7 @@ input[type="submit"],{
 		width: 100%;
 		height:44px;
 		padding: 12px 0 13px;
-		background-color: rgba($main_color,.94);
+		background-color: rgba($base_color,.94);
 		color: #fff;
 		font-size: 14px;
 		text-align: center;
@@ -188,7 +188,7 @@ input[type="submit"],{
 		left:0;
 		height:45px;
 		padding: 12px 0 13px;
-		background-color: rgba($main_color,.94);
+		background-color: rgba($base_color,.94);
 		color: #fff;
 		font-size: 14px;
 		text-align: center;
@@ -212,10 +212,9 @@ input[type="submit"],{
 		padding-top:44px;
 		.gameBox {
 			position: relative;
-			background-color: #f7f7f7;
+			background: linear-gradient(lighten($main_color,10%),$main_color);
 			border-top: 1px solid #f1f1f1;
 			border-bottom: 1px solid #ddd;
-			color: $color_textGray;
 			@include clearfix;
 		}
 		.gameImage {
@@ -226,10 +225,10 @@ input[type="submit"],{
 		}
 		.gameTtl {
 			display: inline-block;
-			color: $color_textBlack;
 			font-size: 16px;
 			font-weight: bold;
-			text-shadow:1px 1px 1px #fff;
+			color: #fff;
+			text-shadow: 0 -1px 3px rgba(#000,0.8);
 		}
 		.textareaWrap {
 			clear: both;
@@ -352,6 +351,9 @@ input[type="submit"],{
 	.addGame {
 		display:block;
 		padding:10px;
+		margin:10px auto;
+		width: 75%;
+		@include border-radius(4px);
 		background: linear-gradient(lighten($main_color,5%),$main_color);
 		&:active{
 			background: linear-gradient($main_color,lighten($main_color,5%));
@@ -384,7 +386,7 @@ input[type="submit"],{
 		width: 100%;
 		height:44px;
 		padding: 12px 0 13px;
-		background-color: rgba($main_color,.94);
+		background-color: rgba($base_color,.94);
 		color: #fff;
 		font-size: 14px;
 		text-align: center;
@@ -490,77 +492,6 @@ input[type="submit"],{
 				border-right: 10px solid transparent;
 				border-bottom: 13px solid transparent;
 				border-left: 10px solid transparent;
-			}
-		}
-		.gameList {
-			background: #ffffff;
-
-			.item {
-				display:table;
-				width: 100%;
-				padding:10px;
-				box-sizing: border-box;
-				border-bottom: 1px solid $color_border;
-			}
-			article{
-				width: 100%;
-			}
-			.textArea{
-				display:table-cell;
-				padding-right:10px;
-				width: 100%;
-				vertical-align: top;
-				.gameTitle{
-					color:$color_textBlack;
-					font-size:16px;
-					line-height:1.5;
-				}
-				.device{
-					padding:2px;
-					width: 100%;
-					border:1px solid #A8A8A8;
-					@include border-radius(2px);
-					color: #A8A8A8;
-					font-size:12px;
-					line-height:2.5;
-				}
-				.starList{
-					display:table;
-					font-size:18px;
-					line-height:2;
-					li{
-						display:table-cell;
-						padding-right:4px;
-					}
-					.starOn{
-						color:orange;
-					}
-					.starOff{
-						color:$color_textGray;
-					}
-				}
-			}
-			.gameModule{
-				display:table-cell;
-				width: 100px;
-				margin-left:auto;
-				@include box-sizing;
-				a{
-					display:inline-block;
-				}
-				.status{
-					@include appearance;
-					display:inline-block;
-					width: 100px;
-					padding-left:20px;
-					border:none;
-					@include border-radius(2px);
-					background-color: $main_color;
-					color:#fff;
-					font-size:14px;
-					text-align: center;
-					line-height:36px;
-				}
 			}
 		}
 	}

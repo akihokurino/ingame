@@ -9,37 +9,52 @@
 %section.mainContent.game-page{"data-gameid" => @game[:id]}
   .gameBox
     .gameBoxInner
-      %h1.gameTtl
-        = @game.title
       %figure.gameImgWrap
         /= image_tag "/game_photos/#{@game.photo_path}", width: 195, class: "gameImg", alt: "ゲームパッケージ画像"
         - if @game.photo_url
-          = image_tag @game.photo_url, width: 195, class: "gameImg", alt: "ゲームパッケージ画像"
+          = image_tag @game.photo_url, width: 240, class: "gameImg", alt: "ゲームパッケージ画像"
         - else
-          = image_tag "/game_photos/default.png", width: 195, class: "gameImg", alt: "ゲームパッケージ画像"
+          = image_tag "/game_photos/default.png", width: 240, class: "gameImg", alt: "ゲームパッケージ画像"
       .gameInfoBox
-        %ul.gameInfoList
-          %li.item
-            %span.gameInfoListItemInner メーカー
-            = @game.maker
-          /%li.item
-          /  ジャンル：ほげほげ
-          %li.item
-            %span.gameInfoListItemInner ハード
-            = @game.device
-          %li.item
-            %span.gameInfoListItemInner リリース日
-            = @game.release_day
-        %a.amazonBtn{href: ""} Amazonで見る
-        .reviewBox
-          %ul.starList
-            - diff = 5 - @game.avg_rate.to_i
-            - @game.avg_rate.to_i.times do |i|
-              %li.starOn ★
-            - diff.times do |i|
-              %li.starOff ☆
-          %p.value
-            = @game.avg_rate
+        .gameInfoBoxInner
+          %h1.gameTtl
+            = @game.title
+          %ul.gameInfoList
+            %li.item.maker
+              .itemName メーカー
+              .itemContent
+                = @game.maker
+            %li.item.hard
+              .itemName ハード
+              .itemContent
+                = @game.device
+            %li.item.releaseDay
+              .itemName 発売日
+              .itemContent
+                = @game.release_day
+          - if @game.wiki
+            .gameSummary
+              %label{for: "summary"} 概要
+              %input.expand{type: "checkbox", id: "summary"}
+              %p
+                = @game.wiki
+        .rightBox
+          .reviewBox
+            .review
+              %p.value
+                = @game.avg_rate
+              %ul.starList
+                - diff = 5 - @game.avg_rate.to_i
+                - @game.avg_rate.to_i.times do |i|
+                  %li.starOn.icon-star
+                - diff.times do |i|
+                  %li.starOff.icon-star
+          .amazonLink
+            %a.amazonBtn{href: "http://www.amazon.co.jp/s/ref=nb_sb_noss_1?__mk_ja_JP=カタカナ&url=search-alias%3Daps&field-keywords=#{@game.title}", target: "blank"}
+              %span Amazonで検索する
+          .youtubeLink
+            %a.youtubeBtn{href: "https://www.youtube.com/results?search_query=#{@game.title}", target: "blank"}
+              %span Youtubeで検索する
         = render partial: "select_btns", locals: {game: @game}
       %section.sortBox
         %h3.sortTtl このゲームに対するポスト

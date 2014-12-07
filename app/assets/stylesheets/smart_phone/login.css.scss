@@ -30,7 +30,7 @@ a {
 	 .mainCopy{
 	 	margin:40px 20px 40px 20px;
 	 	padding:5px 0;
-	 	font-size:28px;
+	 	font-size:26px;
 	 	font-weight:bold;
 	 }
 	 .subCopy{
@@ -49,7 +49,7 @@ a {
 	.item{
 		margin-bottom:10px;
 	}
-	.tw, .fb {
+	.tw, .fb, .gamr {
 		display: inline-block;
 		width: 80%;
 		margin: 0 auto;
@@ -64,16 +64,23 @@ a {
 	}
 	.tw {
 		background: linear-gradient(lighten($twitter_blue,7%),$twitter_blue);
-		border: 1px solid #000;
+		box-shadow:0 2px 0 darken($twitter_blue,10%);
 		&:active{
 			background: linear-gradient($twitter_blue,lighten($twitter_blue,7%));
 		}
 	}
 	.fb {
 		background: linear-gradient(lighten($facebook_blue,10%),$facebook_blue);
-		border: 1px solid #000;
+		box-shadow:0 2px 0 darken($facebook_blue,10%);
 		&:active{
-			background: linear-gradient($facebook_blue,lighten($facebook_blue,7%));
+			background: linear-gradient($facebook_blue,lighten($facebook_blue,10%));
+		}
+	}
+	.gamr {
+		background: linear-gradient(lighten($main_color,7%),$main_color);
+		box-shadow:0 2px 0 darken($main_color,10%);
+		&:active{
+			background: linear-gradient($main_color,lighten($main_color,7%));
 		}
 	}
 	.icon-twitter,.icon-facebook{

@@ -1,4 +1,4 @@
-@import "../_function.css.scss";
+@import "../../_function.css.scss";
 
 /*---   .searchTopBox   ----------*/
 .searchTopBox {
@@ -14,6 +14,7 @@
   .searchWrap {
     position: relative;
     width: 390px;
+    padding: 1px;
     border: 3px solid #ccc;
     @include border-radius(7px);
     background: #fff;
@@ -23,13 +24,13 @@
       top: 6px;
       left: 4px;
       color: #888;
-      font-size: 24px;
+      font-size: 1.5rem;
       font-family: 'icomoon';
       content: "\e60c";
     }
     &:after {
       position: absolute;
-      top: 4px;
+      top: 5px;
       left: 33px;
       height: 26px;
       border-left: 1px solid #cecece;
@@ -37,10 +38,9 @@
     }
   }
   .search {
-    width: 385px;
+    width: 380px;
     height: 34px;
     margin: 0 auto;
-    padding-top: 3px;
     padding-left: 40px;
     border: none;
     @include border-radius(7px);
@@ -51,7 +51,8 @@
 
     &::-webkit-input-placeholder {
       color: #cbcbcb;
-      font-size: 14px;
+      font-size: .875rem;
+      line-height: 1.5rem;
     }
   }
   /*---   .nextBtn   ----------*/
@@ -62,17 +63,18 @@
     width: 88px;
     height: 30px;
     margin-left: 113px;
-    @include border-radius(2px);
-    background: $main_color;
+    @include border-radius(4px);
+    @include bglinear(lighten($main_color, 5%), $main_color);
     color: #fff;
     font-weight: bold;
-    font-size: 14px;
+    font-size: .875rem;
     text-align: center;
     line-height: 30px;
     cursor: pointer;
 
     &:hover {
       text-decoration: none;
+      @include bglinear($main_color, lighten($main_color, 5%));
     }
   }
   /*---   .sortBox   ---*/
@@ -80,7 +82,7 @@
     width: $cntWidth;
     margin: 0 auto;
     color: #3e3e3e;
-    font-size: 14px;
+    font-size: .875rem;
 
     .item {
       display: inline-block;

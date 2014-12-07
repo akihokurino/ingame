@@ -15,34 +15,42 @@
         %figure.imgWrap
           /= image_tag "/game_photos/#{@game.photo_path}", height: 120, class: "gameImg"
           - if @game.photo_url
-            = image_tag @game.photo_url, width:"100%", class: "gameImg"
+            = image_tag @game.photo_url, height:"100%", class: "gameImg"
           - else
-            = image_tag "/game_photos/default.png", width:"100%", class: "gameImg"
+            = image_tag "/game_photos/default.png", height:"100%", class: "gameImg"
         .gameInfoWrap
           %ul.gameInfo
             %li.item.maker
-              メーカー : 
-              %span 
+              .itemName メーカー
+              .itemContent
                 = @game.maker
             %li.item.hard
-              ハード : 
-              %span 
+              .itemName ハード
+              .itemContent
                 = @game.device
             %li.item.releaseDay
-              発売日 : 
-              %span
+              .itemName 発売日
+              .itemContent
                 = @game.release_day
-          %p.review.reviewWrap
-            ユーザーの評価
-            %br
-            %span.reviewInner.icon-star
-              = @game.avg_rate
-          - if !@game.amazon_url.nil?
-            %p
-              %a.amazonBtn{href: @game.amazon_url} Amazonへ
+            %li.item.review
+              .itemName 評価
+              .itemContent
+                %span.reviewInner.icon-star
+                  = @game.avg_rate
+          %ul.linkBtnWrap
+            %li
+              %a.amazonBtn{href: "http://www.amazon.co.jp/s/ref=nb_sb_noss_1?__mk_ja_JP=カタカナ&url=search-alias%3Daps&field-keywords=#{@game.title}", target: "blank"} Amazonで検索
+            %li
+              %a.youtubeBtn{href: "https://www.youtube.com/results?search_query=#{@game.title}", target: "blank"} Youtubeで検索
+          - if @game.wiki
+            .gameSummary
+              %label{for: "summary"} 概要
+              %input.expand{type: "checkbox", id: "summary"}
+              %p
+                = @game.wiki
     = render partial: "select_btns", locals: {game: @game}
   .boxTtl
-    %h2 このゲームに対するポスト" "件
+    %h2 このゲームに対するポスト#{@game.posts_count}件
   .sortBoxWrap
     %ul.sortBox.sort-box
       %li.item.current.follower-posts

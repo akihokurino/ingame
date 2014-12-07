@@ -1,123 +1,122 @@
 @import "../_function.css.scss";
-@import "_header.css.scss";
-@import "_notification.css.scss";
-@import "_footer.css.scss";
+@import "component/_header.css.scss";
+@import "component/_notification.css.scss";
+@import "component/_footer.css.scss";
 
 /*---   common   ---------------------------*/
 * {
-	@include box-sizing;
-	word-wrap: break-word;
+  @include box-sizing;
+  word-wrap: break-word;
 }
 html {
-	min-width: 960px;
-	background: #eee;
-	font-family:"Hiragino Kaku Gothic ProN", "Lucida Grande", Helvetica, "Meiryo", sans-serif;
+  min-width: 960px;
+  background: $main_color;
+  font-family:"Hiragino Kaku Gothic ProN", "Lucida Grande", Helvetica, "Meiryo", sans-serif;
 }
 #wrapper {
-	line-height: 1.0;
+  line-height: 1.0;
 }
 a {
-	text-decoration: none;
+  text-decoration: none;
 }
 a:hover {
-	text-decoration: underline;
+  text-decoration: underline;
 }
 .loading-gif {
-	display: block;
-	width: 80px;
-	margin: 0 auto;
+  display: block;
+  width: 80px;
+  margin: 0 auto;
 }
 
 /*---   .mainContent   ---------------------------*/
 .mainContent {
-	min-height: 450px;
-	margin-top: 38px;
+  min-height: 450px;
+  padding-top: 49px;
 }
 
 /*------------------------------
-		systemClass
+systemClass
 ------------------------------*/
 .layer {
-	display: none;
-	position: fixed;
-	top: 0px;
-	left: 0px;
-	z-index: 5;
-	width: 100%;
-	height: 100%;
-	background-color: #000;
-	opacity: 0.11;
+  display: none;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.11;
 }
 
 .page-layer {
-	display: none;
-	position: fixed;
-	top: 0px;
-	left: 0px;
-	z-index: 5;
-	width: 100%;
-	height: 100%;
-	background-color: #fff;
-	opacity: 0;
+  display: none;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  opacity: 0;
 }
 
 .loading-gif {
-	display: none;
-	width: 30px;
-	height: 30px;
-	margin: 0 auto;
+  display: none;
+  width: 30px;
+  height: 30px;
+  margin: 0 auto;
 }
 
 .delete-confirm-wrap {
-	display: none;
-	position: fixed;
-	left: 50%;
-	top: 50%;
-	z-index: 10;
-	margin-left: -105px;
-	margin-top: -40px;
-	padding: 12px 10px 10px;
-	border: 1px solid #ababab;
-	@include border-radius(3px);
-	@include box-sizing;
-	background-color: #fff;
-	text-align: center;
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 10;
+  margin-left: -105px;
+  margin-top: -40px;
+  padding: 12px 10px 10px;
+  border: 1px solid #ababab;
+  @include border-radius(3px);
+  @include box-sizing;
+  background-color: #fff;
+  text-align: center;
 
-	.cancel {
-		display: inline-block;
-		width: 90px;
-		height: 28px;
-		@include border-radius(2px);
-		background: #cecece;
-		color: #fff;
-		font-weight: bold;
-		font-size: 14px;
-		line-height: 28px;
-		text-align: center;
-		cursor: pointer;
-	}
-	.done {
-		display: inline-block;
-		width: 90px;
-		height: 28px;
-		@include border-radius(2px);
-		background: $color_red;
-		color: #fff;
-		font-weight: bold;
-		font-size: 14px;
-		line-height: 28px;
-		text-align: center;
-		cursor: pointer;
-	}
+  .cancel {
+    display: inline-block;
+    width: 90px;
+    height: 28px;
+    @include border-radius(2px);
+    background: #cecece;
+    color: #fff;
+    font-weight: bold;
+    font-size: .875rem;
+    line-height: 28px;
+    text-align: center;
+    cursor: pointer;
+  }
+  .done {
+    display: inline-block;
+    width: 90px;
+    height: 28px;
+    @include border-radius(2px);
+    background: $color_red;
+    color: #fff;
+    font-weight: bold;
+    font-size: .875rem;
+    line-height: 28px;
+    text-align: center;
+    cursor: pointer;
+  }
 }
 .delete-confirmTxt {
-	margin-bottom: 8px;
-	color: #3d3d3d;
-	font-size: 14px;
+  margin-bottom: 8px;
+  color: #3d3d3d;
+  font-size: .875rem;
 }
 .descTxt {
-	margin-bottom: 8px;
-	color: #3d3d3d;
-	font-size: 10px;
+  margin-bottom: 8px;
+  color: #3d3d3d;
+  font-size: 10px;
 }
-

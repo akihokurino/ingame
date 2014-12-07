@@ -1,13 +1,13 @@
 %script{type: "text/template", id: "game-result-template"}
   {{ if (current_url) { }}
   %article.gameList
-    %a{href: "{{= current_url }}"}
+    %a.gameListLink{href: "{{= current_url }}"}
       %figure.gameImgWrap
-        / %img.gameImg{src: "/game_photos/{{= photo_path }}", width: "121", alt: ""}
+        / %img.gameImg{src: "/game_photos/{{= photo_path }}", width: "166", alt: ""}
         {{ if (photo_url) { }}
-        %img.gameImg{src: "{{= photo_url }}", width: "121", alt: ""}
+        %img.gameImg{src: "{{= photo_url }}", width: "166", alt: ""}
         {{ } else { }}
-        %img.gameImg{src: "/game_photos/default.png", width: "121", alt: ""}
+        %img.gameImg{src: "/game_photos/default.png", width: "166", alt: ""}
         {{ } }}
       %h1.ttl
         {{= title }}
@@ -22,7 +22,7 @@
         {{ } }}
     .statusWrap
       %select.status.my-status{name: "status", size: 1}
-        %option{value: ""} ステータス
+        %option{value: ""} 登録する
         %option{value: 1} 気になる
         %option{value: 2} プレイ中
         %option{value: 3} クリア済
@@ -30,11 +30,11 @@
   %article.gameList
     %span
       %figure.gameImgWrap
-        / %img.gameImg{src: "/game_photos/{{= photo_path }}", width: "121", alt: ""}
+        / %img.gameImg{src: "/game_photos/{{= photo_path }}", width: "166", alt: ""}
         {{ if (photo_url) { }}
-        %img.gameImg{src: "{{= photo_url }}", width: "121", alt: ""}
+        %img.gameImg{src: "{{= photo_url }}", width: "166", alt: ""}
         {{ } else { }}
-        %img.gameImg{src: "/game_photos/default.png", width: "121", alt: ""}
+        %img.gameImg{src: "/game_photos/default.png", width: "166", alt: ""}
         {{ } }}
       %h1.ttl
         {{= title }}
@@ -49,7 +49,7 @@
         {{ } }}
     .statusWrap
       %select.status.my-status{name: "status", size: 1}
-        %option{value: ""} ステータス
+        %option{value: ""} 登録する
         %option{value: 1} 気になる
         %option{value: 2} プレイ中
         %option{value: 3} クリア済

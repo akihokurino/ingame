@@ -1,0 +1,24 @@
+%script{type: "text/template", id: "signup-template"}
+  .signup
+    %header
+      .imgWrap
+        = image_tag("logo@2x.png", width:"120" )
+    .loginBox
+      %h1 GAMRに登録する
+      %form.inputInfo
+        .inputWrap
+          %input.textInput.username-input{type: "text", name: "username", placeholder: "ユーザーネーム", value: @current_provider[:username]}
+          %p.error-log.username-error.errorMassage
+        .inputWrap
+          %input.textInput.password-input{type: "password", name: "password", placeholder: "パスワード"}
+          %p.error-log.password-error.errorMassage
+        .inputWrap
+          %input.textInput.password-confirm-input{type: "password", name: "password_confirm", placeholder: "パスワード（確認用）"}
+          %p.error-log.password-confirm-error.errorMassage
+        .checkBoxWrap
+          %label
+            %input.rule-checkbox{type:"checkbox"}
+            = link_to "利用規約", term_users_path, target: "blank"
+            %span に同意する
+          %p.error-log.rule-error.errorMassage
+      %a.signup-btn.btn{href:""} 登録する

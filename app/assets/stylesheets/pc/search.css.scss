@@ -1,18 +1,18 @@
 @import "../_function.css.scss";
-@import "_searchTopBox.css.scss";
-@import "_gameListBox.css.scss";
-@import "_friendListBox.css.scss";
+@import "component/_searchTopBox.css.scss";
+@import "component/_gameListBox.css.scss";
+@import "component/_friendListBox.css.scss";
 
 /*---   common   ---------------------------*/
 html {
-    height:100%;
-    background: $main_color;
+  height:100%;
+  background: $main_color;
 }
 body {
-    height:100%;
+  height:100%;
 }
 #wrapper {
-    height:100%;
+  height:100%;
 }
 
 /*---   .mainContent   ---------------------------*/

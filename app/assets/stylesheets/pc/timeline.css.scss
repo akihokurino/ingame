@@ -1,20 +1,22 @@
 @import "../_function.css.scss";
-@import "_userActivity.css.scss";
-@import "_postBox.css.scss";
+@import "component/_userActivity.css.scss";
+@import "component/_postBox.css.scss";
 
 /*---   .mainContent   ---------------------------*/
 .mainContent {
   @include clearfix;
-  width: 1080px;
-  margin: 38px auto 0;
-  padding: 20px 0 46px;
+  padding: 68px 0 46px;
   background-color: $bg_color;
 
+  &Inner {
+    width: 1080px;
+    margin: 0 auto;
+  }
   /*---   .mainTtl   ----------*/
   .mainTtl {
     margin-bottom: 40px;
     color: #3e3e3e;
-    font-size: 24px;
+    font-size: 1.5rem;
     text-align: center;
   }
   .profileColumn {
@@ -62,16 +64,16 @@
       width: 180px;
       height: 50px;
       margin-bottom: 10px;
-      padding-top: 18px;
       color: #fff;
       font-weight: bold;
-      font-size: 16px;
+      font-size: 1rem;
       vertical-align: middle;
       line-height: 1.2;
+      word-break: break-all;
     }
     .userProf {
       color: #7e7e7e;
-      font-size: 12px;
+      font-size: .75rem;
       line-height: 1rem;
     }
     &CountList {
@@ -84,7 +86,7 @@
       width: 33.33%;
       padding: 8px 0 4px;
       @include box-sizing;
-      font-size: 12px;
+      font-size: .75rem;
       text-align: center;
 
       .count {
@@ -92,7 +94,7 @@
         margin-top: 5px;
         color: $main_color;
         font-weight: bold;
-        font-size: 14px;
+        font-size: .875rem;
       }
     }
     .followNum {
@@ -100,7 +102,7 @@
       width: 33.33%;
       padding: 8px 0 4px;
       @include box-sizing;
-      font-size: 12px;
+      font-size: .75rem;
       text-align: center;
 
       .count {
@@ -108,7 +110,7 @@
         margin-top: 5px;
         color: $main_color;
         font-weight: bold;
-        font-size: 14px;
+        font-size: .875rem;
       }
     }
     .followerNum {
@@ -116,7 +118,7 @@
       width: 33.33%;
       padding: 8px 0 4px;
       @include box-sizing;
-      font-size: 12px;
+      font-size: .75rem;
       text-align: center;
 
       .count {
@@ -124,7 +126,7 @@
         margin-top: 5px;
         color: $main_color;
         font-weight: bold;
-        font-size: 14px;
+        font-size: .875rem;
       }
     }
     .gameNum {
@@ -132,8 +134,7 @@
       width: 100%;
       padding: 8px 0 4px;
       @include box-sizing;
-      color: #3e3e3e;
-      font-size: 14px;
+      font-size: .875rem;
       text-align: center;
 
       .count {
@@ -141,7 +142,7 @@
         margin-top: 5px;
         color: $main_color;
         font-weight: bold;
-        font-size: 14px;
+        font-size: .875rem;
       }
     }
   }
@@ -180,16 +181,14 @@
         border-left: 9px solid transparent;
         content: "";
       }
-      &:after {
-        display: block;
-        position: absolute;
-        left: -13px;
-        top: 30px;
-        border-top: 8px solid transparent;
-        border-right: 7px solid #fff;
-        border-bottom: 8px solid transparent;
-        border-left: 7px solid transparent;
-        content: "";
+
+      .selectLogError {
+        padding: 4px 8px;
+        background-color: #726ad0;
+        display: none;
+        color: #fff;
+        border-radius: 3px;
+        margin-bottom: 10px;
       }
     }
     .selectBtn {
@@ -197,7 +196,7 @@
       width: 125px;
       padding-bottom: 10px;
       color: $main_color;
-      font-size: 16px;
+      font-size: 1rem;
       cursor: pointer;
 
       &:after {
@@ -221,13 +220,13 @@
       border: none;
       border-top: 1px solid #f0f0f0;
       @include box-sizing;
-      font-size: 14px;
+      font-size: .875rem;
       resize: none;
       outline: 0;
 
       &::-webkit-input-placeholder {
         color: #e2e2e2;
-        font-size: 14px;
+        font-size: .875rem;
       }
     }
     .urlThumbnail {
@@ -247,15 +246,18 @@
         margin-bottom: 15px;
       }
       .description {
-        font-size: 14px;
+        font-size: .875rem;
         line-height: 1.5;
       }
     }
     .thumbnailList {
       margin-bottom: 8px;
-
       .thumbnail {
         display: inline-block;
+        .gameTitle {
+          color: #726ad0;
+          margin-bottom: 5px;
+        }
       }
     }
     #thumbnail {
@@ -272,13 +274,13 @@
       padding-top: 5px;
       padding-left: 30px;
       color: #929292;
-      font-size: 12px;
+      font-size: .75rem;
 
       &:before {
         position: absolute;
         top: 0;
         left: 0;
-        font-size: 20px;
+        font-size: 1.25rem;
         font-family: 'icomoon';
         content: "\e608";
       }
@@ -297,11 +299,10 @@
       height: 30px;
       padding-left: 35px;
       padding-right: 10px;
-      border: 1px solid $main_color;
-      @include border-radius(2px);
-      background: #fff;
-      color: $main_color;
-      font-size: 14px;
+      @include border-radius(4px);
+      @include bglinear(lighten($main_color, 5%), $main_color);
+      color: #fff;
+      font-size: .875rem;
       line-height: 30px;
       cursor: pointer;
 
@@ -309,13 +310,12 @@
         position: absolute;
         top: 0;
         left: 10px;
-        font-size: 20px;
+        font-size: 1.25rem;
         font-family: 'icomoon';
         content: "\e60a";
       }
       &:hover {
-        border: 1px solid #fff;
-        background: $main_color;
+        @include bglinear($main_color, lighten($main_color, 5%));
         color: #fff;
       }
     }
@@ -328,7 +328,7 @@
       @include box-shadow(1px, 1px, 3px, 3px, rgba(0, 0, 0, 0.2));
       background: #fff;
       font-weight: bold;
-      font-size: 12px;
+      font-size: .75rem;
 
       .playing {
         padding: 10px 10px 0;

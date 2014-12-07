@@ -1,0 +1,12 @@
+%script{type: "text/template", id: "signin-template"}
+  %header.SigninHeader
+    %h1.SigninHeaderTtl GAMR
+  %section.Signin
+    %h1.SigninTtl GAMRにログイン
+    %form
+      %input.SigninInput.username-input{type: "text", name: "username", placeholder: "ユーザー名", value: @current_provider_name}
+      %p.SigninError.error-log.username-error
+      %input.SigninInput.password-input{type: "password", name: "password", placeholder: "パスワード"}
+      %p.SigninError.error-log.password-error
+    %p.SigninBtnWrap
+      %a.SigninBtn.signin-btn{href: "#"} ログイン

@@ -12,17 +12,11 @@
     .profileBoxInner
       %figure.profImgWrap
         = image_tag "/user_photos/#{@user[:photo_path]}", class: "profImg", width: 135, hieght: 135, alt: "ユーザー画像"
-      %h1.userName
-        = @user.username
-      %p.userPlace
-        = @user.place
-      %p.userInfo
-        = @user.introduction
     .countListWrap
       %ul.countList.count-box
         %li.gameNum.logs-li.current
           %a.countListLink{href: "/users/#{@user[:id]}#logs"}
-            ライブラリ
+            マイゲーム
             %span.count
               = @user.logs.count
         %li.postNum.posts-li
@@ -40,16 +34,25 @@
             フォロワー
             %span.count
               = @user.follower_num
-      %form.libSearchWrap
-        %input.libSearch.search-log{placeholder: "ライブラリ内をキーワードで検索"}
       - unless current_user?(@user)
         %span.follow-wrap
           - if @user.i_followed
-            %span.followBtn.main-unfollow-btn フォロー中
+            %span.followBtn.main-unfollow-btn.unFollow フォロー中
           - else
             %span.followBtn.main-follow-btn フォローする
+  .profileColumnWrap
+    .profileLeftColumn
+      %h1.userName
+        = @user.username
+      - if @user.place
+        %p.userPlace
+          = @user.place
+      %p.userInfo
+        = @user.introduction
+      %form.libSearchWrap
+        %input.libSearch.search-log{placeholder: "マイゲーム内を検索"}
+    .profileRightColumn.profile-timeline
 
-  .profile-timeline
 
 
 = render partial: "application/pc/footer"
@@ -57,6 +60,9 @@
 
 = render partial: "application/underscore/pc/common/follow_btn"
 = render partial: "application/underscore/pc/common/unfollow_btn"
+
+= render partial: "application/underscore/pc/profile/main_follow_btn"
+= render partial: "application/underscore/pc/profile/main_unfollow_btn"
 
 = render partial: "application/underscore/pc/profile/log_list"
 = render partial: "application/underscore/pc/common/log"

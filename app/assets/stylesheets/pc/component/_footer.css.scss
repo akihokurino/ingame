@@ -1,0 +1,27 @@
+@import "../../_function.css.scss";
+
+/*---   .footer   ---------------------------*/
+.footer {
+  width: 100%;
+  padding: 38px 0;
+  background: $main-color;
+  color: #fff;
+  font-size: 1rem;
+  text-align: center;
+
+  .ftList {
+    @include clearfix;
+    width: 245px;
+    margin: 0 auto 34px;
+
+    .item, .lastItem {
+      float: left;
+    }
+    .item {
+      margin-right: 20px;
+    }
+  }
+  .ftLink {
+    color: #fff;
+  }
+}

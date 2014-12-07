@@ -10,13 +10,10 @@
           .followBtn.unFollow.unfollow-btn フォロー中
         {{ } else { }}
         %li.followBtnWrap
-          {{ if (i_followered) { }}
-          .followBtn.follow-btn フォロー中
-          {{ } else { }}
           .followBtn.follow-btn フォローする
-          {{ } }}
         {{ } }}
         {{ } }}
     %p.userName
       %a.userNameLink{href: "/users/{{= id }}#logs"} {{= username }}
+    %p.myGame マイゲーム {{= logs_count }}
     %p.userProf {{= introduction }}

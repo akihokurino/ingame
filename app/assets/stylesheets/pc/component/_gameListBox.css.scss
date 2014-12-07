@@ -1,0 +1,260 @@
+@import "../../_function.css.scss";
+
+/*---   .gameList   ----------*/
+.gameListBox {
+  width: 100%;
+  padding: 20px 0 40px;
+
+  .gameListWrap {
+    position: relative;
+    width: 960px;
+    margin: 0 auto;
+    font-size: 0; /* inline-block用 */
+
+    .item {
+      display: inline-block;
+      width: 168px;
+      margin: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #e6e6e6;
+      @include box-sizing;
+      @include border-radius(3px);
+      background: #fff;
+    }
+  }
+  .gameList {
+    position: relative;
+
+    &Link {
+      color: $color_textBlack;
+      
+      &:hover {
+        color: $main_color;
+        text-decoration: none;
+      }
+    }
+    .ttl {
+      overflow: hidden;
+      height: 40px;
+      padding: 5px;
+      @include box-sizing;
+      font-weight: bold;
+      font-size: .8125rem;
+      line-height: 1.5;
+    }
+    .device {
+      position: absolute;
+      top: 8px;
+      left: -8px;
+      padding: 5px 10px;
+      border-radius: 2px;
+      @include bglinear(lighten($main_color, 7%), $main_color);
+      color: #fff;
+      font-size: .875rem;
+
+      &:before {
+        position: absolute;
+        top: 24px;
+        left: 0px;
+        border-top: 3px solid darken($main_color, 20%);
+        border-right: 5px solid darken($main_color, 20%);
+        border-bottom: 3px solid transparent;
+        border-left: 5px solid transparent;
+        content: "";
+      }
+    }
+    &:hover {
+      .articleWrap {
+        &:after {
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 168px;
+          height: 100%;
+          background: rgba(255, 255, 255, 0.26);
+          content: "";
+        }
+      }
+      .gameDeleteBtn {
+        display: block;
+      }
+    }
+    .gameImgWrap {
+      overflow: hidden;
+      width: 168px;
+    }
+    .gameImg {
+      @include border-radius(3px 3px 0 0);
+    }
+  }
+  .articleWrap {
+    color: $color_textBlack;
+    
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  .starList {
+    width: 118px;
+    margin: 7px auto 0;
+    padding-bottom: 10px;
+
+    .starOn {
+      display: inline-block;
+      margin-right: 4px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+      &:before {
+        color: orange;
+        font-size: 1.25rem;
+        font-family: 'icomoon';
+        content: "\e60e";
+      }
+    }
+    .starOff {
+      display: inline-block;
+      margin-right: 4px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+      &:before {
+        color: #888;
+        font-size: 1.25rem;
+        font-family: 'icomoon';
+        content: "\e60e";
+      }
+    }
+  }
+  .statusWrap {
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    width: 166px;
+    height: 33px;
+    margin-top: 5px;
+    border: 1px solid $main_color;
+    @include border-radius(3px);
+    background: #fff;
+    cursor: pointer;
+
+    &:after {
+      display: block;
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      margin-top: -3px;
+      border-top: 5px solid $main_color;
+      border-right: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+      border-left: 5px solid transparent;
+      content:"";
+    }
+  }
+  .registed .statusWrap {
+    border: none;
+    @include bglinear(lighten($main_color, 7%), $main_color);
+
+    &:after {
+      display: block;
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      margin-top: -3px;
+      border-top: 5px solid #fff;
+      border-right: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+      border-left: 5px solid transparent;
+      content:"";
+    }
+  }
+  .status {
+    display: block;
+    width: 90%;
+    height: 33px;
+    margin: 0 auto;
+    border: none;
+    background: none;
+    color: $main_color;
+    font-size: .875rem;
+    text-indent: .01px;
+    text-overflow: "";
+    line-height: 1rem;
+    @include appearance;
+    cursor: pointer;
+    outline: 0;
+
+    &::-ms-expand {
+      display: none;
+    }
+    @-moz-document url-prefix() {
+      width: 182px;
+      padding-left: 10px;
+    }
+  }
+  .registed .status {
+    color: #fff;
+
+    @-moz-document url-prefix() {
+      option {
+        color: $main_color;
+      }
+    }
+  }
+  .gameDeleteBtn {
+    display: none;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 20px;
+    height: 20px;
+    @include border-radius(18px);
+    background-color: #888;
+    color: #fff;
+    font-weight: bold;
+    font-size: 19px;
+    text-align: center;
+    cursor: pointer;
+  }
+  .gameDeleteBox {
+    position: absolute;
+    top: 32px;
+    left: 18px;
+    width: 210px;
+    height: 80px;
+    padding: 12px 0 10px;
+    @include border-radius(2px);
+    @include box-sizing;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    font-size: .875rem;
+    text-align: center;
+
+    .gameDeleteTxt {
+      margin-bottom: 16px;
+    }
+    .cancelBtn {
+      display: inline-block;
+      width: 90px;
+      height: 28px;
+      @include border-radius(2px);
+      background: $color_blue;
+      font-weight: bold;
+      line-height: 28px;
+      cursor: pointer;
+    }
+    .deleteBtn {
+      display: inline-block;
+      width: 90px;
+      height: 28px;
+      @include border-radius(2px);
+      background: $color_red;
+      font-weight: bold;
+      line-height: 28px;
+      cursor: pointer;
+    }
+  }
+}

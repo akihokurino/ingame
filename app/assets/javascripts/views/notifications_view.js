@@ -10,7 +10,6 @@ var NotificationsView = Backbone.View.extend({
     this.collection.fetch({
       data: {},
       success: function (model, response, options) {
-        console.log(response);
         for (var i = 0; i < response.notifications.length; i++) {
           response.notifications[i].text = that.createText(response.notifications[i]);
           var notification = new Notification(response.notifications[i]);
@@ -29,7 +28,7 @@ var NotificationsView = Backbone.View.extend({
     }
   },
   createText: function (notification) {
-    var text = "<a href='/users/" + notification.from_user.id + "#logs'>" + notification.from_user.username + "さん</a>があなた" + notification.text;
+    var text = "<a href='/users/" + notification.from_user.id + "#logs'>" + notification.from_user.username + "</a>さんがあなた" + notification.text;
     return text;
   },
   hideNotifications: function () {

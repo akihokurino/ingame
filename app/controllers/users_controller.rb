@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  skip_before_action :auth, only: [:login, :term, :privacy]
+  skip_before_action :auth, only: [:login, :term, :privacy, :new]
   before_action :set_user, only: [:show, :edit, :update]
+  before_action :auth_provider, only: [:new]
 
   def login
   end
@@ -15,13 +16,16 @@ class UsersController < ApplicationController
     @user.check_follow(@current_user)
   end
 
+  def new
+  end
+
   def edit
   end
 
   def update
     clip = {x: params[:user][:clip_x].to_i, y: params[:user][:clip_y].to_i}
     if @user.update_with(user_params, clip)
-      redirect_to posts_path, notice: "ユーザー情報を変更しました"
+      redirect_to "/users/#{@user[:id]}#logs", notice: "ユーザー情報を変更しました"
     else
       render "edit"
     end
@@ -40,7 +44,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :introduction, :place, :photo_path, :place)
+    params.require(:user).permit(:username, :introduction, :place, :photo_path, :email, :password)
   end
 
   def set_user

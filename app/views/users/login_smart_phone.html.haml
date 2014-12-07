@@ -2,14 +2,14 @@
   = stylesheet_link_tag "smart_phone/login"
 
 %section.mainVisual
-  %h1.ttl 
+  %h1.ttl
     = image_tag("logo@2x.png", width:"120" )
-  %h2.mainCopy 
-    ゲームの楽しみ方は
+  %h2.mainCopy
+    たくさんのゲームを
     %br
-    もっとある。
+    遊んできた。
   %p.subCopy
-    GAMRは、ゲーマーによるゲーマーの為の、ゲームライフをより楽しくするSNSです。
+    GAMRはゲームライフをより楽しくするSNSです。
   %section.loginBox
     %ul.snsList
       %li.item
@@ -18,6 +18,8 @@
       %li.item
         %a.fb{href: "/auth/facebook"}
           %span.icon-facebook Facebookでログイン
+      %li.item
+        %a.gamr GAMR IDでログイン
 %section.pointsTtl GAMRのつかいかた
 %section.points
   %section.first
@@ -46,4 +48,8 @@
     %li.item
       %a.fb{href: "/auth/facebook"}
         %span.icon-facebook Facebookでログイン
-%footer © GAMR ALL RIGHTS RESERVED.
+    %li.item
+      %a.gamr
+        %span SNS使ってねーよログイン
+
+= render partial: "application/smart_phone/footer"

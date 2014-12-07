@@ -1,0 +1,21 @@
+%script{type: "text/template", id: "flow-template"}
+  .signup
+    %header
+      .imgWrap
+        = image_tag "logo@2x.png", width:"120"
+    .loginBox
+      %h1 ようこそ！#{@current_provider[:username]}さん
+      .imgWrap
+        = image_tag "smart_phone/default.png", width:"100"
+        - case @current_provider[:service_name]
+        - when "facebook"
+          .serviceLogo.icon-facebook
+        - when "twitter"
+          .serviceLogo.icon-twitter
+      %h2 #{@current_provider[:service_name]}でGAMRにログイン
+      .btnWrap
+        %a.btn{href: "/users/new#signup"} 新しくアカウントをつくる
+        %p 新しくGAMRのアカウントを作成して、#{@current_provider[:service_name]}アカウントと接続します。作成したGAMRのアカウントには、#{@current_provider[:service_name]}アカウントでログインできます。
+      .btnWrap
+        %a.btn{href: "/users/new#signin"} GAMRとつなげる
+        %p すでにGAMRのアカウントをお持ちの場合は、#{@current_provider[:service_name]}アカウントと接続することで、#{@current_provider[:service_name]}アカウントでGAMRにログインできるようになります。

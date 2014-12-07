@@ -3,6 +3,14 @@
     .friendListTopBox
       %figure.userImgWrap
         %img.userImg{src: "/user_photos/{{= photo_path }}", width: "80", height: "80", alt: ""}
-      %p.followBtn.follow-btn フォロー
+      %ul.btn-list
+        %li
+          {{ if (i_followed) { }}
+          %span.followBtn.unFollow.unfollow-btn フォロー中
+          {{ } else { }}
+          %span.followBtn.follow-btn フォローする
+          {{ } }}
+
     %p.userName {{= username }}
+    %p.myGame マイゲーム {{= logs_count }}
     %p.userProf {{= introduction }}

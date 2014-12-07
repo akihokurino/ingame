@@ -2,15 +2,14 @@
   %article.gameList
     %a.articleWrap{href: "/games/{{= game.id }}#all", style: "display: block;"}
       %figure.gameImgWrap
-        / %img.gameImg{src: "/game_photos/{{= game.photo_path}}", width: "121", alt: ""}
+        / %img.gameImg{src: "/game_photos/{{= game.photo_path}}", width: "166", alt: ""}
         {{ if (game.photo_url) { }}
-        %img.gameImg{src: "{{= game.photo_url }}", width: "121", alt: ""}
+        %img.gameImg{src: "{{= game.photo_url }}", width: "166", alt: ""}
         {{ } else { }}
-        %img.gameImg{src: "/game_photos/default.png", width: "121", alt: ""}
+        %img.gameImg{src: "/game_photos/default.png", width: "166", alt: ""}
         {{ } }}
       %h1.ttl
         {{= game.title }}
-        {{= isCurrentUserLog }}
       %ul.starList
         {{ diff = 5 - rate }}
         {{ for (var i = 0; i < rate; i++) { }}

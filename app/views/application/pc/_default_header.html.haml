@@ -6,9 +6,9 @@
     %h1.logoWrap
       = link_to "GAMR", posts_path, class: "logo"
     %form.searchWrap
-      %input.search.header-search-input{placeholder: "キーワードでゲームを探す"}
+      %input.search.header-search-input{placeholder: "キーワードでゲームを検索"}
     %figure.profImgWrap.menu-btn
-      = image_tag "/user_photos/#{@current_user[:photo_path]}", class: "profImg", width: 25, height: 25, alt: ""
+      = image_tag "/user_photos/#{@current_user[:photo_path]}", class: "profImg", width: 27, height: 27, alt: ""
     = render partial: "application/pc/menu"
     = render partial: "application/pc/notifications_modal"
     = render partial: "application/underscore/pc/header/notification"

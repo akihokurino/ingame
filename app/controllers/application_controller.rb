@@ -31,8 +31,21 @@ class ApplicationController < ActionController::Base
 				reset_session
 			end
 		end
+
 		redirect_to login_users_path unless @current_user
 	end
+
+	def auth_provider
+    if session[:current_provider_id]
+    	begin
+				@current_provider = UserProvider.find(session[:current_provider_id])
+			rescue ActiveRecord::RecordNotFound
+				reset_session
+			end
+    end
+
+    redirect_to login_users_path unless @current_provider
+  end
 
 	def current_user?(user)
 		(@current_user[:id] == user[:id]) ? true : false

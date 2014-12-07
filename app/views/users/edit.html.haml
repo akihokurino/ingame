@@ -11,47 +11,50 @@
     .profileBoxInner
       %figure.profImgWrap
         = image_tag "/user_photos/#{@user[:photo_path]}", class: "profImg", width: 135, hieght: 135, alt: "ユーザー画像"
+  .profileColumnWrap
+    .profileLeftColumn
       %h1.userName
         = @user.username
-      %p.userPlace
-        = @user.place
+      - if @user.place
+        %p.userPlace
+          = @user.place
       %p.userInfo
         = @user.introduction
-  .profileEditBox
-    %h1.profileEditTtl プロフィール設定
-    = form_for @user do |f|
-      = f.hidden_field :clip_x, id: "clip-x"
-      = f.hidden_field :clip_y, id: "clip-y"
-      %dl.editList
-        %dt.editListTtl.editListTtlProf プロフィール画像
-        %dd.editProf
-          %figure.profImgWrap#thumbnail
-            = image_tag "/user_photos/#{@user[:photo_path]}", class: "profImg", width: 98, hieght: 98, alt: "ユーザー画像"
-          .uploadBtnWrap
-            .uploadBtnTxt ファイルを選択
-            = f.file_field :photo_path, id: "upload-btn", class: "uploadBtn"
-      /
+    .profileEditBox
+      %h1.profileEditTtl プロフィール設定
+      = form_for @user do |f|
+        = f.hidden_field :clip_x, id: "clip-x"
+        = f.hidden_field :clip_y, id: "clip-y"
         %dl.editList
-          %dt.editListTtl.editListTtlCover カバー写真
-          %dd.editCover
-            %figure.coverImgWrap
-              %img.coverImg{src: "../test_set/test04.jpg", width: "220", height: "55", alt: "カバー写真"}
+          %dt.editListTtl.editListTtlProf プロフィール画像
+          %dd.editProf
+            %figure.profImgWrap#thumbnail
+              = image_tag "/user_photos/#{@user[:photo_path]}", class: "profImg", width: 98, hieght: 98, alt: "ユーザー画像"
             .uploadBtnWrap
               .uploadBtnTxt ファイルを選択
-              %input.uploadBtn{type: "file", value: "ファイルを選択"}
-      %dl.editList
-        %dt.editListTtl ユーザーネーム
-        %dd.editElm
-          = f.text_field :username, class: "userName"
-      %dl.editList
-        %dt.editListTtl 場所
-        %dd.editElm
-          = f.text_field :place, clss: "place"
-      %dl.editList
-        %dt.editListTtl 自己紹介(200文字)
-        %dd.editElm
-          = f.text_area :introduction, class: "userInfo"
-      = f.submit "変更を保存", class: "editBtn"
+              = f.file_field :photo_path, id: "upload-btn", class: "uploadBtn"
+        /
+          %dl.editList
+            %dt.editListTtl.editListTtlCover カバー写真
+            %dd.editCover
+              %figure.coverImgWrap
+                %img.coverImg{src: "../test_set/test04.jpg", width: "220", height: "55", alt: "カバー写真"}
+              .uploadBtnWrap
+                .uploadBtnTxt ファイルを選択
+                %input.uploadBtn{type: "file", value: "ファイルを選択"}
+        %dl.editList
+          %dt.editListTtl ユーザーネーム
+          %dd.editElm
+            = f.text_field :username, class: "userName"
+        %dl.editList
+          %dt.editListTtl 場所
+          %dd.editElm
+            = f.text_field :place, clss: "place"
+        %dl.editList
+          %dt.editListTtl 自己紹介(200文字)
+          %dd.editElm
+            = f.text_area :introduction, class: "userInfo"
+        = f.submit "変更を保存", class: "editBtn"
 
   = render partial: "application/pc/clip_modal"
 

@@ -245,6 +245,8 @@
             that.hideClipModal();
             var img = $("<img src='/user_photos/" + data.result.photo_path + "' width='157' height='157'>");
             $("#thumbnail").html(img);
+
+            $(".next-page").html("初期設定を完了");
           },
           error: function () {
 

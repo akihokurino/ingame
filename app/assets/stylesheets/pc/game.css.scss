@@ -1,5 +1,5 @@
 @import "../_function.css.scss";
-@import "_postBox.css.scss";
+@import "component/_postBox.css.scss";
 
 html {
   background: #5e5e5e;
@@ -17,123 +17,241 @@ html {
 
     /*---   .gameBoxInner   ---*/
     &Inner {
-      width: $cntWidth;
+      width:$width;
       margin: 0 auto;
       padding-top: 40px;
-    }
-    /*---   .gameTtl   ---*/
-    .gameTtl {
-      margin-bottom: 24px;
-      color: $color_green;
-      font-weight: bold;
-      font-size: 24px;
     }
     /*---   .gameImg   ---*/
     .gameImgWrap {
       float: left;
-      margin-right: 13px;
+      width: 240px;
+      text-align:center;
+      img{
+        margin-bottom: 10px;
+        @include box-shadow(0,0,4px,0,rgba(0,0,0,0.5));
+      }
+    }
+    .rightBox{
+      position:absolute;
+      top:0;
+      right:0;
+    }
+    .reviewBox{
+      display:inline-block;
+      margin-bottom:10px;
+      padding: 3px;
+      width: 240px;
+      border:solid 4px $color_border;
+      text-align:center;
+      .review{
+        padding:10px;
+        border:1px solid $color_border;
+        color:$color_textBlack;
+        text-align:center;
+        .value {
+          padding:0 10px 8px 10px;
+          color: orange;
+          font-weight: bold;
+          font-size: 30px;
+        }
+        .icon-star{
+          float:left;
+          display:inline-block;
+          font-size:28px;
+        }
+        .starList {
+          display:inline-block;
+          font-size:1.5rem;
+        }
+        .starOn {
+          display: inline-block;
+          color:orange;
+        }
+        .starOff {
+          display: inline-block;
+        }
+        @include clearfix;
+      }
+    }
+    .amazonBtn{
+      display:inline-block;
+      margin:5px 0;
+      padding:10px;
+      @include border-radius(4px);
+      color:$color_textBlack;
+      font-size:1rem;
+      .icon-search{
+        font-weight:bold;
+      }
+    }
+    .youtubeBtn{
+      @extend .amazonBtn;
     }
     /*---   .gameInfoBox   ---*/
     .gameInfoBox {
       position: relative;
-      float: left;
-      margin-bottom: 45px;
+      float: right;
+      width: 660px;
       @include clearfix;
+
+      &Inner{
+        width: 420px;
+      }
+    }
+    /*---   .gameTtl   ---*/
+    .gameTtl {
+      margin-bottom: 14px;
+      color: $color_textBlack;
+      font-weight: bold;
+      font-size: 1.5rem;
+      line-height:1.5;
     }
     /*---   .gameInfoList   ---*/
     .gameInfoList {
-      max-width: 370px;
-      color: #3e3e3e;
-      font-size: 14px;
-      line-height: 26px;
-
+      line-height: 1.5;
+      margin-bottom:20px;
       .item {
+        @include border-radius(4px);
+        font-size: 0.75rem;
         margin-bottom: 10px;
-        padding-left: 5rem;
-        text-indent: -5rem;
+        .itemName{
+          margin:10px 0 4px 0;
+          @include box-sizing;
+          color:$color_textBlack;
+          font-weight:bold;
+          vertical-align: middle;       }
+        .itemContent{
+          display: inline-block;
+          padding:8px 12px;
+          @include border-radius(2px);
+          background-color: #eee;
+          color:$color_textBlack;
+          text-align:left;
+        }
       }
-      &ItemInner {
-        margin-right: 10px;
-        padding: 3px 5px;
-        @include border-radius(3px);
-        background: #929292;
-        color: #fff;
+    }
+    .gameSummary{
+      label {
+        position: relative;
+          display: inline-block;
+          padding: 10px;
+          margin-bottom: 10px;
+          width:100%;
+          @include box-sizing;
+          border-bottom: 1px solid $color_border;
+          color: $color_textBlack;
+          font-size:16px;
+          font-weight:bold;
+          text-align:left;
+          &:before{
+            position: relative;
+          content:"";
+          display:inline-block;
+          margin-right:10px;
+          width:8px;
+          height:8px;
+          border-color: $color_textBlack;
+          border-right:solid 2px;
+          border-bottom:solid 2px;
+          -webkit-transform: rotate(45deg);
+             -moz-transform: rotate(45deg);
+              -ms-transform: rotate(45deg);
+               -o-transform: rotate(45deg);
+                  transform: rotate(45deg);
+          top:-4px;
+          }
+      }
+
+      input[type="checkbox"].expand{
+          display: none;
+      }
+
+      p{
+        margin-bottom: 10px;
+        font-size:0.875rem;
+        color:$color_textBlack;
+        line-height:1.5;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -ms-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition: all 0.5s;
+        list-style: none;
+      }
+
+      input[type="checkbox"].expand + p{
+          height: 0;
+          overflow: hidden;
+      }
+
+      input[type="checkbox"].expand:checked + p{
+          height: auto;
       }
     }
     /*---   .amazonBtn   ---*/
-    .amazonBtn {
-      color: #2b518b;
-      font-weight: bold;
-      font-size: 14px;
-      text-decoration: underline;
+    // .amazonBtn {
+    //   color: #2b518b;
+    //   font-weight: bold;
+    //   font-size: .875rem;
+    //   text-decoration: underline;
 
-      &:hover {
-        text-decoration: none;
-      }
-    }
+    //   &:hover {
+    //     text-decoration: none;
+    //   }
+    // }
     /*---   .review   ---*/
-    .reviewBox {
-      margin: 32px 0 28px;
-      @include clearfix;
-
-      .starList {
-        float: left;
-        margin-right: 24px;
-        font-size: 0;
-      }
-      .starOn {
-        display: inline-block;
-        @include img_set-PC4(32px, 33px, 0, -211px);
-        margin-right: 8px;
-
-        &:last-child {
-          margin-right: 0;
-        }
-      }
-      .starOff {
-        display: inline-block;
-        @include img_set-PC4(32px, 33px, 0, -252px);
-        margin-right: 8px;
-
-        &:last-child {
-          margin-right: 0;
-        }
-      }
-      .value {
-        float: left;
-        padding-top: 4px;
-        color: #3e3e3e;
-        font-weight: bold;
-        font-size: 26px;
-      }
-    }
     /*---   .gameBtnList   ---*/
     .gameBtnList {
       font-size: 0;
 
       .item {
         display: inline-block;
+        overflow: hidden;
         position: relative;
-        @include border-radius(3px);
+        width: 126px;
+        @include border-radius(4px);
         background: $main_color;
+        box-shadow: 0 2px 0 darken($main_color,7%);
         cursor: pointer;
 
         &:first-child {
           margin-right: 30px;
         }
+        @-moz-document url-prefix() {
+          &:after {
+            display: block;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            margin-top: -3px;
+            border-top: 5px solid #fff;
+            border-right: 4px solid transparent;
+            border-bottom: 4px solid transparent;
+            border-left: 5px solid transparent;
+            content:"";
+          }
+        }
       }
       select {
-        display: block;
-        height: 36px;
+        @include appearance;
+        outline: 0;
+        border:none;
+        display: inline-block;
         margin: 0 auto;
-        padding: 20px;
-        border: none;
+        padding: 10px 15px;
         background: none;
         color: #fff;
         font-weight: bold;
-        font-size: 16px;
+        font-size: 1rem;
         cursor: pointer;
-        outline: 0;
+
+        &::-ms-expand {
+          display: none;
+        }
+        @-moz-document url-prefix() {
+          width: 152px;
+          padding-left: 10px;
+        }
       }
     }
     /*---   .sortBox   ---*/
@@ -143,14 +261,14 @@ html {
 
       .sortTtl {
         margin-bottom: 26px;
-        font-size: 18px;
+        font-size: 1.125rem;
         text-align: center;
       }
       .sortList {
         width: $cntWidth;
         margin: 0 auto;
         color: #3e3e3e;
-        font-size: 14px;
+        font-size: .875rem;
 
         .item {
           display: inline-block;
