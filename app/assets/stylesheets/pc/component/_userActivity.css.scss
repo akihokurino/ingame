@@ -45,7 +45,7 @@
   }
   .myGame {
     color: $color_textGray;
-    font-size: .875rem;
+    font-size: .75rem;
   }
   &Userprof {
     overflow: hidden;
@@ -59,7 +59,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    padding: 4px 6px;
+    padding: 6px 8px;
     border: 1px solid $main_color;
     @include border-radius(4px);
     @include box-sizing;
