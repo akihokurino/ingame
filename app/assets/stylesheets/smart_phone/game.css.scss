@@ -22,8 +22,12 @@
 		}
 		.imgWrap{
 			width: 100%;
+			text-align: center;
+
 			.gameImg{
-				width: 100%;
+				max-width: 100%;
+				height: auto;
+				max-height: 300px;
 				border: 1px solid #eee;
 				@include box-sizing;
 			}
