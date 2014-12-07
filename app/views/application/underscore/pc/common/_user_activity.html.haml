@@ -2,8 +2,8 @@
   %figure.userActivityImgWrap
     %img.userActivityImg{src: "/user_photos/{{= photo_path }}", width: "40", height: "40", alt: ""}
   %a.userActivityUsername{href: "/users/{{= id }}#logs"} {{= username }}
+  %p.myGame マイゲーム {{= logs_count }}
   %p.userActivityUserprof {{= introduction }}
   %ul.btn-list
     %li
       %span.followBtn.follow-btn フォローする
-  .myGame マイゲーム {{= logs_count }}

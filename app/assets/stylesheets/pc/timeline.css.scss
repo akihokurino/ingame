@@ -288,7 +288,7 @@
       padding-left: 35px;
       padding-right: 10px;
       @include border-radius(4px);
-      @include bglinear($main_color, lighten($main_color, 5%));
+      @include bglinear(lighten($main_color, 5%), $main_color);
       color: #fff;
       font-size: .875rem;
       line-height: 30px;
@@ -303,7 +303,7 @@
         content: "\e60a";
       }
       &:hover {
-        @include bglinear(lighten($main_color, 5%), $main_color);
+        @include bglinear($main_color, lighten($main_color, 5%));
         color: #fff;
       }
     }
