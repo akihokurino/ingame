@@ -93,8 +93,9 @@ html {
       float: right;
       width: 660px;
       @include clearfix;
+
       &Inner{
-        width: 460px;
+        width: 420px;
       }
     }
     /*---   .gameTtl   ---*/
