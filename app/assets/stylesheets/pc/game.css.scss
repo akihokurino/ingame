@@ -25,35 +25,62 @@ html {
     .gameImgWrap {
       float: left;
       width: 240px;
-      margin-right: 10px;
+      text-align:center;
       img{
+        margin-bottom: 10px;
         @include box-shadow(0,0,4px,0,rgba(0,0,0,0.5));
+      }
+    }
+    .reviewBox{
+      display:inline-block;
+      margin-bottom:10px;
+      padding: 3px;
+      width: 240px;
+      border:solid 4px $color_border;
+      text-align:center;
+      .review{
+        padding:10px;
+        border:1px solid $color_border;
+        color:$color_textBlack;
+        text-align:center;
+        .value {
+          padding:0 10px 8px 10px;
+          color: orange;
+          font-weight: bold;
+          font-size: 30px;
+        }
+        .icon-star{
+          float:left;
+          display:inline-block;
+          font-size:28px;
+        }
+        .starList {
+          display:inline-block;
+          font-size:1.5rem;
+        }
+        .starOn {
+          display: inline-block;
+          color:orange;
+        }
+        .starOff {
+          display: inline-block;
+        }
+        @include clearfix;
       }
     }
     .amazonBtn{
       display:inline-block;
-      margin:10px 0;
-      padding:10px 20px 10px 10px;
-      width: 100%;
+      margin:5px 0;
+      padding:10px;
       @include border-radius(4px);
-      background-color: #FC9B18;
-      box-shadow: 0 2px 0 darken(#FC9B18,7%);
-      color:#fff;
+      color:$color_textBlack;
       font-size:1rem;
-      text-shadow:0 1px 1px rgba(0,0,0,0.2);
-      text-decoration:none;
-      &:hover{
-        background: lighten(#FC9B18,5%);
-        text-decoration:underline;
-      }
       .icon-search{
         font-weight:bold;
       }
     }
     .youtubeBtn{
       @extend .amazonBtn;
-      background-color: #e52d27;
-      box-shadow: 0 2px 0 darken(#e52d27,7%);
     }
     /*---   .gameInfoBox   ---*/
     .gameInfoBox {
@@ -97,41 +124,62 @@ html {
         }
       }
     }
-    .reviewBox{
-      position:absolute;
-      display:inline-block;
-      margin-bottom:10px;
-      padding: 3px;
-      border:solid 4px $color_border;
-      top:0;
-      right:0;
-      .review{
-        padding:10px;
-        border:1px solid $color_border;
-        color:$color_textBlack;
-        text-align:center;
-        .value {
-          padding:0 10px 8px 10px;
-          color: orange;
-          font-weight: bold;
-          font-size: 30px;
-        }
-        .icon-star{
-          float:left;
+    .gameSummary{
+      label {
+        position: relative;
+          display: inline-block;
+          padding: 10px;
+          margin-bottom: 10px;
+          width:100%;
+          @include box-sizing;
+          border-bottom: 1px solid $color_border;
+          color: $color_textBlack;
+          font-size:16px;
+          font-weight:bold;
+          text-align:left;
+          &:before{
+            position: relative;
+          content:"";
           display:inline-block;
-          font-size:28px;
-        }
-        .starList {
-          font-size:1.5rem;
-        }
-        .starOn {
-          display: inline-block;
-          color:orange;
-        }
-        .starOff {
-          display: inline-block;
-        }
-        @include clearfix;
+          margin-right:10px;
+          width:8px;
+          height:8px;
+          border-color: $color_textBlack;
+          border-right:solid 2px;
+          border-bottom:solid 2px;
+          -webkit-transform: rotate(45deg);
+             -moz-transform: rotate(45deg);
+              -ms-transform: rotate(45deg);
+               -o-transform: rotate(45deg);
+                  transform: rotate(45deg);
+          top:-4px;
+          }
+      }
+
+      input[type="checkbox"].expand{
+          display: none;
+      }
+
+      p{
+        margin-bottom: 10px;
+        font-size:0.875rem;
+        color:$color_textBlack;
+        line-height:1.5;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -ms-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition: all 0.5s;
+        list-style: none;
+      }
+
+      input[type="checkbox"].expand + p{
+          height: 0;
+          overflow: hidden;
+      }
+
+      input[type="checkbox"].expand:checked + p{
+          height: auto;
       }
     }
     /*---   .amazonBtn   ---*/
@@ -168,7 +216,7 @@ html {
         border:none;
         display: inline-block;
         margin: 0 auto;
-        padding: 15px 20px;
+        padding: 10px 15px;
         background: none;
         color: #fff;
         font-weight: bold;
