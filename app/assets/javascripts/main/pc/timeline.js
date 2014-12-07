@@ -209,7 +209,7 @@
     },
     post: function (e) {
       e.preventDefault();
-      if (this.post_input.val() != "" && this.select_log_id) {
+      if (this.validate()) {
         var that = this;
         var data = {
           "post": {
@@ -249,6 +249,32 @@
           }
         })
       }
+    },
+    validate: function () {
+      $(".error-log").css("display", "none").html("");
+      var error = {}
+      if (this.post_input.val() == "") {
+        error.post_text = "empty";
+      }
+      if (!this.select_log_id) {
+        error.select_log = "empty";
+      }
+
+      if (Object.keys(error).length > 0) {
+        for (key in error) {
+          switch (key) {
+            case "select_log":
+              if (error[key] == "empty") {
+                this.$el.find(".select-log-error").css("display", "block").html("ゲームを選択して下さい。");
+              }
+              break;
+          }
+        }
+
+        return false;
+      }
+
+      return true;
     },
     resetInput: function () {
       this.post_input.val("");

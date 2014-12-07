@@ -181,6 +181,15 @@
         border-left: 9px solid transparent;
         content: "";
       }
+
+      .selectLogError {
+        padding: 4px 8px;
+        background-color: #726ad0;
+        display: none;
+        color: #fff;
+        border-radius: 3px;
+        margin-bottom: 10px;
+      }
     }
     .selectBtn {
       position: relative;
@@ -243,9 +252,12 @@
     }
     .thumbnailList {
       margin-bottom: 8px;
-
       .thumbnail {
         display: inline-block;
+        .gameTitle {
+          color: #726ad0;
+          margin-bottom: 5px;
+        }
       }
     }
     #thumbnail {
