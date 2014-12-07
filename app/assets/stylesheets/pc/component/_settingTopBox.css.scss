@@ -130,7 +130,7 @@
     @include border-radius(3px);
     @include box-sizing;
     @include box-shadow(0, 2px, 0, 0, darken($main_color,10%));
-    @include bglinear($main_color, 7%);
+    @include bglinear(lighten($main_color, 7%), $main_color);
     color: #fff;
     font-size: .875rem;
     text-align: center;

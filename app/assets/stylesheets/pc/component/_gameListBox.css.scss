@@ -13,8 +13,8 @@
 
     .item {
       display: inline-block;
-      width: 123px;
-      margin: 7px;
+      width: 168px;
+      margin: 10px;
       margin-bottom: 20px;
       border: 1px solid #e6e6e6;
       @include box-sizing;
@@ -35,11 +35,11 @@
     }
     .ttl {
       overflow: hidden;
-      height: 35px;
+      height: 40px;
       padding: 5px;
       @include box-sizing;
       font-weight: bold;
-      font-size: 10px;
+      font-size: .8125rem;
       line-height: 1.5;
     }
     .device {
@@ -70,7 +70,7 @@
           position: absolute;
           top: 0;
           left: 0;
-          width: 121px;
+          width: 168px;
           height: 176px;
           background: rgba(255, 255, 255, 0.26);
           content: "";
@@ -82,7 +82,7 @@
     }
     .gameImgWrap {
       overflow: hidden;
-      width: 121px;
+      width: 168px;
     }
     .gameImg {
       @include border-radius(3px 3px 0 0);
@@ -123,7 +123,7 @@
     display: inline-block;
     overflow: hidden;
     position: relative;
-    width: 121px;
+    width: 166px;
     height: 33px;
     margin-top: 5px;
     border: 1px solid $main_color;
@@ -147,7 +147,7 @@
     }
   }
   .registed .statusWrap {
-    background: 1px solid #fff;
+    border: none;
     @include bglinear(lighten($main_color, 7%), $main_color);
   }
   .status {
