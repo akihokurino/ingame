@@ -41,7 +41,7 @@ namespace :wiki do
       end
     end
 
-    Game.where(provider: "famituu").each do |game|
+    Game.where(provider: "famituu", wiki: nil).each do |game|
       game_title = game[:title].strip.gsub(" ", "_")
       url        = "http://ja.wikipedia.org/wiki/#{game_title}"
 
