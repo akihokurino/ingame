@@ -279,6 +279,7 @@
       }
     },
     registLog: function () {
+      var that = this;
       var data = {
         "log": {
           "game_id": this.game_id,
@@ -291,7 +292,7 @@
         url: "/api/logs",
         data: data,
         success: function () {
-
+          that.new_status_select.addClass("registed");
         },
         error: function () {
 
