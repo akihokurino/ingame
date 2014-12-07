@@ -36,16 +36,19 @@
   &Username {
     display: inline-block;
     width: 112px;
+    margin-bottom: 8px;
     color: $main_color;
     font-weight: bold;
     font-size: .875rem;
     line-height: 1.2;
     word-wrap: break-word;
   }
+  .myGame {
+    color: $color_textGray;
+    font-size: .875rem;
+  }
   &Userprof {
     overflow: hidden;
-    float: right;
-    width: 202px;
     margin-top: 14px;
     color: #7e7e7e;
     font-size: .75rem;
