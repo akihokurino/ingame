@@ -17,7 +17,10 @@
           = image_tag "/game_photos/default.png", width: 240, class: "gameImg", alt: "ゲームパッケージ画像"
         .amazonLink
           %a.amazonBtn{href: "http://www.amazon.co.jp/s/ref=nb_sb_noss_1?__mk_ja_JP=カタカナ&url=search-alias%3Daps&field-keywords=#{@game.title}", target: "blank"}
-            %span.icon-search Amazonで検索する
+            %span Amazonで検索する
+        .youtubeLink
+          %a.youtubeBtn{href: "http://www.amazon.co.jp/s/ref=nb_sb_noss_1?__mk_ja_JP=カタカナ&url=search-alias%3Daps&field-keywords=#{@game.title}", target: "blank"}
+            %span Youtubeで検索する
       .gameInfoBox
         .gameInfoBoxInner
           %h1.gameTtl
