@@ -205,7 +205,9 @@ html {
 
       .item {
         display: inline-block;
+        overflow: hidden;
         position: relative;
+        width: 126px;
         @include border-radius(4px);
         background: $main_color;
         box-shadow: 0 2px 0 darken($main_color,7%);
@@ -213,6 +215,20 @@ html {
 
         &:first-child {
           margin-right: 30px;
+        }
+        @-moz-document url-prefix() {
+          &:after {
+            display: block;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            margin-top: -3px;
+            border-top: 5px solid #fff;
+            border-right: 4px solid transparent;
+            border-bottom: 4px solid transparent;
+            border-left: 5px solid transparent;
+            content:"";
+          }
         }
       }
       select {
@@ -227,6 +243,14 @@ html {
         font-weight: bold;
         font-size: 1rem;
         cursor: pointer;
+
+        &::-ms-expand {
+          display: none;
+        }
+        @-moz-document url-prefix() {
+          width: 152px;
+          padding-left: 10px;
+        }
       }
     }
     /*---   .sortBox   ---*/
