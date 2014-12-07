@@ -18,7 +18,7 @@
 
     .item {
       width: 280px;
-      margin: 10px;
+      margin: 9px;
       padding: 10px;
       border: 1px solid #e6e6e6;
       @include border-radius(3px);
@@ -69,15 +69,13 @@
       line-height: 1rem;
     }
     .followBtnWrap {
-      position: absolute;
-      right: 0;
-      bottom: -39px;
-      width: 237px;
     }
     .followBtn {
       display: block;
-      margin-top: 52px;
-      margin-left: 92px;
+      position: absolute;
+      right: 0;
+      bottom: -39px;
+      width: 137px;
       border: 1px solid $main_color;
       @include border-radius(4px);
       @include box-sizing;
