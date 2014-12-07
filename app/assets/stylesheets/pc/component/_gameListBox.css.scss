@@ -64,7 +64,6 @@
       }
     }
     &:hover {
-      /*
       .articleWrap {
         &:after {
           display: block;
@@ -72,12 +71,11 @@
           top: 0;
           left: 0;
           width: 168px;
-          height: 176px;
+          height: 100%;
           background: rgba(255, 255, 255, 0.26);
           content: "";
         }
       }
-      */
       .gameDeleteBtn {
         display: block;
       }
