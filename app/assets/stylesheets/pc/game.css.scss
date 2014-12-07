@@ -31,6 +31,11 @@ html {
         @include box-shadow(0,0,4px,0,rgba(0,0,0,0.5));
       }
     }
+    .rightBox{
+      position:absolute;
+      top:0;
+      right:0;
+    }
     .reviewBox{
       display:inline-block;
       margin-bottom:10px;

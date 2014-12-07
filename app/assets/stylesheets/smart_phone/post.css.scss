@@ -351,6 +351,9 @@ input[type="submit"],{
 	.addGame {
 		display:block;
 		padding:10px;
+		margin:10px auto;
+		width: 75%;
+		@include border-radius(4px);
 		background: linear-gradient(lighten($main_color,5%),$main_color);
 		&:active{
 			background: linear-gradient($main_color,lighten($main_color,5%));
