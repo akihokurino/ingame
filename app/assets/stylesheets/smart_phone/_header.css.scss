@@ -134,8 +134,6 @@ header {
 			text-align: left;
 			@include box-sizing;
 		}
-	}
-
 	.icon-setting, .icon-logout,.icon-user,.icon-search{
 		display:block;
 		padding-left:10px;
@@ -147,6 +145,8 @@ header {
 	.icon-logout{
 		padding-left:11px;
 	}
+	}
+
 }
 
 .settingHeader{
