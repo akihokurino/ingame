@@ -6,7 +6,7 @@
 	padding-top:44px;
 	/*---   .tabs   ----------*/
 	.tabs {
-		width: 202px;
+		width: 80%;
 		margin: 20px auto 10px;
 		border: 1px solid $main_color;
 		@include border-radius(2px);
@@ -15,9 +15,9 @@
 		@include clearfix;
 	}
 	.to-game-search, .to-user-search {
-		width: 100px;
+		width: 50%;
 		padding: 5px 0;
-		font-size: 12px;
+		font-size: 14px;
 		@include box-sizing;
 	}
 	.to-game-search {
