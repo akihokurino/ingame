@@ -16,6 +16,9 @@ header {
 		a{
 			color:#fff;
 			text-decoration:none;
+			display:block;
+			width: 45px;
+			height: 45px;
 		}
 		ul{
 			display:table;
@@ -97,6 +100,8 @@ header {
 				}
 			}
 			.icon-bell,.icon-search{
+				padding:10px;
+				@include box-sizing;
 				font-size:24px;
 			}
 		}

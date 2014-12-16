@@ -12,9 +12,8 @@
         = link_to image_tag('logo@2x.png', height:"45px"), posts_path
         / %img{src:"/assets/logo.png", height:"45px"}
       %li.notify.my-notify
-        %a{href: ""}
-          %span.icon-bell
-            %span.notifyNum.notify-num
+        %a.icon-bell{href: ""}
+          %span.notifyNum.notify-num
       %li.search
         = link_to "", "/users/#{@current_user[:id]}/search_game_or_user#game", class: "icon-search"
   = render partial: "application/smart_phone/menu"
