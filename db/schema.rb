@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141206051700) do
+ActiveRecord::Schema.define(version: 20141216161122) do
 
   create_table "admins", force: true do |t|
     t.string   "username"
@@ -28,12 +28,28 @@ ActiveRecord::Schema.define(version: 20141206051700) do
     t.datetime "updated_at"
   end
 
+  create_table "devices", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "follows", force: true do |t|
     t.integer  "from_user_id"
     t.integer  "to_user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "game_devices", force: true do |t|
+    t.integer  "game_id"
+    t.integer  "device_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "game_devices", ["device_id"], name: "index_game_devices_on_device_id", using: :btree
+  add_index "game_devices", ["game_id"], name: "index_game_devices_on_game_id", using: :btree
 
   create_table "game_gametags", force: true do |t|
     t.integer  "game_id"
@@ -59,7 +75,6 @@ ActiveRecord::Schema.define(version: 20141206051700) do
     t.string   "maker"
     t.string   "amazon_url"
     t.text     "wiki"
-    t.string   "device"
     t.string   "provider"
     t.integer  "provider_id"
     t.date     "release_day"

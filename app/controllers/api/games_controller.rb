@@ -17,10 +17,6 @@ class Api::GamesController < ApplicationController
 		@result = Game.search_with(params[:search_title], page, @current_user)
 	end
 
-  def create
-    @result = Game.get_from_amazon(params[:url])
-  end
-
 	private
   def set_game
     @game = Game.find(params[:id])
