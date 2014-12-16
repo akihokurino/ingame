@@ -6,11 +6,8 @@
     %ul
       %li.menuWrap
         %a.menu
-      / %li.home
-      /   = link_to "", posts_path, class: "icon-home"
       %li.title
-        = link_to image_tag('logo@2x.png', height:"45px"), posts_path
-        / %img{src:"/assets/logo.png", height:"45px"}
+        = link_to image_tag('logo@2x.png', height:"45px"), posts_path, class:"logo"
       %li.notify.my-notify
         %a.icon-bell{href: ""}
           %span.notifyNum.notify-num

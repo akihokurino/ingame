@@ -11,45 +11,38 @@ header {
 
 	.headerNav{
 		height:45px;
-		font-size:22px;
 		background-color: rgba($base_color,.94);
-		a{
-			color:#fff;
-			text-decoration:none;
-			display:block;
-			width: 45px;
-			height: 45px;
-		}
 		ul{
 			display:table;
-			text-align:center;
 			width: 100%;
 			li{
 				display:table-cell;
-			}
-			.title,.menuWrap,.notify,.search{
 				text-align: center;
-				vertical-align: middle;
+				vertical-align: top;
+			}
+			.logo{
+				display:block;
 			}
 			.notify,.search{
-				width: 40px;
+				width: 45px;
+				height: 45px;
 			}
 			.menuWrap{
+				width: 90px;
 				text-align:left;
-				padding-left:10px;
-				width: 70px;
+				@include box-sizing;
 			}
 			.menu{
 				position: relative;
 				display:inline-block;
-				width: 22px;
-				height: 28px;
+				width: 90px;
+				height: 45px;
 				cursor:pointer;
 				&:before,&:after{
 					display: block;
 					position: absolute;
 					content: "";
-					width: 24px;
+					width: 28px;
 					height: 4px;
 					@include border-radius(4px);
 					background-color: #fff;
@@ -60,25 +53,25 @@ header {
 							transition:0.3s ease;
 				}
 				&:before{
-					-webkit-transform: translate(0,6px) rotate(0deg);
-						-ms-transform: translate(0,6px) rotate(0deg);
-							transform: translate(0,6px) rotate(0deg);
+					-webkit-transform: translate(10px,14.5px) rotate(0deg);
+						-ms-transform: translate(10px,14.5px) rotate(0deg);
+							transform: translate(10px,14.5px) rotate(0deg);
 				}
 				&:after{
-					-webkit-transform: translate(0,18px) rotate(0deg);
-						-ms-transform: translate(0,18px) rotate(0deg);
-							transform: translate(0,18px) rotate(0deg);
+					-webkit-transform: translate(10px,26.5px) rotate(0deg);
+						-ms-transform: translate(10px,26.5px) rotate(0deg);
+							transform: translate(10px,26.5px) rotate(0deg);
 				}
 			}
 			.show:before{
-				-webkit-transform: translate(0,13px) rotate(-135deg);
-					-ms-transform: translate(0,13px) rotate(-135deg);
-						transform: translate(0,13px) rotate(-135deg);
+				-webkit-transform: translate(10px,21.5px) rotate(-135deg);
+					-ms-transform: translate(10px,21.5px) rotate(-135deg);
+						transform: translate(10px,21.5px) rotate(-135deg);
 			}
 			.show:after{
-				-webkit-transform: translate(0,13px) rotate(135deg);
-					-ms-transform: translate(0,13px) rotate(135deg);
-						transform: translate(0,13px) rotate(135deg);
+				-webkit-transform: translate(10px,21.5px) rotate(135deg);
+					-ms-transform: translate(10px,21.5px) rotate(135deg);
+						transform: translate(10px,21.5px) rotate(135deg);
 			}
 			.notify{
 				position:relative;
@@ -102,6 +95,9 @@ header {
 			.icon-bell,.icon-search{
 				padding:10px;
 				@include box-sizing;
+				display:block;
+				color:#fff;
+				text-decoration:none;
 				font-size:24px;
 			}
 		}
