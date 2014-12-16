@@ -164,7 +164,7 @@ class Game < ActiveRecord::Base
           next
         end
 
-        puts "creating #{hash[:title]} (#{device}) from [#{hash[:provider]}]"s
+        puts "creating #{hash[:title]} (#{device}) from [#{hash[:provider]}]"
         create_flag = true
         game        = Game.find_or_create_by! hash.select{ |key, _| game_attr[key] }.merge(device: device)
         tags.each do |tag|
