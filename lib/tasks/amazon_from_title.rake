@@ -44,9 +44,9 @@ namespace :amazon_from_title do
         doc = Nokogiri::HTML.parse search(game.title, game.device)
         mostPossible = doc.css("div#atfResults > li#result_0")[0]
         next if mostPossible.nil?
-# とりあえず途中まで。ここでぶち込んで保存するだけだから。
-# 既にファミ通から画像取ってたことが判明した。
-# 故に、amazonをあさってもこれ以上画像が手に入ることはなく、ここで打ち切る。
+        # とりあえず途中まで。ここでぶち込んで保存するだけだから。
+        # 既にファミ通から画像取ってたことが判明した。
+        # 故に、amazonをあさってもこれ以上画像が手に入ることはなく、ここで打ち切る。
         p game.title
         p mostPossible.css("img.s-access-image")[0].attr "src"
         p mostPossible.css("a.s-access-detail-page")[0].attr "href"
