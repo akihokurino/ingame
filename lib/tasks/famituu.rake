@@ -102,9 +102,10 @@ namespace :famituu do
 
           # ジャンルとタイトルと発売元と画像取るために
           # 個別ページまで潜る。
-          game_html      = get game_url
-          game_doc       = Nokogiri::HTML.parse game_html
-          result[:title] = game_doc.css("h1").css("span").text
+          game_html             = get game_url
+          result[:provider_url] = game_url
+          game_doc              = Nokogiri::HTML.parse game_html
+          result[:title]        = game_doc.css("h1").css("span").text
 
           next if result[:title] == ""
 
@@ -119,17 +120,17 @@ namespace :famituu do
           end
 
           # ゲームのサムネイルが無い場合はアマゾンから拝借
-          unless result[:photo_url]
-            game_doc.css("ul#gameItemBox li").each do |node|
-              node.css(".ecImages").children.each do |node|
-                if node.name == "a"
-                  amazon_url         = node.attributes["href"].value
-                  result[:photo_url] = scrape_from_amazon(amazon_url)
-                end
-              end
 
-              break if result[:photo_url]
+          game_doc.css("ul#gameItemBox li").each do |node|
+            node.css(".ecImages").children.each do |node|
+              if node.name == "a"
+                amazon_url          = node.attributes["href"].value
+                result[:amazon_url] = amazon_url unless result[:amazon_url]
+                result[:photo_url]  = scrape_from_amazon(amazon_url) unless result[:photo_url]
+              end
             end
+
+            break if result[:photo_url]
           end
 
           # ゲームのタイトルをキーにwikiから概要の取得

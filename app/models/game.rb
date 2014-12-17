@@ -83,73 +83,18 @@ class Game < ActiveRecord::Base
       {count: count, games: games}
     end
 
-		def get_from_amazon(url)
-			result = {
-				amazon_url: URI.unescape(url)
-			}
-
-			begin
-				html = open(url, "User-Agent" => "Mozilla/4.0"){|f| f.read }
-			rescue Exception
-				html = open(url, "r:binary", "User-Agent" => "Mozilla/4.0").read.encode("utf-8", "euc-jp", invalid: :replace, undef: :replace)
-			end
-
-			begin
-				doc = Nokogiri::HTML.parse(html.toutf8, nil, "UTF-8")
-			rescue
-				doc = Nokogiri::HTML.parse(html, nil)
-			end
-
-			doc.css("#btAsinTitle").each do |node|
-				result[:title] = node.children.text
-			end
-			doc.css("#platform-information .byLinePipe").each do |node|
-				result[:device] = node.next.text
-			end
-			doc.css(".parseasinTitle + a").each do |node|
-				result[:maker] = node.children.text
-			end
-			doc.css("#prodImageCell img").each do |node|
-				result[:photo_path] = node.attributes["src"].value
-			end
-
-			if Game.exists?(title: result[:title])
-				p "already exists"
-				return false
-			else
-			  if result[:photo_path]
-			  	filename = Time.now.to_i.to_s + self.generate("alphabet", 25)
-			  	filepath = "public/game_photos/#{filename}"
-			  	begin
-					  File.open(filepath, 'wb') do |output|
-					    open(result[:photo_path], "User-Agent" => "Mozilla/4.0") do |data|
-					      output.write(data.read)
-					      result[:photo_path] = filename
-					    end
-					  end
-					rescue
-					end
-
-					p "create or not"
-					return Game.create(result) ? true : false
-				end
-
-				return false
-			end
-		end
-
     def create_from_scraping(hash)
-      # if already exist return false else return true
-      # ここで入れるattributes
       game_attr = {
-        title:       1,
-        photo_url:   1,
-        maker:       1,
-        device:      1,
-        provider:    1,
-        provider_id: 1,
-        release_day: 1,
-        wiki:        1
+        title:        1,
+        photo_url:    1,
+        maker:        1,
+        device:       1,
+        provider:     1,
+        provider_id:  1,
+        provider_url: 1,
+        amazon_url:   1,
+        release_day:  1,
+        wiki:         1
       }
 
       tags        = hash[:tags].map { |tag| Gametag.find_or_create_by! name: tag }
@@ -158,7 +103,6 @@ class Game < ActiveRecord::Base
       for device in hash[:devices]
         already = Game.find_by(title: hash[:title], device: device, provider: hash[:provider])
 
-        # ここは呼ばれないようにする。
         if already
           puts "This is already exists #{hash[:title]} (#{device}) from [#{hash[:provider]}]"
           next

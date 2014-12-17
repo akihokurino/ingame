@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20141206051700) do
     t.string   "device"
     t.string   "provider"
     t.integer  "provider_id"
+    t.string   "provider_url"
     t.date     "release_day"
     t.integer  "game_likes_count", default: 0
     t.integer  "posts_count",      default: 0
