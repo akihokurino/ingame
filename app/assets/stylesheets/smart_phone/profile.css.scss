@@ -23,27 +23,29 @@
 
 .personalBoxWrap {
 	margin-top:44px;
+	background-color: #fff;	
 	.bgOverlayer {
 		padding-top:10px;
 		width: 100%;
 		@include box-sizing;
-		background-color: #2A2A32;	
 	}
 	.profImgWrap {
-		width: 80px;
-		height: 80px;
+		width: 70px;
+		height: 70px;
 		margin:10px auto;
-		border: 2px solid rgba(#fff,0.8);
 		border-radius:50%;
 	}
 	.profImg {
 		width: 100%;
 		border-radius:50%;
+		box-shadow:0 1px 1px rgba(0, 0, 0, 0.5);
 
 	}
 	.followBtn,.edit-btn{
 		display:inline-block;
+		margin-bottom:10px;
 		padding:0 10px;
+		min-width: 92px;
 		border: 1px solid $main_color;
 		@include border-radius(4px);
 		color:$main_color;
@@ -57,46 +59,54 @@
 .personalBox {
 	z-index: 5;
 	@include box-sizing;
-	color: #ffffff;
+	color: $color_textBlack;
 	text-align:center;
 
 	.name {
-		font-size: 16px;
-		line-height:32px;
+		font-size: 28px;
+		font-weight:bold;
 	}
 	.place {
+		margin:5px;
 		font-size: 14px;
 	}
 	.text {
 		padding:10px;
+		color:$color_textGray;
 		font-size: 12px;
 	}
 	.countBox {
 			display:table;
 			@include box-sizing;
 			width: 100%;
-			padding:10px 5px 5px 5px;
+			border: 1px solid $color_border;
+			padding:10px 5px;
 		.item {
 			display:table-cell;
 			@include box-sizing;
+			border-right: 1px solid $color_border;
 			text-align:center;
 			width: 33%;
+			&:last-child{
+				border:none;
+			}
 			&.current {
 				.followNum, .followerNum, .gameNum, .postNum {
-					color:$sub_color;
+					color:$main_color;
+					font-weight:bold;
 				}
 			}
 		}
 		.followNum, .followerNum, .gameNum, .postNum {
 			@include box-sizing;
-			color: #ffffff;
+			color:$color_textBlack;
 			font-size: 12px;
 		}
 	}
 }
 .myGameBox{
 	padding:10px;
-	background-color: $main_color;
+	background-color: $base_color;
 	color:#fff;
 	font-size:14px;
 	text-align:center;
@@ -108,21 +118,6 @@
 		font-size:42px;
 		@include font-weight(bold,#fff);
 		letter-spacing: 0.03em;
-		text-shadow: rgb(90, 82, 190) 1px 1px,
-	    rgb(90, 82, 190) 2px 2px,
-	    rgb(90, 82, 190) 3px 3px,
-	    rgb(90, 82, 190) 4px 4px,
-	    rgb(90, 82, 190) 5px 5px,
-	    rgb(90, 82, 190) 6px 6px,
-	    rgb(90, 82, 190) 7px 7px,
-	    rgb(90, 82, 191) 8px 8px,
-	    rgb(91, 83, 193) 9px 9px,
-	    rgb(92, 83, 194) 10px 10px,
-	    rgb(93, 84, 196) 11px 11px,
-	    rgb(93, 85, 197) 12px 12px,
-	    rgb(94, 85, 199) 13px 13px,
-	    rgb(95, 86, 200) 14px 14px,
-	    rgb(96, 87, 202) 15px 15px;
 	}
 }
 
