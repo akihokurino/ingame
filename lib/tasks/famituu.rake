@@ -95,8 +95,8 @@ namespace :famituu do
 
           result[:price] = row.css("span.price").text.gsub("価格：", "").gsub(/円.*$/, "").to_i
 
-          if Game.find_by provider: "famituu", provider_id: result[:provider_id]
-            puts "Already existing game from [#{result[:provider]}]"
+          if Game.find_by provider: "famituu", provider_id: result[:provider_id], device: devices[0]
+            puts "Already existing game (#{devices[0]}) from [#{result[:provider]}]"
             next
           end
 
