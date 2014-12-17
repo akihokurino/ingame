@@ -187,13 +187,13 @@ namespace :famituu do
       begin
         html = open(url, "User-Agent" => "Mozilla/4.0"){|f| f.read }
       rescue Exception
-        html = open(url, "r:binary", "User-Agent" => "Mozilla/4.0").read.encode("utf-8", "euc-jp", invalid: :replace, undef: :replace)
+        return nil
       end
 
       begin
         doc = Nokogiri::HTML.parse(html.toutf8, nil, "UTF-8")
       rescue Exception
-        doc = Nokogiri::HTML.parse(html, nil)
+        return nil
       end
 
       photo_url = nil
