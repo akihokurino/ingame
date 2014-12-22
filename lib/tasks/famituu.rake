@@ -102,12 +102,22 @@ namespace :famituu do
 
           # ジャンルとタイトルと発売元と画像取るために
           # 個別ページまで潜る。
-          game_html             = get game_url
+          #game_html             = get game_url
+          game_html = get "http://www.famitsu.com/cominy/?m=pc&a=page_h_title&title_id=14413"
+          result[:game_html]    = game_html
           result[:provider_url] = game_url
           game_doc              = Nokogiri::HTML.parse game_html
           result[:title]        = game_doc.css("h1").css("span").text
 
           next if result[:title] == ""
+
+          # 価格の取得
+          game_doc.css("dl.gameData span").each do |node|
+            if node.attributes["itemprop"].value == "price"
+              result[:price] = node.children.text
+              break
+            end
+          end
 
           img_src            = game_doc.css("span.preview").css("img").attr("src").text
           img_src            = nil if img_src == "img/img.gif"
@@ -119,8 +129,9 @@ namespace :famituu do
             result[:maker] = ""
           end
 
-          # ゲームのサムネイルが無い場合はアマゾンから拝借
+          result[:game_url] = game_doc.css("#gameSummary .officialUrl dd a").attr("href").text
 
+          # ゲームのサムネイルが無い場合はアマゾンから拝借
           game_doc.css("ul#gameItemBox li").each do |node|
             node.css(".ecImages").children.each do |node|
               if node.name == "a"
@@ -136,7 +147,11 @@ namespace :famituu do
           # ゲームのタイトルをキーにwikiから概要の取得
           game_title    = result[:title].strip.gsub(" ", "_")
           url           = "http://ja.wikipedia.org/wiki/#{game_title}"
-          result[:wiki] = get_wiki URI.parse(URI.encode(url))
+          begin
+            result[:wiki] = get_wiki URI.parse(URI.encode(url))
+          rescue Exception
+            result[:wiki] = nil
+          end
 
           Game.create_from_scraping result
         end

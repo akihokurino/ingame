@@ -72,9 +72,10 @@ namespace :steam do
         # tagsとpublisher取るために潜る。これらをあきらめるともっと速い。
         game_url              = row.attributes["href"].text + "&l=japanese"
         result[:provider_url] = game_url
-        game_html             = get(game_url)
+        game_html             = get game_url
+        result[:game_html]    = game_html.toutf8
         game_html_lines       = game_html.split
-        game_dom              = Nokogiri::HTML.parse(game_html)
+        game_dom              = Nokogiri::HTML.parse game_html
 				result[:tags]         = game_dom.css("a.app_tag").map {|a| a.text.gsub /\s/, ""}
         maker                 = game_html_lines.grep(/store.steampowered.com\/publisher\//)[0]
 

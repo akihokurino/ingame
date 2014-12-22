@@ -93,8 +93,11 @@ class Game < ActiveRecord::Base
         provider_id:  1,
         provider_url: 1,
         amazon_url:   1,
+        game_url:     1,
+        game_html:    1,
         release_day:  1,
-        wiki:         1
+        wiki:         1,
+        price:        1
       }
 
       tags        = hash[:tags].map { |tag| Gametag.find_or_create_by! name: tag }
