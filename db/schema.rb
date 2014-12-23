@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20141223030429) do
   create_table "admins", force: true do |t|
     t.string   "username"
     t.string   "password"
-    t.integer  "salt"
+    t.string   "salt"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -181,7 +181,7 @@ ActiveRecord::Schema.define(version: 20141223030429) do
   create_table "users", force: true do |t|
     t.string   "username",     limit: 100
     t.string   "password"
-    t.integer  "salt"
+    t.string   "salt"
     t.string   "introduction"
     t.string   "email"
     t.integer  "logs_count",               default: 0

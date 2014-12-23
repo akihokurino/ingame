@@ -1,0 +1,15 @@
+html {
+  background-color: #fff;
+}
+
+.signin-form {
+  width: 500px;
+  margin: 0 auto;
+  margin-top: 20px;
+  input {
+    margin-bottom: 20px;
+  }
+  input[type="submit"] {
+    margin-bottom: 0px;
+  }
+}

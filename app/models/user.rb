@@ -72,13 +72,8 @@ class User < ActiveRecord::Base
     Follow.where(to_user_id: self[:id]).map { |follow| follow.from_user }
   end
 
-  def create_password(password)
-    self.salt     = self.class.new_salt
-    self.password = self.class.crypt_password(password, self.salt.to_s)
-  end
-
   def collect_password?(password)
-    self.class.crypt_password(password, self.salt.to_s) == self.password
+    self.class.crypt_password(password, self.salt) == self.password
   end
 
   def connect_with_provider(current_provider)
@@ -87,21 +82,6 @@ class User < ActiveRecord::Base
 
 
 	class << self
-    def create_with_provider(user_params, current_provider)
-      user          = self.new
-      user.create_password(user_params[:password])
-      user.username = user_params[:username]
-      begin
-        ActiveRecord::Base.transaction do
-          user.save!
-          current_provider.update(user_id: user[:id])
-          user
-        end
-      rescue
-        false
-      end
-    end
-
     def search_with(username, current_user, page)
       offset = (page - 1) * LIMIT
       users  = self.search(self.escape(username)).offset(offset).limit(LIMIT).keep_if do |user|
@@ -147,6 +127,24 @@ class User < ActiveRecord::Base
 
     def tmp_upload(tmp_data, clip)
       self.url_upload(tmp_data, "tmp", clip)
+    end
+
+    def create_with_provider(user_params, current_provider)
+      self.create_password user_params
+      begin
+        ActiveRecord::Base.transaction do
+          user = self.create! user_params
+          current_provider.update! user_id: user[:id]
+          user
+        end
+      rescue
+        false
+      end
+    end
+
+    def create_password(user_params)
+      user_params[:salt]     = self.new_salt
+      user_params[:password] = self.crypt_password user_params[:password], user_params[:salt]
     end
 
     def crypt_password(password, salt)
