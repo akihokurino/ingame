@@ -101,7 +101,40 @@ GEM
     jbuilder (2.2.5)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
-    jpmobile (4.0.0)
+    jpmobile (4.1.4)
+      rails (~> 4.1.0)
+      rails (~> 4.1.0)
+      rails (~> 4.1.0)
+      rails (~> 4.1.0)
+      rails (~> 4.1.0)
+      rails (~> 4.1.0)
+      rails (~> 4.1.0)
+      rails (~> 4.1.0)
+      rails (~> 4.1.0)
+      rails (~> 4.1.0)
+      rails (~> 4.1.0)
+      rails (~> 4.1.0)
+      rails (~> 4.1.0)
+      rails (~> 4.1.0)
+      rails (~> 4.1.0)
+      rails (~> 4.1.0)
+      rails (~> 4.1.0)
+      rails (~> 4.1.0)
+      rails (~> 4.1.0)
+      rails (~> 4.1.0)
+      rails (~> 4.1.0)
+      rails (~> 4.1.0)
+      rails (~> 4.1.0)
+      rails (~> 4.1.0)
+      rails (~> 4.1.0)
+      rails (~> 4.1.0)
+      rails (~> 4.1.0)
+      rails (~> 4.1.0)
+      rails (~> 4.1.0)
+      rails (~> 4.1.0)
+      rails (~> 4.1.0)
+      rails (~> 4.1.0)
+      rails (~> 4.1.0)
     jquery-rails (3.1.1)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
@@ -267,7 +300,7 @@ DEPENDENCIES
   haml-underscore-template
   hiredis
   jbuilder (~> 2.0)
-  jpmobile (~> 4.0.0)
+  jpmobile (~> 4.1.2)
   jquery-rails
   mysql2
   nokogiri
@@ -279,6 +312,7 @@ DEPENDENCIES
   redis
   redis-rails
   rmagick
+  sass
   sass-rails (~> 4.0.3)
   sdoc
   twitter

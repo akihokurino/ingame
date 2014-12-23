@@ -8,7 +8,7 @@ gem 'mysql2'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
-# gem 'sass'
+gem 'sass'
 # gem 'compass-rails', '~> 1.1.7'
 
 # Use Uglifier as compressor for JavaScript assets
@@ -64,7 +64,7 @@ gem 'haml-underscore-template'
 
 gem 'nokogiri'
 
-gem 'jpmobile', '~> 4.0.0'
+gem 'jpmobile', '~> 4.1.2'
 
 gem 'rails_config'
 
