@@ -1,4 +1,20 @@
 = content_for :head do
   = stylesheet_link_tag "admin/common"
 
+.navbar.navbar-inverse
+
 .container
+  %table.table.table-striped
+    %tr
+      %th ID
+      %th タイトル
+      %th サムネイル
+      %th メーカー
+      %th wiki
+      %th 価格
+      %th 発売日
+      %th デバイス
+      %th プロバイダー
+    = render partial: "game", collection: @games
+  .paginate-wrap
+    = paginate @games

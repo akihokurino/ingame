@@ -76,4 +76,7 @@ gem 'redis', :require => ["redis", "redis/connection/hiredis"]
 
 gem 'rmagick'
 
+gem 'kaminari'
+gem 'kaminari-bootstrap'
+
 

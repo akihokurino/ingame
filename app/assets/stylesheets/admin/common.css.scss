@@ -14,6 +14,21 @@ html {
   }
 }
 
+.navbar {
+  border-radius: 0px;
+}
+
 .container {
-  width: 98%;
+  width: 100%;
+  table {
+    img {
+      height: 50px;
+    }
+  }
+
+  .paginate-wrap {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
 }

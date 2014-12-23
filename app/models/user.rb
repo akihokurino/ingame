@@ -157,7 +157,7 @@ class User < ActiveRecord::Base
     end
 
     def authenticate(username, password)
-      user = self.find_by(username: username)
+      user = self.find_by username: username
       if user && user.collect_password?(password)
         user
       else
