@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 	before_action :auth, :set_headers
 	helper_method :current_user?
 
-	# include Jpmobile::ViewSelector
+	include Jpmobile::ViewSelector
 
 	def cors_preflight_check
 		head :no_content
