@@ -158,10 +158,6 @@ class User < ActiveRecord::Base
       s[0, if s.size > 32 then 32 else s.size end]
     end
 
-    def authoricate(password)
-      self.crypt_password(password, self.salt.to_s) == self.password
-    end
-
     def authenticate(username, password)
       user = self.find_by(username: username)
       if user && user.collect_password?(password)

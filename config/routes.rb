@@ -54,7 +54,9 @@ Ingame::Application.routes.draw do
   namespace :admin do
     resources :sessions, only: ["new", "create", "destroy"]
     resources :games
-    resources :admin, only: ["create"]
+    namespace :api do
+      resources :admins, only: ["create"], format: "json"
+    end
   end
 
   match "/auth/:provider/callback", to: "user_providers#create", via: :get
