@@ -1,5 +1,7 @@
-class Admin::SessionsController < ApplicationAdminController
+class Admin::SessionsController < ApplicationController
   layout "application_admin"
+
+  skip_before_action :auth
 
   def new
   end
