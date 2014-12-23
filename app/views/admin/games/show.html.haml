@@ -1,0 +1,54 @@
+= content_for :head do
+  = stylesheet_link_tag "admin/common"
+
+.navbar.navbar-inverse
+
+.container
+  - if @game.photo_url
+    = image_tag @game.photo_url, class: "thumbnail"
+  - if @game.photo_path
+    = image_tag "/game_photos/#{game.photo_path}", class: "thumbnail"
+
+  %table.table.table-striped
+    %tr
+      %th ID
+      %td
+        = @game.id
+    %tr
+      %th タイトル
+      %td
+        = @game.title
+    %tr
+      %th メーカー
+      %td
+        = @game.maker
+    %tr
+      %th wiki
+      %td
+        = @game.wiki
+    %tr
+      %th 価格
+      %td
+        = @game.price
+    %tr
+      %th 発売日
+      %td
+        = @game.release_day
+    %tr
+      %th デバイス
+      %td
+        = @game.device
+    %tr
+      %th プロバイダー
+      %td
+        = @game.provider
+    %tr
+      %th プロバイダーURL
+      %td
+        -if @game.provider_url
+          = link_to @game.provider_url, @game.provider_url
+    %tr
+      %th アマゾンURL
+      %td
+        - if @game.amazon_url
+          = link_to @game.amazon_url, @game.amazon_url
