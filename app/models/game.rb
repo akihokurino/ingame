@@ -93,7 +93,6 @@ class Game < ActiveRecord::Base
         provider_id:  1,
         provider_url: 1,
         amazon_url:   1,
-        game_url:     1,
         game_html:    1,
         release_day:  1,
         wiki:         1,
@@ -116,6 +115,10 @@ class Game < ActiveRecord::Base
         game        = Game.find_or_create_by! hash.select{ |key, _| game_attr[key] }.merge(device: device)
         tags.each do |tag|
           GameGametag.find_or_create_by! game: game, gametag: tag
+        end
+
+        hash[:game_urls].each do |url|
+          GameUrl.create game_id: game[:id], text: url
         end
       end
 

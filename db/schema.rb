@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141206051700) do
+ActiveRecord::Schema.define(version: 20141223030429) do
 
   create_table "admins", force: true do |t|
     t.string   "username"
@@ -52,6 +52,15 @@ ActiveRecord::Schema.define(version: 20141206051700) do
     t.datetime "updated_at"
   end
 
+  create_table "game_urls", force: true do |t|
+    t.integer  "game_id"
+    t.string   "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "game_urls", ["game_id"], name: "index_game_urls_on_game_id", using: :btree
+
   create_table "games", force: true do |t|
     t.string   "title"
     t.string   "photo_url"
@@ -65,7 +74,6 @@ ActiveRecord::Schema.define(version: 20141206051700) do
     t.integer  "provider_id"
     t.string   "provider_url"
     t.string   "amazon_url"
-    t.string   "game_url"
     t.text     "game_html",        limit: 2147483647
     t.integer  "game_likes_count",                    default: 0
     t.integer  "posts_count",                         default: 0

@@ -103,7 +103,7 @@ namespace :famituu do
           # ジャンルとタイトルと発売元と画像取るために
           # 個別ページまで潜る。
           #game_html             = get game_url
-          game_html = get "http://www.famitsu.com/cominy/?m=pc&a=page_h_title&title_id=14413"
+          game_html = get "http://www.famitsu.com/cominy/?m=pc&a=page_h_title&title_id=6899"
           result[:game_html]    = game_html
           result[:provider_url] = game_url
           game_doc              = Nokogiri::HTML.parse game_html
@@ -129,7 +129,10 @@ namespace :famituu do
             result[:maker] = ""
           end
 
-          result[:game_url] = game_doc.css("#gameSummary .officialUrl dd a").attr("href").text
+          result[:game_urls] = []
+          game_doc.css("#gameSummary .officialUrl dd a").each do |node|
+            result[:game_urls] << node.attributes["href"].value
+          end
 
           # ゲームのサムネイルが無い場合はアマゾンから拝借
           game_doc.css("ul#gameItemBox li").each do |node|

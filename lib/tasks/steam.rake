@@ -58,7 +58,8 @@ namespace :steam do
         result[:provider]    = "steam"
         result[:provider_id] = row.attributes["href"].text.gsub(/^.*\/app\//, '').gsub(/\/.*$/, '').to_i
 				result[:title]       = row.css("span.title").text
-				result[:devices]     = row.css("span.platform_img").map {|span| device_rename(span["class"].split[1])}
+				# result[:devices]     = row.css("span.platform_img").map {|span| device_rename(span["class"].split[1])}
+        result[:devices]     = ["PC"]
 				result[:release_day] = row.css("div.search_released").text.gsub(/[年月]/, "-").gsub("日", "")
 				result[:price]       = ((tmp = row.css("div.search_price").children[-1]) and tmp.text).gsub("¥ ", "").gsub(",", "").gsub(/\s*/, '').to_i
 				result[:photo_url]   = row.css("div.search_capsule > img")[0].attributes["src"].value.gsub(/\?.*/, "").gsub('capsule_sm_120', 'header')
@@ -78,6 +79,14 @@ namespace :steam do
         game_dom              = Nokogiri::HTML.parse game_html
 				result[:tags]         = game_dom.css("a.app_tag").map {|a| a.text.gsub /\s/, ""}
         maker                 = game_html_lines.grep(/store.steampowered.com\/publisher\//)[0]
+
+        result[:game_urls]    = []
+        game_dom.css("a.linkbar").each do |node|
+          if node.children.text =~ /Web サイトにアクセス/
+            result[:game_urls] << node.attributes["href"].value
+            break
+          end
+        end
 
         unless maker
           maker = game_html_lines.grep(/store.steampowered.com\/search\/\?developer/)[0]
