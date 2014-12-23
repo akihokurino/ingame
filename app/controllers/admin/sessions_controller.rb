@@ -20,7 +20,7 @@ class Admin::SessionsController < ApplicationController
 
   def destroy
     reset_session
-    redirect_to new_admin_session_path, alert: "正常にログアウトしました。"
+    redirect_to new_admin_session_path, notice: "正常にログアウトしました。"
   end
 
   private

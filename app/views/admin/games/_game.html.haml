@@ -6,8 +6,10 @@
   %td
     - if game.photo_url
       = image_tag game.photo_url, class: "thumbnail"
-    - if game.photo_path
+    - elsif game.photo_path
       = image_tag "/game_photos/#{game.photo_path}", class: "thumbnail"
+    - else
+      = image_tag "/game_photos/default.png", class: "thumbnail"
   %td
     = game.maker
   %td

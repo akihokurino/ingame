@@ -16,6 +16,18 @@ html {
 
 .navbar {
   border-radius: 0px;
+  .glyphicon-cog {
+    color: #fff;
+    font-size: 25px;
+    float: right;
+    margin-right: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  .dropdown-menu {
+    right: 10px;
+    left: auto;
+  }
 }
 
 .container {
@@ -30,5 +42,9 @@ html {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
+  }
+
+  .show-thumbnail {
+    width: 250px;
   }
 }
