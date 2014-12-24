@@ -6,7 +6,7 @@
     %h1.logoWrap
       = link_to "GAMR", posts_path, class: "logo"
     %form.searchWrap
-      %input.search.header-search-input{placeholder: "キーワードでゲームを検索"}
+      %input.search.header-search-input{placeholder: "ゲームやユーザーを検索"}
     %figure.profImgWrap.menu-btn
       = image_tag "/user_photos/#{@current_user[:photo_path]}", class: "profImg", width: 27, height: 27, alt: ""
     = render partial: "application/pc/menu"
