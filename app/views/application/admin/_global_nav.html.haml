@@ -1,7 +1,7 @@
 %ul.global-nav
   - if @game
     %li
-      = link_to "削除", admin_game_path(@game), method: :delete
+      = link_to "削除", admin_game_path(@game), method: :delete, confirm: "本当に削除します。よろしいですか？"
     %li
       = link_to "編集", edit_admin_game_path(@game)
     %li

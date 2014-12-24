@@ -47,6 +47,14 @@ html {
     img {
       height: 50px;
     }
+    .tag {
+      background-color: #337ab7;
+      color: #fff;
+      padding: 4px 14px;
+      border-radius: 3px;
+      display: inline-block;
+      margin-right: 10px;
+    }
   }
 
   .paginate-wrap {
@@ -72,6 +80,17 @@ html {
     }
     input[type="submit"] {
       margin-bottom: 0px;
+    }
+    .tags-wrap, .urls-wrap {
+      margin-bottom: 20px;
+      .tag {
+        background-color: #337ab7;
+        color: #fff;
+        padding: 4px 14px;
+        border-radius: 3px;
+        display: inline-block;
+        margin-right: 10px;
+      }
     }
   }
 }

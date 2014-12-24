@@ -29,4 +29,27 @@
       = f.text_field :provider_url, class: "form-control"
       = f.label :amazon_url, "アマゾンURL"
       = f.text_field :amazon_url, class: "form-control"
+      .tags-wrap
+        - unless @game.gametags.blank?
+          = label_tag :current_tags, "既存タグ"
+          .tags
+          - @game.gametags.each do |gametag|
+            %span.tag
+              = gametag.name
+      = label_tag :tags, "新規タグ"
+      = text_field_tag "tags[]", "", class: "form-control"
+      = text_field_tag "tags[]", "", class: "form-control"
+      = text_field_tag "tags[]", "", class: "form-control"
+      = text_field_tag "tags[]", "", class: "form-control"
+      = text_field_tag "tags[]", "", class: "form-control"
+      .urls-wrap
+        - unless @game.game_urls.blank?
+          = label_tag :current_urls, "既存公式URL"
+          .urls
+          - @game.game_urls.each do |gameurl|
+            .url
+              = link_to gameurl.text, gameurl.text
+      = label_tag :urls, "新規公式サイトURL"
+      = text_field_tag "urls[]", "", class: "form-control"
+      = text_field_tag "urls[]", "", class: "form-control"
       = f.submit "送信", class: "btn btn-default"

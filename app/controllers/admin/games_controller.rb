@@ -19,6 +19,8 @@ class Admin::GamesController < ApplicationController
 
   def update
     if @game.update game_params
+      @game.create_tags params[:tags]
+      @game.create_urls params[:urls]
       redirect_to admin_game_path(@game), notice: "正常に編集が完了しました。"
     else
       redirect_to edit_admin_game_path(@game), alert: "編集ができませんでした。"
@@ -33,6 +35,11 @@ class Admin::GamesController < ApplicationController
   end
 
   def destroy
+    if @game.destroy
+      redirect_to admin_games_path, notice: "正常に削除しました。"
+    else
+      redirect_to admin_game_path(@game), alert: "削除ができませんでした。"
+    end
   end
 
   private

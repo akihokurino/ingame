@@ -12,6 +12,7 @@ class Game < ActiveRecord::Base
 	has_many :posts
   has_many :game_gametags
   has_many :gametags, :through => :game_gametags
+  has_many :game_urls
 
   default_scope { includes(:gametags) }
 
@@ -68,6 +69,20 @@ class Game < ActiveRecord::Base
 			self.avg_rate = 0
 		end
 	end
+
+  def create_tags(tags)
+    tags = tags.keep_if { |tag| !tag.blank? }
+    tags = tags.map { |tag| Gametag.find_or_create_by! name: tag }
+    tags.each do |tag|
+      GameGametag.find_or_create_by! game: self, gametag: tag
+    end
+  end
+
+  def create_urls(urls)
+    urls.each do |url|
+      GameUrl.create game_id: self[:id], text: url
+    end
+  end
 
 	class << self
     def search_with(search_title, page, current_user)

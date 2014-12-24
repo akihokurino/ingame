@@ -56,3 +56,15 @@
       %td
         - if @game.amazon_url
           = link_to @game.amazon_url, @game.amazon_url
+    %tr
+      %th タグ
+      %td
+        - @game.gametags.each do |tag|
+          %span.tag
+            = tag.name
+    %tr
+      %th 公式URL
+      %td
+        - @game.game_urls.each do |url|
+          .url
+            = link_to url.text, url.text
