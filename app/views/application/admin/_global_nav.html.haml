@@ -1,0 +1,10 @@
+%ul.global-nav
+  - if @game
+    %li
+      = link_to "削除", admin_game_path(@game), method: :delete
+    %li
+      = link_to "編集", edit_admin_game_path(@game)
+    %li
+      = link_to "詳細", admin_game_path(@game)
+  %li
+    = link_to "一覧", admin_games_path

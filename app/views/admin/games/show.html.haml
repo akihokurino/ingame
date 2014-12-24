@@ -4,6 +4,8 @@
 = render partial: "application/admin/header"
 
 .container
+  = render partial: "application/admin/global_nav"
+  = render partial: "application/admin/flash_message"
   - if @game.photo_path
     = image_tag "/game_photos/#{game.photo_path}", class: "thumbnail show-thumbnail"
   - elsif @game.photo_url

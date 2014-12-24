@@ -1,0 +1,32 @@
+.panel.panel-default.common-form
+  .panel-heading
+    = title
+  .panel-body
+    = form_for(@game, url: url, method: method) do |f|
+      = f.label :title, "タイトル"
+      = f.text_field :title, class: "form-control"
+      = f.label :photo_path, "サムネイル"
+      - if @game.photo_path
+        = image_tag "/game_photos/#{game.photo_path}", class: "thumbnail show-thumbnail"
+      - elsif @game.photo_url
+        = image_tag @game.photo_url, class: "thumbnail show-thumbnail"
+      - else
+        = image_tag "/game_photos/default.png", class: "thumbnail show-thumbnail"
+      = f.file_field :photo_path
+      = f.label :maker, "メーカー"
+      = f.text_field :maker, class: "form-control"
+      = f.label :wiki, "Wiki"
+      = f.text_area :wiki, class: "form-control"
+      = f.label :price, "価格"
+      = f.text_field :price, class: "form-control"
+      = f.label :release_day, "発売日"
+      = f.text_field :release_day, class: "form-control", placeholder: "2014-01-01"
+      = f.label :device, "デバイス"
+      = f.text_field :device, class: "form-control"
+      = f.label :provider, "プロバイダー"
+      = f.text_field :provider, class: "form-control", placeholder: "steam or famituu"
+      = f.label :provider_url, "プロバイダーURL"
+      = f.text_field :provider_url, class: "form-control"
+      = f.label :amazon_url, "アマゾンURL"
+      = f.text_field :amazon_url, class: "form-control"
+      = f.submit "送信", class: "btn btn-default"

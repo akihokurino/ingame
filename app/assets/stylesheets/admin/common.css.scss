@@ -32,6 +32,17 @@ html {
 
 .container {
   width: 100%;
+
+  .global-nav {
+    margin-right: 0px;
+    margin-left: auto;
+    overflow: hidden;
+    li {
+      float: right;
+      margin-left: 20px;
+    }
+  }
+
   table {
     img {
       height: 50px;
@@ -46,5 +57,21 @@ html {
 
   .show-thumbnail {
     width: 250px;
+  }
+
+  .common-form {
+    margin-top: 20px;
+  }
+
+  form {
+    input {
+      margin-bottom: 20px;
+    }
+    textarea {
+      margin-bottom: 20px;
+    }
+    input[type="submit"] {
+      margin-bottom: 0px;
+    }
   }
 }
