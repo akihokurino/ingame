@@ -1,0 +1,16 @@
+= content_for :head do
+  = stylesheet_link_tag "admin/common"
+
+.panel.panel-default.signin-form
+  .panel-heading
+    ログイン
+  .panel-body
+    = render partial: "application/admin/flash_message"
+    = form_tag(admin_sessions_path, method: "POST") do
+      = label_tag :username, "ユーザーネーム"
+      = text_field_tag :username, "", class: "form-control"
+      = label_tag :password, "パスワード"
+      = password_field_tag :password, "", class: "form-control"
+      = label_tag :key, "キーコード"
+      = password_field_tag :key, "", class: "form-control"
+      = submit_tag "ログイン", class: "btn btn-default"

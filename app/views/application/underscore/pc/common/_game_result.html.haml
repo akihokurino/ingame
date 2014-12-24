@@ -3,8 +3,9 @@
   %article.gameList
     %a.gameListLink{href: "{{= current_url }}"}
       %figure.gameImgWrap
-        / %img.gameImg{src: "/game_photos/{{= photo_path }}", width: "166", alt: ""}
-        {{ if (photo_url) { }}
+        {{ if (photo_path) { }}
+        %img.gameImg{src: "/game_photos/{{= photo_path }}", width: "166", alt: ""}
+        {{ } else if (photo_url) { }}
         %img.gameImg{src: "{{= photo_url }}", width: "166", alt: ""}
         {{ } else { }}
         %img.gameImg{src: "/game_photos/default.png", width: "166", alt: ""}
@@ -30,8 +31,9 @@
   %article.gameList
     %span
       %figure.gameImgWrap
-        / %img.gameImg{src: "/game_photos/{{= photo_path }}", width: "166", alt: ""}
-        {{ if (photo_url) { }}
+        {{ if (photo_path) { }}
+        %img.gameImg{src: "/game_photos/{{= photo_path }}", width: "166", alt: ""}
+        {{ } else if (photo_url) { }}
         %img.gameImg{src: "{{= photo_url }}", width: "166", alt: ""}
         {{ } else { }}
         %img.gameImg{src: "/game_photos/default.png", width: "166", alt: ""}

@@ -2,8 +2,9 @@
   %article.gameList
     %a.articleWrap{href: "/games/{{= game.id }}#all", style: "display: block;"}
       %figure.gameImgWrap
-        / %img.gameImg{src: "/game_photos/{{= game.photo_path}}", width: "166", alt: ""}
-        {{ if (game.photo_url) { }}
+        {{ if (game.photo_path) { }}
+        %img.gameImg{src: "/game_photos/{{= game.photo_path}}", width: "166", alt: ""}
+        {{ } else if (game.photo_url) { }}
         %img.gameImg{src: "{{= game.photo_url }}", width: "166", alt: ""}
         {{ } else { }}
         %img.gameImg{src: "/game_photos/default.png", width: "166", alt: ""}

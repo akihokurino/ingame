@@ -1,0 +1,70 @@
+= content_for :head do
+  = stylesheet_link_tag "admin/common"
+
+= render partial: "application/admin/header"
+
+.container
+  = render partial: "application/admin/global_nav"
+  = render partial: "application/admin/flash_message"
+  - if @game.photo_path
+    = image_tag "/game_photos/#{@game.photo_path}", class: "thumbnail show-thumbnail"
+  - elsif @game.photo_url
+    = image_tag @game.photo_url, class: "thumbnail show-thumbnail"
+  - else
+    = image_tag "/game_photos/default.png", class: "thumbnail show-thumbnail"
+
+  %table.table.table-striped
+    %tr
+      %th ID
+      %td
+        = @game.id
+    %tr
+      %th タイトル
+      %td
+        = @game.title
+    %tr
+      %th メーカー
+      %td
+        = @game.maker
+    %tr
+      %th wiki
+      %td
+        = @game.wiki
+    %tr
+      %th 価格
+      %td
+        = @game.price
+    %tr
+      %th 発売日
+      %td
+        = @game.release_day
+    %tr
+      %th デバイス
+      %td
+        = @game.device
+    %tr
+      %th プロバイダー
+      %td
+        = @game.provider
+    %tr
+      %th プロバイダーURL
+      %td
+        -if @game.provider_url
+          = link_to @game.provider_url, @game.provider_url
+    %tr
+      %th アマゾンURL
+      %td
+        - if @game.amazon_url
+          = link_to @game.amazon_url, @game.amazon_url
+    %tr
+      %th タグ
+      %td
+        - @game.gametags.each do |tag|
+          %span.tag
+            = tag.name
+    %tr
+      %th 公式URL
+      %td
+        - @game.game_urls.each do |url|
+          .url
+            = link_to url.text, url.text

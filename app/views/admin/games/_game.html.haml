@@ -1,0 +1,24 @@
+%tr
+  %td
+    = game.id
+  %td
+    = link_to game.title, admin_game_path(game)
+  %td
+    - if game.photo_path
+      = image_tag "/game_photos/#{game.photo_path}", class: "thumbnail"
+    - elsif game.photo_url
+      = image_tag game.photo_url, class: "thumbnail"
+    - else
+      = image_tag "/game_photos/default.png", class: "thumbnail"
+  %td
+    = game.maker
+  %td
+    = game.wiki
+  %td
+    = game.price
+  %td
+    = game.release_day
+  %td
+    = game.device
+  %td
+    = game.provider

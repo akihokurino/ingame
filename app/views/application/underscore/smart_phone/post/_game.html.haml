@@ -1,7 +1,8 @@
 %script{type: "text/template", id: "game-template"}
   %figure.gameImageWrap
-    / %img.gameImage{src: "/game_photos/{{= photo_path }}", width: "30", height: "30", alt: "image"}
-    {{ if (photo_url) { }}
+    {{ if (photo_path) { }}
+    %img.gameImage{src: "/game_photos/{{= photo_path }}", width: "50", alt: "image"}
+    {{ } else if (photo_url) { }}
     %img.gameImage{src: "{{= photo_url }}", width: "50", alt: "image"}
     {{ } else { }}
     %img.gameImage{src: "/game_photos/default.png", width: "50", alt: "image"}

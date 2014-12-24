@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141206051700) do
+ActiveRecord::Schema.define(version: 20141223030429) do
 
   create_table "admins", force: true do |t|
     t.string   "username"
     t.string   "password"
-    t.integer  "salt"
+    t.string   "salt"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -52,19 +52,31 @@ ActiveRecord::Schema.define(version: 20141206051700) do
     t.datetime "updated_at"
   end
 
+  create_table "game_urls", force: true do |t|
+    t.integer  "game_id"
+    t.string   "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "game_urls", ["game_id"], name: "index_game_urls_on_game_id", using: :btree
+
   create_table "games", force: true do |t|
     t.string   "title"
     t.string   "photo_url"
     t.string   "photo_path"
     t.string   "maker"
-    t.string   "amazon_url"
     t.text     "wiki"
+    t.string   "price"
+    t.date     "release_day"
     t.string   "device"
     t.string   "provider"
     t.integer  "provider_id"
-    t.date     "release_day"
-    t.integer  "game_likes_count", default: 0
-    t.integer  "posts_count",      default: 0
+    t.string   "provider_url"
+    t.string   "amazon_url"
+    t.text     "game_html",        limit: 2147483647
+    t.integer  "game_likes_count",                    default: 0
+    t.integer  "posts_count",                         default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -169,7 +181,7 @@ ActiveRecord::Schema.define(version: 20141206051700) do
   create_table "users", force: true do |t|
     t.string   "username",     limit: 100
     t.string   "password"
-    t.integer  "salt"
+    t.string   "salt"
     t.string   "introduction"
     t.string   "email"
     t.integer  "logs_count",               default: 0

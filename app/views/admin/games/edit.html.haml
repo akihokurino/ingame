@@ -1,0 +1,9 @@
+= content_for :head do
+  = stylesheet_link_tag "admin/common"
+
+= render partial: "application/admin/header"
+
+.container
+  = render partial: "application/admin/global_nav"
+  = render partial: "application/admin/flash_message"
+  = render partial: "form", locals: {title: "ゲーム編集", url: admin_game_path(@game), method: "PUT"}

@@ -5,6 +5,7 @@ namespace :famituu do
 	task :get => :environment do
 		require 'open-uri'
 		require 'nokogiri'
+    require 'kconv'
 
     # デバイス名の変更
     def device_rename(old)
@@ -20,7 +21,7 @@ namespace :famituu do
       for i in 1..5
         begin
           open(url){|f|
-            html   = f.read
+            html = f.read
             return html
           }
         rescue => ex
@@ -66,7 +67,7 @@ namespace :famituu do
         isAlready     = {}
 
         searchResults.each do |row|
-          row = row.parent
+          row                  = row.parent
           result               = {}
           result[:provider]    = "famituu"
           result[:release_day] = date.strftime("%Y-%m-%d")
@@ -101,12 +102,22 @@ namespace :famituu do
 
           # ジャンルとタイトルと発売元と画像取るために
           # 個別ページまで潜る。
-
-          game_html      = get game_url
-          game_doc       = Nokogiri::HTML.parse game_html
-          result[:title] = game_doc.css("h1").css("span").text
+          #game_html             = get game_url
+          game_html = get "http://www.famitsu.com/cominy/?m=pc&a=page_h_title&title_id=6899"
+          result[:game_html]    = game_html
+          result[:provider_url] = game_url
+          game_doc              = Nokogiri::HTML.parse game_html
+          result[:title]        = game_doc.css("h1").css("span").text
 
           next if result[:title] == ""
+
+          # 価格の取得
+          game_doc.css("dl.gameData span").each do |node|
+            if node.attributes["itemprop"].value == "price"
+              result[:price] = node.children.text
+              break
+            end
+          end
 
           img_src            = game_doc.css("span.preview").css("img").attr("src").text
           img_src            = nil if img_src == "img/img.gif"
@@ -118,9 +129,98 @@ namespace :famituu do
             result[:maker] = ""
           end
 
+          result[:game_urls] = []
+          game_doc.css("#gameSummary .officialUrl dd a").each do |node|
+            result[:game_urls] << node.attributes["href"].value
+          end
+
+          # ゲームのサムネイルが無い場合はアマゾンから拝借
+          game_doc.css("ul#gameItemBox li").each do |node|
+            node.css(".ecImages").children.each do |node|
+              if node.name == "a"
+                amazon_url          = node.attributes["href"].value
+                result[:amazon_url] = amazon_url unless result[:amazon_url]
+                result[:photo_url]  = scrape_from_amazon(amazon_url) unless result[:photo_url]
+              end
+            end
+
+            break if result[:photo_url]
+          end
+
+          # ゲームのタイトルをキーにwikiから概要の取得
+          game_title    = result[:title].strip.gsub(" ", "_")
+          url           = "http://ja.wikipedia.org/wiki/#{game_title}"
+          begin
+            result[:wiki] = get_wiki URI.parse(URI.encode(url))
+          rescue Exception
+            result[:wiki] = nil
+          end
+
           Game.create_from_scraping result
         end
       end
+    end
+
+    def get_wiki(url)
+      begin
+        html = open(url){|f| f.read }
+      rescue Exception
+        return nil
+      end
+
+      begin
+        doc = Nokogiri::HTML.parse(html.toutf8, nil, "UTF-8")
+        doc.css("#mw-content-text").each do |node|
+          node.css('h2 span').each do |node|
+            if node.children.text == "概要"
+              target_node = node.parent.next
+              text_array  = []
+              while target_node.name != "h2" do
+                if target_node.name == "p"
+                  target_node.children.each do |node|
+                    if node.name == "text"
+                      text_array << node.text
+                    end
+                    if node.name == "a"
+                      text_array << node.children.text
+                    end
+                  end
+                end
+                target_node = target_node.next
+              end
+              return text_array.join("")
+            end
+          end
+        end
+      rescue Exception
+        return nil
+      end
+    end
+
+    def scrape_from_amazon(url)
+      result = {
+        amazon_url: URI.unescape(url)
+      }
+
+      begin
+        html = open(url, "User-Agent" => "Mozilla/4.0"){|f| f.read }
+      rescue Exception
+        return nil
+      end
+
+      begin
+        doc = Nokogiri::HTML.parse(html.toutf8, nil, "UTF-8")
+      rescue Exception
+        return nil
+      end
+
+      photo_url = nil
+
+      doc.css("#prodImageCell img").each do |node|
+        photo_url = node.attributes["src"].value
+      end
+
+      photo_url
     end
 
     # 発売済みのソフトをスクレイピングする。
@@ -153,7 +253,7 @@ namespace :famituu do
         # 一ヶ月に500本以上のゲームは発売されないと考え、10決め打ちでいく。
         # pageEnd(doc).downto 1 do |page|
         10.downto 1 do |page|
-          html =  search_by_range("#{current.year}/#{current.month}/-", page)
+          html  = search_by_range("#{current.year}/#{current.month}/-", page)
           next if html == 404
           doc   = Nokogiri::HTML.parse html
           dates = doc.css("h2 > a").map do |a|
@@ -172,7 +272,5 @@ namespace :famituu do
     end
 
     scrape
-
-    #Game.get_from_famituu "http://www.famitsu.com/cominy/?m=pc&a=page_h_title&title_id=1157"
   end
 end

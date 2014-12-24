@@ -50,4 +50,16 @@ class ApplicationController < ActionController::Base
 	def current_user?(user)
 		(@current_user[:id] == user[:id]) ? true : false
 	end
+
+	def auth_admin
+		if session[:current_admin_id]
+			begin
+				@current_admin = Admin.find(session[:current_admin_id])
+			rescue ActiveRecord::RecordNotFound
+				reset_session
+			end
+		end
+
+		redirect_to admin_games_path unless @current_admin
+	end
 end

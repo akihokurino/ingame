@@ -3,7 +3,7 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.string :username, :limit => 100
       t.string :password
-      t.integer :salt
+      t.string :salt
       t.string :introduction, :limit => 255
       t.string :email
       t.integer :logs_count, :default => 0
