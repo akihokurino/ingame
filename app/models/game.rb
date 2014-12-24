@@ -6,13 +6,13 @@ class Game < ActiveRecord::Base
 	include RandomName
 	include EscapeLike
 
-	has_many :logs
-	has_many :users, :through => :logs
-	has_many :game_likes
-	has_many :posts
-  has_many :game_gametags
-  has_many :gametags, :through => :game_gametags
-  has_many :game_urls
+	has_many :logs, dependent: :destroy
+	has_many :users, through: :logs
+	has_many :game_likes, dependent: :destroy
+	has_many :posts, dependent: :destroy
+  has_many :game_gametags, dependent: :destroy
+  has_many :gametags, through: :game_gametags
+  has_many :game_urls, dependent: :destroy
 
   default_scope { includes(:gametags) }
 
@@ -80,7 +80,7 @@ class Game < ActiveRecord::Base
 
   def create_urls(urls)
     urls.each do |url|
-      GameUrl.create game_id: self[:id], text: url
+      GameUrl.create game_id: self[:id], text: url unless url.blank?
     end
   end
 

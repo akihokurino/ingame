@@ -35,7 +35,7 @@
           .tags
           - @game.gametags.each do |gametag|
             %span.tag
-              = gametag.name
+              = link_to gametag.name, "/admin/game_gametags/#{gametag.id}?game_id=#{@game.id}", method: :delete, confirm: "削除してもよろしいですか？"
       = label_tag :tags, "新規タグ"
       = text_field_tag "tags[]", "", class: "form-control"
       = text_field_tag "tags[]", "", class: "form-control"
@@ -48,8 +48,9 @@
           .urls
           - @game.game_urls.each do |gameurl|
             .url
-              = link_to gameurl.text, gameurl.text
+              = link_to gameurl.text, admin_game_url_path(gameurl), method: :delete, confirm: "削除してもよろしいですか？"
       = label_tag :urls, "新規公式サイトURL"
+      = text_field_tag "urls[]", "", class: "form-control"
       = text_field_tag "urls[]", "", class: "form-control"
       = text_field_tag "urls[]", "", class: "form-control"
       = f.submit "送信", class: "btn btn-default"
