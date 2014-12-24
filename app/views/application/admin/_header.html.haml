@@ -1,0 +1,6 @@
+.navbar.navbar-inverse
+  - if @current_admin
+    .glyphicon.glyphicon-cog.dropdown-toggle#dropdownMenu{"data-toggle" => "dropdown"}
+    %ul.dropdown-menu{role: "menu", "aria-labelledby" => "dropdownMenu"}
+      %li{role: "presentation"}
+        = link_to "ログアウト", admin_session_path(@current_admin), method: :delete
