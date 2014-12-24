@@ -8,6 +8,7 @@ var Log = Backbone.Model.extend({
       "id": "",
       "title": "",
       "photo_path": "",
+      "photo_url": "",
       "device": "",
       "maker": "",
       "game_like_count": 0

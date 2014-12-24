@@ -4,10 +4,10 @@
 = render partial: "application/admin/header"
 
 .container
-  - if @game.photo_url
-    = image_tag @game.photo_url, class: "thumbnail show-thumbnail"
-  - elsif @game.photo_path
+  - if @game.photo_path
     = image_tag "/game_photos/#{game.photo_path}", class: "thumbnail show-thumbnail"
+  - elsif @game.photo_url
+    = image_tag @game.photo_url, class: "thumbnail show-thumbnail"
   - else
     = image_tag "/game_photos/default.png", class: "thumbnail show-thumbnail"
 

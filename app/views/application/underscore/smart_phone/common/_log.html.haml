@@ -1,8 +1,9 @@
 %script{type: "text/template", id: "log-template"}
   %a.articleWrap{href: "{{= current_url }}", style: "display: block;"}
     %figure.game
-      / %img.gameImg{src: "/game_photos/{{= game.photo_path }}"}
-      {{ if (game.photo_url) { }}
+      {{ if (game.photo_path) { }}
+      %img.gameImg{src: "/game_photos/{{= game.photo_path }}"}
+      {{ } else if (game.photo_url) { }}
       %img.gameImg{src: "{{= game.photo_url }}"}
       {{ } else { }}
       %img.gameImg{src: "/game_photos/default.png"}
