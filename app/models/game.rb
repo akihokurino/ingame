@@ -5,6 +5,7 @@ class Game < ActiveRecord::Base
 
 	include RandomName
 	include EscapeLike
+  include CostomUpload
 
 	has_many :logs, dependent: :destroy
 	has_many :users, through: :logs
@@ -82,6 +83,11 @@ class Game < ActiveRecord::Base
     urls.each do |url|
       GameUrl.create game_id: self[:id], text: url unless url.blank?
     end
+  end
+
+  def update_with_thumbnail(game_params)
+    game_params[:photo_path] = self.class.file_upload game_params[:photo_path], "game"
+    self.update game_params
   end
 
 	class << self

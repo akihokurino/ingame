@@ -18,7 +18,7 @@ class Admin::GamesController < ApplicationController
   end
 
   def update
-    if @game.update game_params
+    if @game.update_with_thumbnail(game_params)
       @game.create_tags params[:tags]
       @game.create_urls params[:urls]
       redirect_to admin_game_path(@game), notice: "正常に編集が完了しました。"
