@@ -11,7 +11,7 @@
     .imgWrap
       %a{href:"/users/#{@current_user[:id]}#logs"}
         = image_tag "/user_photos/#{@current_user[:photo_path]}",width:40,height:40, class: "userImg"
-    = link_to "ゲームの感想を投稿", "/posts/new#select", class: "icon-post"
+    = link_to "つぶやく", "/posts/new#select", class: "icon-post"
   .post-list
   = image_tag "gif-load.gif", class: "loading-gif"
 
