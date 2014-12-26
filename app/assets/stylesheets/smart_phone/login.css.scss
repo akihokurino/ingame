@@ -57,8 +57,8 @@ a {
 		@include border-radius(4px);
 		@include box-sizing;
 		color: #ffffff;
-		font-size: 16px;
-		line-height:3;
+		font-size: 14px;
+		line-height:2.5;
 		text-shadow: 0px -1px 0 rgba(0,0,0,0.35);
 		text-align: center;
 	}
@@ -88,7 +88,7 @@ a {
 		font-weight:bold;
 		&:before{
 			display:inline-block;
-			font-size:25px;
+			font-size:22px;
 			font-weight:normal;
 			vertical-align: -20%;
 			margin-right:5px;
