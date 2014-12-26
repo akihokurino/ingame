@@ -4,7 +4,10 @@
       .imgWrap
         = image_tag "logo@2x.png", width:"120"
     .loginBox
-      %h1 ようこそ！#{@current_provider[:username]}さん
+      %h1
+        ようこそ！
+        %br
+        #{@current_provider[:username]}さん
       .imgWrap
         = image_tag "smart_phone/default.png", width:"100"
         - case @current_provider[:service_name]
