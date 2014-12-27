@@ -102,8 +102,7 @@ namespace :famituu do
 
           # ジャンルとタイトルと発売元と画像取るために
           # 個別ページまで潜る。
-          #game_html             = get game_url
-          game_html = get "http://www.famitsu.com/cominy/?m=pc&a=page_h_title&title_id=6899"
+          game_html             = get game_url
           result[:game_html]    = game_html
           result[:provider_url] = game_url
           game_doc              = Nokogiri::HTML.parse game_html
