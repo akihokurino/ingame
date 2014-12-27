@@ -5,18 +5,21 @@
   .headerInner
     %h1.logoWrap
       = link_to "GAMR", posts_path, class: "logo"
+    %ul.gnavi
+      %li.item
+        = link_to "タイムライン", posts_path, class: "toTimelineBtn"
+      %li.item
+        = link_to "見つける", "/users/#{@current_user[:id]}/search_game_or_user#game", class: "toSearchBtn"
+      %li.item
+        = link_to "マイページ", "/users/#{@current_user[:id]}#logs", class: "toProfileBtn"
+      %li.item
+        %span.notify.my-notify.icon-bell
+          %span.notifyNum.notify-num
+      %li.item
+        %figure.profImgWrap.menu-btn
+          = image_tag "/user_photos/#{@current_user[:photo_path]}", class: "profImg", width: 26, height: 26, alt: ""
+        = render partial: "application/pc/menu"
+        = render partial: "application/pc/notifications_modal"
+        = render partial: "application/underscore/pc/header/notification"
     %form.searchWrap
-      %input.search.header-search-input{placeholder: "キーワードでゲームを検索"}
-    %figure.profImgWrap.menu-btn
-      = image_tag "/user_photos/#{@current_user[:photo_path]}", class: "profImg", width: 27, height: 27, alt: ""
-    = render partial: "application/pc/menu"
-    = render partial: "application/pc/notifications_modal"
-    = render partial: "application/underscore/pc/header/notification"
-    %nav.gnavi
-      %ul.gnaviList
-        %li.item
-          = link_to "マイページ", "/users/#{@current_user[:id]}#logs", class: "toProfileBtn"
-        %li.item
-          %span.notify.my-notify
-            通知
-            %span.notifyNum.notify-num
+      %input.search.header-search-input{placeholder: "ゲームやユーザーを検索"}

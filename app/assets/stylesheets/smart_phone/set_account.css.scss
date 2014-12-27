@@ -18,28 +18,24 @@ header{
 	}
 }
 .signup,.signin{
-	padding-top:45px;
 	background-color: $bg_color;
 }
 
 .loginBox{
-	padding:10px;
+	padding:45px 10px 10px 10px;
 	margin:5px;
-	background: #fff;
 	text-align: center;
 	@include box-sizing; 
 
 	h1{
-		padding: 20px 10px;
+		margin: 20px 10px;
 		color:$color_textBlack;
 		font-size:20px;
-		font-weight:bold;
 	}
 	h2{
 		padding: 20px 10px;
 		color:$color_textBlack;
 		font-size:18px;
-		font-weight:bold;
 	}
 	.errorMassage{
 		color:$color_red;
@@ -77,7 +73,6 @@ header{
 			display:block;
 			font-size:40px;
 			line-height:30px;
-			margin-left:-1px;
 			background-color: #fff;
 			color:$facebook_blue;
 			&:before{
@@ -98,12 +93,12 @@ header{
 		@include box-sizing;
 		color: #ffffff;
 		font-size: 16px;
-		line-height:3;
+		line-height:2.5;
 		text-shadow: 0px -1px 0 rgba(0,0,0,0.35);
 		text-align: center;
 		text-decoration: none;
 		background: linear-gradient(lighten($main_color,7%),$main_color);
-		box-shadow:0 2px 0 darken($main_color,10%);
+		border: 1px solid darken($main_color,7%);
 		&:active{
 			background: linear-gradient($main_color,lighten($main_color,7%));
 		}

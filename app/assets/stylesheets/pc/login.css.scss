@@ -43,19 +43,19 @@ html {
   }
   .tw, .fb, .gamr {
     display: inline-block;
-    width: 250px;
+    width: 200px;
     margin: 0 10px;
     padding: 0 10px;
     @include border-radius(4px);
     @include box-sizing;
     color: #ffffff;
-    font-size: 1.125rem;
-    line-height: 3;
+    font-size: 1rem;
+    line-height: 2.5;
     text-align: center;
   }
   .tw {
     @include bglinear(lighten($twitter_blue, 7%), $twitter_blue);
-    @include box-shadow(0, 2px, 0, 0, darken($twitter_blue,10%));
+    border: 1px solid darken($twitter_blue,7%);
 
     &:hover {
       text-decoration: none;
@@ -64,7 +64,7 @@ html {
   }
   .fb {
     @include bglinear(lighten($facebook_blue, 10%), $facebook_blue);
-    @include box-shadow(0, 2px, 0, 0, darken($facebook_blue, 10%));
+    border: 1px solid darken($facebook_blue,7%);
 
     &:hover {
       text-decoration: none;
@@ -73,7 +73,7 @@ html {
   }
   .gamr {
     @include bglinear(lighten($main_color, 7%), $main_color);
-    @include box-shadow(0, 2px, 0, 0, darken($main_color, 10%));
+    border: 1px solid darken($main_color,7%);
 
     &:hover {
       text-decoration: none;
@@ -83,8 +83,8 @@ html {
   .icon-twitter, .icon-facebook {
     &:before {
       display: inline-block;
-      font-size: 32px;
-      vertical-align: -20%;
+      font-size: 22px;
+      vertical-align: -15%;
       margin-right: 5px;
     }
   }

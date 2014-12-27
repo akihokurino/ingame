@@ -57,28 +57,29 @@ a {
 		@include border-radius(4px);
 		@include box-sizing;
 		color: #ffffff;
-		font-size: 16px;
-		line-height:3;
+		font-size: 14px;
+		line-height:2.5;
 		text-shadow: 0px -1px 0 rgba(0,0,0,0.35);
 		text-align: center;
 	}
 	.tw {
 		background: linear-gradient(lighten($twitter_blue,7%),$twitter_blue);
-		box-shadow:0 2px 0 darken($twitter_blue,10%);
+		border: 1px solid darken($twitter_blue,7%);
+
 		&:active{
 			background: linear-gradient($twitter_blue,lighten($twitter_blue,7%));
 		}
 	}
 	.fb {
 		background: linear-gradient(lighten($facebook_blue,10%),$facebook_blue);
-		box-shadow:0 2px 0 darken($facebook_blue,10%);
+		border: 1px solid darken($facebook_blue,7%);
 		&:active{
 			background: linear-gradient($facebook_blue,lighten($facebook_blue,10%));
 		}
 	}
 	.gamr {
 		background: linear-gradient(lighten($main_color,7%),$main_color);
-		box-shadow:0 2px 0 darken($main_color,10%);
+		border: 1px solid darken($main_color,7%);
 		&:active{
 			background: linear-gradient($main_color,lighten($main_color,7%));
 		}
@@ -87,7 +88,7 @@ a {
 		font-weight:bold;
 		&:before{
 			display:inline-block;
-			font-size:25px;
+			font-size:22px;
 			font-weight:normal;
 			vertical-align: -20%;
 			margin-right:5px;
