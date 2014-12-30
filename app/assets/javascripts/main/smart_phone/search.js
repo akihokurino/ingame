@@ -17,7 +17,8 @@
   var GameSearchView = Backbone.View.extend({
     el: $(".search-page"),
     events: {
-      "keypress .game-title-input": "search"
+      "keypress .game-title-input": "searchWithEnter",
+      "click .change-target-link":  "changeTarget"
     },
     template: _.template($("#game-search-template").html()),
     text_template: _.template($("#result-text-template").html()),
@@ -32,40 +33,56 @@
       this.game_title              = this.$(".game-title-input");
       this.current_game_title      = null;
       this.page                    = 1;
+
+      if (this.getQueryString()) {
+        this.current_game_title = this.getQueryString().search_word;
+        this.game_title.val(this.current_game_title);
+        //$(".header-search-input").val(this.current_game_title);
+        this.search(null, "first");
+      }
     },
-    search: function (e) {
+    search: function (e, type) {
+      if (e) {
+        e.preventDefault();
+      }
+
+      var that  = this;
+      this.page = 1;
+
+      if (type != "first") {
+        this.current_game_title = this.game_title.val();
+      }
+
+      this.game_result_collection.fetch({
+        data: {search_title: this.current_game_title, page: this.page},
+        success: function (model, response, options) {
+          that.game_result_collection.reset();
+          that.game_results_view.$el.html("");
+          if (response.results && response.results.length > 0) {
+            for (var i = 0; i < response.results.length; i++) {
+              var game_result = new GameResult(response.results[i]);
+              var current_url = "/games/" + game_result.id + "#all";
+              game_result.set("current_url", current_url);
+              that.game_results_view.collection.add(game_result);
+            }
+          }
+
+          that.$(".result-area").html((that.text_template({
+            result_count: response.count
+          })));
+        },
+        error: function () {
+
+        }
+      })
+
+      $(window).unbind("scroll");
+      $(window).bind("scroll", this.pagenation);
+    },
+    searchWithEnter: function (e) {
       if (e.which == 13 && this.game_title.val()) {
         e.preventDefault();
-
-        var that                = this;
-        this.page               = 1;
-        this.current_game_title = this.game_title.val();
-
-        this.game_result_collection.fetch({
-          data: {search_title: this.current_game_title, page: this.page},
-          success: function (model, response, options) {
-            that.game_result_collection.reset();
-            that.game_results_view.$el.html("");
-            if (response.results && response.results.length > 0) {
-              for (var i = 0; i < response.results.length; i++) {
-                var game_result = new GameResult(response.results[i]);
-                var current_url = "/games/" + game_result.id + "#all";
-                game_result.set("current_url", current_url);
-                that.game_results_view.collection.add(game_result);
-              }
-            }
-
-            that.$(".result-area").html((that.text_template({
-              result_count: response.count
-            })));
-          },
-          error: function () {
-
-          }
-        })
-
-        $(window).unbind("scroll");
-        $(window).bind("scroll", this.pagenation);
+        this.search(e, null);
       }
     },
     pagenation: function () {
@@ -102,13 +119,41 @@
           }
         })
       }
+    },
+    getQueryString: function () {
+      if (1 < document.location.search.length) {
+        var query      = document.location.search.substring(1);
+        var parameters = query.split('&');
+        var result     = new Object();
+
+        for (var i = 0; i < parameters.length; i++) {
+          var element       = parameters[i].split('=');
+          var paramName     = decodeURIComponent(element[0]);
+          var paramValue    = decodeURIComponent(element[1]);
+          result[paramName] = decodeURIComponent(paramValue);
+        }
+        return result;
+      }
+      return null;
+    },
+    changeTarget: function (e) {
+      e.preventDefault();
+      var search_word     = this.game_title.val();
+      var current_user_id = $("#wrapper").data("userid");
+
+      if (search_word && search_word != "") {
+        location.href = "/users/" + current_user_id + "/search_game_or_user?search_word=" + search_word + "#user";
+      } else {
+        location.href = "/users/" + current_user_id + "/search_game_or_user#user";
+      }
     }
   })
 
   var UserSearchView = Backbone.View.extend({
     el: $(".search-page"),
     events: {
-      "keypress .username-input": "search"
+      "keypress .username-input":  "searchWithEnter",
+      "click .change-target-link": "changeTarget"
     },
     template: _.template($("#user-search-template").html()),
     text_template: _.template($("#result-text-template").html()),
@@ -127,6 +172,13 @@
       this.current_username       = null;
       this.page                   = 1;
 
+      if (this.getQueryString()) {
+        this.current_username = this.getQueryString().search_word;
+        this.username.val(this.current_username);
+        //$(".header-search-input").val(this.current_username);
+        this.search(null, "first");
+      }
+
       var that = this;
 
       this.user_collection.fetch({
@@ -143,39 +195,48 @@
         }
       })
     },
-    search: function (e) {
+    search: function (e, type) {
+      if (e) {
+        e.preventDefault();
+      }
+
+      var that  = this;
+      this.page = 1;
+
+      if (type != "first") {
+        this.current_username = this.username.val();
+      }
+
+      this.user_result_collection.fetch({
+        data: {username: this.current_username, page: this.page},
+        success: function (model, response, options) {
+          that.hideActivity();
+
+          that.user_result_collection.reset();
+          that.user_results_view.$el.html("");
+          if (response.results && response.results.length > 0) {
+            for (var i = 0; i < response.results.length; i++) {
+              var user_result = new UserResult(response.results[i]);
+              that.user_results_view.collection.add(user_result);
+            }
+          }
+
+          that.$(".result-area").html((that.text_template({
+            result_count: response.count
+          })));
+        },
+        error: function () {
+
+        }
+      });
+
+      $(window).unbind("scroll");
+      $(window).bind("scroll", this.pagenation);
+    },
+    searchWithEnter: function (e) {
       if (e.which == 13 && this.username.val()) {
         e.preventDefault();
-
-        var that              = this;
-        this.page             = 1;
-        this.current_username = this.username.val();
-
-        this.user_result_collection.fetch({
-          data: {username: this.current_username, page: this.page},
-          success: function (model, response, options) {
-            that.hideActivity();
-
-            that.user_result_collection.reset();
-            that.user_results_view.$el.html("");
-            if (response.results && response.results.length > 0) {
-              for (var i = 0; i < response.results.length; i++) {
-                var user_result = new UserResult(response.results[i]);
-                that.user_results_view.collection.add(user_result);
-              }
-            }
-
-            that.$(".result-area").html((that.text_template({
-              result_count: response.count
-            })));
-          },
-          error: function () {
-
-          }
-        });
-
-        $(window).unbind("scroll");
-        $(window).bind("scroll", this.pagenation);
+        this.search(e, null);
       }
     },
     pagenation: function () {
@@ -213,6 +274,33 @@
     },
     hideActivity: function () {
       $(".user-activity-list-wrap").html("");
+    },
+    getQueryString: function () {
+      if (1 < document.location.search.length) {
+        var query      = document.location.search.substring(1);
+        var parameters = query.split('&');
+        var result     = new Object();
+
+        for (var i = 0; i < parameters.length; i++) {
+          var element       = parameters[i].split('=');
+          var paramName     = decodeURIComponent(element[0]);
+          var paramValue    = decodeURIComponent(element[1]);
+          result[paramName] = decodeURIComponent(paramValue);
+        }
+        return result;
+      }
+      return null;
+    },
+    changeTarget: function (e) {
+      e.preventDefault();
+      var search_word     = this.username.val();
+      var current_user_id = $("#wrapper").data("userid");
+
+      if (search_word && search_word != "") {
+        location.href = "/users/" + current_user_id + "/search_game_or_user?search_word=" + search_word + "#game";
+      } else {
+        location.href = "/users/" + current_user_id + "/search_game_or_user#game";
+      }
     }
   })
 

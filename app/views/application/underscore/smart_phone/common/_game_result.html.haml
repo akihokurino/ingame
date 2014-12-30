@@ -21,11 +21,11 @@
         {{ for (var i = 0; i < avg_rate; i++) { }}
         %li.starOn
           %span.icon-star
-          {{ } }}
-          {{ for (var i = 0; i < diff; i++) { }}
+        {{ } }}
+        {{ for (var i = 0; i < diff; i++) { }}
         %li.starOff
           %span.icon-star
-          {{ } }}
+        {{ } }}
       %select.status.my-status{name: "status", size: "1", class: "status"}
         %option{value: ""} 登録する
         %option{value: 1} 気になる
@@ -38,7 +38,7 @@
         %span
           {{ if (photo_path) { }}
           %img.gameImg{src: "/game_photos/{{= photo_path }}", width: "100"}
-          {{ if (photo_url) { }}
+          {{ } else if (photo_url) { }}
           %img.gameImg{src: "{{= photo_url }}", width: "100"}
           {{ } else { }}
           %img.gameImg{src: "/game_photos/default.png", width: "100"}
@@ -53,11 +53,11 @@
           {{ for (var i = 0; i < avg_rate; i++) { }}
           %li.starOn
             %span.icon-star
-            {{ } }}
-            {{ for (var i = 0; i < diff; i++) { }}
+          {{ } }}
+          {{ for (var i = 0; i < diff; i++) { }}
           %li.starOff
             %span.icon-star
-            {{ } }}
+          {{ } }}
       %select.status.my-status{name: "status", size: "1", class: "status"}
         %option{value: ""} 登録する
         %option{value: 1} 気になる

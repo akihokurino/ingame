@@ -1,7 +1,7 @@
 %script{type: "text/template", id: "game-search-template"}
   .tabs
     .to-game-search ゲーム
-    = link_to "ユーザー", "/users/#{@current_user[:id]}/search_game_or_user#user", class: "to-user-search"
+    = link_to "ユーザー", "#", class: "to-user-search change-target-link"
   %section.game-search.searchWrap
     %form.search-form.entryBox
       %span.icon-search
