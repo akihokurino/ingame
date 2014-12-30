@@ -11,6 +11,7 @@ json.posts do |json|
       json.title post.game[:title]
       json.photo_url post.game[:photo_url]
       json.photo_path post.game[:photo_path]
+      json.device post.game[:device]
     end
     json.user do |json|
       json.id post.user[:id]

@@ -19,6 +19,8 @@
       {{ } else { }}
       %img{src: "/game_photos/default.png", height: 70}
       {{ } }}
+    %a{href: "/games/{{= game.id}}#all"}
+      {{= game.device }}
     .statusBox
       {{ if (status.id == 1) { }}
       %span.moodReady 気になる

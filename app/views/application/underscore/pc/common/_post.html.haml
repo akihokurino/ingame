@@ -23,6 +23,8 @@
     {{ } else { }}
     %img{src: "/game_photos/default.png", height: 70}
     {{ } }}
+  %a{href: "/games/{{= game.id}}#all"}
+    {{= game.device }}
   %p.postTxt
     {{= text }}
   .thumbnail

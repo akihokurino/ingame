@@ -11,6 +11,7 @@ var Post = Backbone.Model.extend({
       "title": "",
       "photo_url": "",
       "photo_path": "",
+      "device": ""
     },
     "user": {
       "id": "",
