@@ -10,9 +10,9 @@ class UserProvider < ActiveRecord::Base
 
         case user_provider.service_name
         when "facebook"
-          user_provider.username = auth["info"]["name"]
+          user_provider.username = auth["info"]["name"].gsub(/(\s|　)+/, '')
         when "twitter"
-          user_provider.username     = auth["info"]["nickname"]
+          user_provider.username     = auth["info"]["nickname"].gsub(/(\s|　)+/, '')
           user_provider.secret_token = auth["credentials"]["secret"]
         end
       end

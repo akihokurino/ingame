@@ -39,7 +39,7 @@
       if (this.validate()) {
         var data = {
           "user": {
-            "username": this.username_input.val(),
+            "username": this.username_input.val().replace(/\s+/g, ""),
             "password": this.password_input.val(),
             "password_confirm": this.password_confirm_input.val()
           }
