@@ -34,11 +34,13 @@ class User < ActiveRecord::Base
 
 	def update_with(user_params, clip = {})
   	user_params[:photo_path] = self.class.file_upload(user_params[:photo_path], "user", clip) unless user_params[:photo_path].nil?
+    user_params[:username]   = user_params[:username].gsub(/(\s|　)+/, '')
   	self.update(user_params) ? true : false
   end
 
   def update_with_url(user_params, clip = {})
     user_params[:photo_path] = self.class.url_upload(user_params[:photo_path], "user", clip) unless user_params[:photo_path].nil?
+    user_params[:username]   = user_params[:username].gsub(/(\s|　)+/, '')
     self.update(user_params)
     self
   end
