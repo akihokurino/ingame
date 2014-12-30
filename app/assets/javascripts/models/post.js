@@ -9,6 +9,7 @@ var Post = Backbone.Model.extend({
     "game": {
       "id": "",
       "title": "",
+      "photo_url": "",
       "photo_path": "",
     },
     "user": {

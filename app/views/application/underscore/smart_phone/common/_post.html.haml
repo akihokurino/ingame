@@ -11,6 +11,14 @@
     %h2.ttl
       %a{href: "/games/{{= game.id }}#all"}
         {{= game.title }}
+    %a{href: "/games/{{= game.id}}#all"}
+      {{ if (game.photo_url) { }}
+      %img{src: "{{= game.photo_url }}", height: 70}
+      {{ } else if (game.photo_path) { }}
+      %img{src: "/game_photos/{{= game.photo_path }}", height: 70}
+      {{ } else { }}
+      %img{src: "/game_photos/default.png", height: 70}
+      {{ } }}
     .statusBox
       {{ if (status.id == 1) { }}
       %span.moodReady 気になる

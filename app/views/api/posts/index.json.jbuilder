@@ -9,6 +9,7 @@ json.posts do |json|
   	json.game do |json|
       json.id post.game[:id]
       json.title post.game[:title]
+      json.photo_url post.game[:photo_url]
       json.photo_path post.game[:photo_path]
     end
     json.user do |json|

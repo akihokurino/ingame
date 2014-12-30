@@ -8,6 +8,7 @@ json.last_post do |json|
   json.game do |json|
     json.id @last_post.game[:id]
     json.title @last_post.game[:title]
+    json.photo_url @last_post.game[:photo_url]
     json.photo_path @last_post.game[:photo_path]
   end
   json.user do |json|
