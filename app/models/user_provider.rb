@@ -1,4 +1,6 @@
 class UserProvider < ActiveRecord::Base
+  include RandomName
+
   belongs_to :user
 
   class << self
@@ -10,12 +12,30 @@ class UserProvider < ActiveRecord::Base
 
         case user_provider.service_name
         when "facebook"
-          user_provider.username = auth["info"]["name"].gsub(/(\s|　)+/, '')
+          user_provider.username   = auth["info"]["name"].gsub(/(\s|　)+/, '')
+          user_provider.photo_path = self.download_thumbnail "https://graph.facebook.com/#{auth['uid']}/picture?type=large"
         when "twitter"
           user_provider.username     = auth["info"]["nickname"].gsub(/(\s|　)+/, '')
           user_provider.secret_token = auth["credentials"]["secret"]
+          user_provider.photo_path   = self.download_thumbnail auth["info"]["image"].gsub(/_normal/, '')
         end
       end
+    end
+
+    def download_thumbnail(url)
+      filename = Time.now.to_i.to_s + self.generate("alphabet", 10) + ".jpg"
+      filepath = "public/user_photos/#{filename}"
+      begin
+        File.open(filepath, 'wb') do |output|
+          open(url) do |data|
+            output.write data.read
+          end
+        end
+      rescue Exception
+        filename = nil
+      end
+
+      filename
     end
   end
 end

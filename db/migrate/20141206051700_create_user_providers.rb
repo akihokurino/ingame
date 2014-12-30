@@ -6,6 +6,7 @@ class CreateUserProviders < ActiveRecord::Migration
       t.string :username
       t.string :service_name
       t.text :token
+      t.string :photo_path
       t.text :secret_token
 
       t.timestamps

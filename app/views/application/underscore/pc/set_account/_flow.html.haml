@@ -7,7 +7,10 @@
       %br
       #{@current_provider[:username]}さん
     %figure.SignupImgWrap
-      = image_tag "smart_phone/default.png", width:"140", height:"140", class: "SignupImg", alt: "アカウント画像"
+      - if @current_provider[:photo_path]
+        = image_tag "/user_photos/#{@current_provider[:photo_path]}", width:"140", height:"140", class: "SignupImg", alt: "アカウント画像"
+      - else
+        = image_tag "smart_phone/default.png", width:"140", height:"140", class: "SignupImg", alt: "アカウント画像"
       - case @current_provider[:service_name]
       - when "facebook"
         .serviceLogo.icon-facebook

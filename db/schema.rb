@@ -171,6 +171,7 @@ ActiveRecord::Schema.define(version: 20141223030429) do
     t.string   "username"
     t.string   "service_name"
     t.text     "token"
+    t.string   "photo_path"
     t.text     "secret_token"
     t.datetime "created_at"
     t.datetime "updated_at"

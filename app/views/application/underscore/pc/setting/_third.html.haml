@@ -13,7 +13,7 @@
         %br
         オンラインゲームにおける、アバターアイコンと同じですね。
       #thumbnail
-        = image_tag "/user_photos/default.png", width: "151", height: "151", alt: "", class: "thumbnailImg"
+        = image_tag "/user_photos/#{@current_user[:photo_path]}", width: "151", height: "151", alt: "", class: "thumbnailImg"
       .uploadBtnWrap
         .uploadBtnTxt 写真を選択
         %form

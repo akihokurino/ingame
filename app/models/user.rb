@@ -133,6 +133,7 @@ class User < ActiveRecord::Base
 
     def create_with_provider(user_params, current_provider)
       self.create_password user_params
+      user_params[:photo_path] = current_provider[:photo_path] if current_provider[:photo_path]
       begin
         ActiveRecord::Base.transaction do
           user = self.create! user_params

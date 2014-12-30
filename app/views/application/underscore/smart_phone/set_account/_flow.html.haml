@@ -9,7 +9,11 @@
         %br
         #{@current_provider[:username]}さん
       .imgWrap
-        = image_tag "smart_phone/default.png", width:"100"
+        - if @current_provider[:photo_path]
+          = image_tag "/user_photos/#{@current_provider[:photo_path]}", width:"100"
+        - else
+          = image_tag "smart_phone/default.png", width:"100"
+
         - case @current_provider[:service_name]
         - when "facebook"
           .serviceLogo.icon-facebook
