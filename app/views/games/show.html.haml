@@ -10,8 +10,9 @@
   .gameBox
     .gameBoxInner
       %figure.gameImgWrap
-        /= image_tag "/game_photos/#{@game.photo_path}", width: 195, class: "gameImg", alt: "ゲームパッケージ画像"
-        - if @game.photo_url
+        - if @game.photo_path
+          = image_tag "/game_photos/#{@game.photo_path}", width: 240, class: "gameImg", alt: "ゲームパッケージ画像"
+        - elsif @game.photo_url
           = image_tag @game.photo_url, width: 240, class: "gameImg", alt: "ゲームパッケージ画像"
         - else
           = image_tag "/game_photos/default.png", width: 240, class: "gameImg", alt: "ゲームパッケージ画像"

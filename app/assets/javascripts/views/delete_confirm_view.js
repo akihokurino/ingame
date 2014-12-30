@@ -10,6 +10,7 @@ var DeleteConfirmView = Backbone.View.extend({
     this.target       = this.attributes.target;
     this.desc         = this.attributes.desc;
     this.current_view = this.attributes.view;
+    this.callback     = this.attributes.callback;
     this.render();
 
     $(".layer").click(function () {
@@ -23,10 +24,18 @@ var DeleteConfirmView = Backbone.View.extend({
   },
   done: function () {
     this.unbindEvent();
-    this.current_view.destroy();
+
+    if (this.current_view) {
+      this.current_view.destroy();
+    }
+
     $(".delete-confirm-wrap").css("display", "none");
     $(".layer").css("display", "none");
     this.$el.html("");
+
+    if (this.callback) {
+      this.callback()
+    }
   },
   cancel: function () {
     this.unbindEvent();

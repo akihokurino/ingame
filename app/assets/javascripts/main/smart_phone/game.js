@@ -416,8 +416,11 @@
       "change .my-status":  "changeStatus",
       "change .new-status": "registLog",
       "change .my-rate":    "changeRate",
+      "click .delete-btn":  "showDeleteConfirm"
     },
     initialize: function () {
+      _.bindAll(this, "destroyLog");
+
       var that               = this;
       this.game_id           = $(".game-page").data("gameid");
 
@@ -487,6 +490,25 @@
 
         }
       })
+    },
+    destroyLog: function () {
+      var that = this;
+      $.ajax({
+        type: "DELETE",
+        url: "/api/logs/" + this.game_id,
+        data: {},
+        success: function (data) {
+          location.reload();
+        },
+        error: function () {
+
+        }
+      })
+    },
+    showDeleteConfirm: function () {
+      $(".delete-confirm-wrap").css("display", "block");
+      $(".layer").css("display", "block");
+      var delete_confirm_view = new DeleteConfirmView({attributes: {view: null, target: "ログ", desc: "ログに関する投稿データは全て削除されます。", callback: this.destroyLog}});
     }
   })
 
