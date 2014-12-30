@@ -12,9 +12,10 @@
       %article.profile
         .profileTopBox
           %figure.userImgWrap
-            %img.userImg{src: "/user_photos/#{@current_user[:photo_path]}", width: "45", height: "45", alt: ""}
+            %a{href: "/users/#{@current_user[:id]}#logs"}
+              %img.userImg{src: "/user_photos/#{@current_user[:photo_path]}", width: "45", height: "45", alt: ""}
           %p.userName
-            = @current_user[:username]
+            = link_to @current_user[:username], "/users/#{@current_user[:id]}#logs"
         %ul.profileCountList.count-box
           %li.gameNum.logs-li
             マイゲーム
