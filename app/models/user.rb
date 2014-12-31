@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
 	validates :place,
 		length: {maximum: 255}
 
-  LIMIT          = 2
+  LIMIT          = 20
   ACTIVITY_LIMIT = 20
 
   scope :search, -> (username) {
