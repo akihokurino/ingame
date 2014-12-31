@@ -117,6 +117,7 @@
         margin-bottom: -10px;
         width: 26px; 
         height: 26px;
+        @include border-radius(50%);
         }
     }
   }

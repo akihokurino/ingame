@@ -21,12 +21,12 @@
   }
   .profileColumn {
     float: left;
-    width: 280px;
+    width: 240px;
     margin-right: 20px;
   }
   .postColumn {
     float: left;
-    width: 480px;
+    width: 520px;
   }
   .userColumn {
     float: right;
@@ -35,34 +35,30 @@
   /*---   ---*/
   .profile {
     position: relative;
-    width: 280px;
+    width: 240px;
     min-height: 122px;
     padding: 5px;
-    border: 1px solid #e6e6e6;
     @include border-radius(3px);
     @include box-sizing;
-    background: #fff;
     @include clearfix;
 
     &TopBox {
       @include clearfix;
-      padding: 10px;
-      background: url(/assets/pc/default_cover.png) no-repeat top center;
-      background-size: cover;
+      padding-bottom:10px;
     }
     .userImgWrap {
       display: inline-block;
       float: left;
       margin-right: 14px;
-      border: 2px solid #fff;
       @include border-radius(2px);
-      background: #fff;
       line-height: 0;
+      .userImg{
+        @include border-radius(50%);
+      }
     }
     .userName {
       display: table-cell;
       width: 180px;
-      height: 50px;
       margin-bottom: 10px;
       color: #fff;
       font-weight: bold;
@@ -70,9 +66,15 @@
       vertical-align: middle;
       line-height: 1.2;
       word-break: break-all;
+      a{
+        color: $color_textBlack;
+      }
+    }
+    .userPlace{
+      color: $color_textGray;
     }
     .userProf {
-      color: #7e7e7e;
+      color: $color_textGray;
       font-size: .75rem;
       line-height: 1rem;
     }
@@ -81,68 +83,20 @@
       font-size: 0;
       color: $color_textGray;
     }
-    .postNum {
-      display: inline-block;
-      width: 33.33%;
-      padding: 8px 0 4px;
-      @include box-sizing;
-      font-size: .75rem;
-      text-align: center;
-
-      .count {
-        display: block;
-        margin-top: 5px;
-        color: $main_color;
-        font-weight: bold;
-        font-size: .875rem;
-      }
-    }
-    .followNum {
-      display: inline-block;
-      width: 33.33%;
-      padding: 8px 0 4px;
-      @include box-sizing;
-      font-size: .75rem;
-      text-align: center;
-
-      .count {
-        display: block;
-        margin-top: 5px;
-        color: $main_color;
-        font-weight: bold;
-        font-size: .875rem;
-      }
-    }
-    .followerNum {
-      display: inline-block;
-      width: 33.33%;
-      padding: 8px 0 4px;
-      @include box-sizing;
-      font-size: .75rem;
-      text-align: center;
-
-      .count {
-        display: block;
-        margin-top: 5px;
-        color: $main_color;
-        font-weight: bold;
-        font-size: .875rem;
-      }
-    }
-    .gameNum {
-      display: inline-block;
-      width: 100%;
-      padding: 8px 0 4px;
+    .gameNum,.postNum,.followNum,.followerNum, {
+      padding: 8px 4px;
+      border-top: solid 1px $color_border;
       @include box-sizing;
       font-size: .875rem;
-      text-align: center;
+      font-weight: bold;
 
       .count {
-        display: block;
-        margin-top: 5px;
-        color: $main_color;
-        font-weight: bold;
+        width: 100%;
+        font-weight: normal;
         font-size: .875rem;
+        text-align: right;
+        position: absolute;
+        right:0;
       }
     }
   }
@@ -169,18 +123,6 @@
       @include border-radius(3px);
       @include box-sizing;
       background: #fff;
-
-      &:before {
-        display: block;
-        position: absolute;
-        left: -17px;
-        top: 30px;
-        border-top: 9px solid transparent;
-        border-right: 8px solid #e6e6e6;
-        border-bottom: 9px solid transparent;
-        border-left: 9px solid transparent;
-        content: "";
-      }
 
       .selectLogError {
         padding: 4px 8px;

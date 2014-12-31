@@ -13,9 +13,11 @@
         .profileTopBox
           %figure.userImgWrap
             %a{href: "/users/#{@current_user[:id]}#logs"}
-              %img.userImg{src: "/user_photos/#{@current_user[:photo_path]}", width: "45", height: "45", alt: ""}
+              %img.userImg{src: "/user_photos/#{@current_user[:photo_path]}", width: "60", height: "60", alt: ""}
           %p.userName
             = link_to @current_user[:username], "/users/#{@current_user[:id]}#logs"
+          %p.userPlace.icon-place
+            = @current_user[:place]
         %ul.profileCountList.count-box
           %li.gameNum.logs-li
             マイゲーム
@@ -48,7 +50,7 @@
           .photoBtnWrap
             %p.photoBtnText 写真を追加
             %input.addPhoto#upload-btn{type: "file", href: ""}
-          %p.addPostBtn.post-btn 投稿する
+          %p.addPostBtn.post-btn つぶやく
 
           = render partial: "log_select"
 
