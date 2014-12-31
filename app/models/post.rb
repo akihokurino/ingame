@@ -21,7 +21,7 @@ class Post < ActiveRecord::Base
 
   attr_accessor :i_liked
 
-  LIMIT = 20
+  LIMIT = 2
 
   default_scope {
     order("created_at DESC")
