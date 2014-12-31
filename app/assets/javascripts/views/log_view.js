@@ -37,6 +37,6 @@ var LogView = Backbone.View.extend({
   showDeleteConfirm: function () {
     $(".delete-confirm-wrap").css("display", "block");
     $(".layer").css("display", "block");
-    var delete_confirm_view = new DeleteConfirmView({attributes: {view: this, target: "ログ", desc: "ログに関する投稿データは全て削除されます。"}});
+    var delete_confirm_view = new DeleteConfirmView({attributes: {view: this, target: "ゲーム", desc: "このゲームに関する投稿データもすべて削除されます"}});
   }
 })

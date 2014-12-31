@@ -124,5 +124,27 @@ class Post < ActiveRecord::Base
         post
       end
     end
+
+    def create_activity(log_params, log_id, type)
+      current_game = Game.find log_params[:game_id]
+      params = {
+        user_id: log_params[:user_id],
+        game_id: log_params[:game_id],
+        log_id:  log_id
+      }
+
+      case type
+      when "create"
+        params[:text]  = "#{current_game[:title]}をマイゲームに追加しました"
+      when "status_update"
+        current_status = Status.find log_params[:status_id]
+        params[:text]  = "#{current_game[:title]}のステータスを#{current_status[:name]}に変更しました"
+      when "rate_update"
+        current_rate   = log_params[:rate]
+        params[:text]  = "#{current_game[:title]}の評価を#{current_rate}に変更しました"
+      end
+
+      self.create params
+    end
   end
 end

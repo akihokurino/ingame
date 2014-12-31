@@ -4,13 +4,9 @@ class Api::LogsController < ApplicationController
   end
 
   def create
-    if params[:amazon_url]
-      result = Game.get_from_amazon params[:amazon_url]
-      @log   = Log.create_with result, @current_user
-    else
-      params[:log][:user_id] = @current_user[:id]
-      @log                   = Log.create log_params
-    end
+    params[:log][:user_id] = @current_user[:id]
+    @log                   = Log.create log_params
+    Post.create_activity log_params, @log[:id], "create"
   end
 
   def update
@@ -22,8 +18,17 @@ class Api::LogsController < ApplicationController
   end
 
   def update_status_or_rate
-    log     = @current_user.logs.find_by game_id: params[:id]
-    @result = log.update(log_params) ? true : false
+    log                    = @current_user.logs.find_by game_id: params[:id]
+    @result                = log.update(log_params) ? true : false
+
+    params[:log][:user_id] = @current_user[:id]
+    params[:log][:game_id] = params[:id]
+
+    if log_params[:status_id]
+      Post.create_activity log_params, log[:id], "status_update"
+    elsif log_params[:rate]
+      Post.create_activity log_params, log[:id], "rate_update"
+    end
   end
 
   private
