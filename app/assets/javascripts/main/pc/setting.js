@@ -114,7 +114,6 @@
             that.setUserResultCollection(model, response, options);
           },
           error: function () {
-
           }
         });
       }

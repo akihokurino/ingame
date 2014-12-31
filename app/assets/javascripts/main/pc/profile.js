@@ -20,6 +20,7 @@
     el: ".profile-page",
     template: _.template($("#log-list-template").html()),
     initialize: function () {
+      $(window).unbind("scroll");
       this.$(".profile-timeline").html("");
       this.$(".profile-timeline").append(this.template);
       this.$(".count-box li").removeClass("current");
@@ -60,8 +61,6 @@
 
         }
       });
-
-      $(window).unbind("scroll");
     },
     search: function (text) {
       this.logs_view.collection.reset();
@@ -82,6 +81,7 @@
     el: ".profile-page",
     template: _.template($("#post-list-template").html()),
     initialize: function () {
+      $(window).unbind("scroll");
       this.$(".profile-timeline").html("");
       this.$(".profile-timeline").append(this.template);
       $(".search-log").val("");
@@ -107,8 +107,6 @@
         error: function () {
         }
       });
-
-      $(window).unbind("scroll");
     },
     setPostCollection: function (model, response, option) {
       for (var i = 0; i < response.posts.length; i++) {
@@ -206,7 +204,7 @@
         $(window).bind("scroll", this.pagenation.load);
       }
     }
-  })
+  });
 
 
   var AppView = Backbone.View.extend({

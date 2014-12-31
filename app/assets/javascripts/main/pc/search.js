@@ -44,6 +44,7 @@
       var that  = this;
       this.page = 1;
       $(window).unbind("scroll");
+
       this.game_result_collection.fetch({
         data: {search_title: this.current_game_title, page: this.page},
         success: function (model, response, options) {
@@ -125,6 +126,7 @@
       var that  = this;
       this.page = 1;
       $(window).unbind("scroll");
+
       this.user_result_collection.fetch({
         data: {username: this.current_username, page: this.page},
         success: function (model, response, options) {

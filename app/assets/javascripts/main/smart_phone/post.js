@@ -1,4 +1,5 @@
 //= require ../../libs/socket.js
+//= require ../../libs/pagenation.js
 //= require ../../libs/url_query.js
 //= require ../../models/log.js
 //= require ../../models/game.js
@@ -244,10 +245,11 @@
     },
     template: _.template($("#add-template").html()),
     initialize: function () {
+      $(window).unbind("scroll");
       this.$el.html("");
       this.$el.append(this.template);
 
-      _.bindAll(this, "pagenation");
+      _.bindAll(this, "setGameResultCollection");
 
       var that                    = this;
       this.game_result_collection = new GameResults();
@@ -266,56 +268,32 @@
     search: function () {
       var that                  = this;
       this.current_search_title = this.search_title.val();
+      $(window).unbind("scroll");
 
       this.game_result_collection.fetch({
         data: {search_title: this.current_search_title, page: this.page},
         success: function (model, response, options) {
+          that.pagenation = new Pagenation(that.game_result_collection, {search_title: that.current_search_title}, that.setGameResultCollection);
+
           that.game_result_collection.reset();
           that.game_results_view.$el.html("");
-          if (response.results && response.results.length > 0) {
-            for (var i = 0; i < response.results.length; i++) {
-              var game_result = new GameResult(response.results[i]);
-              that.game_results_view.collection.add(game_result);
-            }
-          }
+          that.setGameResultCollection(model, response, options);
         },
         error: function () {
 
         }
-      })
-
-      $(window).bind("scroll", this.pagenation);
+      });
     },
-    pagenation: function () {
-      var that           = this;
-      var scrollHeight   = $(document).height();
-      var scrollPosition = $(window).height() + $(window).scrollTop();
-      if ((scrollHeight - scrollPosition) / scrollHeight <= 0.1) {
-        $(".loading-gif").css("display", "block");
-        $(window).unbind("scroll");
+    setGameResultCollection: function (model, response, option) {
+      if (response.results && response.results.length > 0) {
+        for (var i = 0; i < response.results.length; i++) {
+          var game_result = new GameResult(response.results[i]);
+          this.game_results_view.collection.add(game_result);
+        }
+      }
 
-        this.page += 1;
-
-        this.game_result_collection.fetch({
-          data: {search_title: this.current_search_title, page: this.page},
-          success: function (model, response, options) {
-            if (response.results && response.results.length > 0) {
-              for (var i = 0; i < response.results.length; i++) {
-                var game_result = new GameResult(response.results[i]);
-                that.game_results_view.collection.add(game_result);
-              }
-            }
-
-            $(".loading-gif").css("display", "none");
-
-            if (response.results.length != 0) {
-              $(window).bind("scroll", that.pagenation);
-            }
-          },
-          error: function () {
-
-          }
-        })
+      if (response.results.length != 0) {
+        $(window).bind("scroll", this.pagenation.load);
       }
     },
     searchWithEnter: function (e) {

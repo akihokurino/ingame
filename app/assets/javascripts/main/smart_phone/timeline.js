@@ -1,4 +1,5 @@
 //= require ../../libs/socket.js
+//= require ../../libs/pagenation.js
 //= require ../../models/post.js
 //= require ../../models/comment.js
 //= require ../../collections/posts.js
@@ -18,7 +19,7 @@
       "click .submit-comment-btn": "postComment"
     },
     initialize: function () {
-      _.bindAll(this, "pagenation", "showComment");
+      _.bindAll(this, "showComment", "setPostCollection");
 
       var that                = this;
       this.post_collection    = new Posts();
@@ -31,8 +32,7 @@
 
       event_handle.discribe("showComment", this.showComment);
 
-      //$(".comment-input").autosize();
-
+      this.pagenation = new Pagenation(this.post_collection, {}, this.setPostCollection);
 
       like_socket.callback = function (data) {
         that.post_collection.find(function (model) {
@@ -75,49 +75,24 @@
         });
       }
 
-
       this.post_collection.fetch({
         data: {page: this.page},
         success: function (model, response, options) {
-          for (var i = 0; i < response.posts.length; i++) {
-            var post = new Post(response.posts[i]);
-            that.posts_view.collection.add(post);
-          }
+          that.setPostCollection(model, response, options);
         },
         error: function () {
 
         }
-      })
-
-      $(window).bind("scroll", this.pagenation);
+      });
     },
-    pagenation: function () {
-      var that           = this;
-      var scrollHeight   = $(document).height();
-      var scrollPosition = $(window).height() + $(window).scrollTop();
-      if ((scrollHeight - scrollPosition) / scrollHeight <= 0.1) {
-        $(".loading-gif").css("display", "block");
-        $(window).unbind("scroll");
-        this.page += 1;
+    setPostCollection: function (model, response, option) {
+      for (var i = 0; i < response.posts.length; i++) {
+        var post = new Post(response.posts[i]);
+        this.posts_view.collection.add(post);
+      }
 
-        this.post_collection.fetch({
-          data: {page: this.page},
-          success: function (model, response, options) {
-            for (var i = 0; i < response.posts.length; i++) {
-              var post = new Post(response.posts[i]);
-              that.posts_view.collection.add(post);
-            }
-
-            $(".loading-gif").css("display", "none");
-
-            if (response.posts.length != 0) {
-              $(window).bind("scroll", that.pagenation);
-            }
-          },
-          error: function () {
-
-          }
-        })
+      if (response.posts.length != 0) {
+        $(window).bind("scroll", this.pagenation.load);
       }
     },
     showComment: function (model) {
