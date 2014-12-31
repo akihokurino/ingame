@@ -3,7 +3,7 @@
 .notification-modal {
   display: none;
   position: absolute;
-  top: 48px;
+  top: 44px;
   right: 46px;
   z-index: 100;
   width: 330px;
@@ -11,17 +11,6 @@
   @include box-shadow(0, 0, 10px, 0, #666);
   background-color: #fff;
 
-  &:after {
-    display: block;
-    position: absolute;
-    top: -16px;
-    right: 34px;
-    border-top: 9px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 9px solid #fff;
-    border-left: 10px solid transparent;
-    content: "";
-  }
   .modal-header {
     position: relative;
     padding-left: 20px;

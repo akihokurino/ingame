@@ -81,7 +81,7 @@
       display:inline-block;
       min-width: 60px;
       padding:0 10px;
-      color:#eee;
+      color:#ddd;
       text-align: center;
       &:hover{
         color:#fff;
@@ -119,67 +119,52 @@
         height: 26px;
         }
     }
-    .openMenu {
+  }
+}
+.openMenu {
+  position: absolute;
+  display: none;
+  overflow: hidden;
+  top: 44px;
+  z-index: 10000;
+  right: 0;
+  @include border-radius(3px);
+  @include box-shadow(0, 0, 16px, 0, rgba(0, 0, 0, 0.2));
+  background: #fff;
+  font-weight: bold;
+  font-size: .75rem;
+
+  .toProfileEdit,.menuItemLogout{
+    display: block;
+    position: relative;
+    padding:4px 6px 4px 30px;
+    color: $color_textBlack;
+    line-height: 20px;
+    &:hover{
+      text-decoration:none;
+      background: $base_color;
+      color: #fff;
+      &:before {
+        color: #fff;
+      }
+    }
+    &:before {
       position: absolute;
-      display: none;
-      top: 42px;
-      z-index: 10000;
-      right: 10px;
-      padding: 8px;
-      @include border-radius(3px);
-      @include box-shadow(0, 0, 16px, 0, rgba(0, 0, 0, 0.2));
-      background: #fff;
-      font-weight: bold;
-      font-size: .75rem;
-
-      &:after {
-        display: block;
-        position: absolute;
-        top: -12px;
-        right: 12px;
-        border-top: 7px solid transparent;
-        border-right: 8px solid transparent;
-        border-bottom: 7px solid #fff;
-        border-left: 8px solid transparent;
-        content: "";
-      }
-      .item:first-child {
-        margin-bottom: 10px;
-      }
-      .toProfileEdit {
-        display: block;
-        position: relative;
-        padding-left: 30px;
-        color: $color_textBlack;
-        line-height: 20px;
-
-        &:before {
-          position: absolute;
-          top: -1px;
-          left: 2px;
-          color: $color_textBlack;
-          font-size: 1.25rem;
-          font-family: 'icomoon';
-          content: "\e60d";
-        }
-      }
-      .menuItemLogout {
-        display: block;
-        position: relative;
-        padding-left: 30px;
-        color: $color_textBlack;
-        line-height: 20px;
-
-        &:before {
-          position: absolute;
-          top: -1px;
-          left: 2px;
-          color: $color_textBlack;
-          font-size: 1.25rem;
-          font-family: 'icomoon';
-          content: "\e606";
-        }
-      }
+      top: 4px;
+      left: 8px;
+      color: $color_textBlack;
+      font-size: 1rem;
+      font-family: 'icomoon';
+    }
+  }
+  .toProfileEdit {
+    &:before {
+      content: "\e60d";
+    }
+  }
+  .menuItemLogout {
+    &:before {
+      content: "\e606";
     }
   }
 }
