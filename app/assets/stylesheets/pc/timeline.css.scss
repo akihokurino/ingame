@@ -84,11 +84,20 @@
       color: $color_textGray;
     }
     .gameNum,.postNum,.followNum,.followerNum, {
-      padding: 8px 4px;
       border-top: solid 1px $color_border;
       @include box-sizing;
       font-size: .875rem;
       font-weight: bold;
+      line-height:28px;
+      a{
+        color: $color_textBlack;
+        padding:0 4px;
+        display: block;
+        &:hover{
+          text-decoration: none;
+          background-color: darken($bg_color,5%);
+        }
+      }
 
       .count {
         width: 100%;
@@ -96,7 +105,7 @@
         font-size: .875rem;
         text-align: right;
         position: absolute;
-        right:0;
+        right:8px;
       }
     }
   }

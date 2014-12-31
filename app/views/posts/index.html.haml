@@ -20,21 +20,25 @@
             = @current_user[:place]
         %ul.profileCountList.count-box
           %li.gameNum.logs-li
-            マイゲーム
-            %span.count
-              = @current_user[:logs_count]
+            %a{href: "/users/#{@current_user[:id]}#logs"}
+              マイゲーム
+              %span.count
+                = @current_user[:logs_count]
           %li.postNum.posts-li
-            ポスト
-            %span.count
-              = @current_user[:posts_count]
+            %a{href: "/users/#{@current_user[:id]}#posts"}
+              ポスト
+              %span.count
+                = @current_user[:posts_count]
           %li.followNum.follows-li
-            フォロー
-            %span.count
-              = @current_user.follow_num
+            %a{href: "/users/#{@current_user[:id]}#follows"}
+              フォロー
+              %span.count
+                = @current_user.follow_num
           %li.followerNum.followers-li
-            フォロワー
-            %span.count
-              = @current_user.follower_num
+            %a{href: "/users/#{@current_user[:id]}#wollowers"}
+              フォロワー
+              %span.count
+                = @current_user.follower_num
     .postColumn
       .addPost
         .addPostInner
