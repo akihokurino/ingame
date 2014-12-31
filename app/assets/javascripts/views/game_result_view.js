@@ -2,7 +2,8 @@ var GameResultView = Backbone.View.extend({
   tagName: "li",
   className: "item",
   events: {
-    "change .my-status": "regist"
+    "change .my-status":   "regist",
+    "click .to-game-page": "toGamePage"
   },
   initialize: function () {
 
@@ -67,6 +68,12 @@ var GameResultView = Backbone.View.extend({
     if (this.model.get("my_status_id")) {
       this.$el.find(".my-status").val(this.model.get("my_status_id"));
       this.$el.addClass("registed");
+    }
+  },
+  toGamePage: function (e) {
+    e.preventDefault();
+    if (this.model.get("type") != "setting") {
+      location.href = "/games/" + this.model.id + "#all";
     }
   }
 })

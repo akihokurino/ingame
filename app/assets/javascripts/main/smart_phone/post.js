@@ -239,7 +239,7 @@
   var AddView = Backbone.View.extend({
     el: $(".post-new-page"),
     events: {
-      "submit": "search"
+      "submit": "searchWithEnter"
     },
     template: _.template($("#add-template").html()),
     initialize: function () {
@@ -255,34 +255,35 @@
       this.search_title           = this.$(".search-title-input");
       this.current_search_title   = null;
       this.page                   = 1;
-    },
-    search: function (e) {
-      e.preventDefault();
-      if (this.search_title.val()) {
-        var that                  = this;
-        this.current_search_title = this.search_title.val();
 
-        this.game_result_collection.fetch({
-          data: {search_title: this.current_search_title, page: this.page},
-          success: function (model, response, options) {
-            that.game_result_collection.reset();
-            that.game_results_view.$el.html("");
-            if (response.results && response.results.length > 0) {
-              for (var i = 0; i < response.results.length; i++) {
-                var game_result = new GameResult(response.results[i]);
-                var current_url = "/games/" + game_result.id + "#all";
-                game_result.set("current_url", current_url);
-                that.game_results_view.collection.add(game_result);
-              }
-            }
-          },
-          error: function () {
-
-          }
-        })
-
-        $(window).bind("scroll", this.pagenation);
+      if (this.getQueryString()) {
+        this.current_search_title = this.getQueryString().search_word;
+        this.search_title.val(this.current_search_title);
+        this.search();
       }
+    },
+    search: function () {
+      var that                  = this;
+      this.current_search_title = this.search_title.val();
+
+      this.game_result_collection.fetch({
+        data: {search_title: this.current_search_title, page: this.page},
+        success: function (model, response, options) {
+          that.game_result_collection.reset();
+          that.game_results_view.$el.html("");
+          if (response.results && response.results.length > 0) {
+            for (var i = 0; i < response.results.length; i++) {
+              var game_result = new GameResult(response.results[i]);
+              that.game_results_view.collection.add(game_result);
+            }
+          }
+        },
+        error: function () {
+
+        }
+      })
+
+      $(window).bind("scroll", this.pagenation);
     },
     pagenation: function () {
       var that           = this;
@@ -300,8 +301,6 @@
             if (response.results && response.results.length > 0) {
               for (var i = 0; i < response.results.length; i++) {
                 var game_result = new GameResult(response.results[i]);
-                var current_url = "/games/" + game_result.id + "#all";
-                game_result.set("current_url", current_url);
                 that.game_results_view.collection.add(game_result);
               }
             }
@@ -317,6 +316,48 @@
           }
         })
       }
+    },
+    searchWithEnter: function (e) {
+      e.preventDefault();
+      if (this.search_title.val() != "") {
+        this.current_search_title = this.search_title.val();
+        this.insertParam("search_word", this.current_search_title);
+      }
+    },
+    getQueryString: function () {
+      if (1 < document.location.search.length) {
+        var query      = document.location.search.substring(1);
+        var parameters = query.split('&');
+        var result     = new Object();
+
+        for (var i = 0; i < parameters.length; i++) {
+          var element       = parameters[i].split('=');
+          var paramName     = decodeURIComponent(element[0]);
+          var paramValue    = decodeURIComponent(element[1]);
+          result[paramName] = decodeURIComponent(paramValue);
+        }
+        return result;
+      }
+      return null;
+    },
+    insertParam: function (key, value) {
+      var kvp = document.location.search.substr(1).split('&');
+      var i   = kvp.length;
+      var x;
+      while (i--) {
+        x = kvp[i].split('=');
+
+        if (x[0] == key) {
+          x[1]   = value;
+          kvp[i] = x.join('=');
+          break;
+        }
+      }
+
+      if (i<0) {
+        kvp[kvp.length] = [key,value].join('=');
+      }
+      document.location.search = kvp.join('&');
     }
   })
 

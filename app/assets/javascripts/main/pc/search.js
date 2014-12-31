@@ -26,7 +26,7 @@
       _.bindAll(this, "pagenation");
 
       this.game_result_collection = new GameResults();
-      this.game_results_view      = new GameResultsView({el: ".result-list", collection: this.game_result_collection});
+      this.game_results_view      = new GameResultsView({el: ".result-list", collection: this.game_result_collection, type: null});
       this.game_title             = this.$(".game-title-input");
       this.current_game_title     = null;
       this.page                   = 1;
@@ -34,21 +34,12 @@
       if (this.getQueryString()) {
         this.current_game_title = this.getQueryString().search_word;
         this.game_title.val(this.current_game_title);
-        //$(".header-search-input").val(this.current_game_title);
-        this.search(null, "first");
+        this.search();
       }
     },
-    search: function (e, type) {
-      if (e) {
-        e.preventDefault();
-      }
-
+    search: function () {
       var that  = this;
       this.page = 1;
-
-      if (type != "first") {
-        this.current_game_title = this.game_title.val();
-      }
 
       this.game_result_collection.fetch({
         data: {search_title: this.current_game_title, page: this.page},
@@ -58,8 +49,6 @@
           if (response.results && response.results.length > 0) {
             for (var i = 0; i < response.results.length; i++) {
               var game_result = new GameResult(response.results[i]);
-              var current_url = "/games/" + game_result.id + "#all";
-              game_result.set("current_url", current_url);
               that.game_results_view.collection.add(game_result);
             }
           }
@@ -77,9 +66,10 @@
       $(window).bind("scroll", this.pagenation);
     },
     searchWithEnter: function (e) {
-      if (e.which == 13) {
+      if (e.which == 13 && this.game_title.val() != "") {
         e.preventDefault();
-        this.search(e, null);
+        this.current_game_title = this.game_title.val();
+        this.insertParam("search_word", this.current_game_title);
       }
     },
     pagenation: function () {
@@ -99,8 +89,6 @@
             if (response.results && response.results.length > 0) {
               for (var i = 0; i < response.results.length; i++) {
                 var game_result = new GameResult(response.results[i]);
-                var current_url = "/games/" + game_result.id + "#all";
-                game_result.set("current_url", current_url);
                 that.game_results_view.collection.add(game_result);
               }
             }
@@ -143,6 +131,25 @@
       } else {
         location.href = "/users/" + current_user_id + "/search_game_or_user#user";
       }
+    },
+    insertParam: function (key, value) {
+      var kvp = document.location.search.substr(1).split('&');
+      var i   = kvp.length;
+      var x;
+      while (i--) {
+        x = kvp[i].split('=');
+
+        if (x[0] == key) {
+          x[1]   = value;
+          kvp[i] = x.join('=');
+          break;
+        }
+      }
+
+      if (i<0) {
+        kvp[kvp.length] = [key,value].join('=');
+      }
+      document.location.search = kvp.join('&');
     }
   })
 
@@ -170,21 +177,12 @@
       if (this.getQueryString()) {
         this.current_username = this.getQueryString().search_word;
         this.username.val(this.current_username);
-        //$(".header-search-input").val(this.current_username);
-        this.search(null, "first");
+        this.search();
       }
     },
-    search: function (e, type) {
-      if (e) {
-        e.preventDefault();
-      }
-
+    search: function () {
       var that  = this;
       this.page = 1;
-
-      if (type != "first") {
-        this.current_username = this.username.val();
-      }
 
       this.user_result_collection.fetch({
         data: {username: this.current_username, page: this.page},
@@ -213,7 +211,8 @@
     searchWithEnter: function (e) {
       if (e.which == 13) {
         e.preventDefault();
-        this.search(e);
+        this.current_username = this.username.val();
+        this.insertParam("search_word", this.current_username);
       }
     },
     pagenation: function () {
@@ -275,6 +274,25 @@
       } else {
         location.href = "/users/" + current_user_id + "/search_game_or_user#game";
       }
+    },
+    insertParam: function (key, value) {
+      var kvp = document.location.search.substr(1).split('&');
+      var i   = kvp.length;
+      var x;
+      while (i--) {
+        x = kvp[i].split('=');
+
+        if (x[0] == key) {
+          x[1]   = value;
+          kvp[i] = x.join('=');
+          break;
+        }
+      }
+
+      if (i<0) {
+        kvp[kvp.length] = [key,value].join('=');
+      }
+      document.location.search = kvp.join('&');
     }
   })
 
