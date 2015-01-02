@@ -13,9 +13,9 @@
     el: $(".set-account-page"),
     template: _.template($("#signup-template").html()),
     events: {
-      "click .signup-btn": "signup",
-      "keypress .username-input": "signupWithEnter",
-      "keypress .password-input": "signupWithEnter",
+      "click .signup-btn":                "signup",
+      "keypress .username-input":         "signupWithEnter",
+      "keypress .password-input":         "signupWithEnter",
       "keypress .password-confirm-input": "signupWithEnter"
     },
     initialize: function () {
@@ -130,7 +130,7 @@
     el: $(".set-account-page"),
     template: _.template($("#signin-template").html()),
     events: {
-      "click .signin-btn": "signin",
+      "click .signin-btn":        "signin",
       "keypress .username-input": "signinWithEnter",
       "keypress .password-input": "signinWithEnter"
     },
