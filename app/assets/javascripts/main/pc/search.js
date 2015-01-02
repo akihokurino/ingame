@@ -15,7 +15,7 @@
   var GameSearchView = Backbone.View.extend({
     el: $(".search-page"),
     events: {
-      "click .search-btn":          "search",
+      "click .search-btn":          "clickSearchBtn",
       "keypress .game-title-input": "searchWithEnter",
       "click .change-target-link":  "changeTarget"
     },
@@ -69,6 +69,12 @@
         url_query.insertParam("search_word", this.current_game_title);
       }
     },
+    clickSearchBtn: function () {
+      if (this.game_title.val() != "") {
+        this.current_game_title = this.game_title.val();
+        url_query.insertParam("search_word", this.current_game_title);
+      }
+    },
     setGameResultCollection: function (model, response, option) {
       if (response.results && response.results.length > 0) {
         for (var i = 0; i < response.results.length; i++) {
@@ -97,7 +103,7 @@
   var UserSearchView = Backbone.View.extend({
     el: $(".search-page"),
     events: {
-      "click .search-btn":         "search",
+      "click .search-btn":         "clickSearchBtn",
       "keypress .username-input":  "searchWithEnter",
       "click .change-target-link": "changeTarget"
     },
@@ -145,8 +151,14 @@
       });
     },
     searchWithEnter: function (e) {
-      if (e.which == 13) {
+      if (e.which == 13 && this.username.val() != "") {
         e.preventDefault();
+        this.current_username = this.username.val();
+        url_query.insertParam("search_word", this.current_username);
+      }
+    },
+    clickSearchBtn: function () {
+      if (this.username.val() != "") {
         this.current_username = this.username.val();
         url_query.insertParam("search_word", this.current_username);
       }
