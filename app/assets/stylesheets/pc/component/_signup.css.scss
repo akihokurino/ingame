@@ -55,11 +55,13 @@ $component: "Signup";
     background-color: #fff;
     color: $facebook_blue;
     font-size: 3.3rem;
-    line-height: 36px;
     text-align: center;
 
     &:before{
       margin-left: -5px;
+    }
+    &.icon-facebook {
+      line-height: 36px;
     }
   }
   &__service--tw {
@@ -77,8 +79,11 @@ $component: "Signup";
     background: linear-gradient(lighten($twitter_blue, 7%), $twitter_blue);
     color: #fff;
     font-size: 1.938rem;
-    line-height: 42px;
     text-align: center;
+
+    &.icon-twitter {
+      line-height: 42px;
+    }
   }
   &__buttonWrap {
     width: 240px;
