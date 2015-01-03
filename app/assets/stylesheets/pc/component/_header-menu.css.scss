@@ -1,0 +1,49 @@
+@import "../../_function.css.scss";
+
+/*---   Header__menu   ----------*/
+$component: "Header";
+
+.#{$component} {
+  &__menu {
+    position: absolute;
+    display: none;
+    overflow: hidden;
+    top: 44px;
+    z-index: 10000;
+    right: 0;
+    @include border-radius(3px);
+    @include box-shadow(0, 0, 16px, 0, rgba(0, 0, 0, 0.2));
+    background: #fff;
+    font-weight: bold;
+    font-size: .75rem;
+  }
+  &__menuItem {
+    &--profileEdit, &--logout {
+      display: block;
+      position: relative;
+      padding: 4px 6px 4px 30px;
+      color: $color_textBlack;
+
+      &:hover{
+        text-decoration:none;
+        background: $base_color;
+        color: #fff;
+
+        &:before {
+          color: #fff;
+        }
+      }
+      &:before {
+        position: absolute;
+        top: 4px;
+        left: 8px;
+        color: $color_textBlack;
+        font-size: 1rem;
+        font-family: 'icomoon';
+      }
+      &.icon-setting, &.icon-logout {
+        line-height: 20px;
+      }
+    }
+  }
+}

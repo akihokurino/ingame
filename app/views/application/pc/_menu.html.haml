@@ -1,5 +1,5 @@
-%ul.openMenu
-  %li.item
-    = link_to "プロフィール設定", edit_user_path(@current_user), class: "toProfileEdit"
-  %li.item
-    = link_to "ログアウト", logout_users_path, class: "menuItemLogout"
+%ul.Header__menu.openMenu
+  %li.Header__menuItem
+    = link_to "プロフィール設定", edit_user_path(@current_user), class: "Header__menuItem--profileEdit icon-setting"
+  %li.Header__menuItem
+    = link_to "ログアウト", logout_users_path, class: "Header__menuItem--logout icon-logout"
