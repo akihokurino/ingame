@@ -1,12 +1,12 @@
 %script{type: "text/template", id: "signin-template"}
-  %header.SigninHeader
-    %h1.SigninHeaderTtl GAMR
+  %header.Signin__header
+    %h1.Signin__headerTitle GAMR
   %section.Signin
-    %h1.SigninTtl GAMRにログイン
+    %h1.Signin__Title GAMRにログイン
     %form
-      %input.SigninInput.username-input{type: "text", name: "username", placeholder: "ユーザー名", value: @current_provider_name}
-      %p.SigninError.error-log.username-error
-      %input.SigninInput.password-input{type: "password", name: "password", placeholder: "パスワード）"}
-      %p.SigninError.error-log.password-error
-    %p.SigninBtnWrap
-      %a.SigninBtn.signin-btn{href: "#"} ログイン
+      %input.Signin__input.username-input{type: "text", name: "username", placeholder: "ユーザー名", value: @current_provider_name}
+      %p.Signin__erroe.error-log.username-error
+      %input.Signin__input.password-input{type: "password", name: "password", placeholder: "パスワード）"}
+      %p.Signin__error.error-log.password-error
+    %p.Signin__buttonWrap
+      %a.Signin__button.signin-btn{href: "#"} ログイン

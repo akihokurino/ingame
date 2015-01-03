@@ -1,0 +1,144 @@
+@import "../../_function.css.scss";
+
+/*---   Signup   ----------*/
+$component: "Signup";
+
+.#{$component} {
+  width: 380px;
+  margin: 0 auto 60px;
+  padding: 30px;
+  @include box-shadow(0, 0, 1px, 0, rgba(0, 0, 0, 0.1));
+  background: #fff;
+
+  &__header {
+    margin-bottom: 60px;
+    padding: 10px 0;
+    background: $main_color;
+  }
+  &__headerTitle {
+    display: block;
+    width: 120px;
+    height: 25px;
+    margin: 0 auto;
+    background: url(/assets/logo.png) no-repeat -10px;
+    @include substitute;
+  }
+  &__title {
+    margin-bottom: 30px;
+    color: $color_textBlack;
+    font-size: 1.5rem;
+    text-align: center;
+    line-height: 1.875rem;
+  }
+  &__imgWrap {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 30px;
+  }
+  &__img {
+    @include border-radius(70px);
+    @include box-shadow(0, 1px, 4px, 0, rgba(0,0,0,0.4));
+  }
+  &__service--fb {
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    z-index: 1;
+    width: 42px;
+    height: 42px;
+    border: 2px solid #fff;
+    @include border-radius(50%);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+    background-color: #fff;
+    color: $facebook_blue;
+    font-size: 3.3rem;
+    line-height: 36px;
+    text-align: center;
+
+    &:before{
+      margin-left: -5px;
+    }
+  }
+  &__service--tw {
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    z-index: 1;
+    width: 42px;
+    height: 42px;
+    border: 2px solid #fff;
+    @include border-radius(50%);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+    background: linear-gradient(lighten($twitter_blue, 7%), $twitter_blue);
+    color: #fff;
+    font-size: 1.938rem;
+    line-height: 42px;
+    text-align: center;
+  }
+  &__buttonWrap {
+    width: 240px;
+    margin: 10px auto 20px;
+  }
+  &__button {
+    display: block;
+    padding: 0 10px;
+    border: 1px solid darken($main_color,7%);
+    @include border-radius(4px);
+    @include box-sizing;
+    @include bglinear(lighten($main_color, 7%), $main_color);
+    color: #fff;
+    font-size: .875rem;
+    line-height: 2.5;
+    text-shadow: 0px -1px 0 rgba(0,0,0,0.35);
+    text-align: center;
+    text-decoration: none;
+
+    &:hover {
+      @include bglinear($main_color, lighten($main_color, 7%));
+      text-decoration: none;
+    }
+  }
+  &__text {
+    margin-bottom: 15px;
+    color: $color_textGray;
+    font-size: .75rem;
+    line-height: 1.5rem;
+  }
+  &__input {
+    width: 100%;
+    margin: 10px 0;
+    padding: 3px 10px;
+    border: 1px solid $color_border;
+    @include border-radius(2px);
+    color: $color_textBlack;
+    font-size: .875rem;
+    line-height: 1.7rem;
+
+    &::-webkit-input-placeholder {
+      padding-top: 2px;
+      color: lighten($color_textGray, 10%);
+      line-height: 1.7rem;
+    }
+  }
+  &__label {
+    display: block;
+    margin: 10px 0;
+    color: $color_textGray;
+    font-size: .875rem;
+    text-align: center;
+  }
+  &__error {
+    color: $color_red;
+    font-size: .75rem;
+    text-align: center;
+  }
+  > *:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+}

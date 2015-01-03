@@ -1,26 +1,26 @@
 %script{type: "text/template", id: "flow-template"}
-  %header.SignupHeader
-    %h1.SignupHeaderTtl GAMR
+  %header.Signup__header
+    %h1.Signup__headerTitle GAMR
   %section.Signup
-    %h1.SignupTtl
+    %h1.Signup__title
       ようこそ！
       %br
       #{@current_provider[:username]}さん
-    %figure.SignupImgWrap
+    %figure.Signup__imgWrap
       - if @current_provider[:photo_path]
-        = image_tag "/user_photos/#{@current_provider[:photo_path]}", width:"140", height:"140", class: "SignupImg", alt: "アカウント画像"
+        = image_tag "/user_photos/#{@current_provider[:photo_path]}", width:"140", height:"140", class: "Signup__img", alt: "アカウント画像"
       - else
-        = image_tag "smart_phone/default.png", width:"140", height:"140", class: "SignupImg", alt: "アカウント画像"
+        = image_tag "smart_phone/default.png", width:"140", height:"140", class: "Signup__img", alt: "アカウント画像"
       - case @current_provider[:service_name]
       - when "facebook"
-        .serviceLogo.icon-facebook
+        .Signup__service--fb.icon-facebook
       - when "twitter"
-        .serviceLogo.icon-twitter
-    %p.SignupBtnWrap
-      %a.SignupBtn{href: "/users/new#signup"} 新しくアカウントをつくる
-    %p.SignupText
+        .Signup__service--tw.icon-twitter
+    %p.Signup__buttonWrap
+      %a.Signup__button{href: "/users/new#signup"} 新しくアカウントをつくる
+    %p.Signup__text
       新しくGAMRのアカウントを作成して、#{@current_provider[:service_name]}アカウントと接続します。作成したGAMRのアカウントには、#{@current_provider[:service_name]}アカウントでログインできます。
-    %p.SignupBtnWrap
-      %a.SignupBtn{href: "/users/new#signin"} GAMRとつなげる
-    %p.SignupText
+    %p.Signup__buttonWrap
+      %a.Signup__button{href: "/users/new#signin"} GAMRとつなげる
+    %p.Signup__text
       すでにGAMRのアカウントをお持ちの場合は、#{@current_provider[:service_name]}アカウントと接続することで、#{@current_provider[:service_name]}アカウントでGAMRにログインできるようになります。
