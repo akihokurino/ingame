@@ -1,25 +1,26 @@
 = content_for :last do
   = javascript_include_tag "main/pc/header"
 
-%header.header
-  .headerInner
-    %h1.logoWrap
-      = link_to "GAMR", posts_path, class: "logo"
-    %ul.gnavi
-      %li.item
-        = link_to "タイムライン", posts_path, class: "toTimelineBtn"
-      %li.item
-        = link_to "見つける", "/users/#{@current_user[:id]}/search_game_or_user#game", class: "toSearchBtn"
-      %li.item
-        = link_to "マイページ", "/users/#{@current_user[:id]}#logs", class: "toProfileBtn"
-      %li.item
-        %span.notify.my-notify.icon-bell
-          %span.notifyNum.notify-num
-      %li.item
-        %figure.profImgWrap.menu-btn
-          = image_tag "/user_photos/#{@current_user[:photo_path]}", class: "profImg", width: 26, height: 26, alt: ""
-        = render partial: "application/pc/notifications_modal"
-        = render partial: "application/underscore/pc/header/notification"
-    = render partial: "application/pc/menu"
-    %form.searchWrap
-      %input.search.header-search-input{placeholder: "ゲームやユーザーを検索"}
+%header.Header
+  .Header__inner
+    %h1.Header__Title
+      = link_to "GAMR", posts_path, class: "Header__TitleLink"
+    %nav.Header__nav
+      %ul.Header__navList
+        %li.Header__navItem
+          = link_to "タイムライン", posts_path, class: "Header__navItem--timeline"
+        %li.Header__navItem
+          = link_to "見つける", "/users/#{@current_user[:id]}/search_game_or_user#game", class: "Header__navItem--search"
+        %li.Header__navItem
+          = link_to "マイページ", "/users/#{@current_user[:id]}#logs", class: "Header__navItem--mypage"
+        %li.Header__navItem
+          %span.Header__navItem--notify.my-notify.icon-bell
+            %span.Header__navItem--notifyNum.notify-num
+        %li.Header__navItem
+          %figure.Header__navImgWrap.menu-btn
+            = image_tag "/user_photos/#{@current_user[:photo_path]}", class: "Header__navImg", width: 26, height: 26, alt: ""
+          = render partial: "application/pc/notifications_modal"
+          = render partial: "application/underscore/pc/header/notification"
+      = render partial: "application/pc/menu"
+    %form.Header__searchWrap
+      %input.Header__search.header-search-input{placeholder: "ゲームやユーザーを検索"}

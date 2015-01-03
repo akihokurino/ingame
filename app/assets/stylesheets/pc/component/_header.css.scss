@@ -1,7 +1,10 @@
 @import "../../_function.css.scss";
+@import "_header-menu.css.scss";
 
-/*---   .header   ---------------------------*/
-.header {
+/*---   Header   ----------*/
+$component: "Header";
+
+.#{$component} {
   position: fixed;
   top: 0;
   z-index: 100;
@@ -11,25 +14,92 @@
   background: $base_color;
   opacity: 0.95;
 
-  &Inner {
+  &__inner {
+    @include clearfix;
     position: relative;
     width: 1080px;
     margin: 0 auto;
     color: #fff;
-    @include clearfix;
   }
-  .logoWrap{
+  &__Title{
     display:inline-block;
     vertical-align: top;
   }
-  .logo {
+  &__TitleLink {
     display:inline-block;
     width: 120px;
     height: 45px;
     background: url(/assets/logo.png) no-repeat -10px;
     @include substitute;
   }
-  .searchWrap {
+  &__nav {
+    display: inline-block;
+    float: right;
+    @include clearfix;
+    font-size: 0;
+  }
+  &__navItem {
+    display: inline-block;
+    position: relative;
+    font-size: 14px;
+    line-height: 48px;
+
+    &--timeline, &--search, &--mypage, &--notify {
+      display: inline-block;
+      overflow: hidden;
+      position: relative;
+      min-width: 60px;
+      padding: 0 10px;
+      color: #ddd;
+      text-align: center;
+
+      &:hover{
+        color: #fff;
+        text-decoration: none;
+        background-color: #222;
+      }
+    }
+    &--notifyNum {
+      display: none;
+      position: absolute;
+      top: -3px;
+      left: 10px;
+      padding: 3px;
+      @include border-radius(3px);
+      background: $color_red;
+      font-size: 10px;
+      line-height: 1.0;
+    }
+    .icon-bell:before{
+      font-size: 22px;
+      line-height: 48px
+    }
+  }
+  &__navImgWrap {
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    min-width: 60px;
+    padding: 0 10px;
+    color: #ddd;
+    text-align: center;
+    cursor: pointer;
+
+    &:hover{
+      background-color: #222;
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+  &__navImg {
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: -10px;
+    width: 26px; 
+    height: 26px;
+    @include border-radius(50%);
+  }
+  &__searchWrap {
     position: relative;
     float: right;
     display: inline-block;
@@ -49,7 +119,7 @@
       content: "\e60c";
     }
   }
-  .search {
+  &__search {
     width: 320px;
     padding-left: 36px;
     border: none;
@@ -62,110 +132,6 @@
     &::-webkit-input-placeholder {
       color: #cbcbcb;
       font-size: .875rem;
-    }
-  }
-  .gnavi {
-    float: right;
-    display:inline-block;
-    font-size:0;
-    @include clearfix;
-    .item {
-      position: relative;
-      display: inline-block;
-      line-height:48px;
-      font-size:14px;
-    }
-    .toTimelineBtn,.toSearchBtn,.toProfileBtn,.notify,.profImgWrap {
-      position: relative;
-      overflow: hidden;
-      display:inline-block;
-      min-width: 60px;
-      padding:0 10px;
-      color:#ddd;
-      text-align: center;
-      &:hover{
-        color:#fff;
-        text-decoration: none;
-        background-color: #222;
-      }
-    }
-    .notify {
-      position: relative;
-      cursor: pointer;
-      &Num {
-        display: none;
-        position: absolute;
-        top: -3px;
-        left: 10px;
-        padding: 3px;
-        @include border-radius(3px);
-        background: $color_red;
-        font-size: 10px;
-        line-height: 1.0;
-      }
-    }
-    .icon-bell:before{
-      font-size:22px;
-      line-height: 48px
-    }
-    .profImgWrap {
-      position: relative;
-      cursor: pointer;
-      .profImg{
-        position: relative;
-        margin-top: 10px;
-        margin-bottom: -10px;
-        width: 26px; 
-        height: 26px;
-        @include border-radius(50%);
-        }
-    }
-  }
-}
-.openMenu {
-  position: absolute;
-  display: none;
-  overflow: hidden;
-  top: 44px;
-  z-index: 10000;
-  right: 0;
-  @include border-radius(3px);
-  @include box-shadow(0, 0, 16px, 0, rgba(0, 0, 0, 0.2));
-  background: #fff;
-  font-weight: bold;
-  font-size: .75rem;
-
-  .toProfileEdit,.menuItemLogout{
-    display: block;
-    position: relative;
-    padding:4px 6px 4px 30px;
-    color: $color_textBlack;
-    line-height: 20px;
-    &:hover{
-      text-decoration:none;
-      background: $base_color;
-      color: #fff;
-      &:before {
-        color: #fff;
-      }
-    }
-    &:before {
-      position: absolute;
-      top: 4px;
-      left: 8px;
-      color: $color_textBlack;
-      font-size: 1rem;
-      font-family: 'icomoon';
-    }
-  }
-  .toProfileEdit {
-    &:before {
-      content: "\e60d";
-    }
-  }
-  .menuItemLogout {
-    &:before {
-      content: "\e606";
     }
   }
 }
