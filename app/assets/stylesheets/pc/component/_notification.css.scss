@@ -1,6 +1,10 @@
 @import "../../_function.css.scss";
+@import "_header-menu.css.scss";
 
-.notification-modal {
+/*---   Notification   ----------*/
+$component: "Notification";
+
+.#{$component} {
   display: none;
   position: absolute;
   top: 44px;
@@ -11,30 +15,31 @@
   @include box-shadow(0, 0, 10px, 0, #666);
   background-color: #fff;
 
-  .modal-header {
+  &__header {
     position: relative;
     padding-left: 20px;
     border-bottom: solid 1px #999;
+  }
+  &__title {
     color: $color_black;
     font-size: 1.125rem;
     font-family: Helvetica;
     text-decoration: none;
     line-height: 40px;
-
-    .close-btn {
-      position: absolute;
-      top: 9px;
-      right: 10px;
-      width: 46px;
-      height: 20px;
-      color: $color-blue;
-      font-size: 13px;
-      text-align: center;
-      line-height: 20px;
-      cursor: pointer;
-    }
   }
-  .notification-list {
+  &__close {
+    position: absolute;
+    top: 9px;
+    right: 10px;
+    width: 46px;
+    height: 20px;
+    color: $color-blue;
+    font-size: 13px;
+    text-align: center;
+    line-height: 20px;
+    cursor: pointer;
+  }
+  &__list {
     overflow-y: scroll;
     height: 450px;
     padding: 20px;
@@ -50,21 +55,18 @@
         border-bottom: 0;
       }
     }
-    .leftBox {
-      float: left;
-      margin-right: 15px;
-    }
-    .rightBox {
-      color: #404040;
-      font-size: 13px;
-      line-height: 1.6;
-    }
-    .profImgWrap {
-      margin-right: 0;
+  }
+  &__imgWrap {
+    float: left;
+    margin-right: 15px;
 
-      &:after {
-        content: none;
-      }
+    &:after {
+      content: none;
     }
+  }
+  &__text {
+    color: #404040;
+    font-size: 13px;
+    line-height: 1.6;
   }
 }

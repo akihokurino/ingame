@@ -1,6 +1,5 @@
 %script{type: "text/template", id: "notification-template"}
-  .leftBox
-    %figure.profImgWrap
-      %img.profImg{width: 58, height: 58, src: "/user_photos/{{= from_user.photo_path }}"}
-  .rightBox
+  %figure.Notification__imgWrap
+    %img.Notification__img{width: 58, height: 58, src: "/user_photos/{{= from_user.photo_path }}"}
+  %p.Notification__text
     {{= text }}
