@@ -21,6 +21,9 @@
             = image_tag "/game_photos/default.png", height:"100%", class: "gameImg"
         .gameInfoWrap
           %ul.gameInfo
+            %li.item.site
+              .itemName ウェブサイト
+              .itemContent ほげほげ
             %li.item.maker
               .itemName メーカー
               .itemContent
@@ -34,7 +37,7 @@
               .itemContent
                 = @game.release_day
             %li.item.review
-              .itemName 評価
+              .itemName 全体の評価
               .itemContent
                 %span.reviewInner.icon-star
                   = @game.avg_rate
@@ -52,7 +55,7 @@
     = render partial: "select_btns", locals: {game: @game}
 
     - if @game.i_registed
-      %span.delete-btn マイゲームから削除する
+      %span.delete-btn.deleteBtn マイゲームから削除
 
   .boxTtl
     %h2 このゲームに対するポスト#{@game.posts_count}件
