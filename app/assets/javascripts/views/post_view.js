@@ -1,6 +1,6 @@
 var PostView = Backbone.View.extend({
   tagName: "article",
-  className: "postBox",
+  className: "Post",
   events: {
     "click .delete":          "destroy",
     "click .like-btn":        "like",
