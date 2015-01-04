@@ -1,19 +1,19 @@
 %script{type: "text/template", id: "user-template"}
-  %article.friendList
-    .friendListTopBox
-      %figure.userImgWrap
-        %img.userImg{src: "/user_photos/{{= photo_path }}", width: "80", height: "80", alt: ""}
+  %article.Friendlist__item
+    .Friendlist__inner
+      %figure.Friendlist__imgWrap
+        %img.Friendlist__img{src: "/user_photos/{{= photo_path }}", width: "80", height: "80", alt: ""}
       %ul.btn-list
         {{ if (!isCurrentUser) { }}
         {{ if (i_followed) { }}
-        %li.followBtnWrap
-          .followBtn.unFollow.unfollow-btn フォロー中
+        %li.FollowButton__wrap
+          .FollowButton.unFollow.unfollow-btn フォロー中
         {{ } else { }}
-        %li.followBtnWrap
-          .followBtn.follow-btn フォローする
+        %li.FollowButton__wrap
+          .FollowButton.follow-btn フォローする
         {{ } }}
         {{ } }}
-    %p.userName
-      %a.userNameLink{href: "/users/{{= id }}#logs"} {{= username }}
-    %p.myGame マイゲーム {{= logs_count }}
-    %p.userProf {{= introduction }}
+    %p.Friendlist__name
+      %a.Friendlist__nameLink{href: "/users/{{= id }}#logs"} {{= username }}
+    %p.Friendlist__mygame マイゲーム {{= logs_count }}
+    %p.Friendlist__text {{= introduction }}

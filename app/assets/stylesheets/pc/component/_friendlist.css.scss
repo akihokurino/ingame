@@ -1,0 +1,108 @@
+@import "../../_function.css.scss";
+
+/*---   Friendlist   ----------*/
+$component: "Friendlist";
+
+.#{$component} {
+  width: 100%;
+  padding: 20px 0 40px;
+
+  &__list {
+    @include flexbox;
+    justify-content: flex-start;
+    -webkit-justify-content: flex-start;
+    align-items: flex-start;
+    -webkit-align-items: flex-start;
+    @include clearfix;
+    width: 900px;
+    margin: 0 auto;
+    font-size: 0; /* inline-block用 */
+
+    .item {
+      @include clearfix;
+      width: 280px;
+      margin: 9px;
+      padding: 10px;
+      border: 1px solid #e6e6e6;
+      @include border-radius(3px);
+      @include box-sizing;
+      background: #fff;
+    }
+  }
+  &__item {
+    position: relative;
+    min-height: 122px;
+  }
+  &__inner {
+    position: relative;
+    @include clearfix;
+    height: 80px;
+    margin-bottom: 48px;
+    padding: 10px;
+    background: url(/assets/pc/default_cover.png) no-repeat top center;
+    background-size: cover;
+  }
+  &__imgWrap {
+    display: inline-block;
+    position: absolute;
+    bottom: -40px;
+    border: 3px solid #fff;
+  }
+  &__img {
+    @include border-radius(3px 3px 0 0);
+  }
+  .FollowButton {
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: -39px;
+    width: 137px;
+    border: 1px solid $main_color;
+    @include border-radius(4px);
+    @include box-sizing;
+    background: #fff;
+    color: $main_color;
+    font-weight: bold;
+    font-size: .875rem;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid #fff;
+      @include bglinear(lighten($main_color, 5%), $main_color);
+      color: #fff;
+    }
+  }
+  .unfollow, .unFollow {
+    border: 1px solid  #fff;
+    @include bglinear(lighten($main_color, 5%), $main_color);
+    color: #fff;
+
+    &:hover {
+      @include bglinear($main_color, lighten($main_color, 5%));
+      color: #fff;
+    }
+  }
+  &__name {
+    margin-bottom: 10px;
+    padding-top: 4px;
+    color: $main_color;
+    font-weight: bold;
+    font-size: .875rem;
+  }
+  &__nameLink {
+    color: $main_color;
+  }
+  &__mygame {
+    margin-bottom: 10px;
+    color: $color_textGray;
+    font-weight: bold;
+    font-size: .875rem;
+  }
+  &__text {
+    color: #7e7e7e;
+    font-size: .75rem;
+    line-height: 1rem;
+  }
+}
