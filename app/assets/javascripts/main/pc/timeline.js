@@ -1,4 +1,5 @@
 //= require ../../libs/socket.js
+//= require ../../libs/pagenation.js
 //= require ../../models/post.js
 //= require ../../models/log.js
 //= require ../../models/user.js
@@ -25,7 +26,7 @@
       "keyup .post-input":        "checkUrl"
     },
     initialize: function () {
-      _.bindAll(this, "pagenation", "selectLog");
+      _.bindAll(this, "selectLog", "setPostCollection");
 
       var that                = this;
       this.post_collection    = new Posts();
@@ -55,6 +56,7 @@
 
       $(".post-input").autosize();
 
+      this.pagenation = new Pagenation(this.post_collection, {}, this.setPostCollection);
 
       like_socket.callback = function (data) {
         that.post_collection.find(function (model) {
@@ -68,24 +70,6 @@
                 "post_likes_count": parseInt(model.get("post_likes_count")) - 1
               });
             }
-
-            /*
-            if (data.type == "comment_like") {
-              for (var i = 0; i < model.get("post_comments").length; i++) {
-                var comment = model.get("post_comments")[i];
-                if (comment.id == data.post_comment_id) {
-                  new_comment_like_count = parseInt(comment.get("comment_likes_count")) + 1;
-                }
-              }
-            } else if (data.type == "comment_unlike") {
-              for (var i = 0; i < model.get("post_comments").length; i++) {
-                var comment = model.get("post_comments")[i];
-                if (comment.id == data.post_comment_id) {
-                  new_comment_like_count = parseInt(comment.get("comment_likes_count")) - 1;
-                }
-              }
-            }
-            */
           }
         });
       }
@@ -115,6 +99,17 @@
         });
       }
 
+      this.post_collection.fetch({
+        data: {page: this.page},
+        success: function (model, response, options) {
+          that.setPostCollection(model, response, options);
+
+          $(".comment-input").autosize();
+        },
+        error: function () {
+        }
+      });
+
       this.log_collection.fetch({
         data: {user_id: this.user_id},
         success: function (model, response, options) {
@@ -124,25 +119,8 @@
           }
         },
         error: function () {
-
         }
-      })
-
-
-      this.post_collection.fetch({
-        data: {page: this.page},
-        success: function (model, response, options) {
-          for (var i = 0; i < response.posts.length; i++) {
-            var post = new Post(response.posts[i]);
-            that.posts_view.collection.add(post);
-          }
-
-          $(".comment-input").autosize();
-        },
-        error: function () {
-
-        }
-      })
+      });
 
       this.user_collection.fetch({
         data: {page: 1, type: "activity"},
@@ -154,40 +132,17 @@
           }
         },
         error: function () {
-
         }
-      })
-
-
-      $(window).bind("scroll", this.pagenation);
+      });
     },
-    pagenation: function () {
-      var that           = this;
-      var scrollHeight   = $(document).height();
-      var scrollPosition = $(window).height() + $(window).scrollTop();
-      if ((scrollHeight - scrollPosition) / scrollHeight <= 0.1) {
-        $(".loading-gif").css("display", "block");
-        $(window).unbind("scroll");
-        this.page += 1;
+    setPostCollection: function (model, response, option) {
+      for (var i = 0; i < response.posts.length; i++) {
+        var post = new Post(response.posts[i]);
+        this.posts_view.collection.add(post);
+      }
 
-        this.post_collection.fetch({
-          data: {page: this.page},
-          success: function (model, response, options) {
-            for (var i = 0; i < response.posts.length; i++) {
-              var post = new Post(response.posts[i]);
-              that.posts_view.collection.add(post);
-            }
-
-            $(".loading-gif").css("display", "none");
-
-            if (response.posts.length != 0) {
-              $(window).bind("scroll", that.pagenation);
-            }
-          },
-          error: function () {
-
-          }
-        })
+      if (response.posts.length != 0) {
+        $(window).bind("scroll", this.pagenation.load);
       }
     },
     toggleSelectModal: function () {

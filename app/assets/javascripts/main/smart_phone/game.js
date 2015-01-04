@@ -1,4 +1,5 @@
 //= require ../../libs/socket.js
+//= require ../../libs/pagenation.js
 //= require ../../models/post.js
 //= require ../../models/comment.js
 //= require ../../collections/posts.js
@@ -19,11 +20,12 @@
       "click .submit-comment-btn": "postComment"
     },
     initialize: function () {
+      $(window).unbind("scroll");
       this.$(".post-list").html("");
       this.$el.find("ul.sort-box li").removeClass("current");
       this.$el.find("ul.sort-box li.all-posts").addClass("current");
 
-      _.bindAll(this, "pagenation", "showComment");
+      _.bindAll(this, "setPostCollection", "showComment");
 
       var that                = this;
       this.post_collection    = new Posts();
@@ -35,50 +37,27 @@
       this.game_id            = $(".game-page").data("gameid");
       this.page               = 1;
 
+      this.pagenation         = new Pagenation(this.post_collection, {type: "all_of_game", game_id: this.game_id}, this.setPostCollection);
+
       event_handle.discribe("showComment", this.showComment);
 
       this.post_collection.fetch({
         data: {type: "all_of_game", page: this.page, game_id: this.game_id},
         success: function (model, response, options) {
-          for (var i = 0; i < response.posts.length; i++) {
-            var post = new Post(response.posts[i]);
-            that.posts_view.collection.add(post);
-          }
+          that.setPostCollection(model, response, options);
         },
         error: function () {
-
         }
-      })
-
-      $(window).bind("scroll", this.pagenation);
+      });
     },
-    pagenation: function () {
-      var that           = this;
-      var scrollHeight   = $(document).height();
-      var scrollPosition = $(window).height() + $(window).scrollTop();
-      if ((scrollHeight - scrollPosition) / scrollHeight <= 0.1) {
-        $(".loading-gif").css("display", "block");
-        $(window).unbind("scroll");
-        this.page += 1;
+    setPostCollection: function (model, response, option) {
+      for (var i = 0; i < response.posts.length; i++) {
+        var post = new Post(response.posts[i]);
+        this.posts_view.collection.add(post);
+      }
 
-        this.post_collection.fetch({
-          data: {type: "all_of_game", page: this.page, game_id: this.game_id},
-          success: function (model, response, options) {
-            for (var i = 0; i < response.posts.length; i++) {
-              var post = new Post(response.posts[i]);
-              that.posts_view.collection.add(post);
-            }
-
-            $(".loading-gif").css("display", "none");
-
-            if (response.posts.length != 0) {
-              $(window).bind("scroll", that.pagenation);
-            }
-          },
-          error: function () {
-
-          }
-        })
+      if (response.posts.length != 0) {
+        $(window).bind("scroll", this.pagenation.load);
       }
     },
     showComment: function (model) {
@@ -151,11 +130,12 @@
       "click .submit-comment-btn": "postComment"
     },
     initialize: function () {
+      $(window).unbind("scroll");
       this.$(".post-list").html("");
       this.$el.find("ul.sort-box li").removeClass("current");
       this.$el.find("ul.sort-box li.follower-posts").addClass("current");
 
-      _.bindAll(this, "pagenation", "showComment");
+      _.bindAll(this, "setPostCollection", "showComment");
 
       var that                = this;
       this.post_collection    = new Posts();
@@ -167,51 +147,28 @@
       this.game_id            = $(".game-page").data("gameid");
       this.page               = 1;
 
+      this.pagenation         = new Pagenation(this.post_collection, {type: "follower_of_game", game_id: this.game_id}, this.setPostCollection);
+
       event_handle.discribe("showComment", this.showComment);
 
 
       this.post_collection.fetch({
         data: {type: "follower_of_game", page: this.page, game_id: this.game_id},
         success: function (model, response, options) {
-          for (var i = 0; i < response.posts.length; i++) {
-            var post = new Post(response.posts[i]);
-            that.posts_view.collection.add(post);
-          }
+          that.setPostCollection(model, response, options);
         },
         error: function () {
-
         }
-      })
-
-      $(window).bind("scroll", this.pagenation);
+      });
     },
-    pagenation: function () {
-      var that           = this;
-      var scrollHeight   = $(document).height();
-      var scrollPosition = $(window).height() + $(window).scrollTop();
-      if ((scrollHeight - scrollPosition) / scrollHeight <= 0.1) {
-        $(".loading-gif").css("display", "block");
-        $(window).unbind("scroll");
-        this.page += 1;
+    setPostCollection: function (model, response, option) {
+      for (var i = 0; i < response.posts.length; i++) {
+        var post = new Post(response.posts[i]);
+        this.posts_view.collection.add(post);
+      }
 
-        this.post_collection.fetch({
-          data: {type: "follower_of_game", page: this.page, game_id: this.game_id},
-          success: function (model, response, options) {
-            for (var i = 0; i < response.posts.length; i++) {
-              var post = new Post(response.posts[i]);
-              that.posts_view.collection.add(post);
-            }
-
-            $(".loading-gif").css("display", "none");
-
-            if (response.posts.length != 0) {
-              $(window).bind("scroll", that.pagenation);
-            }
-          },
-          error: function () {
-
-          }
-        })
+      if (response.posts.length != 0) {
+        $(window).bind("scroll", this.pagenation.load);
       }
     },
     showComment: function (model) {
@@ -284,11 +241,12 @@
       "click .submit-comment-btn": "postComment"
     },
     initialize: function () {
+      $(window).unbind("scroll");
       this.$(".post-list").html("");
       this.$el.find("ul.sort-box li").removeClass("current");
       this.$el.find("ul.sort-box li.liker-posts").addClass("current");
 
-      _.bindAll(this, "pagenation", "showComment");
+      _.bindAll(this, "setPostCollection", "showComment");
 
       var that                = this;
       this.post_collection    = new Posts();
@@ -300,51 +258,28 @@
       this.game_id            = $(".game-page").data("gameid");
       this.page               = 1;
 
+      this.pagenation         = new Pagenation(this.post_collection, {type: "liker_of_game", game_id: this.game_id}, this.setPostCollection);
+
       event_handle.discribe("showComment", this.showComment);
 
 
       this.post_collection.fetch({
         data: {type: "liker_of_game", page: this.page, game_id: this.game_id},
         success: function (model, response, options) {
-          for (var i = 0; i < response.posts.length; i++) {
-            var post = new Post(response.posts[i]);
-            that.posts_view.collection.add(post);
-          }
+          that.setPostCollection(model, response, options);
         },
         error: function () {
-
         }
-      })
-
-      $(window).bind("scroll", this.pagenation);
+      });
     },
-    pagenation: function () {
-      var that           = this;
-      var scrollHeight   = $(document).height();
-      var scrollPosition = $(window).height() + $(window).scrollTop();
-      if ((scrollHeight - scrollPosition) / scrollHeight <= 0.1) {
-        $(".loading-gif").css("display", "block");
-        $(window).unbind("scroll");
-        this.page += 1;
+    setPostCollection: function (model, response, option) {
+      for (var i = 0; i < response.posts.length; i++) {
+        var post = new Post(response.posts[i]);
+        this.posts_view.collection.add(post);
+      }
 
-        this.post_collection.fetch({
-          data: {type: "liker_of_game", page: this.page, game_id: this.game_id},
-          success: function (model, response, options) {
-            for (var i = 0; i < response.posts.length; i++) {
-              var post = new Post(response.posts[i]);
-              that.posts_view.collection.add(post);
-            }
-
-            $(".loading-gif").css("display", "none");
-
-            if (response.posts.length != 0) {
-              $(window).bind("scroll", that.pagenation);
-            }
-          },
-          error: function () {
-
-          }
-        })
+      if (response.posts.length != 0) {
+        $(window).bind("scroll", this.pagenation.load);
       }
     },
     showComment: function (model) {

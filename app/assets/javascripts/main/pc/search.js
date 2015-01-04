@@ -1,4 +1,5 @@
 //= require ../../libs/socket.js
+//= require ../../libs/pagenation.js
 //= require ../../libs/url_query.js
 //= require ../../models/game_result.js
 //= require ../../models/user_result.js
@@ -14,17 +15,18 @@
   var GameSearchView = Backbone.View.extend({
     el: $(".search-page"),
     events: {
-      "click .search-btn":          "search",
+      "click .search-btn":          "clickSearchBtn",
       "keypress .game-title-input": "searchWithEnter",
       "click .change-target-link":  "changeTarget"
     },
     template: _.template($("#game-search-template").html()),
     text_template: _.template($("#result-text-template").html()),
     initialize: function () {
+      $(window).unbind("scroll");
       this.$el.html("");
       this.$el.append(this.template);
 
-      _.bindAll(this, "pagenation");
+      _.bindAll(this, "setGameResultCollection");
 
       this.game_result_collection = new GameResults();
       this.game_results_view      = new GameResultsView({el: ".result-list", collection: this.game_result_collection, type: null});
@@ -41,30 +43,24 @@
     search: function () {
       var that  = this;
       this.page = 1;
+      $(window).unbind("scroll");
 
       this.game_result_collection.fetch({
         data: {search_title: this.current_game_title, page: this.page},
         success: function (model, response, options) {
+          that.pagenation = new Pagenation(that.game_result_collection, {search_title: that.current_game_title}, that.setGameResultCollection);
+
           that.game_result_collection.reset();
           that.game_results_view.$el.html("");
-          if (response.results && response.results.length > 0) {
-            for (var i = 0; i < response.results.length; i++) {
-              var game_result = new GameResult(response.results[i]);
-              that.game_results_view.collection.add(game_result);
-            }
-          }
+          that.setGameResultCollection(model, response, options);
 
           that.$(".result-area").html((that.text_template({
             search_title: that.current_game_title, target: "ゲーム", result_count: response.count
           })));
         },
         error: function () {
-
         }
-      })
-
-      $(window).unbind("scroll");
-      $(window).bind("scroll", this.pagenation);
+      });
     },
     searchWithEnter: function (e) {
       if (e.which == 13 && this.game_title.val() != "") {
@@ -73,37 +69,22 @@
         url_query.insertParam("search_word", this.current_game_title);
       }
     },
-    pagenation: function () {
-      var that           = this;
-      var scrollHeight   = $(document).height();
-      var scrollPosition = $(window).height() + $(window).scrollTop();
+    clickSearchBtn: function () {
+      if (this.game_title.val() != "") {
+        this.current_game_title = this.game_title.val();
+        url_query.insertParam("search_word", this.current_game_title);
+      }
+    },
+    setGameResultCollection: function (model, response, option) {
+      if (response.results && response.results.length > 0) {
+        for (var i = 0; i < response.results.length; i++) {
+          var game_result = new GameResult(response.results[i]);
+          this.game_results_view.collection.add(game_result);
+        }
+      }
 
-      if ((scrollHeight - scrollPosition) / scrollHeight <= 0.1) {
-         $(".loading-gif").css("display", "block");
-        $(window).unbind("scroll");
-
-        this.page += 1;
-
-        this.game_result_collection.fetch({
-          data: {search_title: this.current_game_title, page: this.page},
-          success: function (model, response, options) {
-            if (response.results && response.results.length > 0) {
-              for (var i = 0; i < response.results.length; i++) {
-                var game_result = new GameResult(response.results[i]);
-                that.game_results_view.collection.add(game_result);
-              }
-            }
-
-            $(".loading-gif").css("display", "none");
-
-            if (response.results.length != 0) {
-              $(window).bind("scroll", that.pagenation);
-            }
-          },
-          error: function () {
-
-          }
-        })
+      if (response.results.length != 0) {
+        $(window).bind("scroll", this.pagenation.load);
       }
     },
     changeTarget: function (e) {
@@ -117,22 +98,23 @@
         location.href = "/users/" + current_user_id + "/search_game_or_user#user";
       }
     }
-  })
+  });
 
   var UserSearchView = Backbone.View.extend({
     el: $(".search-page"),
     events: {
-      "click .search-btn":         "search",
+      "click .search-btn":         "clickSearchBtn",
       "keypress .username-input":  "searchWithEnter",
       "click .change-target-link": "changeTarget"
     },
     template: _.template($("#user-search-template").html()),
     text_template: _.template($("#result-text-template").html()),
     initialize: function () {
+      $(window).unbind("scroll");
       this.$el.html("");
       this.$el.append(this.template);
 
-      _.bindAll(this, "pagenation");
+      _.bindAll(this, "setUserResultCollection");
 
       this.user_result_collection = new UserResults();
       this.user_results_view      = new UserResultsView({el: ".result-list", collection: this.user_result_collection});
@@ -149,69 +131,48 @@
     search: function () {
       var that  = this;
       this.page = 1;
+      $(window).unbind("scroll");
 
       this.user_result_collection.fetch({
         data: {username: this.current_username, page: this.page},
         success: function (model, response, options) {
+          that.pagenation = new Pagenation(that.user_result_collection, {username: that.current_username}, that.setUserResultCollection);
+
           that.user_result_collection.reset();
           that.user_results_view.$el.html("");
-          if (response.results && response.results.length > 0) {
-            for (var i = 0; i < response.results.length; i++) {
-              var user_result = new UserResult(response.results[i]);
-              that.user_results_view.collection.add(user_result);
-            }
-          }
+          that.setUserResultCollection(model, response, options);
 
           that.$(".result-area").html((that.text_template({
             search_title: that.current_username, target: "ユーザー", result_count: response.count
           })));
         },
         error: function () {
-
         }
       });
-
-      $(window).unbind("scroll");
-      $(window).bind("scroll", this.pagenation);
     },
     searchWithEnter: function (e) {
-      if (e.which == 13) {
+      if (e.which == 13 && this.username.val() != "") {
         e.preventDefault();
         this.current_username = this.username.val();
         url_query.insertParam("search_word", this.current_username);
       }
     },
-    pagenation: function () {
-      var that           = this;
-      var scrollHeight   = $(document).height();
-      var scrollPosition = $(window).height() + $(window).scrollTop();
+    clickSearchBtn: function () {
+      if (this.username.val() != "") {
+        this.current_username = this.username.val();
+        url_query.insertParam("search_word", this.current_username);
+      }
+    },
+    setUserResultCollection: function (model, response, option) {
+      if (response.results && response.results.length > 0) {
+        for (var i = 0; i < response.results.length; i++) {
+          var user_result = new UserResult(response.results[i]);
+          this.user_results_view.collection.add(user_result);
+        }
+      }
 
-      if ((scrollHeight - scrollPosition) / scrollHeight <= 0.1) {
-        $(".loading-gif").css("display", "block");
-        $(window).unbind("scroll");
-
-        this.page += 1;
-
-        this.user_result_collection.fetch({
-          data: {username: this.current_username, page: this.page},
-          success: function (model, response, options) {
-            if (response.results && response.results.length > 0) {
-              for (var i = 0; i < response.results.length; i++) {
-                var user_result = new UserResult(response.results[i]);
-                that.user_results_view.collection.add(user_result);
-              }
-            }
-
-            $(".loading-gif").css("display", "none");
-
-            if (response.results.length != 0) {
-              $(window).bind("scroll", that.pagenation);
-            }
-          },
-          error: function () {
-
-          }
-        });
+      if (response.results.length != 0) {
+        $(window).bind("scroll", this.pagenation.load);
       }
     },
     changeTarget: function (e) {

@@ -1,4 +1,5 @@
 //= require ../../libs/socket.js
+//= require ../../libs/pagenation.js
 //= require ../../models/log.js
 //= require ../../models/post.js
 //= require ../../models/user.js
@@ -19,6 +20,7 @@
     el: ".profile-page",
     template: _.template($("#log-list-template").html()),
     initialize: function () {
+      $(window).unbind("scroll");
       this.$(".profile-timeline").html("");
       this.$(".profile-timeline").append(this.template);
       this.$(".count-box li").removeClass("current");
@@ -58,7 +60,7 @@
         error: function () {
 
         }
-      })
+      });
     },
     search: function (text) {
       this.logs_view.collection.reset();
@@ -73,19 +75,20 @@
         }
       }
     }
-  })
+  });
 
   var PostListView = Backbone.View.extend({
     el: ".profile-page",
     template: _.template($("#post-list-template").html()),
     initialize: function () {
+      $(window).unbind("scroll");
       this.$(".profile-timeline").html("");
       this.$(".profile-timeline").append(this.template);
       $(".search-log").val("");
       this.$(".count-box li").removeClass("current");
       this.$(".posts-li").addClass("current");
 
-      _.bindAll(this, "pagenation");
+      _.bindAll(this, "setPostCollection");
 
       var that               = this;
       this.post_collection   = new Posts();
@@ -94,63 +97,41 @@
       this.user_id           = this.$el.data("userid");
       this.page              = 1;
 
+      this.pagenation 　　　　= new Pagenation(this.post_collection, {user_id: this.user_id, type: "user"}, this.setPostCollection);
+
       this.post_collection.fetch({
         data: {user_id: this.user_id, type: "user", page: this.page},
         success: function (model, response, options) {
-          for (var i = 0; i < response.posts.length; i++) {
-            var post = new Post(response.posts[i]);
-            that.posts_view.collection.add(post);
-          }
+          that.setPostCollection(model, response, options);
         },
         error: function () {
-
         }
-      })
-
-      $(window).bind("scroll", this.pagenation);
+      });
     },
-    pagenation: function () {
-      var that           = this;
-      var scrollHeight   = $(document).height();
-      var scrollPosition = $(window).height() + $(window).scrollTop();
-      if ((scrollHeight - scrollPosition) / scrollHeight <= 0.1) {
-        $(".loading-gif").css("display", "block");
-        $(window).unbind("scroll");
-        this.page += 1;
+    setPostCollection: function (model, response, option) {
+      for (var i = 0; i < response.posts.length; i++) {
+        var post = new Post(response.posts[i]);
+        this.posts_view.collection.add(post);
+      }
 
-        this.post_collection.fetch({
-          data: {user_id: this.user_id, type: "user", page: this.page},
-          success: function (model, response, options) {
-            for (var i = 0; i < response.posts.length; i++) {
-              var post = new Post(response.posts[i]);
-              that.posts_view.collection.add(post);
-            }
-
-            $(".loading-gif").css("display", "none");
-
-            if (response.posts.length != 0) {
-              $(window).bind("scroll", that.pagenation);
-            }
-          },
-          error: function () {
-
-          }
-        })
+      if (response.posts.length != 0) {
+        $(window).bind("scroll", this.pagenation.load);
       }
     }
-  })
+  });
 
   var FollowsListView = Backbone.View.extend({
     el: ".profile-page",
     template: _.template($("#follows-list-template").html()),
     initialize: function () {
+      $(window).unbind("scroll");
       this.$(".profile-timeline").html("");
       this.$(".profile-timeline").append(this.template);
       $(".search-log").val("");
       this.$(".count-box li").removeClass("current");
       this.$(".follows-li").addClass("current");
 
-       _.bindAll(this, "pagenation");
+      _.bindAll(this, "setUserCollection");
 
       var that             = this;
       this.user_collection = new Users();
@@ -159,48 +140,25 @@
       this.user_id         = this.$el.data("userid");
       this.page            = 1;
 
+      this.pagenation      = new Pagenation(this.user_collection, {user_id: this.user_id, type: "follows"}, this.setUserCollection);
+
       this.user_collection.fetch({
         data: {user_id: this.user_id, type: "follows", page: this.page},
         success: function (model, response, options) {
-          for (var i = 0; i < response.users.length; i++) {
-            var user = new User(response.users[i]);
-            that.users_view.collection.add(user);
-          }
+          that.setUserCollection(model, response, options);
         },
         error: function () {
-
         }
-      })
-
-      $(window).bind("scroll", this.pagenation);
+      });
     },
-    pagenation: function () {
-      var that           = this;
-      var scrollHeight   = $(document).height();
-      var scrollPosition = $(window).height() + $(window).scrollTop();
-      if ((scrollHeight - scrollPosition) / scrollHeight <= 0.1) {
-        $(".loading-gif").css("display", "block");
-        $(window).unbind("scroll");
-        this.page += 1;
+    setUserCollection: function (model, response, option) {
+      for (var i = 0; i < response.users.length; i++) {
+        var user = new User(response.users[i]);
+        this.users_view.collection.add(user);
+      }
 
-        this.user_collection.fetch({
-          data: {user_id: this.user_id, type: "follows", page: this.page},
-          success: function (model, response, options) {
-            for (var i = 0; i < response.users.length; i++) {
-              var user = new User(response.users[i]);
-              that.users_view.collection.add(user);
-            }
-
-            $(".loading-gif").css("display", "none");
-
-            if (response.users.length != 0) {
-              $(window).bind("scroll", that.pagenation);
-            }
-          },
-          error: function () {
-
-          }
-        })
+      if (response.users.length != 0) {
+        $(window).bind("scroll", this.pagenation.load);
       }
     }
   })
@@ -209,13 +167,14 @@
     el: ".profile-page",
     template: _.template($("#followers-list-template").html()),
     initialize: function () {
+      $(window).unbind("scroll");
       this.$(".profile-timeline").html("");
       this.$(".profile-timeline").append(this.template);
       $(".search-log").val("");
       this.$(".count-box li").removeClass("current");
       this.$(".followers-li").addClass("current");
 
-       _.bindAll(this, "pagenation");
+      _.bindAll(this, "setUserCollection");
 
       var that             = this;
       this.user_collection = new Users();
@@ -224,51 +183,28 @@
       this.user_id         = this.$el.data("userid");
       this.page            = 1;
 
+      this.pagenation      = new Pagenation(this.user_collection, {user_id: this.user_id, type: "followers"}, this.setUserCollection);
+
       this.user_collection.fetch({
         data: {user_id: this.user_id, type: "followers", page: this.page},
         success: function (model, response, options) {
-          for (var i = 0; i < response.users.length; i++) {
-            var user = new User(response.users[i]);
-            that.users_view.collection.add(user);
-          }
+          that.setUserCollection(model, response, options);
         },
         error: function () {
-
         }
-      })
-
-      $(window).bind("scroll", this.pagenation);
+      });
     },
-    pagenation: function () {
-      var that           = this;
-      var scrollHeight   = $(document).height();
-      var scrollPosition = $(window).height() + $(window).scrollTop();
-      if ((scrollHeight - scrollPosition) / scrollHeight <= 0.1) {
-        $(".loading-gif").css("display", "block");
-        $(window).unbind("scroll");
-        this.page += 1;
+    setUserCollection: function (model, response, option) {
+      for (var i = 0; i < response.users.length; i++) {
+        var user = new User(response.users[i]);
+        this.users_view.collection.add(user);
+      }
 
-        this.user_collection.fetch({
-          data: {user_id: this.user_id, type: "followers", page: this.page},
-          success: function (model, response, options) {
-            for (var i = 0; i < response.users.length; i++) {
-              var user = new User(response.users[i]);
-              that.users_view.collection.add(user);
-            }
-
-            $(".loading-gif").css("display", "none");
-
-            if (response.users.length != 0) {
-              $(window).bind("scroll", that.pagenation);
-            }
-          },
-          error: function () {
-
-          }
-        })
+      if (response.users.length != 0) {
+        $(window).bind("scroll", this.pagenation.load);
       }
     }
-  })
+  });
 
 
   var AppView = Backbone.View.extend({
