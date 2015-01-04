@@ -1,11 +1,11 @@
 %script{type: "text/template", id: "user-activity-template"}
-  %figure.userActivityImgWrap
-    %img.userActivityImg{src: "/user_photos/{{= photo_path }}", width: "40", height: "40", alt: ""}
-  %a.userActivityUsername{href: "/users/{{= id }}#logs"} {{= username }}
-  %p.myGame
+  %figure.Useractivity__imgWrap
+    %img.Useractivity__img{src: "/user_photos/{{= photo_path }}", width: "40", height: "40", alt: ""}
+  %a.Useractivity__name{href: "/users/{{= id }}#logs"} {{= username }}
+  %p.Useractivity__mygame
     マイゲーム
-    %span.myGameCount {{= logs_count }}
-  %p.userActivityUserprof {{= introduction }}
+    %span.Useractivity__mygameNum {{= logs_count }}
+  %p.Useractivity__profile {{= introduction }}
   %ul.btn-list
     %li
       %span.followBtn.follow-btn フォローする

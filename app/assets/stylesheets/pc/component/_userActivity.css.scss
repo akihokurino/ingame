@@ -1,35 +1,38 @@
 @import "../../_function.css.scss";
 
-/*---   .userActivity   ----------*/
-.userActivity {
+/*---   Useractivity   ----------*/
+$component: "Useractivity";
+
+.#{$component} {
   @include clearfix;
   @include border-radius(2px);
 
-  &Ttl {
-    padding:2px 0 10px 0;
-    color:$color_textBlack;
-    font-size:14px;
-    font-weight:bold;
+  &__title {
+    padding: 2px 0 10px 0;
+    color: $color_textBlack;
+    font-weight: bold;
+    font-size: 14px;
   }
-  &List {
+  &__list {
     .item {
-      position: relative;
       @include clearfix;
+      position: relative;
       padding: 6px 0;
       border-top: solid 1px $color_border;
+
       &:last-child {
         border-bottom: solid 1px $color_border;
       }
     }
   }
-  &ImgWrap {
+  &__imgWrap {
     float: left;
     margin-right: 15px;
   }
-  &Img{
-        border-radius:50%;
+  &__img {
+    @include border-radius(20px);
   }
-  &Username {
+  &__name {
     display: inline-block;
     width: 112px;
     margin-bottom: 8px;
@@ -39,16 +42,15 @@
     line-height: 1.2;
     word-wrap: break-word;
   }
-  .myGame {
+  &__mygame {
     color: $color_textGray;
     font-size: .75rem;
-
-    &Count{
-      color: $color_textBlack;
-      font-weight:bold;
-    }
   }
-  &Userprof {
+  &__mygameNum {
+    color: $color_textBlack;
+    font-weight: bold;
+  }
+  &__profile {
     overflow: hidden;
     margin-top: 14px;
     color: #7e7e7e;
@@ -56,11 +58,11 @@
     line-height: 1rem;
   }
   .followBtn {
-    min-width:102px;
     display: block;
     position: absolute;
     top: 12px;
     right: 0;
+    min-width: 102px;
     padding: 6px 8px;
     border: 1px solid darken($main_color,7%);
     @include bglinear(lighten($main_color, 7%), $main_color);
@@ -74,28 +76,25 @@
     &:hover {
       @include bglinear(lighten($main_color, 5%), darken($main_color,2%));
     }
-
     &:before{
       display: inline-block;
       margin-right: 4px;
       font-family: 'icomoon';
-      content:"\e60b";
       speak: none;
-      font-size:15px;
-      font-style: normal;
       font-weight: normal;
+      font-size: 15px;
+      font-style: normal;
       font-variant: normal;
       text-transform: none;
       line-height: 1;
       vertical-align: -15%;
-
-      /* Better Font Rendering =========== */
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      content: "\e60b";
     }
   }
   .unfollow {
-    min-width:102px;
+    min-width: 102px;
     border: 1px solid darken($color_border,7%);
     @include bglinear(lighten($color_border, 7%), $color_border);
     color: $color_textBlack;
@@ -103,10 +102,9 @@
     &:hover {
       @include bglinear(lighten($color_border, 5%), darken($color_border,5%));
     }
-
     &:before{
-      content:"\e615";
       color: $color_green;
+      content: "\e615";
     }
   }
 }
