@@ -21,12 +21,12 @@ $component: "Header";
     margin: 0 auto;
     color: #fff;
   }
-  &__Title{
-    display:inline-block;
+  &__title{
+    display: inline-block;
     vertical-align: top;
   }
   &__TitleLink {
-    display:inline-block;
+    display: inline-block;
     width: 120px;
     height: 45px;
     background: url(/assets/logo.png) no-repeat -10px;
