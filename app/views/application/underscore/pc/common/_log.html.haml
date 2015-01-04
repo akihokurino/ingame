@@ -1,24 +1,24 @@
 %script{type: "text/template", id: "log-template"}
-  %article.gameList
-    %a.articleWrap{href: "/games/{{= game.id }}#all", style: "display: block;"}
-      %figure.gameImgWrap
+  %article.Gamelist__item
+    %a.Gamelist__link{href: "/games/{{= game.id }}#all", style: "display: block;"}
+      %figure.Gamelist__imgWrap
         {{ if (game.photo_path) { }}
-        %img.gameImg{src: "/game_photos/{{= game.photo_path}}", width: "166", alt: ""}
+        %img.Gamelist__img{src: "/game_photos/{{= game.photo_path}}", width: "166", alt: ""}
         {{ } else if (game.photo_url) { }}
-        %img.gameImg{src: "{{= game.photo_url }}", width: "166", alt: ""}
+        %img.Gamelist__img{src: "{{= game.photo_url }}", width: "166", alt: ""}
         {{ } else { }}
-        %img.gameImg{src: "/game_photos/default.png", width: "166", alt: ""}
+        %img.Gamelist__img{src: "/game_photos/default.png", width: "166", alt: ""}
         {{ } }}
-      %h1.ttl
+      %h1.Gamelist__title
         {{= game.title }}
-      %ul.starList
+      %ul.Gamelist__starList
         {{ diff = 5 - rate }}
         {{ for (var i = 0; i < rate; i++) { }}
-        %li.starOn ★
+        %li.Gamelist__star--on ★
         {{ } }}
         {{ for (var i = 0; i < diff; i++) { }}
-        %li.starOff ☆
+        %li.Gamelist__star--off ☆
         {{ } }}
     {{ if (isCurrentUserLog) { }}
-    %span.gameDeleteBtn.delete-btn ×
+    %span.Gamelist__delete.delete-btn ×
     {{ } }}

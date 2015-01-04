@@ -3,7 +3,7 @@
 /*---   Delete   ----------*/
 $component: "Delete";
 
-.#{$component} {
+.delete-confirm-wrap {
   display: none;
   position: fixed;
   left: 50%;
@@ -17,7 +17,8 @@ $component: "Delete";
   @include box-sizing;
   background-color: #fff;
   text-align: center;
-
+}
+.#{$component} {
   &__text {
     margin-bottom: 8px;
     color: #3d3d3d;
