@@ -1,0 +1,51 @@
+@import "../../_function.css.scss";
+
+/*---   Term   ----------*/
+$component: "Term";
+
+.#{$component} {
+  width: 100%;
+  padding: 20px 0 40px;
+  background: #f2f2f2;
+  line-height: 1.5;
+
+  &__inner {
+    width: 960px;
+    margin: 0 auto;
+    padding: 16px 30px;
+    @include border-radius(3px);
+    @include box-sizing;
+    background: #fff;
+  }
+  &__item {
+    margin-bottom: 28px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &__title {
+    font-weight: bold;
+    font-size: 1.125rem;
+  }
+  &__text {
+    color: #626262;
+    font-size: .875rem;
+  }
+  &__link {
+    color: #516ea4;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  &__numList {
+    color: #626262;
+    font-size: .875rem;
+  }
+  &__numListItem {
+    margin-left: 1.5em;
+    list-style: decimal;
+  }
+}
