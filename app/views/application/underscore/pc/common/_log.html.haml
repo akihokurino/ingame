@@ -1,6 +1,6 @@
 %script{type: "text/template", id: "log-template"}
   %article.Gamelist__item
-    %a.Gamelist__link{href: "/games/{{= game.id }}#all", style: "display: block;"}
+    %a.Gamelist__link--log{href: "/games/{{= game.id }}#all", style: "display: block;"}
       %figure.Gamelist__imgWrap
         {{ if (game.photo_path) { }}
         %img.Gamelist__img{src: "/game_photos/{{= game.photo_path}}", width: "166", alt: ""}

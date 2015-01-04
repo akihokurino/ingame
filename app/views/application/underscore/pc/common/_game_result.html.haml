@@ -1,6 +1,6 @@
 %script{type: "text/template", id: "game-result-template"}
   %article.Gamelist__item
-    %a.Gamelist__link.to-game-page{href: "#"}
+    %a.Gamelist__link--result.to-game-page{href: "#"}
       %figure.Gamelist__imgWrap
         {{ if (photo_path) { }}
         %img.Gamelist__img{src: "/game_photos/{{= photo_path }}", width: "166", alt: ""}
@@ -21,7 +21,7 @@
         %li.Gamelist__star--off ☆
         {{ } }}
     .Gamelist__statusWrap
-      %select.Gamelist__status.my-status{name: "status", size: 1}
+      %select.Gamelist__status.status.my-status{name: "status", size: 1}
         %option{value: ""} 登録する
         %option{value: 1} 気になる
         %option{value: 2} プレイ中

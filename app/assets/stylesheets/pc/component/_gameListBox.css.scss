@@ -24,7 +24,7 @@ $component: "Gamelist";
       background: #fff;
 
       &:hover {
-        .Gamelist__link {
+        .Gamelist__link--log {
           &:after {
             display: block;
             position: absolute;
@@ -46,11 +46,13 @@ $component: "Gamelist";
     position: relative;
   }
   &__link {
-    color: $color_textBlack;
-    
-    &:hover {
-      color: $main_color;
-      text-decoration: none;
+    &--log, &--result {
+      color: $color_textBlack;
+      
+      &:hover {
+        color: $main_color;
+        text-decoration: none;
+      }
     }
   }
   &__imgWrap {
