@@ -41,21 +41,21 @@
               %span.count
                 = @current_user.follower_num
     .postColumn
-      .addPost
-        .addPostInner
-          %p.error-log.select-log-error.selectLogError
-          %p.selectBtn.show-select-modal ゲームを選ぶ
-          %textarea.post-input{placeholder: "そのゲームについて、どう思った？"}
-          %ul.thumbnailList.thumbnail-list
+      .Addpost
+        .Addpost__inner
+          %p.Addpost__error.error-log.select-log-error
+          %p.Addpost__select.show-select-modal ゲームを選ぶ
+          %textarea.Addpost__input.post-input{placeholder: "そのゲームについて、どう思った？"}
+          %ul.Addpost__thumbnailList.thumbnail-list
 
           #thumbnail
 
           .url-thumbnail-list
 
-          .photoBtnWrap
-            %p.photoBtnText 写真を追加
-            %input.addPhoto#upload-btn{type: "file", href: ""}
-          %p.addPostBtn.post-btn つぶやく
+          .Addpost__photo
+            %p.Addpost__photoText 写真を追加
+            %input.Addpost__photoAdd#upload-btn{type: "file", href: ""}
+          %p.Addpost__photoButton.post-btn つぶやく
 
           = render partial: "log_select"
 

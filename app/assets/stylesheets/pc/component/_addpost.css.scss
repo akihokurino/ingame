@@ -1,0 +1,161 @@
+@import "../../_function.css.scss";
+@import "_addpost-selectModal.css.scss";
+
+/*---   Addpost   ----------*/
+$component: "Addpost";
+
+.#{$component} {
+  @include clearfix;
+  position: relative;
+  width: 480px;
+  margin: 0 auto 18px;
+  @include box-sizing;
+
+  &__inner {
+    position: relative;
+    padding: 10px;
+    border: 1px solid #e6e6e6;
+    @include border-radius(3px);
+    @include box-sizing;
+    background: #fff;
+  }
+  &__error {
+    padding: 4px 8px;
+    background-color: #726ad0;
+    display: none;
+    color: #fff;
+    border-radius: 3px;
+    margin-bottom: 10px;
+  }
+  &__select {
+    position: relative;
+    width: 125px;
+    padding-bottom: 10px;
+    color: $main_color;
+    font-size: 1rem;
+    cursor: pointer;
+
+    &:after {
+      display: block;
+      position: absolute;
+      right: 10px;
+      top: 2px;
+      width: 6px;
+      height: 6px;
+      border-top: 3px solid $main_color;
+      border-right: 3px solid $main_color;
+      -webkit-transform: rotate(135deg);
+      transform: rotate(135deg);
+      content: "";
+    }
+  }
+  &__input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    border: none;
+    border-top: 1px solid #f0f0f0;
+    @include box-sizing;
+    font-size: .875rem;
+    resize: none;
+    outline: 0;
+
+    &::-webkit-input-placeholder {
+      color: #e2e2e2;
+      font-size: .875rem;
+    }
+  }
+  &__thumbnailList {
+    margin-bottom: 8px;
+  }
+  &__thumbnailItem {
+    display: inline-block;
+  }
+  &__thumbnailTitle {
+    color: #726ad0;
+    margin-bottom: 5px;
+  }
+  #thumbnail {
+    margin-bottom: 25px;
+
+    img {
+      width: 100%;
+    }
+  }
+  &__thumbnailList {
+    margin-bottom: 8px;
+  }
+  &__urlThumbnail {
+    overflow: hidden;
+    margin-bottom: 30px;
+    border: solid 1px #e2e2e2;
+    color: #4a4a4a;
+  }
+  &__urlThumbnailImg {
+    width: 100%;
+    border-bottom: solid 1px #e2e2e2;
+  }
+  &__urlThumbnailCaption {
+    padding: 10px;
+
+    &--title {
+      margin-bottom: 15px;
+    }
+    &--text {
+      font-size: .875rem;
+      line-height: 1.5;
+    }
+  }
+  &__photo {
+    position: relative;
+  }
+  &__photoText {
+    padding-top: 5px;
+    padding-left: 30px;
+    color: #929292;
+    font-size: .75rem;
+
+    &:before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-size: 1.25rem;
+      font-family: 'icomoon';
+      content: "\e608";
+    }
+  }
+  &__photoAdd {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100px;
+    opacity: 0;
+  }
+  &__photoButton {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    height: 30px;
+    padding-left: 35px;
+    padding-right: 10px;
+    @include border-radius(4px);
+    @include bglinear(lighten($main_color, 5%), $main_color);
+    color: #fff;
+    font-size: .875rem;
+    line-height: 30px;
+    cursor: pointer;
+
+    &:before {
+      position: absolute;
+      top: 0;
+      left: 10px;
+      font-size: 1.25rem;
+      font-family: 'icomoon';
+      content: "\e60a";
+    }
+    &:hover {
+      @include bglinear($main_color, lighten($main_color, 5%));
+      color: #fff;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 %script{type: "text/template", id: "url-thumbnail-template"}
-  .urlThumbnail
-    %img.urlThumbnailImg{src: "{{= thumbnail }}"}
-    .body
-      %p.title {{= title }}
-      %p.description {{= description }}
+  %figure.Addpost__urlThumbnail
+    %img.Addpost__urlThumbnailImg{src: "{{= thumbnail }}"}
+    %figcaption.Addpost__urlThumbnailCaption
+      %p.Addpost__urlThumbnailCaption--title {{= title }}
+      %p.Addpost__urlThumbnailCaption--text {{= description }}

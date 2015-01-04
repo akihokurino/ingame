@@ -1,0 +1,48 @@
+@import "../../_function.css.scss";
+
+/*---   Addpost__selectModal   ----------*/
+$component: "Addpost";
+
+.#{$component} {
+  &__selectModal {
+    display: none;
+    position: absolute;
+    top: 37px;
+    left: 0;
+    z-index: 10;
+    @include box-shadow(1px, 1px, 3px, 3px, rgba(0, 0, 0, 0.2));
+    background: #fff;
+    font-weight: bold;
+    font-size: .75rem;
+
+    &--playing {
+      padding: 10px 10px 0;
+      color: $color_red;
+      line-height: 23px;
+    }
+    &--ready {
+      padding: 0 10px;
+      color: $color_yellow;
+      line-height: 23px;
+    }
+    &--played {
+      padding: 0 10px;
+      color: $color_blue;
+      line-height: 23px;
+    }
+  }
+  &__selectModalList {
+    padding-bottom: 10px;
+
+    .item {
+      padding: 0 10px;
+      color: $color_black;
+      line-height: 23px;
+
+      &:hover {
+        background: #f5f5f5;
+        cursor: pointer;
+      }
+    }
+  }
+}
