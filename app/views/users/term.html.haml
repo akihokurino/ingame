@@ -1,9 +1,10 @@
 = content_for :head do
   = stylesheet_link_tag "pc/term"
 
-%header.header
-  .headerInner
-    %h1.logo GAMR
+%header.Header
+  .Header__inner
+    %h1.Header__title
+      = link_to "GAMR", posts_path, class: "Header__TitleLink"
 %section.mainContent
   .settingTopBox
     %h1.mainTtl 利用規約
