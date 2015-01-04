@@ -1,8 +1,8 @@
 @import "../../_function.css.scss";
-@import "_addpost-selectModal.css.scss";
+@import "_addPost-selectModal.css.scss";
 
-/*---   Addpost   ----------*/
-$component: "Addpost";
+/*---   AddPost   ----------*/
+$component: "AddPost";
 
 .#{$component} {
   @include clearfix;

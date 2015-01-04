@@ -1,11 +1,11 @@
 %script{type: "text/template", id: "game-thumbnail-template"}
-	%li.Addpost__thumbnailItem
-		%figure.Addpost__thumbnail
-			%figcaption.Addpost__thumbnailTitle {{= game.title }}
-			{{ if (game.photo_path) { }}
-			%img.Addpost__thumbnailImg{src: "/game_photos/{{= game.photo_path }}", height: "52", alt: "ゲーム画像"}
-			{{ } else if (game.photo_url) { }}
-			%img.Addpost__thumbnailImg{src: "{{= game.photo_url }}", height: "52", alt: "ゲーム画像"}
-			{{ } else { }}
-			%img.Addpost__thumbnailImg{src: "/game_photos/default.png", height: "52", alt: "ゲーム画像"}
-			{{ } }}
+  %li.AddPost__thumbnailItem
+    %figure.AddPost__thumbnail
+      %figcaption.AddPost__thumbnailTitle {{= game.title }}
+      {{ if (game.photo_path) { }}
+      %img.AddPost__thumbnailImg{src: "/game_photos/{{= game.photo_path }}", height: "52", alt: "ゲーム画像"}
+      {{ } else if (game.photo_url) { }}
+      %img.AddPost__thumbnailImg{src: "{{= game.photo_url }}", height: "52", alt: "ゲーム画像"}
+      {{ } else { }}
+      %img.AddPost__thumbnailImg{src: "/game_photos/default.png", height: "52", alt: "ゲーム画像"}
+      {{ } }}

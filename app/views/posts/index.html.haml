@@ -41,21 +41,21 @@
               %span.TopProfile__itemCount
                 = @current_user.follower_num
     .postColumn
-      .Addpost
-        .Addpost__inner
-          %p.Addpost__error.error-log.select-log-error
-          %p.Addpost__select.show-select-modal ゲームを選ぶ
-          %textarea.Addpost__input.post-input{placeholder: "そのゲームについて、どう思った？"}
-          %ul.Addpost__thumbnailList.thumbnail-list
+      .AddPost
+        .AddPost__inner
+          %p.AddPost__error.error-log.select-log-error
+          %p.AddPost__select.show-select-modal ゲームを選ぶ
+          %textarea.AddPost__input.post-input{placeholder: "そのゲームについて、どう思った？"}
+          %ul.AddPost__thumbnailList.thumbnail-list
 
           #thumbnail
 
           .url-thumbnail-list
 
-          .Addpost__photo
-            %p.Addpost__photoText 写真を追加
-            %input.Addpost__photoAdd#upload-btn{type: "file", href: ""}
-          %p.Addpost__photoButton.post-btn つぶやく
+          .AddPost__photo
+            %p.AddPost__photoText 写真を追加
+            %input.AddPost__photoAdd#upload-btn{type: "file", href: ""}
+          %p.AddPost__photoButton.post-btn つぶやく
 
           = render partial: "log_select"
 
