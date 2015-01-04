@@ -247,10 +247,11 @@ $component: "Post";
   }
   &__commentPostImgWrap {
     float: left;
+    margin-right: 10px;
   }
   &__commentPostInput {
     overflow: hidden;
-    width: 275px;
+    width: 375px;
     height: 30px;
     padding: 5px;
     border: none;
