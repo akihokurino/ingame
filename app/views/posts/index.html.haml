@@ -10,35 +10,35 @@
   %h1.mainContentTtl タイムライン
   .mainContentInner
     .profileColumn
-      %article.profile
-        .profileTopBox
-          %figure.userImgWrap
+      %article.TopProfile
+        .TopProfile__inner
+          %figure.TopProfile__imgWrap
             %a{href: "/users/#{@current_user[:id]}#logs"}
-              %img.userImg{src: "/user_photos/#{@current_user[:photo_path]}", width: "60", height: "60", alt: ""}
-          %p.userName
-            = link_to @current_user[:username], "/users/#{@current_user[:id]}#logs"
-          %p.userPlace.icon-place
+              %img.TopProfile__img{src: "/user_photos/#{@current_user[:photo_path]}", width: "60", height: "60", alt: ""}
+          %p.TopProfile__name
+            = link_to @current_user[:username], "/users/#{@current_user[:id]}#logs", class: "TopProfile__nameLink"
+          %p.TopProfile__place.icon-place
             = @current_user[:place]
-        %ul.profileCountList.count-box
-          %li.gameNum.logs-li
-            %a{href: "/users/#{@current_user[:id]}#logs"}
+        %ul.TopProfile__list.count-box
+          %li.TopProfile__item.logs-li
+            %a.TopProfile__itemLink{href: "/users/#{@current_user[:id]}#logs"}
               マイゲーム
-              %span.count
+              %span.TopProfile__itemCount
                 = @current_user[:logs_count]
-          %li.postNum.posts-li
-            %a{href: "/users/#{@current_user[:id]}#posts"}
+          %li.TopProfile__item.posts-li
+            %a.TopProfile__itemLink{href: "/users/#{@current_user[:id]}#posts"}
               ポスト
-              %span.count
+              %span.TopProfile__itemCount
                 = @current_user[:posts_count]
-          %li.followNum.follows-li
-            %a{href: "/users/#{@current_user[:id]}#follows"}
+          %li.TopProfile__item.follows-li
+            %a.TopProfile__itemLink{href: "/users/#{@current_user[:id]}#follows"}
               フォロー
-              %span.count
+              %span.TopProfile__itemCount
                 = @current_user.follow_num
-          %li.followerNum.followers-li
-            %a{href: "/users/#{@current_user[:id]}#followers"}
+          %li.TopProfile__item.followers-li
+            %a.TopProfile__itemLink{href: "/users/#{@current_user[:id]}#followers"}
               フォロワー
-              %span.count
+              %span.TopProfile__itemCount
                 = @current_user.follower_num
     .postColumn
       .Addpost

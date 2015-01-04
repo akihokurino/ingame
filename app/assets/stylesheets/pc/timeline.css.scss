@@ -1,4 +1,5 @@
 @import "../_function.css.scss";
+@import "component/_topProfile.css.scss";
 @import "component/_userActivity.css.scss";
 @import "component/_addpost.css.scss";
 @import "component/_post.css.scss";
@@ -32,82 +33,5 @@
   .userColumn {
     float: right;
     width: 280px;
-  }
-  /*---   ---*/
-  .profile {
-    position: relative;
-    width: 240px;
-    min-height: 122px;
-    padding: 5px;
-    @include border-radius(3px);
-    @include box-sizing;
-    @include clearfix;
-
-    &TopBox {
-      @include clearfix;
-      padding-bottom:10px;
-    }
-    .userImgWrap {
-      display: inline-block;
-      float: left;
-      margin-right: 14px;
-      @include border-radius(2px);
-      line-height: 0;
-      .userImg{
-        @include border-radius(50%);
-      }
-    }
-    .userName {
-      display: table-cell;
-      width: 180px;
-      margin-bottom: 10px;
-      color: #fff;
-      font-weight: bold;
-      font-size: 1rem;
-      vertical-align: middle;
-      line-height: 1.2;
-      word-break: break-all;
-      a{
-        color: $color_textBlack;
-      }
-    }
-    .userPlace{
-      color: $color_textGray;
-    }
-    .userProf {
-      color: $color_textGray;
-      font-size: .75rem;
-      line-height: 1rem;
-    }
-    &CountList {
-      margin: 0 auto;
-      font-size: 0;
-      color: $color_textGray;
-    }
-    .gameNum,.postNum,.followNum,.followerNum, {
-      border-top: solid 1px $color_border;
-      @include box-sizing;
-      font-size: .875rem;
-      font-weight: bold;
-      line-height:28px;
-      a{
-        color: $color_textBlack;
-        padding:0 4px;
-        display: block;
-        &:hover{
-          text-decoration: none;
-          background-color: darken($bg_color,5%);
-        }
-      }
-
-      .count {
-        width: 100%;
-        font-weight: normal;
-        font-size: .875rem;
-        text-align: right;
-        position: absolute;
-        right:8px;
-      }
-    }
   }
 }
