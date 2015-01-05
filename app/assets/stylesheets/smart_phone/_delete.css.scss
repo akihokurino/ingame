@@ -5,10 +5,9 @@
 	display: none;
 	position: fixed;
 	left: 50%;
-	top: 50%;
+	top: 40%;
 	z-index: 10;
-	margin-left: -120px;
-	margin-top: -40px;
+	margin-left: -150px;
 	padding: 12px 10px 10px;
 	border: 1px solid #ababab;
 	@include border-radius(3px);
