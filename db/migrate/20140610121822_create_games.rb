@@ -11,8 +11,8 @@ class CreateGames < ActiveRecord::Migration
       t.string :device, :index => true
       t.string :provider
       t.integer :provider_id
-      t.string :provider_url
-      t.string :amazon_url
+      t.text :provider_url
+      t.text :amazon_url
       t.text :game_html, :limit => 4294967295
       t.integer :game_likes_count, :default => 0
       t.integer :posts_count, :default => 0

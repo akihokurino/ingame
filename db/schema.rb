@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20141223030429) do
 
   create_table "game_urls", force: true do |t|
     t.integer  "game_id"
-    t.string   "text"
+    t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -72,8 +72,8 @@ ActiveRecord::Schema.define(version: 20141223030429) do
     t.string   "device"
     t.string   "provider"
     t.integer  "provider_id"
-    t.string   "provider_url"
-    t.string   "amazon_url"
+    t.text     "provider_url"
+    t.text     "amazon_url"
     t.text     "game_html",        limit: 2147483647
     t.integer  "game_likes_count",                    default: 0
     t.integer  "posts_count",                         default: 0
