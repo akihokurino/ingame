@@ -5,7 +5,7 @@
 /*---   .mainContent   ---------------------------*/
 .mainContent {
   @include clearfix;
-  padding: 68px 0 46px;
+  padding: 48px 0 46px;
   background-color: $bg_color;
 
   &Inner {
@@ -13,20 +13,18 @@
     margin: 0 auto;
   }
   /*---   .mainTtl   ----------*/
-  .mainTtl {
-    margin-bottom: 40px;
-    color: #3e3e3e;
-    font-size: 1.5rem;
-    text-align: center;
+  .profileColumn,.postColumn,.userColumn{
+    margin-top: 10px;
   }
+
   .profileColumn {
     float: left;
     width: 240px;
-    margin-right: 20px;
   }
   .postColumn {
     float: left;
     width: 520px;
+    padding: 0 10px;
   }
   .userColumn {
     float: right;
@@ -37,30 +35,26 @@
     position: relative;
     width: 240px;
     min-height: 122px;
-    padding: 5px;
+    border: solid 1px $color_border;
     @include border-radius(3px);
     @include box-sizing;
+    background: #fff;
     @include clearfix;
 
     &TopBox {
-      @include clearfix;
-      padding-bottom:10px;
+      padding: 10px;
+      text-align: center;
     }
     .userImgWrap {
       display: inline-block;
-      float: left;
-      margin-right: 14px;
-      @include border-radius(2px);
       line-height: 0;
       .userImg{
         @include border-radius(50%);
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
       }
     }
     .userName {
-      display: table-cell;
-      width: 180px;
-      margin-bottom: 10px;
-      color: #fff;
+      margin: 8px;
       font-weight: bold;
       font-size: 1rem;
       vertical-align: middle;
@@ -72,40 +66,36 @@
     }
     .userPlace{
       color: $color_textGray;
-    }
-    .userProf {
-      color: $color_textGray;
-      font-size: .75rem;
-      line-height: 1rem;
+      font-size: 0.857142857rem;
     }
     &CountList {
       margin: 0 auto;
       font-size: 0;
       color: $color_textGray;
-    }
-    .gameNum,.postNum,.followNum,.followerNum, {
-      border-top: solid 1px $color_border;
-      @include box-sizing;
-      font-size: .875rem;
-      font-weight: bold;
-      line-height:28px;
-      a{
-        color: $color_textBlack;
-        padding:0 4px;
-        display: block;
-        &:hover{
-          text-decoration: none;
-          background-color: darken($bg_color,5%);
-        }
-      }
 
-      .count {
-        width: 100%;
-        font-weight: normal;
+      li {
+        border-top: solid 1px $color_border;
+        @include box-sizing;
         font-size: .875rem;
-        text-align: right;
-        position: absolute;
-        right:8px;
+        line-height:28px;
+        a{
+          color: $color_textBlack;
+          padding: 4px 4px 4px 8px;
+          display: block;
+          &:hover{
+            text-decoration: none;
+            background-color: #FDFDFD;
+          }
+        }
+
+        .count {
+          font-weight: normal;
+          font-size: .875rem;
+          font-weight: bold;
+          text-align: right;
+          position: absolute;
+          right:8px;
+        }
       }
     }
   }
@@ -113,9 +103,33 @@
   .addPost {
     position: relative;
     width: 480px;
-    margin: 0 auto 18px;
+    margin: 0 auto 10px;
     @include box-sizing;
     @include clearfix;
+
+    &:after, &:before {
+      right: 100%;
+      top: 50%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+    }
+
+    &:after {
+      border-color: rgba(255, 255, 255, 0);
+      border-right-color: #ffffff;
+      border-width: 10px;
+      margin-top: -10px;
+    }
+    &:before {
+      border-color: rgba(230, 230, 230, 0);
+      border-right-color: #e6e6e6;
+      border-width: 11px;
+      margin-top: -11px;
+    }
 
     .profImgWrap {
       margin-right: 10px;
@@ -144,39 +158,48 @@
     }
     .selectBtn {
       position: relative;
-      width: 125px;
-      padding-bottom: 10px;
-      color: $main_color;
-      font-size: 1rem;
+      width: 100%;
+      padding: 8px 5px;
+      border: 1px solid darken($color_border,7%);
+      @include border-radius(2px);
+      @include bglinear(lighten($color_border, 7%), $color_border);
+      color: $color_textGray;
+      font-size: .875rem;
       cursor: pointer;
+
+      &:hover {
+        @include bglinear(lighten($color_border, 5%), darken($color_border,5%));
+      }
 
       &:after {
         display: block;
         position: absolute;
         right: 10px;
-        top: 2px;
+        top: 8px;
         width: 6px;
         height: 6px;
-        border-top: 3px solid $main_color;
-        border-right: 3px solid $main_color;
+        border-top: 3px solid $color_textGray;
+        border-right: 3px solid $color_textGray;
         -webkit-transform: rotate(135deg);
         transform: rotate(135deg);
         content: "";
       }
     }
     textarea {
+      margin: 10px 0;
       width: 100%;
-      margin-bottom: 10px;
-      padding: 8px;
-      border: none;
-      border-top: 1px solid #f0f0f0;
+      padding: 10px;
+      border: 1px solid #d1d1d1;
+      @include border-radius(2px);
       @include box-sizing;
+      box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.07);
+      background: #f0f0f0;
       font-size: .875rem;
       resize: none;
       outline: 0;
 
       &::-webkit-input-placeholder {
-        color: #e2e2e2;
+        color: #d1d1d1;
         font-size: .875rem;
       }
     }
@@ -220,17 +243,25 @@
     }
     .photoBtnWrap {
       position: relative;
+      width: 100px;
+      border: 1px solid darken($color_border,7%);
+      @include border-radius(2px);
+      @include bglinear(lighten($color_border, 7%), $color_border);
+      color: $color_textGray;
+
+      &:hover {
+        @include bglinear(lighten($color_border, 5%), darken($color_border,5%));
+      }
     }
     .photoBtnText {
-      padding-top: 5px;
-      padding-left: 30px;
-      color: #929292;
+      padding: 8px 5px 8px 30px;
+      color: $color_textGray;
       font-size: .75rem;
 
       &:before {
         position: absolute;
-        top: 0;
-        left: 0;
+        top: 4px;
+        left: 5px;
         font-size: 1.25rem;
         font-family: 'icomoon';
         content: "\e608";
@@ -248,26 +279,34 @@
       right: 10px;
       bottom: 10px;
       height: 30px;
-      padding-left: 35px;
-      padding-right: 10px;
-      @include border-radius(4px);
-      @include bglinear(lighten($main_color, 5%), $main_color);
+      padding: 6px 8px;;
+      border: 1px solid darken($main_color,7%);
+      @include bglinear(lighten($main_color, 7%), $main_color);
+      @include border-radius(2px);
       color: #fff;
       font-size: .875rem;
-      line-height: 30px;
       cursor: pointer;
 
       &:before {
-        position: absolute;
-        top: 0;
-        left: 10px;
-        font-size: 1.25rem;
-        font-family: 'icomoon';
-        content: "\e60a";
+      margin-right: 5px;
+      font-family: 'icomoon';
+      content: "\e60a";
+      speak: none;
+      font-size: 1.2rem;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+      vertical-align: -18%;
+
+      /* Better Font Rendering =========== */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
       }
+
       &:hover {
-        @include bglinear($main_color, lighten($main_color, 5%));
-        color: #fff;
+        @include bglinear(lighten($main_color, 5%), darken($main_color,2%));
       }
     }
     .selectModal {
@@ -310,5 +349,6 @@
         }
       }
     }
+    
   }
 }
