@@ -60,9 +60,8 @@ namespace :famituu do
       doc = Nokogiri::HTML.parse search(date, 1)
       pageEnd(doc).downto 1 do |page|
         puts "collecting #{date} / #{page}"
-
         doc           = Nokogiri::HTML.parse search(date, page)
-        searchResults = doc.css("div.itemJacketBox")
+        searchResults = doc.css("div.itemjacketBox")
         break if searchResults.length == 0
         isAlready     = {}
 
@@ -75,7 +74,8 @@ namespace :famituu do
           devices              = []
 
           # デバイス,IDの取得
-          row.css("div.gameTitle > a").each do |a|
+          #row.css("div.gameTitle > a").each do |a|
+          row.css("h3.itemName > a").each do |a|
             href = a.attr("href")
             if href.index("http://www.famitsu.com/cominy/")
               isGame               = true
@@ -155,7 +155,7 @@ namespace :famituu do
           rescue Exception
             result[:wiki] = nil
           end
-
+          p result
           Game.create_from_scraping result
         end
       end
