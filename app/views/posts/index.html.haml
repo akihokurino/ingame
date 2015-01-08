@@ -13,7 +13,7 @@
         .profileTopBox
           %figure.userImgWrap
             %a{href: "/users/#{@current_user[:id]}#logs"}
-              %img.userImg{src: "/user_photos/#{@current_user[:photo_path]}", width: "60", height: "60", alt: ""}
+              %img.userImg{src: "/user_photos/#{@current_user[:photo_path]}", width: "100", height: "100", alt: ""}
           %p.userName
             = link_to @current_user[:username], "/users/#{@current_user[:id]}#logs"
           %p.userPlace.icon-place
