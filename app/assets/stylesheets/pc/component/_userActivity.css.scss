@@ -98,7 +98,7 @@
     min-width:102px;
     border: 1px solid darken($color_border,7%);
     @include bglinear(lighten($color_border, 7%), $color_border);
-    color: $color_textBlack;
+    color: $color_textGray;
 
     &:hover {
       @include bglinear(lighten($color_border, 5%), darken($color_border,5%));

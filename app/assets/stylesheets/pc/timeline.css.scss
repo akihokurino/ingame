@@ -158,39 +158,48 @@
     }
     .selectBtn {
       position: relative;
-      width: 125px;
-      padding-bottom: 10px;
-      color: $main_color;
-      font-size: 1rem;
+      width: 100%;
+      padding: 8px 5px;
+      border: 1px solid darken($color_border,7%);
+      @include border-radius(2px);
+      @include bglinear(lighten($color_border, 7%), $color_border);
+      color: $color_textGray;
+      font-size: .875rem;
       cursor: pointer;
+
+      &:hover {
+        @include bglinear(lighten($color_border, 5%), darken($color_border,5%));
+      }
 
       &:after {
         display: block;
         position: absolute;
         right: 10px;
-        top: 2px;
+        top: 8px;
         width: 6px;
         height: 6px;
-        border-top: 3px solid $main_color;
-        border-right: 3px solid $main_color;
+        border-top: 3px solid $color_textGray;
+        border-right: 3px solid $color_textGray;
         -webkit-transform: rotate(135deg);
         transform: rotate(135deg);
         content: "";
       }
     }
     textarea {
+      margin: 10px 0;
       width: 100%;
-      margin-bottom: 10px;
-      padding: 8px;
-      border: none;
-      border-top: 1px solid #f0f0f0;
+      padding: 10px;
+      border: 1px solid #d1d1d1;
+      @include border-radius(2px);
       @include box-sizing;
+      box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.07);
+      background: #f0f0f0;
       font-size: .875rem;
       resize: none;
       outline: 0;
 
       &::-webkit-input-placeholder {
-        color: #e2e2e2;
+        color: #d1d1d1;
         font-size: .875rem;
       }
     }
@@ -234,17 +243,25 @@
     }
     .photoBtnWrap {
       position: relative;
+      width: 100px;
+      border: 1px solid darken($color_border,7%);
+      @include border-radius(2px);
+      @include bglinear(lighten($color_border, 7%), $color_border);
+      color: $color_textGray;
+
+      &:hover {
+        @include bglinear(lighten($color_border, 5%), darken($color_border,5%));
+      }
     }
     .photoBtnText {
-      padding-top: 5px;
-      padding-left: 30px;
-      color: #929292;
+      padding: 8px 5px 8px 30px;
+      color: $color_textGray;
       font-size: .75rem;
 
       &:before {
         position: absolute;
-        top: 0;
-        left: 0;
+        top: 4px;
+        left: 5px;
         font-size: 1.25rem;
         font-family: 'icomoon';
         content: "\e608";
@@ -262,26 +279,34 @@
       right: 10px;
       bottom: 10px;
       height: 30px;
-      padding-left: 35px;
-      padding-right: 10px;
-      @include border-radius(4px);
-      @include bglinear(lighten($main_color, 5%), $main_color);
+      padding: 6px 8px;;
+      border: 1px solid darken($main_color,7%);
+      @include bglinear(lighten($main_color, 7%), $main_color);
+      @include border-radius(2px);
       color: #fff;
       font-size: .875rem;
-      line-height: 30px;
       cursor: pointer;
 
       &:before {
-        position: absolute;
-        top: 0;
-        left: 10px;
-        font-size: 1.25rem;
-        font-family: 'icomoon';
-        content: "\e60a";
+      margin-right: 5px;
+      font-family: 'icomoon';
+      content: "\e60a";
+      speak: none;
+      font-size: 1.2rem;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+      vertical-align: -18%;
+
+      /* Better Font Rendering =========== */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
       }
+
       &:hover {
-        @include bglinear($main_color, lighten($main_color, 5%));
-        color: #fff;
+        @include bglinear(lighten($main_color, 5%), darken($main_color,2%));
       }
     }
     .selectModal {

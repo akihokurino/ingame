@@ -44,13 +44,10 @@
         .addPostInner
           %p.error-log.select-log-error.selectLogError
           %p.selectBtn.show-select-modal ゲームを選ぶ
-          %textarea.post-input{placeholder: "そのゲームについて、どう思った？"}
           %ul.thumbnailList.thumbnail-list
-
           #thumbnail
-
           .url-thumbnail-list
-
+          %textarea.post-input{placeholder: "そのゲームについて、どう思った？"}
           .photoBtnWrap
             %p.photoBtnText 写真を追加
             %input.addPhoto#upload-btn{type: "file", href: ""}
