@@ -15,6 +15,7 @@
   @include border-radius(3px);
   @include box-sizing;
   background: #fff;
+  @include clearfix;
 
   /*---   .topBox   ---*/
   .topBox {
@@ -28,6 +29,7 @@
   	}
   	.profImg {
   		border: 1px solid #d3d3d3;
+      @include border-radius(50%)
   	}
   	.account {
   		color: #3c3c3c;
@@ -80,22 +82,32 @@
   		text-align: center;
   	}
   }
-  /*---   .gameTtl   ---*/
-  .gameTtl {
-  	overflow: hidden;
-  	width: 100%;
-  	margin-bottom: 7px;
-  	color: $main_color;
-  	font-weight: bold;
-  	font-size: 1rem;
-  	line-height: 1.5;
+  /*---   .gameWrap  ---*/
+  .gameWrap{
+    float: right;
+    width: 150px;
+    .gameTtl {
+    	overflow: hidden;
+    	width: 100%;
+    	margin-bottom: 7px;
+    	font-weight: bold;
+    	font-size: 0.857142857rem;
+    	line-height: 1.5;
 
-  	&Link {
-  		color: $main_color;
-  	}
+      &Link {
+        color: $color_textBlack;
+      }
+    }
+    
+    img{
+        width: 100%;
+        height: auto;
+    }
   }
+
   /*---   .postTxt   ---*/
   .postTxt {
+    width: 310px;
   	margin-bottom: 14px;
   	color: #4a4a4a;
   	font-size: .875rem;
@@ -230,6 +242,7 @@
   	}
   	.profImg {
   		border: 1px solid #d3d3d3;
+      @include border-radius(50%);
   	}
   	.commentList {
   		.item {
@@ -278,11 +291,14 @@
   	}
   	.comment {
   		overflow: hidden;
-  		width: 275px;
+  		width: 416px;
   		height: 30px;
   		padding: 5px;
-  		border: none;
-  		@include box-sizing;
+  		border: 1px solid #d1d1d1;
+      @include border-radius(2px);
+      @include box-sizing;
+      box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.07);
+      background: #f0f0f0;
   		@include appearance;
   		font-size: .875rem;
   		resize: none;
