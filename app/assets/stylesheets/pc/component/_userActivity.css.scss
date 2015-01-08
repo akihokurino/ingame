@@ -6,7 +6,7 @@
   @include border-radius(2px);
 
   &Ttl {
-    padding:2px 0 10px 0;
+    padding: 8px 0;
     color:$color_textBlack;
     font-size:14px;
     font-weight:bold;
@@ -16,9 +16,9 @@
       position: relative;
       @include clearfix;
       padding: 6px 0;
-      border-top: solid 1px $color_border;
+      border-top: solid 2px $color_border;
       &:last-child {
-        border-bottom: solid 1px $color_border;
+        border-bottom: solid 2px $color_border;
       }
     }
   }
@@ -31,7 +31,7 @@
   }
   &Username {
     display: inline-block;
-    width: 112px;
+    width: 150px;
     margin-bottom: 8px;
     color: $color_textBlack;
     font-weight: bold;
