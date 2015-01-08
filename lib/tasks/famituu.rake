@@ -103,7 +103,8 @@ namespace :famituu do
           # ジャンルとタイトルと発売元と画像取るために
           # 個別ページまで潜る。
           game_html             = get game_url
-          result[:game_html]    = game_html
+          # result[:game_html]    = game_html
+          result[:game_html]    = nil
           result[:provider_url] = game_url
           game_doc              = Nokogiri::HTML.parse game_html
           result[:title]        = game_doc.css("h1").css("span").text
