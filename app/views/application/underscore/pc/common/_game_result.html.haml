@@ -1,7 +1,7 @@
 %script{type: "text/template", id: "game-result-template"}
   %article.gameList
     %a.gameListLink.to-game-page{href: "#"}
-      %ul.gameBox
+      .gameBox
         %li.gameImg
           %figure.gameImgInner
             {{ if (photo_path) { }}
@@ -11,10 +11,10 @@
             {{ } else { }}
             %img{src: "/game_photos/default.png", width: "166", alt: ""}
             {{ } }}
-        %li.gameMeta
+        .gameMeta
           %h1 {{= title }}
           .device {{= device}}
-        %li.review
+        .review
           %ul.starList
             {{ diff = 5 - avg_rate }}
             {{ for (var i = 0; i < avg_rate; i++) { }}
@@ -23,10 +23,10 @@
             {{ for (var i = 0; i < diff; i++) { }}
             %li.starOff ☆
             {{ } }}
-        %li.status
-          %div.statusWrap
-            %select.statusBtn.my-status{name: "status", size: 1}
-              %option{value: ""} 登録する
-              %option{value: 1} 気になる
-              %option{value: 2} プレイ中
-              %option{value: 3} クリア済
+    .status
+      %div.statusWrap
+        %select.statusBtn.my-status{name: "status", size: 1}
+          %option{value: ""} 登録する
+          %option{value: 1} 気になる
+          %option{value: 2} プレイ中
+          %option{value: 3} クリア済
