@@ -12,13 +12,14 @@
     font-size: 0; /* inline-block用 */
 
     .item {
+      overflow: hidden;
       display: inline-block;
       width: 168px;
       margin: 10px;
       margin-bottom: 20px;
       border: 1px solid #e6e6e6;
       @include box-sizing;
-      @include border-radius(3px);
+      @include border-radius(4px);
       background: #fff;
     }
   }
@@ -33,35 +34,22 @@
         text-decoration: none;
       }
     }
-    .ttl {
-      overflow: hidden;
-      height: 40px;
-      padding: 5px;
-      @include box-sizing;
-      font-weight: bold;
-      font-size: .8125rem;
-      line-height: 1.5;
+    .gameImg{
+      border-bottom: 1px solid $color_border;
     }
-    .device {
-      position: absolute;
-      top: 8px;
-      left: -8px;
-      padding: 5px 10px;
-      border-radius: 2px;
-      @include bglinear(lighten($main_color, 7%), $main_color);
-      color: #fff;
-      font-size: .875rem;
-
-      &:before {
-        position: absolute;
-        top: 24px;
-        left: 0px;
-        border-top: 3px solid darken($main_color, 20%);
-        border-right: 5px solid darken($main_color, 20%);
-        border-bottom: 3px solid transparent;
-        border-left: 5px solid transparent;
-        content: "";
-      }
+    .gameMeta,.review,.status {
+      border-bottom: 1px solid $color_border;
+      padding: 4px 8px;
+      line-height: 2;
+    }
+    .gameImgInner {
+      overflow: hidden;
+      width: 168px;
+    }
+    .gameMeta {
+      overflow: hidden;
+      @include box-sizing;
+      @include font-size(10);
     }
     &:hover {
       .articleWrap {
@@ -80,13 +68,6 @@
         display: block;
       }
     }
-    .gameImgWrap {
-      overflow: hidden;
-      width: 168px;
-    }
-    .gameImg {
-      @include border-radius(3px 3px 0 0);
-    }
   }
   .articleWrap {
     color: $color_textBlack;
@@ -96,9 +77,7 @@
     }
   }
   .starList {
-    width: 118px;
-    margin: 7px auto 0;
-    padding-bottom: 10px;
+    
 
     .starOn {
       display: inline-block;
@@ -109,7 +88,7 @@
       }
       &:before {
         color: orange;
-        font-size: 1.25rem;
+        @include font-size(12);
         font-family: 'icomoon';
         content: "\e60e";
       }
@@ -123,40 +102,23 @@
       }
       &:before {
         color: #888;
-        font-size: 1.25rem;
+        @include font-size(12);
         font-family: 'icomoon';
         content: "\e60e";
       }
     }
   }
   .statusWrap {
+    position: relative;
     display: inline-block;
     overflow: hidden;
-    position: relative;
-    width: 166px;
-    height: 33px;
-    margin-top: 5px;
-    border: 1px solid $main_color;
-    @include border-radius(3px);
-    background: #fff;
-    cursor: pointer;
-
-    &:after {
-      display: block;
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      margin-top: -3px;
-      border-top: 5px solid $main_color;
-      border-right: 4px solid transparent;
-      border-bottom: 4px solid transparent;
-      border-left: 5px solid transparent;
-      content:"";
-    }
-  }
-  .registed .statusWrap {
-    border: none;
+    width: 100%;
+    border: 1px solid darken($main_color,7%);
     @include bglinear(lighten($main_color, 7%), $main_color);
+    @include border-radius(2px);
+    @include box-sizing;
+    color: #fff;
+    cursor: pointer;
 
     &:after {
       display: block;
@@ -171,14 +133,14 @@
       content:"";
     }
   }
-  .status {
+  .statusBtn {
     display: block;
     width: 90%;
     height: 33px;
     margin: 0 auto;
     border: none;
     background: none;
-    color: $main_color;
+    color: #fff;
     font-size: .875rem;
     text-indent: .01px;
     text-overflow: "";
@@ -195,8 +157,25 @@
       padding-left: 10px;
     }
   }
-  .registed .status {
-    color: #fff;
+  .registed .statusWrap {
+    border: 1px solid darken($color_border,7%);
+    @include bglinear(lighten($color_border, 7%), $color_border);
+    
+    &:after {
+      display: block;
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      margin-top: -3px;
+      border-top: 5px solid $color_textGray;
+      border-right: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+      border-left: 5px solid transparent;
+      content:"";
+    }
+  }
+  .registed .statusBtn {
+    color: $color_textGray;
 
     @-moz-document url-prefix() {
       option {

@@ -1,28 +1,32 @@
 %script{type: "text/template", id: "game-result-template"}
   %article.gameList
     %a.gameListLink.to-game-page{href: "#"}
-      %figure.gameImgWrap
-        {{ if (photo_path) { }}
-        %img.gameImg{src: "/game_photos/{{= photo_path }}", width: "166", alt: ""}
-        {{ } else if (photo_url) { }}
-        %img.gameImg{src: "{{= photo_url }}", width: "166", alt: ""}
-        {{ } else { }}
-        %img.gameImg{src: "/game_photos/default.png", width: "166", alt: ""}
-        {{ } }}
-      %h1.ttl
-        {{= title }}
-      %span.device {{= device }}
-      %ul.starList
-        {{ diff = 5 - avg_rate }}
-        {{ for (var i = 0; i < avg_rate; i++) { }}
-        %li.starOn ★
-        {{ } }}
-        {{ for (var i = 0; i < diff; i++) { }}
-        %li.starOff ☆
-        {{ } }}
-    .statusWrap
-      %select.status.my-status{name: "status", size: 1}
-        %option{value: ""} 登録する
-        %option{value: 1} 気になる
-        %option{value: 2} プレイ中
-        %option{value: 3} クリア済
+      %ul.gameBox
+        %li.gameImg
+          %figure.gameImgInner
+            {{ if (photo_path) { }}
+            %img{src: "/game_photos/{{= photo_path }}", width: "166", alt: ""}
+            {{ } else if (photo_url) { }}
+            %img{src: "{{= photo_url }}", width: "166", alt: ""}
+            {{ } else { }}
+            %img{src: "/game_photos/default.png", width: "166", alt: ""}
+            {{ } }}
+        %li.gameMeta
+          %h1 {{= title }}
+          .device {{= device}}
+        %li.review
+          %ul.starList
+            {{ diff = 5 - avg_rate }}
+            {{ for (var i = 0; i < avg_rate; i++) { }}
+            %li.starOn ★
+            {{ } }}
+            {{ for (var i = 0; i < diff; i++) { }}
+            %li.starOff ☆
+            {{ } }}
+        %li.status
+          %div.statusWrap
+            %select.statusBtn.my-status{name: "status", size: 1}
+              %option{value: ""} 登録する
+              %option{value: 1} 気になる
+              %option{value: 2} プレイ中
+              %option{value: 3} クリア済
