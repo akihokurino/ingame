@@ -1,6 +1,13 @@
 %script{type: "text/template", id: "post-template"}
   .contentBox
     .gameWrap
+      {{ if (status.id == 1) { }}
+      %p.statusReady 気になる
+      {{ } else if (status.id == 2) { }}
+      %p.statusPlaying プレイ中
+      {{ } else if (status.id == 3) { }}
+      %p.statusPlayed クリア済
+      {{ } }}
       %a{href: "/games/{{= game.id}}#all"}
         {{ if (game.photo_path) { }}
         %img.gamePhoto{src: "/game_photos/{{= game.photo_path }}", height: 70}
@@ -9,13 +16,6 @@
         {{ } else { }}
         %img.gamePhoto{src: "/game_photos/default.png", height: 70}
         {{ } }}
-      {{ if (status.id == 1) { }}
-      %p.statusReady 気になる
-      {{ } else if (status.id == 2) { }}
-      %p.statusPlaying プレイ中
-      {{ } else if (status.id == 3) { }}
-      %p.statusPlayed クリア済
-      {{ } }}
     .left
       .postHeader
         %figure.profImgWrap

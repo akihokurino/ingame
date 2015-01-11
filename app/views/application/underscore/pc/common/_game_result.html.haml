@@ -12,8 +12,8 @@
             %img{src: "/game_photos/default.png", width: "166", alt: ""}
             {{ } }}
         .gameMeta
-          %h1 {{= title }}
-          .device {{= device}}
+          %span{class: "device device{{= device }}"} {{= device }}
+          %h1.gameTtl {{= title }}
         .review
           %ul.starList
             {{ diff = 5 - avg_rate }}

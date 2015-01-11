@@ -1,24 +1,27 @@
 %script{type: "text/template", id: "log-template"}
   %article.gameList
     %a.articleWrap{href: "/games/{{= game.id }}#all", style: "display: block;"}
-      %figure.gameImgWrap
-        {{ if (game.photo_path) { }}
-        %img.gameImg{src: "/game_photos/{{= game.photo_path}}", width: "166", alt: ""}
-        {{ } else if (game.photo_url) { }}
-        %img.gameImg{src: "{{= game.photo_url }}", width: "166", alt: ""}
-        {{ } else { }}
-        %img.gameImg{src: "/game_photos/default.png", width: "166", alt: ""}
-        {{ } }}
-      %h1.ttl
-        {{= game.title }}
-      %ul.starList
-        {{ diff = 5 - rate }}
-        {{ for (var i = 0; i < rate; i++) { }}
-        %li.starOn ★
-        {{ } }}
-        {{ for (var i = 0; i < diff; i++) { }}
-        %li.starOff ☆
-        {{ } }}
+      .gamebox
+        %li.gameImg
+          %figure.gameImgWrap
+            {{ if (game.photo_path) { }}
+            %img.gameImg{src: "/game_photos/{{= game.photo_path}}", width: "166", alt: ""}
+            {{ } else if (game.photo_url) { }}
+            %img.gameImg{src: "{{= game.photo_url }}", width: "166", alt: ""}
+            {{ } else { }}
+            %img.gameImg{src: "/game_photos/default.png", width: "166", alt: ""}
+            {{ } }}
+      .gameMeta
+        %h1.ttl {{= game.title }}
+      .review
+        %ul.starList
+          {{ diff = 5 - rate }}
+          {{ for (var i = 0; i < rate; i++) { }}
+          %li.starOn ★
+          {{ } }}
+          {{ for (var i = 0; i < diff; i++) { }}
+          %li.starOff ☆
+          {{ } }}
     {{ if (isCurrentUserLog) { }}
-    %span.gameDeleteBtn.delete-btn ×
+    %span.gameDeleteBtn.delete-btn 削除
     {{ } }}
