@@ -158,6 +158,7 @@
       var template        = _.template($("#game-thumbnail-template").html());
       template            = template(model.toJSON());
       this.$("ul.thumbnail-list").html("").html(template);
+      $(".show-select-modal").text(model.get("game").title);
       this.toggleSelectModal();
       this.select_log_id  = model.id;
       this.select_game_id = model.get("game").id;
