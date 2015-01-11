@@ -22,6 +22,7 @@
 		}
 		.imgWrap{
 			width: 100%;
+			margin-bottom: 10px;
 			text-align: center;
 
 			.gameImg{
@@ -32,9 +33,9 @@
 				@include box-sizing;
 			}
 		}
-		.toOriginal{
+		.toOriginalWrap{
 			text-align: right;
-			.famitsu{
+			.toOriginal{
 				color: $color_blue;
 				font-size: 12px;
 			}
