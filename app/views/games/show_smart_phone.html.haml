@@ -19,6 +19,8 @@
             = image_tag @game.photo_url, height:"100%", class: "gameImg"
           - else
             = image_tag "/game_photos/default.png", height:"100%", class: "gameImg"
+        .toOriginal
+          %a.famitsu{href: "#"} ファミ通(Steam)で調べる
         .gameInfoWrap
           %ul.gameInfo
             %li.item.site

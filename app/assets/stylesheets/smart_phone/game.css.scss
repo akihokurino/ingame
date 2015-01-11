@@ -32,6 +32,13 @@
 				@include box-sizing;
 			}
 		}
+		.toOriginal{
+			text-align: right;
+			.famitsu{
+				color: $color_blue;
+				font-size: 12px;
+			}
+		}
 		.gameInfo {
 			border: 1px solid $color_border;
 			@include border-radius(2px);
@@ -88,21 +95,14 @@
 					color:$color_textBlack;
 					&:after{
 						position:absolute;
-						content:"";
+						top:10px;
+						right:10px;
 						display:inline-block;
 						margin-left:5px;
-						width:6px;
-						height:6px;
-						border-color: $color_textBlack;
-						border-top:solid 3px;
-						border-right:solid 3px;
-						-webkit-transform: rotate(45deg);
-						   -moz-transform: rotate(45deg);
-						    -ms-transform: rotate(45deg);
-						     -o-transform: rotate(45deg);
-						        transform: rotate(45deg);
-						top:14px;
-						right:10px;
+						font-family: 'icomoon';
+						content: "\e60c";
+						color: $color_textGray;
+						font-size: 16px;
 					}
 				}
 			}
