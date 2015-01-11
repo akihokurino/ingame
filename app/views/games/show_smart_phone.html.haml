@@ -22,7 +22,11 @@
             - else
               = image_tag "/game_photos/default.png", height:"100%", class: "gameImg"
           .toOriginalWrap
-            %a.toOriginal{href: "#"} ファミ通(Steam)で調べる
+            - case @game.provider
+            - when "famituu"
+              %a.toOriginal{href: @game.provider_url, target: "blank"} ファミ通で調べる
+            - when "steam"
+              %a.toOriginal{href: @game.provider_url, target: "blank"} steamで調べる
         .gameInfoWrap
           %ul.gameInfo
             %li.item.site

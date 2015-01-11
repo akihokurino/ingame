@@ -31,6 +31,13 @@ html {
         @include box-shadow(0,0,4px,0,rgba(0,0,0,0.5));
       }
     }
+    .toOriginalWrap{
+      text-align: right;
+      .toOriginal{
+        color: $color_blue;
+        font-size: 12px;
+      }
+    }
     .rightBox{
       position:absolute;
       top:0;

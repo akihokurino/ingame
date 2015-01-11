@@ -18,6 +18,12 @@
             = image_tag @game.photo_url, width: 240, class: "gameImg", alt: "ゲームパッケージ画像"
           - else
             = image_tag "/game_photos/default.png", width: 240, class: "gameImg", alt: "ゲームパッケージ画像"
+        .toOriginalWrap
+          - case @game.provider
+          - when "famituu"
+            %a.toOriginal{href: @game.provider_url, target: "blank"} ファミ通で調べる
+          - when "steam"
+            %a.toOriginal{href: @game.provider_url, target: "blank"} steamで調べる
       .gameInfoBox
         .gameInfoBoxInner
           %h1.gameTtl
