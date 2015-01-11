@@ -16,8 +16,9 @@
               %img.userImg{src: "/user_photos/#{@current_user[:photo_path]}", width: "100", height: "100", alt: ""}
           %p.userName
             = link_to @current_user[:username], "/users/#{@current_user[:id]}#logs"
-          %p.userPlace.icon-place
-            = @current_user[:place]
+          - if @current_user[:place]
+            %p.userPlace.icon-place
+              = @current_user[:place]
         %ul.profileCountList.count-box
           %li.gameNum.logs-li
             %a{href: "/users/#{@current_user[:id]}#logs"}

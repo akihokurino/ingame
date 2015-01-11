@@ -18,14 +18,13 @@ var GameResultView = Backbone.View.extend({
     return this;
   },
   regist: function () {
-    if (this.$el.find(".status").val() != "") {
-
+    if (this.$el.find(".my-status").val() != "") {
       var that = this;
 
       if (this.model.get("i_registed")) {
         var data = {
           "log": {
-            "status_id": this.$el.find(".status").val()
+            "status_id": this.$el.find(".my-status").val()
           }
         }
 
@@ -44,7 +43,7 @@ var GameResultView = Backbone.View.extend({
         var data = {
           "log": {
             "game_id":   this.model.id,
-            "status_id": this.$el.find(".status").val()
+            "status_id": this.$el.find(".my-status").val()
           }
         }
 
