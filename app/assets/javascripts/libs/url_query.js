@@ -15,11 +15,14 @@ UrlQuery.prototype = {
         var paramValue    = decodeURIComponent(element[1]);
         result[paramName] = decodeURIComponent(paramValue);
       }
+      alert(result["search_word"]);
       return result;
     }
     return null;
   },
   insertParam: function (key, value) {
+    key     = encodeURIComponent(key);
+    value   = encodeURIComponent(value);
     var kvp = document.location.search.substr(1).split('&');
     var i   = kvp.length;
     var x;
