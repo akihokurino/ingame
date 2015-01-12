@@ -1,226 +1,257 @@
 @import "../../_function.css.scss";
 
 /*---   .postBox   ----------*/
-.postBoxWrap {
-  width: 100%;
-  padding: 20px 0 40px;
-  border-top: 1px solid #e6e6e6;
-  background: #f2f2f2;
-}
 .postBox {
   width: 480px;
   margin: 0 auto 18px;
-  padding: 15px;
   border: 1px solid #e6e6e6;
   @include border-radius(3px);
   @include box-sizing;
   background: #fff;
 
-  /*---   .topBox   ---*/
-  .topBox {
-  	position: relative;
-  	margin-bottom: 14px;
-  	@include clearfix;
-
-  	.profImgWrap {
-  		float: left;
-  		margin-right: 10px;
-  	}
-  	.profImg {
-  		border: 1px solid #d3d3d3;
-  	}
-  	.account {
-  		color: #3c3c3c;
-  		font-weight: bold;
-  		font-size: .875rem;
-  		line-height: 1.0;
-  	}
-  	.time {
-  		margin-top: 8px;
-  		color: #888;
-  		font-size: .75rem;
-  	}
-  	.statusPlayed {
-  		position: absolute;
-  		top: 0;
-  		right: 0;
-  		width: 88px;
-  		height: 30px;
-  		border: 1px solid $color-blue;
-  		@include border-radius(3px);
-  		color: $color-blue;
-  		font-size: .875rem;
-  		line-height: 30px;
-  		text-align: center;
-  	}
-  	.statusPlaying {
-  		position: absolute;
-  		top: 0;
-  		right: 0;
-  		width: 88px;
-  		height: 30px;
-  		border: 1px solid $color-red;
-  		@include border-radius(3px);
-  		color: $color-red;
-  		font-size: .875rem;
-  		line-height: 30px;
-  		text-align: center;
-  	}
-  	.statusReady {
-  		position: absolute;
-  		top: 0;
-  		right: 0;
-  		width: 88px;
-  		height: 30px;
-  		border: 1px solid $color-yellow;
-  		@include border-radius(3px);
-  		color: $color-yellow;
-  		font-size: .875rem;
-  		line-height: 30px;
-  		text-align: center;
-  	}
+  .contentBox{
+    padding: 10px;
   }
-  /*---   .gameTtl   ---*/
-  .gameTtl {
-  	overflow: hidden;
-  	width: 100%;
-  	margin-bottom: 7px;
-  	color: $main_color;
-  	font-weight: bold;
-  	font-size: 1rem;
-  	line-height: 1.5;
 
-  	&Link {
-  		color: $main_color;
-  	}
+  /*---   .gameWrap  ---*/
+  .gameWrap{
+    width: 150px;
+    float: right;
+
+    .gamePhoto{
+      width: 100%;
+      height: auto;
+      border: solid 1px $color_border;
+    }
+
+    .statusReady,.statusPlaying,.statusPlayed {
+      top: 0;
+      right: 0;
+      width: 100%;
+      margin-bottom: 4px;
+      font-size: .875rem;
+      line-height: 2;
+      text-align: center;
+    }
+    .statusReady {
+      border: 1px solid $color-yellow;
+      @include border-radius(3px);
+      color: $color-yellow;
+    }
+    .statusPlaying {
+      border: 1px solid $color-red;
+      @include border-radius(3px);
+      color: $color-red;
+    }
+    .statusPlayed {
+      border: 1px solid $color-blue;
+      @include border-radius(3px);
+      color: $color-blue;
+    }
   }
-  /*---   .postTxt   ---*/
-  .postTxt {
-  	margin-bottom: 14px;
-  	color: #4a4a4a;
-  	font-size: .875rem;
-  	line-height: 1.5;
+  /*---   left   ---*/
+  .left{
+    position: relative;
+    width: 300px;
+    @include clearfix;
 
-  	.link-text {
-  		display: none;
-  	}
-  }
-  /*---   .thumbnail   ---*/
-  .thumbnail {
-  	&Img {
-  		width: 100%;
-  	}
-  }
-  /*---   .urlThumbnail   ----*/
-  .urlThumbnailWrap {
-  	.urlThumbnail {
-  		display: block;
-  		overflow: hidden;
-  		border: solid 1px #e2e2e2;
-  		color: #4a4a4a;
+    .postHeader{
+      position: relative;
+      margin-bottom: 14px;
 
-  		&:hover {
-  			text-decoration: none;
-  		}
-  		img {
-  			width: 100%;
-  			border-bottom: solid 1px #e2e2e2;
-  		}
-  		.body {
-  			padding: 10px;
+      .profImgWrap {
+        float: left;
+        margin-right: 10px;
+      }
+      .profImg {
+        border: 1px solid #d3d3d3;
+        @include border-radius(50%)
+      }
+      .account {
+        color: #3c3c3c;
+        font-weight: bold;
+        font-size: .875rem;
+        line-height: 1.0;
+      }
+      .time {
+        margin-top: 8px;
+        color: #888;
+        font-size: .75rem;
+      }
+    }
 
-  			.title {
-  				margin-bottom: 15px;
-  			}
-  			.description {
-  				font-size: .875rem;
-  				line-height: 1.5;
-  			}
-  		}
-  	}
-  }
-  /*---   iframe   ---*/
-  iframe {
-  	width: 100%;
-  	height: 272px;
-  }
-  /*---   .actionList   ---*/
-  .actionList {
-  	margin-top: 46px;
-  	@include clearfix;
+    .textWrap{
+      padding-bottom: 40px;
+      color: #4a4a4a;
+      font-size: .875rem;
+      line-height: 1.5;
 
-  	.cmtBtn {
-  		position: relative;
-  		float: left;
-  		margin-right: 32px;
-  		padding-left: 28px;
-  		color: #929292;
-  		font-weight: bold;
-  		font-size: .75rem;
-  		line-height: 20px;
-  		cursor: pointer;
+      .gameTtl {
+        overflow: hidden;
+        width: 100%;
+        margin-bottom: 7px;
+        font-weight: bold;
+        font-size: 1rem;
+        line-height: 1.5;
 
-  		&:before {
-  			position: absolute;
-  			top: -4px;
-  			left: 0;
-  			font-size: 1.25rem;
-  			font-family: 'icomoon';
-  			content: "\e602";
-  		}
-  		&.on {
-  			background-position: 0 -400px;
-  			color: $main_color;
-  		}
-  	}
-  	.fvrBtn {
-  		position: relative;
-  		float: left;
-  		padding-left: 26px;
-  		color: #929292;
-  		font-weight: bold;
-  		font-size: .75rem;
-  		line-height: 20px;
-  		cursor: pointer;
+        &Link {
+          color: $color_textBlack;
+        }
+      }
+      
+      img{
+          width: 100%;
+          height: auto;
+      }
 
-  		&:before {
-  			position: absolute;
-  			top: -3px;
-  			left: 0;
-  			font-size: 1.25rem;
-  			font-family: 'icomoon';
-  			content: "\e605";
-  		}
-  		&.on {
-  			background-position: 0 -373px;
-  			color: $color-red;
-  		}
-  	}
-  	.deleteBtn {
-  		position: relative;
-  		float: right;
-  		width: 20px;
-  		height: 20px;
-  		padding-right: 10px;
-  		color: #929292;
-  		@include substitute;
-  		cursor: pointer;
+      .thumbnail {
+        &Img {
+          width: 100%;
+        }
+      }
 
-  		&:before {
-  			position: absolute;
-  			top: -3px;
-  			left: 0;
-  			font-size: 1.25rem;
-  			font-family: 'icomoon';
-  			text-indent: 0;
-  			content: "\e607";
-  		}
-  	}
+      /*---   utlThumbnail   ---*/
+      .urlThumbnailWrap {
+        .urlThumbnail {
+          display: block;
+          width: 100%;
+          overflow: hidden;
+          border: solid 1px #e2e2e2;
+          color: #4a4a4a;
+          &:hover {
+            text-decoration: none;
+          }
+
+          .thumbnailImg {
+            width: 100%;
+            border-bottom: solid 1px #e2e2e2;
+          }
+          .body {
+            padding: 5px;
+
+            .title {
+              margin-bottom: 10px;
+            }
+            .description {
+              font-size: .875rem;
+              line-height: 1.5;
+            }
+          }
+        }
+      }
+    }
+    /*---   iframe   ---*/
+    iframe {
+      width: 100%;
+      height: 272px;
+    }
+
+    /*---   .actionList   ---*/
+    .actionList {
+      position: absolute;
+      height: 10px;
+      @include clearfix;
+      bottom: 4px;
+
+    	.cmtBtn {
+    		position: relative;
+    		float: left;
+    		margin-right: 32px;
+    		padding-left: 20px;
+    		color: #929292;
+    		font-size: .75rem;
+    		cursor: pointer;
+
+    		&:before {
+    			position: absolute;
+    			left: 0;
+    			font-size: 1rem;
+    			font-family: 'icomoon';
+    			content: "\e602";
+    		}
+    		&.on {
+    			background-position: 0 -400px;
+    			color: $main_color;
+    		}
+    	}
+    	.fvrBtn {
+    		position: relative;
+    		float: left;
+        margin-right: 32px;
+    		padding-left: 20px;
+    		color: #929292;
+    		font-size: .75rem;
+    		cursor: pointer;
+
+    		&:before {
+    			position: absolute;
+    			left: 0;
+    			font-size: 1rem;
+    			font-family: 'icomoon';
+    			content: "\e605";
+    		}
+    		&.on {
+    			background-position: 0 -373px;
+    			color: $color-red;
+    		}
+    	}
+
+      .cmtNum,.likeNum{
+        position: relative;
+        display: inline-block;
+        margin-left: 2px;
+        padding: 2px 6px;
+        border: solid 1px $color_border;
+
+        &:after, &:before {
+          right: 100%;
+          top: 50%;
+          border: solid transparent;
+          content: " ";
+          height: 0;
+          width: 0;
+          position: absolute;
+          pointer-events: none;
+        }
+
+        &:after {
+          border-color: rgba(255, 255, 255, 0);
+          border-right-color: #ffffff;
+          border-width: 4px;
+          margin-top: -4px;
+        }
+        &:before {
+          border-color: rgba(230, 230, 230, 0);
+          border-right-color: $color_border;
+          border-width: 5px;
+          margin-top: -5px;
+        }
+
+      }
+    	.deleteBtn {
+    		position: relative;
+    		float: left;
+    		width: 20px;
+    		height: 20px;
+    		padding-right: 10px;
+    		color: #929292;
+    		@include substitute;
+    		cursor: pointer;
+
+    		&:before {
+    			position: absolute;
+    			left: 0;
+    			font-size: 1rem;
+    			font-family: 'icomoon';
+    			text-indent: 0;
+    			content: "\e607";
+    		}
+    	}
+    }
   }
   /*---   .commentBox   ---*/
   .commentBox {
-  	margin-top: 10px;
-  	padding-top: 10px;
+  	padding: 10px;
   	border-top: 1px solid #dcdcdc;
   	@include clearfix;
 
@@ -230,6 +261,7 @@
   	}
   	.profImg {
   		border: 1px solid #d3d3d3;
+      @include border-radius(50%);
   	}
   	.commentList {
   		.item {
@@ -278,11 +310,13 @@
   	}
   	.comment {
   		overflow: hidden;
-  		width: 275px;
-  		height: 30px;
+  		width: 416px;
   		padding: 5px;
-  		border: none;
-  		@include box-sizing;
+  		border: 1px solid #d1d1d1;
+      @include border-radius(2px);
+      @include box-sizing;
+      box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.07);
+      background: #f0f0f0;
   		@include appearance;
   		font-size: .875rem;
   		resize: none;

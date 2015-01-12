@@ -14,7 +14,7 @@
       %a.gameTitle.to-game-page{href: "#"}
         {{= title }}
       %p.maker {{= maker}}
-      %p.device {{= device }}
+      %p{class: "device device{{= device }}"} {{= device }}
       %ul.starList
         {{ diff = 5 - avg_rate }}
         {{ for (var i = 0; i < avg_rate; i++) { }}

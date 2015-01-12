@@ -22,6 +22,7 @@
 		}
 		.imgWrap{
 			width: 100%;
+			margin-bottom: 10px;
 			text-align: center;
 
 			.gameImg{
@@ -32,6 +33,13 @@
 				@include box-sizing;
 			}
 		}
+		.toOriginalWrap{
+			text-align: right;
+			.toOriginal{
+				color: $color_blue;
+				font-size: 12px;
+			}
+		}
 		.gameInfo {
 			border: 1px solid $color_border;
 			@include border-radius(2px);
@@ -40,7 +48,7 @@
 			.item {
 				display:table;
 				width: 100%;
-				font-size: 14px;
+				font-size: 12px;
 				margin-bottom: 3px;
 				border-bottom: 1px solid $color_border;
 				&:last-child{
@@ -49,7 +57,7 @@
 				.itemName{
 					display:table-cell;
 					width: 35%;
-					padding:10px 20px 10px 10px;
+					padding:4px 10px 4px 4px;
 					@include box-sizing;
 					color:$color_textBlack;
 					font-weight:bold;
@@ -57,13 +65,13 @@
 				.itemContent{
 					display:table-cell;
 					width: 65%;	
-					padding:10px 0 ;
+					padding:4px 4px 4px 0;
 					color:$color_textBlack;
 					text-align:left;
 				}
 				.icon-star{
 					color:orange;
-					font-size:24px;
+					font-size:18px;
 					vertical-align: -15%
 				}
 			}
@@ -88,21 +96,14 @@
 					color:$color_textBlack;
 					&:after{
 						position:absolute;
-						content:"";
+						top:10px;
+						right:10px;
 						display:inline-block;
 						margin-left:5px;
-						width:6px;
-						height:6px;
-						border-color: $color_textBlack;
-						border-top:solid 3px;
-						border-right:solid 3px;
-						-webkit-transform: rotate(45deg);
-						   -moz-transform: rotate(45deg);
-						    -ms-transform: rotate(45deg);
-						     -o-transform: rotate(45deg);
-						        transform: rotate(45deg);
-						top:14px;
-						right:10px;
+						font-family: 'icomoon';
+						content: "\e60c";
+						color: $color_textGray;
+						font-size: 16px;
 					}
 				}
 			}
@@ -116,6 +117,8 @@
 			.item {
 				display:inline-block;
 				text-align:center;
+				width: 100%;
+				margin-bottom:5px;
 			}
 		}
 		.gameSummary{
@@ -186,18 +189,29 @@
 		}
 		.new-status, .my-status, .my-rate {
 			@include appearance;
-			width: 124px;
-			padding-left:30px;
-			border: 1px solid $main_color;
-			background-color:#fff;
-			border-radius:4px;
-			color:$main_color;
+			width: 80%;
+			padding-left:30%;
+			background: linear-gradient(lighten($main_color,7%),$main_color);
+			border: 1px solid darken($main_color,7%);
+			color: #fff;
 			font-size: 14px;
 			line-height: 36px;
 		}
 		.registed{
 			background:$main_color;
 			color:#fff;
+		}
+		.deleteBtn{
+			display: block;
+			width: 160px;
+			margin: 0 auto 10px;
+			padding: 4px;
+			@include box-sizing;
+			border: 1px solid $color_red;
+			@include border-radius(2px);
+			color: $color_red;
+			font-size: 10px;
+			text-align: center;
 		}
 	}
 	/*---   .sortBox   ----------*/

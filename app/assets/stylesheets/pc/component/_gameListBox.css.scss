@@ -12,13 +12,14 @@
     font-size: 0; /* inline-block用 */
 
     .item {
+      overflow: hidden;
       display: inline-block;
       width: 168px;
       margin: 10px;
       margin-bottom: 20px;
       border: 1px solid #e6e6e6;
       @include box-sizing;
-      @include border-radius(3px);
+      @include border-radius(4px);
       background: #fff;
     }
   }
@@ -33,36 +34,118 @@
         text-decoration: none;
       }
     }
-    .ttl {
-      overflow: hidden;
-      height: 40px;
-      padding: 5px;
-      @include box-sizing;
-      font-weight: bold;
-      font-size: .8125rem;
+    .gameImg{
+      border-bottom: 1px solid $color_border;
+    }
+    .gameMeta,.review,.status {
+      border-bottom: 1px solid $color_border;
+      padding: 4px 8px;
       line-height: 1.5;
     }
-    .device {
-      position: absolute;
-      top: 8px;
-      left: -8px;
-      padding: 5px 10px;
-      border-radius: 2px;
-      @include bglinear(lighten($main_color, 7%), $main_color);
-      color: #fff;
-      font-size: .875rem;
-
-      &:before {
-        position: absolute;
-        top: 24px;
-        left: 0px;
-        border-top: 3px solid darken($main_color, 20%);
-        border-right: 5px solid darken($main_color, 20%);
-        border-bottom: 3px solid transparent;
-        border-left: 5px solid transparent;
-        content: "";
-      }
+    .gameImgInner {
+      overflow: hidden;
+      width: 168px;
     }
+    .gameMeta {
+      overflow: hidden;
+      @include box-sizing;
+      @include font-size(10);
+    }
+
+    .gameTtl{
+      display:inline-block;
+    }
+    
+    .device{
+      display:inline-block;
+      padding:0 10px;
+      margin:4px 0;
+      border-radius: 2px;
+      font-size:10px;
+      line-height:1.8;
+      text-align: center;
+    }
+    .device3DO,.deviceNG,.deviceNGP,.deviceMSX,.deviceMD,.deviceGG,.devicePC8801,.deviceSegaMK3{
+      background: #3A3A3A;
+      color:#eee;
+    }
+
+    .deviceSS{
+      background: #B89438;
+      color: #353535;
+    }
+    .deviceDC{
+      background: #D86F18;
+      color: #fff;
+    }
+
+    .deviceWS{
+      background: #4183DB;
+      color: #fff;
+    }
+
+    .deviceSFC{
+      background: #BABABA;
+      color: #353535;
+    }
+
+    .deviceFC{
+      background: #A01919;
+      color: #fff;
+    }
+
+    .deviceN64{
+      background: #0122A5;
+      color: #fff;
+    }
+
+    .deviceGC{
+      background: #4643BE;
+      color: #FFFFFF;
+    }
+    .deviceWii,.deviceWiiU{
+      background: #0096C8;
+      color: #FFFFFF;
+    }
+
+    .deviceGB,.deviceGBA{
+      background: #1B3290;
+      color: #FFFFFF;
+    }
+    .deviceNDS,.device3DS{
+      background: #D01312;
+      color: #FFFFFF;
+    }
+
+    .devicePS,.devicePS2,.devicePS3,.devicePS4,.devicePSP,.devicePSV,.devicePSM{
+      background: #003791;
+      color: #FFFFFF;
+    }
+    .deviceXbox,.deviceXbox360,.deviceXboxOne{
+      background: #107C10;
+      color: #FFFFFF;
+    }
+
+    .deviceIphone{
+      background: #656565;
+      color: #FFFFFF;
+    }
+
+    .deviceAC{
+      background: #FF1616;
+      color: #FFFFFF;
+    }
+
+    .devicePC{
+      background: #396688;
+      color: #FFFFFF;
+    }
+
+    .deviceETC{
+      background: #C56C6C;
+      color: #FFFFFF;
+    }
+
     &:hover {
       .articleWrap {
         &:after {
@@ -80,13 +163,6 @@
         display: block;
       }
     }
-    .gameImgWrap {
-      overflow: hidden;
-      width: 168px;
-    }
-    .gameImg {
-      @include border-radius(3px 3px 0 0);
-    }
   }
   .articleWrap {
     color: $color_textBlack;
@@ -96,10 +172,6 @@
     }
   }
   .starList {
-    width: 118px;
-    margin: 7px auto 0;
-    padding-bottom: 10px;
-
     .starOn {
       display: inline-block;
       margin-right: 4px;
@@ -109,7 +181,7 @@
       }
       &:before {
         color: orange;
-        font-size: 1.25rem;
+        @include font-size(12);
         font-family: 'icomoon';
         content: "\e60e";
       }
@@ -123,40 +195,23 @@
       }
       &:before {
         color: #888;
-        font-size: 1.25rem;
+        @include font-size(12);
         font-family: 'icomoon';
         content: "\e60e";
       }
     }
   }
   .statusWrap {
+    position: relative;
     display: inline-block;
     overflow: hidden;
-    position: relative;
-    width: 166px;
-    height: 33px;
-    margin-top: 5px;
-    border: 1px solid $main_color;
-    @include border-radius(3px);
-    background: #fff;
-    cursor: pointer;
-
-    &:after {
-      display: block;
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      margin-top: -3px;
-      border-top: 5px solid $main_color;
-      border-right: 4px solid transparent;
-      border-bottom: 4px solid transparent;
-      border-left: 5px solid transparent;
-      content:"";
-    }
-  }
-  .registed .statusWrap {
-    border: none;
+    width: 100%;
+    border: 1px solid darken($main_color,7%);
     @include bglinear(lighten($main_color, 7%), $main_color);
+    @include border-radius(2px);
+    @include box-sizing;
+    color: #fff;
+    cursor: pointer;
 
     &:after {
       display: block;
@@ -171,14 +226,14 @@
       content:"";
     }
   }
-  .status {
+  .statusBtn {
     display: block;
     width: 90%;
     height: 33px;
     margin: 0 auto;
     border: none;
     background: none;
-    color: $main_color;
+    color: #fff;
     font-size: .875rem;
     text-indent: .01px;
     text-overflow: "";
@@ -195,8 +250,25 @@
       padding-left: 10px;
     }
   }
-  .registed .status {
-    color: #fff;
+  .registed .statusWrap {
+    border: 1px solid darken($color_border,7%);
+    @include bglinear(lighten($color_border, 7%), $color_border);
+    
+    &:after {
+      display: block;
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      margin-top: -3px;
+      border-top: 5px solid $color_textGray;
+      border-right: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+      border-left: 5px solid transparent;
+      content:"";
+    }
+  }
+  .registed .statusBtn {
+    color: $color_textGray;
 
     @-moz-document url-prefix() {
       option {
@@ -207,16 +279,18 @@
   .gameDeleteBtn {
     display: none;
     position: absolute;
-    top: -10px;
-    right: -10px;
-    width: 20px;
-    height: 20px;
-    @include border-radius(18px);
-    background-color: #888;
-    color: #fff;
+    top: 4px;
+    right: 4px;
+    width: 60px;
+    padding: 0 6px;
+    border: 1px solid darken($color_border,7%);
+    @include border-radius(2px);
+    @include bglinear(lighten($color_border, 7%), $color_border);
+    color: $color_textGray;
+    font-size: 14px;
     font-weight: bold;
-    font-size: 19px;
     text-align: center;
+    line-height: 1.5;
     cursor: pointer;
   }
   .gameDeleteBox {

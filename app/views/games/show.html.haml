@@ -10,25 +10,44 @@
   .gameBox
     .gameBoxInner
       %figure.gameImgWrap
-        - if @game.photo_path
-          = image_tag "/game_photos/#{@game.photo_path}", width: 240, class: "gameImg", alt: "ゲームパッケージ画像"
-        - elsif @game.photo_url
-          = image_tag @game.photo_url, width: 240, class: "gameImg", alt: "ゲームパッケージ画像"
-        - else
-          = image_tag "/game_photos/default.png", width: 240, class: "gameImg", alt: "ゲームパッケージ画像"
+        - url = @game.amazon_url ? @game.amazon_url : ""
+        %a{href: url, target: "blank"}
+          - if @game.photo_path
+            = image_tag "/game_photos/#{@game.photo_path}", width: 240, class: "gameImg", alt: "ゲームパッケージ画像"
+          - elsif @game.photo_url
+            = image_tag @game.photo_url, width: 240, class: "gameImg", alt: "ゲームパッケージ画像"
+          - else
+            = image_tag "/game_photos/default.png", width: 240, class: "gameImg", alt: "ゲームパッケージ画像"
+        .toOriginalWrap
+          - case @game.provider
+          - when "famituu"
+            %a.toOriginal{href: @game.provider_url, target: "blank"} ファミ通で調べる
+          - when "steam"
+            %a.toOriginal{href: @game.provider_url, target: "blank"} steamで調べる
       .gameInfoBox
         .gameInfoBoxInner
           %h1.gameTtl
             = @game.title
           %ul.gameInfoList
-            %li.item.maker
-              .itemName メーカー
+            %li.item.site
+              .itemName ウェブサイト
               .itemContent
-                = @game.maker
+                - @game.game_urls.each do |url|
+                  = link_to url.text, url.text, target: "blank"
             %li.item.hard
               .itemName ハード
               .itemContent
                 = @game.device
+            %li.item.maker
+              .itemName メーカー
+              .itemContent
+                = @game.maker
+            %li.item.category
+              .itemName ジャンル
+              .itemContent
+                - @game.gametags.each do |gametag|
+                  %span.gametag
+                    = gametag.name
             %li.item.releaseDay
               .itemName 発売日
               .itemContent

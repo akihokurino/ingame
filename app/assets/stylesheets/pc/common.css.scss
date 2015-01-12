@@ -8,6 +8,11 @@
   @include box-sizing;
   word-wrap: break-word;
 }
+
+html,body{
+    height: 100%;
+}
+
 html {
   min-width: 960px;
   background: $main_color;

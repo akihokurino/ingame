@@ -6,57 +6,27 @@
 	padding: 5px 5px 0 5px;
 	@include box-sizing;
 	background: #ffffff;
+	@include clearfix;
 
-	.topBox {
-		@include clearfix;
-		display:table;
-		width: 100%;
-	}
-	.profImgWrap {
-		display:table-cell;
-		width: 31px;
-		height: 31px;
-	}
-	.profImg {
-		width: 30px;
-		height: 30px;
-		margin-right: 10px;
-		@include box-sizing;
-		border: 1px solid $color_border;
-		@include border-radius(50%);
-	}
-	.account {
-		display: table-cell;
-		color: $color_textBlack;
-		font-size: 12px;
-		font-weight: bold;
-		text-decoration: none;
-		vertical-align: middle;
-	}
-	.time {
-		display: table-cell;
-		width: 160px;
-		color: $color_textGray;
-		font-size: 12px;
-		line-height: 36px;
-		vertical-align: middle;
-		text-align: right;
-		.icon-time{
-			font-size:12px;
+	.gameWrap{
+		float: right;
+		width: 80px;
+		.gamePhoto{
+			width: 100%;
+			height: auto;
 		}
 	}
-	.gameInfoBox{
-		margin-left:40px;
-	}
 	.statusBox{
-		margin:5px 0;
+		width: 80px;
+		margin:4px 0;
 	}
-	.moodReady, {
-		display:table-cell;
-		padding: 0 6px;
+	.moodReady {
+		display: inline-block;
+		width: 100%;
 		@include border-radius(2px);
-		font-size: 10px;
-		line-height: 1.8;
+		@include box-sizing;
+		font-size: 12px;
+		line-height: 2;
 		text-align: center;
 		color:$color_yellow;
 		border: 1px solid $color_yellow;
@@ -71,16 +41,49 @@
 		color:$color_blue;
 		border: 1px solid $color_blue;
 	}
-	.textWrap{
-		display: table-cell;
-		padding-left:5px;
+
+	.left{
+		width: 70%;
+		@include clearfix;
 	}
+	
+	.postHeader {
+		width: 100%;
+		.profImgWrap {
+			float: left;
+			width: 31px;
+			height: 31px;
+			margin-right: 5px;
+		}
+		.profImg {
+			width: 30px;
+			height: 30px;
+			@include box-sizing;
+			border: 1px solid $color_border;
+			@include border-radius(50%);
+		}
+
+		.account,.time{
+			font-size: 12px;
+		}
+		.account {
+			color: $color_textBlack;
+			font-weight: bold;
+			text-decoration: none;
+		}
+		.time {
+			color: $color_textGray;
+		}
+	}
+
 	.ttl {
-		font-size: 20px;
+		margin: 2px 0;
+		font-size: 14px;
+		font-weight: bold;
 		line-height: 1.3;
 		vertical-align: middle;
 		a {
-			color: $main_color;
+			color: $color_textBlack;
 		}
 	}
 	.text {
@@ -129,12 +132,12 @@
 		border:none;
 	}
 	.stateBox {
-		text-align: right;
+		text-align: left;
 	}
 	.commentBtn,.favBtn,.icon-option{
 		display:inline-block;
 		padding:10px;
-		font-size:17px;
+		font-size:16px;
 		color:$color_textGray;
 		line-height: 1;
 	}
@@ -149,6 +152,39 @@
 		&.on{
 			color: $color_red;
 		}
+	}
+
+	.commentCnt,.likeCnt{
+		position: relative;
+		display: inline-block;
+		margin-left: 2px;
+		line-height: 1.3;
+		padding: 0 6px;
+        border: solid 1px $color_border;
+        font-size: 12px;
+		&:after, &:before {
+          right: 100%;
+          top: 50%;
+          border: solid transparent;
+          content: " ";
+          height: 0;
+          width: 0;
+          position: absolute;
+          pointer-events: none;
+        }
+
+        &:after {
+          border-color: rgba(255, 255, 255, 0);
+          border-right-color: #ffffff;
+          border-width: 4px;
+          margin-top: -4px;
+        }
+        &:before {
+          border-color: rgba(230, 230, 230, 0);
+          border-right-color: $color_border;
+          border-width: 5px;
+          margin-top: -5px;
+        }
 	}
 	.icon-option{
 		padding:10px 15px;

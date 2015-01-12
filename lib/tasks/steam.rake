@@ -74,7 +74,8 @@ namespace :steam do
         game_url              = row.attributes["href"].text + "&l=japanese"
         result[:provider_url] = game_url
         game_html             = get game_url
-        result[:game_html]    = game_html.toutf8
+        # result[:game_html]    = game_html.toutf8
+        result[:game_html]    = nil
         game_html_lines       = game_html.split
         game_dom              = Nokogiri::HTML.parse game_html
 				result[:tags]         = game_dom.css("a.app_tag").map {|a| a.text.gsub /\s/, ""}

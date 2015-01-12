@@ -1,8 +1,9 @@
 %script{type: "text/template", id: "user-result-template"}
   %article.friendList
     .friendListTopBox
-      %figure.userImgWrap
-        %img.userImg{src: "/user_photos/{{= photo_path }}", width: "80", height: "80", alt: ""}
+      %a{href: "/users/{{= id }}#logs"}
+        %figure.userImgWrap
+          %img.userImg{src: "/user_photos/{{= photo_path }}", width: "80", height: "80", alt: ""}
       %ul.btn-list
         %li
           {{ if (i_followed) { }}
@@ -11,6 +12,6 @@
           %span.followBtn.follow-btn フォローする
           {{ } }}
 
-    %p.userName {{= username }}
+    %a.userName{href: "/users/{{= id }}#logs"} {{= username }}
     %p.myGame マイゲーム {{= logs_count }}
     %p.userProf {{= introduction }}
