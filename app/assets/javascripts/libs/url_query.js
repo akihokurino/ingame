@@ -20,6 +20,8 @@ UrlQuery.prototype = {
     return null;
   },
   insertParam: function (key, value) {
+    key     = encodeURIComponent(key);
+    value   = encodeURIComponent(value);
     var kvp = document.location.search.substr(1).split('&');
     var i   = kvp.length;
     var x;
