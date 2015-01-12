@@ -12,10 +12,6 @@ class SocketsController < WebsocketRails::BaseController
     @from_user.follower_users.each do |user|
       WebsocketRails[user[:id]].trigger "post", message
     end
-
-    File.open("/tmp/log", "wb") do |f|
-      f.write "test"
-    end
   end
 
   def like

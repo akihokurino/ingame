@@ -15,7 +15,6 @@ UrlQuery.prototype = {
         var paramValue    = decodeURIComponent(element[1]);
         result[paramName] = decodeURIComponent(paramValue);
       }
-      alert(result["search_word"]);
       return result;
     }
     return null;
