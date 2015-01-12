@@ -7,8 +7,8 @@ worker_processes 5
 listen  "#{proj_root_dir}/tmp/sockets/unicorn.sock"
 pid     "#{proj_root_dir}/tmp/pids/unicorn.pid"
 
-#stderr_path File.expand_path('log/unicorn.log', ENV['RAILS_ROOT'])
-#stdout_path File.expand_path('log/unicorn.log', ENV['RAILS_ROOT'])
+stderr_path File.expand_path('log/unicorn.log', ENV['RAILS_ROOT'])
+stdout_path File.expand_path('log/unicorn.log', ENV['RAILS_ROOT'])
 
 preload_app true
 
