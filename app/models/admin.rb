@@ -3,6 +3,17 @@ class Admin < ActiveRecord::Base
 
   attr_accessor :key
 
+  validates :username,
+    presence: true,
+    uniqueness: true,
+    length: {maximum: 255, minimum: 8}
+  validates :password,
+    presence: true,
+    length: {maximum: 255, minimum: 8}
+  validates :salt,
+    presence: true,
+    length: {maximum: 255}
+
   CURRENT_KEY = "foobar13579"
 
   def collect_password?(password)

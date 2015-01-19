@@ -24,6 +24,11 @@ class Game < ActiveRecord::Base
 		length: {maximum: 255}
 	validates :maker,
 		length: {maximum: 255}
+  validates :price,
+    length: {maximum: 255}
+  validates :provider,
+    presence: true,
+    length: {maximum: 255}
 
 	attr_accessor :i_registed, :my_status_id, :my_rate, :avg_rate
 
