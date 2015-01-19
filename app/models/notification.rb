@@ -13,7 +13,7 @@ class Notification < ActiveRecord::Base
     presence: true,
     numericality: true
   validates :is_read,
-    numericality: true
+    presence: true
 
   scope :all_include, -> {
     includes(:to_user).includes(:from_user).includes(:notification_type)

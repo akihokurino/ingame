@@ -33,8 +33,7 @@ class User < ActiveRecord::Base
   validates :posts_count,
     numericality: true
   validates :is_first,
-    presence: true,
-    numericality: true
+    presence: true
 
   LIMIT          = 20
   ACTIVITY_LIMIT = 20
