@@ -7,7 +7,7 @@ html {
 .mainVisual {
   min-width: 960px;
   padding-top: 30px;
-  background: linear-gradient(rgba(#000,0.6), rgba(#000,0.8)), url('/assets/bg_login.png');
+  background: linear-gradient(rgba(#000,0.6), rgba(#000,0.8)), asset_url("bg_login.png");
   background-size: contain;
   font-family: arial;
   text-align: center;

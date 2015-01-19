@@ -22,7 +22,7 @@
       float: left;
       width: 72px;
       height: 25px;
-      background: url(/assets/pc/logo.png) no-repeat -24px -11px;
+      background: asset_url("pc/logo.png") no-repeat -24px -11px;
       @include substitute;
     }
     /*---   .stepTxt   ---*/
