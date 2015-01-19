@@ -16,8 +16,15 @@ class Post < ActiveRecord::Base
   validates :game_id,
     presence: true,
     numericality: true
+  validates :log_id,
+    presence: true,
+    numericality: true
   validates :text,
     presence: true
+  validates :post_likes_count,
+    numericality: true
+  validates :post_comments_count,
+    numericality: true
 
   attr_accessor :i_liked
 

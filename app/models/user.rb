@@ -17,11 +17,24 @@ class User < ActiveRecord::Base
 
 	validates :username,
 		presence: true,
+    uniqueness: true,
 		length: {maximum: 255}
+  validates :password,
+    presence: true,
+    length: {maximum: 255, minimum: 8}
+  validates :salt,
+    presence: true
 	validates :introduction,
 		length: {maximum: 255}
 	validates :place,
 		length: {maximum: 255}
+  validates :logs_count,
+    numericality: true
+  validates :posts_count,
+    numericality: true
+  validates :is_first,
+    presence: true,
+    numericality: true
 
   LIMIT          = 20
   ACTIVITY_LIMIT = 20
@@ -34,13 +47,13 @@ class User < ActiveRecord::Base
 
 	def update_with(user_params, clip = {})
   	user_params[:photo_path] = self.class.file_upload(user_params[:photo_path], "user", clip) unless user_params[:photo_path].nil?
-    user_params[:username]   = user_params[:username].gsub(/(\s|　)+/, '') if user_params[:username]
+    user_params[:username]   = user_params[:username].gsub(/(\s|　)+/, '') unless user_params[:username].nil?
   	self.update(user_params) ? true : false
   end
 
   def update_with_url(user_params, clip = {})
     user_params[:photo_path] = self.class.url_upload(user_params[:photo_path], "user", clip) unless user_params[:photo_path].nil?
-    user_params[:username]   = user_params[:username].gsub(/(\s|　)+/, '') if user_params[:username]
+    user_params[:username]   = user_params[:username].gsub(/(\s|　)+/, '') unless user_params[:username].nil?
     self.update(user_params)
     self
   end

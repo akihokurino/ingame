@@ -6,6 +6,17 @@ class PostUrl < ActiveRecord::Base
 
   belongs_to :post
 
+  validates :post_id,
+    presence: true,
+    numericality: true
+  validates :title,
+    length: {maximum: 255}
+  validates :thumbnail,
+    length: {maximum: 255}
+  validates :url,
+    presence: true,
+    length: {maximum: 255}
+
   class << self
     def create_thumbnail(url, post)
       data = {

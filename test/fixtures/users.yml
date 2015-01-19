@@ -4,6 +4,8 @@
 user<%= n %>:
   id: <%= n %>
   username: user<%= n %>
+  password: "dammy"
+  salt: 0.0001
   introduction: フィクスチャから生成したユーザーデータです。フィクスチャから生成したユーザーデータです。フィクスチャから生成したユーザーデータです。フィクスチャから生成したユーザーデータです。
   logs_count: 0
   posts_count: 0
