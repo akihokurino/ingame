@@ -203,7 +203,7 @@ html {
 			height: 100px;
 			padding-top: 3px;
 			@include box-sizing;
-			background: url(/assets/smart_phone/game__bg02.png) no-repeat center top;
+			background: asset_url("smart_phone/game__bg02.png") no-repeat center top;
 			background-size: 100px 100px;
 			text-align: center;
 		}
@@ -215,7 +215,7 @@ html {
 			background: #ffffff;
 		}
 		.gameImg {
-			-webkit-mask: url(/assets/smart_phone/mask.png) no-repeat center top;
+			-webkit-mask: asset_url("smart_phone/mask.png") no-repeat center top;
 			-webkit-mask-size: 94px 94px;
 			padding-top: 3px;
 		}

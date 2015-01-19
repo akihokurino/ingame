@@ -13,7 +13,7 @@ html {
 
   /*---   .profileBox   ----------*/
   .profileBox {
-    background: url(/assets/pc/default_cover.png) no-repeat top center;
+    background: asset_url("pc/default_cover.png") no-repeat top center;
     background-size: cover;
 
     /*---   .profileBoxInner   ---*/

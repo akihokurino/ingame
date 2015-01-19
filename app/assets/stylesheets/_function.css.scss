@@ -133,7 +133,7 @@ $support-opera  : true;
   }
   @-moz-keyframes $animation-name {
     @content;
-  }  
+  }
   @keyframes $animation-name {
     @content;
   }
@@ -149,20 +149,20 @@ $support-opera  : true;
 }
 
 @mixin img_set-PC2($bpl, $bpt) {
-    background: url(/assets/pc/img_set.png) no-repeat $bpl $bpt;
+    background: asset_url("pc/img_set.png") no-repeat $bpl $bpt;
 }
 @mixin img_set-PC4($width, $height, $bpl, $bpt) {
     width: $width;
     height: $height;
-    background: url(/assets/pc/img_set.png) no-repeat $bpl $bpt;
+    background: asset_url("pc/img_set.png") no-repeat $bpl $bpt;
 }
 @mixin img_set-SP2($bpl, $bpt) {
-    background: url(/assets/smart_phone/img_set.png) no-repeat $bpl $bpt;
+    background: asset_url("smart_phone/img_set.png") no-repeat $bpl $bpt;
     background-size: 29px 555px;
 }
 @mixin img_set-SP4($width, $height, $bpl, $bpt) {
     width: $width;
     height: $height;
-    background: url(/assets/smart_phone/img_set.png) no-repeat $bpl $bpt;
+    background: asset_url("smart_phone/img_set.png") no-repeat $bpl $bpt;
     background-size: 29px 555px;
 }

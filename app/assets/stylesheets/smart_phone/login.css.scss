@@ -8,10 +8,10 @@ a {
 	text-decoration: none;
 }
 
-/*---   .mainVisual   ---------------------------*/	
+/*---   .mainVisual   ---------------------------*/
 .mainVisual {
 	padding:40px 20px 20px 20px;
-	background: linear-gradient(rgba(#000,0.6), rgba(#000,0.8)), url('/assets/bg_login.png');
+	background: linear-gradient(rgba(#000,0.6), rgba(#000,0.8)), asset_url('bg_login.png');
 	background-size:contain;
 	border-top: 3px solid $main_color;
 	font-family: arial;

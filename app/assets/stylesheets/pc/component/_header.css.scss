@@ -27,7 +27,7 @@
     display:inline-block;
     width: 120px;
     height: 45px;
-    background: url(/assets/logo.png) no-repeat -10px;
+    background: asset_url("logo.png") no-repeat -10px;
     @include substitute;
   }
   .searchWrap {
@@ -116,7 +116,7 @@
         position: relative;
         margin-top: 10px;
         margin-bottom: -10px;
-        width: 26px; 
+        width: 26px;
         height: 26px;
         @include border-radius(50%);
         }
