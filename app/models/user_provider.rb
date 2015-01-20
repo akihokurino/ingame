@@ -3,8 +3,6 @@ class UserProvider < ActiveRecord::Base
 
   belongs_to :user
 
-  validates :user_id,
-    numericality: true
   validates :uid,
     presence: true
   validates :username,

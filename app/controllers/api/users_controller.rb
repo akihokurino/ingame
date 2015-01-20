@@ -1,5 +1,5 @@
 class Api::UsersController < ApplicationController
-  skip_before_action :auth, only: [:create]
+  skip_before_action :auth, only: [:create, :uniqueness]
   before_action :set_user, only: [:update]
   before_action :auth_provider, only: [:create]
 
@@ -32,6 +32,12 @@ class Api::UsersController < ApplicationController
   def update
     clip    = {x: params[:user][:clip_x].to_i, y: params[:user][:clip_y].to_i}
     @result = @user.update_with_url(user_params, clip)
+  end
+
+  def uniqueness
+    if params[:username]
+      @result = User.find_by(username: params[:username]) ? false : true
+    end
   end
 
   def search

@@ -37,6 +37,7 @@ Ingame::Application.routes.draw do
       collection do
         get "search"
         post "tmp_upload"
+        get "uniqueness"
       end
     end
     resources :follows, only: ["create", "destroy"], format: "json"
