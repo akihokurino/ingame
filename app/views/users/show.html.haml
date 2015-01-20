@@ -44,7 +44,7 @@
     .profileLeftColumn
       %h1.userName
         = @user.username
-      - if @user.place
+      - unless @user.place.blank?
         %p.userPlace
           = @user.place
       %p.userInfo

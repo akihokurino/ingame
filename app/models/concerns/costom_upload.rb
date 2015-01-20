@@ -7,7 +7,7 @@ module CostomUpload
     def file_upload(file, type, clip = {})
       name  = file.original_filename
       perms = [".jpg", ".jpeg", ".gif", ".png"]
-      if perms.include?(File.extname(name).downcase) && file.size < 2.megabyte
+      if perms.include?(File.extname(name).downcase) && file.size <= 1.megabyte
         photo_path = self.generate("alphabet", 10) + name
         File.open("public/#{type}_photos/#{photo_path}", "wb") do |f|
           f.write(file.read)
@@ -20,6 +20,8 @@ module CostomUpload
         end
 
         photo_path
+      else
+        raise "wrong extname or too big"
       end
     end
 
@@ -31,13 +33,21 @@ module CostomUpload
         extname = ".jpg"
       when /gif/
         extname = ".gif"
+      else
+        extname = nil
       end
 
       name       = self.generate("alphabet", 10)
       photo_path = "#{name}#{extname}"
       File.open("public/#{type}_photos/#{photo_path}", "wb") do |f|
-        url = url.sub(/^.*,/, '')
-        f.write(Base64.decode64(url))
+        url  = url.sub(/^.*,/, '')
+        file = Base64.decode64 url
+
+        if extname.nil? || file.size > 1.megabyte
+          raise "wrong extname or too big"
+        else
+          f.write file
+        end
       end
 
       case type

@@ -21,26 +21,37 @@ class Api::PostsController < ApplicationController
 
   def create
     params[:post][:user_id] = @current_user[:id]
-    @last_post              = Post.create!(post_params)
+    begin
+      ActiveRecord::Base.transaction do
+        @last_post = Post.create!(post_params)
 
-    if !params[:url_thumbnail].blank?
-      params[:url_thumbnail][:post_id] = @last_post[:id]
-      PostUrl.create(post_url_params)
-    elsif !params[:post][:urls].blank?
-      params[:post][:urls].each do |url|
-        PostUrl.create_thumbnail(url, @last_post)
+        if !params[:url_thumbnail].blank?
+          params[:url_thumbnail][:post_id] = @last_post[:id]
+          PostUrl.create(post_url_params)
+        elsif !params[:post][:urls].blank?
+          params[:post][:urls].each do |url|
+            PostUrl.create_thumbnail(url, @last_post)
+          end
+        end
+
+        case params[:post][:provider]
+        when "facebook"
+          @last_post.facebook(@current_user)
+        when "twitter"
+          @last_post.twitter(@current_user)
+        end
+
+        unless params[:post][:files].blank?
+          @last_post.save_with!(params[:post][:files])
+        end
       end
-    end
-
-    case params[:post][:provider]
-    when "facebook"
-      @last_post.facebook(@current_user)
-    when "twitter"
-      @last_post.twitter(@current_user)
-    end
-
-    unless params[:post][:files].blank?
-      @last_post.save_with(params[:post][:files])
+    rescue => e
+      case e.message
+      when "wrong extname or too big"
+        @error = {type: "photo", message: "画像の拡張子が正しくないか、画像のサイズが大き過ぎます。"}
+      else
+        @error = {type: "something", message: "不正なデータです。"}
+      end
     end
   end
 
