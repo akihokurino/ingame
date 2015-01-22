@@ -30,8 +30,17 @@ class Api::UsersController < ApplicationController
   end
 
   def update
-    clip    = {x: params[:user][:clip_x].to_i, y: params[:user][:clip_y].to_i}
-    @result = @user.update_with_url(user_params, clip)
+    clip = {x: params[:user][:clip_x].to_i, y: params[:user][:clip_y].to_i}
+    begin
+      @result = @user.update_with_url(user_params, clip)
+    rescue => e
+      case e.message
+      when "wrong extname or too big"
+        @error = {type: "photo", message: "画像の拡張子が正しくないか、画像のサイズが大き過ぎます。"}
+      else
+        @error = {type: "something", message: "不正なデータです。"}
+      end
+    end
   end
 
   def uniqueness
@@ -47,8 +56,17 @@ class Api::UsersController < ApplicationController
   end
 
   def tmp_upload
-    clip    = {x: params[:user][:clip_x].to_i, y: params[:user][:clip_y].to_i}
-    @result = User.tmp_upload(params[:user][:tmp_data], clip)
+    clip = {x: params[:user][:clip_x].to_i, y: params[:user][:clip_y].to_i}
+    begin
+      @result = User.tmp_upload(params[:user][:tmp_data], clip)
+    rescue => e
+      case e.message
+      when "wrong extname or too big"
+        @error = {type: "photo", message: "画像の拡張子が正しくないか、画像のサイズが大き過ぎます。"}
+      else
+        @error = {type: "something", message: "不正なデータです。"}
+      end
+    end
   end
 
   private

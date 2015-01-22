@@ -34,15 +34,15 @@ class Api::PostsController < ApplicationController
           end
         end
 
+        unless params[:post][:files].blank?
+          @last_post.save_with_url(params[:post][:files])
+        end
+
         case params[:post][:provider]
         when "facebook"
           @last_post.facebook(@current_user)
         when "twitter"
           @last_post.twitter(@current_user)
-        end
-
-        unless params[:post][:files].blank?
-          @last_post.save_with!(params[:post][:files])
         end
       end
     rescue => e

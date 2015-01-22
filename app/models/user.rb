@@ -44,9 +44,13 @@ class User < ActiveRecord::Base
 
   attr_accessor :i_followed, :i_followered, :follow_num, :follower_num, :clip_x, :clip_y
 
-	def update_with(user_params, clip = {})
-  	user_params[:photo_path] = self.class.file_upload(user_params[:photo_path], "user", clip) unless user_params[:photo_path].nil?
-    user_params[:username]   = user_params[:username].gsub(/(\s|　)+/, '') unless user_params[:username].nil?
+	def update_with_file(user_params, clip = {})
+    begin
+      user_params[:photo_path] = self.class.file_upload(user_params[:photo_path], "user", clip) unless user_params[:photo_path].nil?
+    rescue
+      user_params[:photo_path] = self[:photo_path]
+    end
+    user_params[:username] = user_params[:username].gsub(/(\s|　)+/, '') unless user_params[:username].nil?
   	self.update(user_params) ? true : false
   end
 

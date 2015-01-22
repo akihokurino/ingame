@@ -15,7 +15,7 @@
     .profileLeftColumn
       %h1.userName
         = @user.username
-      - if @user.place
+      - unless @user.place.blank?
         %p.userPlace
           = @user.place
       %p.userInfo
@@ -33,6 +33,7 @@
             .uploadBtnWrap
               .uploadBtnTxt ファイルを選択
               = f.file_field :photo_path, id: "upload-btn", class: "uploadBtn"
+        .error-message.errorMessage
         /
           %dl.editList
             %dt.editListTtl.editListTtlCover カバー写真

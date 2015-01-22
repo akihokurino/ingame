@@ -38,7 +38,7 @@ class Post < ActiveRecord::Base
     includes(:game).includes(:log).includes(:user).includes(:post_likes).includes(:post_photos).includes(:post_comments)
   }
 
-  def save_with!(files)
+  def save_with_url(files)
     files.each do |file|
       photo_path = self.class.url_upload(file, "post")
       PostPhoto.create!(post_id: self[:id], photo_path: photo_path)
