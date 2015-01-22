@@ -254,6 +254,8 @@
       this.provider           = null;
       $("#thumbnail").html("");
       this.$(".url-thumbnail-list").html("");
+      $(".error-message").html("");
+      $(".show-select-modal").text("ゲームを選ぶ");
     },
     resetFile: function () {
       this.upload.files = [];
