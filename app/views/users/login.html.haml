@@ -6,7 +6,7 @@
   %h1.ttl 
     = image_tag("logo@3x.png", width: "320")
   %p.subCopy
-    GAMRはゲームライフをより楽しくするSNSです。
+    gamrは遊んだゲームや気になるゲームなどを記録し、友達と共有できるWeb サービスです。
   .loginBox
     %ul.snsList
       %li.item
@@ -17,25 +17,25 @@
           %span.icon-facebook Facebookでログイン
       %li.item
         %a.gamr{href: ""}
-          %span.icon-gamr GAMR IDでログイン
+          %span.icon-gamr gamrのIDでログイン
 %section.points
-  %h1.pointsTtl GAMRの使い方
+  %h1.pointsTtl gamrの使い方
   %section.pointsItem
     %h2.pointsItemTtl ゲームを記録
-    = image_tag("login_illust_01@2x.png", width: "50%")
+    = image_tag("screenshot_01.png")
     %p.pointsItemText 気になるゲームや遊んだゲームをマイゲームに登録することで、自分だけのオリジナルカタログ（のようなもの）が出来上がります。
     %p.pointsItemAnnotation
       遊んできたゲームを見返したり、友達に共有することで、新たな発見があるかもしれません。
   %section.pointsItem
-    %h2.pointsItemTtl 瞬間をシェア
-    = image_tag("login_illust_02@2x.png", width: "50%")
-    %p.pointsItemText 登録したゲームに対して、コメントを付与して何度でもポストする事ができます。
+    %h2.pointsItemTtl 感想を共有
+    = image_tag("screenshot_02.png")
+    %p.pointsItemText 登録したゲームに対して、なんどでもつぶやく事ができます。ガチなレビューとは違うので、些細な事でもどんどんシェアしましょう！
     %p.pointsItemAnnotation
-      ゲームを遊んでいる時って、感想をシェアしたくなる瞬間が何度も訪れたりしませんか？
+      ゲームを遊んでいる時って、感想を共有したくなる瞬間が何度も訪れたりしませんか？
   %section.pointsItem
-    %h2.pointsItemTtl 感想を調べる
-    = image_tag("login_illust_03@2x.png", width: "50%")
-    %p.pointsItemText 気になるゲームを見つけたら、他のユーザーのコメントや、Tipsを見てみましょう。
+    %h2.pointsItemTtl ゲームを調べる
+    = image_tag("screenshot_03.png")
+    %p.pointsItemText ゲームの詳細ページでは、公式ウェブサイトやジャンルなどの情報を揃えてあります。他のユーザーの感想などと合わせて、好みのゲームを見つけましょう。
     %p.pointsItemAnnotation あなたが遊ぶべきゲームは、あなたの友達が知っているかもしれません。
 %section.bottomBox
   %h1.bottomBoxTtl ゲームを本気で楽しもう。
@@ -48,6 +48,6 @@
         %span.icon-facebook Facebookでログイン
     %li.item
       %a.gamr{href: ""}
-        %span.icon-gamr GAMRのIDでログイン
+        %span.icon-gamr gamrのIDでログイン
         
 = render partial: "application/pc/footer"
