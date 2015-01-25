@@ -194,7 +194,7 @@
             } else if (data.result && data.result.photo_path) {
               var img = $("<img src='/user_photos/" + data.result.photo_path + "' width='157' height='157'>");
               $("#thumbnail").html(img);
-
+              $(".error-message").html("");
               $(".next-page").html("初期設定を完了");
             }
           },
