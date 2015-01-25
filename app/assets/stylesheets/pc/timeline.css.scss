@@ -141,11 +141,12 @@
     }
     &Inner {
       position: relative;
-      padding: 10px;
+      padding: 10px 10px 40px 10px;
       border: 1px solid #e6e6e6;
       @include border-radius(3px);
       @include box-sizing;
       background: #fff;
+      @include clearfix;
 
       .selectLogError {
         padding: 5px 0;
@@ -188,7 +189,8 @@
     }
     textarea {
       margin: 10px 0;
-      width: 100%;
+      width: 300px;
+      min-height: 150px;
       padding: 10px;
       border: 1px solid #d1d1d1;
       @include border-radius(2px);
@@ -206,32 +208,61 @@
     }
     .urlThumbnail {
       overflow: hidden;
-      margin-bottom: 30px;
+      margin-bottom: 10px;
       border: solid 1px #e2e2e2;
       color: #4a4a4a;
 
       &Img {
-        width: 100%;
-        border-bottom: solid 1px #e2e2e2;
+        display: inline-block;
+        margin: 10px;
+        width: 100px;
+        vertical-align: top;
       }
       .body {
         padding: 10px;
+        width: 300px;
+        display: inline-block;
       }
       .title {
-        margin-bottom: 15px;
+        margin-bottom: 10px;
       }
       .description {
-        font-size: .875rem;
+        font-size: .5rem;
         line-height: 1.5;
       }
     }
     .thumbnailList {
-      margin-bottom: 8px;
+      float: right;
+      width: 150px;
+      margin-bottom: 10px;
       .thumbnail {
         display: inline-block;
+        &Img{
+          margin-top: 10px;
+          width: 100%;
+          height: auto;
+        }
         .gameTitle {
           color: #726ad0;
           margin-bottom: 5px;
+        }
+      }
+      &:empty{
+        margin-top: 10px;
+        display: block;
+        width: 150px;
+        height: 150px;
+        border: dotted 1px $color_border;
+        @include border-radius(2px);
+        background: #FAFAFA;
+        &:after{
+        font-size: 4rem;
+        font-family: 'icomoon';
+        content: "\e614";
+        color: #E8E8E8;
+        text-shadow:1px 1px 0 #ddd;
+        display: block;
+        margin: 45px;
         }
       }
     }
@@ -241,9 +272,35 @@
       img {
         width: 100%;
       }
+
+      &:empty{
+        display: none;
+      }
+    }
+    .btnList{
+      position: absolute;
+      width: 460px;
+      bottom: 10px;
+      .listItem{
+        display: inline-block;
+        }
+      }
+      .post{
+        float: right;
+        .shareBtn{
+          display: inline-block;
+          .twitterBtn:before{
+            font-family: 'icomoon';
+            content: "\e610";
+            font-size: 1.5rem;
+            color: #b2b2b2;
+            // content: "\e603";
+            display: inline-block;
+            margin-right: 15px;
+          }
+      }
     }
     .photoBtnWrap {
-      position: relative;
       width: 100px;
       border: 1px solid darken($color_border,7%);
       @include border-radius(2px);
@@ -276,9 +333,7 @@
       opacity: 0;
     }
     .addPostBtn {
-      position: absolute;
-      right: 10px;
-      bottom: 10px;
+      display: inline-block;
       height: 30px;
       padding: 6px 8px;;
       border: 1px solid darken($main_color,7%);

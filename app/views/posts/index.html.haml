@@ -48,12 +48,17 @@
           %p.selectBtn.show-select-modal ゲームを選ぶ
           %ul.thumbnailList.thumbnail-list
           #thumbnail
-          .url-thumbnail-list
           %textarea.post-input{placeholder: "そのゲームについて、どう思った？"}
-          .photoBtnWrap
-            %p.photoBtnText 写真を追加
-            %input.addPhoto#upload-btn{type: "file", href: ""}
-          %p.addPostBtn.post-btn つぶやく
+          .url-thumbnail-list
+          %ul.btnList
+            %li.listItem
+              .photoBtnWrap
+                %p.photoBtnText 写真を追加
+                %input.addPhoto#upload-btn{type: "file", href: ""}
+            %li.listItem.post
+              .shareBtn
+                .twitterBtn
+              %p.addPostBtn.post-btn つぶやく
 
           = render partial: "log_select"
 
