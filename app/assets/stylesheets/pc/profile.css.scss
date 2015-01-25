@@ -34,10 +34,13 @@ html {
       left: 0;
       z-index: 5;
       border: 4px solid #fff;
-      @include border-radius(5px);
+      @include border-radius(50%);
       @include box-shadow(0, 2px, 4px, 0, rgba(0, 0, 0, 0.5));
       background: #fff;
       line-height: 0;
+      img{
+        border-radius: 50%;
+      }
     }
     /*---   .countList   ---*/
     .countListWrap {
@@ -179,23 +182,57 @@ html {
     }
     /*---   .followBtn   ---*/
     .followBtn {
+      min-width:102px;
       display: block;
       position: absolute;
-      right: 50%;
-      top: 9px;
-      margin-right: -480px;
-      padding: 6px 15px 4px;
-      @include box-shadow(0, 2px, 0, 0, darken($main_color,10%));
-      @include border-radius(4px);
-      @include bglinear(lighten($main_color, 5%), $main_color);
+      right: 200px;
+      top: 10px;
+      padding: 6px 8px;
+      border: 1px solid darken($main_color,7%);
+      @include bglinear(lighten($main_color, 7%), $main_color);
+      @include border-radius(2px);
+      @include box-sizing;
       color: #fff;
-      font-weight: bold;
-      font-size: .875rem;
+      font-size: 12px;
       text-align: center;
       cursor: pointer;
 
       &:hover {
-        @include bglinear($main_color, lighten($main_color, 5%));
+        @include bglinear(lighten($main_color, 5%), darken($main_color,2%));
+      }
+
+      &:before{
+        display: inline-block;
+        margin-right: 4px;
+        font-family: 'icomoon';
+        content:"\e60b";
+        speak: none;
+        font-size:15px;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        vertical-align: -15%;
+
+        /* Better Font Rendering =========== */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+    }
+    .unFollow {
+      min-width:102px;
+      border: 1px solid darken($color_border,7%);
+      @include bglinear(lighten($color_border, 7%), $color_border);
+      color: $color_textGray;
+
+      &:hover {
+        @include bglinear(lighten($color_border, 5%), darken($color_border,5%));
+      }
+
+      &:before{
+        content:"\e615";
+        color: $color_green;
       }
     }
   }

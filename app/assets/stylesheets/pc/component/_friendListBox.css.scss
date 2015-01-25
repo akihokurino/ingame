@@ -45,6 +45,10 @@
       position: absolute;
       bottom: -40px;
       border: 3px solid #fff;
+      border-radius: 50%;
+      img{
+        border-radius: 50%;
+      }
     }
     .userName {
       margin-bottom: 10px;
@@ -72,36 +76,57 @@
     .followBtnWrap {
     }
     .followBtn {
+      min-width:102px;
       display: block;
       position: absolute;
+      bottom: -38px;
       right: 0;
-      bottom: -39px;
-      width: 137px;
-      border: 1px solid $main_color;
-      @include border-radius(4px);
+      padding: 6px 8px;
+      border: 1px solid darken($main_color,7%);
+      @include bglinear(lighten($main_color, 7%), $main_color);
+      @include border-radius(2px);
       @include box-sizing;
-      background: #fff;
-      color: $main_color;
-      font-weight: bold;
-      font-size: .875rem;
+      color: #fff;
+      font-size: 12px;
       text-align: center;
-      line-height: 30px;
       cursor: pointer;
 
       &:hover {
-        border: 1px solid #fff;
-        @include bglinear(lighten($main_color, 5%), $main_color);
-        color: #fff;
+        @include bglinear(lighten($main_color, 5%), darken($main_color,2%));
+      }
+
+      &:before{
+        display: inline-block;
+        margin-right: 4px;
+        font-family: 'icomoon';
+        content:"\e60b";
+        speak: none;
+        font-size:15px;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        vertical-align: -15%;
+
+        /* Better Font Rendering =========== */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
       }
     }
-    .unfollow, .unFollow {
-      border: 1px solid  #fff;
-      @include bglinear(lighten($main_color, 5%), $main_color);
-      color: #fff;
+    .unFollow {
+      min-width:102px;
+      border: 1px solid darken($color_border,7%);
+      @include bglinear(lighten($color_border, 7%), $color_border);
+      color: $color_textGray;
 
       &:hover {
-        @include bglinear($main_color, lighten($main_color, 5%));
-        color: #fff;
+        @include bglinear(lighten($color_border, 5%), darken($color_border,5%));
+      }
+
+      &:before{
+        content:"\e615";
+        color: $color_green;
       }
     }
   }
