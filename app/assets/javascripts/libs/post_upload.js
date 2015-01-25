@@ -55,6 +55,7 @@ PostUpload.prototype = {
     return file.type.match("application/vnd.*") ? true : false;
   },
   setThumbnail: function () {
+    $(".error-message").html("");
     this._output.style.display = "block";
   },
   valid: function (type) {

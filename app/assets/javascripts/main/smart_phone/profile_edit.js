@@ -49,6 +49,7 @@
             } else if (data.result) {
               var img = $("<img src='/tmp_photos/" + data.result + "' width='98' height='98'>");
               $("#thumbnail").html(img);
+              $(".error-message").html("");
             }
           },
           error: function () {
