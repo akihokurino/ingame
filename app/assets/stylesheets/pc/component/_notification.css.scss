@@ -37,12 +37,10 @@
   .notification-list {
     overflow-y: scroll;
     height: 450px;
-    padding: 20px;
 
     li {
+      padding: 10px;
       @include clearfix;
-      margin-bottom: 20px;
-      padding-bottom: 20px;
       border-bottom: 1px solid #ccc;
 
       &:last-child {
@@ -61,6 +59,11 @@
     }
     .profImgWrap {
       margin-right: 0;
+      .profImg{
+        @include border-radius(50%);
+        width: 40px;
+        height: 40px;
+      }
 
       &:after {
         content: none;

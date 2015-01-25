@@ -76,7 +76,7 @@
       line-height:48px;
       font-size:14px;
     }
-    .toTimelineBtn,.toSearchBtn,.toProfileBtn,.notify,.profImgWrap {
+    .toTimelineBtn,.toSearchBtn,.toProfileBtn,.notify,.accountImgWrap {
       position: relative;
       overflow: hidden;
       display:inline-block;
@@ -109,13 +109,13 @@
       font-size:22px;
       line-height: 48px
     }
-    .profImgWrap {
+    .accountImgWrap {
+      height: 48px;
       position: relative;
       cursor: pointer;
-      .profImg{
+      .accountImg{
         position: relative;
         margin-top: 10px;
-        margin-bottom: -10px;
         width: 26px;
         height: 26px;
         @include border-radius(50%);
