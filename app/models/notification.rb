@@ -12,8 +12,6 @@ class Notification < ActiveRecord::Base
   validates :notification_type_id,
     presence: true,
     numericality: true
-  validates :is_read,
-    presence: true
 
   scope :all_include, -> {
     includes(:to_user).includes(:from_user).includes(:notification_type)
@@ -21,7 +19,7 @@ class Notification < ActiveRecord::Base
 
   class << self
     def my_notifications(current_user)
-      notifications = self.where(to_user_id: current_user[:id]).all_include.order("created_at DESC")
+      notifications = self.where(to_user_id: current_user[:id]).where("created_at > ?", 1.week.ago).all_include.order("created_at DESC")
       notifications.update_all(is_read: true)
       notifications
     end

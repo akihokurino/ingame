@@ -10,16 +10,19 @@ var NotificationsView = Backbone.View.extend({
     this.collection.fetch({
       data: {},
       success: function (model, response, options) {
+        that.collection.reset();
         for (var i = 0; i < response.notifications.length; i++) {
           response.notifications[i].text = that.createText(response.notifications[i]);
           var notification = new Notification(response.notifications[i]);
           that.collection.add(notification);
         }
+
+        that.stopListening();
       },
       error: function () {
 
       }
-    })
+    });
   },
   addNotification: function (notification) {
     if (notification.id) {
