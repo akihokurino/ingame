@@ -12,7 +12,8 @@
         プロフィール写真を設定すれば、友達や他のユーザーから発見されやすくなります。
         %br
         オンラインゲームにおける、アバターアイコンと同じですね。
-      #thumbnail
+      .error-message.errorMessage
+      #thumbnail{width: 151, height: 151}
         = image_tag "/user_photos/#{@current_user[:photo_path]}", width: "151", height: "151", alt: "", class: "thumbnailImg"
       .uploadBtnWrap
         .uploadBtnTxt 写真を選択

@@ -39,8 +39,18 @@
           data: data,
           success: function (data) {
             that.$(".clip-box").css("display", "none");
-            var img = $("<img src='/tmp_photos/" + data.result + "' width='98' height='98'>");
-            $("#thumbnail").html(img);
+            if (data.error) {
+              switch (data.error.type) {
+                case "photo":
+                  that.upload.reset();
+                  break;
+              }
+              $(".error-message").html(data.error.message);
+            } else if (data.result) {
+              var img = $("<img src='/tmp_photos/" + data.result + "' width='98' height='98'>");
+              $("#thumbnail").html(img);
+              $(".error-message").html("");
+            }
           },
           error: function () {
 

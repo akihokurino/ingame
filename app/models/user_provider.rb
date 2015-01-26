@@ -3,6 +3,15 @@ class UserProvider < ActiveRecord::Base
 
   belongs_to :user
 
+  validates :uid,
+    presence: true
+  validates :username,
+    presence: true
+  validates :service_name,
+    presence: true
+  validates :token,
+    presence: true
+
   class << self
     def create_with_omniauth(auth)
       self.create! do |user_provider|

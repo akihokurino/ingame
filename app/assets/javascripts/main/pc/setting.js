@@ -169,7 +169,6 @@
     },
     clip: function () {
       var that = this;
-      $(".next-page").val("アップロード");
 
       if (this.upload.file) {
         var data = {
@@ -186,10 +185,18 @@
           data: data,
           success: function (data) {
             that.hideClipModal();
-            var img = $("<img src='/user_photos/" + data.result.photo_path + "' width='157' height='157'>");
-            $("#thumbnail").html(img);
-
-            $(".next-page").html("初期設定を完了");
+            if (data.error) {
+              switch (data.error.type) {
+                case "photo":
+                  break;
+              }
+              $(".error-message").html(data.error.message);
+            } else if (data.result && data.result.photo_path) {
+              var img = $("<img src='/user_photos/" + data.result.photo_path + "' width='157' height='157'>");
+              $("#thumbnail").html(img);
+              $(".error-message").html("");
+              $(".next-page").html("初期設定を完了");
+            }
           },
           error: function () {
 

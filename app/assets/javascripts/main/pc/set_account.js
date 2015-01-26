@@ -67,7 +67,18 @@
         error.username = "empty";
       } else if (this.username_input.val().length > 15) {
         error.username = "toolong";
+      } else {
+        var result = $.ajax({
+          type: "GET",
+          url: "/api/users/uniqueness?username=" + this.username_input.val(),
+          async: false
+        }).responseText;
+
+        if (!JSON.parse(result).result) {
+          error.username = "already";
+        }
       }
+
       if (this.password_input.val() == "") {
         error.password = "empty";
       } else if (this.password_input.val().length < 8) {
@@ -79,6 +90,7 @@
       if (this.password_input.val() !== this.password_confirm_input.val()) {
         error.password_confirm = "notsame";
       }
+
       if (!this.rule_checkbox.prop("checked")) {
         error.rule = "uncheck";
       }
@@ -92,6 +104,9 @@
               }
               if (error[key] == "toolong") {
                 this.$el.find(".username-error").html("ユーザー名は１５文字以内で入力して下さい。");
+              }
+              if (error[key] == "already") {
+                this.$el.find(".username-error").html("そのユーザー名はすでに使われています。");
               }
               break;
             case "password":

@@ -14,7 +14,7 @@
       %section.personalBox
         %h1.name
           = @user.username
-        - if @user.place
+        - unless @user.place.blank?
           %p.place.icon-place
             = @user.place
         %p.text

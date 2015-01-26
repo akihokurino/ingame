@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 
   def update
     clip = {x: params[:user][:clip_x].to_i, y: params[:user][:clip_y].to_i}
-    if @user.update_with(user_params, clip)
+    if @user.update_with_file(user_params, clip)
       redirect_to "/users/#{@user[:id]}#logs", notice: "ユーザー情報を変更しました"
     else
       render "edit"

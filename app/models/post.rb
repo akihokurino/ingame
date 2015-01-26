@@ -16,8 +16,15 @@ class Post < ActiveRecord::Base
   validates :game_id,
     presence: true,
     numericality: true
+  validates :log_id,
+    presence: true,
+    numericality: true
   validates :text,
     presence: true
+  validates :post_likes_count,
+    numericality: true
+  validates :post_comments_count,
+    numericality: true
 
   attr_accessor :i_liked
 
@@ -31,7 +38,7 @@ class Post < ActiveRecord::Base
     includes(:game).includes(:log).includes(:user).includes(:post_likes).includes(:post_photos).includes(:post_comments)
   }
 
-  def save_with(files)
+  def save_with_url(files)
     files.each do |file|
       photo_path = self.class.url_upload(file, "post")
       PostPhoto.create!(post_id: self[:id], photo_path: photo_path)
@@ -39,25 +46,39 @@ class Post < ActiveRecord::Base
   end
 
   def facebook(current_user)
-    me = FbGraph::User.me(current_user.token)
+    current_provider = nil
+    current_user.user_providers.each do |user_provider|
+      current_provider = user_provider if user_provider[:service_name] == "facebook"
+    end
+
+    return false unless current_provider
+
+    me = FbGraph::User.me current_provider[:token]
     me.feed!(
-      :message => self[:text],
-      #:picture => 'https://graph.facebook.com/matake/picture',
-      #:link => 'https://github.com/bussorenre',
-      :name => "Gameful",
+      :message     => self[:text],
+      #:picture    => 'https://graph.facebook.com/matake/picture',
+      #:link       => 'https://github.com/bussorenre',
+      :name        => "Gameful",
       :description => "Posted from Gameful"
     )
   end
 
   def twitter(current_user)
+    current_provider = nil
+    current_user.user_providers.each do |user_provider|
+      current_provider = user_provider if user_provider[:service_name] == "twitter"
+    end
+
+    return false unless current_provider
+
     client = Twitter::REST::Client.new do |config|
       config.consumer_key        = "o0oeDXJ131ufgroZv1ur7sZ6E"
       config.consumer_secret     = "e3yyRbH2s4eI4AuFrtMMKwxGTi7ZHF00qslNWbYKzClMWgmWJf"
-      config.access_token        = current_user[:token]
-      config.access_token_secret = current_user[:secret_token]
+      config.access_token        = current_provider[:token]
+      config.access_token_secret = current_provider[:secret_token]
     end
 
-    client.update(self[:text])
+    client.update self[:text]
   end
 
   def datetime

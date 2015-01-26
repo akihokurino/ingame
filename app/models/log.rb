@@ -10,6 +10,9 @@ class Log < ActiveRecord::Base
 	validates :user_id,
 		presence: true,
 		numericality: true
+	validates :status_id,
+		presence: true,
+		numericality: true
 
 	class << self
 		def create_with(result, current_user)

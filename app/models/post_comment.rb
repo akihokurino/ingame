@@ -3,6 +3,17 @@ class PostComment < ActiveRecord::Base
   belongs_to :post, counter_cache: true
   has_many   :comment_likes
 
+  validates :post_id,
+    presence: true,
+    numericality: true
+  validates :user_id,
+    presence: true,
+    numericality: true
+  validates :comment_likes_count,
+    numericality: true
+  validates :text,
+    presence: true
+
   attr_accessor :i_liked
 
   def datetime

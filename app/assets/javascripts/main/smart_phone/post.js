@@ -171,17 +171,28 @@
         url: "/api/posts",
         data: data,
         success: function (data) {
-          var data = {
-            type: "post",
-            post: data.last_post,
-            from_user_id: post_socket.user_id
+          if (data.error) {
+            switch (data.error.type) {
+              case "photo":
+                that.resetFile();
+                break;
+            }
+
+            $(".error-message").html(data.error.message);
+
+          } else {
+            var data = {
+              type: "post",
+              post: data.last_post,
+              from_user_id: post_socket.user_id
+            }
+
+            post_socket.send(data);
+
+            that.resetInput();
+
+            location.href = "/posts";
           }
-
-          post_socket.send(data);
-
-          that.resetInput();
-
-          location.href = "/posts";
         },
         error: function () {
 
@@ -191,6 +202,10 @@
     resetInput: function () {
       this.upload.files  = [];
       this.url_thumbnail = null;
+    },
+    resetFile: function () {
+      this.upload.files = [];
+      $("#thumbnail").html("");
     },
     getUrl: function (str) {
       var pat  = /(https?:\/\/[\x21-\x7e]+)/g;

@@ -12,6 +12,7 @@
   = form_for @user do |f|
     = f.hidden_field :clip_x, id: "clip-x"
     = f.hidden_field :clip_y, id: "clip-y"
+    .error-message.errorMessage
     .file-input
       #thumbnail
         = image_tag "/user_photos/#{@user.photo_path}", class: "profile-img"

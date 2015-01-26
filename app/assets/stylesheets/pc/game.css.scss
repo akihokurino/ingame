@@ -94,15 +94,21 @@ html {
     .youtubeBtn{
       @extend .amazonBtn;
     }
+    .icon-youtube:before,.icon-cart:before{
+      display: inline-block;
+      vertical-align: -5%;
+      margin-right: 10px;
+    }
     /*---   .gameInfoBox   ---*/
     .gameInfoBox {
       position: relative;
       float: right;
-      width: 660px;
+      width: 700px;
       @include clearfix;
 
       &Inner{
         width: 420px;
+        padding-right: 10px;
       }
     }
     /*---   .gameTtl   ---*/
@@ -117,21 +123,20 @@ html {
     .gameInfoList {
       line-height: 1.5;
       margin-bottom:20px;
+      background: #f7f7f7;
+      border: solid 1px $color_border;
       .item {
-        @include border-radius(4px);
         font-size: 0.75rem;
-        margin-bottom: 10px;
+        padding: 6px;
+        border-bottom: solid 1px $color_border;
         .itemName{
-          margin:10px 0 4px 0;
+          display: inline-block;
           @include box-sizing;
           color:$color_textBlack;
           font-weight:bold;
           vertical-align: middle;       }
         .itemContent{
           display: inline-block;
-          padding:8px 12px;
-          @include border-radius(2px);
-          background-color: #eee;
           color:$color_textBlack;
           text-align:left;
         }
@@ -216,9 +221,6 @@ html {
         overflow: hidden;
         position: relative;
         width: 126px;
-        @include border-radius(4px);
-        background: $main_color;
-        box-shadow: 0 2px 0 darken($main_color,7%);
         cursor: pointer;
 
         &:first-child {
@@ -238,26 +240,81 @@ html {
             content:"";
           }
         }
-      }
-      select {
-        @include appearance;
-        outline: 0;
-        border:none;
-        display: inline-block;
-        margin: 0 auto;
-        padding: 10px 15px;
-        background: none;
-        color: #fff;
-        font-weight: bold;
-        font-size: 1rem;
-        cursor: pointer;
 
-        &::-ms-expand {
-          display: none;
+        .statusWrap {
+          position: relative;
+          display: inline-block;
+          overflow: hidden;
+          width: 100%;
+          border: 1px solid darken($main_color,7%);
+          @include bglinear(lighten($main_color, 7%), $main_color);
+          @include border-radius(2px);
+          @include box-sizing;
+          color: #fff;
+          cursor: pointer;
+
+          &:after {
+            display: block;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            margin-top: -3px;
+            border-top: 5px solid #fff;
+            border-right: 4px solid transparent;
+            border-bottom: 4px solid transparent;
+            border-left: 5px solid transparent;
+            content:"";
+          }
         }
-        @-moz-document url-prefix() {
-          width: 152px;
-          padding-left: 10px;
+        .statusBtn {
+          display: block;
+          width: 90%;
+          height: 33px;
+          margin: 0 auto;
+          border: none;
+          background: none;
+          color: #fff;
+          font-size: .875rem;
+          text-indent: .01px;
+          text-overflow: "";
+          line-height: 1rem;
+          @include appearance;
+          cursor: pointer;
+          outline: 0;
+
+          &::-ms-expand {
+            display: none;
+          }
+          @-moz-document url-prefix() {
+            width: 182px;
+            padding-left: 10px;
+          }
+        }
+        .registed .statusWrap {
+          border: 1px solid darken($color_border,7%);
+          @include bglinear(lighten($color_border, 7%), $color_border);
+          
+          &:after {
+            display: block;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            margin-top: -3px;
+            border-top: 5px solid $color_textGray;
+            border-right: 4px solid transparent;
+            border-bottom: 4px solid transparent;
+            border-left: 5px solid transparent;
+            content:"";
+          }
+        }
+        .registed .statusBtn {
+          color: $color_textGray;
+
+          @-moz-document url-prefix() {
+            option {
+              color: $main_color;
+            }
+          }
         }
       }
     }
