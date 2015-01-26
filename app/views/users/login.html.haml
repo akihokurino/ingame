@@ -3,7 +3,7 @@
 
 %section.mainVisual
   %h2.mainCopy たくさんのゲームを、遊んできた。
-  %h1.ttl 
+  %h1.ttl
     = image_tag("logo@3x.png", width: "320")
   %p.subCopy
     gamrは遊んだゲームや気になるゲームなどを記録し、友達と共有できるWeb サービスです。
@@ -15,9 +15,10 @@
       %li.item
         %a.fb{href: "/auth/facebook"}
           %span.icon-facebook Facebookでログイン
-      %li.item
-        %a.gamr{href: ""}
-          %span.icon-gamr gamrのIDでログイン
+      /
+        %li.item
+          %a.gamr{href: ""}
+            %span.icon-gamr gamrのIDでログイン
 %section.points
   %h1.pointsTtl gamrの使い方
   %section.pointsItem
@@ -49,5 +50,5 @@
     %li.item
       %a.gamr{href: ""}
         %span.icon-gamr gamrのIDでログイン
-        
+
 = render partial: "application/pc/footer"
