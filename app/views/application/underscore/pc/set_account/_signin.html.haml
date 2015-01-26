@@ -4,6 +4,7 @@
   %section.Signin
     %h1.SigninTtl GAMRにログイン
     %form
+      .error-message.errorMessage
       %input.SigninInput.username-input{type: "text", name: "username", placeholder: "ユーザー名", value: @current_provider_name}
       %p.SigninError.error-log.username-error
       %input.SigninInput.password-input{type: "password", name: "password", placeholder: "パスワード）"}
