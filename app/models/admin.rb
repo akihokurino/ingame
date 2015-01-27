@@ -6,7 +6,7 @@ class Admin < ActiveRecord::Base
   validates :username,
     presence: true,
     uniqueness: true,
-    length: {maximum: 255, minimum: 8}
+    length: {maximum: 255, minimum: 4}
   validates :password,
     presence: true,
     length: {maximum: 255, minimum: 8}

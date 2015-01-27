@@ -5,15 +5,27 @@
 
 .container
   = render partial: "application/admin/flash_message"
+
+  = search_form_for(@q, url: admin_games_path) do |f|
+    .input-group.col-lg-6
+      = f.text_field :title_cont, class: "form-control"
+      %span.input-group-btn
+        = f.submit "検索", class: "btn btn-default"
+
+  %ul.nav.nav-tabs
+    %li
+      = link_to "ファミ通", admin_games_path(type: "famituu")
+    %li
+      = link_to "スチーム", admin_games_path(type: "steam")
   %table.table.table-striped
     %tr
       %th ID
       %th タイトル
       %th サムネイル
       %th メーカー
-      %th wiki
+      %th.w-300 wiki
       %th 価格
-      %th 発売日
+      %th.w-100 発売日
       %th デバイス
       %th プロバイダー
     = render partial: "game", collection: @games

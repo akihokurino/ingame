@@ -79,4 +79,6 @@ gem 'rmagick'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
 
+gem "ransack"
+
 

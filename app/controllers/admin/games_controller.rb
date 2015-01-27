@@ -8,7 +8,16 @@ class Admin::GamesController < ApplicationController
   PER = 50
 
   def index
-    @games = Game.page(params[:page]).per(PER).order("created_at DESC")
+    case params[:type]
+    when "famituu"
+      @q = Game.where(provider: "famituu").page(params[:page]).per(PER).order("created_at DESC").ransack(search_params)
+    when "steam"
+      @q = Game.where(provider: "steam").page(params[:page]).per(PER).order("created_at DESC").ransack(search_params)
+    else
+      @q = Game.page(params[:page]).per(PER).order("created_at DESC").ransack(search_params)
+    end
+
+    @games = @q.result
   end
 
   def show
@@ -49,5 +58,10 @@ class Admin::GamesController < ApplicationController
 
   def game_params
     params.require(:game).permit :title, :photo_path, :maker, :wiki, :price, :release_day, :device, :provider, :provider_url, :amazon_url
+  end
+
+  def search_params
+    params.require(:q).permit!
+  rescue
   end
 end
