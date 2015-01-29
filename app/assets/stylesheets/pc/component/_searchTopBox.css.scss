@@ -15,8 +15,8 @@
     position: relative;
     width: 390px;
     padding: 1px;
-    border: 3px solid #ccc;
-    @include border-radius(7px);
+    border: 1px solid #ccc;
+    @include border-radius(2px);
     background: #fff;
 
     &:before {
@@ -28,14 +28,6 @@
       font-family: 'icomoon';
       content: "\e60c";
     }
-    &:after {
-      position: absolute;
-      top: 5px;
-      left: 33px;
-      height: 26px;
-      border-left: 1px solid #cecece;
-      content: "";
-    }
   }
   .search {
     width: 380px;
@@ -43,7 +35,7 @@
     margin: 0 auto;
     padding-left: 40px;
     border: none;
-    @include border-radius(7px);
+    @include border-radius(2px);
     @include box-sizing;
     @include appearance;
     line-height: normal;
@@ -58,19 +50,25 @@
   /*---   .nextBtn   ----------*/
   .searchBtn {
     position: absolute;
-    top: 4px;
+    top: 0;
     left: 50%;
-    width: 88px;
-    height: 30px;
     margin-left: 113px;
-    @include border-radius(4px);
-    @include bglinear(lighten($main_color, 5%), $main_color);
+    min-width:102px;
+    display: block;
+    padding: 6px 8px;
+    border: 1px solid darken($main_color,7%);
+    @include bglinear(lighten($main_color, 7%), $main_color);
+    @include border-radius(2px);
+    @include box-sizing;
     color: #fff;
-    font-weight: bold;
-    font-size: .875rem;
+    @include font-size(14);
     text-align: center;
-    line-height: 30px;
+    line-height: 1.5;
     cursor: pointer;
+
+    &:hover {
+      @include bglinear(lighten($main_color, 5%), darken($main_color,2%));
+    }
 
     &:hover {
       text-decoration: none;
