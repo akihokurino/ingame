@@ -6,7 +6,7 @@ class Admin < ActiveRecord::Base
   validates :username,
     presence: true,
     uniqueness: true,
-    length: {maximum: 255, minimum: 8}
+    length: {maximum: 255, minimum: 4}
   validates :password,
     presence: true,
     length: {maximum: 255, minimum: 8}
@@ -14,7 +14,7 @@ class Admin < ActiveRecord::Base
     presence: true,
     length: {maximum: 255}
 
-  CURRENT_KEY = "foobar13579"
+  CURRENT_KEY = "ingameplaydygamr"
 
   def collect_password?(password)
     self.class.crypt_password(password, self.salt) == self.password

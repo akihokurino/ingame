@@ -91,7 +91,7 @@ class Game < ActiveRecord::Base
   end
 
   def update_with_thumbnail(game_params)
-    game_params[:photo_path] = self.class.file_upload game_params[:photo_path], "game"
+    game_params[:photo_path] = self.class.file_upload(game_params[:photo_path], "game") unless game_params[:photo_path].nil?
     self.update game_params
   end
 

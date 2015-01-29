@@ -214,12 +214,16 @@
         }
       }
 
-      $.ajax({
+      if (req) {
+        req.abort();
+      }
+
+      var req = $.ajax({
         type: "POST",
         url: "/api/logs",
         data: data,
         success: function () {
-          that.new_status_select.addClass("registed");
+          that.new_status_select.removeClass("new-status").addClass("registed").addClass("my-status");
         },
         error: function () {
         }

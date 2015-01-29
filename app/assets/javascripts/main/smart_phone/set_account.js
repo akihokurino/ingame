@@ -163,10 +163,12 @@
           success: function (data) {
             if (data.result) {
               location.href = data.result;
+            } else {
+              $(".error-message").html("ユーザー名かパスワードが違います。");
             }
           },
           error: function () {
-
+            $(".error-message").html("ユーザー名かパスワードが違います。");
           }
         })
       }

@@ -59,6 +59,7 @@
       e.preventDefault();
 
       $(".notification-modal").css("display", "block");
+
       this.$el.find(".notify-num").css("display", "none");
       this.$el.find(".notify-num").html(0);
 
@@ -67,7 +68,7 @@
     },
     hideNotifications: function () {
       $(".notification-modal").css("display", "none");
-      $("notification-list").html("");
+      $(".notification-list").html("");
 
       this.notifications_view = null;
       pageLayerView.hide();
