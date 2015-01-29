@@ -51,14 +51,14 @@
           #thumbnail
           .url-thumbnail-list
           %ul.btnList
-            %li.listItem
-              .photoBtnWrap
-                %p.photoBtnText 写真を追加
-                %input.addPhoto#upload-btn{type: "file", href: ""}
             %li.listItem.post
               .shareBtn
                 .twBtn
               %p.addPostBtn.post-btn つぶやく
+            %li.listItem
+              .photoBtnWrap
+                %p.photoBtnText 写真を追加
+                %input.addPhoto#upload-btn{type: "file", href: ""}
 
           = render partial: "log_select"
 
