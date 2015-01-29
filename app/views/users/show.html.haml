@@ -11,7 +11,7 @@
   .profileBox
     .profileBoxInner
       %figure.profImgWrap
-        = image_tag "/user_photos/#{@user[:photo_path]}", class: "profImg", width: 135, hieght: 135, alt: "ユーザー画像"
+        = image_tag "/user_photos/#{@user[:photo_path]}", class: "profImg", alt: "ユーザー画像"
     .countListWrap
       %ul.countList.count-box
         %li.gameNum.logs-li.current
