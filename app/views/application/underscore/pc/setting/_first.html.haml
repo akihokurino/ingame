@@ -1,19 +1,19 @@
 %script{type: "text/template", id: "first-template"}
-  %header.settingHeader
-    .settingHeaderInner
-      %h1.logo GAMR
-      .stepBar01
-      %p.stepTxt 登録は簡単です
+  %header.SettingHeader
+    .SettingHeader__inner
+      %h1.SettingHeader__title GAMR
+      .SettingHeader__bar--first
+      %p.SettingHeader__text 登録は簡単です
   %section.mainContent
-    .settingTopBox
-      %h1.mainTtl ようこそ、GAMRへ。
-      %p.mainTxt
+    .SettingTop
+      %h1.SettingTop__title ようこそ、GAMRへ。
+      %p.SettingTop__text
         まずはお気に入りのゲームをマイゲームに登録しましょう。
         %br
         ゲームは、後から好きなだけ追加することができます。
-      %form.searchWrap
-        %input.search.search-title-input{type: "text", placeholder: "ゲーム名で検索"}
-      %p.nextBtnWrap
-        %a.nextBtn.next-page{href: ""} 登録せずに進む
-    .gameListBox
-      %ul.gameListWrap.result-list
+      %form.SettingTop__searchWrap
+        %input.SettingTop__search.search-title-input{type: "text", placeholder: "ゲーム名で検索"}
+      %p.SettingTop__nextButtonWrap--first
+        %a.SettingTop__nextButton.next-page{href: ""} 登録せずに進む
+    .Gamelist
+      %ul.Gamelist__list.result-list

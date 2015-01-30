@@ -1,13 +1,13 @@
 %script{type: "text/template", id: "game-search-template"}
-  .searchTopBox
-    .searchBox
-      %form.searchWrap
-        %input.search.game-title-input{type: "text", placeholder: "キーワードでゲームを探す"}
-      %p.searchBtn.search-btn{href: ""} 検索
-    %ul.sortList
-      %li.item.current ゲーム検索
-      %li.item
-        = link_to "ユーザー検索", "#", class: "sortListLink change-target-link"
+  .SearchTop
+    .SearchTop__inner
+      %form.SearchTop__searchWrap
+        %input.SearchTop__search.game-title-input{type: "text", placeholder: "キーワードでゲームを探す"}
+      %p.SearchTop__searchButton.search-btn{href: ""} 検索
+    %ul.SearchTop__sortList
+      %li.SearchTop__sortItem--current ゲーム検索
+      %li.SearchTop__sortItem--others
+        = link_to "ユーザー検索", "#", class: "SearchTop__sortLink change-target-link"
   .Gamelist
     .result-area
     %ul.Gamelist__list.result-list

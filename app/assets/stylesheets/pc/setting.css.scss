@@ -1,6 +1,6 @@
 @import "../_function.css.scss";
 @import "component/_settingHeader.css.scss";
-@import "component/_settingTopBox.css.scss";
+@import "component/_settingTop.css.scss";
 @import "component/_gamelist.css.scss";
 @import "component/_friendlist.css.scss";
 @import "component/_clipBox.css.scss";
@@ -15,82 +15,4 @@ html {
   position: relative;
   margin-top: 0;
   background: #f2f2f2;
-
-  /*---   .profileBox   ----------*/
-  .profileEditBox {
-    position: relative;
-    width: 580px;
-    margin: 0 auto 30px;
-    padding: 0 10px;
-    @include box-sizing;
-    background: #fff;
-    color: #3f3f3f;
-
-    .profileEditTtl {
-      font-weight: bold;
-      font-size: 1.125rem;
-    }
-    .editList {
-      margin: 40px 0;
-      @include clearfix;
-    }
-    .editListTtl {
-      float: left;
-      width: 125px;
-      margin-right: 15px;
-      font-size: .875rem;
-      text-align: right;
-      line-height: 36px;
-
-      &Prof {
-        line-height: 98px;
-      }
-      &Cover {
-        line-height: 55px;
-      }
-    }
-    .userName {
-      width: 280px;
-      height: 36px;
-      padding-left: 5px;
-      border: 1px solid #ccc;
-      @include border-radius(3px);
-      @include box-sizing;
-      font-size: .875rem;
-      outline: 0;
-    }
-    .place {
-      width: 280px;
-      height: 36px;
-      padding-left: 5px;
-      border: 1px solid #ccc;
-      @include border-radius(3px);
-      @include box-sizing;
-      font-size: .875rem;
-      outline: 0;
-    }
-    textarea {
-      width: 280px;
-      height: 146px;
-      padding: 5px;
-      border: 1px solid #ccc;
-      @include border-radius(3px);
-      @include box-sizing;
-      font-size: .875rem;
-      outline: 0;
-      resize: none;
-    }
-    .agreeTxt {
-      margin-left: 80px;
-      color: #515151;
-      font-weight: bold;
-      font-size: .875rem;
-      cursor: pointer;
-    }
-    .agreeCheck {
-      width: 15px;
-      height: 15px;
-      @include border-radius(10px);
-    }
-  }
 }

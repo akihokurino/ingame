@@ -1,24 +1,24 @@
 %script{type: "text/template", id: "third-template"}
-  %header.settingHeader
-    .settingHeaderInner
-      %h1.logo
+  %header.SettingHeader
+    .SettingHeader__inner
+      %h1.SettingHeader__title
         = image_tag("logo@2x.png", width: "50%")
-      .stepBar03
-      %p.stepTxt あと少しで終わりますよ
+      .SettingHeader__bar--third
+      %p.SettingHeader__text あと少しで終わりますよ
   %section.mainContent
-    .settingTopBox
-      %h1.mainTtl 写真は重要です。ゲーマーにとっても。
-      %p.mainTxt
+    .SettingTop
+      %h1.SettingTop__title 写真は重要です。ゲーマーにとっても。
+      %p.SettingTop__text
         プロフィール写真を設定すれば、友達や他のユーザーから発見されやすくなります。
         %br
         オンラインゲームにおける、アバターアイコンと同じですね。
       #thumbnail
         = image_tag "/user_photos/#{@current_user[:photo_path]}", width: "151", height: "151", alt: "", class: "thumbnailImg"
-      .uploadBtnWrap
-        .uploadBtnTxt 写真を選択
+      .SettingTop__uploadButtonWrap
+        .SettingTop__uploadButtonText 写真を選択
         %form
-          %input.uploadBtn#upload-btn{type: "file", value: "写真を選択"}
-      %p.nextBtnWrap03
-        %a.nextBtn03.next-page{href: ""} 設定せずに初期設定を完了
+          %input.SettingTop__uploadButton#upload-btn{type: "file", value: "写真を選択"}
+      %p.SettingTop__nextButtonWrap--third
+        %a.SettingTop__nextButton.next-page{href: ""} 設定せずに初期設定を完了
 
     = render partial: "application/pc/clip_modal"

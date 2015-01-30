@@ -1,17 +1,19 @@
 @import "../../_function.css.scss";
 
-/*---   .searchTopBox   ----------*/
-.searchTopBox {
+/*---   SearchTop   ----------*/
+$component: "SearchTop";
+
+.#{$component} {
   padding-top: 32px;
   background: #fff;
 
   /*---   .search   ----------*/
-  .searchBox {
+  &__inner {
     position: relative;
     width: 580px;
     margin: 0 auto 40px;
   }
-  .searchWrap {
+  &__searchWrap {
     position: relative;
     width: 390px;
     padding: 1px;
@@ -37,7 +39,7 @@
       content: "";
     }
   }
-  .search {
+  &__search {
     width: 380px;
     height: 34px;
     margin: 0 auto;
@@ -55,8 +57,7 @@
       line-height: 1.5rem;
     }
   }
-  /*---   .nextBtn   ----------*/
-  .searchBtn {
+  &__searchButton {
     position: absolute;
     top: 4px;
     left: 50%;
@@ -77,44 +78,47 @@
       @include bglinear($main_color, lighten($main_color, 5%));
     }
   }
-  /*---   .sortBox   ---*/
-  .sortList {
+  &__sortList {
     width: $cntWidth;
     margin: 0 auto;
     color: #3e3e3e;
     font-size: .875rem;
-
-    .item {
+  }
+  &__sortItem {
+    &--others {
       display: inline-block;
       width: 118px;
       text-align: center;
       cursor: pointer;
+    }
+    &--current {
+      display: inline-block;
+      position: relative;
+      width: 118px;
+      padding-bottom: 18px;
+      color: $main_color;
+      text-align: center;
+      cursor: pointer;
 
-      &.current {
-        position: relative;
-        padding-bottom: 18px;
-        color: $main_color;
-
-        &:after {
-          position: absolute;
-          bottom: 0;
-          left: 50%;
-          width: 100%;
-          margin-left: -50%;
-          border-bottom: 4px solid $main_color;
-          content: "";
-        }
+      &:after {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 100%;
+        margin-left: -50%;
+        border-bottom: 4px solid $main_color;
+        content: "";
       }
     }
-    &Link {
-      display: block;
-      padding-bottom: 18px;
-      color: #3e3e3e;
+  }
+  &__sortLink {
+    display: block;
+    padding-bottom: 18px;
+    color: #3e3e3e;
 
-      &:hover {
-        color: $main_color;
-        text-decoration: none;
-      }
+    &:hover {
+      color: $main_color;
+      text-decoration: none;
     }
   }
 }

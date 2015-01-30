@@ -1,0 +1,36 @@
+@import "../../_function.css.scss";
+
+/*---   LoginTop   ----------*/
+$component: "LoginTop";
+
+.#{$component} {
+  min-width: 960px;
+  padding-top: 30px;
+  background: linear-gradient(rgba(#000,0.6), rgba(#000,0.8)), url('/assets/bg_login.png');
+  background-size: contain;
+  font-family: arial;
+  text-align: center;
+  color: #fff;
+
+  &__title {
+    margin:45px 0 40px 0;
+  }
+  &__text {
+  	&--mainCopy {
+      width: 760px;
+      margin: 10px auto;
+      padding: 20px 0;
+      font-size: 22px;
+      border-top: 3px solid #fff;
+      border-bottom: 3px solid #fff;
+  	}
+    &--subCopy {
+      padding: 0 20px;
+      font-size: 22px;
+      line-height: 1.5;
+    }
+  }
+  &__snsWrap {
+    font-size: 22px;
+  }
+}

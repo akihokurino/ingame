@@ -1,20 +1,20 @@
 %script{type: "text/template", id: "second-template"}
-  %header.settingHeader
-    .settingHeaderInner
-      %h1.logo
+  %header.SettingHeader
+    .SettingHeader__inner
+      %h1.SettingHeader__title
         = image_tag("logo@2x.png", width: "50%")
-      .stepBar02
-      %p.stepTxt パーティは多いほうが有利ですよね
+      .SettingHeader__bar--second
+      %p.SettingHeader__text パーティは多いほうが有利ですよね
   %section.mainContent
-    .settingTopBox
-      %h1.mainTtl 様々な人がGAMRを使っています。
-      %p.mainTxt
+    .SettingTop
+      %h1.SettingTop__title 様々な人がGAMRを使っています。
+      %p.SettingTop__text
         twitterやFacebookのお友達を検索して、フォローしましょう。
         %br
         有名なゲーマーや、尊敬するクリエイターも使っているかもしれません。
-      %form.searchWrap
-        %input.search.user-input{type: "text", placeholder: "キーワードでユーザーを探す"}
-      %p.nextBtnWrap
-        %a.nextBtn.next-page{href: ""} 誰も使ってなさそう
-    .friendListBox
-      %ul.friendListWrap.user-list
+      %form.SettingTop__searchWrap
+        %input.SettingTop__search.user-input{type: "text", placeholder: "キーワードでユーザーを探す"}
+      %p.SettingTop__nextButtonWrap--second
+        %a.SettingTop__nextButton.next-page{href: ""} 誰も使ってなさそう
+    .Friendlist
+      %ul.Friendlist__list.user-list

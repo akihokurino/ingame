@@ -1,9 +1,8 @@
 @import "../_function.css.scss";
-@import "component/_searchTopBox.css.scss";
+@import "component/_searchTop.css.scss";
 @import "component/_gamelist.css.scss";
 @import "component/_friendlist.css.scss";
 
-/*---   common   ---------------------------*/
 html {
   height:100%;
   background: $main_color;
@@ -14,23 +13,21 @@ body {
 #wrapper {
   height:100%;
 }
-
-/*---   .mainContent   ---------------------------*/
 .mainContent {
   position: relative;
   background: #f2f2f2;
+}
 
-  /*---   .gameListBox   ---*/
-  .gameListBox {
-    margin-top: 0;
-  }
-  .searchTtl {
+/*---   Search   ----------*/
+$component: "Search";
+
+.#{$component} {
+  &__title {
     margin-bottom: 10px;
     text-align: center;
-
-    &Inner {
-      margin-right: 8px;
-      font-weight: bold;
-    }
+  }
+  &__titleInner {
+    margin-right: 8px;
+    font-weight: bold;
   }
 }

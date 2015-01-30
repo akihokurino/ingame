@@ -1,22 +1,22 @@
 = content_for :head do
   = stylesheet_link_tag "pc/login"
 
-%section.mainVisual
-  %h2.mainCopy たくさんのゲームを、遊んできた。
-  %h1.ttl 
+%section.LoginTop
+  %h2.LoginTop__text--mainCopy たくさんのゲームを、遊んできた。
+  %h1.LoginTop__title 
     = image_tag("logo@3x.png", width: "320")
-  %p.subCopy
+  %p.LoginTop__text--subCopy
     GAMRはゲームライフをより楽しくするSNSです。
-  .loginBox
-    %ul.snsList
-      %li.item
-        %a.tw{href: "/auth/twitter"}
+  .LoginTop__snsWrap
+    %ul.LoginTop__snsList
+      %li.LoginTop__snsItem
+        %a.LoginTop__snsLink--tw{href: "/auth/twitter"}
           %span.icon-twitter Twitterでログイン
-      %li.item
-        %a.fb{href: "/auth/facebook"}
+      %li.LoginTop__snsItem
+        %a.LoginTop__snsLink--fb{href: "/auth/facebook"}
           %span.icon-facebook Facebookでログイン
-      %li.item
-        %a.gamr{href: ""}
+      %li.LoginTop__snsItem
+        %a.LoginTop__snsLink--gamr{href: ""}
           %span.icon-gamr GAMR IDでログイン
 %section.points
   %h1.pointsTtl GAMRの使い方

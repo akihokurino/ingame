@@ -1,7 +1,9 @@
 @import "../../_function.css.scss";
 
-/*---   .clipBox   ----------*/
-.clipBox {
+/*---   Clip   ----------*/
+$component: "Clip";
+
+.#{$component} {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -17,19 +19,19 @@
   @include clearfix;
   display: none;
 
-  .clipTtl {
+  &__title {
     margin-bottom: 20px;
     color: $main_color;
     font-size: 1rem;
     text-align: center;
   }
-  .clipImgWrap {
+  &__imgWrap {
     position: relative;
     height: 320px;
     margin-bottom: 20px;
     text-align: center;
   }
-  .clipArea {
+  &__area {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -44,31 +46,33 @@
     @include box-sizing;
     cursor: move;
   }
-  .clipBtnLis {
+  &__buttonList {
     float: right;
   }
-  .cancel {
-    display: inline-block;
-    width: 108px;
-    height: 30px;
-    @include border-radius(3px);
-    background: #a0a0a0;
-    color: #fff;
-    font-weight: bold;
-    line-height: 30px;
-    text-align: center;
-    cursor: pointer;
-  }
-  .done {
-    display: inline-block;
-    width: 108px;
-    height: 30px;
-    @include border-radius(3px);
-    @include bglinear(lighten($main_color, 5%), $main_color);
-    color: #fff;
-    font-weight: bold;
-    line-height: 30px;
-    text-align: center;
-    cursor: pointer;
+  &__button {
+    &--cancel {
+      display: inline-block;
+      width: 108px;
+      height: 30px;
+      @include border-radius(3px);
+      background: #a0a0a0;
+      color: #fff;
+      font-weight: bold;
+      line-height: 30px;
+      text-align: center;
+      cursor: pointer;
+    }
+    &--done {
+      display: inline-block;
+      width: 108px;
+      height: 30px;
+      @include border-radius(3px);
+      @include bglinear(lighten($main_color, 5%), $main_color);
+      color: #fff;
+      font-weight: bold;
+      line-height: 30px;
+      text-align: center;
+      cursor: pointer;
+    }
   }
 }

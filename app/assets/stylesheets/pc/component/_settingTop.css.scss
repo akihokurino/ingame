@@ -1,28 +1,27 @@
 @import "../../_function.css.scss";
 
-/*---   .settingTopBox   ----------*/
-.settingTopBox {
+/*---   SettingTop   ----------*/
+$component: "SettingTop";
+
+.#{$component} {
   padding: 40px 0 32px;
   border-bottom: 1px solid #e6e6e6;
   background: #fff;
 
-  /*---   .mainTtl   ----------*/
-  .mainTtl {
+  &__title {
     margin-bottom: 40px;
     color: $main_color;
     font-size: 36px;
     text-align: center;
   }
-  /*---   .mainTxt   ----------*/
-  .mainTxt {
+  &__text {
     margin-bottom: 20px;
     color: #3d3d3d;
     font-size: 1.125rem;
     line-height: 1.5;
     text-align: center;
   }
-  /*---   .search   ----------*/
-  .searchWrap {
+  &__searchWrap {
     position: relative;
     width: 390px;
     margin: 0 auto;
@@ -49,7 +48,7 @@
       content: "";
     }
   }
-  .search {
+  &__search {
     width: 380px;
     height: 34px;
     margin: 0 auto;
@@ -66,21 +65,21 @@
       line-height: 1.6rem;
     }
   }
-  /*---   .nextBtn   ----------*/
-  .nextBtnWrap {
-    position: absolute;
-    top: 240px;
-    left: 50%;
-    margin-left: 247px;
-
-    &03 {
+  &__nextButtonWrap {
+    &--first, &--second {
+      position: absolute;
+      top: 240px;
+      left: 50%;
+      margin-left: 247px;
+    }
+    &--third {
       position: absolute;
       bottom: 29px;
       left: 50%;
       margin-left: 247px;
     }
   }
-  .nextBtn {
+  &__nextButton {
     display: block;
     padding: 3px 20px;
     @include border-radius(4px);
@@ -94,35 +93,23 @@
       @include bglinear($main_color, lighten($main_color, 5%));
       text-decoration: none;
     }
-    &03 {
-      display: block;
-      padding: 3px 20px;
-      @include border-radius(4px);
-      @include bglinear(lighten($main_color, 5%), $main_color);
-      color: #fff;
-      font-size: 0.875rem;
-      text-align: center;
-      line-height: 30px;
-
-      &:hover {
-        @include bglinear($main_color, lighten($main_color, 5%));
-        text-decoration: none;
-      }
-    }
   }
-  /*---   #thumbnail   ----------*/
   #thumbnail {
     width: 157px;
     margin: 0 auto 34px;
     border: 4px solid #ccc;
     @include border-radius(5px);
     line-height: 0;
+
+    img {
+      width: 151px;
+      height: 151px;
+    }
   }
-  /*---   .uploadBtnWrap   ----------*/
-  .uploadBtnWrap {
+  &__uploadButtonWrap {
     position: relative;
   }
-  .uploadBtnTxt {
+  &__uploadButtonText {
     width: 155px;
     height: 32px;
     margin: 0 auto;
@@ -137,7 +124,7 @@
     line-height: 36px;
     cursor: pointer;
   }
-  .uploadBtn {
+  &__uploadButton {
     opacity: 0;
     position: absolute;
     top: 0;
@@ -150,11 +137,5 @@
     background: $main_color;
     cursor: pointer;
     outline: 0;
-  }
-  #thumbnail {
-    img {
-      width: 151px;
-      height: 151px;
-    }
   }
 }
