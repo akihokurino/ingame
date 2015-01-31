@@ -1,0 +1,27 @@
+@import "../../_function.css.scss";
+
+/*---   ProfileTop   ----------*/
+$component: "ProfileTop";
+
+.#{$component} {
+  position: relative;
+  width: $width;
+  min-height: 140px;
+  margin: 0 auto;
+  padding: 40px 0;
+  @include box-sizing;
+  color: #fff;
+  @include clearfix;
+
+  &__imgWrap {
+    position: absolute;
+    bottom: -96px;
+    left: 0;
+    z-index: 5;
+    border: 4px solid #fff;
+    @include border-radius(5px);
+    @include box-shadow(0, 2px, 4px, 0, rgba(0, 0, 0, 0.5));
+    background: #fff;
+    line-height: 0;
+  }
+}

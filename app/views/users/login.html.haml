@@ -18,36 +18,36 @@
       %li.LoginTop__snsItem
         %a.LoginTop__snsLink--gamr{href: ""}
           %span.icon-gamr GAMR IDでログイン
-%section.points
-  %h1.pointsTtl GAMRの使い方
-  %section.pointsItem
-    %h2.pointsItemTtl ゲームを記録
+%section.LoginPoints
+  %h1.LoginPoints__title GAMRの使い方
+  %section.LoginPoints__item
+    %h2.LoginPoints__itemTitle ゲームを記録
     = image_tag("login_illust_01@2x.png", width: "50%")
-    %p.pointsItemText 気になるゲームや遊んだゲームをマイゲームに登録することで、自分だけのオリジナルカタログ（のようなもの）が出来上がります。
-    %p.pointsItemAnnotation
+    %p.LoginPoints__itemText 気になるゲームや遊んだゲームをマイゲームに登録することで、自分だけのオリジナルカタログ（のようなもの）が出来上がります。
+    %p.LoginPoints__itemAnnotation
       遊んできたゲームを見返したり、友達に共有することで、新たな発見があるかもしれません。
-  %section.pointsItem
-    %h2.pointsItemTtl 瞬間をシェア
+  %section.LoginPoints__item
+    %h2.LoginPoints__itemTitle 瞬間をシェア
     = image_tag("login_illust_02@2x.png", width: "50%")
-    %p.pointsItemText 登録したゲームに対して、コメントを付与して何度でもポストする事ができます。
-    %p.pointsItemAnnotation
+    %p.LoginPoints__itemText 登録したゲームに対して、コメントを付与して何度でもポストする事ができます。
+    %p.LoginPoints__itemAnnotation
       ゲームを遊んでいる時って、感想をシェアしたくなる瞬間が何度も訪れたりしませんか？
-  %section.pointsItem
-    %h2.pointsItemTtl 感想を調べる
+  %section.LoginPoints__item
+    %h2.LoginPoints__itemTitle 感想を調べる
     = image_tag("login_illust_03@2x.png", width: "50%")
-    %p.pointsItemText 気になるゲームを見つけたら、他のユーザーのコメントや、Tipsを見てみましょう。
-    %p.pointsItemAnnotation あなたが遊ぶべきゲームは、あなたの友達が知っているかもしれません。
-%section.bottomBox
-  %h1.bottomBoxTtl ゲームを本気で楽しもう。
-  %ul.snsList
-    %li.item
-      %a.tw{href: "/auth/twitter"}
+    %p.LoginPoints__itemText 気になるゲームを見つけたら、他のユーザーのコメントや、Tipsを見てみましょう。
+    %p.LoginPoints__itemAnnotation あなたが遊ぶべきゲームは、あなたの友達が知っているかもしれません。
+%section.LoginBottom
+  %h1.LoginBottom__title ゲームを本気で楽しもう。
+  %ul.LoginBottom__snsList
+    %li.LoginBottom__snsItem
+      %a.LoginTop__snsLink--tw{href: "/auth/twitter"}
         %span.icon-twitter Twitterでログイン
-    %li.item
-      %a.fb{href: "/auth/facebook"}
+    %li.LoginBottom__snsItem
+      %a.LoginTop__snsLink--fb{href: "/auth/facebook"}
         %span.icon-facebook Facebookでログイン
-    %li.item
-      %a.gamr{href: ""}
+    %li.LoginBottom__snsItem
+      %a.LoginTop__snsLink--gamr{href: ""}
         %span.icon-gamr GAMRのIDでログイン
         
 = render partial: "application/pc/footer"

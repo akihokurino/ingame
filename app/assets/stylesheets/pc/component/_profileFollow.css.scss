@@ -1,0 +1,27 @@
+@import "../../_function.css.scss";
+
+/*---   ProfileFollow   ----------*/
+$component: "ProfileFollow";
+
+.#{$component} {
+  &__button {
+    display: block;
+    position: absolute;
+    right: 50%;
+    top: 9px;
+    margin-right: -480px;
+    padding: 6px 15px 4px;
+    @include box-shadow(0, 2px, 0, 0, darken($main_color,10%));
+    @include border-radius(4px);
+    @include bglinear(lighten($main_color, 5%), $main_color);
+    color: #fff;
+    font-weight: bold;
+    font-size: .875rem;
+    text-align: center;
+    cursor: pointer;
+
+    &:hover {
+      @include bglinear($main_color, lighten($main_color, 5%));
+    }
+  }
+}

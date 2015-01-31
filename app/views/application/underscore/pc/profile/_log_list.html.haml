@@ -1,14 +1,14 @@
 %script{type: "text/tenplate", id: "log-list-template"}
   .Gamelist.log-list
-    .playingBox
-      %p.playing プレイ中
+    .Gamelist__statusList
+      %p.Gamelist__statusText--playing プレイ中
       %ul.Gamelist__list.playing-list
 
-    .readyBox
-      %p.ready 気になる
+    .Gamelist__statusList
+      %p.Gamelist__statusText--ready 気になる
       %ul.Gamelist__list.ready-list
 
-    .playedBox
-      %p.played クリア済
+    .Gamelist__statusList
+      %p.Gamelist__statusText--played クリア済
       %ul.Gamelist__list.played-list
 

@@ -1,0 +1,44 @@
+@import "../../_function.css.scss";
+
+/*---   LoginPoints   ----------*/
+$component: "LoginPoints";
+
+.#{$component} {
+  min-width: 960px;
+  text-align: center;
+
+  &__title {
+    background: $main_color;
+    color: #fff;
+    font-size: 1.5rem;
+    line-height: 3;
+    text-shadow: 1px 1px 0 rgba(darken($main_color,20%),0.7);
+    text-align: center;
+  }
+  &__item {
+    display: inline-block;
+    width: 30%;
+    padding: 20px 0;
+    color: $color_textBlack;
+    text-align: center;
+    vertical-align: top;
+  }
+  &__itemTitle {
+    padding: 20px 0;
+    font-size: 1.75rem;
+  }
+
+  &__itemText {
+    display: inline-block;
+    padding: 15px 10px;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    text-align: left;
+  }
+  &__itemAnnotation {
+    padding: 0 10px;
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+    text-align: left;
+  }
+}

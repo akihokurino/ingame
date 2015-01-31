@@ -1,0 +1,55 @@
+@import "../../_function.css.scss";
+
+/*---   ProfileCount   ----------*/
+$component: "ProfileCount";
+
+.#{$component} {
+  position: relative;
+  background: #fff;
+
+  &__list {
+    width: $width;
+    margin: 0 auto;
+    padding-left: 300px;
+    font-size: 0;
+  }
+  &__item {
+    display: inline-block;
+    width: 111px;
+    @include box-sizing;
+    color: #3e3e3e;
+    font-size: .75rem;
+    text-align: center;
+    cursor: pointer;
+
+    &.current {
+      position: relative;
+
+      &:after {
+        display: block;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        border-bottom: 3px solid $main_color;
+        content: "";
+      }
+    }
+  }
+  &__link {
+    display: block;
+    padding: 6px;
+    color: $color_textBlack;
+
+    &:hover {
+      color: $main_color;
+      text-decoration: none;
+    }
+  }
+  &__count {
+    display: block;
+    margin-top: 5px;
+    color: $main_color;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+}

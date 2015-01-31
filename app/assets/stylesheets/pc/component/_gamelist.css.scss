@@ -216,4 +216,27 @@ $component: "Gamelist";
     text-align: center;
     cursor: pointer;
   }
+  &__statusList {
+    width: 100%;
+    margin: 0 auto 20px;
+  }
+  &__statusText {
+    &--playing, &--ready, &--played {
+      margin-bottom: 10px;
+      padding-left: 18px;
+      font-size: 1rem;
+    }
+    &--playing {
+      border-left: 5px solid $color-red;
+      color: $color_black;
+    }
+    &--ready {
+      border-left: 5px solid $color-yellow;
+      color: $color_black;
+    }
+    &--played {
+      border-left: 5px solid $color-blue;
+      color: $color_black;
+    }
+  }
 }

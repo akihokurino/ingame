@@ -8,50 +8,50 @@
 = render partial: "application/pc/default_header"
 
 %section.mainContent.profile-page{"data-userid" => @user[:id]}
-  .profileBox
-    .profileBoxInner
-      %figure.profImgWrap
-        = image_tag "/user_photos/#{@user[:photo_path]}", class: "profImg", width: 135, hieght: 135, alt: "ユーザー画像"
-    .countListWrap
-      %ul.countList.count-box
-        %li.gameNum.logs-li.current
-          %a.countListLink{href: "/users/#{@user[:id]}#logs"}
+  .Profile
+    .ProfileTop
+      %figure.ProfileTop__imgWrap
+        = image_tag "/user_photos/#{@user[:photo_path]}", class: "ProfileTop__img", width: 135, hieght: 135, alt: "ユーザー画像"
+    .ProfileCount
+      %ul.ProfileCount__list.count-box
+        %li.ProfileCount__item.current.logs-li
+          %a.ProfileCount__link{href: "/users/#{@user[:id]}#logs"}
             マイゲーム
-            %span.count
+            %span.ProfileCount__count
               = @user.logs.count
-        %li.postNum.posts-li
-          %a.countListLink{href: "/users/#{@user[:id]}#posts"}
+        %li.ProfileCount__item.posts-li
+          %a.ProfileCount__link{href: "/users/#{@user[:id]}#posts"}
             ポスト
-            %span.count
+            %span.ProfileCount__count
               = @user.posts.count
-        %li.followNum.follows-li
-          %a.countListLink{href: "/users/#{@user[:id]}#follows"}
+        %li.ProfileCount__item.follows-li
+          %a.ProfileCount__link{href: "/users/#{@user[:id]}#follows"}
             フォロー
-            %span.count
+            %span.ProfileCount__count
               = @user.follow_num
-        %li.followerNum.followers-li
-          %a.countListLink{href: "/users/#{@user[:id]}#followers"}
+        %li.ProfileCount__item.followers-li
+          %a.ProfileCount__link{href: "/users/#{@user[:id]}#followers"}
             フォロワー
-            %span.count
+            %span.ProfileCount__count
               = @user.follower_num
       - unless current_user?(@user)
-        %span.follow-wrap
+        %span.ProfileFollow.follow-wrap
           - if @user.i_followed
-            %span.followBtn.main-unfollow-btn.unFollow フォロー中
+            %span.ProfileFollow__button.main-unfollow-btn.unFollow フォロー中
           - else
-            %span.followBtn.main-follow-btn フォローする
-  .profileColumnWrap
-    .profileLeftColumn
-      %h1.userName
+            %span.ProfileFollow__button.main-follow-btn フォローする
+  .Profile__columnWrap
+    .ProfileLeft
+      %h1.ProfileLeft__name
         = @user.username
       - if @user.place
-        %p.userPlace
+        %p.ProfileLeft__place
           = @user.place
-      %p.userInfo
+      %p.ProfileLeft__introduction
         = @user.introduction
-      %form.libSearchWrap
-        %input.libSearch.search-log{placeholder: "マイゲーム内を検索"}
-    .profileRightColumn.profile-timeline
+      %form.ProfileLeft__searchWrap
+        %input.ProfileLeft__search.search-log{placeholder: "マイゲーム内を検索"}
+    .ProfileRight.profile-timeline
 
 
 

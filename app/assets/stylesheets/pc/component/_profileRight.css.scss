@@ -1,0 +1,16 @@
+@import "../../_function.css.scss";
+
+/*---   ProfileRight   ----------*/
+$component: "ProfileRight";
+
+.#{$component} {
+  float: right;
+  width: 660px;
+
+  > * {
+    width: 100%;
+  }
+  .Friendlist__list {
+  	width: 100%;
+  }
+}
