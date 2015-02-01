@@ -15,12 +15,6 @@ $component: "Profile";
 .#{$component} {
   background: url(/assets/pc/default_cover.png) no-repeat top center;
   background-size: cover;
-
-  &__columnWrap {
-    @include clearfix;
-    width: 960px;
-    margin: 0 auto;
-  }
 }
 
 /*---   ProfileTop   ----------*/
@@ -31,11 +25,3 @@ $component: "ProfileTop";
     bottom: -70px;
   }
 }
-  /*---   .profileBox   ----------*/
-  .profileEditBox {
-
-    input {
-    }
-    textarea {
-    }
-  }

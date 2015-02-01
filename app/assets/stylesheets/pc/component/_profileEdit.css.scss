@@ -4,18 +4,23 @@
 $component: "ProfileEdit";
 
 .#{$component} {
-  position: relative;
-  float: left;
-  width: 580px;
-  margin: 30px auto 0;
-  padding: 10px 10px 30px;
-  border: 1px solid #e2e2e2;
-  @include border-radius(3px);
-  @include box-sizing;
-  background: #fff;
-  color: #3f3f3f;
+  @include clearfix;
+  width: 960px;
+  margin: 0 auto;
 
   &__inner {
+    position: relative;
+    float: left;
+    width: 580px;
+    margin: 30px auto 0;
+    padding: 10px 10px 30px;
+    border: 1px solid #e2e2e2;
+    @include border-radius(3px);
+    @include box-sizing;
+    background: #fff;
+    color: #3f3f3f;
+  }
+  &__title {
     font-weight: bold;
     font-size: 1.125rem;
   }
