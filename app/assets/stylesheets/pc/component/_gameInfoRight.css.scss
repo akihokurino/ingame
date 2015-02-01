@@ -1,0 +1,54 @@
+@import "../../_function.css.scss";
+
+/*---   GameInfoRight   ----------*/
+$component: "GameInfoRight";
+
+.#{$component} {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  &__reviewWrap {
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 3px;
+    width: 240px;
+    border: solid 4px $color_border;
+    text-align: center;
+  }
+  &__review{
+    @include clearfix;
+    padding: 10px;
+    border: 1px solid $color_border;
+    color: $color_textBlack;
+    text-align: center;
+  }
+  &__reviewText {
+    padding: 0 10px 8px 10px;
+    color: orange;
+    font-weight: bold;
+    font-size: 30px;
+  }
+  &__starList {
+    display: inline-block;
+    font-size: 1.5rem;
+  }
+  &__star {
+    &--on, &--off {
+      float: left;
+      display: inline-block;
+      font-size: 28px;
+    }
+    &--on {
+      color: orange;
+    }
+  }
+  &__link {
+    display: inline-block;
+    margin: 5px 0;
+    padding: 10px;
+    @include border-radius(4px);
+    color: $color_textBlack;
+    font-size: 1rem;
+  }
+}

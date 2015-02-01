@@ -1,0 +1,91 @@
+@import "../../_function.css.scss";
+
+/*---   GameInfoMiddle   ----------*/
+$component: "GameInfoMiddle";
+
+.#{$component} {
+  width: 420px;
+  
+  &__title {
+    margin-bottom: 14px;
+    color: $color_textBlack;
+    font-weight: bold;
+    font-size: 1.5rem;
+    line-height:1.5;
+  }
+  &__list {
+    margin-bottom: 20px;
+    line-height: 1.5;
+  } 
+  &__item {
+    margin-bottom: 10px;
+    @include border-radius(4px);
+    font-size: 0.75rem;
+  }
+  &__itemTitle {
+    margin:1 0px 0 4px 0;
+    @include box-sizing;
+    color: $color_textBlack;
+    font-weight: bold;
+    vertical-align: middle;
+  }
+  &__itemText{
+    display: inline-block;
+    padding: 8px 12px;
+    @include border-radius(2px);
+    background-color: #eee;
+    color: $color_textBlack;
+    text-align: left;
+  }
+  &__summaryLabel {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    @include box-sizing;
+    border-bottom: 1px solid $color_border;
+    color: $color_textBlack;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: left;
+
+    &:before{
+      display: inline-block;
+      position: relative;
+      margin-right: 10px;
+      width: 8px;
+      height: 8px;
+      border-color: $color_textBlack;
+      border-right: solid 2px;
+      border-bottom: solid 2px;
+      content: "";
+      -webkit-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+      transform: rotate(45deg);
+      top: -4px;
+    }
+  }
+  &__summaryText{
+    list-style: none;
+    overflow: hidden;
+    height: 0;
+    margin-bottom: 10px;
+    color: $color_textBlack;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+  }
+  &__summaryExpand{
+      display: none;
+  }
+  &__summaryExpand:checked + &__summaryText {
+      height: auto;
+  }
+}

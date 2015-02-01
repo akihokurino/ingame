@@ -1,0 +1,16 @@
+@import "../../_function.css.scss";
+
+/*---   Game__img   ----------*/
+$component: "Game";
+
+.#{$component} {
+  &__imgWrap {
+    float: left;
+    width: 240px;
+    text-align: center;
+  }
+  &__img{
+    margin-bottom: 10px;
+    @include box-shadow(0, 0, 4px, 0, rgba(0,0,0,0.5));
+  }
+}

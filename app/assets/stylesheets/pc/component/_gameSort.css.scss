@@ -1,0 +1,55 @@
+@import "../../_function.css.scss";
+
+/*---   GameSort   ----------*/
+$component: "GameSort";
+
+.#{$component} {
+  clear: both;
+  padding-top: 30px;
+
+  &__title {
+    margin-bottom: 26px;
+    font-size: 1.125rem;
+    text-align: center;
+  }
+  &__list {
+    width: $cntWidth;
+    margin: 0 auto;
+    color: #3e3e3e;
+    font-size: .875rem;
+  }
+  &__item {
+    display: inline-block;
+    width: 173px;
+    text-align: center;
+    cursor: pointer;
+
+    &.current {
+      position: relative;
+      color: $main_color;
+
+      &:after {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 100%;
+        margin-left: -50%;
+        border-bottom: 4px solid $main_color;
+        content: "";
+      }
+      .#{$component}__link {
+        color: $main_color;
+      }
+    }
+  }
+  &__link {
+    display: block;
+    padding-bottom: 18px;
+    color: #3e3e3e;
+
+    &:hover {
+      color: $main_color;
+      text-decoration: none;
+    }
+  }
+}

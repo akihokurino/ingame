@@ -1,0 +1,58 @@
+@import "../../_function.css.scss";
+
+/*---   GameRegister   ----------*/
+$component: "GameRegister";
+
+.#{$component} {
+  font-size: 0;
+
+  &__item {
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    width: 126px;
+    @include border-radius(4px);
+    background: $main_color;
+    box-shadow: 0 2px 0 darken($main_color, 7%);
+    cursor: pointer;
+
+    &:first-child {
+      margin-right: 30px;
+    }
+    @-moz-document url-prefix() {
+      &:after {
+        display: block;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        margin-top: -3px;
+        border-top: 5px solid #fff;
+        border-right: 4px solid transparent;
+        border-bottom: 4px solid transparent;
+        border-left: 5px solid transparent;
+        content: "";
+      }
+    }
+  }
+  &__select {
+    @include appearance;
+    outline: 0;
+    border:none;
+    display: inline-block;
+    margin: 0 auto;
+    padding: 10px 15px;
+    background: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+
+    &::-ms-expand {
+      display: none;
+    }
+    @-moz-document url-prefix() {
+      width: 152px;
+      padding-left: 10px;
+    }
+  }
+}

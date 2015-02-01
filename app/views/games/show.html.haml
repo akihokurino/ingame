@@ -7,67 +7,65 @@
 = render partial: "application/pc/default_header"
 
 %section.mainContent.game-page{"data-gameid" => @game[:id]}
-  .gameBox
-    .gameBoxInner
-      %figure.gameImgWrap
+  .Game
+    .Game__inner
+      %figure.Game__imgWrap
         - if @game.photo_path
-          = image_tag "/game_photos/#{@game.photo_path}", width: 240, class: "gameImg", alt: "ゲームパッケージ画像"
+          = image_tag "/game_photos/#{@game.photo_path}", width: 240, class: "Game__img", alt: "ゲームパッケージ画像"
         - elsif @game.photo_url
-          = image_tag @game.photo_url, width: 240, class: "gameImg", alt: "ゲームパッケージ画像"
+          = image_tag @game.photo_url, width: 240, class: "Game__img", alt: "ゲームパッケージ画像"
         - else
-          = image_tag "/game_photos/default.png", width: 240, class: "gameImg", alt: "ゲームパッケージ画像"
-      .gameInfoBox
-        .gameInfoBoxInner
-          %h1.gameTtl
+          = image_tag "/game_photos/default.png", width: 240, class: "Game__img", alt: "ゲームパッケージ画像"
+      .Game__info
+        .GameInfoMiddle
+          %h1.GameInfoMiddle__title
             = @game.title
-          %ul.gameInfoList
-            %li.item.maker
-              .itemName メーカー
-              .itemContent
+          %ul.GameInfoMiddle__list
+            %li.GameInfoMiddle__item
+              %h2.GameInfoMiddle__itemTitle メーカー
+              %p.GameInfoMiddle__itemText
                 = @game.maker
-            %li.item.hard
-              .itemName ハード
-              .itemContent
+            %li.GameInfoMiddle__item
+              %h2.GameInfoMiddle__itemTitle ハード
+              %p.GameInfoMiddle__itemText
                 = @game.device
-            %li.item.releaseDay
-              .itemName 発売日
-              .itemContent
+            %li.GameInfoMiddle__item
+              %h2.GameInfoMiddle__itemTitle 発売日
+              %p.GameInfoMiddle__itemText
                 = @game.release_day
           - if @game.wiki
-            .gameSummary
-              %label{for: "summary"} 概要
-              %input.expand{type: "checkbox", id: "summary"}
-              %p
+            .GameInfoMiddle__summary
+              %label.GameInfoMiddle__summaryLabel{for: "summary"} 概要
+              %input.GameInfoMiddle__summaryExpand{type: "checkbox", id: "summary"}
+              %p.GameInfoMiddle__summaryText
                 = @game.wiki
-        .rightBox
-          .reviewBox
-            .review
-              %p.value
+        .GameInfoRight
+          .GameInfoRight__reviewWrap
+            .GameInfoRight__review
+              %p.GameInfoRight__reviewText
                 = @game.avg_rate
-              %ul.starList
+              %ul.GameInfoRight__starList
                 - diff = 5 - @game.avg_rate.to_i
                 - @game.avg_rate.to_i.times do |i|
-                  %li.starOn.icon-star
+                  %li.GameInfoRight__star--on.icon-star
                 - diff.times do |i|
-                  %li.starOff.icon-star
-          .amazonLink
-            %a.amazonBtn{href: "http://www.amazon.co.jp/s/ref=nb_sb_noss_1?__mk_ja_JP=カタカナ&url=search-alias%3Daps&field-keywords=#{@game.title}", target: "blank"}
-              %span Amazonで検索する
-          .youtubeLink
-            %a.youtubeBtn{href: "https://www.youtube.com/results?search_query=#{@game.title}", target: "blank"}
-              %span Youtubeで検索する
+                  %li.GameInfoRight__star--off.icon-star
+          %p.GameInfoRight__linkWrap
+            %a.GameInfoRight__link{href: "http://www.amazon.co.jp/s/ref=nb_sb_noss_1?__mk_ja_JP=カタカナ&url=search-alias%3Daps&field-keywords=#{@game.title}", target: "blank"} Amazonで検索する
+          %p.GameInfoRight__linkWrap
+            %a.GameInfoRight__link{href: "https://www.youtube.com/results?search_query=#{@game.title}", target: "blank"} Youtubeで検索する
         = render partial: "select_btns", locals: {game: @game}
-      %section.sortBox
-        %h3.sortTtl このゲームに対するポスト
-        %ul.sortList.sort-list
-          %li.item.current.follower-posts
-            %a.follow{href: "/games/#{@game[:id]}#follower"} フォロー中のユーザー
-          %li.item.all-posts
-            %a.all{href: "/games/#{@game[:id]}#all"} すべてのユーザー
-          %li.item.liker-posts
-            %a.star{href: "/games/#{@game[:id]}#liker"} いいね順
+      %section.GameSort
+        %h3.GameSort__title このゲームに対するポスト
+        %ul.GameSort__list.sort-list
+          %li.GameSort__item.current.follower-posts
+            %a.GameSort__link{href: "/games/#{@game[:id]}#follower"} フォロー中のユーザー
+          %li.GameSort__item.all-posts
+            %a.GameSort__link{href: "/games/#{@game[:id]}#all"} すべてのユーザー
+          %li.GameSort__item.liker-posts
+            %a.GameSort__link{href: "/games/#{@game[:id]}#liker"} いいね順
 
-  .game-timeline
+  .Game__timeline.game-timeline
     .post-list
     = image_tag "gif-load.gif", class: "loading-gif"
 

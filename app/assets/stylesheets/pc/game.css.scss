@@ -1,339 +1,38 @@
 @import "../_function.css.scss";
 @import "component/_post.css.scss";
+@import "component/_game-img.css.scss";
+@import "component/_gameInfoMiddle.css.scss";
+@import "component/_gameInfoRight.css.scss";
+@import "component/_gameRegister.css.scss";
+@import "component/_gameSort.css.scss";
 
 html {
   background: #5e5e5e;
 }
-
-/*---   .mainContent   ---------------------------*/
 .mainContent {
   background: #eee;
+}
 
-  /*---   .gameBox   ----------*/
-  .gameBox {
-    border-bottom: 1px solid #e6e6e6;
-    background: #fff;
-    @include clearfix;
+/*---   Game   ----------*/
+$component: "Game";
 
-    /*---   .gameBoxInner   ---*/
-    &Inner {
-      width:$width;
-      margin: 0 auto;
-      padding-top: 40px;
-    }
-    /*---   .gameImg   ---*/
-    .gameImgWrap {
-      float: left;
-      width: 240px;
-      text-align:center;
-      img{
-        margin-bottom: 10px;
-        @include box-shadow(0,0,4px,0,rgba(0,0,0,0.5));
-      }
-    }
-    .rightBox{
-      position:absolute;
-      top:0;
-      right:0;
-    }
-    .reviewBox{
-      display:inline-block;
-      margin-bottom:10px;
-      padding: 3px;
-      width: 240px;
-      border:solid 4px $color_border;
-      text-align:center;
-      .review{
-        padding:10px;
-        border:1px solid $color_border;
-        color:$color_textBlack;
-        text-align:center;
-        .value {
-          padding:0 10px 8px 10px;
-          color: orange;
-          font-weight: bold;
-          font-size: 30px;
-        }
-        .icon-star{
-          float:left;
-          display:inline-block;
-          font-size:28px;
-        }
-        .starList {
-          display:inline-block;
-          font-size:1.5rem;
-        }
-        .starOn {
-          display: inline-block;
-          color:orange;
-        }
-        .starOff {
-          display: inline-block;
-        }
-        @include clearfix;
-      }
-    }
-    .amazonBtn{
-      display:inline-block;
-      margin:5px 0;
-      padding:10px;
-      @include border-radius(4px);
-      color:$color_textBlack;
-      font-size:1rem;
-      .icon-search{
-        font-weight:bold;
-      }
-    }
-    .youtubeBtn{
-      @extend .amazonBtn;
-    }
-    /*---   .gameInfoBox   ---*/
-    .gameInfoBox {
-      position: relative;
-      float: right;
-      width: 660px;
-      @include clearfix;
+.#{$component} {
+  border-bottom: 1px solid #e6e6e6;
+  background: #fff;
+  @include clearfix;
 
-      &Inner{
-        width: 420px;
-      }
-    }
-    /*---   .gameTtl   ---*/
-    .gameTtl {
-      margin-bottom: 14px;
-      color: $color_textBlack;
-      font-weight: bold;
-      font-size: 1.5rem;
-      line-height:1.5;
-    }
-    /*---   .gameInfoList   ---*/
-    .gameInfoList {
-      line-height: 1.5;
-      margin-bottom:20px;
-      .item {
-        @include border-radius(4px);
-        font-size: 0.75rem;
-        margin-bottom: 10px;
-        .itemName{
-          margin:10px 0 4px 0;
-          @include box-sizing;
-          color:$color_textBlack;
-          font-weight:bold;
-          vertical-align: middle;       }
-        .itemContent{
-          display: inline-block;
-          padding:8px 12px;
-          @include border-radius(2px);
-          background-color: #eee;
-          color:$color_textBlack;
-          text-align:left;
-        }
-      }
-    }
-    .gameSummary{
-      label {
-        position: relative;
-          display: inline-block;
-          padding: 10px;
-          margin-bottom: 10px;
-          width:100%;
-          @include box-sizing;
-          border-bottom: 1px solid $color_border;
-          color: $color_textBlack;
-          font-size:16px;
-          font-weight:bold;
-          text-align:left;
-          &:before{
-            position: relative;
-          content:"";
-          display:inline-block;
-          margin-right:10px;
-          width:8px;
-          height:8px;
-          border-color: $color_textBlack;
-          border-right:solid 2px;
-          border-bottom:solid 2px;
-          -webkit-transform: rotate(45deg);
-             -moz-transform: rotate(45deg);
-              -ms-transform: rotate(45deg);
-               -o-transform: rotate(45deg);
-                  transform: rotate(45deg);
-          top:-4px;
-          }
-      }
-
-      input[type="checkbox"].expand{
-          display: none;
-      }
-
-      p{
-        margin-bottom: 10px;
-        font-size:0.875rem;
-        color:$color_textBlack;
-        line-height:1.5;
-        -webkit-transition: all 0.5s;
-        -moz-transition: all 0.5s;
-        -ms-transition: all 0.5s;
-        -o-transition: all 0.5s;
-        transition: all 0.5s;
-        list-style: none;
-      }
-
-      input[type="checkbox"].expand + p{
-          height: 0;
-          overflow: hidden;
-      }
-
-      input[type="checkbox"].expand:checked + p{
-          height: auto;
-      }
-    }
-    /*---   .amazonBtn   ---*/
-    // .amazonBtn {
-    //   color: #2b518b;
-    //   font-weight: bold;
-    //   font-size: .875rem;
-    //   text-decoration: underline;
-
-    //   &:hover {
-    //     text-decoration: none;
-    //   }
-    // }
-    /*---   .review   ---*/
-    /*---   .gameBtnList   ---*/
-    .gameBtnList {
-      font-size: 0;
-
-      .item {
-        display: inline-block;
-        overflow: hidden;
-        position: relative;
-        width: 126px;
-        @include border-radius(4px);
-        background: $main_color;
-        box-shadow: 0 2px 0 darken($main_color,7%);
-        cursor: pointer;
-
-        &:first-child {
-          margin-right: 30px;
-        }
-        @-moz-document url-prefix() {
-          &:after {
-            display: block;
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            margin-top: -3px;
-            border-top: 5px solid #fff;
-            border-right: 4px solid transparent;
-            border-bottom: 4px solid transparent;
-            border-left: 5px solid transparent;
-            content:"";
-          }
-        }
-      }
-      select {
-        @include appearance;
-        outline: 0;
-        border:none;
-        display: inline-block;
-        margin: 0 auto;
-        padding: 10px 15px;
-        background: none;
-        color: #fff;
-        font-weight: bold;
-        font-size: 1rem;
-        cursor: pointer;
-
-        &::-ms-expand {
-          display: none;
-        }
-        @-moz-document url-prefix() {
-          width: 152px;
-          padding-left: 10px;
-        }
-      }
-    }
-    /*---   .sortBox   ---*/
-    .sortBox {
-      clear: both;
-      padding-top: 30px;
-
-      .sortTtl {
-        margin-bottom: 26px;
-        font-size: 1.125rem;
-        text-align: center;
-      }
-      .sortList {
-        width: $cntWidth;
-        margin: 0 auto;
-        color: #3e3e3e;
-        font-size: .875rem;
-
-        .item {
-          display: inline-block;
-          width: 173px;
-          text-align: center;
-          cursor: pointer;
-
-          &.current {
-            position: relative;
-            color: $main_color;
-
-            &:after {
-              position: absolute;
-              bottom: 0;
-              left: 50%;
-              width: 100%;
-              margin-left: -50%;
-              border-bottom: 4px solid $main_color;
-              content: "";
-            }
-            .follow {
-              color: $main_color;
-            }
-            .all {
-              color: $main_color;
-            }
-            .star {
-              color: $main_color;
-            }
-          }
-        }
-        .follow {
-          display: block;
-          padding-bottom: 18px;
-          color: #3e3e3e;
-
-          &:hover {
-            color: $main_color;
-            text-decoration: none;
-          }
-        }
-        .all {
-          display: block;
-          padding-bottom: 18px;
-          color: #3e3e3e;
-
-          &:hover {
-            color: $main_color;
-            text-decoration: none;
-          }
-        }
-        .star {
-          display: block;
-          padding-bottom: 18px;
-          color: #3e3e3e;
-
-          &:hover {
-            color: $main_color;
-            text-decoration: none;
-          }
-        }
-      }
-    }
+  &__inner {
+    width: $width;
+    margin: 0 auto;
+    padding-top: 40px;
   }
-  .game-timeline {
+  &__info {
+    position: relative;
+    float: right;
+    width: 660px;
+    @include clearfix;
+  }
+  &__timeline {
     padding: 24px 0;
   }
 }
