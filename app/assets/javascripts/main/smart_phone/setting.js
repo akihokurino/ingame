@@ -25,7 +25,7 @@
       _.bindAll(this, "setGameResultCollection");
 
       this.game_result_collection = new GameResults();
-      this.game_results_view      = new GameResultsView({el: ".result-list", collection: this.game_result_collection});
+      this.game_results_view      = new GameResultsView({el: ".result-list", collection: this.game_result_collection, attributes: {type: "setting"}});
       this.search_title           = this.$(".search-title-input");
       this.current_search_title   = null;
 
