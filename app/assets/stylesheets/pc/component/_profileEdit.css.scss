@@ -1,0 +1,163 @@
+@import "../../_function.css.scss";
+
+/*---   ProfileEdit   ----------*/
+$component: "ProfileEdit";
+
+.#{$component} {
+  position: relative;
+  float: left;
+  width: 580px;
+  margin: 30px auto 0;
+  padding: 10px 10px 30px;
+  border: 1px solid #e2e2e2;
+  @include border-radius(3px);
+  @include box-sizing;
+  background: #fff;
+  color: #3f3f3f;
+
+  &__inner {
+    font-weight: bold;
+    font-size: 1.125rem;
+  }
+  &__list {
+    margin: 40px 0;
+    @include clearfix;
+  }
+  &__listTitle {
+    &--profile, &--cover, &--others {
+      float: left;
+      width: 125px;
+      margin-right: 15px;
+      font-size: .875rem;
+      text-align: right;
+      line-height: 36px;
+    }
+    &--profile {
+      line-height: 98px;
+    }
+    &--cover {
+      line-height: 55px;
+    }
+  }
+  &__listElement {
+    position: relative;
+
+  }
+  &__img {
+    border: 1px solid #cfcfcf;
+  }
+  &__listText {
+    &--profile, &--cover {
+      position: absolute;
+      width: 140px;
+      height: 30px;
+      @include border-radius(2px);
+      @include bglinear(lighten($main_color, 5%), $main_color);
+      color: #fff;
+      font-weight: bold;
+      font-size: .875rem;
+      text-align: center;
+      line-height: 30px;
+    }
+    &--profile {
+      top: 34px;
+      left: 253px;
+    }
+    &--cover {
+      top: 13px;
+      left: 377px;
+    }
+  }
+  &__listButton {
+    &--profile, &--cover {
+      opacity: 0;
+      position: absolute;
+      width: 140px;
+      height: 30px;
+      padding-left: 5px;
+      border: 1px solid #ccc;
+      @include border-radius(3px);
+      @include box-sizing;
+      font-size: .875rem;
+      outline: 0;
+    }
+    &--profile {
+      top: 34px;
+      left: 253px;
+    }
+    &--cover {
+      top: 13px;
+      left: 377px;
+    }
+  }
+  &__input {
+    &--name, &--place {
+      width: 280px;
+      height: 36px;
+      padding-left: 5px;
+      border: 1px solid #ccc;
+      @include border-radius(3px);
+      @include box-sizing;
+      font-size: .875rem;
+      outline: 0;
+    }
+    &--name {
+      margin-bottom: 16px;
+      color: $color_textBlack;
+      font-size: 1.5rem;
+    }
+    &--place {
+      position: relative;
+      min-height: 1rem;
+      margin-bottom: 8px;
+      padding-left: 20px;
+      color: $color_textGray;
+      font-size: 0.875rem;
+
+      &:before {
+        position: absolute;
+        top: -1px;
+        left: 0;
+        color: #888;
+        font-size: 0.875rem;
+        font-family: 'icomoon';
+        content: "\e609";
+      }
+    }
+    &--introduction {
+      overflow: hidden;
+      width: 400px;
+      height: 146px;
+      padding: 5px;
+      border: 1px solid #ccc;
+      @include border-radius(3px);
+      @include box-sizing;
+      color: $color_textGray;
+      font-size: .875rem;
+      line-height: 1.5rem;
+      outline: 0;
+      resize: none;
+    }
+  }
+  &__button {
+    position: absolute;
+    right: 33px;
+    bottom: 20px;
+    width: 140px;
+    height: 30px;
+    border: none;
+    @include border-radius(4px);
+    @include bglinear(lighten($main_color, 5%), $main_color);
+    color: #fff;
+    font-weight: bold;
+    font-size: .875rem;
+    text-align: center;
+    line-height: 30px;
+    @include appearance;
+    cursor: pointer;
+
+    &:hover {
+      @include bglinear($main_color, lighten($main_color, 5%));
+    }
+  }
+}
