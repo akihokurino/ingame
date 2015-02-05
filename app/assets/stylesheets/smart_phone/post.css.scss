@@ -79,7 +79,7 @@ input[type="submit"],{
 			}
 		}
 		.sortBox {
-			width: 300px;
+			width: 95%;
 			margin:13px auto;
 			border: 1px solid $color_border;
 			@include border-radius(2px);
@@ -87,7 +87,7 @@ input[type="submit"],{
 
 			.item {
 				float: left;
-				width: 100px;
+				width: 25%;
 				border-right: 1px solid $color_border;
 				@include box-sizing;
 				font-size: 12px;
@@ -96,9 +96,9 @@ input[type="submit"],{
 					border: none;
 				}
 			}
-			.playing, .ready, .played {
+			.playing, .ready, .played,.stock{
 				display: table-cell;
-				width: 100px;
+				width: 25%;
 				height: 30px;
 				padding-top: 2px;
 				@include box-sizing;
@@ -122,18 +122,20 @@ input[type="submit"],{
 						border: none;
 					}
 				}
+				.playing,.ready,.played,.stock{
+					color: #fff;
+				}
 				.playing{
 					background: $color_red;
-					color: #ffffff;
 				}
 				.ready{
 					background: $color_yellow;
-					color: #ffffff;
-
 				}
 				.played {
 					background: $color_blue;
-					color: #ffffff;
+				}
+				.stock{
+					background: $color_green;
 				}
 			}
 		}

@@ -7,6 +7,8 @@
       %span.moodPlaying プレイ中
       {{ } else if (status.id == 3) { }}
       %span.moodPlayed クリア済
+      {{ } else if (status.id == 4) { }}
+      %span.moodStock 積んでる
       {{ } }}
     %a{href: "/games/{{= game.id}}#all"}
       {{ if (game.photo_path) { }}

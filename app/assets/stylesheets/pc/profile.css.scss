@@ -287,6 +287,18 @@ html {
       font-size: 1rem;
     }
   }
+  .stockBox {
+    width: 100%;
+    margin: 0 auto 20px;
+
+    .stock {
+      margin-bottom: 10px;
+      padding-left: 18px;
+      border-left: 5px solid $color-green;
+      color: $color_black;
+      font-size: 1rem;
+    }
+  }
   .profileColumnWrap {
     @include clearfix;
     width: 960px;
