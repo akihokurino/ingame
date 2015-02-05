@@ -13,7 +13,7 @@ class Api::LogsController < ApplicationController
   end
 
   def destroy
-    log     = @current_user.logs.find_by game_id: params[:id]
+    log     = @current_user.logs.find_by id: params[:id]
     @result = log.destroy ? true : false
   end
 
