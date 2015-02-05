@@ -1,6 +1,8 @@
 .openMenuWrap
   %ul.openMenu
     %li.item
+      = link_to "タイムライン", posts_path, class:"icon-home"
+    %li.item
       = link_to "マイページ", "/users/#{@current_user[:id]}#logs", class: "icon-user"
     %li.item
       = link_to "探す", "/users/#{@current_user[:id]}/search_game_or_user#game", class: "icon-search"
