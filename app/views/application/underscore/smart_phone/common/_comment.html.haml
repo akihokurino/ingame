@@ -4,6 +4,7 @@
   .commentText
     %a.userName{href: "/users/{{= user.id }}"}
       {{= user.username }}
+    %p.commentTime {{= created_at }}
     {{ if (!i_liked) { }}
     %span.like-btn.favBtn
       いいね！

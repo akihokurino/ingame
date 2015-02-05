@@ -1,3 +1,5 @@
+//= require ../libs/calculate_time.js
+
 var PostView = Backbone.View.extend({
   tagName: "article",
   className: "postBox",
@@ -114,7 +116,8 @@ var PostView = Backbone.View.extend({
         url: "/api/post_comments",
         data: data,
         success: function (data) {
-          data.comment.text = that.commentSanitize(data.comment.text);
+          data.comment.text       = that.commentSanitize(data.comment.text);
+          data.comment.created_at = that.getCommentRelativeTime(data.comment.created_at);
           that.model.get("post_comments").push(data.comment);
           that.model.set("post_comments_count", that.model.get("post_comments_count") + 1);
           that.render();
@@ -218,5 +221,8 @@ var PostView = Backbone.View.extend({
     text     = text.replace(/((http:|https:)\/\/[\x21-\x26\x28-\x7e]+)/gi, "<a class='link-text' target='_blank' href='$1'>$1</a>");
 
     return text;
+  },
+  getCommentRelativeTime: function (created_at) {
+    return new CalculateTime(created_at).getRelativeTime();
   }
 })

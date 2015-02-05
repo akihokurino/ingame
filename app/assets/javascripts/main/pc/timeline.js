@@ -304,7 +304,7 @@
         that.url_thumbnail = null;
       }
     }
-  })
+  });
 
   var app = new AppView();
 })();
