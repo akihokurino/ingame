@@ -43,14 +43,15 @@
 		.gameInfo {
 			border: 1px solid $color_border;
 			@include border-radius(2px);
+			background: #eee;
+			font-size: 0;
 			line-height: 1.5;
 
 			.item {
 				display:table;
 				width: 100%;
-				font-size: 12px;
-				margin-bottom: 3px;
 				border-bottom: 1px solid $color_border;
+				font-size: 14px; 
 				&:last-child{
 					border:none;
 				}
@@ -60,7 +61,6 @@
 					padding:4px 10px 4px 4px;
 					@include box-sizing;
 					color:$color_textBlack;
-					font-weight:bold;
 					vertical-align: middle;				}
 				.itemContent{
 					display:table-cell;
@@ -68,6 +68,7 @@
 					padding:4px 4px 4px 0;
 					color:$color_textBlack;
 					text-align:left;
+					font-weight:bold;
 				}
 				.icon-star{
 					color:orange;

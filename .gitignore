@@ -29,3 +29,7 @@ Vagrantfile
 .vagrant/*
 
 /config/initializers/omniauth.rb
+app/views/games/show_smart_phone.html.haml.BACKUP.73092.haml
+app/views/games/show_smart_phone.html.haml.BASE.73092.haml
+app/views/games/show_smart_phone.html.haml.LOCAL.73092.haml
+app/views/games/show_smart_phone.html.haml.REMOTE.73092.haml
