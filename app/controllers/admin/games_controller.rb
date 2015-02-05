@@ -13,6 +13,8 @@ class Admin::GamesController < ApplicationController
       @q = Game.where(provider: "famituu").page(params[:page]).per(PER).order("created_at DESC").ransack(search_params)
     when "steam"
       @q = Game.where(provider: "steam").page(params[:page]).per(PER).order("created_at DESC").ransack(search_params)
+    when "nothumbnail"
+      @q = Game.where(photo_url: nil).where(photo_path: nil).page(params[:page]).per(PER).order("created_at DESC").ransack(search_params)
     else
       @q = Game.page(params[:page]).per(PER).order("created_at DESC").ransack(search_params)
     end
