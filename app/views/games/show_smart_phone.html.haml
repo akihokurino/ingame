@@ -32,8 +32,11 @@
             %li.item.site
               .itemName ウェブサイト
               .itemContent
-                - @game.game_urls.each do |url|
-                  = link_to url.text, url.text, target: "blank"
+                - @game.game_urls.each_with_index do |url, index|
+                  - if index == 0
+                    = link_to "公式サイト", url.text, target: "blank", class: "officialLink"
+                  - else
+                    = link_to "公式サイト(#{index + 1})", url.text, target: "blank", class: "officialLink"
             %li.item.hard
               .itemName ハード
               .itemContent
