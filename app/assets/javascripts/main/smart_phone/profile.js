@@ -26,6 +26,7 @@
       "click .playing-tab":   "setPlaying",
       "click .ready-tab":     "setAttention",
       "click .played-tab":    "setArchive",
+      "click .stock-tab":     "setStock",
       "keypress .search-log": "search"
     },
     template: _.template($("#log-list-template").html()),
@@ -43,6 +44,7 @@
       this.attentions        = [];
       this.playings          = [];
       this.archives          = [];
+      this.stocks            = [];
 
       this.search_log_title  = this.$(".search-log");
       this.current_tab       = null;
@@ -66,6 +68,9 @@
                 break;
               case 3:
                 that.archives.push(log);
+                break;
+              case 4:
+                that.stocks.push(log);
                 break;
             }
           }
@@ -104,6 +109,16 @@
       this.$el.find("ul.sort-box li.played-li").addClass("current");
       this.current_tab = 3
     },
+    setStock: function () {
+      this.logs_view.collection.reset();
+      this.logs_view.removeLogs();
+      this.$el.find("ul.sort-box li").removeClass("current");
+      for (var i = 0; i < this.stocks.length; i++) {
+        this.logs_view.collection.add(this.stocks[i]);
+      }
+      this.$el.find("ul.sort-box li.stock-li").addClass("current");
+      this.current_tab = 4
+    },
     search: function (e) {
       if (e.which == 13 && this.search_log_title.val() != "") {
         e.preventDefault();
@@ -134,6 +149,14 @@
           case 3:
             for (var i = 0; i < this.archives.length; i++) {
               var log = this.archives[i]
+              if (log.get("game").title.match(keyword)) {
+                this.logs_view.collection.add(log);
+              }
+            }
+            break;
+          case 4:
+            for (var i = 0; i < this.stocks.length; i++) {
+              var log = this.stocks[i]
               if (log.get("game").title.match(keyword)) {
                 this.logs_view.collection.add(log);
               }

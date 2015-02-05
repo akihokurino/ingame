@@ -18,8 +18,9 @@
     el: $(".post-new-page"),
     events: {
       "click .playing": "setPlaying",
-      "click .ready": "setAttention",
-      "click .played": "setArchive"
+      "click .ready":   "setAttention",
+      "click .played":  "setArchive",
+      "click .stock":   "setStock"
     },
     template: _.template($("#select-template").html()),
     initialize: function () {
@@ -35,6 +36,7 @@
       this.attentions     = [];
       this.playings       = [];
       this.archives       = [];
+      this.stocks         = [];
 
       this.user_id        = $(".post-new-page").data("userid");
 
@@ -57,6 +59,9 @@
                 break;
               case 3:
                 that.archives.push(log);
+                break;
+              case 4:
+                that.stocks.push(log);
                 break;
             }
           }
@@ -92,6 +97,15 @@
         this.logs_view.collection.add(this.archives[i]);
       }
       this.$el.find("ul.sortBox li.played-li").addClass("current");
+    },
+    setStock: function () {
+      this.logs_view.collection.reset();
+      this.logs_view.removeLogs();
+      this.$el.find("ul.sortBox li").removeClass("current");
+      for (var i = 0; i < this.stocks.length; i++) {
+        this.logs_view.collection.add(this.stocks[i]);
+      }
+      this.$el.find("ul.sortBox li.stock-li").addClass("current");
     }
   })
 
