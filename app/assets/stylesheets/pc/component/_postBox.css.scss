@@ -24,29 +24,53 @@
       border: solid 1px $color_border;
     }
 
-    .statusReady,.statusPlaying,.statusPlayed {
-      top: 0;
-      right: 0;
+    .statusReady,.statusPlaying,.statusPlayed,.statusStock {
+      position: relative;
+      display: inline-block;
       width: 100%;
-      margin-bottom: 4px;
-      font-size: .875rem;
-      line-height: 2;
+      margin-bottom: 10px;
+      @include border-radius(2px);
+      @include box-sizing;
+      font-size: 12px;
+      color: #fff;
       text-align: center;
+      line-height: 2;
+      &:after{
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        content: "";
+        width: 0;
+        height: 0;
+        border-right: solid 5px transparent;
+        border-bottom: solid 5px transparent;
+        border-left: solid 5px transparent;
+      }
     }
     .statusReady {
-      border: 1px solid $color-yellow;
-      @include border-radius(3px);
-      color: $color-yellow;
+      background: $color-yellow;
+      &:after{
+        border-top: solid 5px $color_yellow;
+      }
     }
     .statusPlaying {
-      border: 1px solid $color-red;
-      @include border-radius(3px);
-      color: $color-red;
+      background: $color-red;
+      &:after{
+        border-top: solid 5px $color_red;
+      }
     }
     .statusPlayed {
-      border: 1px solid $color-blue;
-      @include border-radius(3px);
-      color: $color-blue;
+      background: $color-blue;
+      &:after{
+        border-top: solid 5px $color_blue;
+      }
+    }
+    .statusStock {
+      background: $color-green;
+      &:after{
+        border-top: solid 5px $color_green;
+      }
     }
   }
   /*---   left   ---*/
