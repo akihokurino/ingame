@@ -5,11 +5,11 @@
         %li.gameImg
           %figure.gameImgWrap
             {{ if (game.photo_path) { }}
-            %img.gameImg{src: "/game_photos/{{= game.photo_path}}", width: "166", alt: ""}
+            %img.gameImg{src: "/game_photos/{{= game.photo_path}}", width: "155", alt: ""}
             {{ } else if (game.photo_url) { }}
-            %img.gameImg{src: "{{= game.photo_url }}", width: "166", alt: ""}
+            %img.gameImg{src: "{{= game.photo_url }}", width: "155", alt: ""}
             {{ } else { }}
-            %img.gameImg{src: "/game_photos/default.png", width: "166", alt: ""}
+            %img.gameImg{src: "/game_photos/default.png", width: "155", alt: ""}
             {{ } }}
       .gameMeta
         %h1.ttl {{= game.title }}
