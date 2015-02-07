@@ -91,7 +91,15 @@
 				&:last-child{
 					border:none;
 				}
-				.itemName{
+				.officialLink{
+			        display: block;
+			        color: $color_textBlack;
+			        font-weight: bold;
+			        &:before{
+			          margin-right: 5px;
+			        }
+			    }
+				.itemName,.officialLink{
 					display:table-cell;
 					width: 30%;
 					padding:4px 4px 4px 4px;

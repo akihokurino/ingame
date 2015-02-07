@@ -34,17 +34,17 @@ html {
 			&:active{
 				background: linear-gradient($main_color,lighten($main_color,5%));
 			}
-			@include border-radius(4px);
+			@include border-radius(2px);
 			box-sizing: border-box;
 			color: #fff;
-			font-size: 16px;
-			line-height:1.5;
+			font-size: 12px;
+			line-height:2;
 			&:before{
 				display:inline-block;
 				margin-right:5px;
 				color: #fff;
-				font-size:28px;
-				vertical-align: -15%;
+				font-size:16px;
+				vertical-align: -10%;
 			}
 
 		}

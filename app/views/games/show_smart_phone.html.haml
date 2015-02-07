@@ -33,13 +33,11 @@
         .gameInfoWrap
           %ul.gameInfo
             %li.item.site
-              .itemName ウェブサイト
-              .itemContent
-                - @game.game_urls.each_with_index do |url, index|
-                  - if index == 0
-                    = link_to "公式サイト", url.text, target: "blank", class: "officialLink"
-                  - else
-                    = link_to "公式サイト(#{index + 1})", url.text, target: "blank", class: "officialLink"
+              - @game.game_urls.each_with_index do |url, index|
+                - if index == 0
+                  = link_to "公式サイト", url.text, target: "blank", class: "officialLink icon-home"
+                - else
+                  = link_to "公式サイト(#{index + 1})", url.text, target: "blank", class: "officialLink icon-home"
             %li.item.hard
               .itemName ハード
               .itemContent
