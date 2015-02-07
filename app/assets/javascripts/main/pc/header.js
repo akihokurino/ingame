@@ -1,8 +1,5 @@
-//= require ../../models/notification.js
-//= require ../../collections/notifications.js
 //= require ../../views/notification_view.js
 //= require ../../views/notifications_view.js
-//= require ../../views/page_layer_view.js
 
 
 (function () {

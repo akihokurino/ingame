@@ -1,5 +1,3 @@
-//= require ../libs/calculate_time.js
-
 var PostView = Backbone.View.extend({
   tagName: "article",
   className: "postBox",

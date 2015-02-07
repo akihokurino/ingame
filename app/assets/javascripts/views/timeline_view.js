@@ -1,5 +1,5 @@
 var TimelineView = Backbone.View.extend({
-  el: ".timeline-container"
+  el: ".timeline-container",
   initialize: function () {
 
   }

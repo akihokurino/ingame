@@ -1,11 +1,5 @@
-//= require ../../libs/socket.js
-//= require ../../libs/pagenation.js
-//= require ../../models/post.js
-//= require ../../collections/posts.js
-//= require ../../views/custom_modal_view.js
 //= require ../../views/post_view.js
 //= require ../../views/posts_view.js
-
 
 
 (function () {

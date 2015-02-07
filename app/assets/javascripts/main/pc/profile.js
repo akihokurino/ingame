@@ -1,18 +1,10 @@
-//= require ../../libs/socket.js
-//= require ../../libs/pagenation.js
-//= require ../../models/log.js
-//= require ../../models/post.js
-//= require ../../models/user.js
-//= require ../../collections/logs.js
-//= require ../../collections/posts.js
-//= require ../../collections/users.js
-//= require ../../views/custom_modal_view.js
 //= require ../../views/log_view.js
 //= require ../../views/logs_view.js
 //= require ../../views/post_view.js
 //= require ../../views/posts_view.js
 //= require ../../views/user_view.js
 //= require ../../views/users_view.js
+
 
 (function () {
   var LogListView = Backbone.View.extend({

@@ -1,14 +1,8 @@
-//= require ../../libs/socket.js
-//= require ../../libs/pagenation.js
-//= require ../../libs/url_query.js
-//= require ../../models/game_result.js
-//= require ../../models/user_result.js
-//= require ../../collections/game_results.js
-//= require ../../collections/user_results.js
 //= require ../../views/game_result_view
 //= require ../../views/game_results_view
 //= require ../../views/user_result_view
 //= require ../../views/user_results_view
+
 
 (function () {
   var GameSearchView = Backbone.View.extend({
