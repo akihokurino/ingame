@@ -38,7 +38,7 @@
       this.archives       = [];
       this.stocks         = [];
 
-      this.user_id        = $(".post-new-page").data("userid");
+      this.user_id        = $("#wrapper").data("userid");
 
       this.logs_view.collection.reset();
 

@@ -26,8 +26,4 @@
           %span.icon-star
         {{ } }}
       %select.status.my-status{name: "status", size: "1", class: "status"}
-        %option{value: ""} ステータス
-        %option{value: 1} 気になる
-        %option{value: 2} プレイ中
-        %option{value: 3} クリア済
-        %option{value: 4} 積んでる
+        = render partial: "application/common/status"
