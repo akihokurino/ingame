@@ -2,14 +2,15 @@
 
 /*---   .searchTopBox   ----------*/
 .searchTopBox {
-  padding-top: 32px;
+  padding-top: 15px;
   background: #fff;
+  border-bottom: solid 1px $color_border;
 
   /*---   .search   ----------*/
   .searchBox {
     position: relative;
     width: 580px;
-    margin: 0 auto 40px;
+    margin: 0 auto 10px;
   }
   .searchWrap {
     position: relative;
@@ -21,10 +22,10 @@
 
     &:before {
       position: absolute;
-      top: 6px;
-      left: 4px;
+      top: 8px;
+      left: 8px;
       color: #888;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       font-family: 'icomoon';
       content: "\e60c";
     }
@@ -79,19 +80,19 @@
   .sortList {
     width: $cntWidth;
     margin: 0 auto;
-    color: #3e3e3e;
+    color: $color_textBlack;
     font-size: .875rem;
 
     .item {
       display: inline-block;
       width: 118px;
       text-align: center;
+      line-height: 2.5;
       cursor: pointer;
 
       &.current {
         position: relative;
-        padding-bottom: 18px;
-        color: $main_color;
+        font-weight: bold;
 
         &:after {
           position: absolute;
@@ -99,14 +100,12 @@
           left: 50%;
           width: 100%;
           margin-left: -50%;
-          border-bottom: 4px solid $main_color;
           content: "";
         }
       }
     }
     &Link {
       display: block;
-      padding-bottom: 18px;
       color: #3e3e3e;
 
       &:hover {
