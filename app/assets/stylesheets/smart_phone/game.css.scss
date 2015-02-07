@@ -9,12 +9,11 @@
 		background: #fff;
 
 		.ttl {
-			padding:10px;
-			background: linear-gradient(lighten($main_color,10%),$main_color);
-			color: #fff;
-			text-shadow: 0 -1px 3px rgba(#000,0.8);
-			font-size: 18px;
-			font-weight:bold;
+			padding: 10px;
+			background: #F5F5F5;
+			border-bottom: solid 1px $color_border;
+			color: #5F5F5F;
+			font-size: 22px;
 			line-height: 1.5;
 		}
 		.gameWrap{
@@ -29,21 +28,58 @@
 				max-width: 100%;
 				height: auto;
 				max-height: 300px;
-				border: 1px solid #eee;
+				border: 1px solid rgba(0,0,0,0.7);
 				@include box-sizing;
 			}
 		}
-		.toOriginalWrap{
-			text-align: right;
-			.toOriginal{
-				color: $color_blue;
-				font-size: 12px;
+		.source{
+	        margin-bottom: 10px;
+	        text-align: left;
+	        a{
+	          color: $color_textGray;
+	          font-size: 12px;
+	        }
+	      }
+      	.gameBtnList {
+			width: 100%;
+			padding:10px;
+			@include box-sizing;
+			font-size: 14px;
+			text-align:right;
+			.item {
+				display:inline-block;
+				text-align:center;
+				width: 100%;
+				margin-bottom:5px;
 			}
 		}
-		.gameInfo {
-			border: 1px solid $color_border;
+		.new-status, .my-status, .my-rate {
+			@include appearance;
+			width: 80%;
+			padding-left:30%;
+			background: linear-gradient(lighten($main_color,7%),$main_color);
+			border: 1px solid darken($main_color,7%);
+			color: #fff;
+			font-size: 14px;
+			line-height: 36px;
+		}
+		.registed{
+			background:$main_color;
+			color:#fff;
+		}
+		.deleteBtn{
+			display: block;
+			width: 160px;
+			margin: 0 auto 10px;
+			padding: 4px;
+			@include box-sizing;
+			border: 1px solid $color_red;
 			@include border-radius(2px);
-			background: #eee;
+			color: $color_red;
+			font-size: 10px;
+			text-align: center;
+		}
+		.gameInfo {
 			font-size: 0;
 			line-height: 1.5;
 
@@ -57,24 +93,41 @@
 				}
 				.itemName{
 					display:table-cell;
-					width: 35%;
-					padding:4px 10px 4px 4px;
+					width: 30%;
+					padding:4px 4px 4px 4px;
 					@include box-sizing;
 					color:$color_textBlack;
-					vertical-align: middle;				}
+					vertical-align: top;				}
 				.itemContent{
 					display:table-cell;
 					width: 65%;	
 					padding:4px 4px 4px 0;
 					color:$color_textBlack;
 					text-align:left;
-					font-weight:bold;
 				}
-				.icon-star{
-					color:orange;
-					font-size:18px;
-					vertical-align: -15%
+				.gametag{
+					display: inline-block;
+					padding: 0 4px;
+					margin-bottom: 4px;
+					border: solid 1px $color_border; 
 				}
+			    .starList {
+			      vertical-align: middle;
+			      display:inline-block;
+			      font-size:1rem;
+			    }
+			    .icon-star{
+			      float:left;
+			      display:inline-block;
+			      font-size:20px;
+			    }
+			    .starOn {
+			      display: inline-block;
+			      color:orange;
+			    }
+			    .starOff {
+			      display: inline-block;
+			    }
 			}
 		}
 		.linkBtnWrap{
@@ -109,19 +162,6 @@
 				}
 			}
 		}
-		.gameBtnList {
-			width: 100%;
-			padding:10px;
-			@include box-sizing;
-			font-size: 14px;
-			text-align:right;
-			.item {
-				display:inline-block;
-				text-align:center;
-				width: 100%;
-				margin-bottom:5px;
-			}
-		}
 		.gameSummary{
 			label {
 				position: relative;
@@ -133,7 +173,6 @@
 			    border-bottom: 1px solid $color_border;
 			    color: $color_textBlack;
 			    font-size:16px;
-			    font-weight:bold;
 			    text-align:left;
 			    &:before{
 			    	position: relative;
@@ -188,32 +227,6 @@
 			color: #ffffff;
 			text-align: center;
 		}
-		.new-status, .my-status, .my-rate {
-			@include appearance;
-			width: 80%;
-			padding-left:30%;
-			background: linear-gradient(lighten($main_color,7%),$main_color);
-			border: 1px solid darken($main_color,7%);
-			color: #fff;
-			font-size: 14px;
-			line-height: 36px;
-		}
-		.registed{
-			background:$main_color;
-			color:#fff;
-		}
-		.deleteBtn{
-			display: block;
-			width: 160px;
-			margin: 0 auto 10px;
-			padding: 4px;
-			@include box-sizing;
-			border: 1px solid $color_red;
-			@include border-radius(2px);
-			color: $color_red;
-			font-size: 10px;
-			text-align: center;
-		}
 	}
 	/*---   .sortBox   ----------*/
 	.boxTtl{
@@ -223,7 +236,6 @@
 			background-color: #f7f7f7;
 			color: $color_textGray;
 			font-size:14px;
-			font-weight: bold;
 			text-align:center;
 			line-height:3;
 			text-shadow:1px 1px 0 #f2f2f2;
