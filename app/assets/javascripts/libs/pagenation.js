@@ -26,6 +26,7 @@ Pagenation.prototype = {
           $(".loading-gif").css("display", "none");
         },
         error: function () {
+
         }
       });
     }

@@ -1,20 +1,20 @@
 var Log = Backbone.Model.extend({
   defaults: {
-    "id": "",
-    "text": "",
+    "id":      "",
+    "text":    "",
     "user_id": "",
-    "rate": "",
+    "rate":    "",
     "game": {
-      "id": "",
-      "title": "",
-      "photo_path": "",
-      "photo_url": "",
-      "device": "",
-      "maker": "",
+      "id":              "",
+      "title":           "",
+      "photo_path":      "",
+      "photo_url":       "",
+      "device":          "",
+      "maker":           "",
       "game_like_count": 0
     },
     "status": {
-      "id": "",
+      "id":   "",
       "name": ""
     }
   },
@@ -30,4 +30,4 @@ var Log = Backbone.Model.extend({
   isCurrentUserLog: function () {
     return $("#wrapper").data("userid") == this.get("user_id") ? true : false
   }
-})
+});

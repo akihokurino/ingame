@@ -50,7 +50,7 @@ var UserView = Backbone.View.extend({
       error: function () {
 
       }
-    })
+    });
   },
   unfollow: function (e) {
     e.preventDefault();
@@ -69,6 +69,6 @@ var UserView = Backbone.View.extend({
       error: function () {
 
       }
-    })
+    });
   }
-})
+});

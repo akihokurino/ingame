@@ -6,6 +6,8 @@ var LogView = Backbone.View.extend({
     "click .delete-btn": "showDeleteConfirm"
   },
   initialize: function () {
+    _.bindAll(this, "destroy");
+
     if (this.attributes && this.attributes.type) {
       this.type = this.attributes.type;
     }
@@ -35,8 +37,14 @@ var LogView = Backbone.View.extend({
     }
   },
   showDeleteConfirm: function () {
-    $(".delete-confirm-wrap").css("display", "block");
-    $(".layer").css("display", "block");
-    var delete_confirm_view = new DeleteConfirmView({attributes: {view: this, target: "ゲーム", desc: "このゲームに関する投稿データもすべて削除されます"}});
+    var custom_modal_view = new CustomModalView({
+      attributes: {
+        view: this,
+        target: "ゲーム",
+        desc: "このゲームに関する投稿データもすべて削除されます",
+        template: _.template($("#delete-confirm-template").html()),
+        callback: this.destroy
+      }
+    });
   }
-})
+});

@@ -2,14 +2,14 @@
 
 var Comment = Backbone.Model.extend({
   defaults: {
-    "id": "",
-    "text": "",
+    "id":                  "",
+    "text":                "",
     "comment_likes_count": "",
-    "i_liked": "",
-    "created_at": "",
+    "i_liked":             "",
+    "created_at":          "",
     "user": {
-      "id": "",
-      "username": "",
+      "id":         "",
+      "username":   "",
       "photo_path": ""
     }
   },
@@ -26,4 +26,4 @@ var Comment = Backbone.Model.extend({
 
     return this;
   }
-})
+});

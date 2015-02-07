@@ -1,12 +1,12 @@
 var Game = Backbone.Model.extend({
   defaults: {
-    "id": "",
-    "title": "",
-    "photo_path": "",
-    "photo_url": "",
-    "device": "",
-    "provider": "",
-    "maker": "",
+    "id":          "",
+    "title":       "",
+    "photo_path":  "",
+    "photo_url":   "",
+    "device":      "",
+    "provider":    "",
+    "maker":       "",
     "release_day": ""
   },
   strimWidth: function (limit) {
@@ -17,4 +17,4 @@ var Game = Backbone.Model.extend({
       this.set("title", new_title);
     }
   }
-})
+});

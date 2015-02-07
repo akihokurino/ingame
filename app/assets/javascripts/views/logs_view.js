@@ -45,4 +45,4 @@ var LogsView = Backbone.View.extend({
     this.$el.find(".played-list").html("");
     this.$el.find(".stock-list").html("");
   }
-})
+});

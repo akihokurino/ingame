@@ -11,9 +11,8 @@
 //= require ../../views/user_results_view
 
 (function () {
-
   var GameSearchView = Backbone.View.extend({
-    el: $(".search-page"),
+    el: ".search-page",
     events: {
       "click .search-btn":          "clickSearchBtn",
       "keypress .game-title-input": "searchWithEnter",
@@ -30,6 +29,7 @@
 
       this.game_result_collection = new GameResults();
       this.game_results_view      = new GameResultsView({el: ".result-list", collection: this.game_result_collection, type: null});
+
       this.game_title             = this.$(".game-title-input");
       this.current_game_title     = null;
       this.page                   = 1;
@@ -81,9 +81,7 @@
           var game_result = new GameResult(response.results[i]);
           this.game_results_view.collection.add(game_result);
         }
-      }
 
-      if (response.results.length != 0) {
         $(window).bind("scroll", this.pagenation.load);
       }
     },
@@ -118,6 +116,7 @@
 
       this.user_result_collection = new UserResults();
       this.user_results_view      = new UserResultsView({el: ".result-list", collection: this.user_result_collection});
+
       this.username               = this.$(".username-input");
       this.current_username       = null;
       this.page                   = 1;
@@ -169,9 +168,7 @@
           var user_result = new UserResult(response.results[i]);
           this.user_results_view.collection.add(user_result);
         }
-      }
 
-      if (response.results.length != 0) {
         $(window).bind("scroll", this.pagenation.load);
       }
     },
@@ -186,7 +183,7 @@
         location.href = "/users/" + current_user_id + "/search_game_or_user#game";
       }
     }
-  })
+  });
 
 
   var Router = Backbone.Router.extend({
@@ -200,7 +197,7 @@
     user: function () {
       this.current_app = new UserSearchView();
     }
-  })
+  });
 
   var router = new Router();
   Backbone.history.start();

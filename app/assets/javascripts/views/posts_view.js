@@ -1,5 +1,5 @@
 var PostsView = Backbone.View.extend({
-  el: $(".post-list"),
+  el: ".post-list",
   initialize: function () {
     this.listenTo(this.collection, "add", this.addPost);
   },
@@ -7,6 +7,7 @@ var PostsView = Backbone.View.extend({
     if (post.id) {
       post.strimWidth(40).sanitize().sanitizeComment();
       post.getRelativeTime().getCommentRelativeTime();
+
       var post_view = new PostView({model: post});
       this.$el.append(post_view.render().el);
     }
@@ -17,4 +18,4 @@ var PostsView = Backbone.View.extend({
   removePosts: function () {
     this.$el.html("");
   }
-})
+});

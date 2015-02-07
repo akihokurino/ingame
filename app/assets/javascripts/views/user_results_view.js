@@ -8,4 +8,4 @@ var UserResultsView = Backbone.View.extend({
       this.$el.append(user_result_view.render().el);
     }
   }
-})
+});

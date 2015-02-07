@@ -2,7 +2,7 @@
 //= require ../../libs/pagenation.js
 //= require ../../models/post.js
 //= require ../../collections/posts.js
-//= require ../../views/delete_confirm_view.js
+//= require ../../views/custom_modal_view.js
 //= require ../../views/post_view.js
 //= require ../../views/posts_view.js
 
@@ -15,19 +15,19 @@
 
     },
     initialize: function () {
+      var that = this;
+
       $(window).unbind("scroll");
       this.$(".post-list").html("");
-      this.$el.find("ul.sort-list li").removeClass("current");
-      this.$el.find("ul.sort-list li.all-posts").addClass("current");
+
+      this.setCurrentTab();
 
       _.bindAll(this, "setPostCollection");
 
-      var that                = this;
       this.post_collection    = new Posts();
       this.posts_view         = new PostsView({el: ".post-list", collection: this.post_collection});
 
       this.comment_input      = this.$(".comment-input");
-
       this.game_id            = $(".game-page").data("gameid");
       this.page               = 1;
 
@@ -39,22 +39,25 @@
           that.setPostCollection(model, response, options);
         },
         error: function () {
+
         }
       });
     },
     setPostCollection: function (model, response, option) {
-      for (var i = 0; i < response.posts.length; i++) {
-        var post = new Post(response.posts[i]);
-        this.posts_view.collection.add(post);
-      }
+      if (response.posts && response.posts.length > 0) {
+        for (var i = 0; i < response.posts.length; i++) {
+          var post = new Post(response.posts[i]);
+          this.posts_view.collection.add(post);
+        }
 
-      if (response.posts.length != 0) {
         $(window).bind("scroll", this.pagenation.load);
       }
     },
-    unbindEvent: function () {
+    setCurrentTab: function () {
+      this.$el.find("ul.sort-list li").removeClass("current");
+      this.$el.find("ul.sort-list li.all-posts").addClass("current");
     }
-  })
+  });
 
   var FollowerPostListView = Backbone.View.extend({
     el: ".game-page",
@@ -62,25 +65,24 @@
 
     },
     initialize: function () {
+      var that = this;
+
       $(window).unbind("scroll");
       this.$(".post-list").html("");
-      this.$el.find("ul.sort-list li").removeClass("current");
-      this.$el.find("ul.sort-list li.follower-posts").addClass("current");
+
+      this.setCurrentTab();
 
       _.bindAll(this, "setPostCollection");
 
-      var that                = this;
       this.post_collection    = new Posts();
       this.posts_view         = new PostsView({el: ".post-list", collection: this.post_collection});
 
       this.comment_input      = this.$(".comment-input");
-
       this.game_id            = $(".game-page").data("gameid");
       this.page               = 1;
 
       this.pagenation         = new Pagenation(this.post_collection, {type: "follower_of_game", game_id: this.game_id}, this.setPostCollection);
 
-      event_handle.discribe("showComment", this.showComment);
 
       this.post_collection.fetch({
         data: {type: "follower_of_game", page: this.page, game_id: this.game_id},
@@ -88,22 +90,25 @@
           that.setPostCollection(model, response, options);
         },
         error: function () {
+
         }
       });
     },
     setPostCollection: function (model, response, option) {
-      for (var i = 0; i < response.posts.length; i++) {
-        var post = new Post(response.posts[i]);
-        this.posts_view.collection.add(post);
-      }
+      if (response.posts && response.posts.length > 0) {
+        for (var i = 0; i < response.posts.length; i++) {
+          var post = new Post(response.posts[i]);
+          this.posts_view.collection.add(post);
+        }
 
-      if (response.posts.length != 0) {
         $(window).bind("scroll", this.pagenation.load);
       }
     },
-    unbindEvent: function () {
+    setCurrentTab: function () {
+      this.$el.find("ul.sort-list li").removeClass("current");
+      this.$el.find("ul.sort-list li.follower-posts").addClass("current");
     }
-  })
+  });
 
   var LikerPostListView = Backbone.View.extend({
     el: ".game-page",
@@ -111,19 +116,19 @@
 
     },
     initialize: function () {
+      var that = this;
+
       $(window).unbind("scroll");
       this.$(".post-list").html("");
-      this.$el.find("ul.sort-list li").removeClass("current");
-      this.$el.find("ul.sort-list li.liker-posts").addClass("current");
+
+      this.setCurrentTab();
 
       _.bindAll(this, "setPostCollection");
 
-      var that                = this;
       this.post_collection    = new Posts();
       this.posts_view         = new PostsView({el: ".post-list", collection: this.post_collection});
 
       this.comment_input      = this.$(".comment-input");
-
       this.game_id            = $(".game-page").data("gameid");
       this.page               = 1;
 
@@ -135,22 +140,25 @@
           that.setPostCollection(model, response, options);
         },
         error: function () {
+
         }
       });
     },
     setPostCollection: function (model, response, option) {
-      for (var i = 0; i < response.posts.length; i++) {
-        var post = new Post(response.posts[i]);
-        this.posts_view.collection.add(post);
-      }
+      if (response.posts && response.posts.length > 0) {
+        for (var i = 0; i < response.posts.length; i++) {
+          var post = new Post(response.posts[i]);
+          this.posts_view.collection.add(post);
+        }
 
-      if (response.posts.length != 0) {
         $(window).bind("scroll", this.pagenation.load);
       }
     },
-    unbindEvent: function () {
+    setCurrentTab: function () {
+      this.$el.find("ul.sort-list li").removeClass("current");
+      this.$el.find("ul.sort-list li.liker-posts").addClass("current");
     }
-  })
+  });
 
   var AppView = Backbone.View.extend({
     el: ".game-page",
@@ -180,10 +188,12 @@
           url: "/api/logs/" + this.game_id + "/update_status_or_rate",
           data: data,
           success: function (data) {
+
           },
           error: function () {
+
           }
-        })
+        });
       }
     },
     changeStatus: function () {
@@ -199,10 +209,12 @@
           url: "/api/logs/" + this.game_id + "/update_status_or_rate",
           data: data,
           success: function (data) {
+
           },
           error: function () {
+
           }
-        })
+        });
       }
     },
     registLog: function () {
@@ -227,9 +239,9 @@
         },
         error: function () {
         }
-      })
+      });
     }
-  })
+  });
 
 
   /* ---------- Router ---------- */
@@ -240,24 +252,15 @@
       "liker":    "liker"
     },
     all: function () {
-      if (this.current_list) {
-        this.current_list.unbindEvent();
-      }
       this.current_list = new AllPostListView();
     },
     follower: function () {
-      if (this.current_list) {
-        this.current_list.unbindEvent();
-      }
       this.current_list = new FollowerPostListView();
     },
     liker: function () {
-      if (this.current_list) {
-        this.current_list.unbindEvent();
-      }
       this.current_list = new LikerPostListView();
     }
-  })
+  });
 
 
   var app    = new AppView();

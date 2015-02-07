@@ -1,16 +1,16 @@
 (function () {
   var FlowView = Backbone.View.extend({
-    el: $(".set-account-page"),
+    el: ".set-account-page",
     template: _.template($("#flow-template").html()),
     initialize: function () {
       this.$el.html("");
       this.$el.append(this.template);
     }
-  })
+  });
 
 
   var SignupView = Backbone.View.extend({
-    el: $(".set-account-page"),
+    el: ".set-account-page",
     template: _.template($("#signup-template").html()),
     events: {
       "click .signup-btn":                "signup",
@@ -57,12 +57,13 @@
           error: function () {
 
           }
-        })
+        });
       }
     },
     validate: function () {
       this.$el.find(".error-log").html("");
       var error = {};
+
       if (this.username_input.val() == "") {
         error.username = "empty";
       } else if (this.username_input.val().length > 15) {
@@ -138,11 +139,11 @@
 
       return true;
     }
-  })
+  });
 
 
   var SigninView = Backbone.View.extend({
-    el: $(".set-account-page"),
+    el: ".set-account-page",
     template: _.template($("#signin-template").html()),
     events: {
       "click .signin-btn":        "signin",
@@ -153,8 +154,8 @@
       this.$el.html("");
       this.$el.append(this.template);
 
-      this.username_input         = this.$(".username-input");
-      this.password_input         = this.$(".password-input");
+      this.username_input = this.$(".username-input");
+      this.password_input = this.$(".password-input");
     },
     signinWithEnter: function (e) {
       if (e.which == 13) {
@@ -193,6 +194,7 @@
     validate: function () {
       this.$el.find(".error-log").html("");
       var error = {};
+
       if (this.username_input.val() == "") {
         error.username = "empty";
       }
@@ -226,10 +228,8 @@
 
       return true;
     }
-  })
+  });
 
-
-  /* ---------- Router --------- */
 
   var Router = Backbone.Router.extend({
     routes: {
@@ -246,7 +246,7 @@
     signin: function () {
       this.current_app = new SigninView();
     }
-  })
+  });
 
   var router = new Router();
   Backbone.history.start();

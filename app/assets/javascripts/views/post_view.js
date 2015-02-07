@@ -13,7 +13,10 @@ var PostView = Backbone.View.extend({
     "click .comment-unlike":  "commentUnlike",
     "click .delete-btn":      "showDeleteConfirm"
   },
+  template: _.template($("#post-template").html()),
   initialize: function () {
+    _.bindAll(this, "destroy");
+
     this.listenTo(this.model, "destroy", this.remove);
     this.listenTo(this.model, "change", this.render);
   },
@@ -24,7 +27,6 @@ var PostView = Backbone.View.extend({
   remove: function () {
     this.$el.remove();
   },
-  template: _.template($("#post-template").html()),
   render: function () {
     var template = this.template(this.model.toJSON());
     this.$el.html(template);
@@ -212,9 +214,15 @@ var PostView = Backbone.View.extend({
     })
   },
   showDeleteConfirm: function () {
-    $(".delete-confirm-wrap").css("display", "block");
-    $(".layer").css("display", "block");
-    var delete_confirm_view = new DeleteConfirmView({attributes: {view: this, target: "投稿", desc: null}});
+    var custom_modal_view = new CustomModalView({
+      attributes: {
+        view: this,
+        target: "投稿",
+        desc: null,
+        template: _.template($("#delete-confirm-template").html()),
+        callback: this.destroy
+      }
+    });
   },
   commentSanitize: function (text) {
     var text = text.replace(/\n/g, '<br>');
@@ -225,4 +233,4 @@ var PostView = Backbone.View.extend({
   getCommentRelativeTime: function (created_at) {
     return new CalculateTime(created_at).getRelativeTime();
   }
-})
+});

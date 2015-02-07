@@ -15,4 +15,4 @@ var GameResultsView = Backbone.View.extend({
       this.$el.append(game_result_view.render().el);
     }
   }
-})
+});

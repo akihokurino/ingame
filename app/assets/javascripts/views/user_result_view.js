@@ -2,7 +2,7 @@ var UserResultView = Backbone.View.extend({
   tagName: "li",
   className: "item",
   events: {
-    "click .follow-btn": "follow",
+    "click .follow-btn":   "follow",
     "click .unfollow-btn": "unfollow"
   },
   template: _.template($("#user-result-template").html()),
@@ -41,7 +41,7 @@ var UserResultView = Backbone.View.extend({
       error: function () {
 
       }
-    })
+    });
   },
   unfollow: function (e) {
     e.preventDefault();
@@ -60,6 +60,6 @@ var UserResultView = Backbone.View.extend({
       error: function () {
 
       }
-    })
+    });
   }
-})
+});

@@ -2,31 +2,31 @@
 
 var Post = Backbone.Model.extend({
   defaults: {
-    "id": "",
-    "text": "",
-    "post_likes_count": "",
+    "id":                  "",
+    "text":                "",
+    "post_likes_count":    "",
     "post_comments_count": "",
-    "i_liked": "",
-    "created_at": "",
+    "i_liked":             "",
+    "created_at":          "",
     "game": {
-      "id": "",
-      "title": "",
-      "photo_url": "",
+      "id":         "",
+      "title":      "",
+      "photo_url":  "",
       "photo_path": "",
-      "device": ""
+      "device":     ""
     },
     "user": {
-      "id": "",
-      "username": "",
+      "id":         "",
+      "username":   "",
       "photo_path": ""
     },
     "status": {
-      "id": "",
+      "id":   "",
       "name": ""
     },
-    "post_photos": [],
-    "post_comments": [],
-    "post_urls": [],
+    "post_photos":     [],
+    "post_comments":   [],
+    "post_urls":       [],
     "current_user_id": ""
   },
   url: "/api/posts/",

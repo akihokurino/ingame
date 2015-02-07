@@ -42,7 +42,7 @@ a:hover {
 /*------------------------------
 systemClass
 ------------------------------*/
-.layer {
+.custom-layer {
   display: none;
   position: fixed;
   top: 0px;
@@ -73,7 +73,7 @@ systemClass
   margin: 0 auto;
 }
 
-.delete-confirm-wrap {
+.custom-modal {
   display: none;
   position: fixed;
   left: 50%;
