@@ -6,14 +6,18 @@ class User < ActiveRecord::Base
   include EscapeLike
   include CostomUpload
 
-  has_many :user_providers
-	has_many :posts
-	has_many :logs
-  has_many :games, :through => :logs
-	has_many :game_likes
-	has_many :post_likes
-	has_many :follows, :foreign_key => "from_user_id"
-  has_many :notifications, :foreign_key => "to_user_id"
+  has_many :user_providers, dependent: :destroy
+	has_many :posts, dependent: :destroy
+  has_many :post_comments, dependent: :destroy
+	has_many :logs, dependent: :destroy
+  has_many :games, through: :logs
+	has_many :game_likes, dependent: :destroy
+	has_many :post_likes, dependent: :destroy
+  has_many :comment_likes, dependent: :destroy
+	has_many :follows, class_name: "Follow", :foreign_key => "from_user_id", dependent: :destroy
+  has_many :followers, class_name: "Follow", :foreign_key => "to_user_id", dependent: :destroy
+  has_many :received_notifications, class_name: "Notification", :foreign_key => "to_user_id", dependent: :destroy
+  has_many :send_notifications, class_name: "Notification", :foreign_key => "from_user_id", dependent: :destroy
 
 	validates :username,
 		presence: true,
@@ -60,32 +64,22 @@ class User < ActiveRecord::Base
   end
 
   def check_follow(current_user)
-    if Follow.where(from_user_id: current_user[:id]).pluck(:to_user_id).include?(self[:id])
-      self.i_followed = true
-    else
-      self.i_followed = false
-    end
-
-    if Follow.exists?(to_user_id: current_user, from_user_id: self[:id])
-      self.i_followered = true
-    else
-      self.i_followered = false
-    end
-
+    self.i_followed   = current_user.follows.pluck(:to_user_id).include?(self[:id]) ? true : false
+    self.i_followered = current_user.followers.pluck(:from_user_id).include?(self[:id]) ? true : false
     self.check_follow_num
   end
 
   def check_follow_num
-    self.follow_num   = Follow.where(from_user_id: self[:id]).count
-    self.follower_num = Follow.where(to_user_id: self[:id]).count
+    self.follow_num   = self.follows.count
+    self.follower_num = self.followers.count
   end
 
   def follow_users
-    Follow.where(from_user_id: self[:id]).map { |follow| follow.to_user }
+    self.follows.map { |follow| follow.to_user }
   end
 
   def follower_users
-    Follow.where(to_user_id: self[:id]).map { |follow| follow.from_user }
+    self.followers.map { |follow| follow.from_user }
   end
 
   def collect_password?(password)

@@ -3,7 +3,6 @@ class GamesController < ApplicationController
 
 	def show
     @game.format_datetime
-    p @game
     @game.check_regist(@current_user)
     @game.check_rate(@current_user)
 	end
