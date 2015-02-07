@@ -2,13 +2,17 @@
   .gameWrap
     .statusBox
       {{ if (status.id == 1) { }}
-      %span.moodReady 気になる
+      %span.moodReady
+        {{= status.name }}
       {{ } else if (status.id == 2) { }}
-      %span.moodPlaying プレイ中
+      %span.moodPlaying
+        {{= status.name }}
       {{ } else if (status.id == 3) { }}
-      %span.moodPlayed クリア済
+      %span.moodPlayed
+        {{= status.name }}
       {{ } else if (status.id == 4) { }}
-      %span.moodStock 積んでる
+      %span.moodStock
+        {{= status.name }}
       {{ } }}
     %a{href: "/games/{{= game.id}}#all"}
       {{ if (game.photo_path) { }}

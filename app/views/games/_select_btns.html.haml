@@ -50,15 +50,11 @@
     - unless game.i_registed
       .statusWrap
         %select.statusBtn.new-status{name: "status", size: "1"}
-          %option{value: ""} ステータス
-          %option{value: "1"} 気になる
-          %option{value: "2"} プレイ中
-          %option{value: "3"} クリア済
-          %option{value: "4"} 積んでる
+          = render partial: "application/common/status"
     - else
       .statusWrap
         %select.statusBtn.my-status.registed{name: "status", size: "1"}
-          - [{value: "", name: "登録する"}, {value: "1", name: "気になる"}, {value: "2", name: "プレイ中"}, {value: "3", name: "クリア済"}, {value: "4", name: "積んでる"}].each do |obj|
+          - [{value: "", name: "登録する"}, {value: "1", name: "気になる"}, {value: "2", name: "遊んでる"}, {value: "3", name: "遊んだ"}, {value: "4", name: "積んでる"}].each do |obj|
             - if obj[:value].to_i == game.my_status_id.to_i
               %option{value: obj[:value], selected: "selected"}
                 = obj[:name]

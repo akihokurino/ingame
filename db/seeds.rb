@@ -8,8 +8,8 @@
 
 %w(
 	気になる
-	プレイ中
-	アーカイブ
+	遊んでる
+	遊んだ
   積んでる
 ).each_with_index do |status, index|
 	Status.create(name: status)
