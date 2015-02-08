@@ -16,8 +16,11 @@
 
     #wrapper{"data-userid" => @current_user ? @current_user[:id] : nil}
       = yield
-    .layer
+
     .page-layer
-    .delete-confirm-wrap
+
+    .comment-modal
+    .custom-modal
+    .custom-layer
 
     = yield :last

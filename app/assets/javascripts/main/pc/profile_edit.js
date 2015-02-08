@@ -1,9 +1,3 @@
-//= require ../../views/game_result_view
-//= require ../../views/game_results_view
-//= require ../../views/user_result_view
-//= require ../../views/user_results_view
-
-
 (function () {
   var AppView = Backbone.View.extend({
     el: ".user-edit-page",

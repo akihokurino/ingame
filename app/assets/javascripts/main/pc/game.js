@@ -9,43 +9,14 @@
 
     },
     initialize: function () {
-      var that = this;
-
-      $(window).unbind("scroll");
-      this.$(".post-list").html("");
-
       this.setCurrentTab();
-
-      _.bindAll(this, "setPostCollection");
 
       this.post_collection    = new Posts();
       this.posts_view         = new PostsView({el: ".post-list", collection: this.post_collection});
 
-      this.comment_input      = this.$(".comment-input");
       this.game_id            = $(".game-page").data("gameid");
-      this.page               = 1;
 
-      this.pagenation         = new Pagenation(this.post_collection, {type: "all_of_game", game_id: this.game_id}, this.setPostCollection);
-
-      this.post_collection.fetch({
-        data: {type: "all_of_game", page: this.page, game_id: this.game_id},
-        success: function (model, response, options) {
-          that.setPostCollection(model, response, options);
-        },
-        error: function () {
-
-        }
-      });
-    },
-    setPostCollection: function (model, response, option) {
-      if (response.posts && response.posts.length > 0) {
-        for (var i = 0; i < response.posts.length; i++) {
-          var post = new Post(response.posts[i]);
-          this.posts_view.collection.add(post);
-        }
-
-        $(window).bind("scroll", this.pagenation.load);
-      }
+      this.posts_view.render({type: "all_of_game", game_id: this.game_id, page: 1});
     },
     setCurrentTab: function () {
       this.$el.find("ul.sort-list li").removeClass("current");
@@ -59,44 +30,14 @@
 
     },
     initialize: function () {
-      var that = this;
-
-      $(window).unbind("scroll");
-      this.$(".post-list").html("");
-
       this.setCurrentTab();
-
-      _.bindAll(this, "setPostCollection");
 
       this.post_collection    = new Posts();
       this.posts_view         = new PostsView({el: ".post-list", collection: this.post_collection});
 
-      this.comment_input      = this.$(".comment-input");
       this.game_id            = $(".game-page").data("gameid");
-      this.page               = 1;
 
-      this.pagenation         = new Pagenation(this.post_collection, {type: "follower_of_game", game_id: this.game_id}, this.setPostCollection);
-
-
-      this.post_collection.fetch({
-        data: {type: "follower_of_game", page: this.page, game_id: this.game_id},
-        success: function (model, response, options) {
-          that.setPostCollection(model, response, options);
-        },
-        error: function () {
-
-        }
-      });
-    },
-    setPostCollection: function (model, response, option) {
-      if (response.posts && response.posts.length > 0) {
-        for (var i = 0; i < response.posts.length; i++) {
-          var post = new Post(response.posts[i]);
-          this.posts_view.collection.add(post);
-        }
-
-        $(window).bind("scroll", this.pagenation.load);
-      }
+      this.posts_view.render({type: "follower_of_game", game_id: this.game_id, page: 1});
     },
     setCurrentTab: function () {
       this.$el.find("ul.sort-list li").removeClass("current");
@@ -110,43 +51,14 @@
 
     },
     initialize: function () {
-      var that = this;
-
-      $(window).unbind("scroll");
-      this.$(".post-list").html("");
-
       this.setCurrentTab();
-
-      _.bindAll(this, "setPostCollection");
 
       this.post_collection    = new Posts();
       this.posts_view         = new PostsView({el: ".post-list", collection: this.post_collection});
 
-      this.comment_input      = this.$(".comment-input");
       this.game_id            = $(".game-page").data("gameid");
-      this.page               = 1;
 
-      this.pagenation         = new Pagenation(this.post_collection, {type: "liker_of_game", game_id: this.game_id}, this.setPostCollection);
-
-      this.post_collection.fetch({
-        data: {type: "liker_of_game", page: this.page, game_id: this.game_id},
-        success: function (model, response, options) {
-          that.setPostCollection(model, response, options);
-        },
-        error: function () {
-
-        }
-      });
-    },
-    setPostCollection: function (model, response, option) {
-      if (response.posts && response.posts.length > 0) {
-        for (var i = 0; i < response.posts.length; i++) {
-          var post = new Post(response.posts[i]);
-          this.posts_view.collection.add(post);
-        }
-
-        $(window).bind("scroll", this.pagenation.load);
-      }
+      this.posts_view.render({type: "liker_of_game", game_id: this.game_id, page: 1});
     },
     setCurrentTab: function () {
       this.$el.find("ul.sort-list li").removeClass("current");
@@ -163,8 +75,8 @@
     },
     initialize: function () {
       var that               = this;
-      this.game_id           = $(".game-page").data("gameid");
 
+      this.game_id           = $(".game-page").data("gameid");
       this.my_status_select  = $(".my-status");
       this.new_status_select = $(".new-status");
       this.my_rate_select    = $(".my-rate");

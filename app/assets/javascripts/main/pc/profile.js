@@ -81,42 +81,18 @@
     initialize: function () {
       var that = this;
 
-      $(window).unbind("scroll");
       this.$(".profile-timeline").html("");
       this.$(".profile-timeline").append(this.template);
       this.$(".search-log").val("");
 
       this.setCurrentTab();
 
-      _.bindAll(this, "setPostCollection");
-
       this.post_collection   = new Posts();
       this.posts_view        = new PostsView({el: ".post-list", collection: this.post_collection});
 
       this.user_id           = this.$el.data("userid");
-      this.page              = 1;
 
-      this.pagenation 　　　　= new Pagenation(this.post_collection, {user_id: this.user_id, type: "user"}, this.setPostCollection);
-
-      this.post_collection.fetch({
-        data: {user_id: this.user_id, type: "user", page: this.page},
-        success: function (model, response, options) {
-          that.setPostCollection(model, response, options);
-        },
-        error: function () {
-
-        }
-      });
-    },
-    setPostCollection: function (model, response, option) {
-      if (response.posts && response.posts.length > 0) {
-        for (var i = 0; i < response.posts.length; i++) {
-          var post = new Post(response.posts[i]);
-          this.posts_view.collection.add(post);
-        }
-
-        $(window).bind("scroll", this.pagenation.load);
-      }
+      this.posts_view.render({user_id: this.user_id, type: "user", page: 1});
     },
     setCurrentTab: function () {
       this.$(".count-box li").removeClass("current");

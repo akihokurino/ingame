@@ -65,7 +65,7 @@ var PostView = Backbone.View.extend({
         error: function () {
 
         }
-    })
+    });
   },
   unlike: function () {
     var that = this;
@@ -94,11 +94,17 @@ var PostView = Backbone.View.extend({
       error: function () {
 
       }
-    })
+    });
   },
   showComment: function (e) {
     e.preventDefault();
-    event_handle.publish("showComment", this.model);
+
+    var comment_modal_view = new CommentModalView({
+      attributes: {
+        current_comments: this.model.get("post_comments"),
+        current_model: this.model
+      }
+    });
   },
   comment: function (e) {
     if (e.which == 13 && !e.shiftKey && this.$(".comment-input").val().replace(/^\s+|\s+$/g, "") != "") {
@@ -116,8 +122,8 @@ var PostView = Backbone.View.extend({
         url: "/api/post_comments",
         data: data,
         success: function (data) {
-          data.comment.text       = that.commentSanitize(data.comment.text);
-          data.comment.created_at = that.getCommentRelativeTime(data.comment.created_at);
+          data.comment.text       = new Comment().sanitize(data.comment.text);
+          data.comment.created_at = new Comment().getRelativeTime(data.comment.created_at);
           that.model.get("post_comments").push(data.comment);
           that.model.set("post_comments_count", that.model.get("post_comments_count") + 1);
           that.render();
@@ -135,7 +141,7 @@ var PostView = Backbone.View.extend({
         error: function () {
 
         }
-      })
+      });
 
       this.$(".comment-input").val("");
     }
@@ -154,29 +160,29 @@ var PostView = Backbone.View.extend({
 
     $.ajax({
       type: "POST",
-        url: "/api/comment_likes",
-        data: data,
-        success: function (data) {
-          if (data) {
-            comment.i_liked = true;
-            comment.comment_likes_count += 1;
-            that.render();
-          }
-
-          var data = {
-            type: "comment_like",
-            post_id: that.model.id,
-            post_comment_id: comment.id,
-            from_user_id: like_socket.user_id,
-            to_user_id: comment.user.id
-          }
-
-          like_socket.send(data);
-        },
-        error: function () {
-
+      url: "/api/comment_likes",
+      data: data,
+      success: function (data) {
+        if (data) {
+          comment.i_liked = true;
+          comment.comment_likes_count += 1;
+          that.render();
         }
-    })
+
+        var data = {
+          type: "comment_like",
+          post_id: that.model.id,
+          post_comment_id: comment.id,
+          from_user_id: like_socket.user_id,
+          to_user_id: comment.user.id
+        }
+
+        like_socket.send(data);
+      },
+      error: function () {
+
+      }
+    });
   },
   commentUnlike: function (e) {
     var index   = $(e.currentTarget).data("commentindex");
@@ -209,7 +215,7 @@ var PostView = Backbone.View.extend({
       error: function () {
 
       }
-    })
+    });
   },
   showDeleteConfirm: function () {
     var custom_modal_view = new CustomModalView({
@@ -218,17 +224,9 @@ var PostView = Backbone.View.extend({
         target: "投稿",
         desc: null,
         template: _.template($("#delete-confirm-template").html()),
-        callback: this.destroy
+        callback: this.destroy,
+        className: "deleteConfirmModal",
       }
     });
-  },
-  commentSanitize: function (text) {
-    var text = text.replace(/\n/g, '<br>');
-    text     = text.replace(/((http:|https:)\/\/[\x21-\x26\x28-\x7e]+)/gi, "<a class='link-text' target='_blank' href='$1'>$1</a>");
-
-    return text;
-  },
-  getCommentRelativeTime: function (created_at) {
-    return new CalculateTime(created_at).getRelativeTime();
   }
 });

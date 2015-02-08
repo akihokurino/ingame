@@ -1,9 +1,7 @@
 var Pagenation = function (collection, params, callback) {
-  this.page       = 1;
   this.collection = collection;
   this.params     = params;
   this.callback   = callback;
-
   _.bindAll(this, "load");
 }
 
@@ -16,8 +14,7 @@ Pagenation.prototype = {
     if ((scrollHeight - scrollPosition) / scrollHeight <= 0.1) {
       $(".loading-gif").css("display", "block");
       $(window).unbind("scroll");
-      this.page          += 1;
-      this.params["page"] = this.page;
+      this.params["page"] += 1;
       this.collection.fetch({
         data: this.params,
         success: function (model, response, options) {

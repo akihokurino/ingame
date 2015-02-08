@@ -1,14 +1,7 @@
-//= require ../../libs/pagenation.js
-//= require ../../models/game_result.js
-//= require ../../models/user_result.js
-//= require ../../collections/game_results.js
-//= require ../../collections/user_results.js
 //= require ../../views/game_result_view.js
 //= require ../../views/game_results_view.js
 //= require ../../views/user_result_view.js
 //= require ../../views/user_results_view.js
-//= require ../../vendors/draggable_background.js
-//= require ../../libs/profile_upload.js
 
 (function () {
   var FirstView = Backbone.View.extend({
@@ -26,11 +19,10 @@
 
       this.game_result_collection = new GameResults();
       this.game_results_view      = new GameResultsView({el: ".result-list", collection: this.game_result_collection, attributes: {type: "setting"}});
+
       this.search_title           = this.$(".search-title-input");
       this.current_search_title   = null;
-
-      var tmp                     = location.href.split("#")[0].split("/");
-      this.user_id                = tmp.pop() && tmp.pop();
+      this.user_id                = $("#wrapper").data("userid");
       this.page                   = 1;
     },
     search: function (e) {
@@ -44,13 +36,14 @@
         this.game_result_collection.fetch({
           data: {search_title: this.current_search_title, page: this.page},
           success: function (model, response, options) {
-            that.pagenation = new Pagenation(that.game_result_collection, {search_title: that.current_search_title}, that.setGameResultCollection);
+            that.pagenation = new Pagenation(that.game_result_collection, {search_title: that.current_search_title, page: that.page}, that.setGameResultCollection);
 
             that.game_result_collection.reset();
             that.game_results_view.$el.html("");
             that.setGameResultCollection(model, response, options);
           },
           error: function () {
+
           }
         });
       }
@@ -61,9 +54,7 @@
           var game_result = new GameResult(response.results[i]);
           this.game_results_view.collection.add(game_result);
         }
-      }
 
-      if (response.results.length != 0) {
         $(window).bind("scroll", this.pagenation.load);
       }
     },
@@ -71,7 +62,7 @@
       e.preventDefault();
       location.href = "/users/" + this.user_id + "/setting#second";
     }
-  })
+  });
 
   var SecondView = Backbone.View.extend({
     el: $(".setting-page"),
@@ -88,11 +79,10 @@
 
       this.user_result_collection  = new UserResults();
       this.user_results_view       = new UserResultsView({el: ".user-list", collection: this.user_result_collection});
+
       this.username                = this.$(".user-input");
       this.current_username        = null
-
-      var tmp                      = location.href.split("#")[0].split("/");
-      this.user_id                 = tmp.pop() && tmp.pop();
+      this.user_id                 = $("#wrapper").data("userid");
       this.page                    = 1;
     },
     search: function (e) {
@@ -106,13 +96,14 @@
         this.user_result_collection.fetch({
           data: {username: this.current_username, page: this.page},
           success: function (model, response, options) {
-            that.pagenation = new Pagenation(that.user_result_collection, {username: that.current_username}, that.setUserResultCollection);
+            that.pagenation = new Pagenation(that.user_result_collection, {username: that.current_username, page: that.page}, that.setUserResultCollection);
 
             that.user_result_collection.reset();
             that.user_results_view.$el.html("");
             that.setUserResultCollection(model, response, options);
           },
           error: function () {
+
           }
         });
       }
@@ -123,9 +114,7 @@
           var user_result = new UserResult(response.results[i]);
           this.user_results_view.collection.add(user_result);
         }
-      }
 
-      if (response.results.length != 0) {
         $(window).bind("scroll", this.pagenation.load);
       }
     },
@@ -133,7 +122,7 @@
       e.preventDefault();
       location.href = "/users/" + this.user_id + "/setting#third";
     }
-  })
+  });
 
 
   var ThirdView = Backbone.View.extend({
@@ -149,8 +138,7 @@
       this.$el.html("");
       this.$el.append(this.template);
 
-      var tmp      = location.href.split("#")[0].split("/");
-      this.user_id = tmp.pop() && tmp.pop();
+      this.user_id = $("#wrapper").data("userid");
 
       this.upload  = new ProfileUpload("upload-btn", "clip-area", this.user_id, null);
     },
@@ -200,10 +188,10 @@
           error: function () {
 
           }
-        })
+        });
       }
     }
-  })
+  });
 
 
 
@@ -224,7 +212,7 @@
     third: function () {
       this.current_app = new ThirdView();
     }
-  })
+  });
 
   var router = new Router();
   Backbone.history.start();

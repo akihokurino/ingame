@@ -1,12 +1,3 @@
-//= require ../../libs/socket.js
-//= require ../../libs/pagenation.js
-//= require ../../libs/url_query.js
-//= require ../../models/game_result.js
-//= require ../../models/user_result.js
-//= require ../../models/user.js
-//= require ../../collections/game_results.js
-//= require ../../collections/user_results.js
-//= require ../../collections/users.js
 //= require ../../views/game_result_view
 //= require ../../views/game_results_view
 //= require ../../views/user_result_view
@@ -15,9 +6,8 @@
 //= require ../../views/users_view
 
 (function () {
-
   var GameSearchView = Backbone.View.extend({
-    el: $(".search-page"),
+    el: ".search-page",
     events: {
       "keypress .game-title-input": "searchWithEnter",
       "click .change-target-link":  "changeTarget"
@@ -33,6 +23,7 @@
 
       this.game_result_collection = new GameResults();
       this.game_results_view      = new GameResultsView({el: ".result-list", collection: this.game_result_collection});
+
       this.game_title             = this.$(".game-title-input");
       this.current_game_title     = null;
       this.page                   = 1;
@@ -78,9 +69,7 @@
           var game_result = new GameResult(response.results[i]);
           this.game_results_view.collection.add(game_result);
         }
-      }
 
-      if (response.results.length != 0) {
         $(window).bind("scroll", this.pagenation.load);
       }
     },
@@ -95,7 +84,7 @@
         location.href = "/users/" + current_user_id + "/search_game_or_user#user";
       }
     }
-  })
+  });
 
   var UserSearchView = Backbone.View.extend({
     el: $(".search-page"),
@@ -106,6 +95,8 @@
     template: _.template($("#user-search-template").html()),
     text_template: _.template($("#result-text-template").html()),
     initialize: function () {
+      var that = this;
+
       $(window).unbind("scroll");
       this.$el.html("");
       this.$el.append(this.template);
@@ -127,8 +118,6 @@
         this.search();
       }
 
-      var that = this;
-
       this.user_collection.fetch({
         data: {page: 1, type: "activity"},
         success: function (model, response, options) {
@@ -141,7 +130,7 @@
         error: function () {
 
         }
-      })
+      });
     },
     search: function () {
       var that  = this;
@@ -179,9 +168,7 @@
           var user_result = new UserResult(response.results[i]);
           this.user_results_view.collection.add(user_result);
         }
-      }
 
-      if (response.results.length != 0) {
         $(window).bind("scroll", this.pagenation.load);
       }
     },
@@ -199,7 +186,7 @@
         location.href = "/users/" + current_user_id + "/search_game_or_user#game";
       }
     }
-  })
+  });
 
 
   var Router = Backbone.Router.extend({

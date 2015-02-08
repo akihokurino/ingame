@@ -15,14 +15,14 @@ var CommentsView = Backbone.View.extend({
       this.$el.append(comment_view.render().el);
     }
   },
-  render: function () {
-    var that = this;
-
-    this.collection.each(function (model) {
-      var comment_view = new CommentView({model: model});
-      that.$el.append(comment_view.render().el);
-    });
+  render: function (comments) {
+    if (comments && comments.length > 0) {
+      for (var i = 0; i < comments.length; i++) {
+        var comment = new Comment(comments[i]);
+        this.collection.add(comment);
+      }
+    }
 
     return this;
-  }
+  },
 });

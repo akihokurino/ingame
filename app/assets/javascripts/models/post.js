@@ -1,5 +1,3 @@
-//= require ../libs/calculate_time.js
-
 var Post = Backbone.Model.extend({
   defaults: {
     "id":                  "",
@@ -62,7 +60,7 @@ var Post = Backbone.Model.extend({
 
     return this;
   },
-  getCommentRelativeTime: function () {
+  getCommentRelativeTime: function (comment_time) {
     for (var i = 0; i < this.get("post_comments").length; i++) {
       var relative_time = new CalculateTime(this.get("post_comments")[i]["created_at"]).getRelativeTime();
       this.get("post_comments")[i]["created_at"] = relative_time;

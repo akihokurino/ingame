@@ -18,7 +18,7 @@
     initialize: function () {
       var that = this;
 
-      _.bindAll(this, "selectLog", "setPostCollection");
+      _.bindAll(this, "selectLog");
 
       this.post_collection        = new Posts();
       this.posts_view             = new PostsView({collection: this.post_collection});
@@ -33,7 +33,6 @@
       this.provider               = null;
       this.comment_input          = this.$(".comment-input");
       this.user_id                = $("#wrapper").data("userid");
-      this.page                   = 1;
       this.current_access_url     = null;
       this.prev_access_url        = null;
       this.url_thumbnail          = null;
@@ -44,9 +43,9 @@
       $(".post-input").autosize();
 
       this.upload          = new PostUpload("upload-btn", "thumbnail");
-      this.pagenation      = new Pagenation(this.post_collection, {}, this.setPostCollection);
       this.page_layer_view = new PageLayerView();
 
+      /*
       like_socket.callback = function (data) {
         that.post_collection.find(function (model) {
           if (model.id == data.post_id) {
@@ -87,17 +86,7 @@
           }
         });
       }
-
-      this.post_collection.fetch({
-        data: {page: this.page},
-        success: function (model, response, options) {
-          that.setPostCollection(model, response, options);
-
-          $(".comment-input").autosize();
-        },
-        error: function () {
-        }
-      });
+      */
 
       this.log_collection.fetch({
         data: {user_id: this.user_id},
@@ -123,16 +112,10 @@
         error: function () {
         }
       });
-    },
-    setPostCollection: function (model, response, option) {
-      if (response.posts && response.posts.length > 0) {
-        for (var i = 0; i < response.posts.length; i++) {
-          var post = new Post(response.posts[i]);
-          this.posts_view.collection.add(post);
-        }
 
-        $(window).bind("scroll", this.pagenation.load);
-      }
+      this.posts_view.render({page: 1}, function () {
+        $(".comment-input").autosize();
+      });
     },
     toggleSelectModal: function () {
       if ($(".select-log-list").css("display") == "none") {

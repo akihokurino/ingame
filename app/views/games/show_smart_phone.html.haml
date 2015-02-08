@@ -74,7 +74,7 @@
     = render partial: "select_btns", locals: {game: @game}
 
     - if @game.i_registed
-      %span.delete-btn.deleteBtn マイゲームから削除
+      %span.delete-log-btn.deleteBtn マイゲームから削除
 
   .boxTtl
     %h2 このゲームに対するポスト#{@game.posts_count}件
@@ -91,9 +91,7 @@
     .post-list
     = image_tag "gif-load.gif", class: "loading-gif"
 
-    = render partial: "application/smart_phone/comments_modal"
-
-
-= render partial: "application/underscore/pc/common/delete_confirm"
+= render partial: "application/underscore/smart_phone/common/delete_confirm"
 = render partial: "application/underscore/smart_phone/common/post"
 = render partial: "application/underscore/smart_phone/common/comment"
+= render partial: "application/underscore/smart_phone/common/comment_modal"

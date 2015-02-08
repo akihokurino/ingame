@@ -14,6 +14,7 @@ var CustomModalView = Backbone.View.extend({
     this.current_view = this.attributes.view;
     this.callback     = this.attributes.callback;
     this.template     = this.attributes.template;
+    this.className    = this.attributes.className;
 
     $(".custom-layer").css("display", "block").click(that.cancel);
 
@@ -21,7 +22,7 @@ var CustomModalView = Backbone.View.extend({
   },
   render: function () {
     var template = this.template({target: this.target, desc: this.desc});
-    this.$el.html(template).css("display", "block");
+    this.$el.html(template).css("display", "block").addClass(this.className);
     return this;
   },
   done: function () {
@@ -40,7 +41,7 @@ var CustomModalView = Backbone.View.extend({
   },
   close: function () {
     this.unbindEvent();
-    this.$el.html("").css("display", "none");
+    this.$el.html("").css("display", "none").removeClass(this.className);
     $(".custom-layer").css("display", "none");
   }
 });

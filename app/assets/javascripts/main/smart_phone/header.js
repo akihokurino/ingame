@@ -1,12 +1,10 @@
-//= require ../../models/notification.js
-//= require ../../collections/notifications.js
 //= require ../../views/notification_view.js
 //= require ../../views/notifications_view.js
 
 
 (function () {
   var HeaderView = Backbone.View.extend({
-    el: $("header"),
+    el: "header",
     events: {
       "click .my-notify": "showNotifications"
     },
@@ -14,7 +12,10 @@
       var that = this;
       _.bindAll(this, "hideNotifications");
 
+      this.page_layer_view         = new PageLayerView();
+
       this.notification_collection = new Notifications();
+
       this.getNotificationCount();
 
       event_handle.discribe("hideNotifications", this.hideNotifications);
@@ -47,26 +48,23 @@
         error: function () {
 
         }
-      })
+      });
     },
     showNotifications: function (e) {
       e.preventDefault();
 
-      $(".notification-modal").css("display", "block");
-      $(".layer").css("display", "block");
       this.$el.find(".notify-num").css("display", "none");
       this.$el.find(".notify-num").html(0);
 
       this.notifications_view = new NotificationsView({collection: this.notification_collection});
+
+      this.page_layer_view.show(".notification-modal");
     },
     hideNotifications: function () {
-      $(".notification-modal").css("display", "none");
-      $(".layer").css("display", "none");
-      $("notification-list").html("");
-
       this.notifications_view = null;
+      this.page_layer_view.hide();
     }
-  })
+  });
 
   var header_view = new HeaderView();
 })();

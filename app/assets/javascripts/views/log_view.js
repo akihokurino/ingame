@@ -19,7 +19,7 @@ var LogView = Backbone.View.extend({
     this.listenTo(this.model, "destroy", this.remove);
   },
   destroy: function () {
-    this.model.url += this.model.id;
+    this.model.url += this.model.get("game").id;
     this.model.destroy();
   },
   remove: function () {
@@ -43,7 +43,8 @@ var LogView = Backbone.View.extend({
         target: "ゲーム",
         desc: "このゲームに関する投稿データもすべて削除されます",
         template: _.template($("#delete-confirm-template").html()),
-        callback: this.destroy
+        callback: this.destroy,
+        className: "deleteConfirmModal",
       }
     });
   }
