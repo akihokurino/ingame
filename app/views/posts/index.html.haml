@@ -9,7 +9,7 @@
 %section.mainContent.timeline-page
   %h1.mainContentTtl タイムライン
   .mainContentInner
-    .profileColumn
+    .Timeline__profile
       %article.TopProfile
         .TopProfile__inner
           %figure.TopProfile__imgWrap
@@ -40,7 +40,7 @@
               フォロワー
               %span.TopProfile__itemCount
                 = @current_user.follower_num
-    .postColumn
+    .Timeline__post
       .AddPost
         .AddPost__inner
           %p.AddPost__error.error-log.select-log-error
@@ -62,7 +62,7 @@
       .post-list
       = image_tag "gif-load-pc.gif", class: "loading-gif"
 
-    .userColumn
+    .Timeline__user
       .Useractivity
         %h1.Useractivity__title 最近登録したユーザー
         %ul.Useractivity__list.user-activity-list
