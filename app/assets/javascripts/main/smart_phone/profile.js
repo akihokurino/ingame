@@ -169,9 +169,6 @@
     },
     template: _.template($("#post-list-template").html()),
     initialize: function () {
-      var that = this;
-
-      $(window).unbind("scroll");
       this.$(".profile-timeline").html("");
       this.$(".profile-timeline").append(this.template);
 
@@ -194,42 +191,17 @@
     el: ".profile-page",
     template: _.template($("#follows-list-template").html()),
     initialize: function () {
-      var that = this;
-
-      $(window).unbind("scroll");
       this.$(".profile-timeline").html("");
       this.$(".profile-timeline").append(this.template);
 
       this.setCurrentTab();
-
-      _.bindAll(this, "setUserCollection");
 
       this.user_collection = new Users();
       this.users_view      = new UsersView({el: ".follows-list", collection: this.user_collection, attributes: {type: "follows-list", template: "#user-template"}});
 
       this.user_id         = this.$el.data("userid");
 
-      this.pagenation      = new Pagenation(this.user_collection, {user_id: this.user_id, type: "follows"}, this.setUserCollection);
-
-      this.user_collection.fetch({
-        data: {user_id: this.user_id, type: "follows", page: 1},
-        success: function (model, response, options) {
-          that.setUserCollection(model, response, options);
-        },
-        error: function () {
-
-        }
-      });
-    },
-    setUserCollection: function (model, response, option) {
-      for (var i = 0; i < response.users.length; i++) {
-        var user = new User(response.users[i]);
-        this.users_view.collection.add(user);
-      }
-
-      if (response.users.length != 0) {
-        $(window).bind("scroll", this.pagenation.load);
-      }
+      this.users_view.render({user_id: this.user_id, type: "follows", page: 1});
     },
     setCurrentTab: function () {
       this.$(".count-box li").removeClass("current");
@@ -241,41 +213,17 @@
     el: ".profile-page",
     template: _.template($("#followers-list-template").html()),
     initialize: function () {
-      var that = this;
-
-      $(window).unbind("scroll");
       this.$(".profile-timeline").html("");
       this.$(".profile-timeline").append(this.template);
 
       this.setCurrentTab();
-
-      _.bindAll(this, "setUserCollection");
 
       this.user_collection = new Users();
       this.users_view      = new UsersView({el: ".followers-list", collection: this.user_collection, attributes: {type: "followers-list", template: "#user-template"}});
 
       this.user_id         = this.$el.data("userid");
 
-      this.pagenation      = new Pagenation(this.user_collection, {user_id: this.user_id, type: "followers"}, this.setUserCollection);
-
-      this.user_collection.fetch({
-        data: {user_id: this.user_id, type: "followers", page: 1},
-        success: function (model, response, options) {
-          that.setUserCollection(model, response, options);
-        },
-        error: function () {
-        }
-      });
-    },
-    setUserCollection: function (model, response, option) {
-      for (var i = 0; i < response.users.length; i++) {
-        var user = new User(response.users[i]);
-        this.users_view.collection.add(user);
-      }
-
-      if (response.users.length != 0) {
-        $(window).bind("scroll", this.pagenation.load);
-      }
+      this.users_view.render({user_id: this.user_id, type: "followers", page: 1});
     },
     setCurrentTab: function () {
       this.$(".count-box li").removeClass("current");

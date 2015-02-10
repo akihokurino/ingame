@@ -15,18 +15,14 @@
     template: _.template($("#game-search-template").html()),
     text_template: _.template($("#result-text-template").html()),
     initialize: function () {
-      $(window).unbind("scroll");
       this.$el.html("");
       this.$el.append(this.template);
-
-      _.bindAll(this, "setGameResultCollection");
 
       this.game_result_collection = new GameResults();
       this.game_results_view      = new GameResultsView({el: ".result-list", collection: this.game_result_collection, type: null});
 
       this.game_title             = this.$(".game-title-input");
       this.current_game_title     = null;
-      this.page                   = 1;
 
       if (url_query.getQueryString()) {
         this.current_game_title = url_query.getQueryString().search_word;
@@ -36,24 +32,11 @@
     },
     search: function () {
       var that  = this;
-      this.page = 1;
-      $(window).unbind("scroll");
 
-      this.game_result_collection.fetch({
-        data: {search_title: this.current_game_title, page: this.page},
-        success: function (model, response, options) {
-          that.pagenation = new Pagenation(that.game_result_collection, {search_title: that.current_game_title}, that.setGameResultCollection);
-
-          that.game_result_collection.reset();
-          that.game_results_view.$el.html("");
-          that.setGameResultCollection(model, response, options);
-
-          that.$(".result-area").html((that.text_template({
-            search_title: that.current_game_title, target: "ゲーム", result_count: response.count
-          })));
-        },
-        error: function () {
-        }
+      this.game_results_view.search({search_title: this.current_game_title, page: 1}, function (response) {
+        that.$(".result-area").html((that.text_template({
+          search_title: that.current_game_title, target: "ゲーム", result_count: response.count
+        })));
       });
     },
     searchWithEnter: function (e) {
@@ -67,16 +50,6 @@
       if (this.game_title.val() != "") {
         this.current_game_title = this.game_title.val();
         url_query.insertParam("search_word", this.current_game_title);
-      }
-    },
-    setGameResultCollection: function (model, response, option) {
-      if (response.results && response.results.length > 0) {
-        for (var i = 0; i < response.results.length; i++) {
-          var game_result = new GameResult(response.results[i]);
-          this.game_results_view.collection.add(game_result);
-        }
-
-        $(window).bind("scroll", this.pagenation.load);
       }
     },
     changeTarget: function (e) {
@@ -102,18 +75,14 @@
     template: _.template($("#user-search-template").html()),
     text_template: _.template($("#result-text-template").html()),
     initialize: function () {
-      $(window).unbind("scroll");
       this.$el.html("");
       this.$el.append(this.template);
-
-      _.bindAll(this, "setUserResultCollection");
 
       this.user_result_collection = new UserResults();
       this.user_results_view      = new UserResultsView({el: ".result-list", collection: this.user_result_collection});
 
       this.username               = this.$(".username-input");
       this.current_username       = null;
-      this.page                   = 1;
 
       if (url_query.getQueryString()) {
         this.current_username = url_query.getQueryString().search_word;
@@ -123,24 +92,11 @@
     },
     search: function () {
       var that  = this;
-      this.page = 1;
-      $(window).unbind("scroll");
 
-      this.user_result_collection.fetch({
-        data: {username: this.current_username, page: this.page},
-        success: function (model, response, options) {
-          that.pagenation = new Pagenation(that.user_result_collection, {username: that.current_username}, that.setUserResultCollection);
-
-          that.user_result_collection.reset();
-          that.user_results_view.$el.html("");
-          that.setUserResultCollection(model, response, options);
-
-          that.$(".result-area").html((that.text_template({
-            search_title: that.current_username, target: "ユーザー", result_count: response.count
-          })));
-        },
-        error: function () {
-        }
+      this.user_results_view.search({username: this.current_username, page: 1}, function (response) {
+        that.$(".result-area").html((that.text_template({
+          search_title: that.current_username, target: "ユーザー", result_count: response.count
+        })));
       });
     },
     searchWithEnter: function (e) {
@@ -154,16 +110,6 @@
       if (this.username.val() != "") {
         this.current_username = this.username.val();
         url_query.insertParam("search_word", this.current_username);
-      }
-    },
-    setUserResultCollection: function (model, response, option) {
-      if (response.results && response.results.length > 0) {
-        for (var i = 0; i < response.results.length; i++) {
-          var user_result = new UserResult(response.results[i]);
-          this.user_results_view.collection.add(user_result);
-        }
-
-        $(window).bind("scroll", this.pagenation.load);
       }
     },
     changeTarget: function (e) {

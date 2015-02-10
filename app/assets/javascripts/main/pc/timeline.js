@@ -31,7 +31,6 @@
       this.select_log_id          = null;
       this.select_game_id         = null;
       this.provider               = null;
-      this.comment_input          = this.$(".comment-input");
       this.user_id                = $("#wrapper").data("userid");
       this.current_access_url     = null;
       this.prev_access_url        = null;
@@ -100,18 +99,7 @@
         }
       });
 
-      this.user_collection.fetch({
-        data: {page: 1, type: "activity"},
-        success: function (model, response, options) {
-          for (var i = 0; i < response.users.length; i++) {
-            var user = new User(response.users[i]);
-            user.strimWidth(30);
-            that.users_view.collection.add(user);
-          }
-        },
-        error: function () {
-        }
-      });
+      this.users_view.getActivity({page: 1, type: "activity"})
 
       this.posts_view.render({page: 1}, function () {
         $(".comment-input").autosize();

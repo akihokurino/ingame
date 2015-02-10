@@ -267,20 +267,14 @@
     },
     template: _.template($("#add-template").html()),
     initialize: function () {
-      var that = this;
-
-      $(window).unbind("scroll");
       this.$el.html("");
       this.$el.append(this.template);
-
-      _.bindAll(this, "setGameResultCollection");
 
       this.game_result_collection = new GameResults();
       this.game_results_view      = new GameResultsView({el: ".gameList", collection: this.game_result_collection});
 
       this.search_title           = this.$(".search-title-input");
       this.current_search_title   = null;
-      this.page                   = 1;
 
       if (url_query.getQueryString()) {
         this.current_search_title = url_query.getQueryString().search_word;
@@ -289,35 +283,8 @@
       }
     },
     search: function () {
-      var that                  = this;
       this.current_search_title = this.search_title.val();
-      $(window).unbind("scroll");
-
-      this.game_result_collection.fetch({
-        data: {search_title: this.current_search_title, page: this.page},
-        success: function (model, response, options) {
-          that.pagenation = new Pagenation(that.game_result_collection, {search_title: that.current_search_title}, that.setGameResultCollection);
-
-          that.game_result_collection.reset();
-          that.game_results_view.$el.html("");
-          that.setGameResultCollection(model, response, options);
-        },
-        error: function () {
-
-        }
-      });
-    },
-    setGameResultCollection: function (model, response, option) {
-      if (response.results && response.results.length > 0) {
-        for (var i = 0; i < response.results.length; i++) {
-          var game_result = new GameResult(response.results[i]);
-          this.game_results_view.collection.add(game_result);
-        }
-      }
-
-      if (response.results.length != 0) {
-        $(window).bind("scroll", this.pagenation.load);
-      }
+      this.game_results_view.search({search_title: this.current_search_title, page: 1});
     },
     searchWithEnter: function (e) {
       e.preventDefault();
