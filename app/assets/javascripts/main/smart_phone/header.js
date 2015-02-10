@@ -12,7 +12,7 @@
       var that = this;
       _.bindAll(this, "hideNotifications");
 
-      this.page_layer_view         = new PageLayerView();
+      this.tooltip_view            = new TooltipView();
 
       this.notification_collection = new Notifications();
 
@@ -58,11 +58,11 @@
 
       this.notifications_view = new NotificationsView({collection: this.notification_collection});
 
-      this.page_layer_view.show(".notification-modal");
+      this.tooltip_view.show(".notification-modal");
     },
     hideNotifications: function () {
       this.notifications_view = null;
-      this.page_layer_view.hide();
+      this.tooltip_view.hide();
     }
   });
 

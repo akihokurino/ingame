@@ -36,10 +36,10 @@
     initialize: function () {
       this.setCurrentTab();
 
-      this.post_collection    = new Posts();
-      this.posts_view         = new PostsView({el: ".post-list", collection: this.post_collection});
+      this.post_collection = new Posts();
+      this.posts_view      = new PostsView({el: ".post-list", collection: this.post_collection});
 
-      this.game_id            = $(".game-page").data("gameid");
+      this.game_id         = $(".game-page").data("gameid");
 
       this.posts_view.render({type: "follower_of_game", game_id: this.game_id, page: 1});
     },
@@ -57,10 +57,10 @@
     initialize: function () {
       this.setCurrentTab();
 
-      this.post_collection    = new Posts();
-      this.posts_view         = new PostsView({el: ".post-list", collection: this.post_collection});
+      this.post_collection = new Posts();
+      this.posts_view      = new PostsView({el: ".post-list", collection: this.post_collection});
 
-      this.game_id            = $(".game-page").data("gameid");
+      this.game_id         = $(".game-page").data("gameid");
 
       this.posts_view.render({type: "liker_of_game", game_id: this.game_id, page: 1});
     },

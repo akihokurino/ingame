@@ -12,9 +12,9 @@
 
     },
     initialize: function () {
-      var that                = this;
-      this.post_collection    = new Posts();
-      this.posts_view         = new PostsView({collection: this.post_collection});
+      var that             = this;
+      this.post_collection = new Posts();
+      this.posts_view      = new PostsView({collection: this.post_collection});
 
       this.posts_view.render({page: 1});
 

@@ -1,5 +1,5 @@
-var PageLayerView = Backbone.View.extend({
-  el: ".page-layer",
+var TooltipView = Backbone.View.extend({
+  el: ".tooltip-layer",
   events: {
     "click": "hide"
   },

@@ -41,8 +41,8 @@
 
       $(".post-input").autosize();
 
-      this.upload          = new PostUpload("upload-btn", "thumbnail");
-      this.page_layer_view = new PageLayerView();
+      this.upload       = new PostUpload("upload-btn", "thumbnail");
+      this.tooltip_view = new TooltipView();
 
       /*
       like_socket.callback = function (data) {
@@ -107,9 +107,9 @@
     },
     toggleSelectModal: function () {
       if ($(".select-log-list").css("display") == "none") {
-        this.page_layer_view.show(".select-log-list");
+        this.tooltip_view.show(".select-log-list");
       } else {
-        this.page_layer_view.hide();
+        this.tooltip_view.hide();
       }
     },
     selectLog: function (model) {

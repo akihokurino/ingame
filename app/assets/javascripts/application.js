@@ -22,6 +22,6 @@
 //= require_tree ./models
 //= require_tree ./collections
 //= require ./views/custom_modal_view.js
-//= require ./views/page_layer_view.js
+//= require ./views/tooltip_view.js
 
 

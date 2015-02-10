@@ -15,9 +15,6 @@
     #wrapper{"data-userid" => @current_user ? @current_user[:id] : nil}
       = yield
 
-    .page-layer
-
-    .custom-modal
-    .custom-layer
+    = render partial: "application/pc/layout_below"
 
     = yield :last

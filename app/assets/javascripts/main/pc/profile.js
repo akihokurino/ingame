@@ -85,10 +85,10 @@
 
       this.setCurrentTab();
 
-      this.post_collection   = new Posts();
-      this.posts_view        = new PostsView({el: ".post-list", collection: this.post_collection});
+      this.post_collection = new Posts();
+      this.posts_view      = new PostsView({el: ".post-list", collection: this.post_collection});
 
-      this.user_id           = this.$el.data("userid");
+      this.user_id         = this.$el.data("userid");
 
       this.posts_view.render({user_id: this.user_id, type: "user", page: 1});
     },

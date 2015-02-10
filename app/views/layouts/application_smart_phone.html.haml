@@ -17,10 +17,6 @@
     #wrapper{"data-userid" => @current_user ? @current_user[:id] : nil}
       = yield
 
-    .page-layer
-
-    .comment-modal
-    .custom-modal
-    .custom-layer
+    = render partial: "application/smart_phone/layout_below"
 
     = yield :last

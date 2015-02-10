@@ -49,12 +49,12 @@
       this.$el.html("");
       this.$el.append(this.template);
 
-      this.user_result_collection  = new UserResults();
-      this.user_results_view       = new UserResultsView({el: ".user-list", collection: this.user_result_collection});
+      this.user_result_collection = new UserResults();
+      this.user_results_view      = new UserResultsView({el: ".user-list", collection: this.user_result_collection});
 
-      this.username                = this.$(".user-input");
-      this.current_username        = null
-      this.user_id                 = $("#wrapper").data("userid");
+      this.username               = this.$(".user-input");
+      this.current_username       = null
+      this.user_id                = $("#wrapper").data("userid");
     },
     search: function (e) {
       if (e.which == 13 && this.username.val()) {
