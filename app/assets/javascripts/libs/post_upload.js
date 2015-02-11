@@ -38,7 +38,6 @@ PostUpload.prototype = {
     reader.readAsDataURL(file);
   },
   render: function (data) {
-    /*this._output.innerHTML = "";*/
     var div = document.createElement("div");
     var img = document.createElement("img");
     img.src = data;

@@ -1,5 +1,5 @@
-var PageLayerView = Backbone.View.extend({
-  el: ".page-layer",
+var TooltipView = Backbone.View.extend({
+  el: ".tooltip-layer",
   events: {
     "click": "hide"
   },
@@ -12,10 +12,11 @@ var PageLayerView = Backbone.View.extend({
       return;
     }
 
-    this.$el.css("display", "block");
-
     this.isDisplay     = true;
     this.currentTarget = target;
+
+    this.$el.css("display", "block");
+    $(this.currentTarget).css("display", "block");
   },
   hide: function () {
     if (!this.isDisplay) {
@@ -28,6 +29,4 @@ var PageLayerView = Backbone.View.extend({
     this.isDisplay     = false;
     this.currentTarget = null;
   }
-})
-
-var pageLayerView = new PageLayerView();
+});

@@ -1,32 +1,30 @@
-//= require ../libs/calculate_time.js
-
 var Post = Backbone.Model.extend({
   defaults: {
-    "id": "",
-    "text": "",
-    "post_likes_count": "",
+    "id":                  "",
+    "text":                "",
+    "post_likes_count":    "",
     "post_comments_count": "",
-    "i_liked": "",
-    "created_at": "",
+    "i_liked":             "",
+    "created_at":          "",
     "game": {
-      "id": "",
-      "title": "",
-      "photo_url": "",
+      "id":         "",
+      "title":      "",
+      "photo_url":  "",
       "photo_path": "",
-      "device": ""
+      "device":     ""
     },
     "user": {
-      "id": "",
-      "username": "",
+      "id":         "",
+      "username":   "",
       "photo_path": ""
     },
     "status": {
-      "id": "",
+      "id":   "",
       "name": ""
     },
-    "post_photos": [],
-    "post_comments": [],
-    "post_urls": [],
+    "post_photos":     [],
+    "post_comments":   [],
+    "post_urls":       [],
     "current_user_id": ""
   },
   url: "/api/posts/",
@@ -62,7 +60,7 @@ var Post = Backbone.Model.extend({
 
     return this;
   },
-  getCommentRelativeTime: function () {
+  getCommentRelativeTime: function (comment_time) {
     for (var i = 0; i < this.get("post_comments").length; i++) {
       var relative_time = new CalculateTime(this.get("post_comments")[i]["created_at"]).getRelativeTime();
       this.get("post_comments")[i]["created_at"] = relative_time;

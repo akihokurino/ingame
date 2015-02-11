@@ -38,7 +38,7 @@ var GameResultView = Backbone.View.extend({
           error: function () {
 
           }
-        })
+        });
       } else {
         var data = {
           "log": {
@@ -59,7 +59,7 @@ var GameResultView = Backbone.View.extend({
           error: function () {
 
           }
-        })
+        });
       }
     }
   },
@@ -75,4 +75,4 @@ var GameResultView = Backbone.View.extend({
       location.href = "/games/" + this.model.id + "#all";
     }
   }
-})
+});

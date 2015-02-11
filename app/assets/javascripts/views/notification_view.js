@@ -7,4 +7,4 @@ var NotificationView = Backbone.View.extend({
 
     return this;
   }
-})
+});

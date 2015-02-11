@@ -6,7 +6,7 @@
       this.$el.html("");
       this.$el.append(this.template);
     }
-  })
+  });
 
 
   var SignupView = Backbone.View.extend({
@@ -48,12 +48,13 @@
           error: function () {
 
           }
-        })
+        });
       }
     },
     validate: function () {
       this.$el.find(".error-log").html("");
       var error = {};
+
       if (this.username_input.val() == "") {
         error.username = "empty";
       } else if (this.username_input.val().length > 15) {
@@ -129,7 +130,7 @@
 
       return true;
     }
-  })
+  });
 
 
   var SigninView = Backbone.View.extend({
@@ -176,6 +177,7 @@
     validate: function () {
       this.$el.find(".error-log").html("");
       var error = {};
+
       if (this.username_input.val() == "") {
         error.username = "empty";
       }
@@ -209,7 +211,7 @@
 
       return true;
     }
-  })
+  });
 
 
   /* ---------- Router --------- */
@@ -229,7 +231,7 @@
     signin: function () {
       this.current_app = new SigninView();
     }
-  })
+  });
 
   var router = new Router();
   Backbone.history.start();

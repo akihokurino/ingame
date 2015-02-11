@@ -42,7 +42,7 @@ a:hover {
 /*------------------------------
 systemClass
 ------------------------------*/
-.layer {
+.custom-layer {
   display: none;
   position: fixed;
   top: 0px;
@@ -54,7 +54,7 @@ systemClass
   opacity: 0.11;
 }
 
-.page-layer {
+.tooltip-layer {
   display: none;
   position: fixed;
   top: 0px;
@@ -73,13 +73,17 @@ systemClass
   margin: 0 auto;
 }
 
-.delete-confirm-wrap {
+.custom-modal {
+  display: none;
+}
+
+.deleteConfirmModal {
   display: none;
   position: fixed;
   left: 50%;
   top: 50%;
-  z-index: 10;
-  margin-left: -105px;
+  z-index: 20;
+  margin-left: -131px;
   margin-top: -40px;
   padding: 12px 10px 10px;
   border: 1px solid #ababab;

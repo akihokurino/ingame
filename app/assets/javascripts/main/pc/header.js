@@ -1,13 +1,10 @@
-//= require ../../models/notification.js
-//= require ../../collections/notifications.js
 //= require ../../views/notification_view.js
 //= require ../../views/notifications_view.js
-//= require ../../views/page_layer_view.js
 
 
 (function () {
   var HeaderView = Backbone.View.extend({
-    el: $("header"),
+    el: "header",
     events: {
       "click .my-notify":              "showNotifications",
       "click .menu-btn":               "toggleMenu",
@@ -15,16 +12,19 @@
     },
     initialize: function () {
       var that = this;
+
       _.bindAll(this, "hideNotifications");
 
+      this.tooltip_view            = new TooltipView();
+
       this.notification_collection = new Notifications();
+
       this.getNotificationCount();
 
       this.search_input = this.$(".header-search-input");
       this.user_id      = $("#wrapper").data("userid");
 
       event_handle.discribe("hideNotifications", this.hideNotifications);
-
 
       notification_socket.callback = function (data) {
         var new_notification_count;
@@ -53,33 +53,27 @@
         error: function () {
 
         }
-      })
+      });
     },
     showNotifications: function (e) {
       e.preventDefault();
-
-      $(".notification-modal").css("display", "block");
 
       this.$el.find(".notify-num").css("display", "none");
       this.$el.find(".notify-num").html(0);
 
       this.notifications_view = new NotificationsView({collection: this.notification_collection});
-      pageLayerView.show(".notification-modal");
+
+      this.tooltip_view.show(".notification-modal");
     },
     hideNotifications: function () {
-      $(".notification-modal").css("display", "none");
-      $(".notification-list").html("");
-
       this.notifications_view = null;
-      pageLayerView.hide();
+      this.tooltip_view.hide();
     },
     toggleMenu: function () {
       if (this.$(".openMenu").css("display") == "none") {
-        this.$(".openMenu").css("display", "block");
-        pageLayerView.show(".openMenu");
+        this.tooltip_view.show(".openMenu");
       } else {
-        this.$(".openMenu").css("display", "none");
-        pageLayerView.hide();
+        this.tooltip_view.hide();
       }
     },
     search: function (e) {
@@ -88,7 +82,7 @@
         location.href = "/users/" + this.user_id + "/search_game_or_user?search_word=" + this.search_input.val() + "#game";
       }
     }
-  })
+  });
 
   var header_view = new HeaderView();
 })();

@@ -31,6 +31,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    if @current_user.destroy
+      redirect_to login_users_path
+    end
+  end
+
   def logout
     reset_session
     redirect_to login_users_path

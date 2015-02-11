@@ -1,29 +1,41 @@
-//= require ../libs/calculate_time.js
-
 var Comment = Backbone.Model.extend({
   defaults: {
-    "id": "",
-    "text": "",
+    "id":                  "",
+    "text":                "",
     "comment_likes_count": "",
-    "i_liked": "",
-    "created_at": "",
+    "i_liked":             "",
+    "created_at":          "",
     "user": {
-      "id": "",
-      "username": "",
+      "id":         "",
+      "username":   "",
       "photo_path": ""
     }
   },
-  sanitize: function (text) {
-    var text = this.get("text").replace(/\n/g, '<br>');
-    text     = text.replace(/((http:|https:)\/\/[\x21-\x26\x28-\x7e]+)/gi, "<a class='link-text' target='_blank' href='$1'>$1</a>");
-    this.set("text", text);
+  sanitize: function (text_params) {
+    if (text_params) {
+      var text = text_params.replace(/\n/g, '<br>');
+      text     = text.replace(/((http:|https:)\/\/[\x21-\x26\x28-\x7e]+)/gi, "<a class='link-text' target='_blank' href='$1'>$1</a>");
 
-    return this;
+      return text;
+    } else {
+      var text = this.get("text").replace(/\n/g, '<br>');
+      text     = text.replace(/((http:|https:)\/\/[\x21-\x26\x28-\x7e]+)/gi, "<a class='link-text' target='_blank' href='$1'>$1</a>");
+      this.set("text", text);
+
+      return this;
+    }
   },
-  getRelativeTime: function () {
-    var relative_time = new CalculateTime(this.get("created_at")).getRelativeTime();
-    this.set("created_at", relative_time);
+  getRelativeTime: function (time_params) {
+    if (time_params) {
+      return new CalculateTime(time_params).getRelativeTime();
+    } else {
+      var re = new RegExp("/", "i");
+      if (this.get("created_at").match(re)) {
+        var relative_time = new CalculateTime(this.get("created_at")).getRelativeTime();
+        this.set("created_at", relative_time);
+      }
 
-    return this;
+      return this;
+    }
   }
-})
+});

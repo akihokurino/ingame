@@ -17,4 +17,4 @@ var GameResult = Backbone.Model.extend({
       this.set("title", new_title);
     }
   }
-})
+});

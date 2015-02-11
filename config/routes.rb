@@ -2,7 +2,7 @@ Ingame::Application.routes.draw do
   root to: 'posts#index'
   match '/*path' => 'application#cors_preflight_check', :via => :options
 
-  resources :users, only: ["show", "edit", "update", "new"] do
+  resources :users, only: ["show", "edit", "update", "new", "destroy"] do
     collection do
       get "login"
       get "logout"
@@ -17,6 +17,7 @@ Ingame::Application.routes.draw do
   resources :posts, only: ["index", "new"]
   resources :logs, only: ["index", "create"]
   resources :games, only: ["show"]
+  resources :user_providers, only: ["index"]
 
   namespace :api do
     resources :logs, only: ["index", "create", "update", "destroy"], format: "json" do

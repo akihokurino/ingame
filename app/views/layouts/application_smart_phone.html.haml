@@ -16,8 +16,7 @@
 
     #wrapper{"data-userid" => @current_user ? @current_user[:id] : nil}
       = yield
-    .layer
-    .page-layer
-    .delete-confirm-wrap
+
+    = render partial: "application/smart_phone/layout_below"
 
     = yield :last

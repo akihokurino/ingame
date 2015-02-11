@@ -1,16 +1,16 @@
 var Notification = Backbone.Model.extend({
   defaults: {
-    "id": "",
+    "id":   "",
+    "text": "",
     "to_user": {
-      "id": "",
-      "username": "",
+      "id":         "",
+      "username":   "",
       "photo_path": ""
     },
     "from_user": {
-      "id": "",
-      "username": "",
+      "id":         "",
+      "username":   "",
       "photo_path": ""
-    },
-    "text": ""
+    }
   }
-})
+});

@@ -1,19 +1,22 @@
 var NotificationsView = Backbone.View.extend({
-  el: $(".notification-modal"),
+  el: ".notification-modal",
   events: {
     "click .close-btn": "hideNotifications"
   },
   initialize: function () {
     var that = this;
-    this.listenTo(this.collection, "add", this.addNotification);
+
     this.$el.find(".notification-list").html("");
+
+    this.listenTo(this.collection, "add", this.addNotification);
+
     this.collection.fetch({
       data: {},
       success: function (model, response, options) {
         that.collection.reset();
         for (var i = 0; i < response.notifications.length; i++) {
           response.notifications[i].text = that.createText(response.notifications[i]);
-          var notification = new Notification(response.notifications[i]);
+          var notification               = new Notification(response.notifications[i]);
           that.collection.add(notification);
         }
 
@@ -35,7 +38,6 @@ var NotificationsView = Backbone.View.extend({
     return text;
   },
   hideNotifications: function () {
-    this.stopListening();
     event_handle.publish("hideNotifications");
   }
-})
+});

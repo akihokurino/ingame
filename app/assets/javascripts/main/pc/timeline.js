@@ -1,20 +1,9 @@
-//= require ../../libs/socket.js
-//= require ../../libs/pagenation.js
-//= require ../../models/post.js
-//= require ../../models/log.js
-//= require ../../models/user.js
-//= require ../../collections/posts.js
-//= require ../../collections/logs.js
-//= require ../../collections/users.js
-//= require ../../views/delete_confirm_view.js
 //= require ../../views/post_view.js
 //= require ../../views/posts_view.js
 //= require ../../views/log_view.js
 //= require ../../views/logs_view.js
 //= require ../../views/user_view.js
 //= require ../../views/users_view.js
-//= require ../../libs/post_upload.js
-
 
 
 (function () {
@@ -25,39 +14,37 @@
       "click .post-btn":          "post",
       "keyup .post-input":        "checkUrl"
     },
+    game_thumbnail_template: _.template($("#game-thumbnail-template").html()),
     initialize: function () {
-      _.bindAll(this, "selectLog", "setPostCollection");
+      var that = this;
 
-      var that                = this;
-      this.post_collection    = new Posts();
-      this.posts_view         = new PostsView({collection: this.post_collection});
-      this.log_collection     = new Logs();
-      this.logs_view          = new LogsView({el: ".select-log-list", collection: this.log_collection, attributes: {type: "select", template: "#log-option-template"}});
-      this.user_collection    = new Users();
-      this.users_view         = new UsersView({el: ".user-activity-list", collection: this.user_collection, attributes: {type: "activity", template: "#user-activity-template"}});
+      _.bindAll(this, "selectLog");
 
-      this.post_input         = this.$(".post-input");
-      this.select_log_id      = null;
-      this.select_game_id     = null;
-      this.provider           = null;
-      this.comment_input      = this.$(".comment-input");
-      this.user_id            = $("#wrapper").data("userid");
-      this.page               = 1;
+      this.post_collection        = new Posts();
+      this.posts_view             = new PostsView({collection: this.post_collection});
+      this.log_collection         = new Logs();
+      this.logs_view              = new LogsView({el: ".select-log-list", collection: this.log_collection, attributes: {type: "select", template: "#log-option-template"}});
+      this.user_collection        = new Users();
+      this.users_view             = new UsersView({el: ".user-activity-list", collection: this.user_collection, attributes: {type: "activity", template: "#user-activity-template"}});
 
-      event_handle.discribe("selectLog", this.selectLog);
-
-      this.upload             = new PostUpload("upload-btn", "thumbnail");
-
-      this.current_access_url = null;
-      this.prev_access_url    = null;
-
+      this.post_input             = this.$(".post-input");
+      this.select_log_id          = null;
+      this.select_game_id         = null;
+      this.provider               = null;
+      this.user_id                = $("#wrapper").data("userid");
+      this.current_access_url     = null;
+      this.prev_access_url        = null;
       this.url_thumbnail          = null;
       this.url_thumbnail_template = _.template($("#url-thumbnail-template").html());
 
+      event_handle.discribe("selectLog", this.selectLog);
+
       $(".post-input").autosize();
 
-      this.pagenation = new Pagenation(this.post_collection, {}, this.setPostCollection);
+      this.upload       = new PostUpload("upload-btn", "thumbnail");
+      this.tooltip_view = new TooltipView();
 
+      /*
       like_socket.callback = function (data) {
         that.post_collection.find(function (model) {
           if (model.id == data.post_id) {
@@ -98,17 +85,7 @@
           }
         });
       }
-
-      this.post_collection.fetch({
-        data: {page: this.page},
-        success: function (model, response, options) {
-          that.setPostCollection(model, response, options);
-
-          $(".comment-input").autosize();
-        },
-        error: function () {
-        }
-      });
+      */
 
       this.log_collection.fetch({
         data: {user_id: this.user_id},
@@ -122,47 +99,27 @@
         }
       });
 
-      this.user_collection.fetch({
-        data: {page: 1, type: "activity"},
-        success: function (model, response, options) {
-          for (var i = 0; i < response.users.length; i++) {
-            var user = new User(response.users[i]);
-            user.strimWidth(30);
-            that.users_view.collection.add(user);
-          }
-        },
-        error: function () {
-        }
-      });
-    },
-    setPostCollection: function (model, response, option) {
-      for (var i = 0; i < response.posts.length; i++) {
-        var post = new Post(response.posts[i]);
-        this.posts_view.collection.add(post);
-      }
+      this.users_view.getActivity({page: 1, type: "activity"})
 
-      if (response.posts.length != 0) {
-        $(window).bind("scroll", this.pagenation.load);
-      }
+      this.posts_view.render({page: 1}, function () {
+        $(".comment-input").autosize();
+      });
     },
     toggleSelectModal: function () {
       if ($(".select-log-list").css("display") == "none") {
-        $(".select-log-list").css("display", "block");
-        pageLayerView.show(".select-log-list");
+        this.tooltip_view.show(".select-log-list");
       } else {
-        $(".select-log-list").css("display", "none");
-        pageLayerView.hide();
+        this.tooltip_view.hide();
       }
     },
     selectLog: function (model) {
-      var template        = _.template($("#game-thumbnail-template").html());
-      template            = template(model.toJSON());
-      this.$("ul.thumbnail-list").html("").html(template);
-      $(".show-select-modal").text(model.get("game").title);
+      var template = this.game_thumbnail_template(model.toJSON());
+      this.$("ul.thumbnail-list").html(template);
+      this.$(".show-select-modal").text(model.get("game").title);
+      this.$el.find(".select-log-error").css("display", "none");
       this.toggleSelectModal();
       this.select_log_id  = model.id;
       this.select_game_id = model.get("game").id;
-      this.$el.find(".select-log-error").css("display", "none");
     },
     post: function (e) {
       e.preventDefault();
@@ -195,6 +152,7 @@
               var post      = new Post(response.get("last_post"));
               post.strimWidth(40).sanitize().sanitizeComment();
               that.posts_view.collection.add(post, {silent: true});
+
               var post_view = new PostView({model: post});
               that.posts_view.$el.prepend(post_view.render().el);
 
@@ -212,13 +170,15 @@
             }
           },
           error: function () {
+
           }
-        })
+        });
       }
     },
     validate: function () {
       this.$el.find(".error-log").css("display", "none").html("");
-      var error = {}
+      var error = {};
+
       if (this.post_input.val() == "") {
         error.post_text = "empty";
       }

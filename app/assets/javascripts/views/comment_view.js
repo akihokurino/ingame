@@ -49,7 +49,7 @@ var CommentView = Backbone.View.extend({
         error: function () {
 
         }
-    })
+    });
   },
   unlike: function () {
     var that = this;
@@ -78,6 +78,6 @@ var CommentView = Backbone.View.extend({
       error: function () {
 
       }
-    })
+    });
   },
-})
+});
