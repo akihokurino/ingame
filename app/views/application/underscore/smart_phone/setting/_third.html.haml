@@ -14,9 +14,9 @@
         = image_tag "/user_photos/#{@current_user[:photo_path]}", width: "96", height: "96", alt: "", class: "profImg"
       .btnBox
         %form.btnWrap
-          写真を選択
-          %input.btn#upload-btn{type: "file", value: "写真を選択"}
+          プロフィール写真を変更
+          %input.btn#upload-btn{type: "file", value: "プロフィール写真を変更"}
     %form.entryBox
-      %input.btn.next-page{type: "submit", value: "設定せずに初期設定を完了"}
+      %input.btn.next-page{type: "submit", value: "初期設定を完了"}
 
     = render partial: "application/smart_phone/clip_modal"
