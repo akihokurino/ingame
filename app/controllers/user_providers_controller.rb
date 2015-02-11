@@ -1,6 +1,10 @@
 class UserProvidersController < ApplicationController
   skip_before_action :auth, only: [:create]
 
+  def index
+
+  end
+
   def create
     auth = request.env["omniauth.auth"]
     begin

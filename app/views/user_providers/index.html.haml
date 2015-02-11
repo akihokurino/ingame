@@ -1,0 +1,4 @@
+= content_for :head do
+  = stylesheet_link_tag "pc/edit_account"
+
+= link_to "退会", user_path(@current_user), method: :delete

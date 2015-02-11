@@ -17,6 +17,7 @@ Ingame::Application.routes.draw do
   resources :posts, only: ["index", "new"]
   resources :logs, only: ["index", "create"]
   resources :games, only: ["show"]
+  resources :user_providers, only: ["index"]
 
   namespace :api do
     resources :logs, only: ["index", "create", "update", "destroy"], format: "json" do
