@@ -1,0 +1,84 @@
+@import "../_function.css.scss";
+@import "component/_header.css.scss";
+@import "component/_settingHeader.css.scss";
+
+/*---   .settingBox   ----------*/
+.settingTopBox {
+  margin-top: 48px;
+  padding: 40px 0 32px;
+  border-bottom: 1px solid $color_border;
+  background: #fff;
+}
+/*---   .mainTtl   ----------*/
+.mainTtl {
+  font-size: 36px;
+  text-align: center;
+}
+.settingBox {
+  width: 100%;
+  padding: 20px 0 40px;
+  background: #f2f2f2;
+  line-height: 1.5;
+
+  &Inner {
+    width: 580px;
+    margin: 0 auto;
+    padding: 16px 30px;
+    border: solid 1px $color_border;
+    @include border-radius(3px);
+    @include box-sizing;
+    background: #fff;
+    color: $color_textBlack;
+  }
+
+  .item {
+    margin-bottom: 28px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .settingTtl {
+    font-weight: bold;
+    font-size: 1.125rem;
+  }
+  .settingSubTtl {
+    font-weight: bold;
+    font-size: .875rem;
+  }
+  .settingTxt {
+    color: #626262;
+    font-size: .875rem;
+  }
+  .snsList{
+    .snsName,.coopStatus{
+      display: inline;
+    }
+  }
+  .dltAccount{
+    display: inline-block;
+    padding: 0 20px;
+    margin: 10px 0;
+    @include border-radius(4px);
+    @include box-sizing;
+    color: #ffffff;
+    font-size: 1rem;
+    line-height: 2.5;
+    text-align: center;
+    @include bglinear(lighten($main_color, 7%), $main_color);
+    border: 1px solid darken($main_color,7%);
+
+    &:hover {
+      text-decoration: none;
+      @include bglinear($main_color, lighten($main_color, 7%));
+    }
+  }
+}
+
+
+
+
+
+
+
+

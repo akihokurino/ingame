@@ -1,4 +1,27 @@
 = content_for :head do
   = stylesheet_link_tag "pc/edit_account"
 
-= link_to "退会", user_path(@current_user), method: :delete
+= render partial: "application/pc/default_header"
+
+.settingTopBox
+  %h1.mainTtl アカウント設定
+.settingBox
+  .settingBoxInner
+    %ul.settingList
+      %li.item
+        %h2.settingTtl SNSアカウントの連携
+        %ul.snsList
+          %li
+            .snsName Twitter
+            .coopStatus
+              = link_to "未連携", class: " coopAccount"
+          %li
+            .snsName Facebook
+            .coopStatus
+              = link_to "未連携", class: " coopAccount"
+      %li.item
+        %h2.settingTtl gamrを退会
+        %p.settingTxt 退会すると、アカウントが持つ全ての情報が削除されます。
+        = link_to "退会する", user_path(@current_user), method: :delete,class: " dltAccount"
+
+= render partial: "application/pc/footer"
