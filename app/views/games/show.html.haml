@@ -34,7 +34,7 @@
           %a.moreSearch{href: "https://www.youtube.com/results?search_query=#{@game.title}", target: "blank"}
             %span.icon-youtube Youtubeで検索する
           .review
-            %span ユーザー評価 / 
+            %span ユーザー評価 /
             %ul.starList
               - diff = 5 - @game.avg_rate.to_i
               - @game.avg_rate.to_i.times do |i|
@@ -74,7 +74,7 @@
             %li.item.releaseDay
               .itemName 発売日：
               .itemContent
-                = @game.release_day
+                = @game.formated_release_day
     %section.sortBox
       %ul.sortList.sort-list
         %li.item.current.follower-posts
