@@ -19,7 +19,6 @@ header{
 		padding: 20px 10px;
 		color:$color_textBlack;
 		font-size:20px;
-		font-weight:bold;
 		text-align:center;
 	}
 	.mainTxt{
@@ -57,6 +56,9 @@ header{
 		.snsList{
 		    .snsName,.coopStatus{
 		      display: inline;
+		    }
+		    .coopAccount{
+		    	color: $color_blue;
 		    }
 		}
 		.dltAccount{
