@@ -20,71 +20,59 @@
               = image_tag @game.photo_url, height:"100%", class: "gameImg"
             - else
               = image_tag "/game_photos/default.png", height:"100%", class: "gameImg"
+        .source
+          - case @game.provider
+          - when "famituu"
+            %a{href: @game.provider_url, target: "blank"} 出典：ファミ通
+          - when "steam"
+            %a{href: @game.provider_url, target: "blank"} 出典：STEAM
         %h1.ttl
           = @game.title
         %h2.maker
-          = @game.maker
-        %p.device
-          = @game.device
-        %p.releaseDay
-          = @game.release_day
-          .source
-            - case @game.provider
-            - when "famituu"
-              %a{href: @game.provider_url, target: "blank"} 出典：ファミ通
-            - when "steam"
-              %a{href: @game.provider_url, target: "blank"} 出典：STEAM
-        = render partial: "select_btns", locals: {game: @game}
-        - if @game.i_registed
-          %span.delete-btn.deleteBtn マイゲームから削除
-        .gameInfoWrap
-          %ul.gameInfo
-            %li.item.site
-              - @game.game_urls.each_with_index do |url, index|
-                - if index == 0
-                  = link_to "公式サイト", url.text, target: "blank", class: "officialLink icon-home"
-                - else
-                  = link_to "公式サイト(#{index + 1})", url.text, target: "blank", class: "officialLink icon-home"
-            %li.item.hard
-              .itemName ハード
-              .itemContent
-                = @game.device
-            %li.item.maker
-              .itemName メーカー
-              .itemContent
-                = @game.maker
-            %li.item.releaseDay
-              .itemName 発売日
-              .itemContent
-                = @game.release_day
-            %li.item.category
-              .itemName ジャンル
-              .itemContent
-                - @game.gametags.each do |gametag|
-                  %span.gametag
-                    = gametag.name
-            %li.item.review
-              .itemName 全体の評価
-              .itemContent
-                %ul.starList
-                  - diff = 5 - @game.avg_rate.to_i
-                  - @game.avg_rate.to_i.times do |i|
-                    %li.starOn.icon-star
-                  - diff.times do |i|
-                    %li.starOff.icon-star
-            %span.value
-              = @game.avg_rate
-          %ul.linkBtnWrap
-            %li
-              %a.amazonBtn{href: "http://www.amazon.co.jp/s/ref=nb_sb_noss_1?__mk_ja_JP=カタカナ&url=search-alias%3Daps&field-keywords=#{@game.title}", target: "blank"} Amazonで検索
-            %li
-              %a.youtubeBtn{href: "https://www.youtube.com/results?search_query=#{@game.title}", target: "blank"} Youtubeで検索
+          by 
+          %span.makerName
+            = @game.maker
+        .h3
+          %p.device
+            = @game.device
+          %p.releaseDay
+            = @game.release_day
+          %p.gameTag
+            - @game.gametags.each do |gametag|
+              %span.gametag
+                = gametag.name
+          - @game.game_urls.each_with_index do |url, index|
+            - if index == 0
+              = link_to "公式サイト", url.text, target: "blank", class: "officialLink"
+            - else
+              = link_to "公式サイト(#{index + 1})", url.text, target: "blank", class: "officialLink"
           - if @game.wiki
             .gameSummary
               %label{for: "summary"} 概要
               %input.expand{type: "checkbox", id: "summary"}
               %p
                 = @game.wiki
+        = render partial: "select_btns", locals: {game: @game}
+        - if @game.i_registed
+          %span.delete-btn.deleteBtn マイゲームから削除
+        / .gameInfoWrap
+        /   %ul.gameInfo
+        /     %li.item.review
+        /       .itemName 全体の評価
+        /       .itemContent
+        /         %ul.starList
+        /           - diff = 5 - @game.avg_rate.to_i
+        /           - @game.avg_rate.to_i.times do |i|
+        /             %li.starOn.icon-star
+        /           - diff.times do |i|
+        /             %li.starOff.icon-star
+        /     %span.value
+        /       = @game.avg_rate
+        /   %ul.linkBtnWrap
+        /     %li
+        /       %a.amazonBtn{href: "http://www.amazon.co.jp/s/ref=nb_sb_noss_1?__mk_ja_JP=カタカナ&url=search-alias%3Daps&field-keywords=#{@game.title}", target: "blank"} Amazonで検索
+        /     %li
+        /       %a.youtubeBtn{href: "https://www.youtube.com/results?search_query=#{@game.title}", target: "blank"} Youtubeで検索
   .boxTtl
     %h2 このゲームに対するポスト#{@game.posts_count}件
   .sortBoxWrap

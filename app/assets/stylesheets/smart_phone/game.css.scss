@@ -36,6 +36,26 @@
 		.gameWrap{
 			padding:10px 10px 0 10px;
 		}
+		.imgWrap{
+			width: 100%;
+			text-align: center;
+
+			.gameImg{
+				max-width: 100%;
+				height: auto;
+				max-height: 200px;
+				@include box-sizing;
+			}
+		}
+		.source{
+	        margin-bottom: 10px;
+	        text-align: center;
+	        line-height: 1;
+	        a{
+	          color: $color_textGray;
+	          font-size: 10px;
+	        }
+	      }
 		.ttl {
 			color: $color_textBlack;
 			font-size: 24px;
@@ -43,32 +63,58 @@
 			text-align: center;
 		}
 		.maker{
+			margin-bottom: 15px;
 			color: $color_textBlack;
 			font-size: 14px;
-			font-weight: bold;
 			text-align: center;
-		}
-		.imgWrap{
-			width: 100%;
-			margin-bottom: 10px;
-			text-align: center;
-
-			.gameImg{
-				max-width: 100%;
-				height: auto;
-				max-height: 300px;
-				border: 1px solid rgba(0,0,0,0.7);
-				@include box-sizing;
+			line-height: 2;
+			&Name{
+				font-weight: bold;
 			}
 		}
-		.source{
-	        margin-bottom: 10px;
-	        text-align: left;
-	        a{
-	          color: $color_textGray;
-	          font-size: 12px;
-	        }
-	      }
+		.h3{
+			text-align: center;
+		}
+		.device,.releaseDay,.gameTag{
+			margin-right: 20px;
+			color: $color_textGray;
+			font-size: 14px;
+			line-height: 2;
+			&:before{
+				font-family: "icomoon";
+				display: inline-block;
+				font-size: 14px;
+			}
+		}
+		.device{
+			display: inline;
+			&:before{
+				content:"\e61a";
+			}
+		}
+		.releaseDay{
+			display: inline;
+			&:before{
+				content:"\e619";
+			}
+		}
+		.gameTag{
+			&:before{
+				content:"\e618";
+			}
+		}
+		.officialLink{
+	        display: block;
+	        width: 40%;
+	        padding: 0 10px;
+	        margin: 10px auto;
+	        border: solid 1px $color_border;
+	        @include border-radius(2px);
+	        color: $color_textGray;
+	        font-size: 14px;
+	        line-height: 2;
+		}
+		
       	.gameBtnList {
 			width: 100%;
 			padding:10px;
@@ -102,8 +148,6 @@
 			margin: 0 auto 10px;
 			padding: 4px;
 			@include box-sizing;
-			border: 1px solid $color_red;
-			@include border-radius(2px);
 			color: $color_red;
 			font-size: 10px;
 			text-align: center;
@@ -120,14 +164,7 @@
 				&:last-child{
 					border:none;
 				}
-				.officialLink{
-			        display: block;
-			        color: $color_textBlack;
-			        font-weight: bold;
-			        &:before{
-			          margin-right: 5px;
-			        }
-			    }
+				
 				.itemName,.officialLink{
 					display:table-cell;
 					width: 30%;
@@ -141,12 +178,6 @@
 					padding:4px 4px 4px 0;
 					color:$color_textBlack;
 					text-align:left;
-				}
-				.gametag{
-					display: inline-block;
-					padding: 0 4px;
-					margin-bottom: 4px;
-					border: solid 1px $color_border; 
 				}
 			    .starList {
 			      vertical-align: middle;
@@ -203,11 +234,10 @@
 			label {
 				position: relative;
 			    display: inline-block;
-			    padding: 10px;
+			    padding: 10px 10px 0 10px;
 			    margin-bottom: 10px;
 			    width:100%;
 			    @include box-sizing;
-			    border-bottom: 1px solid $color_border;
 			    color: $color_textBlack;
 			    font-size:16px;
 			    text-align:left;
@@ -237,6 +267,7 @@
 			p{
 			    margin: 0;
 			    padding: 0 10px;
+			    border-bottom: 1px solid $color_border;
 				font-size:12px;
 				color:$color_textBlack;
 			    -webkit-transition: all 0.5s;
