@@ -3,21 +3,50 @@
 
 /*---   .mainCnt   ---------------------------*/
 .mainCnt {
+	.deleteDialog{
+		display: none;
+		&.show{
+			position: absolute;
+			display: block;
+			top: 80px;
+			left: 50%;
+			display: block;
+			padding: 10px 30px;
+			margin-left: -150px;
+			width: 300px;
+			box-sizing: border-box;
+			border-radius: 4px;
+			background: rgba(0, 0, 0, 0.73);
+			box-shadow: 0 0 10px rgba(0,0,0,.5);
+			color: #eee;
+			font-size: 14px;
+			text-align: center;
+			line-height: 2.5;
+			z-index: 10;
+			&:after{
+				font-family: "icomoon"
+			}
+		}
+	}
 	/*---   .gameBox   ----------*/
 	.gameBox {
 		padding-top: 44px;
 		background: #fff;
 
-		.ttl {
-			padding: 10px;
-			background: #F5F5F5;
-			border-bottom: solid 1px $color_border;
-			color: #5F5F5F;
-			font-size: 22px;
-			line-height: 1.5;
-		}
 		.gameWrap{
 			padding:10px 10px 0 10px;
+		}
+		.ttl {
+			color: $color_textBlack;
+			font-size: 24px;
+			line-height: 1.5;
+			text-align: center;
+		}
+		.maker{
+			color: $color_textBlack;
+			font-size: 14px;
+			font-weight: bold;
+			text-align: center;
 		}
 		.imgWrap{
 			width: 100%;

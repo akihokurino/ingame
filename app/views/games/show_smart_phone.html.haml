@@ -7,10 +7,9 @@
 = render partial: "application/smart_phone/default_header"
 
 .game-page.mainCnt{"data-gameid" => @game[:id]}
+  .deleteDialog マイゲームから削除しました
   .gameBox
     .gameTopBox
-      %h1.ttl
-        = @game.title
       .gameWrap
         %figure.imgWrap
           - url = @game.amazon_url ? @game.amazon_url : ""
@@ -21,6 +20,14 @@
               = image_tag @game.photo_url, height:"100%", class: "gameImg"
             - else
               = image_tag "/game_photos/default.png", height:"100%", class: "gameImg"
+        %h1.ttl
+          = @game.title
+        %h2.maker
+          = @game.maker
+        %p.device
+          = @game.device
+        %p.releaseDay
+          = @game.release_day
           .source
             - case @game.provider
             - when "famituu"

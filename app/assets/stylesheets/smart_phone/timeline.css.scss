@@ -12,6 +12,32 @@ html {
 	padding-top: 45px;
 	box-sizing:border-box;
 
+	.postDialog{
+		display: none;
+		&.show{
+			position: absolute;
+			display: block;
+			top: 80px;
+			left: 50%;
+			display: block;
+			padding: 10px 30px;
+			margin-left: -150px;
+			width: 300px;
+			box-sizing: border-box;
+			border-radius: 4px;
+			background: rgba(0, 0, 0, 0.73);
+			box-shadow: 0 0 10px rgba(0,0,0,.5);
+			color: #eee;
+			font-size: 14px;
+			text-align: center;
+			line-height: 2.5;
+			z-index: 10;
+			&:after{
+				font-family: "icomoon"
+			}
+		}
+	}
+
 	.postWrap {
 		padding: 10px;
 		@include box-sizing;
