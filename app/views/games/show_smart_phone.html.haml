@@ -29,7 +29,7 @@
               %a{href: @game.provider_url, target: "blank"} 出典：STEAM
         = render partial: "select_btns", locals: {game: @game}
         - if @game.i_registed
-          %span.delete-btn.deleteBtn マイゲームから削除
+          %span.delete-log-btn.deleteBtn マイゲームから削除
         .gameInfoWrap
           %ul.gameInfo
             %li.item.site

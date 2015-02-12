@@ -60,10 +60,11 @@ input[type="submit"],{
 .deleteConfirmModal {
   display: none;
   position: fixed;
+  width: 262px;
   left: 50%;
   top: 50%;
   z-index: 20;
-  margin-left: -103px;
+  margin-left: -131px;
   margin-top: -40px;
   padding: 12px 10px 10px;
   border: 1px solid #ababab;
