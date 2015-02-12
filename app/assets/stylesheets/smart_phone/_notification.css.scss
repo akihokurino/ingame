@@ -13,6 +13,8 @@
 	top: 46px;
 	left: 50%;
 	z-index: 100;
+	-webkit-box-shadow: 0 0 10px 0 #666666;
+	box-shadow: 0 0 10px 0 #666666;
 
 	.modal-header {
 		position: relative;

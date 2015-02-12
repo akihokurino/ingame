@@ -23,11 +23,17 @@ var PostView = Backbone.View.extend({
     this.model.destroy();
   },
   remove: function () {
-    this.$el.remove();
+    var that = this;
+    this.$el.animate({
+      "opacity": 0
+    }, 500, function () {
+      that.$el.remove();
+    });
   },
   render: function () {
     var template = this.template(this.model.toJSON());
     this.$el.html(template);
+    this.$el.css("opacity", 0).animate({"opacity": 1}, 500);
 
     return this;
   },

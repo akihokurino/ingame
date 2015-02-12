@@ -23,7 +23,12 @@ var LogView = Backbone.View.extend({
     this.model.destroy();
   },
   remove: function () {
-    this.$el.remove();
+    var that = this;
+    this.$el.animate({
+      "opacity": 0
+    }, 500, function () {
+      that.$el.remove();
+    });
   },
   render: function () {
     var template = this.template(this.model.toJSON());

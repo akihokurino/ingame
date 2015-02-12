@@ -2,6 +2,6 @@
   %li.item
     = link_to "プロフィール編集", edit_user_path(@current_user), class: "toProfileEdit"
   %li.item
-    = link_to "アカウント設定", "#{}", class: "toProfileEdit"
+    = link_to "アカウント設定", user_providers_path, class: "toProfileEdit"
   %li.item
     = link_to "ログアウト", logout_users_path, class: "menuItemLogout"
