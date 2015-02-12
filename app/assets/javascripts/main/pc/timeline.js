@@ -124,6 +124,9 @@
     post: function (e) {
       e.preventDefault();
       if (this.validate()) {
+
+        $(".loading-post").css("display", "inline-block");
+
         var that = this;
         var data = {
           "post": {
@@ -138,41 +141,45 @@
 
         data.post.urls = this.getUrl(data.post.text);
 
-        this.post_collection.create(data, {
-          method: "POST",
-          success: function (response) {
-            if (response.get("error")) {
-              switch (response.get("error").type) {
-                case "photo":
-                  that.resetFile();
-                  break;
+        setTimeout(function () {
+          that.post_collection.create(data, {
+            method: "POST",
+            success: function (response) {
+              $(".loading-post").css("display", "none");
+
+              if (response.get("error")) {
+                switch (response.get("error").type) {
+                  case "photo":
+                    that.resetFile();
+                    break;
+                }
+                $(".error-message").html(response.get("error").message);
+              } else {
+                var post      = new Post(response.get("last_post"));
+                post.strimWidth(40).sanitize().sanitizeComment();
+                that.posts_view.collection.add(post, {silent: true});
+
+                var post_view = new PostView({model: post});
+                that.posts_view.$el.prepend(post_view.render().el);
+
+                var data = {
+                  type: "post",
+                  post: response.get("last_post"),
+                  from_user_id: post_socket.user_id
+                }
+
+                post_socket.send(data);
+
+                that.resetInput();
+
+                $(".comment-input").autosize();
               }
-              $(".error-message").html(response.get("error").message);
-            } else {
-              var post      = new Post(response.get("last_post"));
-              post.strimWidth(40).sanitize().sanitizeComment();
-              that.posts_view.collection.add(post, {silent: true});
+            },
+            error: function () {
 
-              var post_view = new PostView({model: post});
-              that.posts_view.$el.prepend(post_view.render().el);
-
-              var data = {
-                type: "post",
-                post: response.get("last_post"),
-                from_user_id: post_socket.user_id
-              }
-
-              post_socket.send(data);
-
-              that.resetInput();
-
-              $(".comment-input").autosize();
             }
-          },
-          error: function () {
-
-          }
-        });
+          });
+        }, 1000);
       }
     },
     validate: function () {
