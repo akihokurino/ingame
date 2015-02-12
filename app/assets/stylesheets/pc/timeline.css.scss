@@ -330,6 +330,9 @@
         content: "\e608";
       }
     }
+    .loadingPost{
+      vertical-align: middle;
+    }
     .addPhoto {
       position: absolute;
       bottom: 0;
@@ -347,6 +350,7 @@
       color: #fff;
       font-size: .875rem;
       cursor: pointer;
+      vertical-align: middle;
 
       &:before {
       margin-right: 5px;
