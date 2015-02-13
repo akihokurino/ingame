@@ -3,10 +3,10 @@
 
 /*---   .mainCnt   ---------------------------*/
 .mainCnt {
-	.deleteDialog{
+	.deleteDialog,.statusDialog,.reviewDialog{
 		display: none;
 		&.show{
-			position: absolute;
+			position: fixed;
 			display: block;
 			top: 80px;
 			left: 50%;
@@ -33,19 +33,28 @@
 		padding-top: 44px;
 		background: #fff;
 
-		.gameWrap{
-			padding:10px 10px 0 10px;
-		}
 		.imgWrap{
 			width: 100%;
+			background: #431e99; /* Old browsers */
+			background: -moz-linear-gradient(-45deg, #431e99 0%, #2989d8 50%, #207cca 51%, #af23a6 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#431e99), color-stop(50%,#2989d8), color-stop(51%,#207cca), color-stop(100%,#af23a6)); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(-45deg, #431e99 0%,#2989d8 50%,#207cca 51%,#af23a6 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(-45deg, #431e99 0%,#2989d8 50%,#207cca 51%,#af23a6 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(-45deg, #431e99 0%,#2989d8 50%,#207cca 51%,#af23a6 100%); /* IE10+ */
+			background: linear-gradient(135deg, #431e99 0%,#2989d8 50%,#207cca 51%,#af23a6 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#431e99', endColorstr='#af23a6',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 			text-align: center;
 
 			.gameImg{
+				margin-top: 5px;
 				max-width: 100%;
 				height: auto;
 				max-height: 200px;
 				@include box-sizing;
 			}
+		}
+		.gameInfo{
+			padding: 5px 10px;
 		}
 		.source{
 	        margin-bottom: 10px;
@@ -70,76 +79,100 @@
 			line-height: 2;
 			&Name{
 				font-weight: bold;
+				padding-right: 10px;
 			}
 		}
-		.h3{
-			text-align: center;
-		}
-		.device,.releaseDay,.gameTag{
-			margin-right: 20px;
-			color: $color_textGray;
-			font-size: 14px;
-			line-height: 2;
-			&:before{
-				font-family: "icomoon";
+		.gameCap{
+			width: 90%;
+			margin: 0 auto;
+			font-size: 0;
+			.device,.releaseDay,.gameTag{
 				display: inline-block;
+				@include box-sizing;
+				color: $color_textGray;
 				font-size: 14px;
+				line-height: 2;
+				vertical-align: top;
+				&:before{
+					font-family: "icomoon";
+					display: inline-block;
+					font-size: 14px;
+				}
+			}
+			.device{
+				width: 50%;
+				&:before{
+					content:"\e61a";
+				}
+			}
+			.releaseDay{
+				width: 50%;
+				&:before{
+					content:"\e619";
+				}
+			}
+			.gameTag{
+				width: 100%;
+				&:before{
+					content:"\e618";
+				}
 			}
 		}
-		.device{
-			display: inline;
-			&:before{
-				content:"\e61a";
+		.linkList{
+			width: 90%;
+			margin: 0 auto;
+			text-align: center;
+			li{
+				display: inline-block;
+		        width: 49%;
 			}
-		}
-		.releaseDay{
-			display: inline;
-			&:before{
-				content:"\e619";
+			.officialLink,.youtubeLink{
+		        display: inline-block;
+		        width: 98%;
+		        padding: 0 10px;
+		        margin: 5px 0;
+		        border: solid 1px $color_border;
+		        @include box-sizing;
+		        @include border-radius(2px);
+		        color: $color_textGray;
+		        font-size: 14px;
+		        line-height: 2;
 			}
-		}
-		.gameTag{
-			&:before{
-				content:"\e618";
-			}
-		}
-		.officialLink{
-	        display: block;
-	        width: 40%;
-	        padding: 0 10px;
-	        margin: 10px auto;
-	        border: solid 1px $color_border;
-	        @include border-radius(2px);
-	        color: $color_textGray;
-	        font-size: 14px;
-	        line-height: 2;
 		}
 		
       	.gameBtnList {
-			width: 100%;
-			padding:10px;
+			width: 90%;
+			margin: 0 auto;
 			@include box-sizing;
 			font-size: 14px;
-			text-align:right;
+			text-align:center;
 			.item {
 				display:inline-block;
 				text-align:center;
 				width: 100%;
-				margin-bottom:5px;
+				margin:5px 0;
 			}
 		}
-		.new-status, .my-status, .my-rate {
+		.reviewBtn,.statusBtn{
 			@include appearance;
-			width: 80%;
-			padding-left:30%;
-			background: linear-gradient(lighten($main_color,7%),$main_color);
-			border: 1px solid darken($main_color,7%);
-			color: #fff;
-			font-size: 14px;
-			line-height: 36px;
+			width: 100%;
+			padding: 0 36%;
+			line-height: 3;
+			text-align: center;
+		}
+		.reviewBtn{
+			background: #fff;
+			border: 1px solid $color_border;
+			color: $color_textBlack;
+		}
+		.statusBtn{
+			background: #fff;
+			border: solid 1px $main_color; 
+			color: $main_color;
 		}
 		.registed{
 			background:$main_color;
+			border: none;
 			color:#fff;
 		}
 		.deleteBtn{
@@ -159,7 +192,6 @@
 			.item {
 				display:table;
 				width: 100%;
-				border-bottom: 1px solid $color_border;
 				font-size: 14px; 
 				&:last-child{
 					border:none;
@@ -270,12 +302,8 @@
 			    border-bottom: 1px solid $color_border;
 				font-size:12px;
 				color:$color_textBlack;
-			    -webkit-transition: all 0.5s;
-			    -moz-transition: all 0.5s;
-			    -ms-transition: all 0.5s;
-			    -o-transition: all 0.5s;
-			    transition: all 0.5s;
 			    list-style: none;
+			    text-align:left;
 			}
 
 			input[type="checkbox"].expand + p{
