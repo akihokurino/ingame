@@ -33,7 +33,7 @@ var PostView = Backbone.View.extend({
   render: function () {
     var template = this.template(this.model.toJSON());
     this.$el.html(template);
-    this.$el.css("opacity", 0).animate({"opacity": 1}, 500);
+    this.$el.css("opacity", 0).animate({"opacity": 1}, 500, function () {});
 
     return this;
   },

@@ -76,7 +76,7 @@
 			color: $color_textBlack;
 			font-size: 14px;
 			text-align: center;
-			line-height: 2;
+			line-height: 1;
 			&Name{
 				font-weight: bold;
 				padding-right: 10px;
@@ -120,7 +120,7 @@
 		}
 		.linkList{
 			width: 90%;
-			margin: 0 auto;
+			margin: 10px auto;
 			text-align: center;
 			li{
 				display: inline-block;
@@ -266,29 +266,30 @@
 			label {
 				position: relative;
 			    display: inline-block;
-			    padding: 10px 10px 0 10px;
-			    margin-bottom: 10px;
+			    padding-left: 20px;
+			    margin: 4px;
 			    width:100%;
 			    @include box-sizing;
 			    color: $color_textBlack;
-			    font-size:16px;
+			    font-size:14px;
 			    text-align:left;
 			    &:before{
-			    	position: relative;
+			    	position: absolute;
 					content:"";
 					display:inline-block;
 					margin-right:10px;
-					width:8px;
-					height:8px;
+					width:6px;
+					height:6px;
 					border-color: $color_textBlack;
-					border-right:solid 2px;
-					border-bottom:solid 2px;
+					border-right:solid 3px;
+					border-bottom:solid 3px;
 					-webkit-transform: rotate(45deg);
 					   -moz-transform: rotate(45deg);
 					    -ms-transform: rotate(45deg);
 					     -o-transform: rotate(45deg);
 					        transform: rotate(45deg);
-					top:-4px;
+					top:3px;
+					left: 0;
 			    }
 			}
 
