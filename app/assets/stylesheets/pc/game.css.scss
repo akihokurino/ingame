@@ -37,106 +37,40 @@ html {
         }
       }
       .gameBtnList {
-        .item {
-          display: inline-block;
-          overflow: hidden;
-          position: relative;
-          width: 65%;
-          margin-bottom: 10px;
-          cursor: pointer;
-
-          @-moz-document url-prefix() {
-            &:after {
-              display: block;
-              position: absolute;
-              right: 10px;
-              top: 50%;
-              margin-top: -3px;
-              border-top: 5px solid #fff;
-              border-right: 4px solid transparent;
-              border-bottom: 4px solid transparent;
-              border-left: 5px solid transparent;
-              content:"";
-            }
-          }
-
-          .statusWrap {
-            position: relative;
-            display: inline-block;
-            overflow: hidden;
-            width: 100%;
-            border: 1px solid darken($main_color,7%);
-            @include bglinear(lighten($main_color, 7%), $main_color);
-            @include border-radius(2px);
-            @include box-sizing;
-            color: #fff;
-            cursor: pointer;
-
-            &:after {
-              display: block;
-              position: absolute;
-              right: 10px;
-              top: 50%;
-              margin-top: -3px;
-              border-top: 5px solid #fff;
-              border-right: 4px solid transparent;
-              border-bottom: 4px solid transparent;
-              border-left: 5px solid transparent;
-              content:"";
-            }
-          }
-          .statusBtn {
-            display: block;
-            width: 90%;
-            height: 33px;
-            margin: 0 auto;
-            border: none;
-            background: none;
-            color: #fff;
-            font-size: .875rem;
-            text-indent: .01px;
-            text-overflow: "";
-            line-height: 1rem;
-            @include appearance;
-            cursor: pointer;
-            outline: 0;
-
-            &::-ms-expand {
-              display: none;
-            }
-            @-moz-document url-prefix() {
-              width: 182px;
-              padding-left: 10px;
-            }
-          }
-          .registed .statusWrap {
-            border: 1px solid darken($color_border,7%);
-            @include bglinear(lighten($color_border, 7%), $color_border);
-            
-            &:after {
-              display: block;
-              position: absolute;
-              right: 10px;
-              top: 50%;
-              margin-top: -3px;
-              border-top: 5px solid $color_textGray;
-              border-right: 4px solid transparent;
-              border-bottom: 4px solid transparent;
-              border-left: 5px solid transparent;
-              content:"";
-            }
-          }
-          .registed .statusBtn {
-            color: $color_textGray;
-
-            @-moz-document url-prefix() {
-              option {
-                color: $main_color;
-              }
-            }
-          }
-        }
+      width: 90%;
+      margin: 0 auto;
+      @include box-sizing;
+      font-size: 14px;
+      text-align:center;
+      .item {
+        display:inline-block;
+        text-align:center;
+        width: 100%;
+        margin:5px 0;
       }
+    }
+    .reviewBtn,.statusBtn{
+      @include appearance;
+      width: 100%;
+      padding: 0 70px;
+      line-height: 3;
+      text-align: center;
+    }
+    .reviewBtn{
+      background: #fff;
+      border: 1px solid $color_border;
+      color: $color_textBlack;
+    }
+    .statusBtn{
+      background: #fff;
+      border: solid 1px $main_color; 
+      color: $main_color;
+    }
+    .registed{
+      background:$main_color;
+      border: none;
+      color:#fff;
+    }
     }
 
     .gameCapWrap {

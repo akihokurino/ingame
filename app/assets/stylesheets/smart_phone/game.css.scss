@@ -68,7 +68,7 @@
 		.ttl {
 			color: $color_textBlack;
 			font-size: 24px;
-			line-height: 1.5;
+			line-height: 1;
 			text-align: center;
 		}
 		.maker{
@@ -76,7 +76,7 @@
 			color: $color_textBlack;
 			font-size: 14px;
 			text-align: center;
-			line-height: 1;
+			line-height: 2;
 			&Name{
 				font-weight: bold;
 				padding-right: 10px;
