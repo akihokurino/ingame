@@ -160,7 +160,7 @@
         url: "/api/logs/" + this.game_id,
         data: {},
         success: function (data) {
-          location.reload();
+          //location.href = "/games/" + that.game_id + "?logDelete=true";
         },
         error: function () {
 
