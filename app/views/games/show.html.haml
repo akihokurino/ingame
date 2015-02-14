@@ -7,6 +7,9 @@
 = render partial: "application/pc/default_header"
 
 %section.mainContent.game-page{"data-gameid" => @game[:id]}
+  .deleteDialog.show マイゲームから削除しました
+  .statusDialog ステータスを変更しました
+  .reviewDialog 評価の値を変更しました
   .gameBox
     .gameBoxInner
       %figure.gameMainWrap
