@@ -80,22 +80,32 @@ html {
       padding: 0 70px;
       line-height: 3;
       text-align: center;
+      }
+      .reviewBtn{
+        background: #fff;
+        border: 1px solid $color_border;
+        color: $color_textBlack;
+      }
+      .statusBtn{
+        background: #fff;
+        border: solid 1px $main_color; 
+        color: $main_color;
+      }
+      .registed{
+        background:$main_color;
+        border: none;
+        color:#fff;
+      }
     }
-    .reviewBtn{
-      background: #fff;
-      border: 1px solid $color_border;
-      color: $color_textBlack;
-    }
-    .statusBtn{
-      background: #fff;
-      border: solid 1px $main_color; 
-      color: $main_color;
-    }
-    .registed{
-      background:$main_color;
-      border: none;
-      color:#fff;
-    }
+    .deleteBtn{
+      display: block;
+      width: 160px;
+      margin: 0 auto 10px;
+      padding: 4px;
+      @include box-sizing;
+      color: $color_red;
+      font-size: 10px;
+      text-align: center;
     }
 
     .gameCapWrap {

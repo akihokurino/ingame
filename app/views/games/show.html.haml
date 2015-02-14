@@ -28,6 +28,8 @@
           - when "steam"
             %a{href: @game.provider_url, target: "blank"} 出典:STEAM
         = render partial: "select_btns", locals: {game: @game}
+        - if @game.i_registed
+          %span.delete-log-btn.deleteBtn マイゲームから削除
       .gameCapWrap
         .leftBox
           %h1.gameTtl
