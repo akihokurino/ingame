@@ -7,7 +7,7 @@
 = render partial: "application/smart_phone/default_header"
 
 .game-page.mainCnt{"data-gameid" => @game[:id]}
-  .deleteDialog マイゲームから削除しました
+  .deleteDialog.show マイゲームから削除しました
   .statusDialog ステータスを変更しました
   .reviewDialog 評価の値を変更しました
   .gameBox
@@ -31,14 +31,14 @@
         %h1.ttl
           = @game.title
         %h2.maker
-          %span by 
+          %span by
           %span.makerName
             = @game.maker
         %ul.gameCap
           %li.device
             = @game.device
           %li.releaseDay
-            = @game.release_day
+            = @game.formated_release_day
           %li.gameTag
             - @game.gametags.each do |gametag|
               %span.gametag
@@ -61,7 +61,7 @@
                 = @game.wiki
         = render partial: "select_btns", locals: {game: @game}
         - if @game.i_registed
-          %span.delete-btn.deleteBtn マイゲームから削除
+          %span.delete-log-btn.deleteBtn マイゲームから削除
       / .gameInfoWrap
       /   %ul.gameInfo
       /     %li.item.review
