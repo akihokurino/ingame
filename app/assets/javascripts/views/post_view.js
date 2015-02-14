@@ -227,7 +227,7 @@ var PostView = Backbone.View.extend({
     var custom_modal_view = new CustomModalView({
       attributes: {
         view: this,
-        target: "投稿",
+        title: "この投稿を削除しますか？",
         desc: null,
         template: _.template($("#delete-confirm-template").html()),
         callback: this.destroy,

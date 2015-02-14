@@ -171,7 +171,7 @@
       var custom_modal_view = new CustomModalView({
         attributes: {
           view: null,
-          target: "ゲーム",
+          title: "このゲームをマイゲームから削除しますか？",
           desc: "このゲームに関する投稿データもすべて削除されます",
           callback: this.destroyLog,
           template: _.template($("#delete-confirm-template").html()),

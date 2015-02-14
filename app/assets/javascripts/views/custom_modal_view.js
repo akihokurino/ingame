@@ -9,7 +9,7 @@ var CustomModalView = Backbone.View.extend({
 
     _.bindAll(this, "cancel");
 
-    this.target       = this.attributes.target;
+    this.title        = this.attributes.title;
     this.desc         = this.attributes.desc;
     this.current_view = this.attributes.view;
     this.callback     = this.attributes.callback;
@@ -21,7 +21,7 @@ var CustomModalView = Backbone.View.extend({
     this.render();
   },
   render: function () {
-    var template = this.template({target: this.target, desc: this.desc});
+    var template = this.template({title: this.title, desc: this.desc});
     this.$el.html(template).css("display", "block").addClass(this.className);
     return this;
   },

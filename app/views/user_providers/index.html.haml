@@ -1,27 +1,33 @@
 = content_for :head do
-  = stylesheet_link_tag "pc/edit_account"
+  = stylesheet_link_tag    "pc/edit_account"
+
+= content_for :last do
+  = javascript_include_tag "main/pc/edit_account"
 
 = render partial: "application/pc/default_header"
 
-.settingTopBox
-  %h1.mainTtl アカウント設定
-.settingBox
-  .settingBoxInner
-    %ul.settingList
-      %li.item
-        %h2.settingTtl SNSアカウントの連携
-        %ul.snsList
-          %li
-            .snsName Twitter
-            .coopStatus
-              = link_to "未連携", class: " coopAccount"
-          %li
-            .snsName Facebook
-            .coopStatus
-              = link_to "未連携", class: " coopAccount"
-      %li.item
-        %h2.settingTtl gamrを退会
-        %p.settingTxt 退会すると、アカウントが持つ全ての情報が削除されます。
-        = link_to "退会する", user_path(@current_user), method: :delete,class: " dltAccount"
+.edit-account-page
+  .settingTopBox
+    %h1.mainTtl アカウント設定
+  .settingBox
+    .settingBoxInner
+      %ul.settingList
+        %li.item
+          %h2.settingTtl SNSアカウントの連携
+          %ul.snsList
+            %li
+              .snsName Twitter
+              .coopStatus
+                = link_to "未連携", class: " coopAccount"
+            %li
+              .snsName Facebook
+              .coopStatus
+                = link_to "未連携", class: " coopAccount"
+        %li.item
+          %h2.settingTtl gamrを退会
+          %p.settingTxt 退会すると、アカウントが持つ全ての情報が削除されます。
+          = link_to "退会する", "#", class: "dltAccount delete-account-btn"
 
 = render partial: "application/pc/footer"
+
+= render partial: "application/underscore/pc/common/delete_confirm"

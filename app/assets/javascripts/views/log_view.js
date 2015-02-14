@@ -45,7 +45,7 @@ var LogView = Backbone.View.extend({
     var custom_modal_view = new CustomModalView({
       attributes: {
         view: this,
-        target: "ゲーム",
+        title: "このゲームをマイゲームから削除しますか？",
         desc: "このゲームに関する投稿データもすべて削除されます",
         template: _.template($("#delete-confirm-template").html()),
         callback: this.destroy,
