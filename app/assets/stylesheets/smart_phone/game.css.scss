@@ -3,7 +3,7 @@
 
 /*---   .mainCnt   ---------------------------*/
 .mainCnt {
-	.deleteDialog,.statusDialog,.reviewDialog{
+	.messageDialog {
 		display: none;
 		&.show{
 			position: fixed;
@@ -139,7 +139,7 @@
 		        line-height: 2;
 			}
 		}
-		
+
       	.gameBtnList {
 			width: 90%;
 			margin: 0 auto;
@@ -167,7 +167,7 @@
 		}
 		.statusBtn{
 			background: #fff;
-			border: solid 1px $main_color; 
+			border: solid 1px $main_color;
 			color: $main_color;
 		}
 		.registed{
@@ -192,11 +192,11 @@
 			.item {
 				display:table;
 				width: 100%;
-				font-size: 14px; 
+				font-size: 14px;
 				&:last-child{
 					border:none;
 				}
-				
+
 				.itemName,.officialLink{
 					display:table-cell;
 					width: 30%;
@@ -206,7 +206,7 @@
 					vertical-align: top;				}
 				.itemContent{
 					display:table-cell;
-					width: 65%;	
+					width: 65%;
 					padding:4px 4px 4px 0;
 					color:$color_textBlack;
 					text-align:left;
@@ -336,7 +336,7 @@
 			text-align:center;
 			line-height:3;
 			text-shadow:1px 1px 0 #f2f2f2;
-		} 
+		}
 	}
 	.sortBoxWrap {
 		margin-bottom: 14px;

@@ -60,11 +60,11 @@ input[type="submit"],{
 .deleteConfirmModal {
   display: none;
   position: fixed;
-  width: 262px;
+  width: 300px;
   left: 50%;
   top: 50%;
   z-index: 20;
-  margin-left: -131px;
+  margin-left: -150px;
   margin-top: -40px;
   padding: 12px 10px 10px;
   border: 1px solid #ababab;
@@ -103,7 +103,7 @@ input[type="submit"],{
 .delete-confirmTxt {
   margin-bottom: 8px;
   color: #3d3d3d;
-  font-size: .875rem;
+  font-size: 12px;
 }
 .descTxt {
   margin-bottom: 8px;

@@ -7,9 +7,6 @@
 = render partial: "application/pc/default_header"
 
 %section.mainContent.game-page{"data-gameid" => @game[:id]}
-  .deleteDialog.show マイゲームから削除しました
-  .statusDialog ステータスを変更しました
-  .reviewDialog 評価の値を変更しました
   .gameBox
     .gameBoxInner
       %figure.gameMainWrap
@@ -27,9 +24,11 @@
             %a{href: @game.provider_url, target: "blank"} 出典:ファミ通
           - when "steam"
             %a{href: @game.provider_url, target: "blank"} 出典:STEAM
-        = render partial: "select_btns", locals: {game: @game}
-        - if @game.i_registed
-          %span.delete-log-btn.deleteBtn マイゲームから削除
+
+        %ul.gameBtnList
+          %li.item.review-li
+          %li.item.status-li
+        %span.delete-log-btn.deleteBtn マイゲームから削除
       .gameCapWrap
         .leftBox
           %h1.gameTtl
@@ -97,6 +96,9 @@
 
 = render partial: "application/pc/footer"
 
+= render partial: "application/underscore/pc/common/flash"
 = render partial: "application/underscore/pc/common/delete_confirm"
 = render partial: "application/underscore/pc/common/post"
+= render partial: "application/underscore/pc/game/review_select"
+= render partial: "application/underscore/pc/game/status_select"
 

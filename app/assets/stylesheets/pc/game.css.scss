@@ -7,7 +7,7 @@ html {
 
 .mainContent {
   background: #eee;
-  .deleteDialog,.statusDialog,.reviewDialog{
+  .messageDialog {
     display: none;
     &.show{
       position: fixed;
@@ -88,7 +88,7 @@ html {
       }
       .statusBtn{
         background: #fff;
-        border: solid 1px $main_color; 
+        border: solid 1px $main_color;
         color: $main_color;
       }
       .registed{
@@ -291,7 +291,7 @@ html {
           &.current {
             a{
               color: $color_textBlack;
-              font-weight: bold; 
+              font-weight: bold;
             }
           }
 
