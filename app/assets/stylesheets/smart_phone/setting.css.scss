@@ -1,6 +1,6 @@
 @import "../_function.css.scss";
-@import "_gameList.css.scss";
-@import "_clipBox.css.scss";
+@import "component/_gameList.css.scss";
+@import "component/_clipBox.css.scss";
 
 /*---   common   ---------------------------*/
 @include keyframes(changeFollow){
