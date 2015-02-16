@@ -72,6 +72,7 @@ class ApplicationController < ActionController::Base
   end
 
   def error404(e)
+  	p "test"
     render "error404", status: 404, formats: [:html]
   end
 end
