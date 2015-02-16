@@ -1,57 +1,93 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1" />
   <title>We're sorry, but something went wrong (500)</title>
+  <link href='http://fonts.googleapis.com/css?family=Play' rel='stylesheet' type='text/css'>
   <style>
+  /*reset.css*/
+  html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+  /*reset.css end*/
   body {
     background-color: #EFEFEF;
-    color: #2E2F30;
+    font-family: 'Play', sans-serif;
     text-align: center;
-    font-family: arial, sans-serif;
+    color: #aaa;
+    width: 100%;
   }
-
-  div.dialog {
-    width: 25em;
-    margin: 4em auto 0 auto;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 4em 0 4em;
+  .wrap {
+    width: 100%;
   }
-
-  h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
+  /*.contents_wrap {
+    width: 100%;
+  }*/
+  .main_image {
+    width: 100%;
   }
-
-  body > p {
-    width: 33em;
-    margin: 0 auto 1em;
-    padding: 1em 0;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow:0 3px 8px rgba(50, 50, 50, 0.17);
+  .image_wrap {
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    background: url("500_images/500_all.gif") no-repeat 0 0;
+    width: 731px;
+    height: 560px;
+    -webkit-background-size: 731px 560px;
+    -moz-background-size: 731px 560px;
+         -o-background-size: 731px 560px;
+            background-size: 731px 560px;
+  }
+  .main {
+    width: 100%;
+  }
+  .main h1 {
+    font-size: 92px;
+    font-weight: bold;
+    margin-bottom: 14px;
+    letter-spacing: -4px;
+  }
+  .main h1 span{
+    font-size: 40px;
+    margin-left: 20px;
+    letter-spacing: 0;
+  }
+  .main p {
+    font-size: 30px;
+    color: #999;
+  }
+  .main h2 {
+    font-size: 40px;
+  }
+  @media only screen and (max-width : 768px) {
+    .image_wrap {
+      background: url("500_images/500_sp.gif") no-repeat 0 0;
+      width: 320px;
+      height: 337px;
+      -webkit-background-size: 320px 337px;
+      -moz-background-size: 320px 337px;
+           -o-background-size: 320px 337px;
+              background-size: 320px 337px;
+    }
+    .main {
+      width: 100%;
+    }
+    .main h1 span{
+      width: 100%;
+      display: block;
+      margin-left: 0;
+    }
   }
   </style>
 </head>
 
 <body>
-  <!-- This file lives in public/500.html -->
-  <div class="dialog">
-    <h1>We're sorry, but something went wrong.</h1>
+  <div class="wrap">
+      <section class="main_image">
+        <div class="image_wrap"></div>
+      </section>
+       <section class="main">
+          <h1>500<span>INTERNAL SERVER ERROR</span></h1>
+          <P>Error, something went wrong.</P>
+      </section>
   </div>
-  <p>If you are the application owner check the logs for more information.</p>
 </body>
 </html>
