@@ -39,6 +39,7 @@
     }
   }
   .settingTtl {
+    margin-bottom: 10px;
     font-weight: bold;
     font-size: 1.125rem;
   }
@@ -51,30 +52,46 @@
     font-size: .875rem;
   }
   .snsList{
-    .snsName,.coopStatus{
+    li{
+      margin-bottom: 10px;
+    }
+    .coopStatus{
       display: inline;
     }
-    .coopAccount{
+    .snsName{
       display: inline-block;
-      background: $color_textGray:
+      min-width: 75px;
+      margin-right: 10px;
+    }
+    .notConnect,.connectTw,.connectFb{
+      display: inline-block;
+      @include border-radius(2px);
+      color: #fff;
+      line-height: 1.5;
+      padding: 0 10px;
+    }
+    .notConnect{
+      background: #bbb;
+    }
+    .connectTw{
+      background: $twitter_blue;
+    }
+    .connectFb{
+      background: $facebook_blue;
     }
   }
   .dltAccount{
     display: inline-block;
-    padding: 0 20px;
+    padding: 0 10px;
     margin: 10px 0;
-    @include border-radius(4px);
-    @include box-sizing;
-    color: #ffffff;
-    font-size: 1rem;
-    line-height: 2.5;
+    background: #474747;
+    @include border-radius(2px);
+    color: #fff;
+    line-height: 2;
     text-align: center;
-    @include bglinear(lighten($main_color, 7%), $main_color);
-    border: 1px solid darken($main_color,7%);
 
     &:hover {
       text-decoration: none;
-      @include bglinear($main_color, lighten($main_color, 7%));
     }
   }
 }
