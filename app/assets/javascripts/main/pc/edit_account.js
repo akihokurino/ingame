@@ -2,7 +2,7 @@
   var AppView = Backbone.View.extend({
     el: ".edit-account-page",
     events: {
-      "click .delete-account-btn":   "showDeleteConfirm"
+      "click .delete-account-btn": "showDeleteConfirm"
     },
     initialize: function () {
       _.bindAll(this, "deleteAccount");
