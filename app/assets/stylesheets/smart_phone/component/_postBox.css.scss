@@ -1,4 +1,4 @@
-@import "../_function.css.scss";
+@import "../../_function.css.scss";
 
 /*---   .postBox   ---------------------------*/
 .postBox {
@@ -7,7 +7,6 @@
 	@include box-sizing;
 	background: #ffffff;
 	@include clearfix;
-
 	.gameWrap{
 		float: right;
 		width: 80px;
