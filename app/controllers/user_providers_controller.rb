@@ -23,9 +23,7 @@ class UserProvidersController < ApplicationController
     if user_provider
       if user_provider[:user_id]
         if session[:current_user_id]
-          current_user = User.find session[:current_user_id]
-          if current_user
-            user_provider.update user_id: current_user[:id]
+          if user_provider.updateByCurrentUser(session[:current_user_id])
             redirect_to user_providers_path
           else
             redirect_to login_users_path
@@ -43,9 +41,7 @@ class UserProvidersController < ApplicationController
         end
       else
         if session[:current_user_id]
-          current_user = User.find session[:current_user_id]
-          if current_user
-            user_provider.update user_id: current_user[:id]
+          if user_provider.updateByCurrentUser(session[:current_user_id])
             redirect_to user_providers_path
           else
             redirect_to login_users_path
@@ -59,9 +55,7 @@ class UserProvidersController < ApplicationController
       user_provider = UserProvider.create_with_omniauth auth
 
       if session[:current_user_id]
-        current_user = User.find session[:current_user_id]
-        if current_user
-          user_provider.update user_id: current_user[:id]
+        if user_provider.updateByCurrentUser(session[:current_user_id])
           redirect_to user_providers_path
         else
           redirect_to login_users_path

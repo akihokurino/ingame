@@ -12,6 +12,25 @@ class UserProvider < ActiveRecord::Base
   validates :token,
     presence: true
 
+  def updateByCurrentUser(current_user_id)
+    current_user = User.find current_user_id
+
+    if current_user
+      prev_user_id = self[:user_id]
+
+      self.update user_id: current_user[:id]
+
+      if prev_user_id && prev_user_id != current_user[:id]
+        prev_user = User.find prev_user_id
+        prev_user.destroy
+      end
+
+      true
+    else
+      false
+    end
+  end
+
   class << self
     def create_with_omniauth(auth)
       self.create! do |user_provider|

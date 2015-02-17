@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_action :auth_provider, only: [:new]
 
   def login
+    reset_session
   end
 
   def setting
