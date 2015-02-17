@@ -1,6 +1,7 @@
 @import "../_function.css.scss";
 @import "component/_header.css.scss";
 @import "component/_notification.css.scss";
+@import "component/_delete.css.scss";
 @import "component/_footer.css.scss";
 
 /*---   common   ---------------------------*/
@@ -75,59 +76,6 @@ systemClass
 
 .custom-modal {
   display: none;
-}
-
-.deleteConfirmModal {
-  display: none;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  z-index: 20;
-  margin-left: -131px;
-  margin-top: -40px;
-  padding: 12px 10px 10px;
-  border: 1px solid #ababab;
-  @include border-radius(3px);
-  @include box-sizing;
-  background-color: #fff;
-  text-align: center;
-
-  .cancel {
-    display: inline-block;
-    width: 90px;
-    height: 28px;
-    @include border-radius(2px);
-    background: #cecece;
-    color: #fff;
-    font-weight: bold;
-    font-size: .875rem;
-    line-height: 28px;
-    text-align: center;
-    cursor: pointer;
-  }
-  .done {
-    display: inline-block;
-    width: 90px;
-    height: 28px;
-    @include border-radius(2px);
-    background: $color_red;
-    color: #fff;
-    font-weight: bold;
-    font-size: .875rem;
-    line-height: 28px;
-    text-align: center;
-    cursor: pointer;
-  }
-}
-.delete-confirmTxt {
-  margin-bottom: 8px;
-  color: #3d3d3d;
-  font-size: .875rem;
-}
-.descTxt {
-  margin-bottom: 8px;
-  color: #3d3d3d;
-  font-size: 10px;
 }
 
 .error-message {

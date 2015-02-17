@@ -184,6 +184,10 @@
 			color: $color_red;
 			font-size: 10px;
 			text-align: center;
+			&:active{
+				background: $color_red;
+				color: #fff;
+			}
 		}
 		.gameInfo {
 			font-size: 0;
