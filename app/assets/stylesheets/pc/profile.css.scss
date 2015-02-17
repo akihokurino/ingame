@@ -242,23 +242,59 @@ html {
   .gameListBox {
     margin-top: 0;
 
-    .gameListWrap {
+    .playingBox,.readyBox,.playedBox,.stockBox{
       width: 100%;
+      margin-bottom: 10px;
+      .boxTtl{
+        display: inline-block;
+        padding: 0 10px;
+        @include border-radius(2px 2px 0 0);
+        color: #fff;
+        font-size: 1rem;
+        line-height: 1.8;
+      }
+      .gameListWrap {
+        width: 100%;
+        padding: 10px;
+        background: #ebebeb;
+      }
+    }
+    .playingBox{
+      .ttlWrap{
+        border-bottom: 3px solid $color_red;
+        .boxTtl{
+          background: $color_red;
+        }
+      }
+    }
+    .readyBox{
+      .ttlWrap{
+        border-bottom: 3px solid $color_yellow;
+        .boxTtl{
+          background: $color_yellow;
+        }
+      }
+    }
+    .playedBox{
+      .ttlWrap{
+        border-bottom: 3px solid $color_blue;
+        .boxTtl{
+          background: $color_blue;
+        }
+      }
+    }
+    .stockBox{
+      .ttlWrap{
+        border-bottom: 3px solid $color_green;
+        .boxTtl{
+          background: $color_green;
+        }
+      }
     }
   }
   /*---   .friendListBox   ---*/
   .friendListBox {
     margin-top: 0;
-  }
-  .playingBox,.readyBox,.playedBox,.stockBox{
-    border-bottom: solid 1px $color_border;
-    width: 100%;
-    margin-bottom: 10px;
-    .boxTtl{
-      margin-bottom: 10px;
-      color: $color_black;
-      font-size: 1.5rem;
-    }
   }
   .profileColumnWrap {
     @include clearfix;

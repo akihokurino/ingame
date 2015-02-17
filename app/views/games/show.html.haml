@@ -38,8 +38,7 @@
               = link_to "公式サイト", url.text, target: "blank", class: "officialLink"
             - else
               = link_to "公式サイト(#{index + 1})", url.text, target: "blank", class: "officialLink"
-          %a.moreSearch{href: "https://www.youtube.com/results?search_query=#{@game.title}", target: "blank"}
-            %span.icon-youtube Youtube
+          %a.moreSearch{href: "https://www.youtube.com/results?search_query=#{@game.title}", target: "blank"} Youtube
           / %a.moreSearch{href: "http://www.amazon.co.jp/s/ref=nb_sb_noss_1?__mk_ja_JP=カタカナ&url=search-alias%3Daps&field-keywords=#{@game.title}", target: "blank"}
           /   %span.icon-cart Amazon
           / .review
