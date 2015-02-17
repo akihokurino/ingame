@@ -17,10 +17,16 @@
           %ul.snsList
             %li
               .snsName Twitter
-              = link_to "未連携", "#dummy", class: "coopAccount"
+              - unless @twitter_provider
+                = link_to "未連携", "/auth/twitter", class: "coopAccount connect-twitter-btn"
+              - else
+                %span.coopAccount 連携中
             %li
               .snsName Facebook
-              = link_to "未連携", "#dummy", class: "coopAccount"
+              - unless @facebook_provider
+                = link_to "未連携", "/auth/facebook", class: "coopAccount connect-facebook-btn"
+              - else
+                %span.coopAccount 連携中
         %li.item
           %h2.settingTtl gamrを退会
           %p.settingTxt 退会すると、アカウントが持つ全ての情報が削除されます。
