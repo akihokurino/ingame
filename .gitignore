@@ -21,6 +21,7 @@
 /public/game_photos/*
 /public/post_photos/*
 /public/tmp_photos/*
+/public/assets/*
 
 # vim swap file
 .*.swp
