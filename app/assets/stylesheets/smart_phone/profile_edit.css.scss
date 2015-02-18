@@ -9,12 +9,13 @@ input[type="submit"]{
 }
 
 .user-edit-page {
-  background-color: #eee;
+  background-color: #fff;
   height: 100%;
+  color: $color_textBlack;
   header {
     position: relative;
     padding: 12px 0 13px;
-    background-color: $main_color;
+    background-color: $base_color;
     color: #ffffff;
     font-size: 14px;
     text-align: center;
@@ -34,94 +35,82 @@ input[type="submit"]{
     }
   }
 
-  /*------------------------------
-      systemClass
-  ------------------------------*/
-  .file-input {
-    overflow: hidden;
+  .edit_user{
+    padding: 10px;
+  }
+
+  .errorMessage{
+    color: $color_red;
+    &:empty{
+      display: none;
+    }
+  }
+  
+  .profileImg{
     position: relative;
-    height: 70px;
-    width: 100%;
-    margin:10px 0;
-    border-top: solid 1px $color_border;
-    border-bottom: solid 1px $color_border;
-    @include box-sizing;
-    background-color: #fff;
-
-    #thumbnail {
-      display: inline-block;
-      float: left;
-      width: 50px;
-      height: 50px;
-
-      img {
-        width: 50px;
-        height: 50px;
-        margin:10px;
-        border: solid 1px $color_border;
+    text-align: center;
+    h2{
+      margin: 15px;
+    }
+    #thumbnail{
+      margin: 0 auto;
+      width: 100px;
+      height: 100px;
+      @include border-radius(50%);
+      img{
         @include border-radius(50%);
       }
     }
-    span, input {
-      display: block;
-      position: absolute;
-      top: 0px;
-      left: 0px;
-      float: left;
-      z-index: 5;
-      width: 100%;
-      height: 70px;
-      text-align: center;
-      line-height: 70px;
-      -webkit-appearance:none;
+    p{
+      margin: 10px;
+      color: $main_color;
     }
-    input {
+    #upload-btn{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       opacity: 0;
-      z-index: 10;
     }
   }
-  .username-input, .place-input, .introduction-input {
-    overflow: hidden;
-    position: relative;
-    height: 40px;
-    width: 100%;
-    margin:5px 0;
 
-    .icon-user,.icon-place,.icon-info{
-      &:before{
-        font-size:20px;
-      }
-    }
-
-    span {
-      display: inline-block;
-      position: absolute;
-      top: 0px;
-      left: 10px;
-      float: left;
-      height: 40px;
-      line-height: 44px;
-      color: $color_textGray;
-    }
-    input {
-      width: 100%;
-      height: 40px;
-      padding-left: 40px;
-      border: solid 1px #e2e2e2;
-      font-size:12px;
-    }
-  }
-  .edit {
-    @include appearance;
+  .inputWrap{
     display: block;
-    margin: 5px auto;
-    padding: 6px 20px;
-    width: 70%;
-    color: #fff;
-    border:none;
-    @include border-radius(4px);
-    background: linear-gradient(lighten($main_color,5%),$main_color);
-    font-size:14px;
-    line-height:28px;
+    margin-bottom: 15px;
+
+    label{
+      font-size: 14px;
+    }
+
+    input[type="text"]{
+      display: block;
+      width: 100%;
+      padding: 6px 12px;
+      border: solid 1px $color_border;
+      @include box-sizing;
+      color: $color_textBlack;
+    }
+
+    .introduction{
+      min-height: 80px; 
+    }
+
   }
+  input[type="submit"]{
+    display: block;
+    padding: 0 15px;
+    margin: 0 auto;
+    background: $main_color;
+    border: none;
+    @include border-radius(2px); 
+    color: #fff;
+    font-size: 14px; 
+    line-height: 2.5; 
+  }
+
+
+  /*------------------------------
+      systemClass
+  ------------------------------*/
 }

@@ -6,27 +6,28 @@
 
 .user-edit-page
   %header
-    %h1.ttl ユーザー編集
+    %h1.ttl プロフィール編集
     %span.cancelWrap
     = link_to "", "/users/#{@current_user[:id]}#logs", class: "icon-allow"
   = form_for @user do |f|
     = f.hidden_field :clip_x, id: "clip-x"
     = f.hidden_field :clip_y, id: "clip-y"
     .error-message.errorMessage
-    .file-input
+    .file-input.profileImg
+      %h2 プロフィール画像
       #thumbnail
-        = image_tag "/user_photos/#{@user.photo_path}", class: "profile-img"
-      %span プロフィール画像
+        = image_tag "/user_photos/#{@user.photo_path}",width: 100,height: 100 , class: "profile-img"
+      %p 写真を変更
       = f.file_field :photo_path, id: "upload-btn"
-    .username-input
-      %span.icon-user
-      = f.text_field :username
-    .place-input
-      %span.icon-place
+    .username-input.inputWrap
+      = label_tag :username, 'ユーザーネーム'
+      = f.text_field :username 
+    .place-input.inputWrap
+      = label_tag :place, '場所'
       = f.text_field :place
-    .introduction-input
-      %span.icon-info
-      = f.text_field :introduction
-    = f.submit "変更", class: "edit"
+    .introduction-input.inputWrap
+      = label_tag :introduction, '自己紹介'
+      = f.text_field :introduction ,class: "introduction"
+    = f.submit "変更を保存", class: "edit"
 
   = render partial: "application/smart_phone/clip_modal"
