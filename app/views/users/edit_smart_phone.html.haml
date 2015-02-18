@@ -27,7 +27,7 @@
       = f.text_field :place
     .introduction-input.inputWrap
       = label_tag :introduction, '自己紹介'
-      = f.text_field :introduction ,class: "introduction"
+      %textarea.introduction
     = f.submit "変更を保存", class: "edit"
 
   = render partial: "application/smart_phone/clip_modal"

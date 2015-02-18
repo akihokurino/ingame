@@ -93,8 +93,21 @@ input[type="submit"]{
     }
 
     .introduction{
-      min-height: 80px; 
+      resize: none;
+      outline: 0;
+      padding: 6px 10px;
+      margin-bottom: 5px;
+      width: 100%;
+      min-height: 80px;
+      @include box-sizing;
+      border: solid 1px $color_border;
+      border-radius:0;
+      background: #FFFFFF;
+      color: $color_textBlack;
+      line-height: 1.3;
+      -webkit-appearance:none;
     }
+
 
   }
   input[type="submit"]{
