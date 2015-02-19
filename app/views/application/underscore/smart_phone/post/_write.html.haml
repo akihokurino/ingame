@@ -6,18 +6,19 @@
     .write-page.mainCnt
       %form.textareaWrap.post-form
         %textarea.post-input{placeholder: "そのゲームについて、どう思った？"}
-        %ul.snsBtn
-          - @current_user.user_providers.each do |provider|
-            - if provider[:service_name] == "twitter"
-              %li.tw
-                %label
-                  = check_box_tag "twitter"
-                  twitterに投稿
-            - if provider[:service_name] == "facebook"
-              %li.fb
-                %label
-                  = check_box_tag "facebook"
-                  facebookに投稿
+        /
+          %ul.snsBtn
+            - @current_user.user_providers.each do |provider|
+              - if provider[:service_name] == "twitter"
+                %li.tw
+                  %label
+                    = check_box_tag "twitter"
+                    twitterに投稿
+              - if provider[:service_name] == "facebook"
+                %li.fb
+                  %label
+                    = check_box_tag "facebook"
+                    facebookに投稿
       #thumbnail
       .error-message.errorMessage
       .url-thumbnail-list

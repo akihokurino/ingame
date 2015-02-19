@@ -20,14 +20,14 @@
       %p 写真を変更
       = f.file_field :photo_path, id: "upload-btn"
     .username-input.inputWrap
-      = label_tag :username, 'ユーザーネーム'
-      = f.text_field :username 
+      = f.label :username, 'ユーザーネーム'
+      = f.text_field :username
     .place-input.inputWrap
-      = label_tag :place, '場所'
+      = f.label :place, '場所'
       = f.text_field :place
     .introduction-input.inputWrap
-      = label_tag :introduction, '自己紹介'
-      %textarea.introduction
+      = f.label :introduction, '自己紹介'
+      = f.text_area :introduction, class: "introduction"
     = f.submit "変更を保存", class: "edit"
 
   = render partial: "application/smart_phone/clip_modal"
