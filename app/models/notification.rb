@@ -25,7 +25,7 @@ class Notification < ActiveRecord::Base
     end
 
     def my_count(current_user)
-      current_user.received_notifications.where(is_read: false).count
+      current_user.received_notifications.where(is_read: false).where("created_at > ?", 1.week.ago).count
     end
   end
 end
