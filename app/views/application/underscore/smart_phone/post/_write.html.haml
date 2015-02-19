@@ -6,29 +6,24 @@
     .write-page.mainCnt
       %form.textareaWrap.post-form
         %textarea.post-input{placeholder: "そのゲームについて、どう思った？"}
-
+        /
+          %ul.snsBtn
+            - @current_user.user_providers.each do |provider|
+              - if provider[:service_name] == "twitter"
+                %li.tw
+                  %label
+                    = check_box_tag "twitter"
+                    twitterに投稿
+              - if provider[:service_name] == "facebook"
+                %li.fb
+                  %label
+                    = check_box_tag "facebook"
+                    facebookに投稿
       #thumbnail
       .error-message.errorMessage
       .url-thumbnail-list
-
-      .btnWrap
-        %ul.subBtn
-          /
-            - @current_user.user_providers.each do |provider|
-              - if provider[:service_name] == "facebook"
-                %li.fb
-                  %a.fbBtn.facebook{href: ""}
-                    %span.icon-facebook
-                    %span.fbInner
-                    Facebook
-              - if provider[:service_name] == "twitter"
-                %li.tw
-                  %a.twBtn.twitter{href: ""}
-                    %span.icon-twitter
-                    %span.twInner
-                    Twitter
-          .photoBtnWrap
-            %p.icon-photo
-            %input.addPhoto#upload-btn{type: "file", href: ""}
+      .photoBtnWrap
+        %span 写真をアップロード
+        %input.addPhoto#upload-btn{type: "file", href: ""}
       %a.addGame.submit{href: ""}
-        %span.icon-post 投稿
+        %span 投稿

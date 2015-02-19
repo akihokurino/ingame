@@ -1,14 +1,22 @@
 %script{type: "text/tenplate", id: "log-list-template"}
   .gameListBox.log-list
     .playingBox
-      %p.playing プレイ中
+      .ttlWrap
+        %h1.boxTtl 遊んでる
       %ul.gameListWrap.playing-list
 
     .readyBox
-      %p.ready 気になる
+      .ttlWrap
+        %h1.boxTtl 気になる
       %ul.gameListWrap.ready-list
 
     .playedBox
-      %p.played クリア済
+      .ttlWrap
+        %h1.boxTtl 遊んだ
       %ul.gameListWrap.played-list
+
+    .stockBox
+      .ttlWrap
+        %h1.boxTtl 積んでる
+      %ul.gameListWrap.stock-list
 

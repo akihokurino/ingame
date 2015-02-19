@@ -1,0 +1,46 @@
+@import "../../_function.css.scss";
+
+.deleteConfirmModal {
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 20;
+  margin-left: -131px;
+  margin-top: -40px;
+  padding: 12px 10px 10px;
+  border: 1px solid #ababab;
+  @include border-radius(3px);
+  @include box-sizing;
+  background-color: #fff;
+  text-align: center;
+  
+  .cancel,.done{
+    display: inline-block;
+    width: 120px;
+    @include border-radius(2px);
+    color: #fff;
+    font-weight: bold;
+    font-size: 1rem;
+    line-height: 2.5;
+    text-align: center;
+    cursor: pointer;
+  }
+  .cancel {
+    background: #cecece;
+
+  }
+  .done {
+    background: $color_red;
+  }
+  .delete-confirmTxt {
+    margin-bottom: 8px;
+    color: #3d3d3d;
+    font-size: 1rem;
+  }
+  .descTxt {
+    margin-bottom: 8px;
+    color: #3d3d3d;
+    font-size: 10px;
+  }
+}

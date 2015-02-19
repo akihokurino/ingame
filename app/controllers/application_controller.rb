@@ -7,6 +7,9 @@ class ApplicationController < ActionController::Base
 	before_action :auth, :set_headers
 	helper_method :current_user?
 
+	rescue_from Exception, with: :error500
+  rescue_from ActiveRecord::RecordNotFound, ActionController::RoutingError, with: :error404
+
 	include Jpmobile::ViewSelector
 
 	def cors_preflight_check
@@ -62,4 +65,15 @@ class ApplicationController < ActionController::Base
 
 		redirect_to admin_games_path unless @current_admin
 	end
+
+	def error500(e)
+    logger.error [e, *e.backtrace].join("¥n")
+    raise
+    #render "error500", status: 500, formats: [:html]
+  end
+
+  def error404(e)
+    raise
+    #render "error404", status: 404, formats: [:html]
+  end
 end

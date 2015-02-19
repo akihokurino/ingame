@@ -1,32 +1,25 @@
-//= require ../../libs/socket.js
-//= require ../../libs/pagenation.js
-//= require ../../libs/url_query.js
-//= require ../../models/log.js
-//= require ../../models/game.js
-//= require ../../models/game_result.js
-//= require ../../collections/logs.js
-//= require ../../collections/game_results.js
 //= require ../../views/log_view.js
 //= require ../../views/logs_view.js
 //= require ../../views/game_view.js
 //= require ../../views/game_result_view.js
 //= require ../../views/game_results_view.js
-//= require ../../libs/post_upload.js
+
 
 (function () {
   var SelectView = Backbone.View.extend({
-    el: $(".post-new-page"),
+    el: ".post-new-page",
     events: {
       "click .playing": "setPlaying",
-      "click .ready": "setAttention",
-      "click .played": "setArchive"
+      "click .ready":   "setAttention",
+      "click .played":  "setArchive",
+      "click .stock":   "setStock"
     },
     template: _.template($("#select-template").html()),
     initialize: function () {
+      var that = this;
+
       this.$el.html("");
       this.$el.html(this.template);
-
-      var that            = this;
 
       this.log_collection = new Logs();
       this.logs_view      = new LogsView({el: ".gameList", collection: this.log_collection, attributes: {template: "#log-template"}});
@@ -35,8 +28,9 @@
       this.attentions     = [];
       this.playings       = [];
       this.archives       = [];
+      this.stocks         = [];
 
-      this.user_id        = $(".post-new-page").data("userid");
+      this.user_id        = $("#wrapper").data("userid");
 
       this.logs_view.collection.reset();
 
@@ -58,13 +52,16 @@
               case 3:
                 that.archives.push(log);
                 break;
+              case 4:
+                that.stocks.push(log);
+                break;
             }
           }
         },
         error: function () {
 
         }
-      })
+      });
     },
     setPlaying: function () {
       this.logs_view.collection.reset();
@@ -92,11 +89,20 @@
         this.logs_view.collection.add(this.archives[i]);
       }
       this.$el.find("ul.sortBox li.played-li").addClass("current");
+    },
+    setStock: function () {
+      this.logs_view.collection.reset();
+      this.logs_view.removeLogs();
+      this.$el.find("ul.sortBox li").removeClass("current");
+      for (var i = 0; i < this.stocks.length; i++) {
+        this.logs_view.collection.add(this.stocks[i]);
+      }
+      this.$el.find("ul.sortBox li.stock-li").addClass("current");
     }
-  })
+  });
 
   var WriteView = Backbone.View.extend({
-    el: $(".post-new-page"),
+    el: ".post-new-page",
     template: _.template($("#write-template").html()),
     events: {
       "click .submit":     "post",
@@ -105,10 +111,11 @@
       "keyup .post-input": "checkUrl"
     },
     initialize: function () {
+      var that = this;
+
       this.$el.html("");
       this.$el.append(this.template);
 
-      var that      = this;
       var tmp       = location.href.split("/");
       this.log_id   = tmp.pop();
       this.game_id  = tmp.pop();
@@ -138,7 +145,7 @@
         error: function () {
 
         }
-      })
+      });
     },
     facebook: function (e) {
       e.preventDefault();
@@ -243,36 +250,31 @@
             error: function () {
 
             }
-          })
+          });
         }
       } else {
         this.$(".url-thumbnail-list").html("");
         that.url_thumbnail = null;
       }
     }
-  })
+  });
 
 
   var AddView = Backbone.View.extend({
-    el: $(".post-new-page"),
+    el: ".post-new-page",
     events: {
       "submit": "searchWithEnter"
     },
     template: _.template($("#add-template").html()),
     initialize: function () {
-      $(window).unbind("scroll");
       this.$el.html("");
       this.$el.append(this.template);
 
-      _.bindAll(this, "setGameResultCollection");
-
-      var that                    = this;
       this.game_result_collection = new GameResults();
       this.game_results_view      = new GameResultsView({el: ".gameList", collection: this.game_result_collection});
 
       this.search_title           = this.$(".search-title-input");
       this.current_search_title   = null;
-      this.page                   = 1;
 
       if (url_query.getQueryString()) {
         this.current_search_title = url_query.getQueryString().search_word;
@@ -281,35 +283,8 @@
       }
     },
     search: function () {
-      var that                  = this;
       this.current_search_title = this.search_title.val();
-      $(window).unbind("scroll");
-
-      this.game_result_collection.fetch({
-        data: {search_title: this.current_search_title, page: this.page},
-        success: function (model, response, options) {
-          that.pagenation = new Pagenation(that.game_result_collection, {search_title: that.current_search_title}, that.setGameResultCollection);
-
-          that.game_result_collection.reset();
-          that.game_results_view.$el.html("");
-          that.setGameResultCollection(model, response, options);
-        },
-        error: function () {
-
-        }
-      });
-    },
-    setGameResultCollection: function (model, response, option) {
-      if (response.results && response.results.length > 0) {
-        for (var i = 0; i < response.results.length; i++) {
-          var game_result = new GameResult(response.results[i]);
-          this.game_results_view.collection.add(game_result);
-        }
-      }
-
-      if (response.results.length != 0) {
-        $(window).bind("scroll", this.pagenation.load);
-      }
+      this.game_results_view.search({search_title: this.current_search_title, page: 1});
     },
     searchWithEnter: function (e) {
       e.preventDefault();
@@ -318,7 +293,7 @@
         url_query.insertParam("search_word", this.current_search_title);
       }
     }
-  })
+  });
 
 
   var Router = Backbone.Router.extend({
@@ -336,7 +311,7 @@
     add: function () {
       this.current_app = new AddView();
     }
-  })
+  });
 
   var router = new Router();
   Backbone.history.start();

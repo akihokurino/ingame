@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_action :auth_provider, only: [:new]
 
   def login
+    reset_session
   end
 
   def setting
@@ -28,6 +29,12 @@ class UsersController < ApplicationController
       redirect_to "/users/#{@user[:id]}#logs", notice: "ユーザー情報を変更しました"
     else
       render "edit"
+    end
+  end
+
+  def destroy
+    if @current_user.destroy
+      redirect_to login_users_path
     end
   end
 

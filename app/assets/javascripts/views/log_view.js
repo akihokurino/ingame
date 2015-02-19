@@ -6,6 +6,8 @@ var LogView = Backbone.View.extend({
     "click .delete-btn": "showDeleteConfirm"
   },
   initialize: function () {
+    _.bindAll(this, "destroy");
+
     if (this.attributes && this.attributes.type) {
       this.type = this.attributes.type;
     }
@@ -17,11 +19,16 @@ var LogView = Backbone.View.extend({
     this.listenTo(this.model, "destroy", this.remove);
   },
   destroy: function () {
-    this.model.url += this.model.id;
+    this.model.url += this.model.get("game").id;
     this.model.destroy();
   },
   remove: function () {
-    this.$el.remove();
+    var that = this;
+    this.$el.animate({
+      "opacity": 0
+    }, 500, function () {
+      that.$el.remove();
+    });
   },
   render: function () {
     var template = this.template(this.model.toJSON());
@@ -35,8 +42,15 @@ var LogView = Backbone.View.extend({
     }
   },
   showDeleteConfirm: function () {
-    $(".delete-confirm-wrap").css("display", "block");
-    $(".layer").css("display", "block");
-    var delete_confirm_view = new DeleteConfirmView({attributes: {view: this, target: "ゲーム", desc: "このゲームに関する投稿データもすべて削除されます"}});
+    var custom_modal_view = new CustomModalView({
+      attributes: {
+        view: this,
+        title: "このゲームをマイゲームから削除しますか？",
+        desc: "このゲームに関する投稿データもすべて削除されます",
+        template: _.template($("#delete-confirm-template").html()),
+        callback: this.destroy,
+        className: "deleteConfirmModal",
+      }
+    });
   }
-})
+});

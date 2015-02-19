@@ -8,16 +8,17 @@
 
 %w(
 	気になる
-	プレイ中
-	アーカイブ
+	遊んでる
+	遊んだ
+  積んでる
 ).each_with_index do |status, index|
 	Status.create(name: status)
 end
 
 %w(
   をフォローしました
-  のポストにいいね！と言っています
-  のポストにコメントしました
+  の投稿にいいね！と言っています
+  の投稿にコメントしました
   のコメントにいいね！と言っています
 ).each do |value|
   NotificationType.create(value: value)

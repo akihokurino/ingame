@@ -8,4 +8,4 @@ var GameView = Backbone.View.extend({
 
     return this;
   }
-})
+});

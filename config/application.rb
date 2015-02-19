@@ -21,5 +21,10 @@ module Ingame
     # config.i18n.default_locale = :de
 
     # config.threadsafe!
+
+    config.time_zone = 'Tokyo'
+    config.active_record.default_timezone = :local
+    I18n.enforce_available_locales = false
+    config.i18n.default_locale = :ja
   end
 end

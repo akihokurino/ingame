@@ -1,0 +1,37 @@
+= content_for :head do
+  = stylesheet_link_tag    "smart_phone/edit_account"
+
+= content_for :last do
+  = javascript_include_tag "main/smart_phone/edit_account"
+
+= render partial: "application/smart_phone/default_header"
+
+%section.mainContent.edit-account-page
+  .settingTopBox
+    %h1.mainTtl アカウント設定
+  .settingBox
+    .settingBoxInner
+      %ul.settingList
+        %li.item
+          %h2.settingTtl SNSアカウントの連携
+          %ul.snsList
+            %li
+              .snsName Twitter
+              - unless @twitter_provider
+                = link_to "連携する", "/auth/twitter", class: "notConnect connect-twitter-btn"
+              - else
+                %span.connectTw 連携中
+            %li
+              .snsName Facebook
+              - unless @facebook_provider
+                = link_to "連携する", "/auth/facebook", class: "notConnect connect-facebook-btn"
+              - else
+                %span.connectFb 連携中
+        %li.item
+          %h2.settingTtl gamrを退会
+          %p.settingTxt 退会すると、アカウントが持つ全ての情報が削除されます。
+          = link_to "退会する", "#", class: "dltAccount delete-account-btn"
+
+= render partial: "application/pc/footer"
+
+= render partial: "application/underscore/pc/common/delete_confirm"

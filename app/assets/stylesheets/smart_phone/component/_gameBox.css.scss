@@ -1,9 +1,9 @@
-@import "../_function.css.scss";
+@import "../../_function.css.scss";
 
 /*---   .gameBox   ---------------------------*/
 .gameBox {
 	.sortBox {
-		width: 300px;
+		width: 95%;
 		margin: 13px auto;
 		border: 1px solid $color_border;
 		@include border-radius(2px);
@@ -11,7 +11,7 @@
 
 		.item {
 			float: left;
-			width: 100px;
+			width: 25%;
 			border-right: 1px solid $color_border;
 			@include box-sizing;
 			font-size: 12px;
@@ -19,9 +19,9 @@
 				border: none;
 			}
 		}
-		.playing, .ready, .played {
+		.playing, .ready, .played,.stock {
 			display: table-cell;
-			width: 100px;
+			width: 25%;
 			height: 30px;
 			padding-top: 2px;
 			@include box-sizing;
@@ -34,7 +34,7 @@
 		.ready {
 			border-radius: 1px 0 0 1px;
 		}
-		.played {
+		.stock {
 			border-radius: 0 1px 1px 0;
 		}
 		.current {
@@ -43,19 +43,20 @@
 					border: none;
 				}
 			}
+			.playing,.ready,.played,.stock{
+				color: #fff;
+			}
 			.playing{
 				background: $color_red;
-				color: #ffffff;
 			}
 			.ready{
 				background: $color_yellow;
-				color: #ffffff;
-
 			}
 			.played {
 				background: $color_blue;
-				color: #ffffff;
-
+			}
+			.stock {
+				background: $color_green;
 			}
 		}
 	}

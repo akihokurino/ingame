@@ -16,10 +16,10 @@
       #thumbnail{width: 151, height: 151}
         = image_tag "/user_photos/#{@current_user[:photo_path]}", width: "151", height: "151", alt: "", class: "thumbnailImg"
       .uploadBtnWrap
-        .uploadBtnTxt 写真を選択
+        .uploadBtnTxt プロフィール写真を変更
         %form
-          %input.uploadBtn#upload-btn{type: "file", value: "写真を選択"}
+          %input.uploadBtn#upload-btn{type: "file", value: "プロフィール写真を変更"}
       %p.nextBtnWrap03
-        %a.nextBtn03.next-page{href: ""} 設定せずに初期設定を完了
+        %a.nextBtn03.next-page{href: ""} 初期設定を完了
 
     = render partial: "application/pc/clip_modal"

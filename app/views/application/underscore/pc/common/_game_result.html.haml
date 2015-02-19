@@ -5,11 +5,11 @@
         %li.gameImg
           %figure.gameImgInner
             {{ if (photo_path) { }}
-            %img{src: "/game_photos/{{= photo_path }}", width: "166", alt: ""}
+            %img{src: "/game_photos/{{= photo_path }}", width: "155", alt: ""}
             {{ } else if (photo_url) { }}
-            %img{src: "{{= photo_url }}", width: "166", alt: ""}
+            %img{src: "{{= photo_url }}", width: "155", alt: ""}
             {{ } else { }}
-            %img{src: "/game_photos/default.png", width: "166", alt: ""}
+            %img{src: "/game_photos/default.png", width: "155", alt: ""}
             {{ } }}
         .gameMeta
           %span{class: "device device{{= device }}"} {{= device }}
@@ -26,7 +26,4 @@
     .status
       %div.statusWrap
         %select.statusBtn.my-status{name: "status", size: 1}
-          %option{value: ""} 登録する
-          %option{value: 1} 気になる
-          %option{value: 2} プレイ中
-          %option{value: 3} クリア済
+          = render partial: "application/common/status"

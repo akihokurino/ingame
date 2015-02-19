@@ -1,12 +1,11 @@
 %script{type: "text/template", id: "game-template"}
-  %figure.gameImageWrap
+  %figure.gameImgWrap
     {{ if (photo_path) { }}
-    %img.gameImage{src: "/game_photos/{{= photo_path }}", width: "50", alt: "image"}
+    %img.gameImg{src: "/game_photos/{{= photo_path }}", height: "100%", alt: "image"}
     {{ } else if (photo_url) { }}
-    %img.gameImage{src: "{{= photo_url }}", width: "50", alt: "image"}
+    %img.gameImg{src: "{{= photo_url }}", height: "100%", alt: "image"}
     {{ } else { }}
-    %img.gameImage{src: "/game_photos/default.png", width: "50", alt: "image"}
+    %img.gameImg{src: "/game_photos/default.png", height: "100%", alt: "image"}
     {{ } }}
-    %figcaption.gameTtl
-      {{= title }}
-  /%a.gameSelect{href: "/posts/new#select"} ゲームを変更する
+  %figcaption.gameTtl
+    {{= title }}

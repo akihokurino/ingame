@@ -1,0 +1,8 @@
+%script{type: "text/template", id: "status-select-template"}
+  {{ if (i_registed) { }}
+  %select.statusBtn.my-status.registed{name: "status", size: "1"}
+    = render partial: "application/common/status"
+  {{ } else { }}
+  %select.statusBtn.new-status{name: "status", size: "1"}
+    = render partial: "application/common/status"
+  {{ } }}

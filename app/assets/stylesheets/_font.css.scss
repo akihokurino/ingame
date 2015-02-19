@@ -1,26 +1,12 @@
 @font-face {
 	font-family: 'icomoon';
-	src:asset_url('font/icomoon.eot?-e10f33');
-	src:asset_url('font/icomoon.eot?#iefix-e10f33') format('embedded-opentype'),
-		asset_url('font/icomoon.woff?-e10f33') format('woff'),
-		asset_url('font/icomoon.ttf?-e10f33') format('truetype'),
-		asset_url('font/icomoon.svg?-e10f33#icomoon') format('svg');
+	src:asset_url('font/icomoon.eot?1udwvz');
+	src:asset_url('font/icomoon.eot?#iefix1udwvz') format('embedded-opentype'),
+		asset_url('font/icomoon.woff?1udwvz') format('woff'),
+		asset_url('font/icomoon.ttf?1udwvz') format('truetype'),
+		asset_url('font/icomoon.svg?1udwvz#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
-}
-
-[class^="icon-"], [class*=" icon-"] {
-	font-family: 'icomoon';
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
-
-	/* Better Font Rendering =========== */
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
 }
 
 [class^="icon-"], [class*=" icon-"] {
@@ -121,8 +107,20 @@
 	content: "\e614";
 }
 
+.icon-tag:before {
+	content: "\e618";
+}
+
 .icon-cart:before {
 	content: "\e616";
+}
+
+.icon-calendar:before {
+	content: "\e619";
+}
+
+.icon-storage:before {
+	content: "\e61a";
 }
 
 .icon-info:before {
@@ -132,3 +130,4 @@
 .icon-youtube:before {
 	content: "\e617";
 }
+

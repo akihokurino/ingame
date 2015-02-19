@@ -5,141 +5,176 @@ html {
   background: #5e5e5e;
 }
 
-/*---   .mainContent   ---------------------------*/
 .mainContent {
   background: #eee;
+  .messageDialog {
+    display: none;
+    &.show{
+      position: fixed;
+      display: block;
+      top: 80px;
+      left: 50%;
+      display: block;
+      padding: 10px 30px;
+      margin-left: -150px;
+      width: 300px;
+      box-sizing: border-box;
+      border-radius: 4px;
+      background: rgba(0, 0, 0, 0.73);
+      box-shadow: 0 0 10px rgba(0,0,0,.5);
+      color: #eee;
+      font-size: 14px;
+      text-align: center;
+      line-height: 2.5;
+      z-index: 10;
+      &:after{
+        font-family: "icomoon"
+      }
+    }
+  }
 
-  /*---   .gameBox   ----------*/
   .gameBox {
     border-bottom: 1px solid #e6e6e6;
     background: #fff;
     @include clearfix;
 
-    /*---   .gameBoxInner   ---*/
     &Inner {
       width:$width;
-      margin: 0 auto;
+      margin: 0 auto 20px;
       padding-top: 40px;
+      @include clearfix;
+
     }
-    /*---   .gameImg   ---*/
-    .gameImgWrap {
+    .gameMainWrap {
       float: left;
       width: 240px;
       text-align:center;
       img{
-        margin-bottom: 10px;
+        margin-bottom: 2px;
         @include box-shadow(0,0,4px,0,rgba(0,0,0,0.5));
       }
-    }
-    .toOriginalWrap{
-      text-align: right;
-      .toOriginal{
-        color: $color_blue;
-        font-size: 12px;
+      .Source{
+        margin-bottom: 10px;
+        text-align: left;
+        a{
+          color: $color_textGray;
+          font-size: 12px;
+        }
       }
-    }
-    .rightBox{
-      position:absolute;
-      top:0;
-      right:0;
-    }
-    .reviewBox{
-      display:inline-block;
-      margin-bottom:10px;
-      padding: 3px;
-      width: 240px;
-      border:solid 4px $color_border;
+      .gameBtnList {
+      width: 90%;
+      margin: 0 auto;
+      @include box-sizing;
+      font-size: 14px;
       text-align:center;
-      .review{
-        padding:10px;
-        border:1px solid $color_border;
-        color:$color_textBlack;
+      .item {
+        display:inline-block;
         text-align:center;
-        .value {
-          padding:0 10px 8px 10px;
-          color: orange;
-          font-weight: bold;
-          font-size: 30px;
-        }
-        .icon-star{
-          float:left;
-          display:inline-block;
-          font-size:28px;
-        }
-        .starList {
-          display:inline-block;
-          font-size:1.5rem;
-        }
-        .starOn {
-          display: inline-block;
-          color:orange;
-        }
-        .starOff {
-          display: inline-block;
-        }
-        @include clearfix;
+        width: 100%;
+        margin:5px 0;
       }
     }
-    .amazonBtn{
+    .reviewBtn,.statusBtn{
+      @include appearance;
+      width: 100%;
+      padding: 0 70px;
+      line-height: 3;
+      text-align: center;
+      }
+      .reviewBtn{
+        background: #fff;
+        border: 1px solid $color_border;
+        color: $color_textBlack;
+      }
+      .statusBtn{
+        background: #fff;
+        border: solid 1px $main_color;
+        color: $main_color;
+      }
+      .registed{
+        background:$main_color;
+        border: none;
+        color:#fff;
+      }
+    }
+    .deleteBtn{
+      display: block;
+      width: 160px;
+      margin: 0 auto 10px;
+      padding: 4px;
+      @include box-sizing;
+      color: $color_red;
+      font-size: 10px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .gameCapWrap {
+      float: right;
+      position: relative;
+      width: 700px;
+      @include clearfix;
+
+      .leftBox{
+        float: left;
+        width: 420px;
+        padding-right: 10px;
+        font-size:12px;
+      }
+      .rightBox{
+        width: 260px;
+        float: right;
+
+      }
+    }
+    .gameTtl {
+      margin-bottom: 14px;
+      color: $color_textBlack;
+      font-size: 2rem;
+      line-height:1.5;
+    }
+    .officialLink,.moreSearch{
       display:inline-block;
-      margin:5px 0;
       padding:10px;
-      @include border-radius(4px);
+      border: solid 1px $color_border;
+      @include border-radius(2px);
       color:$color_textBlack;
-      font-size:1rem;
+        &:hover{
+          text-decoration: none;
+          background: #fdfdfd;
+        }
       .icon-search{
         font-weight:bold;
       }
-    }
-    .youtubeBtn{
-      @extend .amazonBtn;
     }
     .icon-youtube:before,.icon-cart:before{
       display: inline-block;
       vertical-align: -5%;
       margin-right: 10px;
     }
-    /*---   .gameInfoBox   ---*/
-    .gameInfoBox {
-      position: relative;
-      float: right;
-      width: 700px;
+    .review{
+      margin: 15px 0;
       @include clearfix;
-
-      &Inner{
-        width: 420px;
-        padding-right: 10px;
+      vertical-align: middle;
+      span{
+        vertical-align: middle;
       }
-    }
-    /*---   .gameTtl   ---*/
-    .gameTtl {
-      margin-bottom: 14px;
-      color: $color_textBlack;
-      font-weight: bold;
-      font-size: 1.5rem;
-      line-height:1.5;
-    }
-    /*---   .gameInfoList   ---*/
-    .gameInfoList {
-      line-height: 1.5;
-      margin-bottom:20px;
-      background: #f7f7f7;
-      border: solid 1px $color_border;
-      .item {
-        font-size: 0.75rem;
-        padding: 6px;
-        border-bottom: solid 1px $color_border;
-        .itemName{
-          display: inline-block;
-          @include box-sizing;
-          color:$color_textBlack;
-          font-weight:bold;
-          vertical-align: middle;       }
-        .itemContent{
-          display: inline-block;
-          color:$color_textBlack;
-          text-align:left;
-        }
+      .icon-star{
+        float:left;
+        display:inline-block;
+        font-size:20px;
+      }
+      .starList {
+        vertical-align: middle;
+        display:inline-block;
+        font-size:1rem;
+      }
+      .starOn {
+        display: inline-block;
+        color:orange;
+      }
+      .starOff {
+        display: inline-block;
       }
     }
     .gameSummary{
@@ -152,25 +187,24 @@ html {
           @include box-sizing;
           border-bottom: 1px solid $color_border;
           color: $color_textBlack;
-          font-size:16px;
-          font-weight:bold;
+          font-size:12px;
           text-align:left;
           &:before{
             position: relative;
-          content:"";
-          display:inline-block;
-          margin-right:10px;
-          width:8px;
-          height:8px;
-          border-color: $color_textBlack;
-          border-right:solid 2px;
-          border-bottom:solid 2px;
-          -webkit-transform: rotate(45deg);
-             -moz-transform: rotate(45deg);
-              -ms-transform: rotate(45deg);
-               -o-transform: rotate(45deg);
-                  transform: rotate(45deg);
-          top:-4px;
+            content:"";
+            display:inline-block;
+            margin-right:10px;
+            width:4px;
+            height:4px;
+            border-color: $color_textBlack;
+            border-right:solid 2px;
+            border-bottom:solid 2px;
+            -webkit-transform: rotate(45deg);
+               -moz-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+                 -o-transform: rotate(45deg);
+                    transform: rotate(45deg);
+            top:-4px;
           }
       }
 
@@ -180,9 +214,9 @@ html {
 
       p{
         margin-bottom: 10px;
-        font-size:0.875rem;
+        font-size:12px;
         color:$color_textBlack;
-        line-height:1.5;
+        line-height:1.8;
         -webkit-transition: all 0.5s;
         -moz-transition: all 0.5s;
         -ms-transition: all 0.5s;
@@ -200,199 +234,68 @@ html {
           height: auto;
       }
     }
-    /*---   .amazonBtn   ---*/
-    // .amazonBtn {
-    //   color: #2b518b;
-    //   font-weight: bold;
-    //   font-size: .875rem;
-    //   text-decoration: underline;
 
-    //   &:hover {
-    //     text-decoration: none;
-    //   }
-    // }
-    /*---   .review   ---*/
-    /*---   .gameBtnList   ---*/
-    .gameBtnList {
-      font-size: 0;
-
-      .item {
-        display: inline-block;
-        overflow: hidden;
-        position: relative;
-        width: 126px;
-        cursor: pointer;
-
-        &:first-child {
-          margin-right: 30px;
+    .gameInfoList {
+      line-height: 1.5;
+      margin-bottom:20px;
+      background: #f7f7f7;
+      border: solid 1px $color_border;
+      font-size: 12px;
+      .officialLink{
+        display: block;
+        color: $color_textBlack;
+        font-weight: bold;
+        &:before{
+          margin-right: 5px;
         }
-        @-moz-document url-prefix() {
-          &:after {
-            display: block;
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            margin-top: -3px;
-            border-top: 5px solid #fff;
-            border-right: 4px solid transparent;
-            border-bottom: 4px solid transparent;
-            border-left: 5px solid transparent;
-            content:"";
-          }
-        }
-
-        .statusWrap {
-          position: relative;
+      }
+      .item,.officialLink{
+        padding: 6px;
+        border-bottom: solid 1px $color_border;
+        .itemName{
           display: inline-block;
-          overflow: hidden;
-          width: 100%;
-          border: 1px solid darken($main_color,7%);
-          @include bglinear(lighten($main_color, 7%), $main_color);
-          @include border-radius(2px);
           @include box-sizing;
-          color: #fff;
-          cursor: pointer;
-
-          &:after {
-            display: block;
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            margin-top: -3px;
-            border-top: 5px solid #fff;
-            border-right: 4px solid transparent;
-            border-bottom: 4px solid transparent;
-            border-left: 5px solid transparent;
-            content:"";
-          }
+          color:$color_textBlack;
         }
-        .statusBtn {
-          display: block;
-          width: 90%;
-          height: 33px;
-          margin: 0 auto;
-          border: none;
-          background: none;
-          color: #fff;
-          font-size: .875rem;
-          text-indent: .01px;
-          text-overflow: "";
-          line-height: 1rem;
-          @include appearance;
-          cursor: pointer;
-          outline: 0;
-
-          &::-ms-expand {
-            display: none;
-          }
-          @-moz-document url-prefix() {
-            width: 182px;
-            padding-left: 10px;
-          }
-        }
-        .registed .statusWrap {
-          border: 1px solid darken($color_border,7%);
-          @include bglinear(lighten($color_border, 7%), $color_border);
-          
-          &:after {
-            display: block;
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            margin-top: -3px;
-            border-top: 5px solid $color_textGray;
-            border-right: 4px solid transparent;
-            border-bottom: 4px solid transparent;
-            border-left: 5px solid transparent;
-            content:"";
-          }
-        }
-        .registed .statusBtn {
-          color: $color_textGray;
-
-          @-moz-document url-prefix() {
-            option {
-              color: $main_color;
-            }
-          }
+        .itemContent{
+          display: inline-block;
+          color:$color_textBlack;
+          text-align:left;
+          font-weight:bold;
         }
       }
     }
-    /*---   .sortBox   ---*/
+
     .sortBox {
       clear: both;
-      padding-top: 30px;
+      border-top: solid 1px $color_border;
 
-      .sortTtl {
-        margin-bottom: 26px;
-        font-size: 1.125rem;
-        text-align: center;
-      }
       .sortList {
         width: $cntWidth;
         margin: 0 auto;
         color: #3e3e3e;
-        font-size: .875rem;
+        font-size: 12px;
+        line-height: 3.5;
 
         .item {
           display: inline-block;
           width: 173px;
           text-align: center;
           cursor: pointer;
+          a{
+            color: $color_textBlack;
+            &:hover {
+              text-decoration: none;
+            }
+          }
 
           &.current {
-            position: relative;
-            color: $main_color;
-
-            &:after {
-              position: absolute;
-              bottom: 0;
-              left: 50%;
-              width: 100%;
-              margin-left: -50%;
-              border-bottom: 4px solid $main_color;
-              content: "";
-            }
-            .follow {
-              color: $main_color;
-            }
-            .all {
-              color: $main_color;
-            }
-            .star {
-              color: $main_color;
+            a{
+              color: $color_textBlack;
+              font-weight: bold;
             }
           }
-        }
-        .follow {
-          display: block;
-          padding-bottom: 18px;
-          color: #3e3e3e;
 
-          &:hover {
-            color: $main_color;
-            text-decoration: none;
-          }
-        }
-        .all {
-          display: block;
-          padding-bottom: 18px;
-          color: #3e3e3e;
-
-          &:hover {
-            color: $main_color;
-            text-decoration: none;
-          }
-        }
-        .star {
-          display: block;
-          padding-bottom: 18px;
-          color: #3e3e3e;
-
-          &:hover {
-            color: $main_color;
-            text-decoration: none;
-          }
         }
       }
     }

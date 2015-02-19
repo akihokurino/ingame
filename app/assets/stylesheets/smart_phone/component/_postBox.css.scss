@@ -1,4 +1,4 @@
-@import "../_function.css.scss";
+@import "../../_function.css.scss";
 
 /*---   .postBox   ---------------------------*/
 .postBox {
@@ -7,7 +7,6 @@
 	@include box-sizing;
 	background: #ffffff;
 	@include clearfix;
-
 	.gameWrap{
 		float: right;
 		width: 80px;
@@ -18,28 +17,55 @@
 	}
 	.statusBox{
 		width: 80px;
-		margin:4px 0;
+		margin-bottom: 10px;
 	}
-	.moodReady {
+	.moodReady,.moodPlaying,.moodPlayed,.moodStock {
+		position: relative;
 		display: inline-block;
 		width: 100%;
 		@include border-radius(2px);
 		@include box-sizing;
 		font-size: 12px;
-		line-height: 2;
+		color: #fff;
 		text-align: center;
-		color:$color_yellow;
-		border: 1px solid $color_yellow;
+		line-height: 2;
+		&:after{
+			position: absolute;
+			top: 100%;
+			left: 50%;
+			margin-left: -5px;
+			content: "";
+			width: 0;
+			height: 0;
+			border-right: solid 5px transparent;
+			border-bottom: solid 5px transparent;
+			border-left: solid 5px transparent;
+		}
+
+	}
+	.moodReady{
+		background: $color_yellow;
+		&:after{
+			border-top: solid 5px $color_yellow;
+		}
 	}
 	.moodPlaying {
-		@extend .moodReady;
-		color:$color_red;
-		border: 1px solid $color_red;
+		background: $color_red;
+		&:after{
+			border-top: solid 5px $color_red;
+		}
 	}
 	.moodPlayed {
-		@extend .moodReady;
-		color:$color_blue;
-		border: 1px solid $color_blue;
+		background: $color_blue;
+		&:after{
+			border-top: solid 5px $color_blue;
+		}
+	}
+	.moodStock{
+		background: $color_green;
+		&:after{
+			border-top: solid 5px $color_green;
+		}
 	}
 
 	.left{

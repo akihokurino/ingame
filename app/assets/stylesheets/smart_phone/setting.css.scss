@@ -1,6 +1,6 @@
 @import "../_function.css.scss";
-@import "_gameList.css.scss";
-@import "_clipBox.css.scss";
+@import "component/_gameList.css.scss";
+@import "component/_clipBox.css.scss";
 
 /*---   common   ---------------------------*/
 @include keyframes(changeFollow){
@@ -216,7 +216,6 @@ body {
 		.btnBox {
 			padding: 15px;
 			margin:0 auto;
-			width: 100px;
 		}
 		.btnWrap{
 			position: relative;

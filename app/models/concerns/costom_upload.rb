@@ -7,7 +7,7 @@ module CostomUpload
     def file_upload(file, type, clip = {})
       name  = file.original_filename
       perms = [".jpg", ".jpeg", ".gif", ".png"]
-      if perms.include?(File.extname(name).downcase) && file.size <= 1.megabyte
+      if perms.include?(File.extname(name).downcase) && file.size <= 3.megabyte
         photo_path = self.generate("alphabet", 10) + name
         File.open("public/#{type}_photos/#{photo_path}", "wb") do |f|
           f.write(file.read)
@@ -43,7 +43,7 @@ module CostomUpload
         url  = url.sub(/^.*,/, '')
         file = Base64.decode64 url
 
-        if extname.nil? || file.size > 1.megabyte
+        if extname.nil? || file.size > 3.megabyte
           raise "wrong extname or too big"
         else
           f.write file

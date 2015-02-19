@@ -17,8 +17,11 @@
 //= require backbone
 //= require ./underscore_template.js
 //= require ./common.js
-//= require ./libs/event_handle.js
-//= require ./vendors/masonry.pkgd.min.js
-//= require ./vendors/jquery.autosize.min.js
+//= require_tree ./libs
+//= require_tree ./vendors
+//= require_tree ./models
+//= require_tree ./collections
+//= require ./views/custom_modal_view.js
+//= require ./views/tooltip_view.js
 
 

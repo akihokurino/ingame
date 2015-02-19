@@ -1,0 +1,110 @@
+@import "../_function.css.scss";
+
+// setting privacy
+body{
+	background-color: $bg_color;
+}
+header{
+	background-color: $base_color;
+	.imgWrap{
+		width: 120px;
+		margin:0 auto;
+	}
+}
+.settingTopBox{
+	padding-top:45px;
+	background: #fff;
+
+	.mainTtl{
+		padding: 20px 10px;
+		color:$color_textBlack;
+		font-size:20px;
+		text-align:center;
+	}
+	.mainTxt{
+		padding:10px;
+		color:$color_textGray;
+		font-size:12px;
+		line-height:1.5;
+	}
+}
+
+.settingBox{
+	margin:5px;
+	color:$color_textBlack;
+	&Inner {
+	    width: 100%;
+	    padding: 10px;
+	    border: solid 1px $color_border;
+	    @include border-radius(2px);
+	    @include box-sizing;
+	    background: #fff;
+	    color: $color_textBlack;
+	  }
+	.item{
+		margin-bottom:5px;
+		padding:5px;
+		background-color: #fff;
+		.settingTtl{
+			margin-bottom: 5px;
+			font-weight:bold;
+		}
+		.settingTxt{
+			font-size:12px;
+			line-height:1.5;
+		}
+		.snsList{
+			li{
+				margin-bottom: 10px;
+			}
+		    .coopStatus{
+		      display: inline;
+		    }
+		    .snsName{
+		    	display: inline-block;
+		    	min-width: 75px;
+		    	margin-right: 10px;
+		    }
+		    .notConnect,.connectTw,.connectFb{
+		    	display: inline-block;
+			    @include border-radius(2px);
+		    	color: #fff;
+		    	line-height: 1.5;
+		    	padding: 0 10px;
+		    }
+		    .notConnect{
+		    	background: #bbb;
+		    }
+		    .connectTw{
+		    	background: $twitter_blue;
+		    }
+		    .connectFb{
+		    	background: $facebook_blue;
+		    }
+		}
+		.dltAccount{
+			display: inline-block;
+		    padding: 0 10px;
+		    margin: 10px 0;
+	    	background: #474747;
+		    @include border-radius(2px);
+	    	color: #fff;
+	    	line-height: 2;
+		    text-align: center;
+
+		    &:hover {
+		      text-decoration: none;
+		    }
+		}
+	}
+}
+footer{
+	padding:20px;
+	background-color: $color_textBlack;
+	color:$color_textGray;
+	font-size:12px;
+	text-align:center;
+	a{
+		color:$color_textGray;
+	}
+}

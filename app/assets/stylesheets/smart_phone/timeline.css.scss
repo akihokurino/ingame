@@ -1,5 +1,5 @@
 @import "../_function.css.scss";
-@import "_postBox.css.scss";
+@import "component/_postBox.css.scss";
 
 /*---   common   ---------------------------*/
 html {
@@ -11,6 +11,32 @@ html {
 	text-align: left;
 	padding-top: 45px;
 	box-sizing:border-box;
+
+	.postDialog{
+		display: none;
+		&.show{
+			position: absolute;
+			display: block;
+			top: 80px;
+			left: 50%;
+			display: block;
+			padding: 10px 30px;
+			margin-left: -150px;
+			width: 300px;
+			box-sizing: border-box;
+			border-radius: 4px;
+			background: rgba(0, 0, 0, 0.73);
+			box-shadow: 0 0 10px rgba(0,0,0,.5);
+			color: #eee;
+			font-size: 14px;
+			text-align: center;
+			line-height: 2.5;
+			z-index: 10;
+			&:after{
+				font-family: "icomoon"
+			}
+		}
+	}
 
 	.postWrap {
 		padding: 10px;
@@ -29,22 +55,23 @@ html {
 			@include appearance;
 			display:inline-block;
 			padding:0 10px;
+			margin: 6px 0;
 			border: none;
 			background: linear-gradient(lighten($main_color,5%),$main_color);
 			&:active{
 				background: linear-gradient($main_color,lighten($main_color,5%));
 			}
-			@include border-radius(4px);
+			@include border-radius(2px);
 			box-sizing: border-box;
 			color: #fff;
-			font-size: 16px;
-			line-height:1.5;
+			font-size: 12px;
+			line-height:2;
 			&:before{
 				display:inline-block;
 				margin-right:5px;
 				color: #fff;
-				font-size:28px;
-				vertical-align: -15%;
+				font-size:16px;
+				vertical-align: -10%;
 			}
 
 		}

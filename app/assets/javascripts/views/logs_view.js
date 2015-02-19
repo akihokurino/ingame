@@ -26,6 +26,9 @@ var LogsView = Backbone.View.extend({
           case 3:
             this.$el.find(".played-list").prepend(log_view.render().el);
             break;
+          case 4:
+            this.$el.find(".stock-list").prepend(log_view.render().el);
+            break;
         }
       } else {
         var log_view = new LogView({model: log, attributes: {template: this.template}});
@@ -40,5 +43,6 @@ var LogsView = Backbone.View.extend({
     this.$el.find(".ready-list").html("");
     this.$el.find(".playing-list").html("");
     this.$el.find(".played-list").html("");
+    this.$el.find(".stock-list").html("");
   }
-})
+});

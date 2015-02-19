@@ -7,6 +7,7 @@
 = render partial: "application/smart_phone/default_header"
 
 .timeline-page.mainCnt
+  .postDialog つぶやきを投稿しました
   .postWrap
     .imgWrap
       %a{href:"/users/#{@current_user[:id]}#logs"}
@@ -15,12 +16,11 @@
   .post-list
   = image_tag "gif-load.gif", class: "loading-gif"
 
-  = render partial: "application/smart_phone/comments_modal"
-
 
 = render partial: "application/underscore/smart_phone/common/delete_confirm"
 = render partial: "application/underscore/smart_phone/common/post"
 = render partial: "application/underscore/smart_phone/common/comment"
+= render partial: "application/underscore/smart_phone/common/comment_modal"
 
 
 

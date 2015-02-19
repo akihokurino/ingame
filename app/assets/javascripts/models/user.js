@@ -22,4 +22,4 @@ var User = Backbone.Model.extend({
 
     return this;
   }
-})
+});

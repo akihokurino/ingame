@@ -2,6 +2,8 @@ class Game < ActiveRecord::Base
 	require 'open-uri'
 	require 'nokogiri'
 	require 'kconv'
+  require 'date'
+  require "time"
 
 	include RandomName
 	include EscapeLike
@@ -30,13 +32,17 @@ class Game < ActiveRecord::Base
     presence: true,
     length: {maximum: 255}
 
-	attr_accessor :i_registed, :my_status_id, :my_rate, :avg_rate
+	attr_accessor :i_registed, :my_status_id, :my_rate, :avg_rate, :formated_release_day
 
   LIMIT = 20
 
   scope :search, -> (title) {
     where("title LIKE ?", "%#{title}%")
   }
+
+  def format_datetime
+    self.formated_release_day = Time.parse(self[:release_day].to_s).strftime("%Y年 %m月 %d日")
+  end
 
 	def check_regist(current_user)
 		self.i_registed = current_user.logs.pluck(:game_id).include?(self[:id]) ? true : false

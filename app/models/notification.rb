@@ -19,13 +19,13 @@ class Notification < ActiveRecord::Base
 
   class << self
     def my_notifications(current_user)
-      notifications = self.where(to_user_id: current_user[:id]).where("created_at > ?", 1.week.ago).all_include.order("created_at DESC")
+      notifications = current_user.received_notifications.where("created_at > ?", 1.week.ago).all_include.order("created_at DESC")
       notifications.update_all(is_read: true)
       notifications
     end
 
     def my_count(current_user)
-      self.where(to_user_id: current_user[:id], is_read: false).count
+      current_user.received_notifications.where(is_read: false).where("created_at > ?", 1.week.ago).count
     end
   end
 end

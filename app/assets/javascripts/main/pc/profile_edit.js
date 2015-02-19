@@ -1,7 +1,3 @@
-//= require ../../libs/socket.js
-//= require ../../vendors/draggable_background.js
-//= require ../../libs/profile_upload.js
-
 (function () {
   var AppView = Backbone.View.extend({
     el: ".user-edit-page",
@@ -11,8 +7,7 @@
       "click .done-clip":   "clip"
     },
     initialize: function () {
-      var tmp      = location.href.split("#")[0].split("/");
-      this.user_id = tmp.pop() && tmp.pop();
+      this.user_id = $("#wrapper").data("userid");
       this.upload  = new ProfileUpload("upload-btn", "clip-area", this.user_id, {clip_x_input: "clip-x", clip_y_input: "clip-y"});
     },
     showClipModal: function () {
@@ -49,17 +44,17 @@
               $(".error-message").html(data.error.message);
             } else if (data.result) {
               var img = $("<img src='/tmp_photos/" + data.result + "' width='98' height='98'>");
-              $("#thumbnail").html(img);
-              $(".error-message").html("");
+              that.$("#thumbnail").html(img);
+              that.$(".error-message").html("");
             }
           },
           error: function () {
 
           }
-        })
+        });
       }
     }
-  })
+  });
 
   var app = new AppView();
 })();

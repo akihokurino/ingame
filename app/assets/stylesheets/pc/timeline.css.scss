@@ -330,6 +330,10 @@
         content: "\e608";
       }
     }
+    .loadingPost{
+      vertical-align: middle;
+      display: none;
+    }
     .addPhoto {
       position: absolute;
       bottom: 0;
@@ -347,6 +351,7 @@
       color: #fff;
       font-size: .875rem;
       cursor: pointer;
+      vertical-align: middle;
 
       &:before {
       margin-right: 5px;
@@ -396,6 +401,11 @@
         color: $color_blue;
         line-height: 23px;
       }
+      .stock {
+        padding: 0 10px;
+        color: $color_green;
+        line-height: 23px;
+      }
       .gameList {
         padding-bottom: 10px;
         .item {
@@ -410,6 +420,6 @@
         }
       }
     }
-    
+
   }
 }

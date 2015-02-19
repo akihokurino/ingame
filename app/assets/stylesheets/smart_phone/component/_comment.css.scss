@@ -1,4 +1,4 @@
-@import "../_function.css.scss";
+@import "../../_function.css.scss";
 
 /*---   .comment-modal   ---------------------------*/
 .comment-modal {
@@ -63,6 +63,10 @@
 						padding:10px 0;
 						color: $color_textBlack;
 						font-weight:bold;
+					}
+					.commentTime{
+						float: right;
+						color: $color_textGray;
 					}
 					.favBtn{
 						padding:10px 0 10px 10px;

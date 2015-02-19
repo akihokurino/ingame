@@ -8,4 +8,4 @@ var UserResult = Backbone.Model.extend({
     "place":        "",
     "i_followed":   ""
   }
-})
+});

@@ -14,8 +14,8 @@
     .item {
       overflow: hidden;
       display: inline-block;
-      width: 168px;
-      margin: 10px;
+      width: 155px;
+      margin-right: 5px;
       margin-bottom: 20px;
       border: 1px solid #e6e6e6;
       @include box-sizing;
@@ -44,7 +44,7 @@
     }
     .gameImgInner {
       overflow: hidden;
-      width: 168px;
+      width: 155px;
     }
     .gameMeta {
       overflow: hidden;
