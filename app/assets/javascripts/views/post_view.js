@@ -30,10 +30,15 @@ var PostView = Backbone.View.extend({
       that.$el.remove();
     });
   },
-  render: function () {
+  render: function (type) {
     var template = this.template(this.model.toJSON());
     this.$el.html(template);
-    this.$el.css("opacity", 0).animate({"opacity": 1}, 500, function () {});
+
+    if (type && type == "silent") {
+
+    } else {
+      this.$el.css("opacity", 0).animate({"opacity": 1}, 500, function () {});
+    }
 
     return this;
   },
@@ -56,9 +61,9 @@ var PostView = Backbone.View.extend({
             that.model.set({
               "i_liked": true,
               "post_likes_count": parseInt(that.model.get("post_likes_count")) + 1
-            });
+            }, {silent: true});
+            that.render("silent");
           }
-
           var data = {
             type: "like",
             post_id: that.model.id,
@@ -85,7 +90,8 @@ var PostView = Backbone.View.extend({
           that.model.set({
             "i_liked": false,
             "post_likes_count": parseInt(that.model.get("post_likes_count")) - 1
-          });
+          }, {silent: true});
+          that.render("silent");
         }
 
         var data = {
@@ -131,8 +137,8 @@ var PostView = Backbone.View.extend({
           data.comment.text       = new Comment().sanitize(data.comment.text);
           data.comment.created_at = new Comment().getRelativeTime(data.comment.created_at);
           that.model.get("post_comments").push(data.comment);
-          that.model.set("post_comments_count", that.model.get("post_comments_count") + 1);
-          that.render();
+          that.model.set("post_comments_count", that.model.get("post_comments_count") + 1, {silent: true});
+          that.render("silent");
 
           var data = {
             type: "comment",
@@ -172,7 +178,7 @@ var PostView = Backbone.View.extend({
         if (data) {
           comment.i_liked = true;
           comment.comment_likes_count += 1;
-          that.render();
+          that.render("silent");
         }
 
         var data = {
@@ -205,7 +211,7 @@ var PostView = Backbone.View.extend({
           if (comment.comment_likes_count > 0) {
             comment.comment_likes_count -= 1;
           }
-          that.render();
+          that.render("silent");
         }
 
         var data = {
