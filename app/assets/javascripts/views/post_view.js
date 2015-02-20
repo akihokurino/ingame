@@ -13,10 +13,11 @@ var PostView = Backbone.View.extend({
   },
   template: _.template($("#post-template").html()),
   initialize: function () {
-    _.bindAll(this, "destroy");
+    _.bindAll(this, "destroy", "realtimeUpdate");
 
     this.listenTo(this.model, "destroy", this.remove);
     this.listenTo(this.model, "change", this.render);
+    this.listenTo(this.model, "realtime_update", this.realtimeUpdate);
   },
   destroy: function () {
     this.model.url += this.model.id;
@@ -42,6 +43,9 @@ var PostView = Backbone.View.extend({
 
     return this;
   },
+  realtimeUpdate: function () {
+    this.render("silent");
+  },
   like: function () {
     var that = this;
     var data = {
@@ -62,16 +66,18 @@ var PostView = Backbone.View.extend({
               "i_liked": true,
               "post_likes_count": parseInt(that.model.get("post_likes_count")) + 1
             }, {silent: true});
-            that.render("silent");
-          }
-          var data = {
-            type: "like",
-            post_id: that.model.id,
-            from_user_id: like_socket.user_id,
-            to_user_id: that.model.get("user").id
-          }
 
-          like_socket.send(data);
+            that.render("silent");
+
+            var send_data = {
+              type: "like",
+              post_id: that.model.id,
+              from_user_id: like_socket.user_id,
+              to_user_id: that.model.get("user").id
+            }
+
+            like_socket.send(send_data);
+          }
         },
         error: function () {
 
@@ -91,17 +97,18 @@ var PostView = Backbone.View.extend({
             "i_liked": false,
             "post_likes_count": parseInt(that.model.get("post_likes_count")) - 1
           }, {silent: true});
+
           that.render("silent");
-        }
 
-        var data = {
-          type: "unlike",
-          post_id: that.model.id,
-          from_user_id: like_socket.user_id,
-          to_user_id: that.model.get("user").id
-        }
+          var send_data = {
+            type: "unlike",
+            post_id: that.model.id,
+            from_user_id: like_socket.user_id,
+            to_user_id: that.model.get("user").id
+          }
 
-        like_socket.send(data);
+          like_socket.send(send_data);
+        }
       },
       error: function () {
 
@@ -179,17 +186,17 @@ var PostView = Backbone.View.extend({
           comment.i_liked = true;
           comment.comment_likes_count += 1;
           that.render("silent");
-        }
 
-        var data = {
-          type: "comment_like",
-          post_id: that.model.id,
-          post_comment_id: comment.id,
-          from_user_id: like_socket.user_id,
-          to_user_id: comment.user.id
-        }
+          var send_data = {
+            type: "comment_like",
+            post_id: that.model.id,
+            post_comment_id: comment.id,
+            from_user_id: like_socket.user_id,
+            to_user_id: comment.user.id
+          }
 
-        like_socket.send(data);
+          like_socket.send(send_data);
+        }
       },
       error: function () {
 
@@ -212,17 +219,17 @@ var PostView = Backbone.View.extend({
             comment.comment_likes_count -= 1;
           }
           that.render("silent");
-        }
 
-        var data = {
-          type: "comment_unlike",
-          post_id: that.model.id,
-          post_comment_id: comment.id,
-          from_user_id: like_socket.user_id,
-          to_user_id: comment.user.id
-        }
+          var send_data = {
+            type: "comment_unlike",
+            post_id: that.model.id,
+            post_comment_id: comment.id,
+            from_user_id: like_socket.user_id,
+            to_user_id: comment.user.id
+          }
 
-        like_socket.send(data);
+          like_socket.send(send_data);
+        }
       },
       error: function () {
 

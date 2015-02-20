@@ -1,8 +1,45 @@
 var PostsView = Backbone.View.extend({
   el: ".post-list",
   initialize: function () {
+    var that = this;
     _.bindAll(this, "setCollection");
     this.listenTo(this.collection, "add", this.addPost);
+
+    like_socket.callback = function (data) {
+      that.collection.find(function (model) {
+        if (model.id == data.post_id) {
+          if (data.type == "like") {
+            model.set({
+              "post_likes_count": parseInt(model.get("post_likes_count")) + 1
+            }, {silent: true});
+          } else if (data.type == "unlike") {
+            model.set({
+              "post_likes_count": parseInt(model.get("post_likes_count")) - 1
+            }, {silent: true});
+          }
+
+          model.trigger("realtime_update");
+        }
+      });
+    }
+
+    comment_socket.callback = function (data) {
+      that.collection.find(function (model) {
+        if (model.id == data.post_id) {
+          var new_comment_count;
+          if (data.type == "comment") {
+            new_comment_count = parseInt(model.get("post_comments_count")) + 1;
+            model.get("post_comments").push(data.comment);
+          } else if (data.type == "uncomment") {
+            new_comment_count = parseInt(model.get("post_comments_count")) - 1;
+          }
+
+          model.set({"post_comments_count": new_comment_count}, {silent: true});
+
+          model.trigger("realtime_update");
+        }
+      });
+    }
   },
   addPost: function (post) {
     if (post.id) {

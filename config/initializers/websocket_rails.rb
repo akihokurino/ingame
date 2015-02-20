@@ -3,7 +3,7 @@ WebsocketRails.setup do |config|
   # Uncomment to override the default log level. The log level can be
   # any of the standard Logger log levels. By default it will mirror the
   # current Rails environment log level.
-  # config.log_level = :debug
+  config.log_level = :debug
 
   # Uncomment to change the default log file path.
   # config.log_path = "#{Rails.root}/log/websocket_rails.log"
@@ -17,6 +17,7 @@ WebsocketRails.setup do |config|
   # * Requires Redis
   # config.standalone = false
   config.standalone = true
+  config.standalone_port = 3001
   # config.standalone_port = 3245
 
   # config.redis_options   = {driver: :ruby}

@@ -4,7 +4,6 @@
     %meta{charset: "UTF-8"}
     %title gamr.jp(β)
     = stylesheet_link_tag    "application", media: "all"
-    = javascript_include_tag "application"
     = yield :head
     = csrf_meta_tags
     = favicon_link_tag "/favicon.ico"
@@ -23,4 +22,5 @@
 
     = render partial: "application/pc/layout_below"
 
+    = javascript_include_tag "application"
     = yield :last
