@@ -97,9 +97,11 @@ $support-opera  : true;
     -webkit-text-stroke: $size $color;
 }
 @mixin appearance {
+  /*
   appearance:none;
   -moz-appearance: none;
   -webkit-appearance: none;
+  */
   text-indent: 0.01px;
   text-overflow: "";
 }
