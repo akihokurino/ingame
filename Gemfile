@@ -81,4 +81,6 @@ gem 'kaminari-bootstrap'
 
 gem "ransack"
 
+gem "gmail"
+
 
