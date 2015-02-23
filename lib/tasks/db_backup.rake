@@ -5,8 +5,12 @@ namespace :db_backup do
 
     proj_root_dir = File.expand_path "../../../", __FILE__
     dump_path     = "#{proj_root_dir}/dump/ingame_dump.#{DateTime.now}.sql.gz"
+
+    `rm #{proj_root_dir}/dump/*.gz`
+
     `mysqldump -uroot -pingameplaydygamr ingame_production | gzip > #{dump_path}`
 
+=begin
     gmail = Gmail.connect('gamr.jp@gmail.com', 'ingameplaydygamr')
 
     gmail.deliver do
@@ -19,7 +23,8 @@ namespace :db_backup do
     end
 
     gmail.logout
+=end
 
-    `rm #{dump_path}`
+    # `rm #{dump_path}`
   end
 end
