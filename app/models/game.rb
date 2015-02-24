@@ -34,7 +34,8 @@ class Game < ActiveRecord::Base
 
 	attr_accessor :i_registed, :my_status_id, :my_rate, :avg_rate, :formated_release_day
 
-  LIMIT = 20
+  LIMIT         = 20
+  RANKING_LIMIT = 5
 
   scope :search, -> (title) {
     where("title LIKE ?", "%#{title}%")
@@ -155,6 +156,10 @@ class Game < ActiveRecord::Base
       end
 
       create_flag
+    end
+
+    def get_ranking
+      Log.where("created_at > ?", 4.week.ago).select(:game_id).group_by { |log| log[:game_id] }.values.sort { |a, b| a.length <=> b.length }.last(RANKING_LIMIT).reverse.map { |logs| logs[0].game }
     end
 	end
 end

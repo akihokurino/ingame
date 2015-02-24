@@ -9,7 +9,6 @@ class Api::GamesController < ApplicationController
   def show
     @game.check_regist @current_user
     @game.check_rate @current_user
-    p @game.i_registed
   end
 
 	def search
@@ -21,6 +20,10 @@ class Api::GamesController < ApplicationController
 
   def create
     @result = Game.get_from_amazon params[:url]
+  end
+
+  def get_ranking
+    @results = Game.get_ranking
   end
 
 	private
