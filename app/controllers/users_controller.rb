@@ -4,7 +4,11 @@ class UsersController < ApplicationController
   before_action :auth_provider, only: [:new]
 
   def login
-    reset_session
+    # reset_session
+    if session[:current_user_id]
+      @current_user = User.find session[:current_user_id]
+      redirect_to posts_path if @current_user
+    end
   end
 
   def setting

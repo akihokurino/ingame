@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
 	def auth
 		if session[:current_user_id]
 			begin
-				@current_user = User.find(session[:current_user_id])
+				@current_user = User.find session[:current_user_id]
 				@current_user.check_follow_num
 			rescue ActiveRecord::RecordNotFound
 				reset_session
@@ -41,7 +41,7 @@ class ApplicationController < ActionController::Base
 	def auth_provider
     if session[:current_provider_id]
     	begin
-				@current_provider = UserProvider.find(session[:current_provider_id])
+				@current_provider = UserProvider.find session[:current_provider_id]
 			rescue ActiveRecord::RecordNotFound
 				reset_session
 			end
@@ -57,7 +57,7 @@ class ApplicationController < ActionController::Base
 	def auth_admin
 		if session[:current_admin_id]
 			begin
-				@current_admin = Admin.find(session[:current_admin_id])
+				@current_admin = Admin.find session[:current_admin_id]
 			rescue ActiveRecord::RecordNotFound
 				reset_session
 			end
