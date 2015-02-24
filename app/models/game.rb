@@ -36,10 +36,13 @@ class Game < ActiveRecord::Base
 
   LIMIT         = 20
   RANKING_LIMIT = 5
+  ROOT_DIR      = File.expand_path "../../../", __FILE__
 
   scope :search, -> (title) {
     where("title LIKE ?", "%#{title}%")
   }
+
+  after_destroy :destroy_resources
 
   def format_datetime
     self.formated_release_day = Time.parse(self[:release_day].to_s).strftime("%Y年 %m月 %d日")
@@ -162,4 +165,9 @@ class Game < ActiveRecord::Base
       Log.where("created_at > ?", 4.week.ago).select(:game_id).group_by { |log| log[:game_id] }.values.sort { |a, b| a.length <=> b.length }.last(RANKING_LIMIT).reverse.map { |logs| logs[0].game }
     end
 	end
+
+  private
+  def destroy_resources
+    system "rm #{ROOT_DIR}/public/game_photos/#{self[:photo_path]}" unless self[:photo_path].nil?
+  end
 end

@@ -4,10 +4,13 @@ class UsersController < ApplicationController
   before_action :auth_provider, only: [:new]
 
   def login
-    # reset_session
     if session[:current_user_id]
-      @current_user = User.find session[:current_user_id]
-      redirect_to posts_path if @current_user
+      begin
+        @current_user = User.find session[:current_user_id]
+        redirect_to posts_path if @current_user
+      rescue ActiveRecord::RecordNotFound
+        reset_session
+      end
     end
   end
 
@@ -18,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user.check_follow(@current_user)
+    @user.check_follow @current_user
   end
 
   def new
@@ -38,6 +41,7 @@ class UsersController < ApplicationController
 
   def destroy
     if @current_user.destroy
+      reset_session
       redirect_to login_users_path
     end
   end
@@ -59,6 +63,6 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    @user = User.find(params[:id])
+    @user = User.find params[:id]
   end
 end

@@ -8,7 +8,7 @@ module CostomUpload
       name  = file.original_filename
       perms = [".jpg", ".jpeg", ".gif", ".png"]
       if perms.include?(File.extname(name).downcase) && file.size <= 3.megabyte
-        photo_path = self.generate("alphabet", 10) + name
+        photo_path = "#{DateTime.now.to_i}#{self.generate('alphabet', 10)}#{name}"
         File.open("public/#{type}_photos/#{photo_path}", "wb") do |f|
           f.write(file.read)
         end
@@ -37,8 +37,7 @@ module CostomUpload
         extname = nil
       end
 
-      name       = self.generate("alphabet", 10)
-      photo_path = "#{name}#{extname}"
+      photo_path = "#{DateTime.now.to_i}#{self.generate('alphabet', 10)}#{extname}"
       File.open("public/#{type}_photos/#{photo_path}", "wb") do |f|
         url  = url.sub(/^.*,/, '')
         file = Base64.decode64 url

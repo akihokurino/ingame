@@ -39,6 +39,7 @@ class User < ActiveRecord::Base
 
   LIMIT          = 20
   ACTIVITY_LIMIT = 20
+  ROOT_DIR       = File.expand_path "../../../", __FILE__
 
   scope :search, -> (username) {
     where("username LIKE ?", "%#{username}%")
@@ -46,20 +47,40 @@ class User < ActiveRecord::Base
 
   attr_accessor :i_followed, :i_followered, :follow_num, :follower_num, :clip_x, :clip_y
 
+  after_destroy :destroy_resources
+
 	def update_with_file(user_params, clip = {})
+    prev_photo_path = nil
     begin
-      user_params[:photo_path] = self.class.file_upload(user_params[:photo_path], "user", clip) unless user_params[:photo_path].nil?
+      unless user_params[:photo_path].nil?
+        user_params[:photo_path] = self.class.file_upload user_params[:photo_path], "user", clip
+        prev_photo_path          = self[:photo_path]
+      end
     rescue
       user_params[:photo_path] = self[:photo_path]
     end
     user_params[:username] = user_params[:username].gsub(/(\s|　)+/, '') unless user_params[:username].nil?
-  	self.update(user_params) ? true : false
+
+  	if self.update(user_params)
+      system "rm #{ROOT_DIR}/public/user_photos/#{prev_photo_path}" unless /default/ =~ prev_photo_path
+      true
+    else
+      false
+    end
   end
 
   def update_with_url(user_params, clip = {})
-    user_params[:photo_path] = self.class.url_upload(user_params[:photo_path], "user", clip) unless user_params[:photo_path].nil?
-    user_params[:username]   = user_params[:username].gsub(/(\s|　)+/, '') unless user_params[:username].nil?
-    self.update(user_params)
+    prev_photo_path = nil
+    unless user_params[:photo_path].nil?
+      user_params[:photo_path] = self.class.url_upload user_params[:photo_path], "user", clip
+      prev_photo_path          = self[:photo_path]
+    end
+    user_params[:username] = user_params[:username].gsub(/(\s|　)+/, '') unless user_params[:username].nil?
+
+    if self.update(user_params)
+      system "rm #{ROOT_DIR}/public/user_photos/#{prev_photo_path}" unless /default/ =~ prev_photo_path
+    end
+
     self
   end
 
@@ -176,4 +197,9 @@ class User < ActiveRecord::Base
       end
     end
 	end
+
+  private
+  def destroy_resources
+    system "rm #{ROOT_DIR}/public/user_photos/#{self[:photo_path]}" unless /default/ =~ self[:photo_path]
+  end
 end
