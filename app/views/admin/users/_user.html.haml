@@ -1,0 +1,17 @@
+%tr
+  %td
+    = user.id
+  %td
+    = link_to user.username, "#"
+  %td
+    = image_tag "/user_photos/#{user.photo_path}", class: "thumbnail"
+  %td
+    = truncate user.introduction, length: 60
+  %td
+    = user.place
+  %td
+    = user.email ? user.email : "設定されていません"
+  %td
+    = user.logs_count
+  %td
+    = user.posts_count

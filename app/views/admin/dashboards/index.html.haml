@@ -1,0 +1,23 @@
+= content_for :head do
+  = stylesheet_link_tag "admin/common"
+
+= render partial: "application/admin/header"
+
+.container
+  .jumbotron
+    %table.table.table-condensed
+      %tr
+        %th
+          %a{href: "#"} 現在の総ユーザー数
+        %td
+          = @current_user_count
+      %tr
+        %th
+          %a{href: "#"} 現在の総ゲーム数
+        %td
+          = @current_game_count
+      %tr
+        %th
+          %a{href: "#"} 現在の総ログ数
+        %td
+          = @current_log_count

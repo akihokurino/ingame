@@ -1,0 +1,29 @@
+= content_for :head do
+  = stylesheet_link_tag "admin/common"
+
+= render partial: "application/admin/header"
+
+.container
+  = render partial: "application/admin/flash_message"
+
+  = search_form_for(@q, url: admin_users_path) do |f|
+    .input-group.col-lg-6
+      = f.text_field :username_cont, class: "form-control"
+      %span.input-group-btn
+        = f.submit "検索", class: "btn btn-default"
+
+  %ul.nav.nav-tabs
+
+  %table.table.table-striped
+    %tr
+      %th ID
+      %th.w-200 ユーザー名
+      %th サムネイル
+      %th.w-300 紹介文
+      %th 場所
+      %th.w-200 Email
+      %th 総ログ数
+      %th 総ポスト数
+    = render partial: "user", collection: @users
+  .paginate-wrap
+    = paginate @users

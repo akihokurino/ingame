@@ -6,6 +6,10 @@ html {
   width: 100px;
 }
 
+.w-200 {
+  width: 200px;
+}
+
 .w-300 {
   width: 300px;
 }
@@ -30,12 +34,12 @@ html {
     color: #fff;
     font-size: 25px;
     float: right;
-    margin-right: 10px;
+    margin-right: 0px;
     margin-top: 10px;
     cursor: pointer;
   }
   .dropdown-menu {
-    right: 10px;
+    right: 0px;
     left: auto;
   }
 }

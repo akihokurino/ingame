@@ -5,7 +5,6 @@
   .panel-heading
     ログイン
   .panel-body
-    = render partial: "application/admin/flash_message"
     = form_tag(admin_sessions_path, method: "POST") do
       = label_tag :username, "ユーザーネーム"
       = text_field_tag :username, "", class: "form-control"

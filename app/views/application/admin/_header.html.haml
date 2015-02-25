@@ -1,6 +1,17 @@
 .navbar.navbar-inverse
-  - if @current_admin
-    .glyphicon.glyphicon-cog.dropdown-toggle#dropdownMenu{"data-toggle" => "dropdown"}
-    %ul.dropdown-menu{role: "menu", "aria-labelledby" => "dropdownMenu"}
-      %li{role: "presentation"}
-        = link_to "ログアウト", admin_session_path(@current_admin), method: :delete
+  .container-fluid
+    .navbar-header
+      %span.navbar-brand GAMR管理画面
+    .collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li
+          = link_to "ダッシュボード", admin_dashboards_path
+        %li
+          = link_to "ゲーム", admin_games_path
+        %li
+          = link_to "ユーザー", admin_users_path
+      - if @current_admin
+        .glyphicon.glyphicon-cog.dropdown-toggle#dropdownMenu{"data-toggle" => "dropdown"}
+        %ul.dropdown-menu{role: "menu", "aria-labelledby" => "dropdownMenu"}
+          %li{role: "presentation"}
+            = link_to "ログアウト", admin_session_path(@current_admin), method: :delete

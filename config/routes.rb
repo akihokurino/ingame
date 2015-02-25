@@ -56,10 +56,12 @@ Ingame::Application.routes.draw do
   end
 
   namespace :admin do
+    resources :dashboards, only: ["index"]
     resources :sessions, only: ["new", "create", "destroy"]
     resources :games
     resources :game_urls, only: ["destroy"]
     resources :game_gametags, only: ["destroy"]
+    resources :users, only: ["index", "show"]
     namespace :api do
       resources :admins, only: ["create"], format: "json"
     end

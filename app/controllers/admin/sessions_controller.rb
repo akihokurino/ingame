@@ -12,7 +12,7 @@ class Admin::SessionsController < ApplicationController
   def create
     if admin = Admin.authenticate(params[:username], params[:password], params[:key])
       session[:current_admin_id] = admin[:id]
-      redirect_to admin_games_path
+      redirect_to admin_dashboards_path
     else
       redirect_to new_admin_session_path, alert: "不正なユーザーです。"
     end
