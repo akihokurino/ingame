@@ -13,6 +13,9 @@ class SocketsController < WebsocketRails::BaseController
     p "post"
     @from_user = User.find message[:from_user_id]
     @from_user.followers.each do |follow|
+      p follow.from_user[:username]
+    end
+    @from_user.followers.each do |follow|
       WebsocketRails[follow.from_user[:id]].trigger "post", message
     end
   end
