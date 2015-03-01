@@ -1,20 +1,15 @@
 class SocketsController < WebsocketRails::BaseController
   def initialize_session
-    p "initialize socket controller"
-    logger.debug("initialize socket controller")
+
   end
 
   def connect_user
-    p "connected user"
-    logger.debug("connected user")
+
   end
 
   def post
     p "post"
     @from_user = User.find message[:from_user_id]
-    @from_user.followers.each do |follow|
-      p follow.from_user[:username]
-    end
     @from_user.followers.each do |follow|
       WebsocketRails[follow.from_user[:id]].trigger "post", message
     end
