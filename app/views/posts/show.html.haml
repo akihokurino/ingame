@@ -1,0 +1,11 @@
+= content_for :head do
+  = stylesheet_link_tag    "pc/post_detail"
+
+= content_for :last do
+  = javascript_include_tag "main/pc/post_detail"
+
+= render partial: "application/pc/default_header"
+
+%section.mainContent.post-detail-page
+
+= render partial: "application/pc/footer"

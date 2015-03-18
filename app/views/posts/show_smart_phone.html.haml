@@ -1,0 +1,10 @@
+= content_for :head do
+  = stylesheet_link_tag    "smart_phone/post_detail"
+
+= content_for :last do
+  = javascript_include_tag "main/smart_phone/post_detail"
+
+= render partial: "application/smart_phone/default_header"
+
+%section.mainContent.post-detail-page
+

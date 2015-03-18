@@ -14,7 +14,7 @@ Ingame::Application.routes.draw do
       get "search_game_or_user"
     end
   end
-  resources :posts, only: ["index", "new"]
+  resources :posts, only: ["index", "new", "show"]
   resources :logs, only: ["index", "create"]
   resources :games, only: ["show"]
   resources :user_providers, only: ["index"]

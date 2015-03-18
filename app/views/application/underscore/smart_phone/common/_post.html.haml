@@ -31,7 +31,9 @@
     .textWrap
       %h2.ttl
         %a{href: "/games/{{= game.id }}#all"} {{= game.title }}
-      %p.text {{= text }}
+      %p.text
+        %a{href: "/posts/{{= id }}"}
+          {{= text }}
       .thumbnail
         {{ for (var i = 0; i < post_photos.length; i++) { }}
         %img.thumbnailImg{src: "/post_photos/{{= post_photos[i].photo_path }}"}

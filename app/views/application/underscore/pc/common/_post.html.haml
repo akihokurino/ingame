@@ -31,9 +31,11 @@
         %p.time {{= created_at }}
       .textWrap
         %h2.gameTtl
-          %a.gameTtlLink{href: "/games/{{= game.id}}#all"}
+          %a.gameTtlLink{href: "/games/{{= game.id }}#all"}
             {{= game.title }}
-        .postText {{= text }}
+        .postText
+          %a{href: "/posts/{{= id }}"}
+            {{= text }}
         .thumbnail
           {{ for (var i = 0; i < post_photos.length; i++) { }}
           %img.thumbnailImg{src: "/post_photos/{{= post_photos[i].photo_path }}"}
