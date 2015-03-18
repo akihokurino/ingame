@@ -4,6 +4,8 @@
 //= require ../../views/logs_view.js
 //= require ../../views/user_view.js
 //= require ../../views/users_view.js
+//= require ../../views/game_view.js
+//= require ../../views/games_view.js
 
 
 (function () {
@@ -26,6 +28,8 @@
       this.logs_view              = new LogsView({el: ".select-log-list", collection: this.log_collection, attributes: {type: "select", template: "#log-option-template"}});
       this.user_collection        = new Users();
       this.users_view             = new UsersView({el: ".user-activity-list", collection: this.user_collection, attributes: {type: "activity", template: "#user-activity-template"}});
+      this.game_collection        = new Games();
+      this.games_view             = new GamesView({el: ".game-activity-list", collection: this.game_collection, attributes: {type: "activity", template: "#game-activity-template"}});
 
       this.post_input             = this.$(".post-input");
       this.select_log_id          = null;
@@ -67,7 +71,9 @@
         }
       });
 
-      this.users_view.getActivity({page: 1, type: "activity"})
+      this.users_view.getActivity({page: 1, type: "activity"});
+
+      this.games_view.getActivity({type: "activity"});
 
       this.posts_view.render({page: 1}, function () {
         $(".comment-input").autosize();

@@ -6,6 +6,11 @@
     %form.search-form.entryBox
       %span.icon-search
       %input.game-title-input.search{type: "search", name: "game_title", placeholder: "キーワードでゲームを検索"}
+
+  .game-activity-list-wrap
+    .boxTtl
+      %h2 最近登録されたゲーム
+    %ul.gameAvtivityList.game-activity-list
   .result-area
   %ul.result-list.gameList
   = image_tag "gif-load-pc.gif", class: "loading-gif"

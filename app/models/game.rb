@@ -161,8 +161,12 @@ class Game < ActiveRecord::Base
       create_flag
     end
 
-    def get_ranking
-      Log.where("created_at > ?", 4.week.ago).select(:game_id).group_by { |log| log[:game_id] }.values.sort { |a, b| a.length <=> b.length }.last(RANKING_LIMIT).reverse.map { |logs| logs[0].game }
+    def get_ranking(current_user)
+      Log.where("created_at > ?", 4.week.ago).select(:game_id).group_by { |log| log[:game_id] }.values.sort { |a, b| a.length <=> b.length }.last(RANKING_LIMIT).reverse.map do |logs|
+        logs[0].game.check_rate current_user
+        logs[0].game.check_regist current_user
+        logs[0].game
+      end
     end
 	end
 

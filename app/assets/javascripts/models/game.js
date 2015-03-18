@@ -7,7 +7,9 @@ var Game = Backbone.Model.extend({
     "device":      "",
     "provider":    "",
     "maker":       "",
-    "release_day": ""
+    "release_day": "",
+    "avg_rate":    "",
+    "i_registed":  ""
   },
   strimWidth: function (limit) {
     var title = this.get("title");

@@ -3,7 +3,9 @@ class Api::GamesController < ApplicationController
   before_action :set_game, only: [:show]
 
   def index
-
+    if params[:type] == "activity"
+      @games = Game.get_ranking @current_user
+    end
   end
 
   def show
@@ -20,10 +22,6 @@ class Api::GamesController < ApplicationController
 
   def create
     @result = Game.get_from_amazon params[:url]
-  end
-
-  def get_ranking
-    @results = Game.get_ranking
   end
 
 	private

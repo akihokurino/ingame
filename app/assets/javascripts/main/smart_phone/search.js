@@ -4,6 +4,8 @@
 //= require ../../views/user_results_view
 //= require ../../views/user_view
 //= require ../../views/users_view
+//= require ../../views/game_view
+//= require ../../views/games_view
 
 (function () {
   var GameSearchView = Backbone.View.extend({
@@ -20,6 +22,8 @@
 
       this.game_result_collection = new GameResults();
       this.game_results_view      = new GameResultsView({el: ".result-list", collection: this.game_result_collection});
+      this.game_collection        = new Games();
+      this.games_view             = new GamesView({el: ".game-activity-list", collection: this.game_collection, attributes: {type: "activity", template: "#game-activity-template"}});
 
       this.game_title             = this.$(".game-title-input");
       this.current_game_title     = null;
@@ -29,11 +33,14 @@
         this.game_title.val(this.current_game_title);
         this.search();
       }
+
+      this.games_view.getActivity({type: "activity"});
     },
     search: function () {
       var that  = this;
 
       this.game_results_view.search({search_title: this.current_game_title, page: 1}, function (response) {
+        that.hideActivity();
         that.$(".result-area").html((that.text_template({
           result_count: response.count
         })));
@@ -45,6 +52,9 @@
         this.current_game_title = this.game_title.val();
         url_query.insertParam("search_word", this.current_game_title);
       }
+    },
+    hideActivity: function () {
+      $(".game-activity-list-wrap").html("");
     },
     changeTarget: function (e) {
       e.preventDefault();

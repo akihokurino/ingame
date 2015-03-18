@@ -139,7 +139,7 @@
         success: function (data) {
           var game      = new Game(data.game);
           game.strimWidth(40);
-          var game_view = new GameView({model: game});
+          var game_view = new GameView({model: game, attributes: {template: "#game-template"}});
           that.$el.find(".write-page").prepend(game_view.render().el);
         },
         error: function () {

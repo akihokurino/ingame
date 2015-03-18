@@ -30,7 +30,6 @@ Ingame::Application.routes.draw do
     resources :games, only: ["index", "show", "create"], format: "json" do
       collection do
         get "search"
-        get "get_ranking"
       end
     end
     resources :post_likes, only: ["create", "destroy"], format: "json"
