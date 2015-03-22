@@ -61,41 +61,11 @@ html {
 	}
 }
 
-.commentMod {
-		position: fixed;
-		bottom: 0px;
-		width: 100%;
-		padding: 10px;
-		@include box-sizing;
-		border-top: solid 1px #e2e2e2;
-		background-color: #fff;
-		box-shadow:0 -6px 10px rgba(0,0,0,.3);
-
-		textarea {
-			display: block;
-			float: left;
-			width: 80%;
-			height: 34px;
-			padding: 5px;
-			border: solid 1px #e2e2e2;
-			@include border-radius(2px);
-			@include box-sizing;
-		}
-		.submit-comment-btn {
-			float: right;
-			width: 17%;
-			height: 34px;
-			@include border-radius(2px);
-			background-color: $main_color;
-			&:active{
-				background: linear-gradient($main_color,lighten($main_color,5%));
-			}
-			color: #fff;
-			font-size:14px;
-			line-height: 2.5;
-			text-align: center;
-		}
-	}
+.commentExpand{
+	text-align: center;
+	margin-bottom: 10px;
+	color: $color_blue;
+}
 
 .commentBox {
 	background-color: #fff;
@@ -192,5 +162,41 @@ html {
         &:before {
           margin-top: -5px;
         }
+	}
+}
+
+.commentMod {
+	position: fixed;
+	bottom: 0px;
+	width: 100%;
+	padding: 10px;
+	@include box-sizing;
+	border-top: solid 1px #e2e2e2;
+	background-color: #fff;
+	box-shadow:0 -6px 10px rgba(0,0,0,.3);
+
+	textarea {
+		display: block;
+		float: left;
+		width: 80%;
+		height: 34px;
+		padding: 5px;
+		border: solid 1px #e2e2e2;
+		@include border-radius(2px);
+		@include box-sizing;
+	}
+	.submit-comment-btn {
+		float: right;
+		width: 17%;
+		height: 34px;
+		@include border-radius(2px);
+		background-color: $main_color;
+		&:active{
+			background: linear-gradient($main_color,lighten($main_color,5%));
+		}
+		color: #fff;
+		font-size:14px;
+		line-height: 2.5;
+		text-align: center;
 	}
 }
