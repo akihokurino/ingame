@@ -73,6 +73,7 @@
 			float: left;
 			display: table-cell;
 			margin-right: 10px;
+			@include border-radius(2px);
 			vertical-align: middle;
 		}
 		h2{
@@ -82,22 +83,17 @@
 		}
 	}
 	.postBody{
-		font-size: 13px;
-		.postBodyLink{
-			padding: 10px;
-			display: block;
-			width: 100%;
-			color: $color_textBlack;
-			@include box-sizing;
-		}
-		.postText{
-		}
+		font-size: 14px;
+		padding: 10px;
+		display: block;
+		width: 100%;
+		color: $color_textBlack;
+		@include box-sizing;
 		.postThumnail{
 			width: 100%;
 		}
 		.postMeta{
-			margin-top: 5px;
-			font-size: 10px;
+			margin: 5px 0;
 			color: $color_textGray;
 			.postTime{
 				display: inline-block;
@@ -107,8 +103,16 @@
 			}
 			.readMore{
 				float: right;
+				font-weight: bold;
+				color: $color_blue;
 			}
 			@include clearfix;
+		}
+		.postThumbnail{
+			width: 100%;
+			.thumbnailImage{
+				width: 100%;
+			}
 		}
 	}
 	.postFooter{
@@ -125,7 +129,7 @@
 	}
 	.commentBtn,.favBtn,.icon-option{
 		display:inline-block;
-		padding:10px;
+		padding:10px 10px 0 10px;
 		width: 100%;
 		font-size:20px;
 		color:$color_textGray;
@@ -164,9 +168,6 @@
         &:before {
           margin-top: -5px;
         }
-	}
-	.icon-option{
-		padding:10px 15px;
 	}
 	/*---   .urlThumbnail   ----*/
 	.urlThumbnailWrap {

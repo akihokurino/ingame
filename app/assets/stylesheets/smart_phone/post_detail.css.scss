@@ -1,0 +1,196 @@
+@import "../_function.css.scss";
+@import "component/_postBox.css.scss";
+/*---   common   ---------------------------*/
+html {
+	background: #EEEEEE;
+}
+/*---   .postDetail   ---------------------------*/
+.mainContent{
+	padding-top: 44px;
+}
+.gameWrap{
+	background: #fff; 
+	.imgWrap{
+		width: 100%;
+		background: #431e99; /* Old browsers */
+		background: -moz-linear-gradient(-45deg, #431e99 0%, #2989d8 50%, #207cca 51%, #af23a6 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#431e99), color-stop(50%,#2989d8), color-stop(51%,#207cca), color-stop(100%,#af23a6)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(-45deg, #431e99 0%,#2989d8 50%,#207cca 51%,#af23a6 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(-45deg, #431e99 0%,#2989d8 50%,#207cca 51%,#af23a6 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(-45deg, #431e99 0%,#2989d8 50%,#207cca 51%,#af23a6 100%); /* IE10+ */
+		background: linear-gradient(135deg, #431e99 0%,#2989d8 50%,#207cca 51%,#af23a6 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#431e99', endColorstr='#af23a6',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+		text-align: center;
+
+		.gameImg{
+			margin-top: 5px;
+			max-width: 100%;
+			height: auto;
+			max-height: 150px;
+			@include box-sizing;
+		}
+	}
+	.gameInfo{
+		padding: 5px 10px;
+	}
+	.source{
+        margin-bottom: 10px;
+        text-align: center;
+        line-height: 1;
+        a{
+          color: $color_textGray;
+          font-size: 10px;
+        }
+      }
+	.ttl {
+		color: $color_textBlack;
+		font-size: 24px;
+		line-height: 1.2;
+		text-align: center;
+	}
+	.maker{
+		margin-bottom: 15px;
+		color: $color_textBlack;
+		font-size: 14px;
+		text-align: center;
+		line-height: 2;
+		&Name{
+			font-weight: bold;
+			padding-right: 10px;
+		}
+	}
+}
+
+.commentMod {
+		position: fixed;
+		bottom: 0px;
+		width: 100%;
+		padding: 10px;
+		@include box-sizing;
+		border-top: solid 1px #e2e2e2;
+		background-color: #fff;
+		box-shadow:0 -6px 10px rgba(0,0,0,.3);
+
+		textarea {
+			display: block;
+			float: left;
+			width: 80%;
+			height: 34px;
+			padding: 5px;
+			border: solid 1px #e2e2e2;
+			@include border-radius(2px);
+			@include box-sizing;
+		}
+		.submit-comment-btn {
+			float: right;
+			width: 17%;
+			height: 34px;
+			@include border-radius(2px);
+			background-color: $main_color;
+			&:active{
+				background: linear-gradient($main_color,lighten($main_color,5%));
+			}
+			color: #fff;
+			font-size:14px;
+			line-height: 2.5;
+			text-align: center;
+		}
+	}
+
+.commentBox {
+	background-color: #fff;
+	border-top: solid 1px $color_border;
+	border-bottom: solid 1px $color_border;
+	.commentHeaderLink{
+		display: block;
+		width: 100%;
+		height: 50px;
+		padding: 10px;
+		@include box-sizing;
+		color: $color-textBlack;
+	}
+	.commentHeader{
+		font-size: 16px;
+		line-height: 30px;
+		.profileImage{
+			float: left;
+			margin-right: 10px;
+			display: inline-block;
+			vertical-align: middle;
+			@include border-radius(50%);
+		}
+		.userName{
+			display: inline-block;
+		}
+		@include clearfix;
+	}
+	.commentBody{
+		font-size: 14px;
+		padding: 0 10px 10px 10px;
+		display: block;
+		width: 100%;
+		color: $color_textBlack;
+		@include box-sizing;
+		.commentThumnail{
+			width: 100%;
+		}
+		.commentMeta{
+			margin-top: 5px;
+			color: $color_textGray;
+			.commentTime{
+				display: inline-block;
+				&:before{
+					margin-right: 5px;
+				}
+			}
+		}
+	}
+	.commentFooter{
+		width: 100%;
+	}
+	.actionList{
+		display: table;
+		width: 100%;
+		li{
+			display: table-cell;
+			width: 50%;
+			text-align: right;
+		}
+	}
+	.favBtn,.icon-option{
+		display:inline-block;
+		padding:10px 10px 0 10px;
+		width: 100%;
+		font-size:20px;
+		color:$color_textGray;
+		line-height: 1;
+		@include box-sizing;
+	}
+	.favBtn {
+		text-decoration: none;
+		&.on{
+			color: $color_red;
+		}
+	}
+	.likeCnt{
+		position: relative;
+		display: inline-block;
+        font-size: 14px;
+		&:after, &:before {
+          right: 100%;
+          top: 50%;
+          content: " ";
+          height: 0;
+          width: 0;
+          position: absolute;
+          pointer-events: none;
+        }
+
+        &:after {
+          margin-top: -4px;
+        }
+        &:before {
+          margin-top: -5px;
+        }
+	}
+}

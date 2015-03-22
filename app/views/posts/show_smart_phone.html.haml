@@ -7,4 +7,83 @@
 = render partial: "application/smart_phone/default_header"
 
 %section.mainContent.post-detail-page
-
+  .gameWrap
+    %figure.imgWrap
+      %a
+        = image_tag "/game_photos/default.png", height: 200, width: 100, class: "gameImg"
+    .gameInfo
+      .source
+        %a 出典：STEAM
+      %h1.ttl
+        %a
+          ゲームタイトルゲームタイトル
+      %h2.maker
+        %span by
+        %span.makerName
+          メーカー名メーカー名
+  .postBox
+    .postHeader
+      %a.postHeaderLink
+        %img.profileImage{width: 30, src: "/user_photos/default.png"}
+        %span.userName ユーザーネーム
+        %span.statusBox
+          %span.moodReady ステータス
+    .postBody
+      .postText 本文です。本文です。本文です。本文です。本文です。本文です。本文です。本文です。本文です。本文です。本文です。本文です。本文です。本文です。本文です。本文です。本文です。本文です。本文です。本文です。本文です。本文です。本文です。本文です。本文です。本文です。
+      .postMeta
+        .postTime.icon-time 5時間前
+      .postThumbnail
+        %img.thumbnailImage{src: "/game_photos/default.png", width:300, height:200}
+      .urlThumbnailWrap
+        %a.urlThumbnail
+          %img.thumbnailImg{src: "/user_photos/default.png"}
+          .body
+            %p.title リンク先ページタイトル
+            %p.description リンク先概要
+      .postFooter
+        %ul.actionList
+          %li
+            %a.commentBtn.icon-comment
+              %span.commentCnt
+                100
+          %li
+            %span.like-btn.favBtn.icon-like
+              %span.likeCnt 100
+          %li
+            %span.icon-option.delete-btn
+  .commentExpand その他の"○"件のコメント
+  .commentBox
+    .commentHeader
+      %a.commentHeaderLink
+        %img.profileImage{width: 30, src: "/user_photos/default.png"}
+        %span.userName ユーザーネーム
+    .commentBody
+      .commentText コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。
+      .commentMeta
+        .commentTime.icon-time 5時間前
+      .commentFooter
+        %ul.actionList
+          %li.like
+            %span.like-btn.favBtn.icon-like
+              %span.likeCnt 100
+          %li
+            %span.icon-option.delete-btn
+  .commentBox
+    .commentHeader
+      %a.commentHeaderLink
+        %img.profileImage{width: 30, src: "/user_photos/default.png"}
+        %span.userName ユーザーネーム
+    .commentBody
+      .commentText コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。
+      .commentMeta
+        .commentTime.icon-time 5時間前
+      .commentFooter
+        %ul.actionList
+          %li
+            %span.like-btn.favBtn.icon-like
+              %span.likeCnt 100
+          %li
+            %span.icon-option.delete-btn
+  .commentMod
+    %textarea{placeholder: "コメント..."}
+    .submit-comment-btn.done-btn 送信

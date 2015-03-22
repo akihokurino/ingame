@@ -28,15 +28,14 @@
       {{ } }}
       %h2{href: "/games/{{= game.id }}#all"} {{= game.title }}
   .postBody
-    %a.postBodyLink{href: "/posts/{{= id }}"}
-      .postText {{= text }}
-      .postThumbnail
-        {{ for (var i = 0; i < post_photos.length; i++) { }}
-        %img.thumbnailImage{src: "/post_photos/{{= post_photos[i].photo_path }}"}
-        {{ } }}
-      .postMeta
-        .postTime.icon-time {{= created_at }}
-        %span.readMore もっと見る
+    .postText {{= text }}
+    .postMeta
+      .postTime.icon-time {{= created_at }}
+      %a.readMore{href: "/posts/{{= id }}"} もっと見る
+    .postThumbnail
+      {{ for (var i = 0; i < post_photos.length; i++) { }}
+      %img.thumbnailImage{src: "/post_photos/{{= post_photos[i].photo_path }}"}
+      {{ } }}
     .urlThumbnailWrap
       {{ for (var i = 0; i < post_urls.length; i++) { }}
       %a.urlThumbnail{href: "{{= post_urls[i].url }}", target: "blank"}
