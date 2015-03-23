@@ -47,10 +47,6 @@
     .postFooter
       %ul.actionList
         %li
-          %a.commentBtn.icon-comment{href: "/posts/{{= id }}"}
-            %span.commentCnt
-              {{= post_comments_count }}
-        %li
           {{ if (!i_liked) { }}
           %span.like-btn.favBtn.icon-like
             %span.likeCnt
@@ -60,6 +56,10 @@
             %span.likeCnt
               {{= post_likes_count }}
           {{ } }}
+        %li
+          %a.commentBtn.icon-comment{href: "/posts/{{= id }}"}
+            %span.commentCnt
+              {{= post_comments_count }}
         %li
           {{ if (current_user_id == user.id) { }}
           %span.icon-option.delete-btn

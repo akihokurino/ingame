@@ -4,9 +4,57 @@
 html {
 	background: #EEEEEE;
 }
+/*---   likeUSerList   ---------------------------*/
+.likeUserList{
+	display: none;
+	&.show{
+		display: block;
+		overflow: hidden;
+		width: 300px;
+		height: 400px;
+		@include border-radius(2px);
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		margin-top: -200px;
+		margin-left: -150px;
+		background: #fff;
+		box-shadow: 0 0 10px rgba(0,0,0,0.3);
+
+		.listHeader{
+			padding: 10px;
+			background: #ddd;
+			text-align: right;
+		}
+		ul{
+			height: 356px;
+			overflow: scroll;
+		}
+
+		li{
+			padding: 10px;
+
+		}
+
+		.profImg{
+			display: inline-block;
+			width: 30px;
+			height: 30px;
+			margin-right: 10px;
+			@include border-radius(50%);
+			vertical-align: middle;
+		}
+		.userName{
+			line-height: 40px;
+		}
+	}
+}
+
+
 /*---   .postDetail   ---------------------------*/
 .mainContent{
 	padding-top: 44px;
+ 	padding-bottom: 55px;
 }
 .gameWrap{
 	background: #fff; 
@@ -119,13 +167,13 @@ html {
 		width: 100%;
 	}
 	.actionList{
-		display: table;
+		display: block;
 		width: 100%;
 		li{
-			display: table-cell;
-			width: 50%;
+			float: right;
 			text-align: right;
 		}
+		@include clearfix;
 	}
 	.favBtn,.icon-option{
 		display:inline-block;
@@ -141,27 +189,6 @@ html {
 		&.on{
 			color: $color_red;
 		}
-	}
-	.likeCnt{
-		position: relative;
-		display: inline-block;
-        font-size: 14px;
-		&:after, &:before {
-          right: 100%;
-          top: 50%;
-          content: " ";
-          height: 0;
-          width: 0;
-          position: absolute;
-          pointer-events: none;
-        }
-
-        &:after {
-          margin-top: -4px;
-        }
-        &:before {
-          margin-top: -5px;
-        }
 	}
 }
 

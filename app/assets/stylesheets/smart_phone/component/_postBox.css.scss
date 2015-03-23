@@ -119,17 +119,22 @@
 		width: 100%;
 	}
 	.actionList{
-		display: table;
+		display: block;
 		width: 100%;
+		margin-top: 10px;
 		li{
-			display: table-cell;
-			width: 33%;
+			float: right;
 			text-align: right;
 		}
+		.left{
+			float: left;
+
+		}
+		@include clearfix;
 	}
 	.commentBtn,.favBtn,.icon-option{
 		display:inline-block;
-		padding:10px 10px 0 10px;
+		padding:0 10px;
 		width: 100%;
 		font-size:20px;
 		color:$color_textGray;
@@ -147,6 +152,9 @@
 		&.on{
 			color: $color_red;
 		}
+	}
+	.likeCount{
+		color: $color-textGray;
 	}
 	.commentCnt,.likeCnt{
 		position: relative;
@@ -173,7 +181,6 @@
 	.urlThumbnailWrap {
 		.urlThumbnail {
 			display: table;
-			margin: 10px;
 			padding:5px;
 			border: solid 1px $color_border;
 			img {

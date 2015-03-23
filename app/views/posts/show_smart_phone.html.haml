@@ -7,6 +7,33 @@
 = render partial: "application/smart_phone/default_header"
 
 %section.mainContent.post-detail-page
+  .likeUserList
+    .listHeader 閉じる
+    %ul
+      %li
+        %img.profImg{src: "/user_photos/default.png"}
+        %span.userName username
+      %li
+        %img.profImg{src: "/user_photos/default.png"}
+        %span.userName username
+      %li
+        %img.profImg{src: "/user_photos/default.png"}
+        %span.userName username
+      %li
+        %img.profImg{src: "/user_photos/default.png"}
+        %span.userName username
+      %li
+        %img.profImg{src: "/user_photos/default.png"}
+        %span.userName username
+      %li
+        %img.profImg{src: "/user_photos/default.png"}
+        %span.userName username
+      %li
+        %img.profImg{src: "/user_photos/default.png"}
+        %span.userName username
+      %li
+        %img.profImg{src: "/user_photos/default.png"}
+        %span.userName username
   .gameWrap
     %figure.imgWrap
       %a
@@ -25,7 +52,7 @@
     .postHeader
       %a.postHeaderLink
         %img.profileImage{width: 30, src: "/user_photos/default.png"}
-        %span.userName ユーザーネーム
+        %span.userName username
         %span.statusBox
           %span.moodReady ステータス
     .postBody
@@ -42,13 +69,12 @@
             %p.description リンク先概要
       .postFooter
         %ul.actionList
-          %li
-            %a.commentBtn.icon-comment
-              %span.commentCnt
-                100
+          %li.left
+            %span.likeCount いいね！10件
           %li
             %span.like-btn.favBtn.icon-like
-              %span.likeCnt 100
+          %li
+            %a.commentBtn.icon-comment
           %li
             %span.icon-option.delete-btn
   .commentExpand その他の"○"件のコメント
@@ -56,7 +82,7 @@
     .commentHeader
       %a.commentHeaderLink
         %img.profileImage{width: 30, src: "/user_photos/default.png"}
-        %span.userName ユーザーネーム
+        %span.userName username
     .commentBody
       .commentText コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。
       .commentMeta
@@ -65,14 +91,13 @@
         %ul.actionList
           %li.like
             %span.like-btn.favBtn.icon-like
-              %span.likeCnt 100
           %li
             %span.icon-option.delete-btn
   .commentBox
     .commentHeader
       %a.commentHeaderLink
         %img.profileImage{width: 30, src: "/user_photos/default.png"}
-        %span.userName ユーザーネーム
+        %span.userName username
     .commentBody
       .commentText コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。
       .commentMeta
