@@ -50,6 +50,7 @@
 				max-width: 100%;
 				height: auto;
 				max-height: 150px;
+				@include border-radius(2px);
 				@include box-sizing;
 			}
 		}
