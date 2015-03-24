@@ -23,8 +23,14 @@ html {
 
 		.listHeader{
 			padding: 10px;
-			background: #ddd;
-			text-align: right;
+			border-bottom: 1px solid $color_border;
+			@include box-sizing;
+			font-size: 14px;
+			color: $color_textBlack;
+			.closeButton{
+				float: right;
+				color: $color_blue;
+			}
 		}
 		ul{
 			height: 356px;
@@ -110,9 +116,12 @@ html {
 }
 
 .commentExpand{
-	text-align: center;
+	padding-left: 10px;
 	margin-bottom: 10px;
-	color: $color_blue;
+	color: $color_textBlack;
+	font-size: 14px;
+	font-weight: bold;
+
 }
 
 .commentBox {

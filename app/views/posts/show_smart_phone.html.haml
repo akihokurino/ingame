@@ -8,7 +8,9 @@
 
 %section.mainContent.post-detail-page
   .likeUserList
-    .listHeader 閉じる
+    .listHeader
+      .closeButton 閉じる
+      .listTitle いいね！”○”件
     %ul
       %li
         %img.profImg{src: "/user_photos/default.png"}
@@ -77,7 +79,7 @@
             %a.commentBtn.icon-comment
           %li
             %span.icon-option.delete-btn
-  .commentExpand その他の"○"件のコメント
+  .commentExpand 以前のコメント...
   .commentBox
     .commentHeader
       %a.commentHeaderLink
