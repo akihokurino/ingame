@@ -7,59 +7,58 @@
 = render partial: "application/smart_phone/default_header"
 
 .game-page.mainCnt{"data-gameid" => @game[:id]}
-  .gameBox
-    .gameWrap
-      %figure.imgWrap
-        - url = @game.amazon_url ? @game.amazon_url : ""
-        %a{href: url, target: "blank"}
-          - if @game.photo_path
-            = image_tag "/game_photos/#{@game.photo_path}", height: "100%", class: "gameImg"
-          - elsif @game.photo_url
-            = image_tag @game.photo_url, height:"100%", class: "gameImg"
+  .gameWrap
+    %figure.imgWrap
+      - url = @game.amazon_url ? @game.amazon_url : ""
+      %a{href: url, target: "blank"}
+        - if @game.photo_path
+          = image_tag "/game_photos/#{@game.photo_path}", height: "100%", class: "gameImg"
+        - elsif @game.photo_url
+          = image_tag @game.photo_url, height:"100%", class: "gameImg"
+        - else
+          = image_tag "/game_photos/default.png", height:"100%", class: "gameImg"
+    .gameInfo
+      .source
+        - case @game.provider
+        - when "famituu"
+          %a{href: @game.provider_url, target: "blank"} 出典：ファミ通
+        - when "steam"
+          %a{href: @game.provider_url, target: "blank"} 出典：STEAM
+      %h1.ttl
+        = @game.title
+      %h2.maker
+        %span by
+        %span.makerName
+          = @game.maker
+      %ul.gameCap
+        %li.device
+          = @game.device
+        %li.releaseDay
+          = @game.formated_release_day
+        %li.gameTag
+          - @game.gametags.each do |gametag|
+            %span.gametag
+              = gametag.name
+      %ul.linkList
+        - @game.game_urls.each_with_index do |url, index|
+          - if index == 0
+            %li
+              = link_to "公式サイト", url.text, target: "blank", class: "officialLink"
           - else
-            = image_tag "/game_photos/default.png", height:"100%", class: "gameImg"
-      .gameInfo
-        .source
-          - case @game.provider
-          - when "famituu"
-            %a{href: @game.provider_url, target: "blank"} 出典：ファミ通
-          - when "steam"
-            %a{href: @game.provider_url, target: "blank"} 出典：STEAM
-        %h1.ttl
-          = @game.title
-        %h2.maker
-          %span by
-          %span.makerName
-            = @game.maker
-        %ul.gameCap
-          %li.device
-            = @game.device
-          %li.releaseDay
-            = @game.formated_release_day
-          %li.gameTag
-            - @game.gametags.each do |gametag|
-              %span.gametag
-                = gametag.name
-        %ul.linkList
-          - @game.game_urls.each_with_index do |url, index|
-            - if index == 0
-              %li
-                = link_to "公式サイト", url.text, target: "blank", class: "officialLink"
-            - else
-              %li
-                = link_to "公式サイト(#{index + 1})", url.text, target: "blank", class: "officialLink"
-          %li
-            %a.youtubeLink{href: "https://www.youtube.com/results?search_query=#{@game.title}", target: "blank"} Youtube
-          / - if @game.wiki
-          /   .gameSummary
-          /     %label{for: "summary"} 概要
-          /     %input.expand{type: "checkbox", id: "summary"}
-          /     %p
-          /       = @game.wiki
-        %ul.gameBtnList
-          %li.item.review-li
-          %li.item.status-li
-        %span.delete-log-btn.deleteBtn マイゲームから削除
+            %li
+              = link_to "公式サイト(#{index + 1})", url.text, target: "blank", class: "officialLink"
+        %li
+          %a.youtubeLink{href: "https://www.youtube.com/results?search_query=#{@game.title}", target: "blank"} Youtube
+        / - if @game.wiki
+        /   .gameSummary
+        /     %label{for: "summary"} 概要
+        /     %input.expand{type: "checkbox", id: "summary"}
+        /     %p
+        /       = @game.wiki
+      %ul.gameBtnList
+        %li.item.review-li
+        %li.item.status-li
+      %span.delete-log-btn.deleteBtn マイゲームから削除
       / .gameInfoWrap
       /   %ul.gameInfo
       /     %li.item.review

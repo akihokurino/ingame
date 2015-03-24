@@ -231,6 +231,7 @@ input[type="submit"]{
 				height: auto;
 				max-height: 200px;
 				@include box-sizing;
+				@include border-radius(2px);
 			}
 		}
 		.gameTtl {

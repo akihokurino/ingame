@@ -29,7 +29,7 @@
 		}
 	}
 	/*---   .gameBox   ----------*/
-	.gameBox {
+	.gameWrap {
 		padding-top: 44px;
 		background: #fff;
 
@@ -103,13 +103,13 @@
 			.device{
 				width: 50%;
 				&:before{
-					content:"\e61a";
+					content:"\e613";
 				}
 			}
 			.releaseDay{
 				width: 50%;
 				&:before{
-					content:"\e619";
+					content:"\e616";
 				}
 			}
 			.gameTag{
