@@ -3,7 +3,7 @@
 
 /*---   common   ---------------------------*/
 html {
-	background: #EEEEEE;
+	background: $base_color;
 }
 
 /*---   .mainCnt   ---------------------------*/
@@ -54,6 +54,7 @@ html {
 			color: #fff;
 			font-size: 12px;
 			line-height:2;
+			z-index: 20;
 			&:before{
 				font-family: 'icomoon';
 				content: "\e60a";

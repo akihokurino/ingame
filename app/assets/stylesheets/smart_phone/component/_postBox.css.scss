@@ -60,7 +60,14 @@
 	}
 	.gameBox{
 		height: 80px;
-		background: $main_color;
+		background: #431e99; /* Old browsers */
+		background: -moz-linear-gradient(-45deg, #431e99 0%, #2989d8 50%, #207cca 51%, #af23a6 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#431e99), color-stop(50%,#2989d8), color-stop(51%,#207cca), color-stop(100%,#af23a6)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(-45deg, #431e99 0%,#2989d8 50%,#207cca 51%,#af23a6 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(-45deg, #431e99 0%,#2989d8 50%,#207cca 51%,#af23a6 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(-45deg, #431e99 0%,#2989d8 50%,#207cca 51%,#af23a6 100%); /* IE10+ */
+		background: linear-gradient(135deg, #431e99 0%,#2989d8 50%,#207cca 51%,#af23a6 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#431e99', endColorstr='#af23a6',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 		.gameBoxLink{
 			display: table;
 			height: 80px;
