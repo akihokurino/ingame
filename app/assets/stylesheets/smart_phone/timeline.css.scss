@@ -38,44 +38,41 @@ html {
 		}
 	}
 
-	.postWrap {
-		padding: 10px;
-		margin-bottom: 10px;
-		@include box-sizing;
-		background-color: #fff;
-		.imgWrap{
-			display:inline-block;
-			img{
-				@include border-radius(50%);
-				@include box-sizing;
-				box-shadow:0 1px 1px rgba(0,0,0,0.5);
-			}
-		}
-		.icon-post{
-			float:right;
+	.postButton{
+			position: fixed;
+			bottom: 15px;
+			right: 15px;
 			@include appearance;
-			display:inline-block;
-			padding:0 10px;
-			margin: 6px 0;
+			display:block;
+			width: 60px;
+			height: 60px;
 			border: none;
 			background: linear-gradient(lighten($main_color,5%),$main_color);
-			&:active{
-				background: linear-gradient($main_color,lighten($main_color,5%));
-			}
-			@include border-radius(2px);
+			box-shadow: 0 4px 4px rgba(0,0,0,.3);
+			@include border-radius(50%);
 			box-sizing: border-box;
 			color: #fff;
 			font-size: 12px;
 			line-height:2;
 			&:before{
-				display:inline-block;
-				margin-right:5px;
+				font-family: 'icomoon';
+				content: "\e60a";
+				display:block;
+				padding: 0 17px;
 				color: #fff;
-				font-size:16px;
-				vertical-align: -10%;
-			}
+				font-size:26px;
 
+				speak: none;
+				font-style: normal;
+				font-weight: normal;
+				font-variant: normal;
+				text-transform: none;
+				line-height: 60px;
+
+				/* Better Font Rendering =========== */
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+			}
 		}
-	}
 }
 

@@ -8,13 +8,9 @@
 
 .timeline-page.mainCnt
   .postDialog つぶやきを投稿しました
-  .postWrap
-    .imgWrap
-      %a{href:"/users/#{@current_user[:id]}#logs"}
-        = image_tag "/user_photos/#{@current_user[:photo_path]}",width:40,height:40, class: "userImg"
-    = link_to "つぶやく", "/posts/new#select", class: "icon-post"
+  = link_to "", "/posts/new#select", class: "postButton"
   .post-list
-  = image_tag "gif-load.gif", class: "loading-gif"
+  = image_tag "gif-load.gif", class: "loading-gif",width: 43,height:11
 
 
 = render partial: "application/underscore/smart_phone/common/delete_confirm"
