@@ -6,75 +6,80 @@
 
 = render partial: "application/smart_phone/default_header"
 
-%section.mainContent.post-detail-page
-  .likeUserList
-    .listHeader
-      .closeButton 閉じる
-      .listTitle いいね！”○”件
-    %ul
-      %li
-        %img.profImg{src: "/user_photos/default.png"}
-        %span.userName username
-      %li
-        %img.profImg{src: "/user_photos/default.png"}
-        %span.userName username
-      %li
-        %img.profImg{src: "/user_photos/default.png"}
-        %span.userName username
-      %li
-        %img.profImg{src: "/user_photos/default.png"}
-        %span.userName username
-      %li
-        %img.profImg{src: "/user_photos/default.png"}
-        %span.userName username
-      %li
-        %img.profImg{src: "/user_photos/default.png"}
-        %span.userName username
-      %li
-        %img.profImg{src: "/user_photos/default.png"}
-        %span.userName username
-      %li
-        %img.profImg{src: "/user_photos/default.png"}
-        %span.userName username
+%section.mainContent.post-detail-page{"data-postid" => @post[:id]}
+  = render partial: "application/smart_phone/like_users_modal", locals: {like_count: @post[:post_likes_count]}
+
   .gameWrap
     %figure.imgWrap
       %a
-        = image_tag "/game_photos/default.png", height: 200, width: 100, class: "gameImg"
+        - if @post.game[:photo_path]
+          = image_tag "/game_photos/#{@post.game[:photo_path]}", height: 200, width: 100, class: "gameImg"
+        - elsif @post.game[:photo_url]
+          = image_tag @post.game[:photo_url], height: 200, width: 100, class: "gameImg"
+        - else
+          = image_tag "/game_photos/default.png}", height: 200, width: 100, class: "gameImg"
     .gameInfo
       .source
-        %a 出典：STEAM
+        - case @post.game[:provider]
+        - when "famituu"
+          %a{href: @post.game[:provider_url], target: "blank"} 出典:ファミ通
+        - when "steam"
+          %a{href: @post.game[:provider_url], target: "blank"} 出典:STEAM
       %h1.ttl
-        %a
-          ゲームタイトルゲームタイトル
+        = link_to @post.game[:title], game_path(@post.game)
       %h2.maker
         %span by
         %span.makerName
-          メーカー名メーカー名
+          = @post.game[:maker]
   .postBox
     .postHeader
       %a.postHeaderLink
-        %img.profileImage{width: 30, src: "/user_photos/default.png"}
-        %span.userName username
+        %img.profileImage{width: 30, src: "/user_photos/#{@post.user[:photo_path]}"}
+        %span.userName
+          = @post.user[:username]
         %span.statusBox
-          %span.moodReady ステータス
+          - case @post.log[:status_id]
+          - when 1
+            %span.moodReady
+              = @post.log.status[:name]
+          - when 2
+            %span.moodPlaying
+              = @post.log.status[:name]
+          - when 3
+            %span.moodPlayed
+              = @post.log.status[:name]
+          - when 4
+            %span.moodStock
+              = @post.log.status[:name]
     .postBody
-      .postText 本文です。本文です。本文です。本文です。本文です。本文です。本文です。本文です。本文です。本文です。本文です。本文です。本文です。本文です。本文です。本文です。本文です。本文です。本文です。本文です。本文です。本文です。本文です。本文です。本文です。本文です。
+      .postText
+        = simple_format @post[:text]
       .postMeta
-        .postTime.icon-time 5時間前
-      .postThumbnail
-        %img.thumbnailImage{src: "/game_photos/default.png", width:300, height:200}
-      .urlThumbnailWrap
-        %a.urlThumbnail
-          %img.thumbnailImg{src: "/user_photos/default.png"}
-          .body
-            %p.title リンク先ページタイトル
-            %p.description リンク先概要
+        .postTime.icon-time
+          = @post[:created_at]
+
+      - @post.post_photos.each do |photo|
+        .postThumbnail
+          %img.thumbnailImage{src: "/post_photos/#{photo[:photo_path]}", width:300, height:200}
+
+      - @post.post_urls.each do |url|
+        .urlThumbnailWrap
+          %a.urlThumbnail
+            = image_tag url[:thumbnail], class: "thumbnailImg"
+            .body
+              %p.title
+                = url[:title]
+              %p.description
+                = simple_format url[:description]
       .postFooter
         %ul.actionList
           %li.left
-            %span.likeCount いいね！10件
+            %span.likeCount.show-like-user
+              いいね！
+              %span.like-count
+                = @post[:post_likes_count]
           %li
-            %span.like-btn.favBtn.icon-like
+            %span.favBtn.icon-like{class: @post.i_liked ? "unlike-btn" : "like-btn"}
           %li
             %a.commentBtn.icon-comment
           %li
@@ -114,3 +119,5 @@
   .commentMod
     %textarea{placeholder: "コメント..."}
     .submit-comment-btn.done-btn 送信
+
+= render partial: "application/underscore/smart_phone/post_detail/like_user"

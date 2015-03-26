@@ -45,6 +45,10 @@ class Post < ActiveRecord::Base
     end
   end
 
+  def i_like?(current_user_id)
+    self.i_liked = self.post_likes.pluck(:user_id).include?(current_user_id) ? true : false
+  end
+
   def facebook(current_user)
     current_provider = nil
     current_user.user_providers.each do |user_provider|

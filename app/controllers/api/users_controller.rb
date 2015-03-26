@@ -10,20 +10,22 @@ class Api::UsersController < ApplicationController
 
     case type
     when "follows"
-      @users = User.get_follows(@current_user, params[:user_id], page)
+      @users = User.get_follows @current_user, params[:user_id], page
     when "followers"
-      @users = User.get_followers(@current_user, params[:user_id], page)
+      @users = User.get_followers @current_user, params[:user_id], page
     when "activity"
-      @users = User.get_activity(@current_user)
+      @users = User.get_activity @current_user
+    when "liked"
+      @users = User.get_liked @current_user, params[:post_id]
     end
   end
 
   def create
-    current_user = User.create_with_provider(user_params, @current_provider)
+    current_user = User.create_with_provider user_params, @current_provider
     if current_user
       session[:current_user_id]     = current_user[:id]
       session[:current_provider_id] = nil
-      @result = current_user[:id]
+      @result                       = current_user[:id]
     else
       @result = false
     end
@@ -32,7 +34,7 @@ class Api::UsersController < ApplicationController
   def update
     clip = {x: params[:user][:clip_x].to_i, y: params[:user][:clip_y].to_i}
     begin
-      @result = @user.update_with_url(user_params, clip)
+      @result = @user.update_with_url user_params, clip
     rescue => e
       case e.message
       when "wrong extname or too big"
@@ -52,13 +54,13 @@ class Api::UsersController < ApplicationController
   def search
     page    = params[:page].to_i
     return false if page < 1
-    @result = User.search_with(params[:username], @current_user, page)
+    @result = User.search_with params[:username], @current_user, page
   end
 
   def tmp_upload
     clip = {x: params[:user][:clip_x].to_i, y: params[:user][:clip_y].to_i}
     begin
-      @result = User.tmp_upload(params[:user][:tmp_data], clip)
+      @result = User.tmp_upload params[:user][:tmp_data], clip
     rescue => e
       case e.message
       when "wrong extname or too big"
@@ -71,10 +73,10 @@ class Api::UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :introduction, :place, :photo_path, :email, :password)
+    params.require(:user).permit :username, :introduction, :place, :photo_path, :email, :password
   end
 
   def set_user
-    @user = User.find(params[:id])
+    @user = User.find params[:id]
   end
 end

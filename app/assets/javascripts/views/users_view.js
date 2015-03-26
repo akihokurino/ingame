@@ -70,5 +70,27 @@ var UsersView = Backbone.View.extend({
 
       }
     });
+  },
+  getLiked: function (params, callback) {
+    var that = this;
+    this.$el.html("");
+
+    this.collection.fetch({
+      data: params,
+      success: function (model, response, options) {
+        for (var i = 0; i < response.users.length; i++) {
+          var user = new User(response.users[i]);
+          user.strimWidth(30);
+          that.collection.add(user);
+        }
+
+        if (callback) {
+          callback();
+        }
+      },
+      error: function () {
+
+      }
+    });
   }
 });

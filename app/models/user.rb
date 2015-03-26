@@ -196,6 +196,11 @@ class User < ActiveRecord::Base
         false
       end
     end
+
+    def get_liked(current_user, post_id)
+      post = Post.find post_id
+      self.where id: post.post_likes.pluck(:user_id)
+    end
 	end
 
   private
