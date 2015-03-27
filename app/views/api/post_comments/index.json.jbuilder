@@ -5,5 +5,6 @@ json.post_comments do |json|
     json.user do |json|
       json.extract! post_comment.user, :id, :username, :photo_path
     end
+    json.current_user_id @current_user[:id]
   end
 end

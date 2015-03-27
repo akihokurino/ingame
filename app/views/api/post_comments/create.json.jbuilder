@@ -9,4 +9,5 @@ json.comment do |json|
 		json.username @comment.user[:username]
 		json.photo_path @comment.user[:photo_path]
 	end
+  json.current_user_id @current_user[:id]
 end

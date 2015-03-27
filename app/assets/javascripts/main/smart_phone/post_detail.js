@@ -147,7 +147,6 @@
         url: "/api/posts/" + this.current_post_id,
         data: {},
         success: function () {
-          console.log("test")
           location.href = "/";
         },
         error: function () {

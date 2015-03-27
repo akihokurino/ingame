@@ -9,8 +9,10 @@ var Comment = Backbone.Model.extend({
       "id":         "",
       "username":   "",
       "photo_path": ""
-    }
+    },
+    "current_user_id": ""
   },
+  url: "/api/post_comments/",
   sanitize: function (text_params) {
     if (text_params) {
       var text = text_params.replace(/\n/g, '<br>');

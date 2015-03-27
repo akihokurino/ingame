@@ -19,5 +19,7 @@
             %span.unlike-btn.favBtn.icon-like
             {{ } }}
             %span.comment-like-count {{= comment_likes_count }}
+          {{ if (user.id == current_user_id) { }}
           %li
-            %span.icon-option.delete-btn
+            %span.icon-option.comment-delete-btn
+          {{ } }}
