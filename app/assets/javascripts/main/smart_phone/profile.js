@@ -4,10 +4,6 @@
 //= require ../../views/posts_view.js
 //= require ../../views/user_view.js
 //= require ../../views/users_view.js
-//= require ../../views/comment_view.js
-//= require ../../views/comments_view.js
-//= require ../../views/comment_modal_view.js
-
 
 (function () {
   var LogListView = Backbone.View.extend({

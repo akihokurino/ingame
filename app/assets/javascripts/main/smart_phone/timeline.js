@@ -1,9 +1,5 @@
 //= require ../../views/post_view.js
 //= require ../../views/posts_view.js
-//= require ../../views/comment_view.js
-//= require ../../views/comments_view.js
-//= require ../../views/comment_modal_view.js
-
 
 (function () {
   var AppView = Backbone.View.extend({

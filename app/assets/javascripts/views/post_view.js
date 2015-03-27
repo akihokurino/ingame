@@ -5,7 +5,6 @@ var PostView = Backbone.View.extend({
     "click .delete":          "destroy",
     "click .like-btn":        "like",
     "click .unlike-btn":      "unlike",
-    "click .comment-btn":     "showComment",
     "keydown .comment-input": "comment",
     "click .comment-like":    "commentLike",
     "click .comment-unlike":  "commentUnlike",
@@ -112,16 +111,6 @@ var PostView = Backbone.View.extend({
       },
       error: function () {
 
-      }
-    });
-  },
-  showComment: function (e) {
-    e.preventDefault();
-
-    var comment_modal_view = new CommentModalView({
-      attributes: {
-        current_comments: this.model.get("post_comments"),
-        current_model: this.model
       }
     });
   },
