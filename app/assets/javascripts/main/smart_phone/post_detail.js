@@ -12,9 +12,12 @@
       "click .show-like-user":     "showLikeUser",
       "click .hide-like-user":     "hideLikeUser",
       "click .comment-expand":     "commentExpand",
-      "click .submit-comment-btn": "sendComment"
+      "click .submit-comment-btn": "sendComment",
+      "click .delete-btn":         "showDeleteConfirm"
     },
     initialize: function () {
+      _.bindAll(this, "destroy");
+
       this.current_post_id    = this.$el.data("postid");
       this.current_like_count = this.$el.find(".like-count");
       this.modal_like_count   = this.$el.find(".modal-like-count");
@@ -125,6 +128,32 @@
     commentExpand: function () {
       this.comments_view.render({post_id: this.current_post_id, limit: null, offset: this.nextOffset});
       this.$el.find(".comment-expand").remove();
+    },
+    showDeleteConfirm: function () {
+      var custom_modal_view = new CustomModalView({
+        attributes: {
+          view: this,
+          title: "この投稿を削除しますか？",
+          desc: null,
+          template: _.template($("#delete-confirm-template").html()),
+          callback: this.destroy,
+          className: "deleteConfirmModal",
+        }
+      });
+    },
+    destroy: function () {
+      $.ajax({
+        type: "DELETE",
+        url: "/api/posts/" + this.current_post_id,
+        data: {},
+        success: function () {
+          console.log("test")
+          location.href = "/";
+        },
+        error: function () {
+
+        }
+      });
     }
   });
 

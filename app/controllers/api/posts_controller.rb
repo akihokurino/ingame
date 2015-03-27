@@ -7,15 +7,15 @@ class Api::PostsController < ApplicationController
 
     case type
     when "user"
-      @posts = Post.get_user_posts(@current_user[:id], params[:user_id], page)
+      @posts = Post.get_user_posts @current_user[:id], params[:user_id], page
     when "all_of_game"
-      @posts = Post.get_all_posts_of_game(@current_user[:id], game_id, page)
+      @posts = Post.get_all_posts_of_game @current_user[:id], game_id, page
     when "follower_of_game"
-      @posts = Post.get_follower_posts_of_game(@current_user[:id], game_id, page)
+      @posts = Post.get_follower_posts_of_game @current_user[:id], game_id, page
     when "liker_of_game"
-      @posts = Post.get_liker_posts_of_game(@current_user[:id], game_id, page)
+      @posts = Post.get_liker_posts_of_game @current_user[:id], game_id, page
     else
-      @posts = Post.get_all_posts(@current_user[:id], page)
+      @posts = Post.get_all_posts @current_user[:id], page
     end
   end
 
@@ -23,26 +23,26 @@ class Api::PostsController < ApplicationController
     params[:post][:user_id] = @current_user[:id]
     begin
       ActiveRecord::Base.transaction do
-        @last_post = Post.create!(post_params)
+        @last_post = Post.create! post_params
 
         if !params[:url_thumbnail].blank?
           params[:url_thumbnail][:post_id] = @last_post[:id]
-          PostUrl.create(post_url_params)
+          PostUrl.create post_url_params
         elsif !params[:post][:urls].blank?
           params[:post][:urls].each do |url|
-            PostUrl.create_thumbnail(url, @last_post)
+            PostUrl.create_thumbnail url, @last_post
           end
         end
 
         unless params[:post][:files].blank?
-          @last_post.save_with_url(params[:post][:files])
+          @last_post.save_with_url params[:post][:files]
         end
 
         case params[:post][:provider]
         when "facebook"
-          @last_post.facebook(@current_user)
+          @last_post.facebook @current_user
         when "twitter"
-          @last_post.twitter(@current_user)
+          @last_post.twitter @current_user
         end
       end
     rescue => e
@@ -56,17 +56,17 @@ class Api::PostsController < ApplicationController
   end
 
   def destroy
-    post = Post.find(params[:id])
+    post = Post.find params[:id]
     post.destroy
-    render :nothing => true
+    @result = true
   end
 
   private
   def post_params
-    params.require(:post).permit(:user_id, :game_id, :text, :log_id)
+    params.require(:post).permit :user_id, :game_id, :text, :log_id
   end
 
   def post_url_params
-    params.require(:url_thumbnail).permit(:post_id, :title, :description, :thumbnail, :url)
+    params.require(:url_thumbnail).permit :post_id, :title, :description, :thumbnail, :url
   end
 end
