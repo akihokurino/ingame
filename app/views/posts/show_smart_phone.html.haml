@@ -84,40 +84,13 @@
             %a.commentBtn.icon-comment
           %li
             %span.icon-option.delete-btn
-  .commentExpand 以前のコメント...
-  .commentBox
-    .commentHeader
-      %a.commentHeaderLink
-        %img.profileImage{width: 30, src: "/user_photos/default.png"}
-        %span.userName username
-    .commentBody
-      .commentText コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。
-      .commentMeta
-        .commentTime.icon-time 5時間前
-      .commentFooter
-        %ul.actionList
-          %li.like
-            %span.like-btn.favBtn.icon-like
-          %li
-            %span.icon-option.delete-btn
-  .commentBox
-    .commentHeader
-      %a.commentHeaderLink
-        %img.profileImage{width: 30, src: "/user_photos/default.png"}
-        %span.userName username
-    .commentBody
-      .commentText コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。コメントです。
-      .commentMeta
-        .commentTime.icon-time 5時間前
-      .commentFooter
-        %ul.actionList
-          %li
-            %span.like-btn.favBtn.icon-like
-              %span.likeCnt 100
-          %li
-            %span.icon-option.delete-btn
+  .commentExpand.comment-expand 以前のコメント...
+  .comment-list
+
+  #scroll-target
   .commentMod
-    %textarea{placeholder: "コメント..."}
+    %textarea.comment-input{placeholder: "コメント..."}
     .submit-comment-btn.done-btn 送信
 
 = render partial: "application/underscore/smart_phone/post_detail/like_user"
+= render partial: "application/underscore/smart_phone/common/comment"

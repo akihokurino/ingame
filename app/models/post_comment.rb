@@ -16,6 +16,10 @@ class PostComment < ActiveRecord::Base
 
   attr_accessor :i_liked
 
+  scope :all_include, -> {
+    includes(:user)
+  }
+
   def datetime
     self[:created_at].strftime("%Y/%m/%d %H:%M:%S")
   end
@@ -26,6 +30,15 @@ class PostComment < ActiveRecord::Base
         post_comment.i_liked = post_comment.comment_likes.pluck(:user_id).include?(current_user_id) ? true : false
         post_comment
       end
+    end
+
+    def get_by_post(post_id, limit, offset, current_user_id)
+      unless limit.blank?
+        comments = self.where(post_id: post_id).order("created_at DESC").limit(limit).offset(offset).all_include
+      else
+        comments = self.where(post_id: post_id).order("created_at DESC").offset(offset).all_include
+      end
+      self.i_like? comments, current_user_id
     end
   end
 end

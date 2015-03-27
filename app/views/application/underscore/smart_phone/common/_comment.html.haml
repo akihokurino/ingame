@@ -1,18 +1,23 @@
 %script{type: "text/template", id: "comment-template"}
-  .commentImgWrap
-    %img{src: "/user_photos/{{= user.photo_path }}"}
-  .commentText
-    %a.userName{href: "/users/{{= user.id }}"}
-      {{= user.username }}
-    %p.commentTime {{= created_at }}
-    {{ if (!i_liked) { }}
-    %span.like-btn.favBtn
-      いいね！
-      {{= comment_likes_count }}
-    {{ } else { }}
-    %span.unlike-btn.favBtn.on
-      いいね！を取り消す
-      {{= comment_likes_count }}
-    {{ } }}
-    %p
-      {{= text }}
+  .commentBox
+    .commentHeader
+      %a.commentHeaderLink{href: "/users/{{= user.id }}"}
+        %img.profileImage{width: 30, src: "/user_photos/{{= user.photo_path }}"}
+        %span.userName
+          {{= user.username }}
+    .commentBody
+      .commentText
+        {{= text }}
+      .commentMeta
+        .commentTime.icon-time {{= created_at }}
+      .commentFooter
+        %ul.actionList
+          %li.like
+            {{ if (!i_liked) { }}
+            %span.like-btn.favBtn.icon-like
+            {{ } else { }}
+            %span.unlike-btn.favBtn.icon-like
+            {{ } }}
+            %span.comment-like-count {{= comment_likes_count }}
+          %li
+            %span.icon-option.delete-btn

@@ -1,18 +1,63 @@
 //= require ../../views/user_view.js
 //= require ../../views/users_view.js
+//= require ../../views/comment_view.js
+//= require ../../views/comments_view.js
 
 (function () {
   var AppView = Backbone.View.extend({
     el: ".post-detail-page",
     events: {
-      "click .like-btn":       "like",
-      "click .unlike-btn":     "unlike",
-      "click .show-like-user": "showLikeUser",
-      "click .hide-like-user": "hideLikeUser"
+      "click .like-btn":           "like",
+      "click .unlike-btn":         "unlike",
+      "click .show-like-user":     "showLikeUser",
+      "click .hide-like-user":     "hideLikeUser",
+      "click .comment-expand":     "commentExpand",
+      "click .submit-comment-btn": "sendComment"
     },
     initialize: function () {
       this.current_post_id    = this.$el.data("postid");
       this.current_like_count = this.$el.find(".like-count");
+      this.modal_like_count   = this.$el.find(".modal-like-count");
+      this.comment_input      = this.$el.find(".comment-input");
+
+      this.comment_collection = new Comments();
+      this.comments_view      = new CommentsView({collection: this.comment_collection});
+
+      this.nextOffset = 2;
+
+      this.comments_view.render({post_id: this.current_post_id, limit: 2, offset: 0});
+    },
+    sendComment: function () {
+      var that = this;
+      var data = {
+        "post_comment": {
+          "user_id": null,
+          "post_id": this.current_post_id,
+          "text":    this.comment_input.val()
+        }
+      }
+
+      this.comment_collection.create(data, {
+        method: "POST",
+        success: function (response) {
+          var comment = new Comment(response.get("comment"));
+          comment.sanitize().getRelativeTime();
+          that.comment_collection.add(comment, {silent: true});
+          var comment_view = new CommentView({model: comment});
+          that.comments_view.$el.append(comment_view.render().el);
+
+          that.comment_input.val("");
+          that.scrollButtom("#scroll-target");
+
+          that.nextOffset += 1;
+        },
+        error: function () {
+
+        }
+      });
+    },
+    scrollButtom: function (selector) {
+      $("html,body").animate({scrollTop: $(selector).offset().top}, 'fast');
     },
     like: function (e) {
       var that = this;
@@ -29,10 +74,10 @@
           url: "/api/post_likes",
           data: data,
           success: function (data) {
-            console.log(data);
-            if (data) {
+            if (data.result) {
               var like_count = parseInt(that.current_like_count.text());
-              that.current_like_count.text(++like_count);
+              that.current_like_count.text(like_count + 1);
+              that.modal_like_count.text(like_count + 1);
               $(e.target).removeClass("like-btn").addClass("unlike-btn");
             }
           },
@@ -49,12 +94,14 @@
         url: "/api/post_likes/" + this.current_post_id,
         data: {},
         success: function (data) {
-          if (data) {
+          if (data.result) {
             var like_count = parseInt(that.current_like_count.text());
             if (like_count > 0) {
-              that.current_like_count.text(--like_count);
+              that.current_like_count.text(like_count - 1);
+              that.modal_like_count.text(like_count - 1);
             } else {
               that.current_like_count.text(0);
+              that.modal_like_count.text(0);
             }
             $(e.target).removeClass("unlike-btn").addClass("like-btn");
           }
@@ -74,6 +121,10 @@
       this.like_user_collection = null;
       this.users_view           = null;
       this.$el.find(".like-user-list").removeClass("show");
+    },
+    commentExpand: function () {
+      this.comments_view.render({post_id: this.current_post_id, limit: null, offset: this.nextOffset});
+      this.$el.find(".comment-expand").remove();
     }
   });
 

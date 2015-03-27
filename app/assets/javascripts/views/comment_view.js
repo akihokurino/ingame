@@ -15,7 +15,9 @@ var CommentView = Backbone.View.extend({
 
     return this;
   },
-  like: function () {
+  like: function (e) {
+    e.stopPropagation();
+
     var that = this;
     var data = {
       "comment_like": {
@@ -51,7 +53,9 @@ var CommentView = Backbone.View.extend({
         }
     });
   },
-  unlike: function () {
+  unlike: function (e) {
+    e.stopPropagation();
+
     var that = this;
 
     $.ajax({
