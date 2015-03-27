@@ -33,7 +33,7 @@
           = @post.game[:maker]
   .postBox
     .postHeader
-      %a.postHeaderLink
+      %a.postHeaderLink{href: "/users/#{@post.user[:id]}"}
         %img.profileImage{width: 30, src: "/user_photos/#{@post.user[:photo_path]}"}
         %span.userName
           = @post.user[:username]
@@ -79,7 +79,7 @@
               %span.like-count
                 = @post[:post_likes_count]
           %li
-            %span.favBtn.icon-like{class: @post.i_liked ? "unlike-btn" : "like-btn"}
+            %span.favBtn.icon-like{class: @post.i_liked ? "unlike-btn on" : "like-btn"}
           %li
             %a.commentBtn.icon-comment
           - if @post[:user_id] == @current_user[:id]

@@ -81,7 +81,7 @@
               var like_count = parseInt(that.current_like_count.text());
               that.current_like_count.text(like_count + 1);
               that.modal_like_count.text(like_count + 1);
-              $(e.target).removeClass("like-btn").addClass("unlike-btn");
+              $(e.target).removeClass("like-btn").addClass("unlike-btn").addClass("on");
             }
           },
           error: function () {
@@ -106,7 +106,7 @@
               that.current_like_count.text(0);
               that.modal_like_count.text(0);
             }
-            $(e.target).removeClass("unlike-btn").addClass("like-btn");
+            $(e.target).removeClass("unlike-btn").removeClass("on").addClass("like-btn");
           }
         },
         error: function () {

@@ -13,12 +13,15 @@
       .commentFooter
         %ul.actionList
           %li.like
-            {{ if (!i_liked) { }}
-            %span.like-btn.favBtn.icon-like
+            {{ if (i_liked) { }}
+            %span.unlike-btn.favBtn.icon-like.on
             {{ } else { }}
-            %span.unlike-btn.favBtn.icon-like
+            %span.like-btn.favBtn.icon-like
             {{ } }}
-            %span.comment-like-count {{= comment_likes_count }}
+
+            %span.comment-like-count
+              {{= comment_likes_count }}
+
           {{ if (user.id == current_user_id) { }}
           %li
             %span.icon-option.comment-delete-btn
