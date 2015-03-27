@@ -10,11 +10,11 @@
   .postDialog つぶやきを投稿しました
   = link_to "", "/posts/new#select", class: "postButton"
   .activityPost
-    %img.gamePhoto{width: 30, src: "/game_photos/default.png"}
+    %img.gamePhoto{width: 30,height: 30, src: "/game_photos/default.png"}
     %img.profileImage{width: 30, src: "/user_photos/default.png"}
     %span.postText [username]は[gametitle][が気になっています]
-    %span.time 1日前
-    
+    %span.time.icon-time 1日前
+
   .post-list
   = image_tag "gif-load.gif", class: "loading-gif",width: 43,height:11
 

@@ -37,6 +37,9 @@ html {
 	.time{
 		color: $color_textGray;
 		font-size: 10px;
+		&:before{
+			margin-right: 2px;
+		}
 	}
 }
 
