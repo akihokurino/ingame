@@ -16,6 +16,10 @@ class PostComment < ActiveRecord::Base
 
   attr_accessor :i_liked
 
+  default_scope {
+    order("created_at DESC")
+  }
+
   scope :all_include, -> {
     includes(:user)
   }
@@ -32,13 +36,21 @@ class PostComment < ActiveRecord::Base
       end
     end
 
-    def get_by_post(post_id, limit, offset, current_user_id)
-      unless limit.blank?
-        comments = self.where(post_id: post_id).order("created_at DESC").limit(limit).offset(offset).all_include
+    def get_by_post(post_id, type, offset, current_user_id)
+      if type == "init"
+        if self.where(post_id: post_id).count > 5
+          comments = self.where(post_id: post_id).limit(2).all_include
+          is_all   = false
+        else
+          comments = self.where(post_id: post_id).all_include
+          is_all   = true
+        end
       else
-        comments = self.where(post_id: post_id).order("created_at DESC").offset(offset).all_include
+        comments = self.where(post_id: post_id).offset(offset).all_include
+        is_all   = true
       end
-      self.i_like? comments, current_user_id
+      comments = self.i_like? comments, current_user_id
+      {post_comments: comments, is_all: is_all}
     end
   end
 end

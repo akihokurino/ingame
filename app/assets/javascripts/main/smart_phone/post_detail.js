@@ -17,6 +17,7 @@
     },
     initialize: function () {
       _.bindAll(this, "destroy");
+      var that = this;
 
       this.current_post_id    = this.$el.data("postid");
       this.current_like_count = this.$el.find(".like-count");
@@ -28,7 +29,11 @@
 
       this.nextOffset = 2;
 
-      this.comments_view.render({post_id: this.current_post_id, limit: 2, offset: 0});
+      this.comments_view.render({post_id: this.current_post_id, type: "init", offset: 0}, function (res) {
+        if (res.is_all) {
+          that.$el.find(".comment-expand").remove();
+        }
+      });
     },
     sendComment: function () {
       var that = this;
@@ -126,7 +131,7 @@
       this.$el.find(".like-user-list").removeClass("show");
     },
     commentExpand: function () {
-      this.comments_view.render({post_id: this.current_post_id, limit: null, offset: this.nextOffset});
+      this.comments_view.render({post_id: this.current_post_id, type: null, offset: this.nextOffset});
       this.$el.find(".comment-expand").remove();
     },
     showDeleteConfirm: function () {

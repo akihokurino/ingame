@@ -11,12 +11,16 @@ var CommentsView = Backbone.View.extend({
       this.$el.prepend(comment_view.render().el);
     }
   },
-  render: function (params) {
+  render: function (params, callback) {
     var that = this;
     this.collection.fetch({
       data: params,
       success: function (model, response, options) {
         that.setCollection(model, response, options);
+
+        if (callback) {
+          callback(response);
+        }
       },
       error: function () {
 
