@@ -38,6 +38,19 @@ var Post = Backbone.Model.extend({
 
     return this;
   },
+  strimWidthText: function (limit) {
+    var text = this.get("text");
+    if (text.length > limit) {
+      var new_text = text.slice(0, limit);
+      new_text    += "...";
+      this.set("text", new_text);
+      this.set("isMore", true);
+    } else {
+      this.set("isMore", false);
+    }
+
+    return this;
+  },
   sanitize: function () {
     var text = this.get("text").replace(/\n/g, '<br>');
     text     = text.replace(/((http:|https:)\/\/[\x21-\x26\x28-\x7e]+)/gi, "<a class='link-text' target='_blank' href='$1'>$1</a>");

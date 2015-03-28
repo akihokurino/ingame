@@ -16,7 +16,7 @@
         {{ } else if (status.id == 4) { }}
         %span.moodStock
           {{= status.name }}
-        {{ } }} 
+        {{ } }}
   .gameBox
     %a.gameBoxLink{href: "/games/{{= game.id}}#all"}
       {{ if (game.photo_path) { }}
@@ -31,7 +31,9 @@
     .postText {{= text }}
     .postMeta
       .postTime.icon-time {{= created_at }}
+      {{ if (isMore) { }}
       %a.readMore{href: "/posts/{{= id }}"} もっと見る
+      {{ } }}
     .postThumbnail
       {{ for (var i = 0; i < post_photos.length; i++) { }}
       %img.thumbnailImage{src: "/post_photos/{{= post_photos[i].photo_path }}"}

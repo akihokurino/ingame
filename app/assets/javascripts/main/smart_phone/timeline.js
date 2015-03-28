@@ -16,7 +16,7 @@
 
       post_socket.callback = function (data) {
         var post = new Post(data.post);
-        post.strimWidth(40).sanitize().sanitizeComment();
+        post.strimWidth(40).strimWidthText(200).sanitize().sanitizeComment();
         post.getRelativeTime().getCommentRelativeTime();
         that.posts_view.collection.add(post, {silent: true});
 
