@@ -403,4 +403,9 @@
 		background-color: $bg_color;
 		padding-top:5px;
 	}
+	.postBox{
+		.gameBox{
+			display: none;
+		}
+	}
 }
