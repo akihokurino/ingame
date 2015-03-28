@@ -9,3 +9,4 @@ json.post_comments do |json|
     json.current_user_id @current_user[:id]
   end
 end
+json.is_all @is_all

@@ -34,7 +34,14 @@ var NotificationsView = Backbone.View.extend({
     }
   },
   createText: function (notification) {
-    var text = "<a href='/users/" + notification.from_user.id + "#logs'>" + notification.from_user.username + "</a>さんがあなた" + notification.text;
+    var re = new RegExp("フォロー", "i");
+    if (notification.text.match(re)) {
+      notification.link = "/users/" + notification.from_user.id + "#logs";
+    } else {
+      notification.link = "/posts/" + notification.post_id;
+    }
+    var text = notification.from_user.username + "さんがあなた" + notification.text;
+
     return text;
   },
   hideNotifications: function () {

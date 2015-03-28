@@ -51,27 +51,7 @@ var UsersView = Backbone.View.extend({
       $(window).bind("scroll", this.pagenation.load);
     }
   },
-  getActivity: function (params, callback) {
-    var that = this;
-    this.collection.fetch({
-      data: params,
-      success: function (model, response, options) {
-        for (var i = 0; i < response.users.length; i++) {
-          var user = new User(response.users[i]);
-          user.strimWidth(30);
-          that.collection.add(user);
-        }
-
-        if (callback) {
-          callback();
-        }
-      },
-      error: function () {
-
-      }
-    });
-  },
-  getLiked: function (params, callback) {
+  renderAll: function (params, callback) {
     var that = this;
     this.$el.html("");
 

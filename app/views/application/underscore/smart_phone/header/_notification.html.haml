@@ -1,5 +1,6 @@
 %script{type: "text/template", id: "notification-template"}
-	.ntfImgWrap
-		%img.profImg{src: "/user_photos/{{= from_user.photo_path }}"}
-	.ntfText
-		{{= text }}
+  %a{href: "{{= link }}"}
+    .ntfImgWrap
+      %img.profImg{src: "/user_photos/{{= from_user.photo_path }}"}
+    .ntfText
+      {{= text }}
