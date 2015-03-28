@@ -15,12 +15,13 @@
           %li.like
             {{ if (i_liked) { }}
             %span.unlike-btn.favBtn.icon-like.on
+              %span.favBtnCnt.comment-like-count
+                {{= comment_likes_count }}
             {{ } else { }}
             %span.like-btn.favBtn.icon-like
+              %span.favBtnCnt.comment-like-count
+                {{= comment_likes_count }}
             {{ } }}
-
-            %span.comment-like-count
-              {{= comment_likes_count }}
 
           {{ if (user.id == current_user_id) { }}
           %li

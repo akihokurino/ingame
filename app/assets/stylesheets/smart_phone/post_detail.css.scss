@@ -97,10 +97,12 @@ html {
         }
       }
 	.ttl {
-		color: $color_textBlack;
 		font-size: 24px;
 		line-height: 1.2;
 		text-align: center;
+		a{
+			color: $color_textBlack;
+		}
 	}
 	.maker{
 		margin-bottom: 15px;
@@ -186,18 +188,25 @@ html {
 	}
 	.favBtn,.icon-option{
 		display:inline-block;
-		padding:10px 10px 0 10px;
-		width: 100%;
+		padding-left: 10px;
 		font-size:20px;
 		color:$color_textGray;
 		line-height: 1;
 		@include box-sizing;
+		&:before{
+			vertical-align: middle;
+		}
 	}
 	.favBtn {
 		text-decoration: none;
 		&.on{
 			color: $color_red;
 		}
+	}
+	.favBtnCnt{
+		display: inline-block;
+		font-size: 16px;
+		vertical-align: middle;
 	}
 }
 

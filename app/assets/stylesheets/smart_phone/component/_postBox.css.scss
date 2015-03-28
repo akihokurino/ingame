@@ -141,13 +141,15 @@
 	}
 	.commentBtn,.favBtn,.icon-option{
 		display:inline-block;
-		padding:0 10px;
-		width: 100%;
+		padding-left: 10px;
 		font-size:20px;
 		color:$color_textGray;
 		line-height: 1;
 		@include box-sizing;
-	}
+		&:before{
+			vertical-align: middle;
+		}
+		}
 	.commentBtn {
 		text-decoration: none;
 		&.on {
@@ -166,23 +168,7 @@
 	.commentCnt,.likeCnt{
 		position: relative;
 		display: inline-block;
-        font-size: 14px;
-		&:after, &:before {
-          right: 100%;
-          top: 50%;
-          content: " ";
-          height: 0;
-          width: 0;
-          position: absolute;
-          pointer-events: none;
-        }
-
-        &:after {
-          margin-top: -4px;
-        }
-        &:before {
-          margin-top: -5px;
-        }
+        font-size: 16px;
 	}
 	/*---   .urlThumbnail   ----*/
 	.urlThumbnailWrap {
