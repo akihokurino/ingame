@@ -117,7 +117,7 @@
     showLikeUser: function () {
       this.like_user_collection = new Users();
       this.users_view           = new UsersView({el: ".like-user-list-body", collection: this.like_user_collection, attributes: {template: "#like-user-template"}});
-      this.users_view.getLiked({type: "liked", post_id: this.current_post_id, page: 1});
+      this.users_view.renderAll({type: "liked", post_id: this.current_post_id, page: 1});
       this.$el.find(".like-user-list").addClass("show");
     },
     hideLikeUser: function () {

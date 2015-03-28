@@ -71,7 +71,7 @@
         }
       });
 
-      this.users_view.getActivity({page: 1, type: "activity"});
+      this.users_view.renderAll({page: 1, type: "activity"});
 
       this.games_view.getActivity({type: "activity"});
 
