@@ -10,7 +10,8 @@ var PostView = Backbone.View.extend({
     "click .comment-unlike":  "commentUnlike",
     "click .delete-btn":      "showDeleteConfirm"
   },
-  template: _.template($("#post-template").html()),
+  normal_template: _.template($("#post-template").html()),
+  activity_template: _.template($("#post-activity-template").html()),
   initialize: function () {
     _.bindAll(this, "destroy", "realtimeUpdate");
 
@@ -31,7 +32,11 @@ var PostView = Backbone.View.extend({
     });
   },
   render: function (type) {
-    var template = this.template(this.model.toJSON());
+    if (this.model.get("post_type") == "activity") {
+      var template = this.activity_template(this.model.toJSON());
+    } else {
+      var template = this.normal_template(this.model.toJSON());
+    }
     this.$el.html(template);
 
     if (type && type == "silent") {

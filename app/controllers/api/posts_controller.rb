@@ -23,6 +23,7 @@ class Api::PostsController < ApplicationController
     params[:post][:user_id] = @current_user[:id]
     begin
       ActiveRecord::Base.transaction do
+        post_params[:post_type_id] = 1
         @last_post = Post.create! post_params
 
         if !params[:url_thumbnail].blank?
@@ -67,6 +68,6 @@ class Api::PostsController < ApplicationController
   end
 
   def post_url_params
-    params.require(:url_thumbnail).permit :post_id, :title, :description, :thumbnail, :url
+    params.require(:url_thumbnail).permit :post_id, :title, :description, :thumbnail, :url, :post_type_id
   end
 end

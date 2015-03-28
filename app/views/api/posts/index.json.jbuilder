@@ -6,6 +6,7 @@ json.posts do |json|
     json.created_at post.datetime
     json.post_likes_count post[:post_likes_count]
     json.post_comments_count post[:post_comments_count]
+    json.post_type post.post_type[:name] if post[:post_type_id]
   	json.game do |json|
       json.id post.game[:id]
       json.title post.game[:title]

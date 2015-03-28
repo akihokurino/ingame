@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150328061621) do
+ActiveRecord::Schema.define(version: 20150328074031) do
 
   create_table "admins", force: true do |t|
     t.string   "username"
@@ -141,6 +141,12 @@ ActiveRecord::Schema.define(version: 20150328061621) do
     t.datetime "updated_at"
   end
 
+  create_table "post_types", force: true do |t|
+    t.string   "name",       limit: 50
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "post_urls", force: true do |t|
     t.integer  "post_id"
     t.string   "title"
@@ -160,7 +166,10 @@ ActiveRecord::Schema.define(version: 20150328061621) do
     t.integer  "post_comments_count", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "post_type_id"
   end
+
+  add_index "posts", ["post_type_id"], name: "index_posts_on_post_type_id", using: :btree
 
   create_table "statuses", force: true do |t|
     t.string   "name",       limit: 50
