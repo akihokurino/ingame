@@ -2,6 +2,8 @@ var Notification = Backbone.Model.extend({
   defaults: {
     "id":   "",
     "text": "",
+    "post_id": "",
+    "link": "",
     "to_user": {
       "id":         "",
       "username":   "",

@@ -6,5 +6,6 @@ item<%= n %>:
   from_user_id: <%= (n % 10) + 1 %>
   to_user_id: 11
   notification_type_id: <%= (n % 3) + 1 %>
+  post_id: 1
   is_read: false
 <% end %>

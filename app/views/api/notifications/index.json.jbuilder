@@ -12,5 +12,6 @@ json.notifications do |json|
       json.photo_path notification.from_user[:photo_path]
     end
     json.text notification.notification_type.value
+    json.post_id notification[:post_id]
   end
 end
