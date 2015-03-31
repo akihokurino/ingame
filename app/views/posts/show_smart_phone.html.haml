@@ -56,7 +56,7 @@
         = simple_format @post[:text]
       .postMeta
         .postTime.icon-time
-          = @post[:created_at]
+          = @post.relative_time
 
       - @post.post_photos.each do |photo|
         .postThumbnail
