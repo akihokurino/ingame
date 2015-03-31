@@ -22,14 +22,22 @@ html {
 		box-shadow: 0 0 10px rgba(0,0,0,0.3);
 
 		.listHeader{
-			padding: 10px;
+			width: 100%;
+			height: 40px;
 			border-bottom: 1px solid $color_border;
-			@include box-sizing;
+			background: #fff;
 			font-size: 14px;
 			color: $color_textBlack;
-			.closeButton{
+			.listTitle{
+				display: inline-block;
+				vertical-align: middle;
+				padding: 8px;
+			}
+			.icon-delete{
 				float: right;
-				color: $color_blue;
+				padding: 8px;
+				font-size: 24px;
+				color: $color_textGray;
 			}
 		}
 		ul{

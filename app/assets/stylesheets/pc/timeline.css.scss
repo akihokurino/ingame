@@ -158,6 +158,11 @@
         }
       }
     }
+    .errorMessage{
+      &:empty{
+        display: none;
+      }
+    }
     .selectBtn {
       position: relative;
       width: 100%;

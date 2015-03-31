@@ -6,7 +6,7 @@
 	overflow: scroll;
 	margin-left: -47.5%;
 	width: 95%;
-	height: 400px;
+	height: 436px;
 	@include border-radius(2px);
 	background-color: #fff;
 	position: fixed;
@@ -20,9 +20,9 @@
 		position: relative;
 		width: 100%;
 		height: 40px;
-		border-bottom: solid 1px #999;
-		background: #C2C1C1;
-		color: #fff;
+		border-bottom: solid 1px $color_border;
+		background: #fff;
+		color: $color_textBlack;
 		font-size: 16px;
 		text-decoration: none;
 		text-align: center;
@@ -30,26 +30,26 @@
 
 		.icon-delete {
 			position: absolute;
-			top: 6px;
-			right: 6px;
-			color: #fff;
-			font-size: 34px;
+			top: 0;
+			right: 0;
+			padding: 7px;
+			color: $color_textGray;
+			font-size: 24px;
 			text-align: center;
 			line-height: 26px;
 		}
 	}
 	.notification-list {
-		padding:0 10px;
-
 		li {
 			border-bottom: 1px solid $color_border;
 			a {
 				display: block;
-				padding:10px 0;
+				padding:10px;
 				@include clearfix;
 			}
 		}
 		.ntfImgWrap{
+			margin-right: 10px;
 			display:inline-block;
 			vertical-align:top;
 		}
@@ -63,7 +63,7 @@
 			display:inline-block;
 			width: 80%;
 			color: $color_textBlack;
-			font-size: 12px;
+			@include font-size(14);
 		}
 	}
 }
