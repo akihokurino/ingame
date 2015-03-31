@@ -158,6 +158,11 @@
         }
       }
     }
+    .errorMessage{
+      &:empty{
+        display: none;
+      }
+    }
     .selectBtn {
       position: relative;
       width: 100%;
@@ -420,6 +425,39 @@
         }
       }
     }
-
   }
+
+  /*---   activityPost   ---------------------------*/
+  .activityPost {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    @include box-sizing;
+    @include clearfix;
+    color: $color-textBlack;
+    font-size: 14px;
+    line-height: 1.5;
+
+  .profileImage{
+    float: left;
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: middle;
+    @include border-radius(50%);
+  }
+
+  .gamePhoto{
+    float: right;
+    display: inline-block;
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+  .time{
+    color: $color_textGray;
+    font-size: 12px;
+    &:before{
+      margin-right: 2px;
+    }
+  }
+}
 }

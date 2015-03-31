@@ -1,73 +1,71 @@
 %script{type: "text/template", id: "post-template"}
-  .contentBox
-    .gameWrap
-      {{ if (status.id == 1) { }}
-      %p.statusReady
-        {{= status.name }}
-      {{ } else if (status.id == 2) { }}
-      %p.statusPlaying
-        {{= status.name }}
-      {{ } else if (status.id == 3) { }}
-      %p.statusPlayed
-        {{= status.name }}
-      {{ } else if (status.id == 4) { }}
-      %p.statusStock
-        {{= status.name }}
+  .postHeader
+    %a.postHeaderLink{href: "/users/{{= user.id }}#logs"}
+      %img.profileImage{width: 30, src: "/user_photos/{{= user.photo_path }}"}
+      %span.userName {{= user.username }}
+      %span.statusBox
+        {{ if (status.id == 1) { }}
+        %span.moodReady
+          {{= status.name }}
+        {{ } else if (status.id == 2) { }}
+        %span.moodPlaying
+          {{= status.name }}
+        {{ } else if (status.id == 3) { }}
+        %span.moodPlayed
+          {{= status.name }}
+        {{ } else if (status.id == 4) { }}
+        %span.moodStock
+          {{= status.name }}
+        {{ } }}
+  .gameBox
+    %a.gameBoxLink{href: "/games/{{= game.id}}#all"}
+      {{ if (game.photo_path) { }}
+      %img.gamePhoto{src: "/game_photos/{{= game.photo_path }}", height: 60, width: 60}
+      {{ } else if (game.photo_url) { }}
+      %img.gamePhoto{src: "{{= game.photo_url }}", height: 60, width: 60}
+      {{ } else { }}
+      %img.gamePhoto{src: "/game_photos/default.png", height: 60, width: 60}
       {{ } }}
-      %a{href: "/games/{{= game.id}}#all"}
-        {{ if (game.photo_path) { }}
-        %img.gamePhoto{src: "/game_photos/{{= game.photo_path }}", height: 70}
-        {{ } else if (game.photo_url) { }}
-        %img.gamePhoto{src: "{{= game.photo_url }}", height: 70}
-        {{ } else { }}
-        %img.gamePhoto{src: "/game_photos/default.png", height: 70}
-        {{ } }}
-    .left
-      .postHeader
-        %figure.profImgWrap
-          %img.profImg{src: "/user_photos/{{= user.photo_path }}", width: "44", height: "44", alt: "ユーザー画像"}
-        %a.account{href: "/users/{{= user.id }}#logs"}
-          {{= user.username }}
-        %p.time {{= created_at }}
-      .textWrap
-        %h2.gameTtl
-          %a.gameTtlLink{href: "/games/{{= game.id }}#all"}
-            {{= game.title }}
-        .postText
-          %a{href: "/posts/{{= id }}"}
-            {{= text }}
-        .thumbnail
-          {{ for (var i = 0; i < post_photos.length; i++) { }}
-          %img.thumbnailImg{src: "/post_photos/{{= post_photos[i].photo_path }}"}
-          {{ } }}
-        .urlThumbnailWrap
-          {{ for (var i = 0; i < post_urls.length; i++) { }}
-          %a.urlThumbnail{href: "{{= post_urls[i].url }}", target: "blank"}
-            %img.thumbnailImg{src: "{{= post_urls[i].thumbnail }}"}
-            .body
-              %p.title {{= post_urls[i].title }}
-              %p.description {{= post_urls[i].description }}
-          {{ } }}
+      %h2{href: "/games/{{= game.id }}#all"} {{= game.title }}
+  .postBody
+    .postText {{= text }}
+    .postMeta
+      .postTime.icon-time {{= created_at }}
+      {{ if (isMore) { }}
+      %a.readMore{href: "/posts/{{= id }}"} もっと見る
+      {{ } }}
+    .postThumbnail
+      {{ for (var i = 0; i < post_photos.length; i++) { }}
+      %img.thumbnailImage{src: "/post_photos/{{= post_photos[i].photo_path }}"}
+      {{ } }}
+    .urlThumbnailWrap
+      {{ for (var i = 0; i < post_urls.length; i++) { }}
+      %a.urlThumbnail{href: "{{= post_urls[i].url }}", target: "blank"}
+        %img.thumbnailImg{src: "{{= post_urls[i].thumbnail }}"}
+        .body
+          %p.title {{= post_urls[i].title }}
+          %p.description {{= post_urls[i].description }}
+      {{ } }}
+    .postFooter
       %ul.actionList
-        %li.cmtBtn
-          コメント
-          %span.cmtNum
-            {{= post_comments_count }}
-        {{ if (!i_liked) { }}
-        %li.like-btn.fvrBtn
-          いいね！
-          %span.likeNum
-            {{= post_likes_count }}
-        {{ } else { }}
-        %li.unlike-btn.fvrBtn.on
-          いいね！
-          %span.likeNum
-            {{= post_likes_count }}
-        {{ } }}
-        {{ if (current_user_id == user.id) { }}
-        %li.deleteBtn.delete-btn
-          削除
-        {{ } }}
+        %li
+          {{ if (!i_liked) { }}
+          %span.like-btn.favBtn.icon-like
+            %span.likeCnt
+              {{= post_likes_count }}
+          {{ } else { }}
+          %span.unlike-btn.favBtn.on.icon-like
+            %span.likeCnt
+              {{= post_likes_count }}
+          {{ } }}
+        %li
+          %a.commentBtn.icon-comment{href: "/posts/{{= id }}"}
+            %span.commentCnt
+              {{= post_comments_count }}
+        %li
+          {{ if (current_user_id == user.id) { }}
+          %span.icon-option.delete-btn
+          {{ } }}
   .commentBox
     %ul.commentList
       {{ for (var i = 0; i < post_comments.length; i++) { }}
@@ -77,7 +75,7 @@
         .commentInfo
           %a.account{href: ""}
             {{= post_comments[i].user.username }}
-          %p.commentTime {{= post_comments[i].created_at }}
+          %p.commentTime.icon-time {{= post_comments[i].created_at }}
           {{ if (!post_comments[i].i_liked) { }}
           %p.comment-like.fvrBtn{"data-commentindex" => "{{= i }}"}
             いいね！

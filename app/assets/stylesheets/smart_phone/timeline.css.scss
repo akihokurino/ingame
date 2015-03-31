@@ -10,13 +10,9 @@ html {
 .activityPost {
 	display: block;
 	width: 100%;
-	margin-bottom: 10px;
 	padding: 10px;
 	@include box-sizing;
 	@include clearfix;
-	background-color: #fff;
-	border-top: solid 1px $color_border;
-	border-bottom: solid 1px $color_border;
 	color: $color-textBlack;
 	font-size: 12px;
 	line-height: 1.5;
