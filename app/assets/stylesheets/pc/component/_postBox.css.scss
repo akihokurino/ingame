@@ -18,7 +18,7 @@
     color: $color-textBlack;
   }
   .postHeader{
-    font-size: 16px;
+    font-size: 14px;
     line-height: 30px;
     .profileImage{
       float: left;
@@ -29,6 +29,8 @@
     }
     .userName{
       display: inline-block;
+      color: $color_textBlack;
+      font-weight: bold;
     }
     .statusBox{
       float: right;
@@ -78,6 +80,9 @@
       padding: 10px;
       @include box-sizing;
       color: #fff;
+      &:hover{
+          text-decoration: none;
+      }
     }
     .gamePhoto{
       float: left;
@@ -99,6 +104,7 @@
     width: 100%;
     color: $color_textBlack;
     @include box-sizing;
+    line-height: 1.5;
     .postThumnail{
       width: 100%;
     }
@@ -131,7 +137,6 @@
   .actionList{
     display: block;
     width: 100%;
-    margin-top: 10px;
     li{
       float: right;
       text-align: right;
@@ -243,6 +248,9 @@
   				display: inline-block;
   				color: #888;
   				font-size: .75rem;
+          &:before{
+            margin-right: 2px;
+          }
   			}
   			.fvrBtn {
   				display: inline-block;
