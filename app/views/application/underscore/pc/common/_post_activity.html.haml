@@ -1,0 +1,12 @@
+%script{type: "text/template", id: "post-activity-template"}
+  .activityPost
+    {{ if (game.photo_path) { }}
+    %img.gamePhoto{src: "/game_photos/{{= game.photo_path }}", height: 30, width: 30}
+    {{ } else if (game.photo_url) { }}
+    %img.gamePhoto{src: "{{= game.photo_url }}", height: 30, width: 30}
+    {{ } else { }}
+    %img.gamePhoto{src: "/game_photos/default.png", height: 30, width: 30}
+    {{ } }}
+    %img.profileImage{width: 30, src: "/user_photos/{{= user.photo_path }}"}
+    %span.postText {{= user.username }} は {{= text }}
+    %span.time.icon-time {{= created_at }}

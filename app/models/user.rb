@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   include RandomName
   include EscapeLike
   include CostomUpload
+  include CompileColor
 
   has_many :user_providers, dependent: :destroy
 	has_many :posts, dependent: :destroy
@@ -111,6 +112,11 @@ class User < ActiveRecord::Base
     current_provider.update(user_id: self[:id])
   end
 
+  def get_most_used_color
+    compiler = Compiler.new "#{Rails.root}/public/user_photos/#{self[:photo_path]}"
+    compiler.compile_histogram
+    compiler.most_used_color
+  end
 
 	class << self
     def search_with(username, current_user, page)

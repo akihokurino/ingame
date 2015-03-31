@@ -5,6 +5,7 @@ class Post < ActiveRecord::Base
   belongs_to :user, counter_cache: true
   belongs_to :game, counter_cache: true
   belongs_to :log
+  belongs_to :post_type
   has_many   :post_likes, dependent: :destroy
   has_many   :post_photos, dependent: :destroy
   has_many   :post_comments, dependent: :destroy
@@ -35,7 +36,7 @@ class Post < ActiveRecord::Base
   }
 
   scope :all_include, -> {
-    includes(:game).includes(:log).includes(:user).includes(:post_likes).includes(:post_photos).includes(:post_comments)
+    includes(:game).includes(:log).includes(:user).includes(:post_likes).includes(:post_photos).includes(:post_comments).includes(:post_type)
   }
 
   def save_with_url(files)
@@ -153,9 +154,10 @@ class Post < ActiveRecord::Base
     def create_activity(log_params, log_id, type)
       current_game = Game.find log_params[:game_id]
       params = {
-        user_id: log_params[:user_id],
-        game_id: log_params[:game_id],
-        log_id:  log_id
+        post_type_id: 2,
+        user_id:      log_params[:user_id],
+        game_id:      log_params[:game_id],
+        log_id:       log_id
       }
 
       case type

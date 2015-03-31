@@ -8,6 +8,7 @@ class Game < ActiveRecord::Base
 	include RandomName
 	include EscapeLike
   include CostomUpload
+  include CompileColor
 
 	has_many :logs, dependent: :destroy
 	has_many :users, through: :logs
@@ -61,6 +62,20 @@ class Game < ActiveRecord::Base
       self.my_status_id = nil
     end
 	end
+
+  def get_most_used_color
+    if self[:photo_path]
+      path = "#{Rails.root}/public/game_photos/#{self[:photo_path]}"
+    elsif self[:photo_url]
+      path = self[:photo_url]
+    else
+      path = "#{Rails.root}/public/game_photos/default.png"
+    end
+
+    compiler = Compiler.new path
+    compiler.compile_histogram
+    compiler.most_used_color
+  end
 
 	def check_rate(current_user)
 		begin

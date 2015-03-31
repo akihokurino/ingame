@@ -6,6 +6,7 @@ var Post = Backbone.Model.extend({
     "post_comments_count": "",
     "i_liked":             "",
     "created_at":          "",
+    "post_type":           "",
     "game": {
       "id":         "",
       "title":      "",
@@ -34,6 +35,19 @@ var Post = Backbone.Model.extend({
       var new_title          = title.slice(0, limit);
       new_title             += "...";
       this.get("game").title = new_title;
+    }
+
+    return this;
+  },
+  strimWidthText: function (limit) {
+    var text = this.get("text");
+    if (text.length > limit) {
+      var new_text = text.slice(0, limit);
+      new_text    += "...";
+      this.set("text", new_text);
+      this.set("isMore", true);
+    } else {
+      this.set("isMore", false);
     }
 
     return this;

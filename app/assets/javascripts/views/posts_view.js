@@ -75,6 +75,7 @@ var PostsView = Backbone.View.extend({
     if (response.posts && response.posts.length > 0) {
       for (var i = 0; i < response.posts.length; i++) {
         var post = new Post(response.posts[i]);
+        post.strimWidthText(200);
         this.collection.add(post);
       }
 
