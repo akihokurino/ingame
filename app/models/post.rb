@@ -189,9 +189,9 @@ class Post < ActiveRecord::Base
       generateText = Proc.new do |status_id|
         case status_id
         when 1
-          "#{current_game[:title]}を気になっています"
+          "#{current_game[:title]}が気になっています"
         when 2
-          "#{current_game[:title]}で遊んでいます"
+          "#{current_game[:title]}を遊んでいます"
         when 3
           "#{current_game[:title]}を遊び終わりました"
         when 4
@@ -201,13 +201,14 @@ class Post < ActiveRecord::Base
 
       case type
       when "create"
-        params[:text] = "#{current_game[:title]}をマイゲームに追加しました"
+        current_status = Status.find log_params[:status_id]
+        params[:text]  = generateText.call current_status[:id]
       when "status_update"
         current_status = Status.find log_params[:status_id]
         params[:text]  = generateText.call current_status[:id]
       when "rate_update"
-        current_rate  = log_params[:rate]
-        params[:text] = "#{current_game[:title]}の評価を#{current_rate}に変更しました"
+        current_rate   = log_params[:rate]
+        params[:text]  = "#{current_game[:title]}の評価を#{current_rate}に変更しました"
       end
 
       self.create params
