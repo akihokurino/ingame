@@ -148,11 +148,15 @@
     @include clearfix;
   }
   .readMore{
+      display: inline-block;
       margin-bottom: 15px;
       @include font-size(13);
       font-weight: bold;
-      color: $color_textBlack;
+      color: $color_textGray;
       cursor: pointer;
+      &:hover{
+        text-decoration: none;
+      }
       &:before{
         font-family: 'icomoon';
         content: "\e602";
