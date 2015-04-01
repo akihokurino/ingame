@@ -26,7 +26,8 @@
         - when "steam"
           %a{href: @post.game[:provider_url], target: "blank"} 出典:STEAM
       %h1.ttl
-        = link_to @post.game[:title], game_path(@post.game)
+        %a{href: "/games/#{@post.game[:id]}#all"}
+          = @post.game[:title]
       %h2.maker
         %span by
         %span.makerName

@@ -1,7 +1,7 @@
 class Api::PostCommentsController < ApplicationController
 
   def index
-    result         = PostComment.get_by_post params[:post_id], params[:type], params[:offset], @current_user[:id]
+    result         = PostComment.get_by_post params[:post_id], params[:type], params[:offset], params[:limit], @current_user[:id]
     @post_comments = result[:post_comments]
     @is_all        = result[:is_all]
   end

@@ -36,10 +36,10 @@ class PostComment < ActiveRecord::Base
       end
     end
 
-    def get_by_post(post_id, type, offset, current_user_id)
+    def get_by_post(post_id, type, offset, limit, current_user_id)
       if type == "init"
-        if self.where(post_id: post_id).count > 5
-          comments = self.where(post_id: post_id).limit(2).all_include
+        if self.where(post_id: post_id).count > limit.to_i
+          comments = self.where(post_id: post_id).limit(limit).all_include
           is_all   = false
         else
           comments = self.where(post_id: post_id).all_include

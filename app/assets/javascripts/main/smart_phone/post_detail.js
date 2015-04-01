@@ -29,7 +29,7 @@
 
       this.nextOffset = 2;
 
-      this.comments_view.render({post_id: this.current_post_id, type: "init", offset: 0}, function (res) {
+      this.comments_view.render({post_id: this.current_post_id, type: "init", offset: 0, limit: 5}, function (res) {
         if (res.is_all) {
           that.$el.find(".comment-expand").remove();
         }

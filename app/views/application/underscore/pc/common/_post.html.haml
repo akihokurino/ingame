@@ -68,7 +68,9 @@
           {{ } }}
   .commentBox
     %ul.commentList
-      {{ for (var i = 0; i < post_comments.length; i++) { }}
+      {{ var len = post_comments.length }}
+      {{ for (var i = len - 3; i < len; i++) { }}
+      {{ if (post_comments[i]) { }}
       %li.item
         %figure.profImgWrap
           %img.profImg{src: "/user_photos/{{= post_comments[i].user.photo_path }}", width: "30", height: "30", alt: ""}
@@ -87,6 +89,7 @@
           {{ } }}
           %p.userComment
             {{= post_comments[i].text }}
+      {{ } }}
       {{ } }}
     .myCommentBox
       %figure.profImgWrap

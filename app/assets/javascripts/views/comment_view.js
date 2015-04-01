@@ -1,6 +1,6 @@
 var CommentView = Backbone.View.extend({
   tagName: "li",
-  className: "comment",
+  className: "item",
   events: {
     "click .like-btn":           "like",
     "click .unlike-btn":         "unlike",

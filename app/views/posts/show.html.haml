@@ -6,20 +6,31 @@
 
 = render partial: "application/pc/default_header"
 
-%section.mainContent.post-detail-page
+%section.mainContent.post-detail-page{"data-postid" => @post[:id]}
   .topBox
     .gameWrap
       %figure.gameMainWrap
         %a
-          = image_tag "/game_photos/default.png", width: 240, class: "gameImg", alt: "ゲームパッケージ画像"
+          - if @post.game[:photo_path]
+            = image_tag "/game_photos/#{@post.game[:photo_path]}", width: 240, class: "gameImg", alt: "ゲームパッケージ画像"
+          - elsif @post.game[:photo_url]
+            = image_tag @post.game[:photo_url], width: 240, class: "gameImg", alt: "ゲームパッケージ画像"
+          - else
+            = image_tag "/game_photos/default.png}", width: 240, class: "gameImg", alt: "ゲームパッケージ画像"
       .Source
-        %a 出典:STEAM
+        - case @post.game[:provider]
+        - when "famituu"
+          %a{href: @post.game[:provider_url], target: "blank"} 出典:ファミ通
+        - when "steam"
+          %a{href: @post.game[:provider_url], target: "blank"} 出典:STEAM
     .postWrap
-      %a.gameTitle
-        %h1 ゲームタイトルゲームタイトル
+      %a.gameTitle{href: "/games/#{@post.game[:id]}#all"}
+        %h1
+          = @post.game[:title]
       %h2.maker
         %span by
-        %span.makerName メーカー
+        %span.makerName
+          = @post.game[:maker]
       .postBox
         .postHeader
           %a.postHeaderLink{href: "/users/#{@post.user[:id]}"}
@@ -70,7 +81,11 @@
                 %li
                   %span.icon-option.delete-btn
         .likeUserListBox
-          %h2.listTitle いいね！○件
+          %h2.listTitle
+            いいね！
+            %span.like-count
+              = @post[:post_likes_count]
+            %span 件
           %ul.likeUserList
             %li.likeUser
               %a
@@ -112,19 +127,15 @@
               %a
                 %img.userImg{src: "/user_photos/default.png", width: "25", height: "25", alt: ""}
         .commentBox
-          %ul.commentList
-            %li.item
-              %figure.profImgWrap
-                %img.profImg{src: "/user_photos/default.png", width: "30", height: "30", alt: ""}
-              .commentInfo
-                %a.account username
-                %p.commentTime.icon-time 投稿時間
-                %p.comment-like.icon-like
-                  %span.likeNum 11
-                %p.userComment コメント本文コメント本文
+          %ul.commentList.comment-list
+
           .myCommentBox
             %figure.profImgWrap
-              %img.profImg{src: "/user_photos/default.png", width: "30", height: "30", alt: ""}
+              %img.profImg{src: "/user_photos/#{@post.user[:photo_path]}", width: "30", height: "30", alt: ""}
             %form.commentWrap
               %textarea.comment.comment-input{placeholder: "コメントする"}
+
 = render partial: "application/pc/footer"
+
+= render partial: "application/underscore/pc/common/comment"
+= render partial: "application/underscore/pc/common/delete_confirm"
