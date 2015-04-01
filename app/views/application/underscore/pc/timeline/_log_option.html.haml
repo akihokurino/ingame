@@ -2,7 +2,7 @@
   {{ if (game.photo_path) { }}
   = image_tag "/game_photos/{{= game.photo_path }}", width: 50, class: "gamePhoto", alt: "ゲームパッケージ画像"
   {{ } else if (game.photo_url) { }}
-  %img.gamePhoto{src: "{{= game.photo_url }}", height: 50, alt: "ゲームパッケージ画像"}
+  %img.gamePhoto{src: "{{= game.photo_url }}", width: 50, alt: "ゲームパッケージ画像"}
   {{ } else { }}
   = image_tag "/game_photos/default.png", width: 50, class: "gamePhoto", alt: "ゲームパッケージ画像"
   {{ } }}

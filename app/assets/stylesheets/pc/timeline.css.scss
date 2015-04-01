@@ -396,31 +396,34 @@
       @include font-size(14);
 
       .playing {
-        padding: 10px 10px 0;
+        padding: 10px;
         color: $color_red;
         line-height: 23px;
       }
       .ready {
-        padding: 0 10px;
+        padding:10px;
         color: $color_yellow;
         line-height: 23px;
       }
       .played {
-        padding: 0 10px;
+        padding:10px;
         color: $color_blue;
         line-height: 23px;
       }
       .stock {
-        padding: 0 10px;
+        padding:10px;
         color: $color_green;
         line-height: 23px;
       }
       .gameList {
-        padding-bottom: 10px;
         .item {
+          border-top: solid 1px $color-border;
           padding: 10px;
           color: $color_black;
           line-height: 23px;
+          &:last-child{
+            border-bottom: solid 1px $color_border;
+          }
 
           .gamePhoto{
             display: inline-block;
