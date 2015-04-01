@@ -1,43 +1,10 @@
 @import "../_function.css.scss";
 @import "component/_postBox.css.scss";
+@import "component/_activityPost.css.scss";
 
 /*---   common   ---------------------------*/
 html {
 	background: $base_color;
-}
-
-/*---   activityPost   ---------------------------*/
-.activityPost {
-	display: block;
-	width: 100%;
-	padding: 10px;
-	@include box-sizing;
-	@include clearfix;
-	color: $color-textBlack;
-	font-size: 12px;
-	line-height: 1.5;
-
-	.profileImage{
-		float: left;
-		margin-right: 10px;
-		display: inline-block;
-		vertical-align: middle;
-		@include border-radius(50%);
-	}
-
-	.gamePhoto{
-		float: right;
-		display: inline-block;
-		margin-left: 10px;
-		vertical-align: middle;
-	}
-	.time{
-		color: $color_textGray;
-		font-size: 10px;
-		&:before{
-			margin-right: 2px;
-		}
-	}
 }
 
 /*---   .mainCnt   ---------------------------*/

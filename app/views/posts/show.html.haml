@@ -28,7 +28,8 @@
             = render partial: "application/common/status"
       %span.delete-log-btn.deleteBtn マイゲームから削除
     .postWrap
-      %h1.gameTitle ゲームタイトルゲームタイトル
+      %a.gameTitle
+        %h1 ゲームタイトルゲームタイトル
       .postBox
         .postHeader
           %a.postHeaderLink{href: "/users/#{@post.user[:id]}"}
