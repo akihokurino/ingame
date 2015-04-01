@@ -129,8 +129,10 @@
                 }
                 $(".error-message").html(response.get("error").message);
               } else {
-                var post      = new Post(response.get("last_post"));
-                post.strimWidth(40).sanitize().sanitizeComment();
+                var post = new Post(response.get("last_post"));
+                post.strimWidth(40).strimWidthText(200).sanitize().sanitizeComment();
+                post.getRelativeTime().getCommentRelativeTime();
+
                 that.posts_view.collection.add(post, {silent: true});
 
                 var post_view = new PostView({model: post});

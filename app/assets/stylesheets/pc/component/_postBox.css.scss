@@ -151,7 +151,6 @@
       margin-bottom: 15px;
       @include font-size(13);
       font-weight: bold;
-      color: $color_textBlack;
       cursor: pointer;
       &:before{
         font-family: 'icomoon';
@@ -160,6 +159,9 @@
         margin-right: 5px;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+      }
+      a {
+        color: $color_textBlack;
       }
     }
   .commentBtn,.favBtn,.icon-option{

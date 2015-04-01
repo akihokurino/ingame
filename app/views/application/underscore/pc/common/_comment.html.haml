@@ -1,6 +1,6 @@
 %script{type: "text/template", id: "comment-template"}
   %figure.profImgWrap
-    %img.profImg{src: "/user_photos/default.png", width: "30", height: "30", alt: ""}
+    %img.profImg{src: "/user_photos/{{= user.photo_path }}", width: "30", height: "30", alt: ""}
   .commentInfo
     %a.account {{= user.username }}
     %p.commentTime.icon-time {{= created_at }}
@@ -13,5 +13,5 @@
       %span.likeNum.comment-like-count
         {{= comment_likes_count }}
     {{ } }}
-    %p.icon-option
+    %p.icon-option.comment-delete-btn
     %p.userComment {{= text }}

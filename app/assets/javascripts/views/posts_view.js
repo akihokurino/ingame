@@ -43,7 +43,7 @@ var PostsView = Backbone.View.extend({
   },
   addPost: function (post) {
     if (post.id) {
-      post.strimWidth(40).sanitize().sanitizeComment();
+      post.strimWidth(40).strimWidthText(200).sanitize().sanitizeComment();
       post.getRelativeTime().getCommentRelativeTime();
 
       var post_view = new PostView({model: post});
@@ -76,7 +76,6 @@ var PostsView = Backbone.View.extend({
       for (var i = 0; i < response.posts.length; i++) {
         response.posts[i].post_comments.reverse();
         var post = new Post(response.posts[i]);
-        post.strimWidthText(200);
         this.collection.add(post);
       }
 

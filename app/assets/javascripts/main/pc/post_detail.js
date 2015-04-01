@@ -60,7 +60,6 @@
             that.comments_view.$el.append(comment_view.render().el);
 
             that.comment_input.val("");
-            that.scrollButtom("#scroll-target");
 
             that.nextOffset += 1;
           },
