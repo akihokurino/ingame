@@ -147,6 +147,21 @@
     }
     @include clearfix;
   }
+  .readMore{
+      margin-bottom: 15px;
+      @include font-size(13);
+      font-weight: bold;
+      color: $color_textBlack;
+      cursor: pointer;
+      &:before{
+        font-family: 'icomoon';
+        content: "\e602";
+        font-weight: normal;
+        margin-right: 5px;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+    }
   .commentBtn,.favBtn,.icon-option{
     display:inline-block;
     padding-left: 10px;
