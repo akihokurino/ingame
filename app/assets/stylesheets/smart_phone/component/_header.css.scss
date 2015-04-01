@@ -123,12 +123,13 @@ header {
 		text-align: left;
 		z-index:-1;
 		a{
+			display: block;
 			color:#fff;
+			padding:10px;
 		}
 		.item{
-			display:block;
-			width: 100%;
-			padding:10px 10px 10px 20px;
+			margin: 0 auto;
+			width: 80%;
 			font-size:22px;
 			text-align: left;
 			@include box-sizing;

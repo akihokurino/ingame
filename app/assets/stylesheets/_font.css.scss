@@ -1,19 +1,10 @@
 @font-face {
 	font-family: 'icomoon';
-	src:asset_url('font/icomoon.eot?-d6kd5y');
-	src:asset_url('font/icomoon.eot?#iefix-d6kd5y') format('embedded-opentype'),
-		asset_url('font/icomoon.woff?-d6kd5y') format('woff'),
-		asset_url('font/icomoon.ttf?-d6kd5y') format('truetype'),
-		asset_url('font/icomoon.svg?-d6kd5y#icomoon') format('svg');
-	font-weight: normal;
-	font-style: normal;
-
-	font-family: 'icomoon';
-	src:asset_url('font/icomoon.eot?-3gi1r5');
-	src:asset_url('font/icomoon.eot?#iefix-3gi1r5') format('embedded-opentype'),
-		asset_url('font/icomoon.woff?-3gi1r5') format('woff'),
-		asset_url('font/icomoon.ttf?-3gi1r5') format('truetype'),
-		asset_url('font/icomoon.svg?-3gi1r5#icomoon') format('svg');
+	src:asset_url('font/icomoon.eot?kk1nm');
+	src:asset_url('font/icomoon.eot?#iefixkk1nm') format('embedded-opentype'),
+		asset_url('font/icomoon.woff?kk1nm') format('woff'),
+		asset_url('font/icomoon.ttf?kk1nm') format('truetype'),
+		asset_url('font/icomoon.svg?kk1nm#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -132,81 +123,10 @@
 	content: "\e618";
 }
 
-.icon-enter:before {
+.icon-logout:before {
 	content: "\e61a";
-}
-
-.icon-exit:before {
-	content: "\e61b";
 }
 
 .icon-youtube:before {
 	content: "\e617";
 }
-
-
-
-.icon-place:before {
-	content: "\e609";
-}
-
-.icon-post:before {
-	content: "\e60a";
-}
-
-.icon-plus:before {
-	content: "\e60b";
-}
-
-.icon-search:before {
-	content: "\e60c";
-}
-
-.icon-setting:before {
-	content: "\e60d";
-}
-
-.icon-star:before {
-	content: "\e60e";
-}
-
-.icon-time:before {
-	content: "\e60f";
-}
-
-.icon-twitter:before {
-	content: "\e610";
-}
-
-.icon-user:before {
-	content: "\e611";
-}
-
-.icon-image:before {
-	content: "\e614";
-}
-
-.icon-tag:before {
-	content: "\e618";
-}
-
-.icon-cart:before {
-	content: "\e616";
-}
-
-.icon-calendar:before {
-	content: "\e619";
-}
-
-.icon-storage:before {
-	content: "\e61a";
-}
-
-.icon-info:before {
-	content: "\e613";
-}
-
-.icon-youtube:before {
-	content: "\e617";
-}
-

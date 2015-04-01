@@ -13,24 +13,20 @@
 
   .modal-header {
     position: relative;
-    padding-left: 20px;
+    padding: 15px;
     border-bottom: solid 1px #999;
     color: $color_black;
-    font-size: 1.125rem;
+    @include font-size(14);
     font-family: Helvetica;
     text-decoration: none;
-    line-height: 40px;
 
-    .close-btn {
+    .icon-delete {
       position: absolute;
-      top: 9px;
-      right: 10px;
-      width: 46px;
-      height: 20px;
-      color: $color-blue;
-      font-size: 13px;
-      text-align: center;
-      line-height: 20px;
+      top: 0;
+      right: 0;
+      color: $color_textGray;
+      padding: 10px;
+      font-size: 20px;
       cursor: pointer;
     }
   }
@@ -39,35 +35,37 @@
     height: 450px;
 
     li {
-      padding: 10px;
       @include clearfix;
       border-bottom: 1px solid #ccc;
+      a{
+        display: block;
+        min-height: 60px;
+        padding: 10px;
+        &:hover{
+          text-decoration: none;
+          background-color: #eeeeee;
+        }
+      }
 
       &:last-child {
         margin-bottom: 0;
         border-bottom: 0;
       }
     }
-    .leftBox {
+    .profImgWrap {
       float: left;
       margin-right: 15px;
-    }
-    .rightBox {
-      color: #404040;
-      font-size: 13px;
-      line-height: 1.6;
-    }
-    .profImgWrap {
-      margin-right: 0;
       .profImg{
         @include border-radius(50%);
         width: 40px;
         height: 40px;
       }
-
-      &:after {
-        content: none;
-      }
+    }
+    @include clearfix;
+    .notificationText {
+      color: $color_textBlack;
+      @include font-size(13);
+      line-height: 1.6;
     }
   }
 }

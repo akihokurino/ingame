@@ -1,7 +1,6 @@
 %script{type: "text/template", id: "notification-template"}
   %a{href: "{{= link }}"}
-    .leftBox
-      %figure.profImgWrap
-        %img.profImg{width: 58, height: 58, src: "/user_photos/{{= from_user.photo_path }}"}
-    .rightBox
+    %figure.profImgWrap
+      %img.profImg{width: 58, height: 58, src: "/user_photos/{{= from_user.photo_path }}"}
+    .notificationText
       {{= text }}
