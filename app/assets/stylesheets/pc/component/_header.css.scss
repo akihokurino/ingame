@@ -130,43 +130,42 @@
   top: 44px;
   z-index: 10000;
   right: 0;
-  @include border-radius(3px);
+  @include border-radius(2px);
   @include box-shadow(0, 0, 16px, 0, rgba(0, 0, 0, 0.2));
   background: #fff;
-  font-weight: bold;
-  font-size: .75rem;
+  @include font-size(14);
 
-  .toProfileEdit,.menuItemLogout{
-    display: block;
-    position: relative;
-    padding:4px 6px 4px 30px;
-    color: $color_textBlack;
-    line-height: 20px;
-    &:hover{
-      text-decoration:none;
-      background: $base_color;
-      color: #fff;
-      &:before {
-        color: #fff;
+  li{
+    a{
+      display: block;
+      color: $color_textBlack;
+      padding: 10px;
+      &:hover{
+          text-decoration: none;
+          background-color: #eeeeee;
+        }
+      &:before{
+        margin-right: 5px;
       }
     }
-    &:before {
-      position: absolute;
-      top: 4px;
-      left: 8px;
-      color: $color_textBlack;
-      font-size: 1rem;
+    .toProfile:before{
       font-family: 'icomoon';
+      content: "\e611";
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
-  }
-  .toProfileEdit {
-    &:before {
+    .toAccount:before{
+      font-family: 'icomoon';
       content: "\e60d";
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
-  }
-  .menuItemLogout {
-    &:before {
-      content: "\e606";
+    .toLogout:before{
+      font-family: 'icomoon';
+      content: "\e61a";
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
+
   }
 }
