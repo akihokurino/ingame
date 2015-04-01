@@ -71,12 +71,6 @@
                     = simple_format url[:description]
           .postFooter
             %ul.actionList
-              %li.left
-                %span.likeCount.show-like-user
-                  いいね！
-                  %span.like-count
-                    = @post[:post_likes_count]
-                    %span 件
               %li
                 %span.favBtn.icon-like{class: @post.i_liked ? "unlike-btn on" : "like-btn"}
               %li
@@ -84,6 +78,48 @@
               - if @post[:user_id] == @current_user[:id]
                 %li
                   %span.icon-option.delete-btn
+        .likeUserListBox
+          %h2.listTitle いいね！○件
+          %ul.likeUserList
+            %li.likeUser
+              %a
+                %img.userImg{src: "/user_photos/default.png", width: "25", height: "25", alt: ""}
+            %li.likeUser
+              %a
+                %img.userImg{src: "/user_photos/default.png", width: "25", height: "25", alt: ""}
+            %li.likeUser
+              %a
+                %img.userImg{src: "/user_photos/default.png", width: "25", height: "25", alt: ""}
+            %li.likeUser
+              %a
+                %img.userImg{src: "/user_photos/default.png", width: "25", height: "25", alt: ""}
+            %li.likeUser
+              %a
+                %img.userImg{src: "/user_photos/default.png", width: "25", height: "25", alt: ""}
+            %li.likeUser
+              %a
+                %img.userImg{src: "/user_photos/default.png", width: "25", height: "25", alt: ""}
+            %li.likeUser
+              %a
+                %img.userImg{src: "/user_photos/default.png", width: "25", height: "25", alt: ""}
+            %li.likeUser
+              %a
+                %img.userImg{src: "/user_photos/default.png", width: "25", height: "25", alt: ""}
+            %li.likeUser
+              %a
+                %img.userImg{src: "/user_photos/default.png", width: "25", height: "25", alt: ""}
+            %li.likeUser
+              %a
+                %img.userImg{src: "/user_photos/default.png", width: "25", height: "25", alt: ""}
+            %li.likeUser
+              %a
+                %img.userImg{src: "/user_photos/default.png", width: "25", height: "25", alt: ""}
+            %li.likeUser
+              %a
+                %img.userImg{src: "/user_photos/default.png", width: "25", height: "25", alt: ""}
+            %li.likeUser
+              %a
+                %img.userImg{src: "/user_photos/default.png", width: "25", height: "25", alt: ""}
         .commentBox
           %ul.commentList
             %li.item
