@@ -68,8 +68,8 @@
           {{ } }}
   .commentBox
     {{ if (post_comments.length > 3) { }}
-    %p.readMore
-      %a{href: "/posts/{{= id }}"} 以前のコメントを表示...
+    %a.readMoreComment{href: "/posts/{{= id }}"}
+      以前のコメントを表示...
     {{ } }}
     %ul.commentList
       {{ var len = post_comments.length }}
