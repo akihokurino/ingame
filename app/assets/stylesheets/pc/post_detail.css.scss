@@ -1,0 +1,480 @@
+@import "../_function.css.scss";
+
+.mainContent{
+  padding-top: 46px;
+  background-color: #eeeeee;
+}
+
+.topBox{
+	background: #fff;
+  padding: 20px;
+  margin: 0 auto;
+  width: 800px;
+}
+.gameWrap {
+  display: inline-block;
+  margin-right: 10px;
+  width: 260px;
+  @include box-sizing;
+  vertical-align: top;
+  text-align: center;
+  .gameImgWrap {
+    text-align:center;
+    img{
+      margin-bottom: 2px;
+      @include box-shadow(0,0,4px,0,rgba(0,0,0,0.5));
+    }
+  }
+  .Source{
+    margin-bottom: 10px;
+    text-align: center;
+    a{
+      color: $color_textGray;
+      font-size: 12px;
+    }
+  }
+  .gameBtnList {
+	  width: 90%;
+	  margin: 0 auto;
+	  @include box-sizing;
+	  font-size: 14px;
+	  text-align:center;
+	  .item {
+	    display:inline-block;
+	    text-align:center;
+	    width: 100%;
+	    margin:5px 0;
+	  }
+    .reviewBtn,.statusBtn{
+      @include appearance;
+      width: 100%;
+      padding: 0 70px;
+      line-height: 3;
+      text-align: center;
+    }
+    .reviewBtn{
+      background: #fff;
+      border: 1px solid $color_border;
+      color: $color_textBlack;
+    }
+    .statusBtn{
+      background: #fff;
+      border: solid 1px $main_color;
+      color: $main_color;
+    }
+    .registed{
+      background:$main_color;
+      border: none;
+      color:#fff;
+    }
+  }
+  .deleteBtn{
+    display: block;
+    width: 160px;
+    margin: 0 auto 10px;
+    padding: 4px;
+    @include box-sizing;
+    color: $color_red;
+    font-size: 10px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .gameCapWrap {
+    float: right;
+    position: relative;
+    width: 700px;
+    @include clearfix;
+
+    .leftBox{
+      float: left;
+      width: 420px;
+      padding-right: 10px;
+      font-size:12px;
+    }
+    .rightBox{
+      width: 260px;
+      float: right;
+    }
+  }
+}
+
+.postWrap{
+  display: inline-block;
+
+  .gameTitle{
+    margin-bottom: 14px;
+    color: $color_textBlack;
+    @include font-size(28);
+    line-height:1.5;
+  }
+
+  .postBox {
+    width: 480px;
+    margin: 0 auto 10px;
+    border: 1px solid $color_border;
+    @include border-radius(2px);
+    @include box-sizing;
+    background: #fff;
+
+    .postHeaderLink{
+      display: block;
+      width: 100%;
+      height: 50px;
+      padding: 10px;
+      @include box-sizing;
+      color: $color-textBlack;
+    }
+    .postHeader{
+      font-size: 14px;
+      line-height: 30px;
+      .profileImage{
+        float: left;
+        margin-right: 10px;
+        display: inline-block;
+        vertical-align: middle;
+        @include border-radius(50%);
+      }
+      .userName{
+        display: inline-block;
+        color: $color_textBlack;
+        font-weight: bold;
+      }
+      .statusBox{
+        float: right;
+        .moodReady,
+        .moodPlaying,
+        .moodPlayed,
+        .moodStock{
+          display: inline-block;
+          padding: 0 8px;
+          @include border-radius(2px);
+          font-size: 12px;
+          line-height: 2;
+        }
+        .moodReady{
+          color: $color_yellow;
+          border: solid 1px $color_yellow;
+        }
+        .moodPlaying{
+          color: $color_red;
+          border: solid 1px $color_red;
+        }
+        .moodPlayed{
+          color: $color_blue;
+          border: solid 1px $color_blue;
+        }
+        .moodStock{
+          color: $color_green;
+          border: solid 1px $color_green;
+        }
+      }
+      @include clearfix;
+    }
+    .gameBox{
+      height: 80px;
+      background: #431e99; /* Old browsers */
+      background: -moz-linear-gradient(-45deg, #431e99 0%, #2989d8 50%, #207cca 51%, #af23a6 100%); /* FF3.6+ */
+      background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#431e99), color-stop(50%,#2989d8), color-stop(51%,#207cca), color-stop(100%,#af23a6)); /* Chrome,Safari4+ */
+      background: -webkit-linear-gradient(-45deg, #431e99 0%,#2989d8 50%,#207cca 51%,#af23a6 100%); /* Chrome10+,Safari5.1+ */
+      background: -o-linear-gradient(-45deg, #431e99 0%,#2989d8 50%,#207cca 51%,#af23a6 100%); /* Opera 11.10+ */
+      background: -ms-linear-gradient(-45deg, #431e99 0%,#2989d8 50%,#207cca 51%,#af23a6 100%); /* IE10+ */
+      background: linear-gradient(135deg, #431e99 0%,#2989d8 50%,#207cca 51%,#af23a6 100%); /* W3C */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#431e99', endColorstr='#af23a6',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+      .gameBoxLink{
+        display: table;
+        height: 80px;
+        width: 100%;
+        padding: 10px;
+        @include box-sizing;
+        color: #fff;
+        &:hover{
+            text-decoration: none;
+        }
+      }
+      .gamePhoto{
+        float: left;
+        display: table-cell;
+        margin-right: 10px;
+        @include border-radius(2px);
+        vertical-align: middle;
+      }
+      h2{
+        display: table-cell;
+        width: 100%;
+        vertical-align: middle;
+      }
+    }
+    .postBody{
+      font-size: 14px;
+      padding: 10px;
+      display: block;
+      width: 100%;
+      color: $color_textBlack;
+      @include box-sizing;
+      line-height: 1.5;
+      .postThumnail{
+        width: 100%;
+      }
+      .postMeta{
+        margin: 5px 0;
+        color: $color_textGray;
+        .postTime{
+          display: inline-block;
+          &:before{
+            margin-right: 5px;
+          }
+        }
+        .readMore{
+          float: right;
+          font-weight: bold;
+          color: $color_blue;
+        }
+        @include clearfix;
+      }
+      .postThumbnail{
+        width: 100%;
+        .thumbnailImage{
+          width: 100%;
+        }
+      }
+    }
+    .postFooter{
+      width: 100%;
+    }
+    .actionList{
+      display: block;
+      width: 100%;
+      li{
+        float: right;
+        text-align: right;
+      }
+      .left{
+        float: left;
+
+      }
+      @include clearfix;
+    }
+    .commentBtn,.favBtn,.icon-option{
+      display:inline-block;
+      padding-left: 10px;
+      font-size:20px;
+      color:$color_textGray;
+      line-height: 1;
+      @include box-sizing;
+      &:before{
+        vertical-align: middle;
+      }
+      }
+    .commentBtn {
+      text-decoration: none;
+      &.on {
+        color: $color_green;
+      }
+    }
+    .favBtn {
+      text-decoration: none;
+      &.on{
+        color: $color_red;
+      }
+    }
+    .likeCount{
+      color: $color-textGray;
+    }
+    .commentCnt,.likeCnt{
+      position: relative;
+      display: inline-block;
+          font-size: 16px;
+    }
+    /*---   .urlThumbnail   ----*/
+    .urlThumbnailWrap {
+      .urlThumbnail {
+        display: table;
+        padding:5px;
+        border: solid 1px $color_border;
+        img {
+          display:table-cell;
+          width: 90px;
+          margin-bottom:0;
+        }
+        .body {
+          display:table-cell;
+          padding-left:5px;
+          width: 100%;
+          vertical-align: top;
+          .title {
+            color:$color_textBlack;
+            font-weight:bold;
+            font-size:12px;
+          }
+          .description {
+            color:$color_textGray;
+            font-size:10px;
+          }
+        }
+      }
+    }
+    .movieWrap{
+      @include box-sizing;
+      width:100%;
+      border:none;
+    }
+    /*---   iframe   ---*/
+    iframe {
+      width: 100%;
+      height: 272px;
+    }
+  }
+  /*---   .commentBox   ---*/
+  .commentBox {
+    padding: 10px;
+    border-top: 1px solid #dcdcdc;
+    @include clearfix;
+
+    .profImgWrap {
+      float: left;
+      margin-right: 10px;
+    }
+    .profImg {
+      border: 1px solid #d3d3d3;
+      @include border-radius(50%);
+    }
+    .commentList {
+      .item {
+        margin-bottom: 8px;
+      }
+      .commentInfo {
+        line-height: 0.8;
+        @include clearfix;
+
+        .account {
+          display: inline-block;
+          color: #3c3c3c;
+          font-weight: bold;
+          @include font-size(13);
+          font-size: .75rem;
+          vertical-align: top;
+        }
+        .commentTime {
+          display: inline-block;
+          color: #888;
+          @include font-size(13);
+
+          &:before{
+            margin-right: 2px;
+          }
+        }
+        .fvrBtn {
+          display: inline-block;
+          color: #888;
+          @include font-size(13);
+          cursor: pointer;
+
+          &:hover {
+            text-decoration: underline;
+          }
+          &.on {
+            color: $color_red;
+          }
+        }
+        .userComment {
+          overflow: hidden;
+          color: #3c3c3c;
+          @include font-size(13);
+          line-height: 1.5;
+        }
+      }
+    }
+    /*---   .commentBox   ---*/
+    .commentBox {
+      padding: 10px;
+      border-top: 1px solid #dcdcdc;
+      @include clearfix;
+
+      .profImgWrap {
+        float: left;
+        margin-right: 10px;
+      }
+      .profImg {
+        border: 1px solid #d3d3d3;
+        @include border-radius(50%);
+      }
+      .commentList {
+        .item {
+          margin-bottom: 8px;
+        }
+        .commentInfo {
+          line-height: 0.8;
+          @include clearfix;
+
+          .account {
+            display: inline-block;
+            color: #3c3c3c;
+            font-weight: bold;
+            @include font-size(13);
+            font-size: .75rem;
+            vertical-align: top;
+          }
+          .commentTime {
+            display: inline-block;
+            color: #888;
+            @include font-size(13);
+
+            &:before{
+              margin-right: 2px;
+            }
+          }
+          .fvrBtn {
+            display: inline-block;
+            color: #888;
+            @include font-size(13);
+            cursor: pointer;
+
+            &:hover {
+              text-decoration: underline;
+            }
+            &.on {
+              color: $color_red;
+            }
+          }
+          .userComment {
+            overflow: hidden;
+            color: #3c3c3c;
+            @include font-size(13);
+            line-height: 1.5;
+          }
+        }
+      }
+    }
+    .commentWrap {
+      float: left;
+    }
+    .comment {
+      overflow: hidden;
+      width: 416px;
+      padding: 5px;
+      border: 1px solid #d1d1d1;
+      @include border-radius(2px);
+      @include box-sizing;
+      box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.07);
+      background: #f0f0f0;
+      @include appearance;
+      @include font-size(14);
+      resize: none;
+      outline: 0;
+
+      &::-webkit-input-placeholder {
+        padding: 3px;
+        color: #c6c6c6;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+

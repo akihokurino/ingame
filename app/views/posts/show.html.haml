@@ -7,5 +7,98 @@
 = render partial: "application/pc/default_header"
 
 %section.mainContent.post-detail-page
+  .topBox
+    .gameWrap
+      %figure.gameMainWrap
+        %a
+          = image_tag "/game_photos/default.png", width: 240, class: "gameImg", alt: "ゲームパッケージ画像"
+      .Source
+        %a 出典:STEAM
+      %ul.gameBtnList
+        %li.item.review-li
+          %select.reviewBtn.stars.my-rate{name: "stars", size: 1}
+            %option{value: ""} ★で評価
+            %option{value: 1} ★☆☆☆☆
+            %option{value: 2} ★★☆☆☆
+            %option{value: 3} ★★★☆☆
+            %option{value: 4} ★★★★☆
+            %option{value: 5} ★★★★★
+        %li.item.status-li
+          %select.statusBtn.my-status.registed{name: "status", size: "1"}
+            = render partial: "application/common/status"
+      %span.delete-log-btn.deleteBtn マイゲームから削除
+    .postWrap
+      %h1.gameTitle ゲームタイトルゲームタイトル
+      .postBox
+        .postHeader
+          %a.postHeaderLink{href: "/users/#{@post.user[:id]}"}
+            %img.profileImage{width: 30, src: "/user_photos/#{@post.user[:photo_path]}"}
+            %span.userName
+              = @post.user[:username]
+            %span.statusBox
+              - case @post.log[:status_id]
+              - when 1
+                %span.moodReady
+                  = @post.log.status[:name]
+              - when 2
+                %span.moodPlaying
+                  = @post.log.status[:name]
+              - when 3
+                %span.moodPlayed
+                  = @post.log.status[:name]
+              - when 4
+                %span.moodStock
+                  = @post.log.status[:name]
+        .postBody
+          .postText
+            = simple_format @post[:text]
+          .postMeta
+            .postTime.icon-time
+              = @post.relative_time
 
+          - @post.post_photos.each do |photo|
+            .postThumbnail
+              %img.thumbnailImage{src: "/post_photos/#{photo[:photo_path]}", width:300, height:200}
+
+          - @post.post_urls.each do |url|
+            .urlThumbnailWrap
+              %a.urlThumbnail
+                = image_tag url[:thumbnail], class: "thumbnailImg"
+                .body
+                  %p.title
+                    = url[:title]
+                  %p.description
+                    = simple_format url[:description]
+          .postFooter
+            %ul.actionList
+              %li.left
+                %span.likeCount.show-like-user
+                  いいね！
+                  %span.like-count
+                    = @post[:post_likes_count]
+                    %span 件
+              %li
+                %span.favBtn.icon-like{class: @post.i_liked ? "unlike-btn on" : "like-btn"}
+              %li
+                %a.commentBtn.icon-comment
+              - if @post[:user_id] == @current_user[:id]
+                %li
+                  %span.icon-option.delete-btn
+        .commentBox
+          %ul.commentList
+            %li.item
+              %figure.profImgWrap
+                %img.profImg{src: "/user_photos/default.png", width: "30", height: "30", alt: ""}
+              .commentInfo
+                %a.account username
+                %p.commentTime.icon-time 投稿時間
+                %p.comment-like.fvrBtn
+                  いいね！
+                  %span.likeNum ○件
+                %p.userComment コメント本文コメント本文
+          .myCommentBox
+            %figure.profImgWrap
+              %img.profImg{src: "/user_photos/default.png", width: "30", height: "30", alt: ""}
+            %form.commentWrap
+              %textarea.comment.comment-input{placeholder: "コメントする"}
 = render partial: "application/pc/footer"
