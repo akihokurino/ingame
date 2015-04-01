@@ -33,35 +33,6 @@
       font-size: 12px;
     }
   }
-  .deleteBtn{
-    display: block;
-    width: 160px;
-    margin: 0 auto 10px;
-    padding: 4px;
-    @include box-sizing;
-    color: $color_red;
-    font-size: 10px;
-    text-align: center;
-    cursor: pointer;
-  }
-
-  .gameCapWrap {
-    float: right;
-    position: relative;
-    width: 700px;
-    @include clearfix;
-
-    .leftBox{
-      float: left;
-      width: 420px;
-      padding-right: 10px;
-      font-size:12px;
-    }
-    .rightBox{
-      width: 260px;
-      float: right;
-    }
-  }
 }
 
 .postWrap{
@@ -326,12 +297,14 @@
             display: inline-block;
             color: #888;
             @include font-size(13);
+            vertical-align: top;
 
             &:before{
-              margin-right: 2px;
+              margin-right: 4px;
             }
           }
-          .fvrBtn {
+          .icon-like {
+            float: right;
             display: inline-block;
             color: #888;
             @include font-size(13);
@@ -345,6 +318,7 @@
             }
           }
           .userComment {
+            margin-top: 5px;
             overflow: hidden;
             color: #3c3c3c;
             @include font-size(13);

@@ -77,13 +77,11 @@
             {{= post_comments[i].user.username }}
           %p.commentTime.icon-time {{= post_comments[i].created_at }}
           {{ if (!post_comments[i].i_liked) { }}
-          %p.comment-like.fvrBtn{"data-commentindex" => "{{= i }}"}
-            いいね！
+          %p.comment-like.icon-like{"data-commentindex" => "{{= i }}"}
             %span.likeNum
               {{= post_comments[i].comment_likes_count }}
           {{ } else { }}
-          %p.comment-unlike.fvrBtn.on{"data-commentindex" => "{{= i }}"}
-            いいね！を取り消す
+          %p.comment-unlike.icon-like.on{"data-commentindex" => "{{= i }}"}
             %span.likeNum
               {{= post_comments[i].comment_likes_count }}
           {{ } }}
