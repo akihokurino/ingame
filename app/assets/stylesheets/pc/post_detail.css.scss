@@ -262,6 +262,21 @@
         }
       }
     }
+    .readMore{
+      margin-bottom: 15px;
+      @include font-size(13);
+      font-weight: bold;
+      color: $color_textBlack;
+      cursor: pointer;
+      &:before{
+        font-family: 'icomoon';
+        content: "\e602";
+        font-weight: normal;
+        margin-right: 5px;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+    }
 
     /*---   .commentBox   ---*/
     .commentBox {
@@ -303,18 +318,24 @@
               margin-right: 4px;
             }
           }
-          .icon-like {
+          .icon-like,.icon-option{
             float: right;
             display: inline-block;
             color: #888;
-            @include font-size(13);
             cursor: pointer;
-
-            &:hover {
-              text-decoration: underline;
-            }
+          }
+          .icon-like{
+            @include font-size(14);
             &.on {
               color: $color_red;
+            }
+          }
+          .icon-option{
+            margin-right: 10px;
+            @include font-size(18);
+            &:before{
+              display: inline-block;
+              vertical-align: top;
             }
           }
           .userComment {
