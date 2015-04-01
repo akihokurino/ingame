@@ -16,7 +16,7 @@
           - elsif @post.game[:photo_url]
             = image_tag @post.game[:photo_url], width: 240, class: "gameImg", alt: "ゲームパッケージ画像"
           - else
-            = image_tag "/game_photos/default.png}", width: 240, class: "gameImg", alt: "ゲームパッケージ画像"
+            = image_tag "/game_photos/default.png", width: 240, class: "gameImg", alt: "ゲームパッケージ画像"
       .Source
         - case @post.game[:provider]
         - when "famituu"
@@ -86,46 +86,9 @@
             %span.like-count
               = @post[:post_likes_count]
             %span 件
-          %ul.likeUserList
-            %li.likeUser
-              %a
-                %img.userImg{src: "/user_photos/default.png", width: "25", height: "25", alt: ""}
-            %li.likeUser
-              %a
-                %img.userImg{src: "/user_photos/default.png", width: "25", height: "25", alt: ""}
-            %li.likeUser
-              %a
-                %img.userImg{src: "/user_photos/default.png", width: "25", height: "25", alt: ""}
-            %li.likeUser
-              %a
-                %img.userImg{src: "/user_photos/default.png", width: "25", height: "25", alt: ""}
-            %li.likeUser
-              %a
-                %img.userImg{src: "/user_photos/default.png", width: "25", height: "25", alt: ""}
-            %li.likeUser
-              %a
-                %img.userImg{src: "/user_photos/default.png", width: "25", height: "25", alt: ""}
-            %li.likeUser
-              %a
-                %img.userImg{src: "/user_photos/default.png", width: "25", height: "25", alt: ""}
-            %li.likeUser
-              %a
-                %img.userImg{src: "/user_photos/default.png", width: "25", height: "25", alt: ""}
-            %li.likeUser
-              %a
-                %img.userImg{src: "/user_photos/default.png", width: "25", height: "25", alt: ""}
-            %li.likeUser
-              %a
-                %img.userImg{src: "/user_photos/default.png", width: "25", height: "25", alt: ""}
-            %li.likeUser
-              %a
-                %img.userImg{src: "/user_photos/default.png", width: "25", height: "25", alt: ""}
-            %li.likeUser
-              %a
-                %img.userImg{src: "/user_photos/default.png", width: "25", height: "25", alt: ""}
-            %li.likeUser
-              %a
-                %img.userImg{src: "/user_photos/default.png", width: "25", height: "25", alt: ""}
+
+          %ul.likeUserList.like-user-list-body
+
         .commentBox
           %p.readMore.icon-comment.comment-expand 以前のコメントを表示...
           %ul.commentList.comment-list
@@ -138,5 +101,6 @@
 
 = render partial: "application/pc/footer"
 
+= render partial: "application/underscore/pc/post_detail/like_user"
 = render partial: "application/underscore/pc/common/comment"
 = render partial: "application/underscore/pc/common/delete_confirm"

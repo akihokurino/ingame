@@ -19,13 +19,16 @@
       _.bindAll(this, "destroy");
       var that = this;
 
-      this.current_post_id    = this.$el.data("postid");
-      this.current_like_count = this.$el.find(".like-count");
-      this.modal_like_count   = this.$el.find(".modal-like-count");
-      this.comment_input      = this.$el.find(".comment-input");
+      this.current_post_id      = this.$el.data("postid");
+      this.current_like_count   = this.$el.find(".like-count");
+      this.modal_like_count     = this.$el.find(".modal-like-count");
+      this.comment_input        = this.$el.find(".comment-input");
 
-      this.comment_collection = new Comments();
-      this.comments_view      = new CommentsView({collection: this.comment_collection});
+      this.comment_collection   = new Comments();
+      this.comments_view        = new CommentsView({collection: this.comment_collection});
+
+      this.like_user_collection = new Users();
+      this.users_view           = new UsersView({el: ".like-user-list-body", collection: this.like_user_collection, attributes: {template: "#like-user-template"}});
 
       this.nextOffset = 20;
 
@@ -34,6 +37,8 @@
           that.$el.find(".comment-expand").remove();
         }
       });
+
+      this.users_view.renderAll({type: "liked", post_id: this.current_post_id, page: 1});
 
       $(".comment-input").autosize();
     },

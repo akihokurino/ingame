@@ -17,7 +17,7 @@
         - elsif @post.game[:photo_url]
           = image_tag @post.game[:photo_url], height: 200, width: 100, class: "gameImg"
         - else
-          = image_tag "/game_photos/default.png}", height: 200, width: 100, class: "gameImg"
+          = image_tag "/game_photos/default.png", height: 200, width: 100, class: "gameImg"
     .gameInfo
       .source
         - case @post.game[:provider]
