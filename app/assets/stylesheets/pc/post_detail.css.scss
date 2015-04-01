@@ -33,41 +33,6 @@
       font-size: 12px;
     }
   }
-  .gameBtnList {
-	  width: 90%;
-	  margin: 0 auto;
-	  @include box-sizing;
-	  font-size: 14px;
-	  text-align:center;
-	  .item {
-	    display:inline-block;
-	    text-align:center;
-	    width: 100%;
-	    margin:5px 0;
-	  }
-    .reviewBtn,.statusBtn{
-      @include appearance;
-      width: 100%;
-      padding: 0 70px;
-      line-height: 3;
-      text-align: center;
-    }
-    .reviewBtn{
-      background: #fff;
-      border: 1px solid $color_border;
-      color: $color_textBlack;
-    }
-    .statusBtn{
-      background: #fff;
-      border: solid 1px $main_color;
-      color: $main_color;
-    }
-    .registed{
-      background:$main_color;
-      border: none;
-      color:#fff;
-    }
-  }
   .deleteBtn{
     display: block;
     width: 160px;
@@ -103,7 +68,7 @@
   display: inline-block;
 
   .gameTitle{
-    margin-bottom: 14px;
+    display: inline-block;
     color: $color_textBlack;
     @include font-size(28);
     line-height:1.5;
@@ -111,6 +76,16 @@
       text-decoration: none;
     }
   }
+  .maker{
+      margin-bottom: 15px;
+      color: $color_textBlack;
+      @include font-size(16);
+      line-height: 2;
+      &Name{
+        font-weight: bold;
+        padding-right: 10px;
+      }
+    }
 
   .postBox {
     width: 480px;
