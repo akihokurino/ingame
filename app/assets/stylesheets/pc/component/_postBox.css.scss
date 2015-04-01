@@ -1,5 +1,16 @@
 @import "../../_function.css.scss";
 
+.game-timeline{
+  .postBox{
+    .gameBox{
+      display: none;
+    }
+    .postBody{
+      padding: 0 10px 10px 10px;
+    }
+  }
+}
+
 /*---   .postBox   ----------*/
 .postBox {
   width: 480px;
