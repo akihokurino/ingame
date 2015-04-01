@@ -90,6 +90,32 @@ class Post < ActiveRecord::Base
     self[:created_at].strftime("%Y/%m/%d %H:%M:%S")
   end
 
+  def relative_time
+    current_time = Time.now.to_i
+    created_time = self[:created_at].to_i
+    diff_time    = (current_time - created_time).floor
+    diff_day     = (diff_time / (60 * 60 * 24)).floor
+    diff_hour    = (diff_time / (60 * 60)).floor
+    diff_minutes = (diff_time / 60).floor
+    diff_second  = diff_time.floor
+
+    year, month, day, hour, min, sec = self.datetime.split(/[^0-9]/)
+
+    if diff_day > 1
+      date = "#{year}年#{month}月#{day}日 #{hour}時#{min}分"
+    elsif diff_day > 0
+      date = "昨日 #{hour}時#{min}分"
+    else
+      if diff_hour >= 1
+        date = "#{diff_hour}時間前"
+      elsif diff_minutes >= 1
+        date = "#{diff_minutes}分前"
+      else
+        date = "#{diff_second}秒前"
+      end
+    end
+  end
+
   class << self
     def get_all_posts(current_user_id, page)
       offset       = (page - 1) * LIMIT
