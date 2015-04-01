@@ -1,2 +1,3 @@
 %script{type: "text/template", id: "log-option-template"}
-  {{= game.title }}
+  = image_tag "/game_photos/default.png", width: "50",height:"50", class: "gamePhoto"
+  %span.gameTitle {{= game.title }}
