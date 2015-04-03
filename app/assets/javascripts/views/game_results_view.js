@@ -39,7 +39,7 @@ var GameResultsView = Backbone.View.extend({
       }
     });
   },
-  setCollection: function (model, response, option) {
+  setCollection: function (model, response, options) {
     if (response.results && response.results.length > 0) {
       for (var i = 0; i < response.results.length; i++) {
         var game_result = new GameResult(response.results[i]);
@@ -48,5 +48,24 @@ var GameResultsView = Backbone.View.extend({
 
       $(window).bind("scroll", this.pagenation.load);
     }
+  },
+  getActivity: function (params, callback) {
+    var that = this;
+    this.collection.fetch({
+      data: params,
+      success: function (model, response, options) {
+        for (var i = 0; i < response.games.length; i++) {
+          var game_result = new GameResult(response.games[i]);
+          that.collection.add(game_result);
+        }
+
+        if (callback) {
+          callback();
+        }
+      },
+      error: function () {
+
+      }
+    });
   }
 });
