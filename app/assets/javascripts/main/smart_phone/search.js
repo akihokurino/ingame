@@ -21,7 +21,7 @@
       this.game_result_collection = new GameResults();
       this.game_results_view      = new GameResultsView({el: ".result-list", collection: this.game_result_collection});
       this.game_collection        = new Games();
-      this.game_results_view      = new GameResultsView({el: ".game-activity-list", collection: this.game_collection});
+      this.game_activity_view     = new GameResultsView({el: ".game-activity-list", collection: this.game_collection});
 
       this.game_title             = this.$(".game-title-input");
       this.current_game_title     = null;
@@ -32,7 +32,7 @@
         this.search();
       }
 
-      this.game_results_view.getActivity({type: "activity"});
+      this.game_activity_view.getActivity({type: "activity"});
     },
     search: function () {
       var that  = this;
