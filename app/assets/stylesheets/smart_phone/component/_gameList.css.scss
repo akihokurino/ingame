@@ -16,6 +16,7 @@
 		}
 	}
 
+.game-activity-list-wrap .gameActivityList,
 .gameList {
 	background: $bg_color;
 	@include box-sizing;
@@ -23,8 +24,8 @@
 		padding:0;
 	}
 	.item {
-		display:table;
-		padding:5px;
+		display: block;
+		padding: 10px;
 		border-bottom: 1px solid $color_border;
 		@include box-sizing;
 		background-color: #fff;
@@ -33,9 +34,7 @@
 		width: 100%;
 	}
 	.gameImg{
-		display:table-cell;
-		width: 100px;
-		margin-left:auto;
+		float: left;
 		@include box-sizing;
 		a{
 			display:inline-block;
@@ -45,11 +44,10 @@
 		}
 	}
 	.textArea{
-		display:table-cell;
-		padding-left:10px;
 		width: 100%;
-		text-align:left;
-		vertical-align: top;
+		padding-left: 110px;
+		@include box-sizing;
+		@include clearfix;
 		.gameTitle{
 			color:$color_textBlack;
 			font-weight:bold;
@@ -167,9 +165,9 @@
 		}
 		.status{
 			float:right;
-			margin:0 auto;
+			margin-top: 10px;
 			@include appearance;
-			display:inline-block;
+			display: block;
 			padding-left:20px;
 			width: 100px;
 			height:38px;
