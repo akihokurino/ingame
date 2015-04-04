@@ -3,7 +3,6 @@
 /*---   .userActivity   ----------*/
 .userActivity {
   @include clearfix;
-  @include border-radius(2px);
 
   &Ttl {
     padding: 8px 0;

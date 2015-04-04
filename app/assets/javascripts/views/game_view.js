@@ -1,6 +1,6 @@
 var GameView = Backbone.View.extend({
-  tagName: "div",
-  className: "gameBox",
+  tagName: "li",
+  className: "item",
   initialize: function () {
     if (this.attributes && this.attributes.type) {
       this.type = this.attributes.type;
