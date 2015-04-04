@@ -48,24 +48,5 @@ var GameResultsView = Backbone.View.extend({
 
       $(window).bind("scroll", this.pagenation.load);
     }
-  },
-  getActivity: function (params, callback) {
-    var that = this;
-    this.collection.fetch({
-      data: params,
-      success: function (model, response, options) {
-        for (var i = 0; i < response.games.length; i++) {
-          var game_result = new GameResult(response.games[i]);
-          that.collection.add(game_result);
-        }
-
-        if (callback) {
-          callback();
-        }
-      },
-      error: function () {
-
-      }
-    });
   }
 });

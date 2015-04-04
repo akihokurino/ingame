@@ -2,8 +2,9 @@ var UserResultView = Backbone.View.extend({
   tagName: "li",
   className: "item",
   events: {
-    "click .follow-btn":   "follow",
-    "click .unfollow-btn": "unfollow"
+    "click .follow-btn":      "follow",
+    "click .unfollow-btn":    "unfollow",
+    "click .to-profile-page": "toProfilePage"
   },
   template: _.template($("#user-result-template").html()),
   initialize: function () {
@@ -61,5 +62,11 @@ var UserResultView = Backbone.View.extend({
 
       }
     });
+  },
+  toProfilePage: function (e) {
+    e.preventDefault();
+    if (this.model.get("type") != "setting") {
+      location.href = "/users/" + this.model.id + "#logs";
+    }
   }
 });

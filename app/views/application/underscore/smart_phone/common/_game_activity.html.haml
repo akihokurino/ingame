@@ -1,29 +1,29 @@
 %script{type: "text/template", id: "game-activity-template"}
-  %article.gameList
-    %a.gameListLink.to-game-page{href: "#"}
-      .gameBox
-        %li.gameImg
-          %figure.gameImgInner
-            {{ if (photo_path) { }}
-            %img{src: "/game_photos/{{= photo_path }}", width: "155", alt: ""}
-            {{ } else if (photo_url) { }}
-            %img{src: "{{= photo_url }}", width: "155", alt: ""}
-            {{ } else { }}
-            %img{src: "/game_photos/default.png", width: "155", alt: ""}
-            {{ } }}
-        .gameMeta
-          %span{class: "device device{{= device }}"} {{= device }}
-          %h1.gameTtl {{= title }}
-        .review
-          %ul.starList
-            {{ diff = 5 - avg_rate }}
-            {{ for (var i = 0; i < avg_rate; i++) { }}
-            %li.starOn ★
-            {{ } }}
-            {{ for (var i = 0; i < diff; i++) { }}
-            %li.starOff ☆
-            {{ } }}
-    .status
-      %div.statusWrap
-        %select.statusBtn.my-status{name: "status", size: 1}
-          = render partial: "application/common/status"
+  %article{class: "{{= device }}"}
+    .gameImg
+      %figure
+        %a.to-game-page{href: "#"}
+          {{ if (photo_path) { }}
+          %img.gameImg{src: "/game_photos/{{= photo_path }}", width: "100"}
+          {{ } else if (photo_url) { }}
+          %img.gameImg{src: "{{= photo_url }}", width: "100"}
+          {{ } else { }}
+          %img.gameImg{src: "/game_photos/default.png", width: "100"}
+          {{ } }}
+    .textArea
+      %a.gameTitle.to-game-page{href: "#"}
+        {{= title }}
+      %p.maker {{= maker}}
+      %p{class: "device device{{= device }}"} {{= device }}
+      / %ul.starList
+      /   {{ diff = 5 - avg_rate }}
+      /   {{ for (var i = 0; i < avg_rate; i++) { }}
+      /   %li.starOn
+      /     %span.icon-star
+      /   {{ } }}
+      /   {{ for (var i = 0; i < diff; i++) { }}
+      /   %li.starOff
+      /     %span.icon-star
+      /   {{ } }}
+      %select.status.my-status{name: "status", size: "1", class: "status"}
+        = render partial: "application/common/status"

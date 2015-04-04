@@ -1,10 +1,16 @@
 var UserResultsView = Backbone.View.extend({
   initialize: function () {
     _.bindAll(this, "setCollection");
+
+    if (this.attributes && this.attributes.type) {
+      this.type = this.attributes.type;
+    }
+
     this.listenTo(this.collection, "add", this.addUser);
   },
   addUser: function (user) {
     if (user.id) {
+      user.set("type", this.type);
       var user_result_view = new UserResultView({model: user});
       this.$el.append(user_result_view.render().el);
     }

@@ -4,6 +4,8 @@
 //= require ../../views/user_results_view
 //= require ../../views/user_view
 //= require ../../views/users_view
+//= require ../../views/game_view
+//= require ../../views/games_view
 
 (function () {
   var GameSearchView = Backbone.View.extend({
@@ -19,9 +21,9 @@
       this.$el.append(this.template);
 
       this.game_result_collection = new GameResults();
-      this.game_results_view      = new GameResultsView({el: ".result-list", collection: this.game_result_collection});
+      this.game_results_view      = new GameResultsView({el: ".result-list", collection: this.game_result_collection, attributes: {type: null}});
       this.game_collection        = new Games();
-      this.game_activity_view     = new GameResultsView({el: ".game-activity-list", collection: this.game_collection});
+      this.games_view             = new GamesView({el: ".game-activity-list", collection: this.game_collection, attributes: {type: "activity", template: "#game-activity-template"}});
 
       this.game_title             = this.$(".game-title-input");
       this.current_game_title     = null;
@@ -32,7 +34,7 @@
         this.search();
       }
 
-      this.game_activity_view.getActivity({type: "activity"});
+      this.games_view.getActivity({type: "activity"});
     },
     search: function () {
       var that  = this;
@@ -82,7 +84,7 @@
       this.$el.append(this.template);
 
       this.user_result_collection = new UserResults();
-      this.user_results_view      = new UserResultsView({el: ".result-list", collection: this.user_result_collection});
+      this.user_results_view      = new UserResultsView({el: ".result-list", collection: this.user_result_collection, attributes: {type: null}});
       this.user_collection        = new Users();
       this.users_view             = new UsersView({el: ".user-activity-list", collection: this.user_collection, attributes: {type: "activity", template: "#user-activity-template"}});
 

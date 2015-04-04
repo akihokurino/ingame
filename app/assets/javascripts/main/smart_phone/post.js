@@ -271,7 +271,7 @@
       this.$el.append(this.template);
 
       this.game_result_collection = new GameResults();
-      this.game_results_view      = new GameResultsView({el: ".gameList", collection: this.game_result_collection});
+      this.game_results_view      = new GameResultsView({el: ".gameList", collection: this.game_result_collection, attributes: {type: null}});
 
       this.search_title           = this.$(".search-title-input");
       this.current_search_title   = null;

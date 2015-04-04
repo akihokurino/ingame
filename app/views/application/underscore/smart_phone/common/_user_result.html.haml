@@ -10,5 +10,5 @@
       %img.profImg{src:"/user_photos/{{= photo_path }}" , height: 50, height: 50}
     .userInfo
       .nameWrap
-        %a.name{href: "/users/{{= id }}#logs"} {{= username }}
+        %a.name.to-profile-page{href: "#"} {{= username }}
       .myGame マイゲーム {{= logs_count }}

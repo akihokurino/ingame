@@ -1,7 +1,7 @@
 %script{type: "text/template", id: "user-result-template"}
   %article.friendList
     .friendListTopBox
-      %a{href: "/users/{{= id }}#logs"}
+      %a.to-profile-page{href: "#"}
         %figure.userImgWrap
           %img.userImg{src: "/user_photos/{{= photo_path }}", width: "80", height: "80", alt: ""}
       %ul.btn-list
@@ -12,6 +12,6 @@
           %span.followBtn.follow-btn フォローする
           {{ } }}
 
-    %a.userName{href: "/users/{{= id }}#logs"} {{= username }}
+    %a.userName.to-profile-page{href: "#"} {{= username }}
     %p.myGame マイゲーム {{= logs_count }}
     %p.userProf {{= introduction }}

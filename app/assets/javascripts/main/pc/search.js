@@ -19,7 +19,7 @@
       this.$el.append(this.template);
 
       this.game_result_collection = new GameResults();
-      this.game_results_view      = new GameResultsView({el: ".result-list", collection: this.game_result_collection, type: null});
+      this.game_results_view      = new GameResultsView({el: ".result-list", collection: this.game_result_collection, attributes: {type: null}});
 
       this.game_title             = this.$(".game-title-input");
       this.current_game_title     = null;
@@ -79,7 +79,7 @@
       this.$el.append(this.template);
 
       this.user_result_collection = new UserResults();
-      this.user_results_view      = new UserResultsView({el: ".result-list", collection: this.user_result_collection});
+      this.user_results_view      = new UserResultsView({el: ".result-list", collection: this.user_result_collection, attributes: {type: null}});
 
       this.username               = this.$(".username-input");
       this.current_username       = null;

@@ -50,7 +50,7 @@
       this.$el.append(this.template);
 
       this.user_result_collection = new UserResults();
-      this.user_results_view      = new UserResultsView({el: ".user-list", collection: this.user_result_collection});
+      this.user_results_view      = new UserResultsView({el: ".user-list", collection: this.user_result_collection, attributes: {type: "setting"}});
 
       this.username               = this.$(".user-input");
       this.current_username       = null
