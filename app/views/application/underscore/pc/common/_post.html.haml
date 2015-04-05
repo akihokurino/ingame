@@ -79,7 +79,7 @@
         %figure.profImgWrap
           %img.profImg{src: "/user_photos/{{= post_comments[i].user.photo_path }}", width: "30", height: "30", alt: ""}
         .commentInfo
-          %a.account{href: ""}
+          %a.account{href: "/users/{{= post_comments[i].user.id }}#logs"}
             {{= post_comments[i].user.username }}
           %p.commentTime.icon-time {{= post_comments[i].created_at }}
           {{ if (!post_comments[i].i_liked) { }}
