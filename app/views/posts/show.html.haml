@@ -96,7 +96,7 @@
 
           .myCommentBox
             %figure.profImgWrap
-              %img.profImg{src: "/user_photos/#{@post.user[:photo_path]}", width: "30", height: "30", alt: ""}
+              %img.profImg{src: "/user_photos/#{@current_user[:photo_path]}", width: "30", height: "30", alt: ""}
             %form.commentWrap
               %textarea.comment.comment-input{placeholder: "コメントする"}
 
