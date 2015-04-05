@@ -2,7 +2,7 @@
   %article{class: "{{= device }}"}
     .gameImg
       %figure
-        %a.to-game-page{href: "#"}
+        %a{href: "/games/{{= id }}#all"}
           {{ if (photo_path) { }}
           %img.gameImg{src: "/game_photos/{{= photo_path }}", width: "100"}
           {{ } else if (photo_url) { }}
@@ -11,19 +11,10 @@
           %img.gameImg{src: "/game_photos/default.png", width: "100"}
           {{ } }}
     .textArea
-      %a.gameTitle.to-game-page{href: "#"}
+      %a.gameTitle{href: "/games/{{= id }}#all"}
         {{= title }}
       %p.maker {{= maker}}
       %p{class: "device device{{= device }}"} {{= device }}
-      / %ul.starList
-      /   {{ diff = 5 - avg_rate }}
-      /   {{ for (var i = 0; i < avg_rate; i++) { }}
-      /   %li.starOn
-      /     %span.icon-star
-      /   {{ } }}
-      /   {{ for (var i = 0; i < diff; i++) { }}
-      /   %li.starOff
-      /     %span.icon-star
-      /   {{ } }}
+
       %select.status.my-status{name: "status", size: "1", class: "status"}
         = render partial: "application/common/status"

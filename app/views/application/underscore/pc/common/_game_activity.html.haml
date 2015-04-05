@@ -1,5 +1,5 @@
 %script{type: "text/template", id: "game-activity-template"}
-  %a
+  %a{href: "/games/{{= id }}#all"}
     %figure.gameImgWrap
       {{ if (photo_path) { }}
       %img{src: "/game_photos/{{= photo_path }}", width: "80", alt: ""}
@@ -10,7 +10,7 @@
       {{ } }}
   .gameInfo
     %span{class: "device device{{= device }}"} {{= device }}
-    %a
+    %a{href: "/games/{{= id }}#all"}
       %h1.gameTtl {{= title }}
     .status
       %div.statusWrap
