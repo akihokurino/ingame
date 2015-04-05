@@ -28,10 +28,12 @@
     width: 520px;
     padding: 0 10px;
   }
-  .userColumn,.gameColumn {
+  .subColumn{
     float: right;
     width: 320px;
-    margin-bottom: 15px;
+    .userColumn,.gameColumn {
+      margin-bottom: 15px;
+    }
   }
   /*---   ---*/
   .profile {

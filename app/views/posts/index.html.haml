@@ -66,16 +66,16 @@
 
       .post-list
       = image_tag "gif-load-pc.gif", class: "loading-gif"
+    .subColumn
+      .userColumn
+        .userActivity
+          %h1.userActivityTtl 最近登録したユーザー
+          %ul.userActivityList.user-activity-list
 
-    .userColumn
-      .userActivity
-        %h1.userActivityTtl 最近登録したユーザー
-        %ul.userActivityList.user-activity-list
-
-    .gameColumn
-      .gameActivity
-        %h1.gameActivityTtl 最近登録されたゲーム
-        %ul.gameActivityList.game-activity-list
+      .gameColumn
+        .gameActivity
+          %h1.gameActivityTtl 最近登録されたゲーム
+          %ul.gameActivityList.game-activity-list
 
 
 
