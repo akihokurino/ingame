@@ -60,7 +60,7 @@
 
           - @post.post_photos.each do |photo|
             .postThumbnail
-              %img.thumbnailImage{src: "/post_photos/#{photo[:photo_path]}", width:300, height:200}
+              %img.thumbnailImage{src: "/post_photos/#{photo[:photo_path]}"}
 
           - @post.post_urls.each do |url|
             .urlThumbnailWrap
