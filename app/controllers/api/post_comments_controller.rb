@@ -1,4 +1,6 @@
 class Api::PostCommentsController < ApplicationController
+  skip_before_action :auth, only: [:index]
+  before_action :open_page, only: [:index]
 
   def index
     result         = PostComment.get_by_post params[:post_id], params[:type], params[:offset], params[:limit], @current_user[:id]

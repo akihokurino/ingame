@@ -80,10 +80,11 @@
               %span.like-count
                 = @post[:post_likes_count]
                 %span 件
-          %li
-            %span.favBtn.icon-like{class: @post.i_liked ? "unlike-btn on" : "like-btn"}
-          %li
-            %a.commentBtn.icon-comment
+          - unless @current_user[:id].nil?
+            %li
+              %span.favBtn.icon-like{class: @post.i_liked ? "unlike-btn on" : "like-btn"}
+            %li
+              %a.commentBtn.icon-comment
           - if @post[:user_id] == @current_user[:id]
             %li
               %span.icon-option.delete-btn
@@ -93,9 +94,10 @@
 
   #scroll-target
 
-  .commentMod
-    %textarea.comment-input{placeholder: "コメント..."}
-    .submit-comment-btn.done-btn 送信
+  - unless @current_user[:id].nil?
+    .commentMod
+      %textarea.comment-input{placeholder: "コメント..."}
+      .submit-comment-btn.done-btn 送信
 
 = render partial: "application/underscore/smart_phone/post_detail/like_user"
 = render partial: "application/underscore/smart_phone/common/comment"

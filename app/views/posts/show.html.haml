@@ -72,14 +72,15 @@
                   %p.description
                     = simple_format url[:description]
           .postFooter
-            %ul.actionList
-              %li
-                %span.favBtn.icon-like{class: @post.i_liked ? "unlike-btn on" : "like-btn"}
-              %li
-                %a.commentBtn.icon-comment
-              - if @post[:user_id] == @current_user[:id]
+            - unless @current_user[:id].nil?
+              %ul.actionList
                 %li
-                  %span.icon-option.delete-btn
+                  %span.favBtn.icon-like{class: @post.i_liked ? "unlike-btn on" : "like-btn"}
+                %li
+                  %a.commentBtn.icon-comment
+                - if @post[:user_id] == @current_user[:id]
+                  %li
+                    %span.icon-option.delete-btn
         .likeUserListBox
           %h2.listTitle
             いいね！
@@ -94,11 +95,12 @@
 
           %ul.commentList.comment-list
 
-          .myCommentBox
-            %figure.profImgWrap
-              %img.profImg{src: "/user_photos/#{@current_user[:photo_path]}", width: "30", height: "30", alt: ""}
-            %form.commentWrap
-              %textarea.comment.comment-input{placeholder: "コメントする"}
+          - unless @current_user[:id].nil?
+            .myCommentBox
+              %figure.profImgWrap
+                %img.profImg{src: "/user_photos/#{@current_user[:photo_path]}", width: "30", height: "30", alt: ""}
+              %form.commentWrap
+                %textarea.comment.comment-input{placeholder: "コメントする"}
 
 = render partial: "application/pc/footer"
 

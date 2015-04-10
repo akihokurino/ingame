@@ -49,7 +49,7 @@ class PostComment < ActiveRecord::Base
         comments = self.where(post_id: post_id).offset(offset).all_include
         is_all   = true
       end
-      comments = self.i_like? comments, current_user_id
+      comments = self.i_like? comments, current_user_id unless current_user_id.nil?
       {post_comments: comments, is_all: is_all}
     end
   end

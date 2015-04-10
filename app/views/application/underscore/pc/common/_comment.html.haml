@@ -4,14 +4,17 @@
   .commentInfo
     %a.account {{= user.username }}
     %p.commentTime.icon-time {{= created_at }}
-    {{ if (i_liked) { }}
-    %p.unlike-btn.icon-like.on
-      %span.likeNum.comment-like-count
-        {{= comment_likes_count }}
-    {{ } else { }}
-    %p.like-btn.icon-like
-      %span.likeNum.comment-like-count
-        {{= comment_likes_count }}
-    {{ } }}
-    %p.icon-option.comment-delete-btn
+    - unless @current_user[:id].nil?
+      {{ if (i_liked) { }}
+      %p.unlike-btn.icon-like.on
+        %span.likeNum.comment-like-count
+          {{= comment_likes_count }}
+      {{ } else { }}
+      %p.like-btn.icon-like
+        %span.likeNum.comment-like-count
+          {{= comment_likes_count }}
+      {{ } }}
+      {{ if (current_user_id == user.id) { }}
+      %p.icon-option.comment-delete-btn
+      {{ } }}
     %p.userComment {{= text }}
