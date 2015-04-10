@@ -1,7 +1,6 @@
 //= require ../../views/post_view.js
 //= require ../../views/posts_view.js
 
-
 (function () {
   var AllPostListView = Backbone.View.extend({
     el: ".game-page",
@@ -174,9 +173,6 @@
             my_status_id: data.my_status_id
           }
           that.setCurrentStatus(status);
-        },
-        error: function () {
-
         }
       });
     },

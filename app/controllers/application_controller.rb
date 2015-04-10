@@ -26,17 +26,25 @@ class ApplicationController < ActionController::Base
 	end
 
 	def auth
-		if session[:current_user_id]
-			begin
-				@current_user = User.find session[:current_user_id]
-				@current_user.check_follow_num
-			rescue ActiveRecord::RecordNotFound
-				reset_session
-			end
-		end
-
+    set_session_user
 		redirect_to login_users_path unless @current_user
 	end
+
+  def open_page
+    @current_user = { id: nil }
+    set_session_user
+  end
+
+  def set_session_user
+    if session[:current_user_id]
+      begin
+        @current_user = User.find session[:current_user_id]
+        @current_user.check_follow_num
+      rescue ActiveRecord::RecordNotFound
+        reset_session
+      end
+    end
+  end
 
 	def auth_provider
     if session[:current_provider_id]

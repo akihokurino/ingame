@@ -118,56 +118,79 @@ class Post < ActiveRecord::Base
 
   class << self
     def get_all_posts(current_user_id, page)
+      return self.none if current_user_id.nil?
+
       offset       = (page - 1) * LIMIT
       follower_ids = Follow.where(from_user_id: current_user_id).pluck(:to_user_id)
       follower_ids << current_user_id
       posts        = self.where(user_id: follower_ids).all_include.offset(offset).limit(LIMIT)
-      posts        = self.i_like?(posts, current_user_id)
+      posts        = self.i_like? posts, current_user_id
       posts.map do |post|
-        post.post_comments = PostComment.i_like?(post.post_comments, current_user_id)
+        post.post_comments = PostComment.i_like? post.post_comments, current_user_id
         post
       end
+
+      posts
     end
 
     def get_user_posts(current_user_id, user_id, page)
       offset = (page - 1) * LIMIT
       posts  = self.where(user_id: user_id).all_include.offset(offset).limit(LIMIT)
-      posts  = self.i_like?(posts, current_user_id)
-      posts.map do |post|
-        post.post_comments = PostComment.i_like?(post.post_comments, current_user_id)
-        post
+
+      unless current_user_id.nil?
+        posts  = self.i_like? posts, current_user_id
+        posts.map do |post|
+          post.post_comments = PostComment.i_like? post.post_comments, current_user_id
+          post
+        end
       end
+
+      posts
     end
 
     def get_all_posts_of_game(current_user_id, game_id, page)
       offset = (page - 1) * LIMIT
       posts  = self.where(game_id: game_id).all_include.offset(offset).limit(LIMIT)
-      posts  = self.i_like?(posts, current_user_id)
-      posts.map do |post|
-        post.post_comments = PostComment.i_like?(post.post_comments, current_user_id)
-        post
+
+      unless current_user_id.nil?
+        posts  = self.i_like? posts, current_user_id
+        posts.map do |post|
+          post.post_comments = PostComment.i_like? post.post_comments, current_user_id
+          post
+        end
       end
+
+      posts
     end
 
     def get_follower_posts_of_game(current_user_id, game_id, page)
+      return self.none if current_user_id.nil?
+
       offset       = (page - 1) * LIMIT
       follower_ids = Follow.where(from_user_id: current_user_id).pluck(:to_user_id)
       posts        = self.where(game_id: game_id, user_id: follower_ids).all_include.offset(offset).limit(LIMIT)
-      posts        = self.i_like?(posts, current_user_id)
+      posts        = self.i_like? posts, current_user_id
       posts.map do |post|
-        post.post_comments = PostComment.i_like?(post.post_comments, current_user_id)
+        post.post_comments = PostComment.i_like? post.post_comments, current_user_id
         post
       end
+
+      posts
     end
 
     def get_liker_posts_of_game(current_user_id, game_id, page)
       offset = (page - 1) * LIMIT
       posts  = self.where(game_id: game_id).all_include.offset(offset).limit(LIMIT).reorder("post_likes_count DESC")
-      posts  = self.i_like?(posts, current_user_id)
-      posts.map do |post|
-        post.post_comments = PostComment.i_like?(post.post_comments, current_user_id)
-        post
+
+      unless current_user_id.nil?
+        posts  = self.i_like? posts, current_user_id
+        posts.map do |post|
+          post.post_comments = PostComment.i_like? post.post_comments, current_user_id
+          post
+        end
       end
+
+      posts
     end
 
     def i_like?(post_args, current_user_id)

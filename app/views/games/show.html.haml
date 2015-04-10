@@ -25,10 +25,12 @@
           - when "steam"
             %a{href: @game.provider_url, target: "blank"} 出典:STEAM
 
-        %ul.gameBtnList
-          %li.item.review-li
-          %li.item.status-li
-        %span.delete-log-btn.deleteBtn マイゲームから削除
+        - unless @current_user[:id].nil?
+          %ul.gameBtnList
+            %li.item.review-li
+            %li.item.status-li
+          %span.delete-log-btn.deleteBtn マイゲームから削除
+
       .gameCapWrap
         .leftBox
           %h1.gameTtl
@@ -90,9 +92,8 @@
     .post-list
     = image_tag "gif-load.gif", class: "loading-gif"
 
-
-
 = render partial: "application/pc/footer"
+
 
 = render partial: "application/underscore/pc/common/flash"
 = render partial: "application/underscore/pc/common/delete_confirm"

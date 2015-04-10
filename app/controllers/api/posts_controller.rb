@@ -1,4 +1,7 @@
 class Api::PostsController < ApplicationController
+  skip_before_action :auth, only: [:index]
+  before_action :open_page, only: [:index]
+
   def index
     type    = params[:type]
     game_id = params[:game_id]

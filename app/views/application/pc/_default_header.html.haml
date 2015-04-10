@@ -8,18 +8,33 @@
     %ul.gnavi
       %li.item
         = link_to "タイムライン", posts_path, class: "toTimelineBtn"
-      %li.item
-        = link_to "見つける", "/users/#{@current_user[:id]}/search_game_or_user#game", class: "toSearchBtn"
-      %li.item
-        = link_to "マイページ", "/users/#{@current_user[:id]}#logs", class: "toProfileBtn"
-      %li.item
-        %span.notify.my-notify.icon-bell
-          %span.notifyNum.notify-num
-      %li.item
-        %figure.accountImgWrap.menu-btn
-          = image_tag "/user_photos/#{@current_user[:photo_path]}", class: "accountImg", width: 26, height: 26, alt: ""
-      = render partial: "application/pc/notifications_modal"
-      = render partial: "application/underscore/pc/header/notification"
+
+      - unless @current_user[:id].nil?
+        %li.item
+          = link_to "見つける", "/users/#{@current_user[:id]}/search_game_or_user#game", class: "toSearchBtn"
+        %li.item
+          = link_to "マイページ", "/users/#{@current_user[:id]}#logs", class: "toProfileBtn"
+        %li.item
+          %span.notify.my-notify.icon-bell
+            %span.notifyNum.notify-num
+        %li.item
+          %figure.accountImgWrap.menu-btn
+            = image_tag "/user_photos/#{@current_user[:photo_path]}", class: "accountImg", width: 26, height: 26, alt: ""
+        = render partial: "application/pc/notifications_modal"
+        = render partial: "application/underscore/pc/header/notification"
+      - else
+        %li.item
+          = link_to "見つける", login_users_path, class: "toSearchBtn"
+        %li.item
+          = link_to "マイページ", login_users_path, class: "toProfileBtn"
+        %li.item
+          %span.notify.my-notify.icon-bell
+            %span.notifyNum.notify-num
+        %li.item
+          %figure.accountImgWrap.menu-btn
+            = image_tag "/user_photos/default.png", class: "accountImg", width: 26, height: 26, alt: ""
+        = render partial: "application/pc/notifications_modal"
+        = render partial: "application/underscore/pc/header/notification"
     = render partial: "application/pc/menu"
     %form.searchWrap
       %input.search.header-search-input{placeholder: "ゲームやユーザーを検索"}

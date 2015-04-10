@@ -48,16 +48,17 @@
       {{ } }}
     .postFooter
       %ul.actionList
-        %li
-          {{ if (!i_liked) { }}
-          %span.like-btn.favBtn.icon-like
-            %span.likeCnt
-              {{= post_likes_count }}
-          {{ } else { }}
-          %span.unlike-btn.favBtn.on.icon-like
-            %span.likeCnt
-              {{= post_likes_count }}
-          {{ } }}
+        - unless @current_user[:id].nil?
+          %li
+            {{ if (!i_liked) { }}
+            %span.like-btn.favBtn.icon-like
+              %span.likeCnt
+                {{= post_likes_count }}
+            {{ } else { }}
+            %span.unlike-btn.favBtn.on.icon-like
+              %span.likeCnt
+                {{= post_likes_count }}
+            {{ } }}
         %li
           %a.commentBtn.icon-comment{href: "/posts/{{= id }}"}
             %span.commentCnt
@@ -82,21 +83,25 @@
           %a.account{href: "/users/{{= post_comments[i].user.id }}#logs"}
             {{= post_comments[i].user.username }}
           %p.commentTime.icon-time {{= post_comments[i].created_at }}
-          {{ if (!post_comments[i].i_liked) { }}
-          %p.comment-like.icon-like{"data-commentindex" => "{{= i }}"}
-            %span.likeNum
-              {{= post_comments[i].comment_likes_count }}
-          {{ } else { }}
-          %p.comment-unlike.icon-like.on{"data-commentindex" => "{{= i }}"}
-            %span.likeNum
-              {{= post_comments[i].comment_likes_count }}
-          {{ } }}
+
+          - unless @current_user[:id].nil?
+            {{ if (!post_comments[i].i_liked) { }}
+            %p.comment-like.icon-like{"data-commentindex" => "{{= i }}"}
+              %span.likeNum
+                {{= post_comments[i].comment_likes_count }}
+            {{ } else { }}
+            %p.comment-unlike.icon-like.on{"data-commentindex" => "{{= i }}"}
+              %span.likeNum
+                {{= post_comments[i].comment_likes_count }}
+            {{ } }}
+
           %p.userComment
             {{= post_comments[i].text }}
       {{ } }}
       {{ } }}
-    .myCommentBox
-      %figure.profImgWrap
-        %img.profImg{src: "/user_photos/#{@current_user[:photo_path]}", width: "30", height: "30", alt: ""}
-      %form.commentWrap
-        %textarea.comment.comment-input{placeholder: "コメントする"}
+    - unless @current_user[:id].nil?
+      .myCommentBox
+        %figure.profImgWrap
+          %img.profImg{src: "/user_photos/#{@current_user[:photo_path]}", width: "30", height: "30", alt: ""}
+        %form.commentWrap
+          %textarea.comment.comment-input{placeholder: "コメントする"}

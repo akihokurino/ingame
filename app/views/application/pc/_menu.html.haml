@@ -1,7 +1,8 @@
-%ul.openMenu
-  %li.item
-    = link_to "プロフィール編集", edit_user_path(@current_user), class: "toProfile"
-  %li.item
-    = link_to "アカウント設定", user_providers_path, class: "toAccount"
-  %li.item
-    = link_to "ログアウト", logout_users_path, class: "toLogout"
+- unless @current_user[:id].nil?
+  %ul.openMenu
+    %li.item
+      = link_to "プロフィール編集", edit_user_path(@current_user), class: "toProfile"
+    %li.item
+      = link_to "アカウント設定", user_providers_path, class: "toAccount"
+    %li.item
+      = link_to "ログアウト", logout_users_path, class: "toLogout"
