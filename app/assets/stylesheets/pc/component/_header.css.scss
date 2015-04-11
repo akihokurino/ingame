@@ -20,6 +20,8 @@
   }
   .logoWrap{
     display:inline-block;
+    float:left;
+    width: 260px;
     vertical-align: top;
   }
   .logo {
@@ -31,7 +33,7 @@
   }
   .searchWrap {
     position: relative;
-    float: right;
+    float: left;
     display: inline-block;
     margin: 10px 20px 0 0;
     padding: 3px 0;
@@ -76,7 +78,7 @@
       font-size:14px;
       vertical-align: top;
     }
-    .toTimelineBtn,.toSearchBtn,.toProfileBtn,.notify,.accountImgWrap {
+    .toTimelineBtn,.toSearchBtn,.toProfileBtn,.toLoginBtn,.notify,.accountImgWrap {
       position: relative;
       overflow: hidden;
       display:inline-block;
