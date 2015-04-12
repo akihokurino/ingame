@@ -26,6 +26,8 @@ class Api::LogsController < ApplicationController
     params[:log][:user_id] = @current_user[:id]
     params[:log][:game_id] = params[:id]
 
+    log.twitter @current_user
+
     if log_params[:status_id]
       Post.create_activity log_params, log[:id], "status_update"
     elsif log_params[:rate]
