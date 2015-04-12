@@ -83,7 +83,9 @@ class Post < ActiveRecord::Base
       config.access_token_secret = current_provider[:secret_token]
     end
 
-    client.update self[:text]
+    current_game = Game.find self[:game_id]
+
+    client.update "#{self[:text]} - #{current_game[:title]} http://gamr.jp/posts/#{self[:id]} #gamr"
   end
 
   def datetime
