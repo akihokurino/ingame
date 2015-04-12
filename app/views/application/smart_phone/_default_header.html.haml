@@ -11,12 +11,8 @@
       %li.notify.my-notify
         %a.icon-bell{href: ""}
           %span.notifyNum.notify-num
-      - unless @current_user[:id].nil?
-        %li.search
-          = link_to "", "/users/#{@current_user[:id]}/search_game_or_user#game", class: "icon-search"
-      - else
-        %li.search
-          = link_to "", login_users_path, class: "icon-search"
+      %li.search
+        = link_to "", "/users/search_game_or_user#game", class: "icon-search"
 
   = render partial: "application/smart_phone/menu"
 

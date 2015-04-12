@@ -16,5 +16,6 @@
       %p.maker {{= maker}}
       %p{class: "device device{{= device }}"} {{= device }}
 
-      %select.status.my-status{name: "status", size: "1", class: "status"}
-        = render partial: "application/common/status"
+      - unless @current_user[:id].nil?
+        %select.status.my-status{name: "status", size: "1", class: "status"}
+          = render partial: "application/common/status"

@@ -14,16 +14,18 @@
         .gameMeta
           %span{class: "device device{{= device }}"} {{= device }}
           %h1.gameTtl {{= title }}
-        .review
-          %ul.starList
-            {{ diff = 5 - avg_rate }}
-            {{ for (var i = 0; i < avg_rate; i++) { }}
-            %li.starOn ★
-            {{ } }}
-            {{ for (var i = 0; i < diff; i++) { }}
-            %li.starOff ☆
-            {{ } }}
-    .status
-      %div.statusWrap
-        %select.statusBtn.my-status{name: "status", size: 1}
-          = render partial: "application/common/status"
+        - unless @current_user[:id].nil?
+          .review
+            %ul.starList
+              {{ diff = 5 - avg_rate }}
+              {{ for (var i = 0; i < avg_rate; i++) { }}
+              %li.starOn ★
+              {{ } }}
+              {{ for (var i = 0; i < diff; i++) { }}
+              %li.starOff ☆
+              {{ } }}
+    - unless @current_user[:id].nil?
+      .status
+        %div.statusWrap
+          %select.statusBtn.my-status{name: "status", size: 1}
+            = render partial: "application/common/status"

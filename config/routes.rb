@@ -8,10 +8,10 @@ Ingame::Application.routes.draw do
       get "logout"
       get "term"
       get "privacy"
+      get "search_game_or_user"
     end
     member do
       get "setting"
-      get "search_game_or_user"
     end
   end
   resources :posts, only: ["index", "new", "show"]
@@ -27,7 +27,7 @@ Ingame::Application.routes.draw do
     end
     resources :statuses, only: ["index"], format: "json"
     resources :posts, only: ["index", "create", "destroy"], format: "json"
-    resources :games, only: ["index", "show", "create"], format: "json" do
+    resources :games, only: ["index", "show"], format: "json" do
       collection do
         get "search"
       end

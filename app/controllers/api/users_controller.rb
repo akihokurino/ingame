@@ -1,7 +1,8 @@
 class Api::UsersController < ApplicationController
-  skip_before_action :auth, only: [:create, :uniqueness]
+  skip_before_action :auth, only: [:create, :uniqueness, :search]
   before_action :set_user, only: [:update]
   before_action :auth_provider, only: [:create]
+  before_action :open_page, only: [:search]
 
   def index
     type = params[:type]

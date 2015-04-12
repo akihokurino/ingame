@@ -1,6 +1,7 @@
 class Api::GamesController < ApplicationController
-  skip_before_action :verify_authenticity_token, :auth, only: [:create]
+  skip_before_action :auth, only: [:search, :index]
   before_action :set_game, only: [:show]
+  before_action :open_page, only: [:search, :index]
 
   def index
     if params[:type] == "activity"
@@ -19,10 +20,6 @@ class Api::GamesController < ApplicationController
 
 		@result = Game.search_with params[:search_title], page, @current_user
 	end
-
-  def create
-    @result = Game.get_from_amazon params[:url]
-  end
 
 	private
   def set_game

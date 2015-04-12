@@ -54,13 +54,12 @@
     },
     changeTarget: function (e) {
       e.preventDefault();
-      var search_word     = this.game_title.val();
-      var current_user_id = $("#wrapper").data("userid");
+      var search_word = this.game_title.val();
 
       if (search_word && search_word != "") {
-        location.href = "/users/" + current_user_id + "/search_game_or_user?search_word=" + search_word + "#user";
+        location.href = "/users/search_game_or_user?search_word=" + search_word + "#user";
       } else {
-        location.href = "/users/" + current_user_id + "/search_game_or_user#user";
+        location.href = "/users/search_game_or_user#user";
       }
     }
   });
@@ -114,13 +113,12 @@
     },
     changeTarget: function (e) {
       e.preventDefault();
-      var search_word     = this.username.val();
-      var current_user_id = $("#wrapper").data("userid");
+      var search_word = this.username.val();
 
       if (search_word && search_word != "") {
-        location.href = "/users/" + current_user_id + "/search_game_or_user?search_word=" + search_word + "#game";
+        location.href = "/users/search_game_or_user?search_word=" + search_word + "#game";
       } else {
-        location.href = "/users/" + current_user_id + "/search_game_or_user#game";
+        location.href = "/users/search_game_or_user#game";
       }
     }
   });

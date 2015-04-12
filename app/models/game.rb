@@ -124,8 +124,11 @@ class Game < ActiveRecord::Base
     def search_with(search_title, page, current_user)
       offset = (page - 1) * LIMIT
       games  = self.search(self.escape(search_title)).order("created_at DESC").offset(offset).limit(LIMIT).map do |game|
-        game.check_rate(current_user)
-        game.check_regist(current_user)
+        unless current_user[:id].nil?
+          game.check_rate current_user
+          game.check_regist current_user
+        end
+
         game
       end
 
@@ -178,8 +181,12 @@ class Game < ActiveRecord::Base
 
     def get_ranking(current_user)
       Log.where("created_at > ?", 4.week.ago).select(:game_id).group_by { |log| log[:game_id] }.values.sort { |a, b| a.length <=> b.length }.last(RANKING_LIMIT).reverse.map do |logs|
-        logs[0].game.check_rate current_user
-        logs[0].game.check_regist current_user
+
+        unless current_user[:id].nil?
+          logs[0].game.check_rate current_user
+          logs[0].game.check_regist current_user
+        end
+
         logs[0].game
       end
     end

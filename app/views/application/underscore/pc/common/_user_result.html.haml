@@ -4,13 +4,14 @@
       %a.to-profile-page{href: "#"}
         %figure.userImgWrap
           %img.userImg{src: "/user_photos/{{= photo_path }}", width: "80", height: "80", alt: ""}
-      %ul.btn-list
-        %li
-          {{ if (i_followed) { }}
-          %span.followBtn.unFollow.unfollow-btn フォロー中
-          {{ } else { }}
-          %span.followBtn.follow-btn フォローする
-          {{ } }}
+      - unless @current_user[:id].nil?
+        %ul.btn-list
+          %li
+            {{ if (i_followed) { }}
+            %span.followBtn.unFollow.unfollow-btn フォロー中
+            {{ } else { }}
+            %span.followBtn.follow-btn フォローする
+            {{ } }}
 
     %a.userName.to-profile-page{href: "#"} {{= username }}
     %p.myGame マイゲーム {{= logs_count }}

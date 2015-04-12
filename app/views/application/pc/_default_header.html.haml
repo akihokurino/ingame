@@ -10,7 +10,7 @@
         %li.item
           = link_to "タイムライン", posts_path, class: "toTimelineBtn"
         %li.item
-          = link_to "見つける", "/users/#{@current_user[:id]}/search_game_or_user#game", class: "toSearchBtn"
+          = link_to "見つける", "/users/search_game_or_user#game", class: "toSearchBtn"
         %li.item
           = link_to "マイページ", "/users/#{@current_user[:id]}#logs", class: "toProfileBtn"
         %li.item
@@ -26,8 +26,13 @@
     - else
       %ul.gnavi
         %li.item
-          = link_to "ログイン", "/users/login", class: "toLoginBtn"
+          = link_to "見つける", "/users/search_game_or_user#game", class: "toSearchBtn"
+        %li.item
+          = link_to "ログイン", login_users_path, class: "toLoginBtn"
+        = render partial: "application/pc/notifications_modal"
+        = render partial: "application/underscore/pc/header/notification"
       %form.searchWrap
         %input.search.header-search-input{placeholder: "ゲームやユーザーを検索"}
-      
+
+
     = render partial: "application/pc/menu"

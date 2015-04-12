@@ -2,11 +2,11 @@
   %ul.openMenu
     %li.item
       = link_to "タイムライン", posts_path, class:"icon-home"
+    %li.item
+      = link_to "探す", "/users/search_game_or_user#game", class: "icon-search"
     - unless @current_user[:id].nil?
       %li.item
         = link_to "マイページ", "/users/#{@current_user[:id]}#logs", class: "icon-user"
-      %li.item
-        = link_to "探す", "/users/#{@current_user[:id]}/search_game_or_user#game", class: "icon-search"
       %li.item
         = link_to "アカウント設定", user_providers_path, class: "icon-setting"
       %li.item

@@ -1,11 +1,12 @@
 %script{type: "text/template", id: "user-result-template"}
   %ul.friendListWrap.btn-list
-    %li.followBtnWrap
-      {{ if (i_followed) { }}
-      %span.followBtn.unFollow.unfollow-btn フォロー中
-      {{ } else { }}
-      %span.followBtn.follow-btn フォローする
-      {{ } }}
+    - unless @current_user[:id].nil?
+      %li.followBtnWrap
+        {{ if (i_followed) { }}
+        %span.followBtn.unFollow.unfollow-btn フォロー中
+        {{ } else { }}
+        %span.followBtn.follow-btn フォローする
+        {{ } }}
     %figure.userImgWrap
       %img.profImg{src:"/user_photos/{{= photo_path }}" , height: 50, height: 50}
     .userInfo

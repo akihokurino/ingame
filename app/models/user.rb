@@ -122,7 +122,7 @@ class User < ActiveRecord::Base
     def search_with(username, current_user, page)
       offset = (page - 1) * LIMIT
       users  = self.search(self.escape(username)).offset(offset).limit(LIMIT).keep_if do |user|
-        user.check_follow(current_user)
+        user.check_follow(current_user) unless current_user[:id].nil?
         user[:id] != current_user[:id]
       end
 

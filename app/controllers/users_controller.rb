@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-  skip_before_action :auth, only: [:login, :term, :privacy, :new]
+  skip_before_action :auth, only: [:login, :term, :privacy, :new, :search_game_or_user]
   before_action :set_user, only: [:show, :edit, :update]
   before_action :auth_provider, only: [:new]
+  before_action :open_page, only: [:search_game_or_user]
 
   def login
     if session[:current_user_id]
