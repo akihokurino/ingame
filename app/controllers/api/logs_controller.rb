@@ -7,6 +7,7 @@ class Api::LogsController < ApplicationController
   def create
     params[:log][:user_id] = @current_user[:id]
     @log                   = Log.create log_params
+    @log.twitter @current_user
     Post.create_activity log_params, @log[:id], "create"
   end
 

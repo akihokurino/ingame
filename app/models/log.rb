@@ -1,4 +1,7 @@
 class Log < ActiveRecord::Base
+	include PostTwitter
+	include PostFacebook
+
 	belongs_to :game
 	belongs_to :status
 	belongs_to :user, counter_cache: true
@@ -13,6 +16,11 @@ class Log < ActiveRecord::Base
 	validates :status_id,
 		presence: true,
 		numericality: true
+
+	def twitter(current_user)
+		text = "【#{self.status[:name]}】- #{self.game[:title]} http://gamr.jp/games/#{self.game[:id]} #gamr"
+		self.post_twitter current_user, text
+	end
 
 	class << self
 		def create_with(result, current_user)

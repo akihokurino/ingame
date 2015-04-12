@@ -1,6 +1,8 @@
 class Post < ActiveRecord::Base
   include RandomName
   include CostomUpload
+  include PostTwitter
+  include PostFacebook
 
   belongs_to :user, counter_cache: true
   belongs_to :game, counter_cache: true
@@ -51,41 +53,12 @@ class Post < ActiveRecord::Base
   end
 
   def facebook(current_user)
-    current_provider = nil
-    current_user.user_providers.each do |user_provider|
-      current_provider = user_provider if user_provider[:service_name] == "facebook"
-    end
-
-    return false unless current_provider
-
-    me = FbGraph::User.me current_provider[:token]
-    me.feed!(
-      :message     => self[:text],
-      #:picture    => 'https://graph.facebook.com/matake/picture',
-      #:link       => 'https://github.com/bussorenre',
-      :name        => "Gameful",
-      :description => "Posted from Gameful"
-    )
+    self.post_facebook current_user
   end
 
   def twitter(current_user)
-    current_provider = nil
-    current_user.user_providers.each do |user_provider|
-      current_provider = user_provider if user_provider[:service_name] == "twitter"
-    end
-
-    return false unless current_provider
-
-    client = Twitter::REST::Client.new do |config|
-      config.consumer_key        = "o0oeDXJ131ufgroZv1ur7sZ6E"
-      config.consumer_secret     = "e3yyRbH2s4eI4AuFrtMMKwxGTi7ZHF00qslNWbYKzClMWgmWJf"
-      config.access_token        = current_provider[:token]
-      config.access_token_secret = current_provider[:secret_token]
-    end
-
-    current_game = Game.find self[:game_id]
-
-    client.update "#{self[:text]} - #{current_game[:title]} http://gamr.jp/posts/#{self[:id]} #gamr"
+    text = "#{self[:text]} - #{self.game[:title]} http://gamr.jp/posts/#{self[:id]} #gamr"
+    self.post_twitter current_user, text
   end
 
   def datetime

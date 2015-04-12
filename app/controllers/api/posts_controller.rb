@@ -51,7 +51,6 @@ class Api::PostsController < ApplicationController
         end
       end
     rescue => e
-      raise
       case e.message
       when "wrong extname or too big"
         @error = {type: "photo", message: "画像の拡張子が正しくないか、画像のサイズが大き過ぎます。"}
