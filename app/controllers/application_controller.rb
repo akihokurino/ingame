@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 	# skip_before_action :verify_authenticity_token
 	protect_from_forgery with: :exception
 
-	before_action :auth, :set_headers
+	before_action :auth, :set_headers, :set_meta
 	helper_method :current_user?
 
 	rescue_from Exception, with: :error500
@@ -17,6 +17,27 @@ class ApplicationController < ActionController::Base
 	end
 
   private
+  def set_meta
+    @head_meta = {
+      title: "gamr.jp",
+      description: "gamrの説明です。",
+      keywords: "ゲーム,SNS",
+      content: "コンテンツです。",
+      og: {
+        site_name: "ゲーマーのためのSNS「gamr」",
+        type: "article"
+      },
+      twitter: {
+        card: "summary",
+        site: "@gamr_jp",
+      },
+      common: {
+        url: "http://gamr.jp",
+        image: ""
+      }
+    }
+  end
+
   def set_headers
 		origin_regex = Regexp.new(Settings.cors.origin_regex, Regexp::IGNORECASE)
 		if request.headers["HTTP_ORIGIN"] && origin_regex.match(request.headers["HTTP_ORIGIN"])

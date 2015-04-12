@@ -18,7 +18,7 @@ class Log < ActiveRecord::Base
 		numericality: true
 
 	def twitter(current_user)
-		text = "【#{self.status[:name]}】- #{self.game[:title]} http://gamr.jp/games/#{self.game[:id]} #gamr"
+		text = "【#{self.status[:name]}】- #{self.game[:title]} http://gamr.jp/games/#{self.game[:id]}#all #gamr"
 		self.post_twitter current_user, text
 	end
 
