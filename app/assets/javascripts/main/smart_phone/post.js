@@ -105,10 +105,10 @@
     el: ".post-new-page",
     template: _.template($("#write-template").html()),
     events: {
-      "click .submit":     "post",
-      "click .facebook":   "facebook",
-      "click .twitter":    "twitter",
-      "keyup .post-input": "checkUrl"
+      "click .submit":            "post",
+      "click .facebook-checkbox": "facebook",
+      "click .twitter-checkbox":  "twitter",
+      "keyup .post-input":        "checkUrl"
     },
     initialize: function () {
       var that = this;
@@ -130,6 +130,11 @@
       this.url_thumbnail          = null;
       this.url_thumbnail_template = _.template($("#url-thumbnail-template").html());
 
+      this.twitter_checkbox  = this.$(".twitter-checkbox");
+      this.facebook_checkbox = this.$(".facebook-checkbox");
+      this.post_twitter      = false;
+      this.post_facebook     = false;
+
       $(".post-input").autosize();
 
       $.ajax({
@@ -148,12 +153,10 @@
       });
     },
     facebook: function (e) {
-      e.preventDefault();
-      this.provider = "facebook";
+      this.post_facebook = this.facebook_checkbox.prop("checked") ? true : false;
     },
     twitter: function (e) {
-      e.preventDefault();
-      this.provider = "twitter";
+      this.post_twitter = this.twitter_checkbox.prop("checked") ? true : false;
     },
     post: function (e) {
       e.preventDefault();
@@ -162,11 +165,12 @@
 
       var data = {
         "post": {
-          "game_id":  this.game_id,
-          "log_id":   this.log_id,
-          "text":     this.text.val(),
-          "files":    this.upload.files,
-          "provider": this.provider
+          "game_id":       this.game_id,
+          "log_id":        this.log_id,
+          "text":          this.text.val(),
+          "files":         this.upload.files,
+          "post_facebook": this.post_facebook,
+          "post_twitter":  this.post_twitter
         },
         "url_thumbnail": this.url_thumbnail,
       }
@@ -204,7 +208,7 @@
         error: function () {
 
         }
-      })
+      });
     },
     resetInput: function () {
       this.upload.files  = [];
