@@ -24,6 +24,9 @@ class GamesController < ApplicationController
     end
 	end
 
+  def reviews
+  end
+
 	private
 	def set_game
 		@game = Game.find params[:id]

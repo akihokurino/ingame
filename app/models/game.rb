@@ -17,6 +17,7 @@ class Game < ActiveRecord::Base
   has_many :game_gametags, dependent: :destroy
   has_many :gametags, through: :game_gametags
   has_many :game_urls, dependent: :destroy
+  has_one :game_review, dependent: :destroy
 
   default_scope { includes(:gametags) }
 
