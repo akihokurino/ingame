@@ -16,7 +16,11 @@ Ingame::Application.routes.draw do
   end
   resources :posts, only: ["index", "new", "show"]
   resources :logs, only: ["index", "create"]
-  resources :games, only: ["show", "reviews"]
+  resources :games, only: ["show"] do
+    member do
+      get "reviews"
+    end
+  end
   resources :game_reviews, only: ["show"]
   resources :user_providers, only: ["index"]
 

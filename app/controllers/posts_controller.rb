@@ -12,9 +12,9 @@ class PostsController < ApplicationController
   def show
     @post.i_like? @current_user[:id] unless @current_user[:id].nil?
 
-    @head_meta[:title] = "#{@post.game[:title]} #{@post.user[:username]}のつぶやき - gamr"
-    @head_meta[:description] = "#{@post.user[:username]}による#{@post.game[:title]}の感想・レビューです。"
-    @head_meta[:keywords] = "#{@post.game[:title]}, #{@post.game[:device]}, #{@post.game[:maker]}, 感想, レビュー, 評価, ゲーム, つぶやき"
+    @head_meta[:title]        = "#{@post.game[:title]} #{@post.user[:username]}のつぶやき - gamr"
+    @head_meta[:description]  = "#{@post.user[:username]}による#{@post.game[:title]}の感想・レビューです。"
+    @head_meta[:keywords]     = "#{@post.game[:title]}, #{@post.game[:device]}, #{@post.game[:maker]}, 感想, レビュー, 評価, ゲーム, つぶやき"
     @head_meta[:common][:url] = "http://gamr.jp/posts/#{@post[:id]}"
     if @post.game[:photo_path]
       @head_meta[:common][:image] = "http://gamr.jp/game_photos/#{@post.game[:photo_path]}"
