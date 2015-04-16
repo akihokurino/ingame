@@ -19,6 +19,7 @@ class UsersController < ApplicationController
   end
 
   def search_game_or_user
+    @head_meta[:title] = "ゲームやユーザーを検索 - Gamr"
   end
 
   def show

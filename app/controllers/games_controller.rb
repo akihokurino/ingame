@@ -11,9 +11,9 @@ class GamesController < ApplicationController
       @game.check_rate @current_user
     end
 
-    @head_meta[:title]        = "#{@game[:title]}の感想・レビュー・つぶやき - gamr"
+    @head_meta[:title]        = "#{@game[:title]}の感想・レビュー・つぶやき - Gamr"
     @head_meta[:description]  = "#{@game[:title]}の感想やレビュー、つぶやきのまとめページです。ゲームの概要や画像も掲載中！"
-    @head_meta[:keywords]     = "#{@game[:title]}, #{@game[:device]}, #{@game[:maker]}, 感想, レビュー, 評価, ゲーム, つぶやき"
+    @head_meta[:keywords]     = "#{@game[:title]},#{@game[:device]},#{@game[:maker]},Gamr（ゲーマー）,#{@game[:title]}の感想,#{@game[:title]}のレビュー,#{@game[:title]}の評価,ゲーム,#{@game[:title]}のつぶやき,ゲームのSNS"
     @head_meta[:common][:url] = "http://gamr.jp/games/#{@game[:id]}#all"
     if @game[:photo_path]
       @head_meta[:common][:image] = "http://gamr.jp/game_photos/#{@game[:photo_path]}"

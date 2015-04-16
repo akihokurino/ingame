@@ -19,17 +19,16 @@ class ApplicationController < ActionController::Base
   private
   def set_meta
     @head_meta = {
-      title: "gamr.jp",
-      description: "gamrの説明です。",
-      keywords: "ゲーム,SNS",
-      content: "コンテンツです。",
+      title: "Gamr",
+      description: "遊んだゲームや気になるゲームを簡単に登録・管理！レビューや感想を共有して、新たなゲーム・新たなゲーマーに出会おう。",
+      keywords: "Gamr（ゲーマー）,ゲームのSNS,ゲームの感想,ゲームのレビュー,ゲームの評価,ゲームのつぶやき",
       og: {
-        site_name: "ゲーマーのためのSNS「gamr」",
+        site_name: "ゲーマーのためのSNS「Gamr(ゲーマー)」",
         type: "article"
       },
       twitter: {
         card: "summary",
-        site: "@gamr_jp",
+        site: "@Gamr_jp",
       },
       common: {
         url: "http://gamr.jp",
