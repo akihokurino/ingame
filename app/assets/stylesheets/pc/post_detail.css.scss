@@ -9,12 +9,31 @@
 	background: #fff;
   padding: 20px;
   margin: 0 auto;
-  width: 800px;
+  width: 960px;
+}
+.gameTitle{
+  display: inline-block;
+  color: $color_textBlack;
+  @include font-size(28);
+  line-height:1.5;
+  &:hover{
+    text-decoration: none;
+  }
+}
+.maker{
+    margin-bottom: 15px;
+    color: $color_textBlack;
+    @include font-size(16);
+    line-height: 2;
+    &Name{
+      font-weight: bold;
+      padding-right: 10px;
+    }
 }
 .gameWrap {
   display: inline-block;
   margin-right: 10px;
-  width: 260px;
+  width: 240px;
   @include box-sizing;
   vertical-align: top;
   text-align: center;
@@ -36,28 +55,8 @@
 }
 
 .postWrap{
-  width: 480px;
+  width: 640px;
   display: inline-block;
-
-  .gameTitle{
-    display: inline-block;
-    color: $color_textBlack;
-    @include font-size(28);
-    line-height:1.5;
-    &:hover{
-      text-decoration: none;
-    }
-  }
-  .maker{
-      margin-bottom: 15px;
-      color: $color_textBlack;
-      @include font-size(16);
-      line-height: 2;
-      &Name{
-        font-weight: bold;
-        padding-right: 10px;
-      }
-    }
 
   .postBox {
     width: 480px;
