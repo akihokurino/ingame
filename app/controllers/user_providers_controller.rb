@@ -2,14 +2,7 @@ class UserProvidersController < ApplicationController
   skip_before_action :auth, only: [:create]
 
   def index
-    @current_user.user_providers.each do |provider|
-      case provider.service_name
-      when "facebook"
-        @facebook_provider = provider
-      when "twitter"
-        @twitter_provider = provider
-      end
-    end
+    @facebook_provider, @twitter_provider = @current_user.current_providers
   end
 
   def create

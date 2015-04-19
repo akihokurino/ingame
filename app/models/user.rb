@@ -51,6 +51,24 @@ class User < ActiveRecord::Base
 
   after_destroy :destroy_resources
 
+  def current_providers
+    providers = {
+      facebook: nil,
+      twitter:  nil
+    }
+
+    self.user_providers.each do |provider|
+      case provider.service_name
+      when "facebook"
+        providers[:facebook] = provider
+      when "twitter"
+        providers[:twitter] = provider
+      end
+    end
+
+    providers.values_at :facebook, :twitter
+  end
+
 	def update_with_file(user_params, clip = {})
     prev_photo_path = nil
     begin
