@@ -20,8 +20,7 @@ class Api::PostCommentsController < ApplicationController
 
   def destroy
     comment = PostComment.find params[:id]
-    comment.destroy
-    @result = true
+    @result = comment.destroy ? true : false
   end
 
   private
