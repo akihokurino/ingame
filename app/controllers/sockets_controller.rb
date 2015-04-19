@@ -8,7 +8,6 @@ class SocketsController < WebsocketRails::BaseController
   end
 
   def post
-    p "post"
     @from_user = User.find message[:from_user_id]
     @from_user.followers.each do |follow|
       WebsocketRails[follow.from_user[:id]].trigger "post", message
@@ -16,7 +15,6 @@ class SocketsController < WebsocketRails::BaseController
   end
 
   def like
-    p "like"
     @to_user = User.find message[:to_user_id]
 
     WebsocketRails[@to_user[:id]].trigger "like", message unless @to_user[:id] == message[:from_user_id]
@@ -31,7 +29,6 @@ class SocketsController < WebsocketRails::BaseController
   end
 
   def comment
-    p "comment"
     @to_user = User.find message[:to_user_id]
 
     WebsocketRails[@to_user[:id]].trigger "comment", message unless @to_user[:id] == message[:from_user_id]

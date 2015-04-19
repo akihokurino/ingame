@@ -21,10 +21,10 @@ Ingame::Application.routes.draw do
   resources :user_providers, only: ["index"]
 
   namespace :api do
-    resources :game_reviews, only: ["index", "create", "update", "destroy"]
-    resources :review_comments, only: ["index", "create", "destroy"]
-    resources :review_likes, only: ["create", "destroy"]
-    resources :review_comment_likes, only: ["create", "destroy"]
+    resources :game_reviews, only: ["index", "create", "update", "destroy"], format: "json"
+    resources :review_comments, only: ["index", "create", "destroy"], format: "json"
+    resources :review_likes, only: ["create", "destroy"], format: "json"
+    resources :review_comment_likes, only: ["create", "destroy"], format: "json"
     resources :logs, only: ["index", "create", "update", "destroy"], format: "json" do
       member do
         put "update_status_or_rate"

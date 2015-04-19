@@ -3,16 +3,10 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
   before_action :auth_provider, only: [:new]
   before_action :open_page, only: [:search_game_or_user]
+  before_action :set_session_user, only: [:login]
 
   def login
-    if session[:current_user_id]
-      begin
-        @current_user = User.find session[:current_user_id]
-        redirect_to posts_path if @current_user
-      rescue ActiveRecord::RecordNotFound
-        reset_session
-      end
-    end
+    redirect_to posts_path if @current_user
   end
 
   def setting
@@ -61,7 +55,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :introduction, :place, :photo_path, :email, :password)
+    params.require(:user).permit :username, :introduction, :place, :photo_path, :email, :password
   end
 
   def set_user

@@ -58,32 +58,19 @@ gem 'omniauth-twitter'
 gem 'twitter'
 gem 'omniauth-facebook'
 gem 'fb_graph'
-
 gem 'haml-rails'
 gem 'haml'
-
 gem 'backbone-on-rails'
 gem 'haml-underscore-template'
-
 gem 'nokogiri'
-
 gem 'jpmobile', '~> 4.0.0'
-
 gem 'rails_config'
-
 gem 'websocket-rails'
-
 gem 'redis-rails'
 gem 'hiredis'
 gem 'redis', :require => ["redis", "redis/connection/hiredis"]
-
 gem 'rmagick'
-
 gem 'kaminari'
 gem 'kaminari-bootstrap'
-
 gem "ransack"
-
 gem "gmail"
-
-
