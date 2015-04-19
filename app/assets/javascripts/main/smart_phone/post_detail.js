@@ -27,7 +27,7 @@
       this.comment_collection = new Comments();
       this.comments_view      = new CommentsView({collection: this.comment_collection});
 
-      this.nextOffset = 2;
+      this.nextOffset = 5;
 
       this.comments_view.render({post_id: this.current_post_id, type: "init", offset: 0, limit: 5}, function (res) {
         if (res.is_all) {

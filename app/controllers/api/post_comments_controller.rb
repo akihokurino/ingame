@@ -3,9 +3,7 @@ class Api::PostCommentsController < ApplicationController
   before_action :open_page, only: [:index]
 
   def index
-    result         = PostComment.get_by_post params[:post_id], params[:type], params[:offset], params[:limit], @current_user[:id]
-    @post_comments = result[:post_comments]
-    @is_all        = result[:is_all]
+    @post_comments, @is_all = PostComment.get_by_post(params, @current_user[:id]).values_at :post_comments, :is_all
   end
 
   def create
@@ -19,8 +17,7 @@ class Api::PostCommentsController < ApplicationController
   end
 
   def destroy
-    comment = PostComment.find params[:id]
-    @result = comment.destroy ? true : false
+    @result = PostComment.destroy(params[:id]) ? true : false
   end
 
   private
