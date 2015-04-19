@@ -22,9 +22,10 @@ module Ingame
 
     # config.threadsafe!
 
-    config.time_zone = 'Tokyo'
+    config.time_zone                      = 'Tokyo'
     config.active_record.default_timezone = :local
-    I18n.enforce_available_locales = false
-    config.i18n.default_locale = :ja
+    I18n.enforce_available_locales        = false
+    config.i18n.default_locale            = :ja
+    config.autoload_paths                += %W(#{config.root}/app/services)
   end
 end
