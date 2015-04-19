@@ -8,18 +8,7 @@ class Api::PostsController < ApplicationController
     page    = params[:page].to_i
     return false if page < 1
 
-    case type
-    when "user"
-      @posts = Post.get_user_posts @current_user[:id], params[:user_id], page
-    when "all_of_game"
-      @posts = Post.get_all_posts_of_game @current_user[:id], game_id, page
-    when "follower_of_game"
-      @posts = Post.get_follower_posts_of_game @current_user[:id], game_id, page
-    when "liker_of_game"
-      @posts = Post.get_liker_posts_of_game @current_user[:id], game_id, page
-    else
-      @posts = Post.get_all_posts @current_user[:id], page
-    end
+    @posts  = Post.custom_query type, @current_user, params, page, game_id
   end
 
   def create
@@ -61,8 +50,7 @@ class Api::PostsController < ApplicationController
   end
 
   def destroy
-    post    = Post.find params[:id]
-    @result = post.destroy ? true : false
+    @result = Post.destroy(params[:id]) ? true : false
   end
 
   private

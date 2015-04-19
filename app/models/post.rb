@@ -92,6 +92,21 @@ class Post < ActiveRecord::Base
   end
 
   class << self
+    def custom_query(type, current_user, params, page, game_id)
+      case type
+      when "user"
+        self.get_user_posts current_user[:id], params[:user_id], page
+      when "all_of_game"
+        self.get_all_posts_of_game current_user[:id], game_id, page
+      when "follower_of_game"
+        self.get_follower_posts_of_game current_user[:id], game_id, page
+      when "liker_of_game"
+        self.get_liker_posts_of_game current_user[:id], game_id, page
+      else
+        self.get_all_posts current_user[:id], page
+      end
+    end
+
     def get_all_posts(current_user_id, page)
       return self.none if current_user_id.nil?
 
