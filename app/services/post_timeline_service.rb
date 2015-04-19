@@ -1,11 +1,9 @@
 class PostTimelineService
-  attr_accessor :params, :post_params, :post_url_params, :current_user
+  attr_accessor :params, :current_user
 
-  def initialize(params, post_params, post_url_params, current_user)
-    self.params          = params
-    self.post_params     = post_params
-    self.post_url_params = post_url_params
-    self.current_user    = current_user
+  def initialize(params, current_user)
+    self.params       = params
+    self.current_user = current_user
   end
 
   def exec
@@ -13,15 +11,15 @@ class PostTimelineService
       last_post: nil,
       error:     nil
     }
-=begin
+
     begin
       ActiveRecord::Base.transaction do
-        self.post_params[:post_type_id] = 1
-        result[:last_post]              = Post.create! self.post_params
+        post_params[:post_type_id] = 1
+        result[:last_post]              = Post.create! post_params
 
         if !self.params[:url_thumbnail].blank?
           self.params[:url_thumbnail][:post_id] = result[:last_post][:id]
-          PostUrl.create self.post_url_params
+          PostUrl.create post_url_params
         elsif !self.params[:post][:urls].blank?
           self.params[:post][:urls].each do |url|
             PostUrl.create_thumbnail url, result[:last_post]
@@ -48,8 +46,16 @@ class PostTimelineService
                           {type: "something", message: "不正なデータです。"}
                         end
     end
-=end
 
     result.values_at :last_post, :error
+  end
+
+  private
+  def post_params
+    params.require(:post).permit :user_id, :game_id, :text, :log_id
+  end
+
+  def post_url_params
+    params.require(:url_thumbnail).permit :post_id, :title, :description, :thumbnail, :url, :post_type_id
   end
 end

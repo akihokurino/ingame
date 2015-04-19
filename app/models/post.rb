@@ -92,7 +92,12 @@ class Post < ActiveRecord::Base
   end
 
   class << self
-    def custom_query(type, current_user, params, page, game_id)
+    def custom_query(current_user, params)
+      type    = params[:type]
+      game_id = params[:game_id]
+      page    = params[:page].to_i
+      return self.none if page < 1
+
       case type
       when "user"
         self.get_user_posts current_user[:id], params[:user_id], page
