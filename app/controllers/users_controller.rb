@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :auth, only: [:login, :term, :privacy, :new, :search_game_or_user]
+  skip_before_action :auth, only: [:login, :new, :search_game_or_user]
   before_action :set_user, only: [:show, :edit, :update]
   before_action :auth_provider, only: [:new]
   before_action :open_page, only: [:search_game_or_user]
@@ -45,12 +45,6 @@ class UsersController < ApplicationController
   def logout
     reset_session
     redirect_to login_users_path
-  end
-
-  def term
-  end
-
-  def privacy
   end
 
   private

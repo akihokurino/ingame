@@ -1,9 +1,9 @@
 = content_for :head do
-  = stylesheet_link_tag "smart_phone/privacy"
+  = stylesheet_link_tag "pc/privacy"
 
 %header.header
-  .imgWrap
-    = image_tag("logo@2x.png", width: "120")
+  .headerInner
+    %h1.logo GAMR
 %section.mainContent
   .settingTopBox
     %h1.mainTtl プライバシーポリシー
@@ -19,7 +19,7 @@
           %p.privacyTxt
             本プライバシーポリシーは、
             %a{href: ""}
-              = link_to "「GAMR 利用規約」", term_users_path, class: "privacyLink"
+              = link_to "「GAMR 利用規約」", term_pages_path, class: "privacyLink"
             に含まれるものとして位置づけられており、利用者が本サービスを利用するときに適用されます。
             %br
             したがって、当社が本サービスを通じて利用者の皆様から取得した情報は、本プライバシーポリシーに従って取り扱われます。
@@ -82,4 +82,4 @@
           %h2.privacyTtl ライバシーポリシーの改定
           %p.privacyTxt 当社は利用者の了承を得ることなく、本プライバシーポリシーを随時変更・改定することができることとします。 本プライバシーポリシーの変更については、本サービス上に表示した時点で、利用者が了承したものとみなします。
 
-= render partial: "application/smart_phone/footer"
+= render partial: "application/pc/footer"

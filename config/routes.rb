@@ -2,12 +2,16 @@ Ingame::Application.routes.draw do
   root to: "posts#index"
   match "/*path" => "application#cors_preflight_check", :via => :options
 
+  resources :pages, only: [] do
+    collection do
+      get "term"
+      get "privacy"
+    end
+  end
   resources :users, only: ["show", "edit", "update", "new", "destroy"] do
     collection do
       get "login"
       get "logout"
-      get "term"
-      get "privacy"
       get "search_game_or_user"
     end
     member do
