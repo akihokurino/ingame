@@ -1,4 +1,4 @@
-class GameReview < ActiveRecord::Base
+class Review < ActiveRecord::Base
   belongs_to :user
   belongs_to :log
   belongs_to :game

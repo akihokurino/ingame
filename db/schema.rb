@@ -52,21 +52,6 @@ ActiveRecord::Schema.define(version: 20150413072612) do
     t.datetime "updated_at"
   end
 
-  create_table "game_reviews", force: true do |t|
-    t.text     "text"
-    t.integer  "user_id"
-    t.integer  "log_id"
-    t.integer  "game_id"
-    t.integer  "review_likes_count",    default: 0
-    t.integer  "review_comments_count", default: 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "game_reviews", ["game_id"], name: "index_game_reviews_on_game_id", using: :btree
-  add_index "game_reviews", ["log_id"], name: "index_game_reviews_on_log_id", using: :btree
-  add_index "game_reviews", ["user_id"], name: "index_game_reviews_on_user_id", using: :btree
-
   create_table "game_urls", force: true do |t|
     t.integer  "game_id"
     t.text     "text"
@@ -198,25 +183,40 @@ ActiveRecord::Schema.define(version: 20150413072612) do
 
   create_table "review_comments", force: true do |t|
     t.integer  "user_id"
-    t.integer  "game_review_id"
+    t.integer  "review_id"
     t.string   "review_comment_likes_count"
     t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "review_comments", ["game_review_id"], name: "index_review_comments_on_game_review_id", using: :btree
+  add_index "review_comments", ["review_id"], name: "index_review_comments_on_review_id", using: :btree
   add_index "review_comments", ["user_id"], name: "index_review_comments_on_user_id", using: :btree
 
   create_table "review_likes", force: true do |t|
-    t.integer  "game_review_id"
+    t.integer  "review_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "review_likes", ["game_review_id"], name: "index_review_likes_on_game_review_id", using: :btree
+  add_index "review_likes", ["review_id"], name: "index_review_likes_on_review_id", using: :btree
   add_index "review_likes", ["user_id"], name: "index_review_likes_on_user_id", using: :btree
+
+  create_table "reviews", force: true do |t|
+    t.text     "text"
+    t.integer  "user_id"
+    t.integer  "log_id"
+    t.integer  "game_id"
+    t.integer  "review_likes_count",    default: 0
+    t.integer  "review_comments_count", default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reviews", ["game_id"], name: "index_reviews_on_game_id", using: :btree
+  add_index "reviews", ["log_id"], name: "index_reviews_on_log_id", using: :btree
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
   create_table "statuses", force: true do |t|
     t.string   "name",       limit: 50

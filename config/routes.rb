@@ -19,12 +19,13 @@ Ingame::Application.routes.draw do
   end
   resources :posts, only: ["index", "new", "show"]
   resources :logs, only: ["index", "create"]
-  resources :games, only: ["show"]
-  resources :game_reviews, only: ["show"]
+  resources :games, only: ["show"] do
+    resources :reviews, only: ["show", "new", "create"]
+  end
   resources :user_providers, only: ["index"]
 
   namespace :api do
-    resources :game_reviews, only: ["index", "create", "update", "destroy"], format: "json"
+    resources :reviews, only: ["index", "create", "update", "destroy"], format: "json"
     resources :review_comments, only: ["index", "create", "destroy"], format: "json"
     resources :review_likes, only: ["create", "destroy"], format: "json"
     resources :review_comment_likes, only: ["create", "destroy"], format: "json"

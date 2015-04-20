@@ -1,6 +1,6 @@
-class CreateGameReviews < ActiveRecord::Migration
+class CreateReviews < ActiveRecord::Migration
   def change
-    create_table :game_reviews do |t|
+    create_table :reviews do |t|
       t.text :text
       t.references :user, index: true
       t.references :log, index: true
