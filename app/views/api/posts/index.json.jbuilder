@@ -33,7 +33,7 @@ json.posts do |json|
       json.array!(post.post_comments) do |post_comment|
         json.id post_comment[:id]
         json.text post_comment[:text]
-        json.comment_likes_count post_comment[:comment_likes_count]
+        json.comment_likes_count post_comment[:post_comment_likes_count]
         json.i_liked post_comment.i_liked
         json.created_at post_comment.datetime
         json.user do |json|

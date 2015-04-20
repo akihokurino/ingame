@@ -36,7 +36,7 @@ var CommentView = Backbone.View.extend({
 
     var that = this;
     var data = {
-      "comment_like": {
+      "post_comment_like": {
         "post_comment_id": this.model.id,
         "user_id": null,
         "to_user_id": this.model.get("user").id
@@ -45,7 +45,7 @@ var CommentView = Backbone.View.extend({
 
     $.ajax({
       type: "POST",
-        url: "/api/comment_likes",
+        url: "/api/post_comment_likes",
         data: data,
         success: function (data) {
           if (data) {
@@ -76,7 +76,7 @@ var CommentView = Backbone.View.extend({
 
     $.ajax({
       type: "DELETE",
-      url: "/api/comment_likes/" + this.model.id,
+      url: "/api/post_comment_likes/" + this.model.id,
       data: {},
       success: function (data) {
         if (data) {

@@ -11,19 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150413072612) do
+ActiveRecord::Schema.define(version: 20150420141905) do
 
   create_table "admins", force: true do |t|
     t.string   "username"
     t.string   "password"
     t.string   "salt"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "comment_likes", force: true do |t|
-    t.integer  "post_comment_id"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -115,10 +108,17 @@ ActiveRecord::Schema.define(version: 20150413072612) do
 
   add_index "notifications", ["post_id"], name: "index_notifications_on_post_id", using: :btree
 
+  create_table "post_comment_likes", force: true do |t|
+    t.integer  "post_comment_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "post_comments", force: true do |t|
     t.integer  "user_id"
     t.integer  "post_id"
-    t.integer  "comment_likes_count", default: 0
+    t.integer  "post_comment_likes_count", default: 0
     t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -184,7 +184,7 @@ ActiveRecord::Schema.define(version: 20150413072612) do
   create_table "review_comments", force: true do |t|
     t.integer  "user_id"
     t.integer  "review_id"
-    t.string   "review_comment_likes_count"
+    t.integer  "review_comment_likes_count", default: 0
     t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"

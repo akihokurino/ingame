@@ -55,7 +55,7 @@ html {
     padding: 25px;
     background: #fff;
     @include clearfix;
-    
+
     .gameWrap{
       float: left;
       margin-right: 15px;
@@ -436,7 +436,7 @@ html {
           color: #fff;
           @include font-size(14);
           text-align: center;
-          line-height: 2.5; 
+          line-height: 2.5;
         }
         @include clearfix;
       }
