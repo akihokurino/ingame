@@ -24,7 +24,6 @@
           %a{href: @game.provider_url, target: "blank"} 出典：STEAM
       - unless @current_user[:id].nil?
         %ul.gameBtnList
-          %li.item.review-li
           %li.item.status-li
         %span.delete-log-btn.deleteBtn マイゲームから削除
       .gameInfo
@@ -72,19 +71,20 @@
                 %h3 レビュー・感想
                 %textarea
           %ul.snsBtn
-          - @current_user.user_providers.each do |provider|
-            - if provider[:service_name] == "twitter"
-              %li.tw
-                %label
-                  = check_box_tag "twitter", true, false, {class: "twitter-checkbox"}
-                  twitterに投稿
-            - if provider[:service_name] == "facebook"
-              %li.fb
-                %label
-                  = check_box_tag "facebook", true, false, {class: "facebook-checkbox"}
-                  facebookに投稿
+            - @current_user.user_providers.each do |provider|
+              - if provider[:service_name] == "twitter"
+                %li
+                  %label.checkbox
+                    = check_box_tag "twitter", true, false, {class: "twitter-checkbox"}
+                    .checkbox__checkmark
+                    twitterに投稿
+              - if provider[:service_name] == "facebook"
+                %li
+                  %label.checkbox
+                    = check_box_tag "facebook", true, false, {class: "facebook-checkbox"}
+                    .checkbox__checkmark
+                    facebookに投稿
           .reviewBtn 投稿する
-
         .review-timeline
           .review-list
             .reviewBox
@@ -105,7 +105,7 @@
                         %span.likeCnt
                     %li
                       %span.icon-option.delete-btn
-      .postWrap
+      .postWrap.hide
         .game-timeline
           .post-list
           = image_tag "gif-load.gif", class: "loading-gif"
