@@ -4,7 +4,7 @@ class Api::SessionsController < ApplicationController
 
   def create
     if current_user = User.authenticate(params[:user][:username], params[:user][:password])
-      current_user.connect_with_provider(@current_provider)
+      current_user.connect_with_provider @current_provider
       session[:current_user_id]     = current_user[:id]
       session[:current_provider_id] = nil
 

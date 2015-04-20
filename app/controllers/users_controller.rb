@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
-  skip_before_action :auth, only: [:login, :new, :search_game_or_user]
+  skip_before_action :auth, only: [:login, :new]
   before_action :set_user, only: [:show, :edit, :update]
   before_action :auth_provider, only: [:new]
-  before_action :open_page, only: [:search_game_or_user]
   before_action :set_session_user, only: [:login]
 
   def login
@@ -10,10 +9,6 @@ class UsersController < ApplicationController
   end
 
   def setting
-  end
-
-  def search_game_or_user
-    @head_meta[:title] = "ゲームやユーザーを検索 - Gamr"
   end
 
   def show

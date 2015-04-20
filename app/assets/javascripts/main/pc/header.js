@@ -79,7 +79,7 @@
     search: function (e) {
       if (e.which == 13 && this.search_input.val() != "") {
         e.preventDefault();
-        location.href = "/users/search_game_or_user?search_word=" + this.search_input.val() + "#game";
+        location.href = "/search?search_word=" + this.search_input.val() + "#game";
       }
     }
   });

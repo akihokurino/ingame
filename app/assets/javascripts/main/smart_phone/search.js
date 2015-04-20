@@ -61,9 +61,9 @@
       var search_word = this.game_title.val();
 
       if (search_word && search_word != "") {
-        location.href = "/users/search_game_or_user?search_word=" + search_word + "#user";
+        location.href = "/search?search_word=" + search_word + "#user";
       } else {
-        location.href = "/users/search_game_or_user#user";
+        location.href = "/search#user";
       }
     }
   });
@@ -123,9 +123,9 @@
       var search_word = this.username.val();
 
       if (search_word && search_word != "") {
-        location.href = "/users/search_game_or_user?search_word=" + search_word + "#game";
+        location.href = "/search?search_word=" + search_word + "#game";
       } else {
-        location.href = "/users/search_game_or_user#game";
+        location.href = "/search#game";
       }
     }
   });

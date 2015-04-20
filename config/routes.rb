@@ -12,7 +12,6 @@ Ingame::Application.routes.draw do
     collection do
       get "login"
       get "logout"
-      get "search_game_or_user"
     end
     member do
       get "setting"
@@ -77,6 +76,7 @@ Ingame::Application.routes.draw do
 
   match "/auth/:provider/callback", to: "user_providers#create", via: :get
   match "/logout", to: "sessions#destroy", :as => :logout, via: :get
+  match "/search", to: "search#index", via: :get
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -9,8 +9,7 @@ class Api::CommentLikesController < ApplicationController
   end
 
   def destroy
-    param_hash = {user_id: @current_user[:id], post_comment_id: params[:id]}
-    @result    = CommentLike.check_and_destroy param_hash
+    @result = CommentLike.check_and_destroy user_id: @current_user[:id], post_comment_id: params[:id]
   end
 
   private

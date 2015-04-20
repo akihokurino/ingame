@@ -3,7 +3,7 @@
     %li.item
       = link_to "タイムライン", posts_path, class:"icon-home"
     %li.item
-      = link_to "探す", "/users/search_game_or_user#game", class: "icon-search"
+      = link_to "探す", "/search#game", class: "icon-search"
     - unless @current_user[:id].nil?
       %li.item
         = link_to "マイページ", "/users/#{@current_user[:id]}#logs", class: "icon-user"
