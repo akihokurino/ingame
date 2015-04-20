@@ -7,90 +7,111 @@
 = render partial: "application/pc/default_header"
 
 %section.mainContent.game-page{"data-gameid" => @game[:id]}
-  .gameBox
-    .gameBoxInner
-      %figure.gameMainWrap
-        - url = @game.amazon_url ? @game.amazon_url : ""
-        %a{href: url, target: "blank"}
-          - if @game.photo_path
-            = image_tag "/game_photos/#{@game.photo_path}", width: 240, class: "gameImg", alt: "ゲームパッケージ画像"
-          - elsif @game.photo_url
-            = image_tag @game.photo_url, width: 240, class: "gameImg", alt: "ゲームパッケージ画像"
-          - else
-            = image_tag "/game_photos/default.png", width: 240, class: "gameImg", alt: "ゲームパッケージ画像"
-        .Source
-          - case @game.provider
-          - when "famituu"
-            %a{href: @game.provider_url, target: "blank"} 出典:ファミ通
-          - when "steam"
-            %a{href: @game.provider_url, target: "blank"} 出典:STEAM
-
-        - unless @current_user[:id].nil?
-          %ul.gameBtnList
-            %li.item.review-li
-            %li.item.status-li
-          %span.delete-log-btn.deleteBtn マイゲームから削除
-
-      .gameCapWrap
-        .leftBox
-          %h1.gameTtl
-            = @game.title
-          - @game.game_urls.each_with_index do |url, index|
-            - if index == 0
+  .titleWrap
+    %h1.gameTtl ゲームタイトルゲームタイトルゲームタイトル
+    %h2.maker
+      %span by
+      %span メーカー名メーカー名
+  .contentWrap
+    .gameWrap
+      %a.gameImgWrap
+        = image_tag "/game_photos/default.png", width: 240, class: "gameImg", alt: "ゲームパッケージ画像"
+      .source
+        - case @game.provider
+        - when "famituu"
+          %a{href: @game.provider_url, target: "blank"} 出典：ファミ通
+        - when "steam"
+          %a{href: @game.provider_url, target: "blank"} 出典：STEAM
+      - unless @current_user[:id].nil?
+        %ul.gameBtnList
+          %li.item.status-li
+        %span.delete-log-btn.deleteBtn マイゲームから削除
+      .gameInfo
+        %ul.gameCap
+          %li.device
+            = @game.device
+          %li.releaseDay
+            = @game.formated_release_day
+          %li.gameTag
+            - @game.gametags.each do |gametag|
+              %span.gametag
+                = gametag.name
+      %ul.linkList
+        - @game.game_urls.each_with_index do |url, index|
+          - if index == 0
+            %li
               = link_to "公式サイト", url.text, target: "blank", class: "officialLink"
-            - else
+          - else
+            %li
               = link_to "公式サイト(#{index + 1})", url.text, target: "blank", class: "officialLink"
-          %a.moreSearch{href: "https://www.youtube.com/results?search_query=#{@game.title}", target: "blank"} Youtube
-          / %a.moreSearch{href: "http://www.amazon.co.jp/s/ref=nb_sb_noss_1?__mk_ja_JP=カタカナ&url=search-alias%3Daps&field-keywords=#{@game.title}", target: "blank"}
-          /   %span.icon-cart Amazon
-          / .review
-          /   %span ユーザー評価 /
-          /   %ul.starList
-          /     - diff = 5 - @game.avg_rate.to_i
-          /     - @game.avg_rate.to_i.times do |i|
-          /       %li.starOn.icon-star
-          /     - diff.times do |i|
-          /       %li.starOff.icon-star
-          /   %span.value
-          /     = @game.avg_rate
-          - if @game.wiki
-            .gameSummary
-              %label{for: "summary"} 概要
-              %input.expand{type: "checkbox", id: "summary"}
-              %p
-                = @game.wiki
-        .rightBox
-          %ul.gameInfoList
-            %li.item.hard
-              .itemName ハード：
-              .itemContent
-                = @game.device
-            %li.item.maker
-              .itemName メーカー：
-              .itemContent
-                = @game.maker
-            %li.item.category
-              .itemName ジャンル：
-              .itemContent
-                - @game.gametags.each do |gametag|
-                  %span.gametag
-                    = gametag.name
-            %li.item.releaseDay
-              .itemName 発売日：
-              .itemContent
-                = @game.formated_release_day
-    %section.sortBox
-      %ul.sortList.sort-list
-        %li.item.current.follower-posts
-          %a.follow{href: "/games/#{@game[:id]}#follower"} フォロー中のユーザー
-        %li.item.all-posts
-          %a.all{href: "/games/#{@game[:id]}#all"} すべてのユーザー
-        %li.item.liker-posts
-          %a.star{href: "/games/#{@game[:id]}#liker"} いいね順
+        %li
+          %a.youtubeLink{href: "https://www.youtube.com/results?search_query=#{@game.title}", target: "blank"} Youtube
 
-  .game-timeline
-    .post-list
-    = image_tag "gif-load.gif", class: "loading-gif"
+    .archiveWrap
+      %ul.archiveNav
+        %li みんなのつぶやき
+        %li.current みんなのレビュー
+      .reviewWrap
+        %form.writeReview
+          %h2 ゲームタイトルゲームタイトルのレビューを書く
+          %ul.reviewList
+            %li.listItem
+              .starReview
+                %h3 ★評価
+                .selectWrap
+                  %select
+                    %option{value: ""} 評価しない
+                    %option{value: "1"} ★☆☆☆☆
+                    %option{value: "2"} ★★☆☆☆
+                    %option{value: "3"} ★★★☆☆
+                    %option{value: "4"} ★★★★☆
+                    %option{value: "4"} ★★★★★
+            %li.listItem
+              .textReview
+                %h3 レビュー・感想
+                %textarea
+          %ul.snsBtn
+            - @current_user.user_providers.each do |provider|
+              - if provider[:service_name] == "twitter"
+                %li
+                  %label.checkbox
+                    = check_box_tag "twitter", true, false, {class: "twitter-checkbox"}
+                    .checkbox__checkmark
+                    twitterに投稿
+              - if provider[:service_name] == "facebook"
+                %li
+                  %label.checkbox
+                    = check_box_tag "facebook", true, false, {class: "facebook-checkbox"}
+                    .checkbox__checkmark
+                    facebookに投稿
+          .reviewBtn 投稿する
+        .review-timeline
+          .review-list
+            .reviewBox
+              .reviewHeader
+                %a.reviewHeaderLink{href: "##userProfile##"}
+                  %img.profileImage{width: 30, src: "/user_photos/default.png"}
+                  %span.userName username
+                  %span.starBox ★★★☆☆ 3
+              .postBody
+                .postText レビュー本文。レビュー本文。レビュー本文。レビュー本文。レビュー本文。レビュー本文。レビュー本文。レビュー本文。レビュー本文。レビュー本文。レビュー本文。レビュー本文。レビュー本文。レビュー本文。レビュー本文。
+                .postMeta
+                  .postTime.icon-time 投稿時間
+                  %a.readMore{href: "##reviewDetail##"} もっと見る
+                .postFooter
+                  %ul.actionList
+                    %li
+                      %span.like-btn.favBtn.icon-like
+                        %span.likeCnt
+                    %li
+                      %span.icon-option.delete-btn
+      .postWrap.hide
+        .game-timeline
+          .post-list
+          = image_tag "gif-load.gif", class: "loading-gif"
+
+
+
 
 = render partial: "application/pc/footer"
 

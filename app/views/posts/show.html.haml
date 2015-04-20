@@ -8,6 +8,13 @@
 
 %section.mainContent.post-detail-page{"data-postid" => @post[:id]}
   .topBox
+    %a.gameTitle{href: "/games/#{@post.game[:id]}#all"}
+      %h1
+        = @post.game[:title]
+    %h2.maker
+      %span by
+      %span.makerName
+        = @post.game[:maker]
     .gameWrap
       %figure.gameMainWrap
         %a
@@ -24,13 +31,6 @@
         - when "steam"
           %a{href: @post.game[:provider_url], target: "blank"} 出典:STEAM
     .postWrap
-      %a.gameTitle{href: "/games/#{@post.game[:id]}#all"}
-        %h1
-          = @post.game[:title]
-      %h2.maker
-        %span by
-        %span.makerName
-          = @post.game[:maker]
       .postBox
         .postHeader
           %a.postHeaderLink{href: "/users/#{@post.user[:id]}"}
