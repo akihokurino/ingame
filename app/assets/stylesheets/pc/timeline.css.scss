@@ -18,6 +18,9 @@ html {
   &Inner {
     width: 1080px;
     margin: 0 auto;
+    @include clearfix;
+    position: relative;
+
   }
   /*---   .mainTtl   ----------*/
   .profileColumn,.postColumn,.userColumn{
@@ -26,12 +29,14 @@ html {
 
   .profileColumn {
     float: left;
+    position: fixed;
     width: 240px;
   }
   .postColumn {
     float: left;
     width: 520px;
     padding: 0 10px;
+    margin-left: 240px;
   }
   .subColumn{
     float: right;
