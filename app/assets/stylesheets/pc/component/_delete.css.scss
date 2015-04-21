@@ -6,15 +6,16 @@
   left: 50%;
   top: 50%;
   z-index: 20;
-  margin-left: -131px;
+  margin-left: -175px;
   margin-top: -40px;
-  padding: 12px 10px 10px;
+  width: 350px;
+  padding: 12px 0px 10px;
   border: 1px solid #ababab;
   @include border-radius(3px);
   @include box-sizing;
   background-color: #fff;
   text-align: center;
-  
+
   .cancel,.done{
     display: inline-block;
     width: 120px;
