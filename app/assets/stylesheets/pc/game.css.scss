@@ -3,12 +3,10 @@
 @import "component/_reviewBox.css.scss";
 @import "component/_activityPost.css.scss";
 
-html {
-  background: #5e5e5e;
-}
 
 .mainContent {
   background: #eee;
+  padding-bottom: 70px;
   .messageDialog {
     display: none;
     &.show{

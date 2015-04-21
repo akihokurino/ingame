@@ -23,6 +23,7 @@ var GamesView = Backbone.View.extend({
       success: function (model, response, options) {
         for (var i = 0; i < response.games.length; i++) {
           var game = new Game(response.games[i]);
+          game.strimWidth(48);
           that.collection.add(game);
         }
 

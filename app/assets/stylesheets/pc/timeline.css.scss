@@ -4,6 +4,11 @@
 @import "component/_postBox.css.scss";
 @import "component/_activityPost.css.scss";
 
+html {
+  background: $bg_color;
+}
+
+
 /*---   .mainContent   ---------------------------*/
 .mainContent {
   @include clearfix;

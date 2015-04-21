@@ -21,5 +21,16 @@ var User = Backbone.Model.extend({
     }
 
     return this;
+  },
+  strimUsernameWidth: function (limit) {
+    var username = this.get("username");
+    if (username && username.length > limit) {
+      var new_username  = username.slice(0, limit);
+      console.log(new_username)
+      new_username     += "...";
+      this.set("username", new_username);
+    }
+
+    return this;
   }
 });

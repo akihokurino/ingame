@@ -17,7 +17,7 @@
 .settingBox {
   width: 100%;
   padding: 20px 0 40px;
-  background: #f2f2f2;
+  margin-top: 60px;
   line-height: 1.5;
 
   &Inner {
@@ -62,13 +62,17 @@
       display: inline-block;
       min-width: 80px;
       margin-right: 10px;
+      color: #3a3a3a;
+      font-size: 1em;
     }
     .notConnect,.connectTw,.connectFb{
       display: inline-block;
       @include border-radius(2px);
       color: #fff;
-      line-height: 1.5;
-      padding: 0 10px;
+      width: 90px;
+      height: 25px;
+      line-height: 25px;
+      text-align: center;
     }
     .notConnect{
       background: #bbb;

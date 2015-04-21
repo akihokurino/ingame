@@ -1,12 +1,13 @@
 @import "../_function.css.scss";
 
 html {
-  background: #eee;
+  background: $bg_color;
 }
 .SignupHeader, .SigninHeader {
   margin-bottom: 60px;
   padding: 10px 0;
-  background: $main_color;
+  background: $base_color;
+  height: 50px;
 
   &Ttl {
     display: block;

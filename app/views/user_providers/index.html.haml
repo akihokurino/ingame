@@ -7,8 +7,6 @@
 = render partial: "application/pc/default_header"
 
 .edit-account-page
-  .settingTopBox
-    %h1.mainTtl アカウント設定
   .settingBox
     .settingBoxInner
       %ul.settingList
@@ -24,16 +22,16 @@
                   %span.connectTw 連携中
             %li
               .snsName Facebook
-              .coopStatus 
+              .coopStatus
                 - unless @facebook_provider
                   = link_to "連携する", "/auth/facebook", class: "notConnect connect-facebook-btn"
                 - else
                   %span.connectFb 連携中
         %li.item
-          %h2.settingTtl gamrを退会
+          %h2.settingTtl Gamrを退会
           %p.settingTxt 退会すると、アカウントが持つ全ての情報が削除されます。
           = link_to "退会する", "#", class: "dltAccount delete-account-btn"
 
-= render partial: "application/pc/footer"
+
 
 = render partial: "application/underscore/pc/common/delete_confirm"

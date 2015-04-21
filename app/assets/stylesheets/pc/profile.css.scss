@@ -5,12 +5,12 @@
 @import "component/_friendListBox.css.scss";
 
 html {
-  background: $main_color;
+  background: $bg_color;
 }
 
 /*---   .mainContent   ---------------------------*/
 .mainContent {
-  background: #f2f2f2;
+  background: $bg_color;
 
   /*---   .profileBox   ----------*/
   .profileBox {
@@ -257,7 +257,8 @@ html {
       .gameListWrap {
         width: 100%;
         padding: 10px;
-        background: #ebebeb;
+        padding-right: 0px;
+        padding-left: 0px;
       }
     }
     .playingBox{

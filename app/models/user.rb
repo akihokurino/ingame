@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   has_many :games, through: :logs
 	has_many :game_likes, dependent: :destroy
 	has_many :post_likes, dependent: :destroy
-  has_many :comment_likes, dependent: :destroy
+  has_many :post_comment_likes, dependent: :destroy
 	has_many :follows, class_name: "Follow", :foreign_key => "from_user_id", dependent: :destroy
   has_many :followers, class_name: "Follow", :foreign_key => "to_user_id", dependent: :destroy
   has_many :received_notifications, class_name: "Notification", :foreign_key => "to_user_id", dependent: :destroy
