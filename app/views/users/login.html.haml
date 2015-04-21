@@ -4,7 +4,7 @@
 %section.mainVisual
   %h2.mainCopy たくさんのゲームを、遊んできた。
   %h1.ttl
-    = image_tag("logo@3x.png", width: "320")
+    = image_tag "logo@3x.png", width: "320", height: "120"
   %p.subCopy
     Gamrは遊んだゲームや気になるゲームなどを記録し、友達と共有できるWeb サービスです。
   .loginBox
@@ -18,6 +18,7 @@
       %li.item
         %a.gamr{href: ""}
           %span.icon-gamr GamrのIDでログイン
+
 %section.points
   %h1.pointsTtl Gamrの使い方
   %section.pointsItem
@@ -37,6 +38,7 @@
     = image_tag("screenshot_03.png")
     %p.pointsItemText ゲームの詳細ページでは、公式ウェブサイトやジャンルなどの情報を揃えてあります。他のユーザーの感想などと合わせて、好みのゲームを見つけましょう。
     %p.pointsItemAnnotation あなたが遊ぶべきゲームは、あなたの友達が知っているかもしれません。
+
 %section.bottomBox
   %h1.bottomBoxTtl ゲームをもっと楽しもう。
   %ul.snsList
