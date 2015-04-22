@@ -56,6 +56,7 @@
       color: $main_color;
       font-weight: bold;
       font-size: .875rem;
+      word-break: break-all;
 
       &Link {
         color: $main_color;

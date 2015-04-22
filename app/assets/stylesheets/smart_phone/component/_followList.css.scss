@@ -67,6 +67,11 @@
 				font-weight:bold;
 				.name{
 					color:$color_textBlack;
+					word-break: break-all;
+					width: 120px;
+					height: 20px;
+					overflow: hidden;
+					display: inline-block;
 				}
 			}
 			.myGame{

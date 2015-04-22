@@ -10,6 +10,7 @@
   color: $color-textBlack;
   font-size: 12px;
   line-height: 1.5;
+  word-break: break-all;
 
   .profileImage{
     float: left;
@@ -18,7 +19,6 @@
     vertical-align: middle;
     @include border-radius(50%);
   }
-
   .gamePhoto{
     float: right;
     display: inline-block;

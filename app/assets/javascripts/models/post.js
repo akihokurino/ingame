@@ -39,6 +39,16 @@ var Post = Backbone.Model.extend({
 
     return this;
   },
+  strimUsernameWidth: function (limit) {
+    var username = this.get("user").username;
+    if (username.length > limit) {
+      var new_username          = username.slice(0, limit);
+      new_username             += "...";
+      this.get("user").username = new_username;
+    }
+
+    return this;
+  },
   strimTextWidth: function (limit) {
     var text = this.get("text");
     if (text.length > limit) {

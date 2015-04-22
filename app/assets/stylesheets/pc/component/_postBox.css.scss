@@ -42,6 +42,10 @@
       display: inline-block;
       color: $color_textBlack;
       font-weight: bold;
+      word-break: break-all;
+      width: 340px;
+      height: 30px;
+      overflow: hidden;
     }
     .statusBox{
       float: right;
@@ -75,7 +79,7 @@
     @include clearfix;
   }
   .gameBox{
-    height: 80px;
+    /*height: 80px;*/
     background: #431e99; /* Old browsers */
     background: -moz-linear-gradient(-45deg, #431e99 0%, #2989d8 50%, #207cca 51%, #af23a6 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#431e99), color-stop(50%,#2989d8), color-stop(51%,#207cca), color-stop(100%,#af23a6)); /* Chrome,Safari4+ */
@@ -86,7 +90,7 @@
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#431e99', endColorstr='#af23a6',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
     .gameBoxLink{
       display: table;
-      height: 80px;
+      /*height: 80px;*/
       width: 100%;
       padding: 10px;
       @include box-sizing;
@@ -96,6 +100,7 @@
       }
       h2 {
         font-size: 16px;
+        word-break: break-all;
       }
     }
     .gamePhoto{
@@ -119,6 +124,7 @@
     color: $color_textBlack;
     @include box-sizing;
     line-height: 1.5;
+    word-break: break-all;
     .postThumnail{
       width: 100%;
     }

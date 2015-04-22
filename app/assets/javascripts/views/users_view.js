@@ -45,6 +45,7 @@ var UsersView = Backbone.View.extend({
     if (response.users.length != 0) {
       for (var i = 0; i < response.users.length; i++) {
         var user = new User(response.users[i]);
+        user.strimWidth("username", 16);
         this.collection.add(user);
       }
 

@@ -69,6 +69,7 @@
       color: $color_textBlack;
       @include font-size(13);
       line-height: 1.6;
+      word-break: break-all;
     }
   }
 }

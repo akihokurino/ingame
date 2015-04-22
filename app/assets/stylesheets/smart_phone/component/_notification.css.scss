@@ -64,6 +64,7 @@
 			width: 80%;
 			color: $color_textBlack;
 			@include font-size(14);
+			word-break: break-all;
 		}
 	}
 }

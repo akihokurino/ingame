@@ -28,7 +28,7 @@
 
     &Link {
       color: $color_textBlack;
-      
+
       &:hover {
         color: $main_color;
         text-decoration: none;
@@ -54,8 +54,9 @@
 
     .gameTtl{
       display:inline-block;
+      word-break: break-all;
     }
-    
+
     .device{
       display:inline-block;
       padding:0 10px;
@@ -166,7 +167,7 @@
   }
   .articleWrap {
     color: $color_textBlack;
-    
+
     &:hover {
       text-decoration: none;
     }
@@ -253,7 +254,7 @@
   .registed .statusWrap {
     border: 1px solid darken($color_border,7%);
     @include bglinear(lighten($color_border, 7%), $color_border);
-    
+
     &:after {
       display: block;
       position: absolute;

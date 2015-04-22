@@ -45,6 +45,7 @@ var PostsView = Backbone.View.extend({
     if (post.id) {
       post.strimGameTitleWidth(48).strimTextWidth(200).sanitize().sanitizeComment().getRelativeTime().getCommentRelativeTime();
 
+
       var post_view = new PostView({model: post});
       this.$el.append(post_view.render().el);
     }

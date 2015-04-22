@@ -20,11 +20,11 @@
   .gameBox
     %a.gameBoxLink{href: "/games/{{= game.id}}#all"}
       {{ if (game.photo_path) { }}
-      %img.gamePhoto{src: "/game_photos/{{= game.photo_path }}", height: 60, width: 60}
+      %img.gamePhoto{src: "/game_photos/{{= game.photo_path }}", width: 55}
       {{ } else if (game.photo_url) { }}
-      %img.gamePhoto{src: "{{= game.photo_url }}", height: 60, width: 60}
+      %img.gamePhoto{src: "{{= game.photo_url }}", width: 55}
       {{ } else { }}
-      %img.gamePhoto{src: "/game_photos/default.png", height: 60, width: 60}
+      %img.gamePhoto{src: "/game_photos/default.png", width: 55}
       {{ } }}
       %h2{href: "/games/{{= game.id }}#all"} {{= game.title }}
   .postBody

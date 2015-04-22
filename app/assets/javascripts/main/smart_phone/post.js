@@ -41,6 +41,7 @@
             var log         = new Log(response.logs[i]);
             var current_url = "/posts/new#write/" + log.get("game").id + "/" + log.id;
             log.set("current_url", current_url);
+            log.strimGameTitleWidth(40);
             switch(log.get("status").id){
               case 1:
                 that.attentions.push(log);
