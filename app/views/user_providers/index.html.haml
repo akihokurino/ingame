@@ -17,7 +17,7 @@
               .snsName Twitter
               .coopStatus
                 - unless @twitter_provider
-                  = link_to "連携する", "/auth/twitter", class: "not Connect connect-twitter-btn"
+                  = link_to "連携する", "/auth/twitter", class: "notConnect connect-twitter-btn"
                 - else
                   %span.connectTw 連携中
             %li
