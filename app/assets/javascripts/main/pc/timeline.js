@@ -50,8 +50,8 @@
 
       post_socket.callback = function (data) {
         var post = new Post(data.post);
-        post.strimWidth(40).strimWidthText(200).sanitize().sanitizeComment();
-        post.getRelativeTime().getCommentRelativeTime();
+        post.strimGameTitleWidth(48).strimTextWidth(200).sanitize().sanitizeComment().getRelativeTime().getCommentRelativeTime();
+
         that.posts_view.collection.add(post, {silent: true});
 
         var post_view = new PostView({model: post});
@@ -63,6 +63,7 @@
         success: function (model, response, options) {
           for (var i = 0; i < response.logs.length; i++) {
             var log = new Log(response.logs[i]);
+            log.strimGameTitleWidth(45);
             that.logs_view.collection.add(log);
           }
         },
@@ -130,8 +131,7 @@
                 $(".error-message").html(response.get("error").message);
               } else {
                 var post = new Post(response.get("last_post"));
-                post.strimWidth(40).strimWidthText(200).sanitize().sanitizeComment();
-                post.getRelativeTime().getCommentRelativeTime();
+                post.strimGameTitleWidth(48).strimTextWidth(200).sanitize().sanitizeComment().getRelativeTime().getCommentRelativeTime();
 
                 that.posts_view.collection.add(post, {silent: true});
 

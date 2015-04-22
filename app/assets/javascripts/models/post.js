@@ -29,7 +29,7 @@ var Post = Backbone.Model.extend({
     "current_user_id": ""
   },
   url: "/api/posts/",
-  strimWidth: function (limit) {
+  strimGameTitleWidth: function (limit) {
     var title = this.get("game").title;
     if (title.length > limit) {
       var new_title          = title.slice(0, limit);
@@ -39,7 +39,7 @@ var Post = Backbone.Model.extend({
 
     return this;
   },
-  strimWidthText: function (limit) {
+  strimTextWidth: function (limit) {
     var text = this.get("text");
     if (text.length > limit) {
       var new_text = text.slice(0, limit);
@@ -61,8 +61,8 @@ var Post = Backbone.Model.extend({
   },
   sanitizeComment: function () {
     for (var i = 0; i < this.get("post_comments").length; i++) {
-      var text                             = this.get("post_comments")[i]["text"].replace(/\n/g, '<br>');
-      text                                 = text.replace(/((http:|https:)\/\/[\x21-\x26\x28-\x7e]+)/gi, "<a class='link-text' target='_blank' href='$1'>$1</a>");
+      var text = this.get("post_comments")[i]["text"].replace(/\n/g, '<br>');
+      text     = text.replace(/((http:|https:)\/\/[\x21-\x26\x28-\x7e]+)/gi, "<a class='link-text' target='_blank' href='$1'>$1</a>");
       this.get("post_comments")[i]["text"] = text;
     }
 

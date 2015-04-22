@@ -19,7 +19,7 @@ var Log = Backbone.Model.extend({
     }
   },
   url: "/api/logs/",
-  strimWidth: function (limit) {
+  strimGameTitleWidth: function (limit) {
     var title = this.get("game").title;
     if (title.length > limit) {
       var new_title          = title.slice(0, limit);
