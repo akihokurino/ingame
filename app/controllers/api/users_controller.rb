@@ -39,9 +39,7 @@ class Api::UsersController < ApplicationController
   end
 
   def search
-    page    = params[:page].to_i
-    return false if page < 1
-    @result = User.search_with params[:username], @current_user, page
+    @result = User.search_with @current_user, params
   end
 
   def tmp_upload

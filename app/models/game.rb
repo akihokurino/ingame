@@ -122,7 +122,18 @@ class Game < ActiveRecord::Base
   end
 
 	class << self
-    def search_with(search_title, page, current_user)
+    def custom_query(current_user, params)
+      case params[:type]
+      when "activity"
+        self.get_ranking current_user
+      end
+    end
+
+    def search_with(current_user, params)
+      search_title = params[:search_title]
+      page         = params[:page].to_i
+      return self.none if page < 1
+
       offset = (page - 1) * LIMIT
       games  = self.search(self.escape(search_title)).order("created_at DESC").offset(offset).limit(LIMIT).map do |game|
         unless current_user[:id].nil?

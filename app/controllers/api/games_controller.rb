@@ -4,9 +4,7 @@ class Api::GamesController < ApplicationController
   before_action :open_page, only: [:search, :index]
 
   def index
-    if params[:type] == "activity"
-      @games = Game.get_ranking @current_user
-    end
+    @games = Game.custom_query @current_user, params
   end
 
   def show
@@ -15,10 +13,7 @@ class Api::GamesController < ApplicationController
   end
 
 	def search
-    page = params[:page].to_i
-    return false if page < 1
-
-		@result = Game.search_with params[:search_title], page, @current_user
+		@result = Game.search_with @current_user, params
 	end
 
 	private
