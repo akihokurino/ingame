@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  include CheckOriginal
+
   skip_before_action :auth, only: [:login, :new]
   before_action :set_user, only: [:show, :edit, :update]
   before_action :auth_provider, only: [:new], :unless => :original?
@@ -49,9 +51,5 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find params[:id]
-  end
-
-  def original?
-    !params[:is_original].blank? && params[:is_original] == "true"
   end
 end

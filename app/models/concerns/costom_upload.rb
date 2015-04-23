@@ -3,11 +3,13 @@ require 'RMagick'
 module CostomUpload
   extend ActiveSupport::Concern
 
+  LIMIT_SIZE = 1
+
   module ClassMethods
     def file_upload(file, type, clip = {})
       name  = file.original_filename
       perms = [".jpg", ".jpeg", ".gif", ".png"]
-      if perms.include?(File.extname(name).downcase) && file.size <= 3.megabyte
+      if perms.include?(File.extname(name).downcase) && file.size <= LIMIT_SIZE.megabyte
         photo_path = "#{DateTime.now.to_i}#{self.generate('alphabet', 10)}#{name}"
         File.open("public/#{type}_photos/#{photo_path}", "wb") do |f|
           f.write(file.read)
@@ -42,7 +44,7 @@ module CostomUpload
         url  = url.sub(/^.*,/, '')
         file = Base64.decode64 url
 
-        if extname.nil? || file.size > 3.megabyte
+        if extname.nil? || file.size > LIMIT_SIZE.megabyte
           raise "wrong extname or too big"
         else
           f.write file

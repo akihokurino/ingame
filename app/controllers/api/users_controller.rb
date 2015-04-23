@@ -1,4 +1,7 @@
 class Api::UsersController < ApplicationController
+  include CheckOriginal
+  include ErrorMessage
+
   skip_before_action :auth, only: [:create, :uniqueness, :search]
   before_action :set_user, only: [:update]
   before_action :auth_provider, only: [:create], :unless => :original?
@@ -25,12 +28,7 @@ class Api::UsersController < ApplicationController
     begin
       @result = @user.update_with_url user_params, clip
     rescue => e
-      case e.message
-      when "wrong extname or too big"
-        @error = {type: "photo", message: "画像の拡張子が正しくないか、画像のサイズが大き過ぎます。"}
-      else
-        @error = {type: "something", message: "不正なデータです。"}
-      end
+      @error = set_error_message e
     end
   end
 
@@ -47,12 +45,7 @@ class Api::UsersController < ApplicationController
     begin
       @result = User.tmp_upload params[:user][:tmp_data], clip
     rescue => e
-      case e.message
-      when "wrong extname or too big"
-        @error = {type: "photo", message: "画像の拡張子が正しくないか、画像のサイズが大き過ぎます。"}
-      else
-        @error = {type: "something", message: "不正なデータです。"}
-      end
+      @error = set_error_message e
     end
   end
 
@@ -63,9 +56,5 @@ class Api::UsersController < ApplicationController
 
   def set_user
     @user = User.find params[:id]
-  end
-
-  def original?
-    !params[:is_original].blank? && params[:is_original] == "true"
   end
 end

@@ -1,4 +1,6 @@
 class Api::SessionsController < ApplicationController
+  include CheckOriginal
+
   skip_before_action :auth, only: [:create]
   before_action :auth_provider, only: [:create], :unless => :original?
 
@@ -13,10 +15,5 @@ class Api::SessionsController < ApplicationController
     else
       @result = false
     end
-  end
-
-  private
-  def original?
-    !params[:is_original].blank? && params[:is_original] == "true"
   end
 end

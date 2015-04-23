@@ -1,4 +1,6 @@
 class Api::PostsController < ApplicationController
+  include ErrorMessage
+
   skip_before_action :auth, only: [:index]
   before_action :open_page, only: [:index]
 
@@ -8,7 +10,12 @@ class Api::PostsController < ApplicationController
 
   def create
     params[:post][:user_id] = @current_user[:id]
-    @last_post, @error      = PostTimelineService.new(params, @current_user).exec
+
+    begin
+      @last_post = PostTimelineService.new(params, @current_user).exec!
+    rescue => e
+      @error = set_error_message e
+    end
   end
 
   def destroy
