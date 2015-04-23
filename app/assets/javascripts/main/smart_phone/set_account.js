@@ -36,9 +36,14 @@
           }
         }
 
+        url = "/api/users";
+        if (url_query.getQueryString() && url_query.getQueryString().is_original == "true") {
+          url += "?is_original=true";
+        }
+
         $.ajax({
           type: "POST",
-          url: "/api/users",
+          url: url,
           data: data,
           success: function (data) {
             if (data.result) {
@@ -157,9 +162,14 @@
           }
         }
 
+        url = "/api/sessions";
+        if (url_query.getQueryString() && url_query.getQueryString().is_original == "true") {
+          url += "?is_original=true";
+        }
+
         $.ajax({
           type: "POST",
-          url: "/api/sessions",
+          url: url,
           data: data,
           success: function (data) {
             if (data.result) {

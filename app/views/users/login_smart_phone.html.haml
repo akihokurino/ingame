@@ -9,7 +9,7 @@
     %br
     遊んできた。
   %p.subCopy
-    gamrは遊んだゲームや気になるゲームなどを記録し、友達と共有できるWeb サービスです。
+    Gamrは遊んだゲームや気になるゲームなどを記録し、友達と共有できるWeb サービスです。
   %section.loginBox
     %ul.snsList
       %li.item
@@ -18,10 +18,9 @@
       %li.item
         %a.fb{href: "/auth/facebook"}
           %span.icon-facebook Facebookでログイン
-      /
-        %li.item
-          %a.gamr gamr IDでログイン
-%section.pointsTtl gamrのつかいかた
+      %li.item
+        %a.gamr{href: "/users/new?is_original=true#flow"} Gamr IDでログイン
+%section.pointsTtl Gamrのつかいかた
 %section.points
   %section.first
     %h1 ゲームを記録
@@ -49,9 +48,7 @@
     %li.item
       %a.fb{href: "/auth/facebook"}
         %span.icon-facebook Facebookでログイン
-    /
-      %li.item
-        %a.gamr
-          %span gamrのIDでログイン
+    %li.item
+      %a.gamr{href: "/users/new?is_original=true#flow"} Gamr IDでログイン
 
 = render partial: "application/smart_phone/footer"

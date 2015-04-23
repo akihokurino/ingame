@@ -4,7 +4,8 @@
   %section.Signup
     %h1.SignupTtl GAMRに登録する
     %form
-      %input.SigninInput.username-input{type: "text", name: "username", placeholder: "ユーザー名（15文字以内）", value: @current_provider[:username]}
+      - value = @current_provider[:username] if @current_provider && @current_provider[:username]
+      %input.SigninInput.username-input{type: "text", name: "username", placeholder: "ユーザー名（15文字以内）", value: value}
       %p.SigninError.error-log.username-error
       %input.SigninInput.password-input{type: "password", name: "password", placeholder: "パスワード（8文字以上）"}
       %p.SigninError.error-log.password-error

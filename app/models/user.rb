@@ -128,7 +128,7 @@ class User < ActiveRecord::Base
   end
 
   def connect_with_provider(current_provider)
-    current_provider.update(user_id: self[:id])
+    current_provider.update user_id: self[:id]
   end
 
   def get_most_used_color
@@ -187,11 +187,11 @@ class User < ActiveRecord::Base
 
     def create_with_provider(user_params, current_provider)
       self.create_password user_params
-      user_params[:photo_path] = current_provider[:photo_path] if current_provider[:photo_path]
+      user_params[:photo_path] = current_provider[:photo_path] if current_provider && current_provider[:photo_path]
       begin
         ActiveRecord::Base.transaction do
           user = self.create! user_params
-          current_provider.update! user_id: user[:id]
+          current_provider.update! user_id: user[:id] unless current_provider.nil?
           user
         end
       rescue
@@ -215,6 +215,7 @@ class User < ActiveRecord::Base
 
     def authenticate(username, password)
       user = self.find_by username: username
+
       if user && user.collect_password?(password)
         user
       else

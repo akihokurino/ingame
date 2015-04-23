@@ -7,7 +7,8 @@
       %h1 GAMRに登録する
       %form.inputInfo
         .inputWrap
-          %input.textInput.username-input{type: "text", name: "username", placeholder: "ユーザーネーム（15文字以内）", value: @current_provider[:username]}
+          - value = @current_provider[:username] if @current_provider && @current_provider[:username]
+          %input.textInput.username-input{type: "text", name: "username", placeholder: "ユーザーネーム（15文字以内）", value: value}
           %p.error-log.username-error.errorMassage
         .inputWrap
           %input.textInput.password-input{type: "password", name: "password", placeholder: "パスワード（8文字以上）"}

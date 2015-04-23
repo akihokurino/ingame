@@ -5,22 +5,35 @@
     %h1.SignupTtl
       ようこそ！
       %br
-      #{@current_provider[:username]}さん
+      - unless @current_provider.nil?
+        = @current_provider[:username]
+        %span さん
+
     %figure.SignupImgWrap
-      - if @current_provider[:photo_path]
-        = image_tag "/user_photos/#{@current_provider[:photo_path]}", width:"140", height:"140", class: "SignupImg", alt: "アカウント画像"
+      - unless @current_provider.nil?
+        - if @current_provider[:photo_path]
+          = image_tag "/user_photos/#{@current_provider[:photo_path]}", width:"140", height:"140", class: "SignupImg", alt: "アカウント画像"
+        - else
+          = image_tag "/user_photos/default.png", width:"140", height:"140", class: "SignupImg", alt: "アカウント画像"
+        - case @current_provider[:service_name]
+        - when "facebook"
+          .serviceLogo.icon-facebook
+        - when "twitter"
+          .serviceLogo.icon-twitter
       - else
-        = image_tag "smart_phone/default.png", width:"140", height:"140", class: "SignupImg", alt: "アカウント画像"
-      - case @current_provider[:service_name]
-      - when "facebook"
-        .serviceLogo.icon-facebook
-      - when "twitter"
-        .serviceLogo.icon-twitter
-    %p.SignupBtnWrap
-      %a.SignupBtn{href: "/users/new#signup"} 新しくアカウントをつくる
-    %p.SignupText
-      新しくGAMRのアカウントを作成して、#{@current_provider[:service_name]}アカウントと接続します。作成したGAMRのアカウントには、#{@current_provider[:service_name]}アカウントでログインできます。
-    %p.SignupBtnWrap
-      %a.SignupBtn{href: "/users/new#signin"} GAMRとつなげる
-    %p.SignupText
-      すでにGAMRのアカウントをお持ちの場合は、#{@current_provider[:service_name]}アカウントと接続することで、#{@current_provider[:service_name]}アカウントでGAMRにログインできるようになります。
+        = image_tag "/user_photos/default.png", width:"140", height:"140", class: "SignupImg", alt: "アカウント画像"
+
+    - unless @current_provider.nil?
+      %p.SignupBtnWrap
+        %a.SignupBtn{href: "/users/new#signup"} 新しくアカウントをつくる
+      %p.SignupText
+        新しくGAMRのアカウントを作成して、#{@current_provider[:service_name]}アカウントと接続します。作成したGAMRのアカウントには、#{@current_provider[:service_name]}アカウントでログインできます。
+      %p.SignupBtnWrap
+        %a.SignupBtn{href: "/users/new#signin"} GAMRとつなげる
+      %p.SignupText
+        すでにGAMRのアカウントをお持ちの場合は、#{@current_provider[:service_name]}アカウントと接続することで、#{@current_provider[:service_name]}アカウントでGAMRにログインできるようになります。
+    - else
+      %p.SignupBtnWrap
+        %a.SignupBtn{href: "/users/new?is_original=true#signin"} ログインする
+      %p.SignupBtnWrap
+        %a.SignupBtn{href: "/users/new?is_original=true#signup"} 新しくアカウントをつくる
