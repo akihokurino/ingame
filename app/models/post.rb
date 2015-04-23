@@ -204,8 +204,10 @@ class Post < ActiveRecord::Base
         log_id:       log_id
       }
 
-      current_game[:title].slice!(0, 50) if current_game[:title].length > 50
-      current_game[:title] += "..."
+      if current_game[:title].length > 50
+        current_game[:title].slice! 0, 50
+        current_game[:title] += "..."
+      end
 
       generateText = Proc.new do |status_id|
         case status_id
