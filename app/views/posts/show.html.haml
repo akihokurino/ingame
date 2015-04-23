@@ -36,7 +36,7 @@
           %a.postHeaderLink{href: "/users/#{@post.user[:id]}"}
             %img.profileImage{width: 30, src: "/user_photos/#{@post.user[:photo_path]}"}
             %span.userName
-              = @post.user[:username]
+              = truncate @post.user[:username], length: 45
             %span.statusBox
               - case @post.log[:status_id]
               - when 1

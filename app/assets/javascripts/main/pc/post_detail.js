@@ -59,7 +59,7 @@
           method: "POST",
           success: function (response) {
             var comment = new Comment(response.get("comment"));
-            comment.sanitize().getRelativeTime();
+            comment.sanitize().getRelativeTime().strimUsernameWidth(20);
             that.comment_collection.add(comment, {silent: true});
             var comment_view = new CommentView({model: comment});
             that.comments_view.$el.append(comment_view.render().el);

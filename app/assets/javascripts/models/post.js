@@ -49,6 +49,19 @@ var Post = Backbone.Model.extend({
 
     return this;
   },
+  strimCommentUsernameWidth: function (limit) {
+    for (var i = 0; i < this.get("post_comments").length; i++) {
+      var username = this.get("post_comments")[i].user.username;
+      if (username.length > limit) {
+        var new_username          = username.slice(0, limit);
+        new_username             += "...";
+        this.get("user").username = new_username;
+      }
+      this.get("post_comments")[i].user.username = new_username;
+    }
+
+    return this;
+  },
   strimTextWidth: function (limit) {
     var text = this.get("text");
     if (text.length > limit) {

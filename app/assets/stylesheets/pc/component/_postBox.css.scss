@@ -284,6 +284,8 @@
           @include font-size(13);
   				font-size: .75rem;
           vertical-align: top;
+          width: 315px;
+          overflow: hidden;
   			}
   			.commentTime {
   				display: inline-block;

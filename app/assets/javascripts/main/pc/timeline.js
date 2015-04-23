@@ -50,7 +50,15 @@
 
       post_socket.callback = function (data) {
         var post = new Post(data.post);
-        post.strimGameTitleWidth(48).strimTextWidth(200).sanitize().sanitizeComment().getRelativeTime().getCommentRelativeTime();
+        post
+        .strimGameTitleWidth(48)
+        .strimTextWidth(200)
+        .sanitize()
+        .sanitizeComment()
+        .getRelativeTime()
+        .getCommentRelativeTime()
+        .strimUsernameWidth(20)
+        .strimCommentUsernameWidth(20);
 
         that.posts_view.collection.add(post, {silent: true});
 

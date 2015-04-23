@@ -13,6 +13,16 @@ var Comment = Backbone.Model.extend({
     "current_user_id": ""
   },
   url: "/api/post_comments/",
+  strimUsernameWidth: function (limit) {
+    var username = this.get("user").username;
+    if (username.length > limit) {
+      var new_username          = username.slice(0, limit);
+      new_username             += "...";
+      this.get("user").username = new_username;
+    }
+
+    return this;
+  },
   sanitize: function (text_params) {
     if (text_params) {
       var text = text_params.replace(/\n/g, '<br>');

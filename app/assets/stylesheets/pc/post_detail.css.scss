@@ -88,6 +88,7 @@
         display: inline-block;
         color: $color_textBlack;
         font-weight: bold;
+        word-break: break-all;
       }
       .statusBox{
         float: right;
