@@ -9,6 +9,6 @@
       %img.gamePhoto{src: "/game_photos/default.png", width: 70}
       {{ } }}
     %a{href: "/users/{{= user.id }}#logs"}
-      %img.profileImage{width: 30, src: "/user_photos/{{= user.photo_path }}"}
+      %img.profileImage{width: 30, height: 30, src: "/user_photos/{{= user.photo_path }}"}
     %span.postText {{= user.username }} は {{= text }}
     %span.time.icon-time {{= created_at }}

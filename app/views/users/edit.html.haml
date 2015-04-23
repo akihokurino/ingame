@@ -10,7 +10,7 @@
   .profileBox
     .profileBoxInner
       %figure.profImgWrap
-        = image_tag "/user_photos/#{@user[:photo_path]}", class: "profImg", width: 135, hieght: 135, alt: "ユーザー画像"
+        = image_tag "/user_photos/#{@user[:photo_path]}", class: "profImg", width: 135, height: 135, alt: "ユーザー画像"
   .profileColumnWrap
     .profileLeftColumn
       %h1.userName
@@ -29,7 +29,7 @@
             %dt.editListTtl プロフィール画像
             %dd.editProf
               %figure.profImgWrap#thumbnail
-                = image_tag "/user_photos/#{@user[:photo_path]}", class: "profImg", width: 150, hieght: 150, alt: "ユーザー画像"
+                = image_tag "/user_photos/#{@user[:photo_path]}", class: "profImg", width: 150, height: 150, alt: "ユーザー画像"
               .uploadBtnWrap
                 %span ファイルを選択
                 = f.file_field :photo_path, id: "upload-btn", class: "uploadBtn"

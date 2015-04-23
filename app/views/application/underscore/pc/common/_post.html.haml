@@ -1,7 +1,7 @@
 %script{type: "text/template", id: "post-template"}
   .postHeader
     %a.postHeaderLink{href: "/users/{{= user.id }}#logs"}
-      %img.profileImage{width: 30, src: "/user_photos/{{= user.photo_path }}"}
+      %img.profileImage{width: 30, height: 30, src: "/user_photos/{{= user.photo_path }}"}
       %span.userName {{= user.username }}
       %span.statusBox
         {{ if (status.id == 1) { }}
