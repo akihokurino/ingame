@@ -285,13 +285,13 @@
   				font-size: .75rem;
           vertical-align: top;
           width: 315px;
-          overflow: hidden;
   			}
   			.commentTime {
   				display: inline-block;
   				color: #888;
           @include font-size(13);
           vertical-align: top;
+          margin-top: -1px;
 
           &:before{
             margin-right: 2px;
@@ -316,6 +316,7 @@
   				color: #3c3c3c;
   				@include font-size(13);
   				line-height: 1.5;
+          margin-top: 5px;
   			}
   		}
   	}

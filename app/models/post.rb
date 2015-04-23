@@ -43,8 +43,8 @@ class Post < ActiveRecord::Base
 
   def save_with_url(files)
     files.each do |file|
-      photo_path = self.class.url_upload(file, "post")
-      PostPhoto.create!(post_id: self[:id], photo_path: photo_path)
+      photo_path = self.class.url_upload file, "post"
+      PostPhoto.create! post_id: self[:id], photo_path: photo_path
     end
   end
 
@@ -62,7 +62,7 @@ class Post < ActiveRecord::Base
   end
 
   def datetime
-    self[:created_at].strftime("%Y/%m/%d %H:%M:%S")
+    self[:created_at].strftime "%Y/%m/%d %H:%M:%S"
   end
 
   def relative_time
