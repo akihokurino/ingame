@@ -5,14 +5,11 @@ class Api::SessionsController < ApplicationController
   def create
     if current_user = User.authenticate(params[:user][:username], params[:user][:password])
       current_user.connect_with_provider @current_provider unless @current_provider.nil?
+
       session[:current_user_id]     = current_user[:id]
       session[:current_provider_id] = nil
 
-      if current_user[:is_first]
-        @result = "/users/#{current_user[:id]}/setting#first"
-      else
-        @result = "/posts"
-      end
+      @result = current_user[:is_first] ? "/users/#{current_user[:id]}/setting#first" : "/posts"
     else
       @result = false
     end

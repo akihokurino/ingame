@@ -138,6 +138,23 @@ class User < ActiveRecord::Base
   end
 
 	class << self
+    def custom_query(current_user, params)
+      type = params[:type]
+      page = params[:page].to_i
+      return self.none if page < 1
+
+      case type
+      when "follows"
+        self.get_follows current_user, params[:user_id], page
+      when "followers"
+        self.get_followers current_user, params[:user_id], page
+      when "activity"
+        self.get_activity current_user
+      when "liked"
+        self.get_liked current_user, params[:post_id]
+      end
+    end
+
     def search_with(username, current_user, page)
       offset = (page - 1) * LIMIT
       users  = self.search(self.escape(username)).offset(offset).limit(LIMIT).keep_if do |user|
@@ -173,7 +190,7 @@ class User < ActiveRecord::Base
     end
 
     def get_activity(current_user)
-      users = User.where("created_at > ?", 2.week.ago).order("created_at DESC").limit(ACTIVITY_LIMIT).keep_if do |user|
+      users = self.where("created_at > ?", 2.week.ago).order("created_at DESC").limit(ACTIVITY_LIMIT).keep_if do |user|
         user.check_follow(current_user)
         user[:id] != current_user[:id] && !current_user.follows.pluck(:to_user_id).include?(user[:id])
       end
