@@ -6,7 +6,7 @@ var CommentsView = Backbone.View.extend({
   },
   addComment: function (comment) {
     if (comment.id) {
-      comment.sanitize().getRelativeTime().strimUsernameWidth(20);
+      comment.sanitize().getRelativeTime();
       var comment_view = new CommentView({model: comment});
       this.$el.prepend(comment_view.render().el);
     }

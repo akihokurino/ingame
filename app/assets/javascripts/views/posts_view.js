@@ -49,9 +49,7 @@ var PostsView = Backbone.View.extend({
       .sanitize()
       .sanitizeComment()
       .getRelativeTime()
-      .getCommentRelativeTime()
-      .strimUsernameWidth(20)
-      .strimCommentUsernameWidth(20);
+      .getCommentRelativeTime();
 
 
       var post_view = new PostView({model: post});

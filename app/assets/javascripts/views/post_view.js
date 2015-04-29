@@ -135,9 +135,8 @@ var PostView = Backbone.View.extend({
         url: "/api/post_comments",
         data: data,
         success: function (data) {
-          data.comment.text          = new Comment().sanitize(data.comment.text);
-          data.comment.created_at    = new Comment().getRelativeTime(data.comment.created_at);
-          data.comment.user.username = new Comment().strimUsernameWidth(20, data.comment.user.username);
+          data.comment.text       = new Comment().sanitize(data.comment.text);
+          data.comment.created_at = new Comment().getRelativeTime(data.comment.created_at);
           that.model.get("post_comments").push(data.comment);
           that.model.set("post_comments_count", that.model.get("post_comments_count") + 1, {silent: true});
           that.render("silent");

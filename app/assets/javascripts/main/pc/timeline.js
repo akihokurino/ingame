@@ -56,9 +56,7 @@
         .sanitize()
         .sanitizeComment()
         .getRelativeTime()
-        .getCommentRelativeTime()
-        .strimUsernameWidth(20)
-        .strimCommentUsernameWidth(20);
+        .getCommentRelativeTime();
 
         that.posts_view.collection.add(post, {silent: true});
 
