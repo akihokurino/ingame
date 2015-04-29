@@ -13,7 +13,8 @@ var LogsView = Backbone.View.extend({
   },
   addLog: function (log) {
     if (log.id) {
-      log.set("isCurrentUserLog", log.isCurrentUserLog());
+      this.settingModel(log);
+
       if (this.type == "select") {
         var log_view = new LogView({model: log, attributes: {type: this.type, template: this.template}});
         switch (log.get("status").id) {
@@ -44,5 +45,27 @@ var LogsView = Backbone.View.extend({
     this.$el.find(".playing-list").html("");
     this.$el.find(".played-list").html("");
     this.$el.find(".stock-list").html("");
+  },
+  renderAll: function (params) {
+    var that = this;
+    this.collection.fetch({
+      data: params,
+      success: function (model, response, options) {
+        that.setCollection(model, response, options);
+      },
+      error: function () {
+
+      }
+    });
+  },
+  setCollection: function (model, response, option) {
+    for (var i = 0; i < response.logs.length; i++) {
+      var log = new Log(response.logs[i]);
+      this.collection.add(log);
+    }
+  },
+  settingModel: function (log) {
+    log.set("isCurrentUserLog", log.isCurrentUserLog());
+    log.strimGameTitleWidth(45);
   }
 });

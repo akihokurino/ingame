@@ -43,7 +43,8 @@
           for (var i = 0; i < response.logs.length; i++) {
             var log = new Log(response.logs[i]);
             log.set("current_url", "/games/" + log.get("game").id + "#all");
-            log.strimGameTitleWidth(40);
+            that.logs_view.settingModel(log);
+
             switch (log.get("status").id) {
               case 1:
                 that.attentions.push(log);

@@ -34,7 +34,7 @@
         this.search();
       }
 
-      this.games_view.getActivity({type: "activity"});
+      this.games_view.renderAll({type: "activity"});
     },
     search: function () {
       var that  = this;

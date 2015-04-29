@@ -12,20 +12,17 @@ var GamesView = Backbone.View.extend({
   },
   addGame: function (game) {
     if (game.id) {
+      this.settingModel(game);
       var game_view = new GameView({model: game, attributes: {type: this.type, template: this.template}});
       this.$el.append(game_view.render().el);
     }
   },
-  getActivity: function (params, callback) {
+  renderAll: function (params, callback) {
     var that = this;
     this.collection.fetch({
       data: params,
       success: function (model, response, options) {
-        for (var i = 0; i < response.games.length; i++) {
-          var game = new Game(response.games[i]);
-          game.strimWidth("title", 48);
-          that.collection.add(game);
-        }
+        that.setCollection(model, response, options);
 
         if (callback) {
           callback();
@@ -35,5 +32,14 @@ var GamesView = Backbone.View.extend({
 
       }
     });
+  },
+  setCollection: function (model, response, options) {
+    for (var i = 0; i < response.games.length; i++) {
+      var game = new Game(response.games[i]);
+      this.collection.add(game);
+    }
+  },
+  settingModel: function (game) {
+    game.strimWidth("title", 48);
   }
 });

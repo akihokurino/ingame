@@ -13,16 +13,6 @@
       this.posts_view      = new PostsView({collection: this.post_collection});
 
       this.posts_view.render({page: 1});
-
-      post_socket.callback = function (data) {
-        var post = new Post(data.post);
-        post.strimGameTitleWidth(48).strimTextWidth(200).sanitize().sanitizeComment().getRelativeTime().getCommentRelativeTime();
-
-        that.posts_view.collection.add(post, {silent: true});
-
-        var post_view = new PostView({model: post});
-        that.posts_view.$el.prepend(post_view.render().el);
-      }
     }
   });
 

@@ -48,39 +48,11 @@
       this.upload       = new PostUpload("upload-btn", "thumbnail");
       this.tooltip_view = new TooltipView();
 
-      post_socket.callback = function (data) {
-        var post = new Post(data.post);
-        post
-        .strimGameTitleWidth(48)
-        .strimTextWidth(200)
-        .sanitize()
-        .sanitizeComment()
-        .getRelativeTime()
-        .getCommentRelativeTime();
-
-        that.posts_view.collection.add(post, {silent: true});
-
-        var post_view = new PostView({model: post});
-        that.posts_view.$el.prepend(post_view.render().el);
-      }
-
-      this.log_collection.fetch({
-        data: {user_id: this.user_id},
-        success: function (model, response, options) {
-          for (var i = 0; i < response.logs.length; i++) {
-            var log = new Log(response.logs[i]);
-            log.strimGameTitleWidth(45);
-            that.logs_view.collection.add(log);
-          }
-        },
-        error: function () {
-
-        }
-      });
+      this.logs_view.renderAll({user_id: this.user_id});
 
       this.users_view.renderAll({page: 1, type: "activity"});
 
-      this.games_view.getActivity({type: "activity"});
+      this.games_view.renderAll({type: "activity"});
 
       this.posts_view.render({page: 1}, function () {
         $(".comment-input").autosize();
@@ -137,8 +109,7 @@
                 $(".error-message").html(response.get("error").message);
               } else {
                 var post = new Post(response.get("last_post"));
-                post.strimGameTitleWidth(48).strimTextWidth(200).sanitize().sanitizeComment().getRelativeTime().getCommentRelativeTime();
-
+                that.posts_view.settingModel(post);
                 that.posts_view.collection.add(post, {silent: true});
 
                 var post_view = new PostView({model: post});

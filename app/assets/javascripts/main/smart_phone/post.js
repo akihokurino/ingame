@@ -41,7 +41,8 @@
             var log         = new Log(response.logs[i]);
             var current_url = "/posts/new#write/" + log.get("game").id + "/" + log.id;
             log.set("current_url", current_url);
-            log.strimGameTitleWidth(40);
+            that.logs_view.settingModel(log);
+
             switch(log.get("status").id){
               case 1:
                 that.attentions.push(log);
@@ -144,7 +145,6 @@
         data: {},
         success: function (data) {
           var game      = new Game(data.game);
-          game.strimWidth("title", 40);
           var game_view = new GameView({model: game, attributes: {template: "#game-template"}});
           that.$el.find(".write-page").prepend(game_view.render().el);
         },

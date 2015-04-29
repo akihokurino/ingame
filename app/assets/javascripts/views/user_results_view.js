@@ -10,7 +10,7 @@ var UserResultsView = Backbone.View.extend({
   },
   addUser: function (user) {
     if (user.id) {
-      user.set("type", this.type);
+      this.settingModel(user);
       var user_result_view = new UserResultView({model: user});
       this.$el.append(user_result_view.render().el);
     }
@@ -47,5 +47,8 @@ var UserResultsView = Backbone.View.extend({
 
       $(window).bind("scroll", this.pagenation.load);
     }
+  },
+  settingModel: function (user) {
+    user.set("type", this.type);
   }
 });

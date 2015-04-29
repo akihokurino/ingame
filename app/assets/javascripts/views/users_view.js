@@ -14,8 +14,7 @@ var UsersView = Backbone.View.extend({
   },
   addUser: function (user) {
     if (user.id) {
-      user.set("type", this.type);
-      user.set("isCurrentUser", user.isCurrentUser());
+      this.settingModel(user);
       var user_view = new UserView({model: user, attributes: {type: this.type, template: this.template}});
       this.$el.append(user_view.render().el);
     }
@@ -71,5 +70,9 @@ var UsersView = Backbone.View.extend({
 
       }
     });
+  },
+  settingModel: function (user) {
+    user.set("type", this.type);
+    user.set("isCurrentUser", user.isCurrentUser());
   }
 });

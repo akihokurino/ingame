@@ -2,8 +2,19 @@ var PostsView = Backbone.View.extend({
   el: ".post-list",
   initialize: function () {
     var that = this;
+
     _.bindAll(this, "setCollection");
     this.listenTo(this.collection, "add", this.addPost);
+
+    post_socket.callback = function (data) {
+      var post = new Post(data.post);
+      that.settingModel(post);
+
+      that.collection.add(post, {silent: true});
+
+      var post_view = new PostView({model: post});
+      that.$el.prepend(post_view.render().el);
+    }
 
     like_socket.callback = function (data) {
       that.collection.find(function (model) {
@@ -43,14 +54,7 @@ var PostsView = Backbone.View.extend({
   },
   addPost: function (post) {
     if (post.id) {
-      post
-      .strimGameTitleWidth(48)
-      .strimTextWidth(200)
-      .sanitize()
-      .sanitizeComment()
-      .getRelativeTime()
-      .getCommentRelativeTime();
-
+      this.settingModel(post);
 
       var post_view = new PostView({model: post});
       this.$el.append(post_view.render().el);
@@ -90,5 +94,14 @@ var PostsView = Backbone.View.extend({
   },
   removePosts: function () {
     this.$el.html("");
+  },
+  settingModel: function (post) {
+    post
+    .strimGameTitleWidth(48)
+    .strimTextWidth(200)
+    .sanitize()
+    .sanitizeComment()
+    .getRelativeTime()
+    .getCommentRelativeTime();
   }
 });

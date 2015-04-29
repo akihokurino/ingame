@@ -10,8 +10,7 @@ var GameResultsView = Backbone.View.extend({
   },
   addGame: function (game) {
     if (game.id) {
-      game.set("type", this.type);
-      game.strimWidth("title", 38);
+      this.settingModel(game);
       var game_result_view = new GameResultView({model: game});
       this.$el.append(game_result_view.render().el);
     }
@@ -48,5 +47,9 @@ var GameResultsView = Backbone.View.extend({
 
       $(window).bind("scroll", this.pagenation.load);
     }
+  },
+  settingModel: function (game) {
+    game.set("type", this.type);
+    game.strimWidth("title", 38);
   }
 });

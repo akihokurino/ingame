@@ -42,7 +42,7 @@
             for (var i = 0; i < response.logs.length; i++) {
               var log = new Log(response.logs[i]);
               log.set("url", "/games/" + log.get("game").id + "#all");
-              log.strimGameTitleWidth(40);
+              that.logs_view.settingModel(log);
               that.logs_view.collection.add(log);
               that.tmp_log_list.push(log);
             }

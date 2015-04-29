@@ -6,7 +6,7 @@ var CommentsView = Backbone.View.extend({
   },
   addComment: function (comment) {
     if (comment.id) {
-      comment.sanitize().getRelativeTime();
+      this.settingModel(comment);
       var comment_view = new CommentView({model: comment});
       this.$el.prepend(comment_view.render().el);
     }
@@ -36,5 +36,8 @@ var CommentsView = Backbone.View.extend({
         this.collection.add(comment);
       }
     }
+  },
+  settingModel: function (comment) {
+    comment.sanitize().getRelativeTime();
   }
 });
