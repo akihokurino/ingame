@@ -43,9 +43,6 @@
       color: $color_textBlack;
       font-weight: bold;
       word-break: break-all;
-      width: 340px;
-      height: 30px;
-      overflow: hidden;
     }
     .statusBox{
       float: right;
@@ -284,7 +281,6 @@
           @include font-size(13);
   				font-size: .75rem;
           vertical-align: top;
-          width: 315px;
   			}
   			.commentTime {
   				display: inline-block;
