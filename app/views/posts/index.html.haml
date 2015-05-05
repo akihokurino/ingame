@@ -52,11 +52,16 @@
           .url-thumbnail-list
           %ul.btnList
             %li.listItem.post
-              /
-                .shareBtn
-                  .twBtn
               = image_tag "gif-load-post.gif", class: "loadingPost loading-post"
               %p.addPostBtn.post-btn つぶやく
+            %li.listItem.snsBtns
+              - @current_user.user_providers.each do |provider|
+                - if provider[:service_name] == "twitter"
+                  .shareBtn
+                    .twBtn.twitter-btn
+                / - if provider[:service_name] == "facebook"
+                /   .shareBtn
+                /     .fbBtn.facebook-btn
             %li.listItem
               .photoBtnWrap
                 %p.photoBtnText 写真を追加

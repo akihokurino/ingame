@@ -306,27 +306,42 @@ html {
       bottom: 10px;
       .listItem{
         display: inline-block;
+      }
+    }
+    .snsBtns {
+      float: right;
+      .shareBtn{
+        display: inline-block;
+        cursor: pointer;
+        height: 30px;
+        .twBtn:before,.fbBtn:before{
+          display: inline-block;
+          font-family: 'icomoon';
+          font-size: 1.8rem;
+          color: #b2b2b2;
+          margin-right: 15px;
+          vertical-align: -30%;
+        }
+        .twBtn:before{
+          content: "\e610";
+        }
+        .fbBtn:before{
+          content: "\e603";
+          margin-right: 10px;
+        }
+        .twActive:before {
+          color: #55acee;
+        }
+        .fbActive:before {
+          color: #3a5795;
         }
       }
-      .post{
-        float: right;
-        .shareBtn{
-          display: inline-block;
-          .twBtn:before,.fbBtn:before{
-            display: inline-block;
-            font-family: 'icomoon';
-            font-size: 1.5rem;
-            color: #b2b2b2;
-            margin-right: 15px;
-            vertical-align: -15%;
-          }
-          .twBtn:before{
-            content: "\e610";
-          }
-          .fbBtn:before{
-            content: "\e603";
-          }
-      }
+    }
+    .post{
+      float: right;
+      width: 150px;
+      @include clearfix;
+      text-align: right;
     }
     .photoBtnWrap {
       width: 100px;
@@ -346,7 +361,7 @@ html {
 
       &:before {
         position: absolute;
-        top: 4px;
+        top: 6px;
         left: 5px;
         font-size: 1.25rem;
         font-family: 'icomoon';

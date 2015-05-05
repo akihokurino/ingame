@@ -24,11 +24,11 @@ class PostTimelineService
         last_post.save_with_url self.params[:post][:files]
       end
 
-      if self.params[:post][:post_facebook] == "true"
+      if self.params[:post][:post_facebook].to_s == "true"
         last_post.facebook self.current_user
       end
 
-      if self.params[:post][:post_twitter] == "true"
+      if self.params[:post][:post_twitter].to_s == "true"
         last_post.twitter self.current_user
       end
 

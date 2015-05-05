@@ -14,11 +14,11 @@
                 %label
                   = check_box_tag "twitter", true, false, {class: "twitter-checkbox"}
                   twitterに投稿
-            - if provider[:service_name] == "facebook"
-              %li.fb
-                %label
-                  = check_box_tag "facebook", true, false, {class: "facebook-checkbox"}
-                  facebookに投稿
+            / - if provider[:service_name] == "facebook"
+            /   %li.fb
+            /     %label
+            /       = check_box_tag "facebook", true, false, {class: "facebook-checkbox"}
+            /       facebookに投稿
       #thumbnail
       .error-message.errorMessage
       .url-thumbnail-list

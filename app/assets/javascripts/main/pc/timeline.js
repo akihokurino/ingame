@@ -14,7 +14,9 @@
     events: {
       "click .show-select-modal": "toggleSelectModal",
       "click .post-btn":          "post",
-      "keyup .post-input":        "checkUrl"
+      "keyup .post-input":        "checkUrl",
+      "click .twitter-btn":       "shareTwitter",
+      "click .facebook-btn":      "shareFacebook"
     },
     game_thumbnail_template: _.template($("#game-thumbnail-template").html()),
     initialize: function () {
@@ -34,12 +36,16 @@
       this.post_input             = this.$(".post-input");
       this.select_log_id          = null;
       this.select_game_id         = null;
-      this.provider               = null;
       this.user_id                = $("#wrapper").data("userid");
       this.current_access_url     = null;
       this.prev_access_url        = null;
       this.url_thumbnail          = null;
       this.url_thumbnail_template = _.template($("#url-thumbnail-template").html());
+
+      this.facebook_btn           = $(".facebook-btn");
+      this.twitter_btn            = $(".twitter-btn");
+      this.post_facebook          = false;
+      this.post_twitter           = false;
 
       event_handle.discribe("selectLog", this.selectLog);
 
@@ -83,11 +89,12 @@
         var that = this;
         var data = {
           "post": {
-            "game_id":  this.select_game_id,
-            "log_id":   this.select_log_id,
-            "text":     this.post_input.val(),
-            "files":    this.upload.files,
-            "provider": this.provider
+            "game_id":       this.select_game_id,
+            "log_id":        this.select_log_id,
+            "text":          this.post_input.val(),
+            "files":         this.upload.files,
+            "post_facebook": this.post_facebook,
+            "post_twitter":  this.post_twitter
           },
           "url_thumbnail": this.url_thumbnail,
         }
@@ -171,7 +178,12 @@
       this.current_access_url = null;
       this.prev_access_url    = null;
       this.upload.files       = [];
-      this.provider           = null;
+
+      this.post_facebook      = false;
+      this.post_twitter       = false;
+      this.facebook_btn.removeClass('fbActive');
+      this.twitter_btn.removeClass('twActive');
+
       $("#thumbnail").html("");
       this.$(".url-thumbnail-list").html("");
       $(".error-message").html("");
@@ -222,6 +234,28 @@
       } else {
         this.$(".url-thumbnail-list").html("");
         that.url_thumbnail = null;
+      }
+    },
+    shareFacebook: function (e) {
+      if ($(e.target).hasClass("fbActive")) {
+        $(e.target).removeClass('fbActive');
+
+        this.post_facebook = false;
+      } else {
+        $(e.target).addClass('fbActive');
+
+        this.post_facebook = true;
+      }
+    },
+    shareTwitter: function (e) {
+      if ($(e.target).hasClass("twActive")) {
+        $(e.target).removeClass('twActive');
+
+        this.post_twitter = false;
+      } else {
+        $(e.target).addClass('twActive');
+
+        this.post_twitter = true;
       }
     }
   });
