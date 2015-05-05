@@ -35,16 +35,38 @@
         %ul.gameBtnList
           %li.item.status-li
         %span.delete-log-btn.deleteBtn マイゲームから削除
-      .gameInfo
-        %ul.gameCap
-          %li.device
+
+
+      %ul.gameInfoList
+        %li.item.hard
+          .itemName ハード：
+          .itemContent
             = @game.device
-          %li.releaseDay
-            = @game.formated_release_day
-          %li.gameTag
+        %li.item.maker
+          .itemName メーカー：
+          .itemContent
+            = @game.maker
+        %li.item.category
+          .itemName ジャンル：
+          .itemContent
             - @game.gametags.each do |gametag|
               %span.gametag
                 = gametag.name
+        %li.item.releaseDay
+          .itemName 発売日：
+          .itemContent
+            = @game.formated_release_day
+
+      / .gameInfo
+      /   %ul.gameCap
+      /     %li.device
+      /       = @game.device
+      /     %li.releaseDay
+      /       = @game.formated_release_day
+      /     %li.gameTag
+      /       - @game.gametags.each do |gametag|
+      /         %span.gametag
+      /           = gametag.name
       - if @game.wiki && @game.wiki != "0"
         .gameSummary
           %label{for: "summary"} 概要
