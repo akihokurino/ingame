@@ -169,30 +169,30 @@
           padding-left: 10px;
         }
       }
-      .registed .statusWrap {
-        border: 1px solid darken($color_border,7%);
-        @include bglinear(lighten($color_border, 7%), $color_border);
+    }
+    .registed .statusWrap {
+      border: 1px solid darken($color_border,7%);
+      @include bglinear(lighten($color_border, 7%), $color_border);
 
-        &:after {
-          display: block;
-          position: absolute;
-          right: 10px;
-          top: 50%;
-          margin-top: -3px;
-          border-top: 5px solid $color_textGray;
-          border-right: 4px solid transparent;
-          border-bottom: 4px solid transparent;
-          border-left: 5px solid transparent;
-          content:"";
-        }
+      &:after {
+        display: block;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        margin-top: -3px;
+        border-top: 5px solid $color_textGray;
+        border-right: 4px solid transparent;
+        border-bottom: 4px solid transparent;
+        border-left: 5px solid transparent;
+        content:"";
       }
-      .registed .statusBtn {
-        color: $color_textGray;
+    }
+    .registed .statusBtn {
+      color: $color_textGray;
 
-        @-moz-document url-prefix() {
-          option {
-            color: $main_color;
-          }
+      @-moz-document url-prefix() {
+        option {
+          color: $main_color;
         }
       }
     }
