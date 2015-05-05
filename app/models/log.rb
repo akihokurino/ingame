@@ -18,9 +18,21 @@ class Log < ActiveRecord::Base
 		presence: true,
 		numericality: true
 
+	def facebook(current_user)
+		if user_provider = current_user.user_providers.find_by(service_name: "facebook")
+			return unless user_provider[:share_log_status]
+
+			self.post_facebook user_provider
+		end
+	end
+
 	def twitter(current_user)
-		text = "【#{self.status[:name]}】- #{self.game[:title]} http://gamr.jp/games/#{self.game[:id]}#all #gamr"
-		self.post_twitter current_user, text
+		if user_provider = current_user.user_providers.find_by(service_name: "twitter")
+			return unless user_provider[:share_log_status]
+
+			text = "【#{self.status[:name]}】- #{self.game[:title]} http://gamr.jp/games/#{self.game[:id]}#all #gamr"
+			self.post_twitter user_provider, text
+		end
 	end
 
 	class << self

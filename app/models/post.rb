@@ -53,12 +53,16 @@ class Post < ActiveRecord::Base
   end
 
   def facebook(current_user)
-    self.post_facebook current_user
+    if user_provider = current_user.user_providers.find_by(service_name: "facebook")
+      self.post_facebook user_provider
+    end
   end
 
   def twitter(current_user)
-    text = "#{self[:text]} - #{self.game[:title]} http://gamr.jp/posts/#{self[:id]} #gamr"
-    self.post_twitter current_user, text
+    if user_provider = current_user.user_providers.find_by(service_name: "twitter")
+      text = "#{self[:text]} - #{self.game[:title]} http://gamr.jp/posts/#{self[:id]} #gamr"
+      self.post_twitter user_provider, text
+    end
   end
 
   def datetime

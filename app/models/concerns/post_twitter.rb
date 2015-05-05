@@ -1,14 +1,9 @@
 module PostTwitter
   extend ActiveSupport::Concern
 
-  def post_twitter(current_user, text)
+  def post_twitter(current_provider, text)
 
-    return false if Rails.env == "development"
-
-    current_provider = nil
-    current_user.user_providers.each do |user_provider|
-      current_provider = user_provider if user_provider[:service_name] == "twitter"
-    end
+    # return false if Rails.env == "development"
 
     return false unless current_provider
 
