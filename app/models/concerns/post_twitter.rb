@@ -3,7 +3,7 @@ module PostTwitter
 
   def post_twitter(current_provider, text)
 
-    # return false if Rails.env == "development"
+    return false if Rails.env == "development"
 
     return false unless current_provider
 
