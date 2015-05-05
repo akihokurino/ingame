@@ -46,6 +46,29 @@ html {
     .userColumn,.gameColumn {
       margin-bottom: 15px;
     }
+
+    .footerColumn {
+      width: 100%;
+      margin-top: 20px;
+      border: solid 1px $color_border;
+      @include border-radius(3px);
+      @include box-sizing;
+      background: #fff;
+      @include clearfix;
+      padding: 20px;
+      p {
+        text-align: center;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        a {
+          color: $color_textBlack;
+          font-size: 12px;
+        }
+        small {
+          font-size: 12px;
+        }
+      }
+    }
   }
   /*---   ---*/
   .profile {
@@ -116,6 +139,7 @@ html {
       }
     }
   }
+
   /*---   .addPost   ----------*/
   .addPost {
     position: relative;

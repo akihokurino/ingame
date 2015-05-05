@@ -40,6 +40,7 @@
               フォロワー
               %span.count
                 = @current_user.follower_num
+
     .postColumn
       .addPost
         .addPostInner
@@ -82,6 +83,13 @@
         .userActivity
           %h1.userActivityTtl 最近登録したユーザー
           %ul.userActivityList.user-activity-list
+      .footerColumn
+        %p
+          = link_to "利用規約", term_pages_path, class: "ftLink"
+        %p
+          = link_to "プライバシーポリシー", privacy_pages_path, class: "ftLink"
+        %p
+          %small.copyright &copy; 2015 gamr.
 
 
 
