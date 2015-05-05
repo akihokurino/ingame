@@ -2,6 +2,8 @@
 //= require ../../views/users_view.js
 //= require ../../views/comment_view.js
 //= require ../../views/comments_view.js
+//= require ../../views/game_view.js
+//= require ../../views/games_view.js
 
 (function () {
   var AppView = Backbone.View.extend({
@@ -30,6 +32,12 @@
       this.like_user_collection = new Users();
       this.users_view           = new UsersView({el: ".like-user-list-body", collection: this.like_user_collection, attributes: {template: "#like-user-template"}});
 
+      this.user_collection      = new Users();
+      this.users_view           = new UsersView({el: ".user-activity-list", collection: this.user_collection, attributes: {type: "activity", template: "#user-activity-template"}});
+
+      this.game_collection      = new Games();
+      this.games_view           = new GamesView({el: ".game-activity-list", collection: this.game_collection, attributes: {type: "activity", template: "#game-activity-template"}});
+
       this.nextOffset = 20;
 
       this.comments_view.render({post_id: this.current_post_id, type: "init", offset: 0, limit: 20}, function (res) {
@@ -39,6 +47,10 @@
       });
 
       this.users_view.renderAll({type: "liked", post_id: this.current_post_id, page: 1});
+
+      this.users_view.renderAll({page: 1, type: "activity"});
+
+      this.games_view.renderAll({type: "activity"});
 
       $(".comment-input").autosize();
     },

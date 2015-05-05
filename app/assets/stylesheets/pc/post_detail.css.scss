@@ -1,15 +1,58 @@
 @import "../_function.css.scss";
+@import "component/_userActivity.css.scss";
+@import "component/_gameActivity.css.scss";
 
 .mainContent{
   padding-top: 46px;
   background-color: #eeeeee;
+  &Inner {
+    width: 1080px;
+    margin: 0 auto;
+    @include clearfix;
+    position: relative;
+  }
+
+  .subColumn {
+    margin-top: 10px;
+    float: right;
+    width: 320px;
+
+    .userColumn,.gameColumn {
+      margin-bottom: 15px;
+    }
+
+    .footerColumn {
+      width: 100%;
+      margin-top: 20px;
+      border: solid 1px $color_border;
+      @include border-radius(3px);
+      @include box-sizing;
+      background: #fff;
+      @include clearfix;
+      padding: 20px;
+      p {
+        text-align: center;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        a {
+          color: $color_textBlack;
+          font-size: 12px;
+        }
+        small {
+          font-size: 12px;
+        }
+      }
+    }
+  }
 }
 
 .topBox{
 	background: #fff;
   padding: 20px;
-  margin: 0 auto;
-  width: 960px;
+  /*margin: 0 auto;*/
+  float: left;
+  width: 740px;
+  margin-top: 20px;
 }
 .gameTitle{
   display: inline-block;
@@ -33,7 +76,7 @@
 .gameWrap {
   display: inline-block;
   margin-right: 10px;
-  width: 240px;
+  width: 200px;
   @include box-sizing;
   vertical-align: top;
   text-align: center;
@@ -55,7 +98,7 @@
 }
 
 .postWrap{
-  width: 640px;
+  width: 480px;
   display: inline-block;
 
   .postBox {

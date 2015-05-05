@@ -7,102 +7,122 @@
 = render partial: "application/pc/default_header"
 
 %section.mainContent.post-detail-page{"data-postid" => @post[:id]}
-  .topBox
-    %a.gameTitle{href: "/games/#{@post.game[:id]}#all"}
-      %h1
-        = @post.game[:title]
-    %h2.maker
-      %span by
-      %span.makerName
-        = @post.game[:maker]
-    .gameWrap
-      %figure.gameMainWrap
-        %a
-          - if @post.game[:photo_path]
-            = image_tag "/game_photos/#{@post.game[:photo_path]}", width: 240, class: "gameImg", alt: "ゲームパッケージ画像"
-          - elsif @post.game[:photo_url]
-            = image_tag @post.game[:photo_url], width: 240, class: "gameImg", alt: "ゲームパッケージ画像"
-          - else
-            = image_tag "/game_photos/default.png", width: 240, class: "gameImg", alt: "ゲームパッケージ画像"
-      .Source
-        - case @post.game[:provider]
-        - when "famituu"
-          %a{href: @post.game[:provider_url], target: "blank"} 出典:ファミ通
-        - when "steam"
-          %a{href: @post.game[:provider_url], target: "blank"} 出典:STEAM
-    .postWrap
-      .postBox
-        .postHeader
-          %a.postHeaderLink{href: "/users/#{@post.user[:id]}"}
-            %img.profileImage{width: 30, src: "/user_photos/#{@post.user[:photo_path]}"}
-            %span.userName
-              = truncate @post.user[:username], length: 45
-            %span.statusBox
-              - case @post.log[:status_id]
-              - when 1
-                %span.moodReady
-                  = @post.log.status[:name]
-              - when 2
-                %span.moodPlaying
-                  = @post.log.status[:name]
-              - when 3
-                %span.moodPlayed
-                  = @post.log.status[:name]
-              - when 4
-                %span.moodStock
-                  = @post.log.status[:name]
-        .postBody
-          .postText
-            = simple_format @post[:text]
-          .postMeta
-            .postTime.icon-time
-              = @post.relative_time
+  .mainContentInner
+    .topBox
+      %a.gameTitle{href: "/games/#{@post.game[:id]}#all"}
+        %h1
+          = @post.game[:title]
+      %h2.maker
+        %span by
+        %span.makerName
+          = @post.game[:maker]
+      .gameWrap
+        %figure.gameMainWrap
+          %a
+            - if @post.game[:photo_path]
+              = image_tag "/game_photos/#{@post.game[:photo_path]}", width: 200, class: "gameImg", alt: "ゲームパッケージ画像"
+            - elsif @post.game[:photo_url]
+              = image_tag @post.game[:photo_url], width: 200, class: "gameImg", alt: "ゲームパッケージ画像"
+            - else
+              = image_tag "/game_photos/default.png", width: 200, class: "gameImg", alt: "ゲームパッケージ画像"
+        .Source
+          - case @post.game[:provider]
+          - when "famituu"
+            %a{href: @post.game[:provider_url], target: "blank"} 出典:ファミ通
+          - when "steam"
+            %a{href: @post.game[:provider_url], target: "blank"} 出典:STEAM
+      .postWrap
+        .postBox
+          .postHeader
+            %a.postHeaderLink{href: "/users/#{@post.user[:id]}"}
+              %img.profileImage{width: 30, src: "/user_photos/#{@post.user[:photo_path]}"}
+              %span.userName
+                = truncate @post.user[:username], length: 45
+              %span.statusBox
+                - case @post.log[:status_id]
+                - when 1
+                  %span.moodReady
+                    = @post.log.status[:name]
+                - when 2
+                  %span.moodPlaying
+                    = @post.log.status[:name]
+                - when 3
+                  %span.moodPlayed
+                    = @post.log.status[:name]
+                - when 4
+                  %span.moodStock
+                    = @post.log.status[:name]
+          .postBody
+            .postText
+              = simple_format @post[:text]
+            .postMeta
+              .postTime.icon-time
+                = @post.relative_time
 
-          - @post.post_photos.each do |photo|
-            .postThumbnail
-              %img.thumbnailImage{src: "/post_photos/#{photo[:photo_path]}"}
+            - @post.post_photos.each do |photo|
+              .postThumbnail
+                %img.thumbnailImage{src: "/post_photos/#{photo[:photo_path]}"}
 
-          - @post.post_urls.each do |url|
-            .urlThumbnailWrap
-              %a.urlThumbnail
-                = image_tag url[:thumbnail], class: "thumbnailImg"
-                .body
-                  %p.title
-                    = url[:title]
-                  %p.description
-                    = simple_format url[:description]
-          .postFooter
-            - unless @current_user[:id].nil?
-              %ul.actionList
-                %li
-                  %span.favBtn.icon-like{class: @post.i_liked ? "unlike-btn on" : "like-btn"}
-                %li
-                  %a.commentBtn.icon-comment
-                - if @post[:user_id] == @current_user[:id]
+            - @post.post_urls.each do |url|
+              .urlThumbnailWrap
+                %a.urlThumbnail
+                  = image_tag url[:thumbnail], class: "thumbnailImg"
+                  .body
+                    %p.title
+                      = url[:title]
+                    %p.description
+                      = simple_format url[:description]
+            .postFooter
+              - unless @current_user[:id].nil?
+                %ul.actionList
                   %li
-                    %span.icon-option.delete-btn
-        .likeUserListBox
-          %h2.listTitle
-            いいね！
-            %span.like-count
-              = @post[:post_likes_count]
-            %span 件
+                    %span.favBtn.icon-like{class: @post.i_liked ? "unlike-btn on" : "like-btn"}
+                  %li
+                    %a.commentBtn.icon-comment
+                  - if @post[:user_id] == @current_user[:id]
+                    %li
+                      %span.icon-option.delete-btn
+          .likeUserListBox
+            %h2.listTitle
+              いいね！
+              %span.like-count
+                = @post[:post_likes_count]
+              %span 件
 
-          %ul.likeUserList.like-user-list-body
+            %ul.likeUserList.like-user-list-body
 
-        .commentBox
-          %p.readMore.comment-expand 以前のコメントを表示...
+          .commentBox
+            %p.readMore.comment-expand 以前のコメントを表示...
 
-          %ul.commentList.comment-list
+            %ul.commentList.comment-list
 
-          - unless @current_user[:id].nil?
-            .myCommentBox
-              %figure.profImgWrap
-                %img.profImg{src: "/user_photos/#{@current_user[:photo_path]}", width: "30", height: "30", alt: ""}
-              %form.commentWrap
-                %textarea.comment.comment-input{placeholder: "コメントする"}
+            - unless @current_user[:id].nil?
+              .myCommentBox
+                %figure.profImgWrap
+                  %img.profImg{src: "/user_photos/#{@current_user[:photo_path]}", width: "30", height: "30", alt: ""}
+                %form.commentWrap
+                  %textarea.comment.comment-input{placeholder: "コメントする"}
+    .subColumn.sub-column
+      .gameColumn
+        .gameActivity
+          %h1.gameActivityTtl 最近登録されたゲーム
+          %ul.gameActivityList.game-activity-list
+
+      .userColumn
+        .userActivity
+          %h1.userActivityTtl 最近登録したユーザー
+          %ul.userActivityList.user-activity-list
+      .footerColumn
+        %p
+          = link_to "利用規約", term_pages_path, class: "ftLink"
+        %p
+          = link_to "プライバシーポリシー", privacy_pages_path, class: "ftLink"
+        %p
+          %small.copyright &copy; 2015 gamr.
 
 
 = render partial: "application/underscore/pc/post_detail/like_user"
 = render partial: "application/underscore/pc/common/comment"
 = render partial: "application/underscore/pc/common/delete_confirm"
+= render partial: "application/underscore/pc/common/user_activity"
+= render partial: "application/underscore/pc/common/game_activity"
