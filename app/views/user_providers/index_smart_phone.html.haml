@@ -33,11 +33,11 @@
             - if @twitter_provider
               %li
                 .snsName Twitter
-                = check_box 'tw-share', '', {}, true, false
+                = check_box_tag "twitter-share", true, @twitter_provider[:share_log_status], {class: "tw-log-status-share-checkbox", "data-id" => @twitter_provider[:id]}
             / - if @facebook_provider
             /   %li
             /     .snsName Facebook
-            /     = check_box 'tw-share', '', {}, true, false
+            /     = check_box_tag "facebook-share", true, @facebook_provider[:share_log_status], {class: "fb-log-status-share-checkbox", "data-id" => @facebook_provider[:id]}
 
         %li.item
           %h2.settingTtl gamrを退会

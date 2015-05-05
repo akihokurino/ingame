@@ -68,7 +68,7 @@ Ingame::Application.routes.draw do
         get "uniqueness"
       end
     end
-    resources :user_providers, only: [], format: "json"
+    resources :user_providers, only: ["update"], format: "json"
 
     resources :follows, only: ["create", "destroy"], format: "json"
 
