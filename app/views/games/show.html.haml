@@ -34,6 +34,18 @@
       - unless @current_user[:id].nil?
         %ul.gameBtnList
           %li.item.status-li
+          %li.item.review-li
+          %li.item.review
+            .itemName 全体の評価
+            .itemContent
+              %ul.starList
+                - diff = 5 - @game.avg_rate.to_i
+                - @game.avg_rate.to_i.times do |i|
+                  %li.starOn.icon-star
+                - diff.times do |i|
+                  %li.starOff.icon-star
+            %span.value
+              = @game.avg_rate
         %span.delete-log-btn.deleteBtn マイゲームから削除
 
 
