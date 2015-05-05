@@ -8,10 +8,12 @@
 
 %section.mainContent.game-page{"data-gameid" => @game[:id]}
   .titleWrap
-    %h1.gameTtl ゲームタイトルゲームタイトルゲームタイトル
+    %h1.gameTtl
+      = @game[:title]
     %h2.maker
       %span by
-      %span メーカー名メーカー名
+      %span
+        = @game[:maker]
   .contentWrap
     .gameWrap
       %a.gameImgWrap
@@ -49,9 +51,9 @@
 
     .archiveWrap
       %ul.archiveNav
-        %li みんなのつぶやき
-        %li.current みんなのレビュー
-      .reviewWrap
+        %li.post-list-li みんなのつぶやき
+        %li.review-list-li.current みんなのレビュー
+      .reviewWrap.review-wrap.hide
         %form.writeReview
           %h2 ゲームタイトルゲームタイトルのレビューを書く
           %ul.reviewList
@@ -105,7 +107,16 @@
                         %span.likeCnt
                     %li
                       %span.icon-option.delete-btn
-      .postWrap.hide
+      .postWrap.post-wrap
+        %section.sortBox
+          %ul.sortList.sort-list
+            %li.item.current.follower-posts
+              %a.follow{href: "/games/#{@game[:id]}#follower"} フォロー中のユーザー
+            %li.item.all-posts
+              %a.all{href: "/games/#{@game[:id]}#all"} すべてのユーザー
+            %li.item.liker-posts
+              %a.star{href: "/games/#{@game[:id]}#liker"} いいね順
+
         .game-timeline
           .post-list
           = image_tag "gif-load.gif", class: "loading-gif"

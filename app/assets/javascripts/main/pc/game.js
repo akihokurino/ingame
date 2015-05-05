@@ -71,7 +71,9 @@
       "change .my-status":     "changeStatus",
       "change .new-status":    "registLog",
       "change .my-rate":       "changeRate",
-      "click .delete-log-btn": "showDeleteConfirm"
+      "click .delete-log-btn": "showDeleteConfirm",
+      "click .post-list-li":   "showPostList",
+      "click .review-list-li": "showReviewList"
     },
     status_template: _.template($("#status-select-template").html()),
     review_template: _.template($("#review-select-template").html()),
@@ -84,6 +86,18 @@
       this.delete_log_btn = $(".delete-log-btn");
 
       this.getCurrentGame();
+    },
+    showPostList: function (e) {
+      this.$el.find(".post-list-li").addClass('current');
+      this.$el.find(".review-list-li").removeClass('current');
+      this.$el.find(".review-wrap").addClass('hide');
+      this.$el.find(".post-wrap").removeClass('hide');
+    },
+    showReviewList: function () {
+      this.$el.find(".post-list-li").removeClass('current');
+      this.$el.find(".review-list-li").addClass('current');
+      this.$el.find(".review-wrap").removeClass('hide');
+      this.$el.find(".post-wrap").addClass('hide');
     },
     changeRate: function () {
       var that = this;
