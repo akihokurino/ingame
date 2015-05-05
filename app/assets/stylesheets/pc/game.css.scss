@@ -67,13 +67,13 @@
         }
       }
       .source{
-            margin-bottom: 10px;
-            text-align: center;
-            line-height: 1;
-            a{
-              color: $color_textGray;
-              font-size: 10px;
-            }
+        margin-bottom: 10px;
+        text-align: center;
+        line-height: 1;
+        a{
+          color: $color_textGray;
+          font-size: 10px;
+        }
       }
       .gameInfoList {
         line-height: 1.5;
@@ -101,9 +101,27 @@
           }
           .itemContent{
             display: inline-block;
-            color:$color_textBlack;
+            color: $color_textBlack;
             text-align:left;
             font-weight:bold;
+            .icon-star{
+              float:left;
+              display:inline-block;
+              font-size:20px;
+            }
+            .starList {
+              vertical-align: middle;
+              display:inline-block;
+              font-size:1rem;
+              margin-top: -2px;
+            }
+            .starOn {
+              display: inline-block;
+              color:orange;
+            }
+            .starOff {
+              display: inline-block;
+            }
           }
         }
       }
