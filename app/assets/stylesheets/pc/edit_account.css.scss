@@ -52,6 +52,13 @@
     font-size: .875rem;
   }
   .snsList{
+    th {
+      width: 150px;
+      padding-bottom: 20px;
+    }
+    td {
+      padding-bottom: 20px;
+    }
     li{
       margin-bottom: 10px;
     }
@@ -64,6 +71,9 @@
       margin-right: 10px;
       color: #3a3a3a;
       font-size: 1em;
+      &.tw-checkbox {
+        margin-right: 20px;
+      }
     }
     .notConnect,.connectTw,.connectFb{
       display: inline-block;

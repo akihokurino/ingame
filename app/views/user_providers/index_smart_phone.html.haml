@@ -28,6 +28,18 @@
               - else
                 %span.connectFb 連携中
         %li.item
+          %h2.settingTtl ゲームステータス更新時のSNS共有
+          %ul.snsList
+            - if @twitter_provider
+              %li
+                .snsName Twitter
+                = check_box 'tw-share', '', {}, true, false
+            / - if @facebook_provider
+            /   %li
+            /     .snsName Facebook
+            /     = check_box 'tw-share', '', {}, true, false
+
+        %li.item
           %h2.settingTtl gamrを退会
           %p.settingTxt 退会すると、アカウントが持つ全ての情報が削除されます。
           = link_to "退会する", "#", class: "dltAccount delete-account-btn"

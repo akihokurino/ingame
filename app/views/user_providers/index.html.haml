@@ -12,21 +12,44 @@
       %ul.settingList
         %li.item
           %h2.settingTtl SNSアカウントの連携
-          %ul.snsList
-            %li
-              .snsName Twitter
-              .coopStatus
-                - unless @twitter_provider
-                  = link_to "連携する", "/auth/twitter", class: "notConnect connect-twitter-btn"
-                - else
-                  %span.connectTw 連携中
-            %li
-              .snsName Facebook
-              .coopStatus
-                - unless @facebook_provider
-                  = link_to "連携する", "/auth/facebook", class: "notConnect connect-facebook-btn"
-                - else
-                  %span.connectFb 連携中
+          %table.snsList
+            %tr
+              %th
+                .snsName Twitter
+              %td
+                .coopStatus
+                  - unless @twitter_provider
+                    = link_to "連携する", "/auth/twitter", class: "notConnect connect-twitter-btn"
+                  - else
+                    %span.connectTw 連携中
+            %tr
+              %th
+                .snsName Facebook
+              %td
+                .coopStatus
+                  - unless @facebook_provider
+                    = link_to "連携する", "/auth/facebook", class: "notConnect connect-facebook-btn"
+                  - else
+                    %span.connectFb 連携中
+
+        %li.item
+          %h2.settingTtl ゲームステータス更新時のSNS共有
+          %table.snsList
+            - if @twitter_provider
+              %tr
+                %th
+                  .snsName Twitter
+                %td
+                  .coopStatus
+                    = check_box 'tw-share', '', {}, true, false
+            / - if @facebook_provider
+            /   %tr
+            /     %th
+            /       .snsName Facebook
+            /     %td
+            /       .coopStatus
+            /         = check_box 'fb-share', '', {}, true, false
+
         %li.item
           %h2.settingTtl Gamrを退会
           %p.settingTxt 退会すると、アカウントが持つ全ての情報が削除されます。
