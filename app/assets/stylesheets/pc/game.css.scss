@@ -142,7 +142,7 @@
       .reviewBtn,.statusBtn{
         @include appearance;
         width: 100%;
-        padding: 0 40%;
+        padding: 0 38%;
         line-height: 3;
         text-align: center;
       }
@@ -179,6 +179,42 @@
     .archiveWrap{
       float: right;
       width: 580px;
+
+      .postWrap {
+        .sortBox {
+          clear: both;
+          border-bottom: solid 1px $color_border;
+
+          .sortList {
+            width: $cntWidth;
+            margin: 0 auto;
+            color: #3e3e3e;
+            font-size: 12px;
+            line-height: 3.5;
+
+            .item {
+              display: inline-block;
+              width: 173px;
+              text-align: center;
+              cursor: pointer;
+              a{
+                color: $color_textBlack;
+                &:hover {
+                  text-decoration: none;
+                }
+              }
+
+              &.current {
+                a{
+                  color: $color_textBlack;
+                  font-weight: bold;
+                }
+              }
+
+            }
+          }
+        }
+      }
 
       .hide{
         display: none;
@@ -508,4 +544,5 @@
   .game-timeline,.review-timeline {
     padding: 24px 0;
   }
+
 }

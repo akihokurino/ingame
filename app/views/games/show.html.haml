@@ -16,8 +16,15 @@
         = @game[:maker]
   .contentWrap
     .gameWrap
-      %a.gameImgWrap
-        = image_tag "/game_photos/default.png", width: 240, class: "gameImg", alt: "ゲームパッケージ画像"
+      - url = @game.amazon_url ? @game.amazon_url : ""
+      %a.gameImgWrap{href: url, target: "blank"}
+        - if @game.photo_path
+          = image_tag "/game_photos/#{@game.photo_path}", width: 240, class: "gameImg", alt: "ゲームパッケージ画像"
+        - elsif @game.photo_url
+          = image_tag @game.photo_url, width: 240, class: "gameImg", alt: "ゲームパッケージ画像"
+        - else
+          = image_tag "/game_photos/default.png", width: 240, class: "gameImg", alt: "ゲームパッケージ画像"
+
       .source
         - case @game.provider
         - when "famituu"
@@ -38,6 +45,12 @@
             - @game.gametags.each do |gametag|
               %span.gametag
                 = gametag.name
+      - if @game.wiki && @game.wiki != "0"
+        .gameSummary
+          %label{for: "summary"} 概要
+          %input.expand{type: "checkbox", id: "summary"}
+          %p
+            = @game.wiki
       %ul.linkList
         - @game.game_urls.each_with_index do |url, index|
           - if index == 0
@@ -51,8 +64,8 @@
 
     .archiveWrap
       %ul.archiveNav
-        %li.post-list-li みんなのつぶやき
-        %li.review-list-li.current みんなのレビュー
+        %li.post-list-li.current みんなのつぶやき
+        %li.review-list-li みんなのレビュー
       .reviewWrap.review-wrap.hide
         %form.writeReview
           %h2 ゲームタイトルゲームタイトルのレビューを書く
