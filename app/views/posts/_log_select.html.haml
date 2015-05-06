@@ -1,12 +1,19 @@
 .selectModal.select-log-list
-  %h2.playing 遊んでる
-  %ul.gameList.playing-list
-
-  %h2.ready 気になる
-  %ul.gameList.ready-list
-
-  %h2.played 遊んだ
-  %ul.gameList.played-list
-
-  %h2.stock 積んでる
-  %ul.gameList.stock-list
+  - @log_order.each do |o|
+    - case o
+    - when "遊んでる"
+      %h2.playing
+        = o
+      %ul.gameList.playing-list
+    - when "気になる"
+      %h2.ready
+        = o
+      %ul.gameList.ready-list
+    - when "遊んだ"
+      %h2.played
+        = o
+      %ul.gameList.played-list
+    - when "積んでる"
+      %h2.stock
+        = o
+      %ul.gameList.stock-list

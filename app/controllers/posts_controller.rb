@@ -7,6 +7,9 @@ class PostsController < ApplicationController
     if @current_user[:is_first]
       @current_user.update is_first: false
     end
+
+    _, order_string = UserLogOrder.get_order @current_user[:id]
+    @log_order      = order_string.split ","
   end
 
   def show

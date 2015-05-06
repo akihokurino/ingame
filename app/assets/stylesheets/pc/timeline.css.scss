@@ -442,7 +442,7 @@ html {
       top: 37px;
       display: none;
       overflow: scroll;
-      width: 400px;
+      width: 480px;
       height: 550px;
       @include border-radius(2px);
       left: 0;
@@ -453,23 +453,27 @@ html {
 
       .playing {
         padding: 10px;
-        color: $color_red;
-        line-height: 23px;
+        background-color: $color_red;
+        line-height: 10px;
+        color: #fff;
       }
       .ready {
         padding:10px;
-        color: $color_yellow;
-        line-height: 23px;
+        background-color: $color_yellow;
+        line-height: 10px;
+        color: #fff;
       }
       .played {
         padding:10px;
-        color: $color_blue;
-        line-height: 23px;
+        background-color: $color_blue;
+        line-height: 10px;
+        color: #fff;
       }
       .stock {
         padding:10px;
-        color: $color_green;
-        line-height: 23px;
+        background-color: $color_green;
+        line-height: 10px;
+        color: #fff;
       }
       .gameList {
         .item {
