@@ -451,6 +451,46 @@ html {
       background: #fff;
       @include font-size(14);
 
+      /*---   .libSearchWrap   ---*/
+      .logSearchWrap {
+        position: relative;
+        width: 80%;
+        margin: 0 auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 1px;
+        border: 1px solid #ccc;
+        @include border-radius(2px);
+        background: #fff;
+
+        &:before {
+          position: absolute;
+          top: 6px;
+          left: 4px;
+          color: #888;
+          font-size: 1.5rem;
+          font-family: 'icomoon';
+          content: "\e60c";
+        }
+      }
+      .logSearch {
+        width: 98%;
+        height: 30px;
+        margin: 0 auto;
+        padding-left: 40px;
+        border: none;
+        @include border-radius(7px);
+        @include box-sizing;
+        @include appearance;
+        line-height: normal;
+        outline: 0;
+
+        &::-webkit-input-placeholder {
+          color: #cbcbcb;
+          font-size: .875rem;
+          line-height: 1.5rem;
+        }
+      }
       .playing {
         padding: 10px;
         background-color: $color_red;

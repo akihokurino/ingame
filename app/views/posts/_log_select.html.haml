@@ -1,4 +1,6 @@
 .selectModal.select-log-list
+  %form.logSearchWrap
+    %input.logSearch.search-log{placeholder: "ゲームを検索"}
   - @log_order.each do |o|
     - case o
     - when "遊んでる"

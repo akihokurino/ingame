@@ -1,4 +1,7 @@
 var LogsView = Backbone.View.extend({
+  events: {
+    "keyup .search-log": "searchLog"
+  },
   initialize: function () {
 
     if (this.attributes && this.attributes.type) {
@@ -10,6 +13,29 @@ var LogsView = Backbone.View.extend({
     }
 
     this.listenTo(this.collection, "add", this.addLog);
+
+    this.tmp_log_list = [];
+  },
+  searchLog: function (e) {
+    this.collection.reset();
+    this.removeEachLogs();
+
+    var search_word = $(e.target).val();
+
+    if (search_word.length > 0) {
+      var keyword = new RegExp(search_word, "i");
+
+      for (var i = 0; i < this.tmp_log_list.length; i++) {
+        var log = this.tmp_log_list[i];
+        if (log.get("game").title.match(keyword)) {
+          this.collection.add(log);
+        }
+      }
+    } else {
+      for (var i = 0; i < this.tmp_log_list.length; i++) {
+        this.collection.add(this.tmp_log_list[i]);
+      }
+    }
   },
   addLog: function (log) {
     if (log.id) {
@@ -62,6 +88,7 @@ var LogsView = Backbone.View.extend({
     for (var i = 0; i < response.logs.length; i++) {
       var log = new Log(response.logs[i]);
       this.collection.add(log);
+      this.tmp_log_list.push(log);
     }
   },
   settingModel: function (log) {
