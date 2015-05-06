@@ -22,6 +22,7 @@
       this.user_id              = this.$el.data("userid");
       this.type                 = null;
       this.current_search_title = null;
+      this.already_customised   = false;
 
       if (this.attributes && this.attributes.type) {
         this.type = this.attributes.type;
@@ -41,8 +42,10 @@
         data: {},
         success: function (data) {
           that.$(".profile-timeline").append(that.template({"log_order": data.log_order.split(",")}));
-          that.log_collection = new Logs();
-          that.logs_view      = new LogsView({el: ".log-list", collection: that.log_collection, attributes: {type: "select", template: "#log-template"}});
+          that.log_collection     = new Logs();
+          that.logs_view          = new LogsView({el: ".log-list", collection: that.log_collection, attributes: {type: "select", template: "#log-template"}});
+          that.already_customised = data.already_customised;
+
           that.getUserlog();
 
           if (that.user_id == $("#wrapper").data("userid")) {
@@ -66,17 +69,31 @@
         }
       }
 
-      $.ajax({
-        type: "PUT",
-        url: "/api/user_log_orders/" + this.user_id,
-        data: data,
-        success: function () {
+      if (this.already_customised) {
+        $.ajax({
+          type: "PUT",
+          url: "/api/user_log_orders/" + this.user_id,
+          data: data,
+          success: function () {
 
-        },
-        error: function () {
+          },
+          error: function () {
 
-        }
-      });
+          }
+        });
+      } else {
+        $.ajax({
+          type: "POST",
+          url: "/api/user_log_orders",
+          data: data,
+          success: function () {
+
+          },
+          error: function () {
+
+          }
+        });
+      }
     },
     getUserlog: function () {
       var that = this;

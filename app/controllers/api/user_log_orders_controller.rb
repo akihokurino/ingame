@@ -1,9 +1,10 @@
 class Api::UserLogOrdersController < ApplicationController
   def show
-    @log_order = UserLogOrder.getOrder params[:id]
+    @already_customised, @log_order = UserLogOrder.get_order params[:id]
   end
 
   def create
+
   end
 
   def update
