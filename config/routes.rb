@@ -69,6 +69,7 @@ Ingame::Application.routes.draw do
       end
     end
     resources :user_providers, only: ["update"], format: "json"
+    resources :user_log_orders, only: ["show", "create", "update"], format: "json"
 
     resources :follows, only: ["create", "destroy"], format: "json"
 

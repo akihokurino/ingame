@@ -1,22 +1,33 @@
 %script{type: "text/tenplate", id: "log-list-template"}
   .gameListBox.log-list
-    .playingBox
+    {{ for (var i = 0; i < log_order.length; i++) { }}
+    {{ if (log_order[i] == "遊んでる") { }}
+    .playingBox#playing
       .ttlWrap
-        %h1.boxTtl 遊んでる
+        %h1.boxTtl {{= log_order[i] }}
       %ul.gameListWrap.playing-list
-
-    .readyBox
+    {{ } else if (log_order[i] == "気になる") { }}
+    .readyBox#ready
       .ttlWrap
-        %h1.boxTtl 気になる
+        %h1.boxTtl {{= log_order[i] }}
       %ul.gameListWrap.ready-list
-
-    .playedBox
+    {{ } else if (log_order[i] == "遊んだ") { }}
+    .playedBox#played
       .ttlWrap
-        %h1.boxTtl 遊んだ
+        %h1.boxTtl {{= log_order[i] }}
       %ul.gameListWrap.played-list
-
-    .stockBox
+    {{ } else if (log_order[i] == "積んでる") { }}
+    .stockBox#stock
       .ttlWrap
-        %h1.boxTtl 積んでる
+        %h1.boxTtl {{= log_order[i] }}
       %ul.gameListWrap.stock-list
+    {{ } }}
+    {{ } }}
+
+
+
+
+
+
+
 

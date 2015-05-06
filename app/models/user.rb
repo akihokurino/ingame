@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   include CompileColor
 
   has_many :user_providers, dependent: :destroy
+  has_many :user_log_orders, dependent: :destroy
 	has_many :posts, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :reviews, dependent: :destroy

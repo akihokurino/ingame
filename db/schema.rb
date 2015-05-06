@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150505041024) do
+ActiveRecord::Schema.define(version: 20150506063301) do
 
   create_table "admins", force: true do |t|
     t.string   "username"
@@ -223,6 +223,17 @@ ActiveRecord::Schema.define(version: 20150505041024) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "user_log_orders", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "status_id"
+    t.integer  "order_num"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_log_orders", ["status_id"], name: "index_user_log_orders_on_status_id", using: :btree
+  add_index "user_log_orders", ["user_id"], name: "index_user_log_orders_on_user_id", using: :btree
 
   create_table "user_providers", force: true do |t|
     t.integer  "user_id"

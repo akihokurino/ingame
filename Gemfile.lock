@@ -122,6 +122,8 @@ GEM
     jquery-rails (3.1.1)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery-ui-rails (5.0.3)
+      railties (>= 3.2.16)
     json (1.8.1)
     jwt (1.0.0)
     kaminari (0.16.1)
@@ -328,6 +330,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jpmobile (~> 4.0.0)
   jquery-rails
+  jquery-ui-rails
   kaminari
   kaminari-bootstrap
   mysql2

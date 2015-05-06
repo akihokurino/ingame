@@ -15,12 +15,8 @@
 
       $(window).unbind("scroll");
       this.$(".profile-timeline").html("");
-      this.$(".profile-timeline").append(this.template);
 
       this.setCurrentTab();
-
-      this.log_collection       = new Logs();
-      this.logs_view            = new LogsView({el: ".log-list", collection: this.log_collection, attributes: {type: "select", template: "#log-template"}});
 
       this.tmp_log_list         = [];
       this.user_id              = this.$el.data("userid");
@@ -35,6 +31,55 @@
         this.current_search_title = this.attributes.search_title;
       }
 
+      this.getCurrentLogListOrder();
+    },
+    getCurrentLogListOrder: function () {
+      var that = this;
+      $.ajax({
+        type: "GET",
+        url: "/api/user_log_orders/" + this.user_id,
+        data: {},
+        success: function (data) {
+          that.$(".profile-timeline").append(that.template({"log_order": data.log_order.split(",")}));
+          that.log_collection = new Logs();
+          that.logs_view      = new LogsView({el: ".log-list", collection: that.log_collection, attributes: {type: "select", template: "#log-template"}});
+          that.getUserlog();
+
+          if (that.user_id == $("#wrapper").data("userid")) {
+            that.$el.find(".log-list").sortable({
+              update: function (event, ui) {
+                var update_log_list = that.$el.find(".log-list").sortable("toArray").join(",");
+                that.updateLogListOrder(update_log_list);
+              }
+            });
+          }
+        },
+        error: function () {
+
+        }
+      });
+    },
+    updateLogListOrder: function (order) {
+      var data = {
+        "user_log_order": {
+          "order": order
+        }
+      }
+
+      $.ajax({
+        type: "PUT",
+        url: "/api/user_log_orders/" + this.user_id,
+        data: data,
+        success: function () {
+
+        },
+        error: function () {
+
+        }
+      });
+    },
+    getUserlog: function () {
+      var that = this;
       this.log_collection.fetch({
         data: {user_id: this.user_id},
         success: function (model, response, options) {
