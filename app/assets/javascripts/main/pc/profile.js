@@ -63,6 +63,7 @@
       });
     },
     updateLogListOrder: function (order) {
+      var that = this;
       var data = {
         "user_log_order": {
           "order": order
@@ -74,7 +75,7 @@
           type: "PUT",
           url: "/api/user_log_orders/" + this.user_id,
           data: data,
-          success: function () {
+          success: function (data) {
 
           },
           error: function () {
@@ -86,8 +87,8 @@
           type: "POST",
           url: "/api/user_log_orders",
           data: data,
-          success: function () {
-
+          success: function (data) {
+            that.already_customised = data.already_customised;
           },
           error: function () {
 

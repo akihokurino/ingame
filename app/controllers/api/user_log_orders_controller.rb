@@ -4,14 +4,15 @@ class Api::UserLogOrdersController < ApplicationController
   end
 
   def create
-
+    @already_customised = UserLogOrder.save_order user_log_order_params, @current_user
   end
 
   def update
+
   end
 
   private
   def user_log_order_params
-    params.require(:user_log_order).permit :user_id, :status_id, :order
+    params.require(:user_log_order).permit :order
   end
 end

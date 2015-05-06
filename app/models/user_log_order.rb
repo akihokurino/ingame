@@ -14,7 +14,24 @@ class UserLogOrder < ActiveRecord::Base
         already_customised = false
       end
 
-      [already_customised, order.join ","]
+      order_string = order.join ","
+
+      [already_customised, order_string]
+    end
+
+    def save_order(params, current_user)
+      order = params[:order].split ","
+      ActiveRecord::Base.transaction do
+        order.each_with_index do |o, index|
+          order_num = index + 1
+          status_id = Status::SLUG[o.to_sym]
+          self.create! user_id: current_user[:id], status_id: status_id, order_num: order_num
+        end
+
+        true
+      end
+    rescue
+      false
     end
   end
 end

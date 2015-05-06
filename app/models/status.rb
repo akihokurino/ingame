@@ -6,4 +6,6 @@ class Status < ActiveRecord::Base
     presence: true,
     uniqueness: true,
     length: {maximum: 50}
+
+  SLUG = {ready: 1, playing: 2, played: 3, stock: 4}
 end
