@@ -50,6 +50,8 @@
 
           if (that.user_id == $("#wrapper").data("userid")) {
             that.$el.find(".log-list").sortable({
+              handle: ".drag-header",
+              opacity: 0.5,
               update: function (event, ui) {
                 var update_log_list = that.$el.find(".log-list").sortable("toArray").join(",");
                 that.updateLogListOrder(update_log_list);

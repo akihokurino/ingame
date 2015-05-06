@@ -4,22 +4,22 @@
     {{ if (log_order[i] == "遊んでる") { }}
     .playingBox#playing
       .ttlWrap
-        %h1.boxTtl {{= log_order[i] }}
+        %h1.boxTtl.drag-header {{= log_order[i] }}
       %ul.gameListWrap.playing-list
     {{ } else if (log_order[i] == "気になる") { }}
     .readyBox#ready
       .ttlWrap
-        %h1.boxTtl {{= log_order[i] }}
+        %h1.boxTtl.drag-header {{= log_order[i] }}
       %ul.gameListWrap.ready-list
     {{ } else if (log_order[i] == "遊んだ") { }}
     .playedBox#played
       .ttlWrap
-        %h1.boxTtl {{= log_order[i] }}
+        %h1.boxTtl.drag-header {{= log_order[i] }}
       %ul.gameListWrap.played-list
     {{ } else if (log_order[i] == "積んでる") { }}
     .stockBox#stock
       .ttlWrap
-        %h1.boxTtl {{= log_order[i] }}
+        %h1.boxTtl.drag-header {{= log_order[i] }}
       %ul.gameListWrap.stock-list
     {{ } }}
     {{ } }}
