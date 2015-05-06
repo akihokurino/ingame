@@ -8,7 +8,7 @@ class Api::UserLogOrdersController < ApplicationController
   end
 
   def update
-
+    @already_customised = UserLogOrder.update_order user_log_order_params, @current_user
   end
 
   private

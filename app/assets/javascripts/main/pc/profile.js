@@ -76,7 +76,7 @@
           url: "/api/user_log_orders/" + this.user_id,
           data: data,
           success: function (data) {
-
+            that.already_customised = data.already_customised;
           },
           error: function () {
 

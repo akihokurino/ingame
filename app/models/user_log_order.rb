@@ -33,5 +33,21 @@ class UserLogOrder < ActiveRecord::Base
     rescue
       false
     end
+
+    def update_order(params, current_user)
+      order = params[:order].split ","
+      ActiveRecord::Base.transaction do
+        order.each_with_index do |o, index|
+          order_num      = index + 1
+          status_id      = Status::SLUG[o.to_sym]
+          user_log_order = self.find_by user_id: current_user[:id], status_id: status_id
+          user_log_order.update order_num: order_num
+        end
+
+        true
+      end
+    rescue
+      true
+    end
   end
 end
