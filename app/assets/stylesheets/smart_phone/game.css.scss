@@ -45,7 +45,7 @@
 			background: linear-gradient(135deg, #431e99 0%,#2989d8 50%,#207cca 51%,#af23a6 100%); /* W3C */
 			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#431e99', endColorstr='#af23a6',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 			text-align: center;
-
+		
 			.gameImg{
 				margin-top: 5px;
 				max-width: 100%;
@@ -55,90 +55,91 @@
 				@include box-sizing;
 			}
 		}
+
 		.gameInfo{
 			padding: 5px 10px;
-		}
-		.source{
-	        margin-bottom: 10px;
-	        text-align: center;
-	        line-height: 1;
-	        a{
-	          color: $color_textGray;
-	          font-size: 10px;
-	        }
-	      }
-		.ttl {
-			color: $color_textBlack;
-			font-size: 24px;
-			line-height: 1.2;
-			text-align: center;
-		}
-		.maker{
-			margin-bottom: 15px;
-			color: $color_textBlack;
-			font-size: 14px;
-			text-align: center;
-			line-height: 2;
-			&Name{
-				font-weight: bold;
-				padding-right: 10px;
+			.source{
+		        margin-bottom: 10px;
+		        text-align: center;
+		        line-height: 1;
+		        a{
+		          color: $color_textGray;
+		          font-size: 10px;
+		        }
+		      }
+			.ttl {
+				color: $color_textBlack;
+				font-size: 24px;
+				line-height: 1.2;
+				text-align: center;
 			}
-		}
-		.gameCap{
-			width: 90%;
-			margin: 0 auto;
-			font-size: 0;
-			.device,.releaseDay,.gameTag{
-				display: inline-block;
-				@include box-sizing;
-				color: $color_textGray;
+			.maker{
+				margin-bottom: 15px;
+				color: $color_textBlack;
 				font-size: 14px;
+				text-align: center;
 				line-height: 2;
-				vertical-align: top;
-				&:before{
-					font-family: "icomoon";
+				&Name{
+					font-weight: bold;
+					padding-right: 10px;
+				}
+			}
+			.gameCap{
+				width: 90%;
+				margin: 0 auto;
+				font-size: 0;
+				.device,.releaseDay,.gameTag{
 					display: inline-block;
+					@include box-sizing;
+					color: $color_textGray;
 					font-size: 14px;
+					line-height: 2;
+					vertical-align: top;
+					&:before{
+						font-family: "icomoon";
+						display: inline-block;
+						font-size: 14px;
+					}
+				}
+				.device{
+					width: 50%;
+					&:before{
+						content:"\e613";
+					}
+				}
+				.releaseDay{
+					width: 50%;
+					&:before{
+						content:"\e616";
+					}
+				}
+				.gameTag{
+					width: 100%;
+					&:before{
+						content:"\e618";
+					}
 				}
 			}
-			.device{
-				width: 50%;
-				&:before{
-					content:"\e613";
+			.linkList{
+				width: 90%;
+				margin: 10px auto;
+				text-align: center;
+				li{
+					display: inline-block;
+			        width: 49%;
 				}
-			}
-			.releaseDay{
-				width: 50%;
-				&:before{
-					content:"\e616";
+				.officialLink,.youtubeLink{
+			        display: inline-block;
+			        width: 98%;
+			        padding: 0 10px;
+			        margin: 5px 0;
+			        border: solid 1px $color_border;
+			        @include box-sizing;
+			        @include border-radius(2px);
+			        color: $color_textGray;
+			        font-size: 14px;
+			        line-height: 2;
 				}
-			}
-			.gameTag{
-				width: 100%;
-				&:before{
-					content:"\e618";
-				}
-			}
-		}
-		.linkList{
-			width: 90%;
-			margin: 10px auto;
-			text-align: center;
-			li{
-				display: inline-block;
-		        width: 49%;
-			}
-			.officialLink,.youtubeLink{
-		        display: inline-block;
-		        width: 98%;
-		        padding: 0 10px;
-		        margin: 5px 0;
-		        border: solid 1px $color_border;
-		        @include box-sizing;
-		        @include border-radius(2px);
-		        color: $color_textGray;
-		        font-size: 14px;
-		        line-height: 2;
 			}
 		}
 
@@ -236,6 +237,7 @@
 			    }
 			}
 		}
+	}
 		.linkBtnWrap{
 			margin:5px 0;
 			border: 1px solid $color_border;
