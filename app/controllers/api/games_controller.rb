@@ -17,7 +17,7 @@ class Api::GamesController < ApplicationController
 	end
 
   def devices
-    @devices = Game.custom_query @current_user, params
+    @devices = Game.get_all_devices
   end
 
 	private

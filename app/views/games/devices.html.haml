@@ -1,0 +1,25 @@
+= content_for :head do
+  = stylesheet_link_tag    "pc/search_device"
+
+= content_for :last do
+  = javascript_include_tag "main/pc/search_device"
+
+= render partial: "application/pc/default_header"
+
+.mainContent.search-device-page
+  .mainContentInner
+    .deviceColumn.device-column
+      .deviceMenu
+        %h1.deviceMenuTtl デバイス一覧
+        %form.deviceSearchWrap
+          %input.deviceSearch.search-device{placeholder: "デバイスを検索"}
+        %ul.deviceMenuList.device-list
+    .gameResultColumn
+      .gameResultColumnList.gameListBox
+        .result-area.resultArea
+        %ul.gameListWrap.flexWidth.result-list
+        = image_tag "gif-load-pc.gif", class: "loading-gif"
+
+= render partial: "application/underscore/pc/common/device"
+= render partial: "application/underscore/pc/common/game_result"
+= render partial: "application/underscore/pc/search/result_text"

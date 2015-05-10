@@ -128,8 +128,6 @@ class Game < ActiveRecord::Base
       case params[:type]
       when "activity"
         self.get_ranking current_user
-      when "device_ranking"
-        self.get_device_ranking
       else
         self.none
       end
@@ -258,6 +256,10 @@ class Game < ActiveRecord::Base
 
         break result if max_log_count < offset
       end
+    end
+
+    def get_all_devices
+      self.select(:device).distinct.map { |game| {name: game[:device]} }
     end
 	end
 

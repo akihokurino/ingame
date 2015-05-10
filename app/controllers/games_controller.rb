@@ -24,6 +24,10 @@ class GamesController < ApplicationController
     end
 	end
 
+  def devices
+
+  end
+
 	private
 	def set_game
 		@game = Game.find params[:id]
