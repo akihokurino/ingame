@@ -27,5 +27,10 @@ module Ingame
     I18n.enforce_available_locales        = false
     config.i18n.default_locale            = :ja
     config.autoload_paths                += %W(#{config.root}/app/services)
+
+    config.generators do |g|
+      g.assets     false
+      g.helper     false
+    end
   end
 end
