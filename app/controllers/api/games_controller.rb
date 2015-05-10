@@ -16,6 +16,10 @@ class Api::GamesController < ApplicationController
 		@result = Game.search_with @current_user, params
 	end
 
+  def devices
+    @devices = Game.custom_query @current_user, params
+  end
+
 	private
   def set_game
     @game = Game.find params[:id]

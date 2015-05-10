@@ -50,6 +50,14 @@
               = link_to gametag[:name], "/gametags?tag=#{gametag[:id]}", class: "gametag"
             = link_to "全て見る...", gametags_path, class: "alltag"
 
+      .deviceColumn
+        .deviceRanking
+          %h1.deviceRankingTtl 人気のデバイス
+          %ul.deviceRankingList
+            - @ranking_devices.each do |device|
+              = link_to device, "/games/devices?device=#{device}", class: "device device#{device}"
+            = link_to "全て見る...", devices_games_path, class: "alldevice"
+
     .postColumn
       .addPost
         .addPostInner

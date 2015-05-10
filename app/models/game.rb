@@ -128,6 +128,8 @@ class Game < ActiveRecord::Base
       case params[:type]
       when "activity"
         self.get_ranking current_user
+      when "device_ranking"
+        self.get_device_ranking
       else
         self.none
       end
@@ -224,6 +226,37 @@ class Game < ActiveRecord::Base
         end
 
         logs[0].game
+      end
+    end
+
+    def get_device_ranking
+      limit   = 20
+      offset  = 0
+      devices = []
+      result  = []
+
+      fetch_recent_devices = Proc.new do |limit, offset|
+        Log.includes(:game).order("created_at DESC").offset(offset).limit(limit).select(:game_id).group_by { |log| log[:game_id] }.values.sort { |a, b| a.length <=> b.length }.reverse.each do |logs|
+          devices << logs[0].game[:device]
+        end
+
+        devices.uniq
+      end
+
+      fetch_recent_devices.call limit, offset
+
+      max_log_count = Log.count
+      result = loop do
+        if result.length > 15
+          break result[0, 15]
+        else
+          result = fetch_recent_devices.call limit, offset
+        end
+
+        limit  += 20
+        offset += 20
+
+        break result if max_log_count < offset
       end
     end
 	end

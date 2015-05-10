@@ -20,20 +20,20 @@ class Gametag < ActiveRecord::Base
     end
 
     def get_ranking
-      limit     = 20
-      offset    = 0
-      gametags  = []
-      result    = []
+      limit    = 20
+      offset   = 0
+      gametags = []
+      result   = []
 
       fetch_recent_tags = Proc.new do |limit, offset|
-        Log.includes(:game).order("created_at DESC").offset(offset).limit(limit).select(:game_id).group_by { |log| log[:game_id] }.values.sort { |a, b| a.length <=> b.length }.reverse.map do |logs|
-
+        Log.includes(:game).order("created_at DESC").offset(offset).limit(limit).select(:game_id).group_by { |log| log[:game_id] }.values.sort { |a, b| a.length <=> b.length }.reverse.each do |logs|
           gametags += logs[0].game.gametags.pluck(:id, :name)
         end
 
         gametags.uniq
       end
 
+      max_log_count = Log.count
       result = loop do
         if result.length > 15
           break result[0, 15]
@@ -43,6 +43,8 @@ class Gametag < ActiveRecord::Base
 
         limit  += 20
         offset += 20
+
+        break result if max_log_count < offset
       end
 
       result.map {|tag| {id: tag[0], name: tag[1]} }

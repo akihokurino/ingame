@@ -29,6 +29,9 @@ Ingame::Application.routes.draw do
   resources :logs, only: ["index", "create"]
 
   resources :games, only: ["show"] do
+    collection do
+      get "devices"
+    end
     resources :reviews, only: ["show", "new", "create"]
   end
 
@@ -59,6 +62,7 @@ Ingame::Application.routes.draw do
     resources :games, only: ["index", "show"], format: "json" do
       collection do
         get "search"
+        get "devices"
       end
     end
     resources :game_likes, only: ["create", "destroy"], format: "json"
