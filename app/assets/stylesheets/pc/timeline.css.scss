@@ -3,6 +3,7 @@
 @import "component/_gameActivity.css.scss";
 @import "component/_postBox.css.scss";
 @import "component/_activityPost.css.scss";
+@import "component/_gametagRanking.css.scss";
 
 html {
   background: $bg_color;
@@ -23,22 +24,22 @@ html {
 
   }
   /*---   .mainTtl   ----------*/
-  .profileColumn,.postColumn,.userColumn{
+  .leftSubColumn, .postColumn, .rightSubColumn{
     margin-top: 10px;
   }
 
-  .profileColumn {
+  .leftSubColumn {
     float: left;
-    position: fixed;
     width: 240px;
   }
+
   .postColumn {
     float: left;
     width: 520px;
     padding: 0 10px;
-    margin-left: 240px;
+    /*margin-left: 240px;*/
   }
-  .subColumn {
+  .rightSubColumn {
     margin-top: 10px;
     float: right;
     width: 320px;

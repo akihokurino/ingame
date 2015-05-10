@@ -32,6 +32,8 @@ Ingame::Application.routes.draw do
     resources :reviews, only: ["show", "new", "create"]
   end
 
+  resources :gametags, only: ["index"]
+
 
 
   namespace :api do
@@ -80,6 +82,8 @@ Ingame::Application.routes.draw do
     end
 
     resources :sessions, only: ["create"], format: "json"
+
+    resources :gametags, only: ["index"], format: "json"
   end
 
   namespace :admin do

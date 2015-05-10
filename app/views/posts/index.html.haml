@@ -8,38 +8,46 @@
 
 %section.mainContent.timeline-page
   .mainContentInner
-    .profileColumn
-      %article.profile
-        .profileTopBox
-          %figure.userImgWrap
-            %a{href: "/users/#{@current_user[:id]}#logs"}
-              %img.userImg{src: "/user_photos/#{@current_user[:photo_path]}", width: "100", height: "100", alt: ""}
-          %p.userName
-            = link_to @current_user[:username], "/users/#{@current_user[:id]}#logs"
-          - unless @current_user[:place].blank?
-            %p.userPlace.icon-place
-              = @current_user[:place]
-        %ul.profileCountList.count-box
-          %li.gameNum.logs-li
-            %a{href: "/users/#{@current_user[:id]}#logs"}
-              マイゲーム
-              %span.count
-                = @current_user[:logs_count]
-          %li.postNum.posts-li
-            %a{href: "/users/#{@current_user[:id]}#posts"}
-              ポスト
-              %span.count
-                = @current_user[:posts_count]
-          %li.followNum.follows-li
-            %a{href: "/users/#{@current_user[:id]}#follows"}
-              フォロー
-              %span.count
-                = @current_user.follow_num
-          %li.followerNum.followers-li
-            %a{href: "/users/#{@current_user[:id]}#followers"}
-              フォロワー
-              %span.count
-                = @current_user.follower_num
+    .leftSubColumn
+      .profileColumn
+        %article.profile
+          .profileTopBox
+            %figure.userImgWrap
+              %a{href: "/users/#{@current_user[:id]}#logs"}
+                %img.userImg{src: "/user_photos/#{@current_user[:photo_path]}", width: "100", height: "100", alt: ""}
+            %p.userName
+              = link_to @current_user[:username], "/users/#{@current_user[:id]}#logs"
+            - unless @current_user[:place].blank?
+              %p.userPlace.icon-place
+                = @current_user[:place]
+          %ul.profileCountList.count-box
+            %li.gameNum.logs-li
+              %a{href: "/users/#{@current_user[:id]}#logs"}
+                マイゲーム
+                %span.count
+                  = @current_user[:logs_count]
+            %li.postNum.posts-li
+              %a{href: "/users/#{@current_user[:id]}#posts"}
+                ポスト
+                %span.count
+                  = @current_user[:posts_count]
+            %li.followNum.follows-li
+              %a{href: "/users/#{@current_user[:id]}#follows"}
+                フォロー
+                %span.count
+                  = @current_user.follow_num
+            %li.followerNum.followers-li
+              %a{href: "/users/#{@current_user[:id]}#followers"}
+                フォロワー
+                %span.count
+                  = @current_user.follower_num
+
+      .gametagColumn
+        .gametagRanking
+          %h1.gametagRankingTtl トレンド
+          %ul.gametagRankingList
+            - @ranking_gametags.each do |gametag|
+              = link_to gametag[:name], "", class: "gametag"
 
     .postColumn
       .addPost
@@ -73,7 +81,7 @@
       .post-list
       = image_tag "gif-load-pc.gif", class: "loading-gif"
 
-    .subColumn.sub-column
+    .rightSubColumn.sub-column
       .gameColumn
         .gameActivity
           %h1.gameActivityTtl 最近登録されたゲーム

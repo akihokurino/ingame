@@ -10,6 +10,7 @@ class PostsController < ApplicationController
 
     already_customised, order_string = UserLogOrder.get_order @current_user[:id]
     @log_order                       = order_string.split ","
+    @ranking_gametags                = Gametag.custom_query "ranking"
   end
 
   def show

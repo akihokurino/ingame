@@ -40,6 +40,10 @@ class Game < ActiveRecord::Base
   RANKING_LIMIT = 5
   ROOT_DIR      = File.expand_path "../../../", __FILE__
 
+  default_scope {
+    includes(:gametags)
+  }
+
   scope :search, -> (title) {
     where("title LIKE ?", "%#{title}%")
   }
