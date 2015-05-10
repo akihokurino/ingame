@@ -1,0 +1,42 @@
+@import "../_function.css.scss";
+@import "component/_gametagList.css.scss";
+@import "component/_gameListBox.css.scss";
+
+html {
+  background: $bg_color;
+}
+
+/*---   .mainContent   ---------------------------*/
+.mainContent {
+  @include clearfix;
+  padding: 48px 0 46px;
+  background-color: $bg_color;
+
+  &Inner {
+    width: 1080px;
+    margin: 0 auto;
+    @include clearfix;
+    position: relative;
+
+  }
+
+  /*---   .mainTtl   ----------*/
+  .gametagColumn, .gameResultColumn {
+    margin-top: 10px;
+  }
+
+  .gametagColumn {
+    float: left;
+    width: 240px;
+    height: 500px;
+    position: fixed;
+    overflow-y: scroll;
+  }
+
+  .gameResultColumn {
+    margin-left: 260px;
+    float: left;
+    width: 820px;
+
+  }
+}

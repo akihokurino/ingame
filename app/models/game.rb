@@ -19,8 +19,6 @@ class Game < ActiveRecord::Base
   has_many :game_urls, dependent: :destroy
   has_one :review, dependent: :destroy
 
-  default_scope { includes(:gametags) }
-
 	validates :title,
 		presence: true,
 		length: {maximum: 255}
@@ -130,25 +128,44 @@ class Game < ActiveRecord::Base
       case params[:type]
       when "activity"
         self.get_ranking current_user
+      else
+        self.none
       end
     end
 
     def search_with(current_user, params)
-      search_title = params[:search_title]
-      page         = params[:page].to_i
+      search_title  = params[:search_title]
+      search_tag_id = params[:search_tag_id]
+      page          = params[:page].to_i
       return self.none if page < 1
 
       offset = (page - 1) * LIMIT
-      games  = self.search(self.escape(search_title)).order("created_at DESC").offset(offset).limit(LIMIT).map do |game|
-        unless current_user[:id].nil?
-          game.check_rate current_user
-          game.check_regist current_user
+
+      unless search_title.nil?
+        games = self.search(self.escape(search_title)).order("created_at DESC").offset(offset).limit(LIMIT).map do |game|
+          unless current_user[:id].nil?
+            game.check_rate current_user
+            game.check_regist current_user
+          end
+
+          game
         end
 
-        game
+        count = self.search(self.escape(search_title)).count
       end
 
-      count = self.search(self.escape(search_title)).count
+      unless search_tag_id.nil?
+        games = Gametag.find(search_tag_id).games.order("created_at DESC").offset(offset).limit(LIMIT).map do |game|
+          unless current_user[:id].nil?
+            game.check_rate current_user
+            game.check_regist current_user
+          end
+
+          game
+        end
+
+        count = Gametag.find(search_tag_id).games.count
+      end
 
       {count: count, games: games}
     end

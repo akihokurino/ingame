@@ -1,0 +1,78 @@
+@import "../../_function.css.scss";
+
+/*---   .gametagRanking   ----------*/
+.gametagRanking, .gametagMenu {
+  @include clearfix;
+  margin-top: 20px;
+
+  &Ttl {
+    padding: 8px 0;
+    color:$color_textBlack;
+    font-size:14px;
+    font-weight:bold;
+    margin-bottom: 5px;
+  }
+
+  .tagSearchWrap {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 1px;
+    border: 1px solid #ccc;
+    @include border-radius(2px);
+    background: #fff;
+
+    &:before {
+      position: absolute;
+      top: 6px;
+      left: 4px;
+      color: #888;
+      font-size: 1.5rem;
+      font-family: 'icomoon';
+      content: "\e60c";
+    }
+  }
+  .tagSearch {
+    width: 100%;
+    height: 30px;
+    margin: 0 auto;
+    padding-left: 40px;
+    border: none;
+    @include border-radius(7px);
+    @include box-sizing;
+    @include appearance;
+    line-height: normal;
+    outline: 0;
+
+    &::-webkit-input-placeholder {
+      color: #cbcbcb;
+      font-size: .875rem;
+      line-height: 1.5rem;
+    }
+  }
+
+  &List {
+    .item {
+      display: inline-block;
+    }
+    .gametag {
+      background: #fff;
+      border: solid 1px #e6e6e6;
+      display: inline-block;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      border-radius: 3px;
+      padding: 4px 10px;
+      color: $color_textBlack;
+      font-size: 12px;
+    }
+    .alltag {
+      display: block;
+      color: $color_textBlack;
+      margin-top: 5px;
+      font-size: 12px;
+    }
+  }
+}

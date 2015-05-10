@@ -7,6 +7,8 @@
     %ul.sortList
       %li.item.current ゲーム検索
       %li.item
+        = link_to "タグ検索", gametags_path, class: "sortListLink"
+      %li.item
         = link_to "ユーザー検索", "#", class: "sortListLink change-target-link"
   .gameListBox
     .result-area

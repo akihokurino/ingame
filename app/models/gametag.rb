@@ -10,6 +10,8 @@ class Gametag < ActiveRecord::Base
   class << self
     def custom_query(type)
       case type
+      when "all"
+        self.where.not(name: "").select :id, :name
       when "ranking"
         self.get_ranking
       else

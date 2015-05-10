@@ -1,0 +1,25 @@
+= content_for :head do
+  = stylesheet_link_tag    "pc/search_gametag"
+
+= content_for :last do
+  = javascript_include_tag "main/pc/search_gametag"
+
+= render partial: "application/pc/default_header"
+
+.mainContent.search-gametag-page
+  .mainContentInner
+    .gametagColumn.gametag-column
+      .gametagMenu
+        %h1.gametagMenuTtl タグ一覧
+        %form.tagSearchWrap
+          %input.tagSearch.search-tag{placeholder: "タグを検索"}
+        %ul.gametagMenuList.gametag-list
+    .gameResultColumn
+      .gameResultColumnList.gameListBox
+        .result-area
+        %ul.gameListWrap.flexWidth.result-list
+        = image_tag "gif-load-pc.gif", class: "loading-gif"
+
+= render partial: "application/underscore/pc/common/gametag"
+= render partial: "application/underscore/pc/common/game_result"
+= render partial: "application/underscore/pc/search/result_text"
