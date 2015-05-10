@@ -42,7 +42,7 @@
 
       this.game_results_view.search({search_device: this.current_device, page: 1}, function (response) {
         that.$(".result-area").html((that.text_template({
-          search_title: response.device, target: "ゲーム", result_count: response.count
+          search_title: that.current_device, target: "ゲーム", result_count: response.count
         })));
       });
     }

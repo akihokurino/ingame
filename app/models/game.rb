@@ -136,6 +136,7 @@ class Game < ActiveRecord::Base
     def search_with(current_user, params)
       search_title  = params[:search_title]
       search_tag_id = params[:search_tag_id]
+      search_device = params[:search_device]
       page          = params[:page].to_i
       return self.none if page < 1
 
@@ -170,6 +171,21 @@ class Game < ActiveRecord::Base
         count       = current_tag.games.count
 
         return {count: count, games: games, tag: current_tag[:name]}
+      end
+
+      unless search_device.nil?
+        games = Game.where(device: search_device).order("created_at DESC").offset(offset).limit(LIMIT).map do |game|
+          unless current_user[:id].nil?
+            game.check_rate current_user
+            game.check_regist current_user
+          end
+
+          game
+        end
+
+        count = Game.where(device: search_device).count
+
+        return {count: count, games: games}
       end
     end
 
