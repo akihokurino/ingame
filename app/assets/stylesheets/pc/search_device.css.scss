@@ -10,7 +10,7 @@ html {
 /*---   .mainContent   ---------------------------*/
 .mainContent {
   @include clearfix;
-  padding: 48px 0 46px;
+  padding: 150px 0 46px;
   background-color: $bg_color;
 
   &Inner {
@@ -28,6 +28,7 @@ html {
 
   .deviceColumn {
     float: left;
+    top: 150px;
     width: 240px;
     height: 500px;
     position: fixed;

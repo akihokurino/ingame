@@ -7,20 +7,20 @@
 = render partial: "application/pc/default_header"
 
 .mainContent.search-device-page
-  / .searchTopBox
-  /   .searchBox
-  /     %form.searchWrap
-  /       %input.search.game-title-input{type: "text", placeholder: "キーワードでゲームを探す"}
-  /     %p.searchBtn.search-btn{href: ""} 検索
-  /   %ul.sortList
-  /     %li.item.current
-  /       %a.sortListLink{href: "/search#game"} ゲーム検索
-  /     %li.item
-  /       = link_to "タグ検索", gametags_path, class: "sortListLink"
-  /     %li.item
-  /       = link_to "デバイス検索", devices_games_path, class: "sortListLink"
-  /     %li.item
-  /       %a.sortListLink{href: "/search#user"} ユーザー検索
+  .searchTopBox
+    .searchBox
+      %form.searchWrap
+        %input.search.game-title-input{type: "text", placeholder: "キーワードでゲームを探す"}
+      %p.searchBtn.search-btn{href: ""} 検索
+    %ul.sortList
+      %li.item
+        %a.sortListLink{href: "/search#game"} ゲーム検索
+      %li.item
+        = link_to "タグ検索", gametags_path, class: "sortListLink"
+      %li.item.current
+        = link_to "デバイス検索", devices_games_path, class: "sortListLink"
+      %li.item
+        %a.sortListLink{href: "/search#user"} ユーザー検索
   .mainContentInner
     .deviceColumn.device-column
       .deviceMenu
