@@ -14,3 +14,4 @@ json.results do |json|
 end
 
 json.count @result[:count]
+json.tag @result[:tag] unless @result[:tag].nil?

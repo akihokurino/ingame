@@ -41,7 +41,9 @@
       var that = this;
 
       this.game_results_view.search({search_tag_id: this.current_gametag_id, page: 1}, function (response) {
-
+        that.$(".result-area").html((that.text_template({
+          search_title: response.tag, target: "ゲーム", result_count: response.count
+        })));
       });
     }
   });

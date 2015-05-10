@@ -152,6 +152,8 @@ class Game < ActiveRecord::Base
         end
 
         count = self.search(self.escape(search_title)).count
+
+        return {count: count, games: games}
       end
 
       unless search_tag_id.nil?
@@ -164,10 +166,11 @@ class Game < ActiveRecord::Base
           game
         end
 
-        count = Gametag.find(search_tag_id).games.count
-      end
+        current_tag = Gametag.find search_tag_id
+        count       = current_tag.games.count
 
-      {count: count, games: games}
+        return {count: count, games: games, tag: current_tag[:name]}
+      end
     end
 
     def create_from_scraping(hash)
