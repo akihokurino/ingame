@@ -103,15 +103,8 @@
                 %form.commentWrap
                   %textarea.comment.comment-input{placeholder: "コメントする"}
     .subColumn.sub-column
-      .gameColumn
-        .gameActivity
-          %h1.gameActivityTtl 最近登録されたゲーム
-          %ul.gameActivityList.game-activity-list
-
-      .userColumn
-        .userActivity
-          %h1.userActivityTtl 最近登録したユーザー
-          %ul.userActivityList.user-activity-list
+      = render partial: "game_ranking"
+      = render partial: "recent_user"
 
 
 = render partial: "application/underscore/pc/post_detail/like_user"

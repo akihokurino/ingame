@@ -1,0 +1,7 @@
+.gametagColumn
+  .gametagRanking
+    %h1.gametagRankingTtl 人気のタグ
+    %ul.gametagRankingList
+      - @ranking_gametags.each do |gametag|
+        = link_to gametag[:name], "/gametags?tag=#{gametag[:id]}", class: "gametag"
+      = link_to "全て見る...", gametags_path, class: "alltag"

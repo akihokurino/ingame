@@ -9,54 +9,9 @@
 %section.mainContent.timeline-page
   .mainContentInner
     .leftSubColumn
-      .profileColumn
-        %article.profile
-          .profileTopBox
-            %figure.userImgWrap
-              %a{href: "/users/#{@current_user[:id]}#logs"}
-                %img.userImg{src: "/user_photos/#{@current_user[:photo_path]}", width: "100", height: "100", alt: ""}
-            %p.userName
-              = link_to @current_user[:username], "/users/#{@current_user[:id]}#logs"
-            - unless @current_user[:place].blank?
-              %p.userPlace.icon-place
-                = @current_user[:place]
-          %ul.profileCountList.count-box
-            %li.gameNum.logs-li
-              %a{href: "/users/#{@current_user[:id]}#logs"}
-                マイゲーム
-                %span.count
-                  = @current_user[:logs_count]
-            %li.postNum.posts-li
-              %a{href: "/users/#{@current_user[:id]}#posts"}
-                ポスト
-                %span.count
-                  = @current_user[:posts_count]
-            %li.followNum.follows-li
-              %a{href: "/users/#{@current_user[:id]}#follows"}
-                フォロー
-                %span.count
-                  = @current_user.follow_num
-            %li.followerNum.followers-li
-              %a{href: "/users/#{@current_user[:id]}#followers"}
-                フォロワー
-                %span.count
-                  = @current_user.follower_num
-
-      .gametagColumn
-        .gametagRanking
-          %h1.gametagRankingTtl 人気のタグ
-          %ul.gametagRankingList
-            - @ranking_gametags.each do |gametag|
-              = link_to gametag[:name], "/gametags?tag=#{gametag[:id]}", class: "gametag"
-            = link_to "全て見る...", gametags_path, class: "alltag"
-
-      .deviceColumn
-        .deviceRanking
-          %h1.deviceRankingTtl 人気のデバイス
-          %ul.deviceRankingList
-            - @ranking_devices.each do |device|
-              = link_to device, "/games/devices?device=#{device}", class: "device device#{device}"
-            = link_to "全て見る...", devices_games_path, class: "alldevice"
+      = render partial: "profile"
+      = render partial: "tag_ranking"
+      = render partial: "device_ranking"
 
     .postColumn
       .addPost
@@ -91,24 +46,9 @@
       = image_tag "gif-load-pc.gif", class: "loading-gif timeline-gif"
 
     .rightSubColumn.sub-column
-      .gameColumn
-        .gameActivity
-          %h1.gameActivityTtl 最近登録されたゲーム
-          %ul.gameActivityList.game-activity-list
-            = image_tag "gif-load-pc.gif", class: "loading-gif"
-
-      .userColumn
-        .userActivity
-          %h1.userActivityTtl 最近登録したユーザー
-          %ul.userActivityList.user-activity-list
-            = image_tag "gif-load-pc.gif", class: "loading-gif"
-      .footerColumn
-        %p
-          = link_to "利用規約", term_pages_path, class: "ftLink"
-        %p
-          = link_to "プライバシーポリシー", privacy_pages_path, class: "ftLink"
-        %p
-          %small.copyright &copy; 2015 gamr.
+      = render partial: "game_ranking"
+      = render partial: "recent_user"
+      = render partial: "footer"
 
 
 
