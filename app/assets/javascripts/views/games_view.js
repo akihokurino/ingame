@@ -9,6 +9,7 @@ var GamesView = Backbone.View.extend({
     }
 
     this.listenTo(this.collection, "add", this.addGame);
+    this.$el.find(".loading-gif").css("display", "block");
   },
   addGame: function (game) {
     if (game.id) {
@@ -22,6 +23,7 @@ var GamesView = Backbone.View.extend({
     this.collection.fetch({
       data: params,
       success: function (model, response, options) {
+        that.$el.find(".loading-gif").css("display", "none");
         that.setCollection(model, response, options);
 
         if (callback) {

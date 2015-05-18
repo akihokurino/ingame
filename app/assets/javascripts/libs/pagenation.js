@@ -3,6 +3,8 @@ var Pagenation = function (collection, params, callback) {
   this.params     = params;
   this.callback   = callback;
   _.bindAll(this, "load");
+
+  $(".loading-gif").css("display", "block");
 }
 
 Pagenation.prototype = {
