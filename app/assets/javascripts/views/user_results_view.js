@@ -17,6 +17,7 @@ var UserResultsView = Backbone.View.extend({
   },
   search: function (params, callback) {
     var that = this;
+    this.$el.html("");
     this.$el.next(".loading-gif").css("display", "block");
     $(window).unbind("scroll");
 

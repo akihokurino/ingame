@@ -55,6 +55,10 @@ input[type="submit"],{
 	width: 30px;
 	height: 30px;
 	margin: 0 auto;
+
+  &.m20 {
+    margin-top: 20px;
+  }
 }
 
 .error-message {

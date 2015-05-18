@@ -11,7 +11,6 @@ var UsersView = Backbone.View.extend({
     }
 
     this.listenTo(this.collection, "add", this.addUser);
-    this.$el.next(".loading-gif").css("display", "block");
   },
   addUser: function (user) {
     if (user.id) {
@@ -53,6 +52,7 @@ var UsersView = Backbone.View.extend({
   },
   renderAll: function (params, callback) {
     var that = this;
+    this.$el.next(".loading-gif").css("display", "block");
 
     this.collection.fetch({
       data: params,
