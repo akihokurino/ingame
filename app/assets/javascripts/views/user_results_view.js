@@ -17,7 +17,7 @@ var UserResultsView = Backbone.View.extend({
   },
   search: function (params, callback) {
     var that = this;
-
+    this.$el.next(".loading-gif").css("display", "block");
     $(window).unbind("scroll");
 
     this.collection.fetch({
@@ -26,6 +26,7 @@ var UserResultsView = Backbone.View.extend({
         that.pagenation = new Pagenation(that.collection, params, that.setCollection);
 
         that.collection.reset();
+        that.$el.next(".loading-gif").css("display", "none");
         that.$el.html("");
         that.setCollection(model, response, options);
 
