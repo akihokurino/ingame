@@ -36,3 +36,16 @@ unless PostType.count > 0
     PostType.create name: type
   end
 end
+
+unless ReviewContentType.count > 0
+  %w(
+    header
+    text
+    photo
+    quote
+    url
+    youtube
+  ).each do |type|
+    ReviewContentType.create name: type
+  end
+end

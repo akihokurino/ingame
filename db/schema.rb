@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150506063301) do
+ActiveRecord::Schema.define(version: 20150520131151) do
 
   create_table "admins", force: true do |t|
     t.string   "username"
@@ -193,6 +193,24 @@ ActiveRecord::Schema.define(version: 20150506063301) do
   add_index "review_comments", ["review_id"], name: "index_review_comments_on_review_id", using: :btree
   add_index "review_comments", ["user_id"], name: "index_review_comments_on_user_id", using: :btree
 
+  create_table "review_content_types", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "review_contents", force: true do |t|
+    t.integer  "review_id"
+    t.integer  "review_content_type_id"
+    t.text     "body"
+    t.integer  "order"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "review_contents", ["review_content_type_id"], name: "index_review_contents_on_review_content_type_id", using: :btree
+  add_index "review_contents", ["review_id"], name: "index_review_contents_on_review_id", using: :btree
+
   create_table "review_likes", force: true do |t|
     t.integer  "review_id"
     t.integer  "user_id"
@@ -204,12 +222,13 @@ ActiveRecord::Schema.define(version: 20150506063301) do
   add_index "review_likes", ["user_id"], name: "index_review_likes_on_user_id", using: :btree
 
   create_table "reviews", force: true do |t|
-    t.text     "text"
     t.integer  "user_id"
     t.integer  "log_id"
     t.integer  "game_id"
+    t.string   "title"
     t.integer  "review_likes_count",    default: 0
     t.integer  "review_comments_count", default: 0
+    t.integer  "view_count",            default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  review_id: 
+  review_content_type_id: 
+  body: MyText
+  order: 1
+
+two:
+  review_id: 
+  review_content_type_id: 
+  body: MyText
+  order: 1
