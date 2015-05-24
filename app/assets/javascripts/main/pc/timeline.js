@@ -60,9 +60,7 @@
 
       this.games_view.renderAll({type: "activity"});
 
-      this.posts_view.render({page: 1}, function () {
-        $(".comment-input").autosize();
-      });
+      this.posts_view.render({page: 1});
     },
     toggleSelectModal: function () {
       if ($(".select-log-list").css("display") == "none") {

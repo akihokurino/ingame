@@ -4,411 +4,411 @@
 
 /*---   .mainCnt   ---------------------------*/
 .mainCnt {
-	.messageDialog {
-		display: none;
-		&.show{
-			position: fixed;
-			display: block;
-			top: 80px;
-			left: 50%;
-			display: block;
-			padding: 10px 30px;
-			margin-left: -150px;
-			width: 300px;
-			box-sizing: border-box;
-			border-radius: 4px;
-			background: rgba(0, 0, 0, 0.73);
-			box-shadow: 0 0 10px rgba(0,0,0,.5);
-			color: #eee;
-			font-size: 14px;
-			text-align: center;
-			line-height: 2.5;
-			z-index: 10;
-			&:after{
-				font-family: "icomoon"
-			}
-		}
-	}
-	/*---   .gameBox   ----------*/
-	.gameWrap {
-		padding-top: 44px;
-		background: #fff;
+  .messageDialog {
+    display: none;
+    &.show{
+      position: fixed;
+      display: block;
+      top: 80px;
+      left: 50%;
+      display: block;
+      padding: 10px 30px;
+      margin-left: -150px;
+      width: 300px;
+      box-sizing: border-box;
+      border-radius: 4px;
+      background: rgba(0, 0, 0, 0.73);
+      box-shadow: 0 0 10px rgba(0,0,0,.5);
+      color: #eee;
+      font-size: 14px;
+      text-align: center;
+      line-height: 2.5;
+      z-index: 10;
+      &:after{
+        font-family: "icomoon"
+      }
+    }
+  }
+  /*---   .gameBox   ----------*/
+  .gameWrap {
+    padding-top: 44px;
+    background: #fff;
 
-		.imgWrap{
-			width: 100%;
-			background: #431e99; /* Old browsers */
-			background: -moz-linear-gradient(-45deg, #431e99 0%, #2989d8 50%, #207cca 51%, #af23a6 100%); /* FF3.6+ */
-			background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#431e99), color-stop(50%,#2989d8), color-stop(51%,#207cca), color-stop(100%,#af23a6)); /* Chrome,Safari4+ */
-			background: -webkit-linear-gradient(-45deg, #431e99 0%,#2989d8 50%,#207cca 51%,#af23a6 100%); /* Chrome10+,Safari5.1+ */
-			background: -o-linear-gradient(-45deg, #431e99 0%,#2989d8 50%,#207cca 51%,#af23a6 100%); /* Opera 11.10+ */
-			background: -ms-linear-gradient(-45deg, #431e99 0%,#2989d8 50%,#207cca 51%,#af23a6 100%); /* IE10+ */
-			background: linear-gradient(135deg, #431e99 0%,#2989d8 50%,#207cca 51%,#af23a6 100%); /* W3C */
-			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#431e99', endColorstr='#af23a6',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-			text-align: center;
-		
-			.gameImg{
-				margin-top: 5px;
-				max-width: 100%;
-				height: auto;
-				max-height: 150px;
-				@include border-radius(2px);
-				@include box-sizing;
-			}
-		}
+    .imgWrap{
+      width: 100%;
+      background: #431e99; /* Old browsers */
+      background: -moz-linear-gradient(-45deg, #431e99 0%, #2989d8 50%, #207cca 51%, #af23a6 100%); /* FF3.6+ */
+      background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#431e99), color-stop(50%,#2989d8), color-stop(51%,#207cca), color-stop(100%,#af23a6)); /* Chrome,Safari4+ */
+      background: -webkit-linear-gradient(-45deg, #431e99 0%,#2989d8 50%,#207cca 51%,#af23a6 100%); /* Chrome10+,Safari5.1+ */
+      background: -o-linear-gradient(-45deg, #431e99 0%,#2989d8 50%,#207cca 51%,#af23a6 100%); /* Opera 11.10+ */
+      background: -ms-linear-gradient(-45deg, #431e99 0%,#2989d8 50%,#207cca 51%,#af23a6 100%); /* IE10+ */
+      background: linear-gradient(135deg, #431e99 0%,#2989d8 50%,#207cca 51%,#af23a6 100%); /* W3C */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#431e99', endColorstr='#af23a6',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+      text-align: center;
 
-		.gameInfo{
-			padding: 5px 10px;
-			.source{
-		        margin-bottom: 10px;
-		        text-align: center;
-		        line-height: 1;
-		        a{
-		          color: $color_textGray;
-		          font-size: 10px;
-		        }
-		      }
-			.ttl {
-				color: $color_textBlack;
-				font-size: 24px;
-				line-height: 1.2;
-				text-align: center;
-			}
-			.maker{
-				margin-bottom: 15px;
-				color: $color_textBlack;
-				font-size: 14px;
-				text-align: center;
-				line-height: 2;
-				&Name{
-					font-weight: bold;
-					padding-right: 10px;
-				}
-			}
-			.gameCap{
-				width: 90%;
-				margin: 0 auto;
-				font-size: 0;
-				.device,.releaseDay,.gameTag{
-					display: inline-block;
-					@include box-sizing;
-					color: $color_textGray;
-					font-size: 14px;
-					line-height: 2;
-					vertical-align: top;
-					&:before{
-						font-family: "icomoon";
-						display: inline-block;
-						font-size: 14px;
-					}
-				}
-				.device{
-					width: 50%;
-					&:before{
-						content:"\e613";
-					}
-				}
-				.releaseDay{
-					width: 50%;
-					&:before{
-						content:"\e616";
-					}
-				}
-				.gameTag{
-					width: 100%;
-					&:before{
-						content:"\e618";
-					}
-				}
-			}
-			.linkList{
-				width: 90%;
-				margin: 10px auto;
-				text-align: center;
-				li{
-					display: inline-block;
-			        width: 49%;
-				}
-				.officialLink,.youtubeLink{
-			        display: inline-block;
-			        width: 98%;
-			        padding: 0 10px;
-			        margin: 5px 0;
-			        border: solid 1px $color_border;
-			        @include box-sizing;
-			        @include border-radius(2px);
-			        color: $color_textGray;
-			        font-size: 14px;
-			        line-height: 2;
-				}
-			}
-		}
+      .gameImg{
+        margin-top: 5px;
+        max-width: 100%;
+        height: auto;
+        max-height: 150px;
+        @include border-radius(2px);
+        @include box-sizing;
+      }
+    }
 
-      	.gameBtnList {
-			width: 90%;
-			margin: 0 auto;
-			@include box-sizing;
-			font-size: 14px;
-			text-align:center;
-			.item {
-				display:inline-block;
-				text-align:center;
-				width: 100%;
-				margin:5px 0;
-			}
-		}
-		.reviewBtn,.statusBtn{
-			@include appearance;
-			width: 100%;
-			padding: 0 36%;
-			line-height: 3;
-			text-align: center;
-		}
-		.reviewBtn{
-			background: #fff;
-			border: 1px solid $color_border;
-			color: $color_textBlack;
-		}
-		.statusBtn{
-			background: #fff;
-			border: solid 1px $main_color;
-			color: $main_color;
-		}
-		.registed{
-			background:$main_color;
-			border: none;
-			color:#fff;
-		}
-		.deleteBtn{
-			display: block;
-			width: 160px;
-			margin: 0 auto 10px;
-			padding: 4px;
-			@include box-sizing;
-			color: $color_red;
-			font-size: 10px;
-			text-align: center;
-			&:active{
-				background: $color_red;
-				color: #fff;
-			}
-		}
-		.gameInfo {
-			font-size: 0;
-			line-height: 1.5;
+    .gameInfo{
+      padding: 5px 10px;
+      .source{
+            margin-bottom: 10px;
+            text-align: center;
+            line-height: 1;
+            a{
+              color: $color_textGray;
+              font-size: 10px;
+            }
+          }
+      .ttl {
+        color: $color_textBlack;
+        font-size: 24px;
+        line-height: 1.2;
+        text-align: center;
+      }
+      .maker{
+        margin-bottom: 15px;
+        color: $color_textBlack;
+        font-size: 14px;
+        text-align: center;
+        line-height: 2;
+        &Name{
+          font-weight: bold;
+          padding-right: 10px;
+        }
+      }
+      .gameCap{
+        width: 90%;
+        margin: 0 auto;
+        font-size: 0;
+        .device,.releaseDay,.gameTag{
+          display: inline-block;
+          @include box-sizing;
+          color: $color_textGray;
+          font-size: 14px;
+          line-height: 2;
+          vertical-align: top;
+          &:before{
+            font-family: "icomoon";
+            display: inline-block;
+            font-size: 14px;
+          }
+        }
+        .device{
+          width: 50%;
+          &:before{
+            content:"\e613";
+          }
+        }
+        .releaseDay{
+          width: 50%;
+          &:before{
+            content:"\e616";
+          }
+        }
+        .gameTag{
+          width: 100%;
+          &:before{
+            content:"\e618";
+          }
+        }
+      }
+      .linkList{
+        width: 90%;
+        margin: 10px auto;
+        text-align: center;
+        li{
+          display: inline-block;
+              width: 49%;
+        }
+        .officialLink,.youtubeLink{
+              display: inline-block;
+              width: 98%;
+              padding: 0 10px;
+              margin: 5px 0;
+              border: solid 1px $color_border;
+              @include box-sizing;
+              @include border-radius(2px);
+              color: $color_textGray;
+              font-size: 14px;
+              line-height: 2;
+        }
+      }
+    }
 
-			.item {
-				display:table;
-				width: 100%;
-				font-size: 14px;
-				&:last-child{
-					border:none;
-				}
+    .gameBtnList {
+      width: 90%;
+      margin: 0 auto;
+      @include box-sizing;
+      font-size: 14px;
+      text-align:center;
+      .item {
+        display:inline-block;
+        text-align:center;
+        width: 100%;
+        margin:5px 0;
+      }
+    }
+    .reviewBtn,.statusBtn{
+      @include appearance;
+      width: 100%;
+      padding: 0 36%;
+      line-height: 3;
+      text-align: center;
+    }
+    .reviewBtn{
+      background: #fff;
+      border: 1px solid $color_border;
+      color: $color_textBlack;
+    }
+    .statusBtn{
+      background: #fff;
+      border: solid 1px $main_color;
+      color: $main_color;
+    }
+    .registed{
+      background:$main_color;
+      border: none;
+      color:#fff;
+    }
+    .deleteBtn{
+      display: block;
+      width: 160px;
+      margin: 0 auto 10px;
+      padding: 4px;
+      @include box-sizing;
+      color: $color_red;
+      font-size: 10px;
+      text-align: center;
+      &:active{
+        background: $color_red;
+        color: #fff;
+      }
+    }
+    .gameInfo {
+      font-size: 0;
+      line-height: 1.5;
 
-				.itemName,.officialLink{
-					display:table-cell;
-					width: 30%;
-					padding:4px 4px 4px 4px;
-					@include box-sizing;
-					color:$color_textBlack;
-					vertical-align: top;				}
-				.itemContent{
-					display:table-cell;
-					width: 65%;
-					padding:4px 4px 4px 0;
-					color:$color_textBlack;
-					text-align:left;
-				}
-			    .starList {
-			      vertical-align: middle;
-			      display:inline-block;
-			      font-size:1rem;
-			    }
-			    .icon-star{
-			      float:left;
-			      display:inline-block;
-			      font-size:20px;
-			    }
-			    .starOn {
-			      display: inline-block;
-			      color:orange;
-			    }
-			    .starOff {
-			      display: inline-block;
-			    }
-			}
-		}
-	}
-		.linkBtnWrap{
-			margin:5px 0;
-			border: 1px solid $color_border;
-			@include border-radius(2px);
-			font-size:0;
-			li{
-				position: relative;
-				display:inline-block;
-				width: 50%;
-				font-size:14px;
-				@include box-sizing;
-				&:nth-child(odd){
-					border-right: 1px solid $color_border;
-				}
-				a{
-					display:block;
-					padding:8px 10px;
-					color:$color_textBlack;
-					&:after{
-						position:absolute;
-						top:10px;
-						right:10px;
-						display:inline-block;
-						margin-left:5px;
-						font-family: 'icomoon';
-						content: "\e60c";
-						color: $color_textGray;
-						font-size: 16px;
-					}
-				}
-			}
-		}
-		.gameSummary{
-			label {
-				position: relative;
-			    display: inline-block;
-			    padding-left: 20px;
-			    margin: 4px;
-			    width:100%;
-			    @include box-sizing;
-			    color: $color_textBlack;
-			    font-size:14px;
-			    text-align:left;
-			    &:before{
-			    	position: absolute;
-					content:"";
-					display:inline-block;
-					margin-right:10px;
-					width:6px;
-					height:6px;
-					border-color: $color_textBlack;
-					border-right:solid 3px;
-					border-bottom:solid 3px;
-					-webkit-transform: rotate(45deg);
-					   -moz-transform: rotate(45deg);
-					    -ms-transform: rotate(45deg);
-					     -o-transform: rotate(45deg);
-					        transform: rotate(45deg);
-					top:3px;
-					left: 0;
-			    }
-			}
+      .item {
+        display:table;
+        width: 100%;
+        font-size: 14px;
+        &:last-child {
+          border:none;
+        }
 
-			input[type="checkbox"].expand{
-			    display: none;
-			}
+        .itemName, .officialLink {
+          display:table-cell;
+          width: 30%;
+          padding:4px 4px 4px 4px;
+          @include box-sizing;
+          color:$color_textBlack;
+          vertical-align: top;        }
+        .itemContent {
+          display:table-cell;
+          width: 65%;
+          padding:4px 4px 4px 0;
+          color:$color_textBlack;
+          text-align:left;
+        }
+        .starList {
+          vertical-align: middle;
+          display:inline-block;
+          font-size:1rem;
+        }
+        .icon-star{
+          float:left;
+          display:inline-block;
+          font-size:20px;
+        }
+        .starOn {
+          display: inline-block;
+          color:orange;
+        }
+        .starOff {
+          display: inline-block;
+        }
+      }
+    }
 
-			p{
-			    margin: 0;
-			    padding: 0 10px;
-			    border-bottom: 1px solid $color_border;
-				font-size:12px;
-				color:$color_textBlack;
-			    list-style: none;
-			    text-align:left;
-			}
+    .linkBtnWrap {
+      margin:5px 0;
+      border: 1px solid $color_border;
+      @include border-radius(2px);
+      font-size:0;
+      li {
+        position: relative;
+        display:inline-block;
+        width: 50%;
+        font-size:14px;
+        @include box-sizing;
+        &:nth-child(odd) {
+          border-right: 1px solid $color_border;
+        }
+        a {
+          display:block;
+          padding:8px 10px;
+          color:$color_textBlack;
+          &:after {
+            position:absolute;
+            top:10px;
+            right:10px;
+            display:inline-block;
+            margin-left:5px;
+            font-family: 'icomoon';
+            content: "\e60c";
+            color: $color_textGray;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+    .gameSummary {
+      label {
+        position: relative;
+        display: inline-block;
+        padding-left: 20px;
+        margin: 4px;
+        width:100%;
+        @include box-sizing;
+        color: $color_textBlack;
+        font-size:14px;
+        text-align:left;
+        &:before {
+          position: absolute;
+          content:"";
+          display:inline-block;
+          margin-right:10px;
+          width:6px;
+          height:6px;
+          border-color: $color_textBlack;
+          border-right:solid 3px;
+          border-bottom:solid 3px;
+          -webkit-transform: rotate(45deg);
+          -moz-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+          -o-transform: rotate(45deg);
+          transform: rotate(45deg);
+          top:3px;
+          left: 0;
+        }
+      }
+    }
 
-			input[type="checkbox"].expand + p{
-			    height: 0;
-			    overflow: hidden;
-			}
+    input[type="checkbox"].expand {
+      display: none;
+    }
 
-			input[type="checkbox"].expand:checked + p{
-			    height: auto;
-			}
-		}
-		.comment {
-			width: 120px;
-			padding: 0;
-			@include border-radius(20px);
-			@include box-sizing;
-			color: #ffffff;
-			text-align: center;
-		}
-	}
-	/*---   .sortBox   ----------*/
-	.boxTtl{
-		h2{
-			border-top: 1px solid #f1f1f1;
-			border-bottom: 1px solid #ddd;
-			background-color: #f7f7f7;
-			color: $color_textGray;
-			font-size:14px;
-			text-align:center;
-			line-height:3;
-			text-shadow:1px 1px 0 #f2f2f2;
-		}
-	}
-	.sortBoxWrap {
-		margin-bottom: 14px;
-		padding-top: 15px;
-	}
-	.sortBox {
-		width: 300px;
-		margin: 0 auto;
-		border: 1px solid $main_color;
-		@include border-radius(2px);
-		@include clearfix;
+    p {
+      margin: 0;
+      padding: 0 10px;
+      border-bottom: 1px solid $color_border;
+      font-size:12px;
+      color:$color_textBlack;
+      list-style: none;
+      text-align:left;
+    }
 
-		.item {
-			float: left;
-			width: 100px;
-			border-right: 1px solid $main_color;
-			@include box-sizing;
-			background: #fff;
-			font-size: 12px;
+    input[type="checkbox"].expand + p {
+      height: 0;
+      overflow: hidden;
+    }
 
-			&:last-child {
-				border: none;
-			}
-		}
-		.follow, .all, .star {
-			display: table-cell;
-			width: 104px;
-			height: 30px;
-			padding-top: 4px;
-			@include box-sizing;
-			color: $main_color;
-			text-align: center;
-			vertical-align: middle;
-			line-height: 1.1;
-		}
-		.follow {
-			border-radius: 1px 0 0 1px;
-		}
-		.star {
-			border-radius: 0 1px 1px 0;
+    input[type="checkbox"].expand:checked + p {
+      height: auto;
+    }
+  }
+  .comment {
+    width: 120px;
+    padding: 0;
+    @include border-radius(20px);
+    @include box-sizing;
+    color: #ffffff;
+    text-align: center;
+  }
+  /*---   .sortBox   ----------*/
+  .boxTtl{
+    h2{
+      border-top: 1px solid #f1f1f1;
+      border-bottom: 1px solid #ddd;
+      background-color: #f7f7f7;
+      color: $color_textGray;
+      font-size:14px;
+      text-align:center;
+      line-height:3;
+      text-shadow:1px 1px 0 #f2f2f2;
+    }
+  }
+  .sortBoxWrap {
+    margin-bottom: 14px;
+    padding-top: 15px;
+  }
+  .sortBox {
+    width: 300px;
+    margin: 0 auto;
+    border: 1px solid $main_color;
+    @include border-radius(2px);
+    @include clearfix;
 
-			&_posts {
-				border-radius: 0 1px 1px 0;
-			}
-		}
-		.current {
-			@at-root {
-				&.item {
-					border: none;
-				}
-			}
-			.follow, .all, .star {
-				background: $main_color;
-				color: #fff;
-			}
-		}
-	}
-	.game-timeline{
-		background-color: $bg_color;
-		padding-top:5px;
-	}
-	.postBox{
-		.gameBox{
-			display: none;
-		}
-	}
+    .item {
+      float: left;
+      width: 100px;
+      border-right: 1px solid $main_color;
+      @include box-sizing;
+      background: #fff;
+      font-size: 12px;
+
+      &:last-child {
+        border: none;
+      }
+    }
+    .follow, .all, .star {
+      display: table-cell;
+      width: 104px;
+      height: 30px;
+      padding-top: 4px;
+      @include box-sizing;
+      color: $main_color;
+      text-align: center;
+      vertical-align: middle;
+      line-height: 1.1;
+    }
+    .follow {
+      border-radius: 1px 0 0 1px;
+    }
+    .star {
+      border-radius: 0 1px 1px 0;
+
+      &_posts {
+        border-radius: 0 1px 1px 0;
+      }
+    }
+    .current {
+      @at-root {
+        &.item {
+          border: none;
+        }
+      }
+      .follow, .all, .star {
+        background: $main_color;
+        color: #fff;
+      }
+    }
+  }
+  .game-timeline{
+    background-color: $bg_color;
+    padding-top:5px;
+  }
+  .postBox{
+    .gameBox{
+      display: none;
+    }
+  }
 }
