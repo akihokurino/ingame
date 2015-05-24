@@ -47,7 +47,7 @@ class Gametag < ActiveRecord::Base
         break result if max_log_count < offset
       end
 
-      result.map {|tag| {id: tag[0], name: tag[1]} }
+      result.map { |tag| {id: tag[0], name: tag[1]} }.reject { |tag| tag[:name].empty? }
     end
   end
 end
