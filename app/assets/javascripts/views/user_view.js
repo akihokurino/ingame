@@ -1,5 +1,5 @@
 var UserView = Backbone.View.extend({
-  tagName: "li",
+  tagName:   "li",
   className: "item",
   events: {
     "click .follow-btn":   "follow",
@@ -31,44 +31,17 @@ var UserView = Backbone.View.extend({
   follow: function (e) {
     e.preventDefault();
     var that = this;
-    var data = {
-      "follow": {
-        "to_user_id": this.model.id
-      }
-    }
-
-    $.ajax({
-      type: "POST",
-      url: "/api/follows",
-      data: data,
-      success: function (data) {
-        if (data.result) {
-          that.$el.find("ul.btn-list li").html("");
-          that.$el.find("ul.btn-list li").append(that.unfollow_btn_template);
-        }
-      },
-      error: function () {
-
-      }
+    this.model.follow(function () {
+      that.$el.find("ul.btn-list li").html("");
+      that.$el.find("ul.btn-list li").append(that.unfollow_btn_template);
     });
   },
   unfollow: function (e) {
     e.preventDefault();
     var that = this;
-
-    $.ajax({
-      type: "DELETE",
-      url: "/api/follows/" + this.model.id,
-      data: {},
-      success: function (data) {
-        if (data.result) {
-          that.$el.find("ul.btn-list li").html("");
-          that.$el.find("ul.btn-list li").append(that.follow_btn_template);
-        }
-      },
-      error: function () {
-
-      }
+    this.model.unfollow(function () {
+      that.$el.find("ul.btn-list li").html("");
+      that.$el.find("ul.btn-list li").append(that.follow_btn_template);
     });
   }
 });
