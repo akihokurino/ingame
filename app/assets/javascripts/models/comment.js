@@ -39,5 +39,78 @@ var Comment = Backbone.Model.extend({
 
       return this;
     }
-  }
+  },
+  like: function (callback) {
+    var that = this;
+    var data = {
+      "post_comment_like": {
+        "post_comment_id": this.id,
+        "user_id": null,
+        "to_user_id": this.get("user").id
+      }
+    };
+
+    $.ajax({
+      type: "POST",
+        url: "/api/post_comment_likes",
+        data: data,
+        success: function (data) {
+          if (data) {
+            that.set({
+              "i_liked": true,
+              "comment_likes_count": parseInt(that.get("comment_likes_count")) + 1
+            });
+          }
+
+          var data = {
+            type: "comment_like",
+            comment_id: that.id,
+            from_user_id: like_socket.user_id,
+            to_user_id: that.get("user").id
+          }
+
+          like_socket.send(data);
+
+          if (callback) {
+            callback();
+          }
+        },
+        error: function () {
+
+        }
+    });
+  },
+  unlike: function (callback) {
+    var that = this;
+
+    $.ajax({
+      type: "DELETE",
+      url: "/api/post_comment_likes/" + this.id,
+      data: {},
+      success: function (data) {
+        if (data) {
+          that.set({
+            "i_liked": false,
+            "comment_likes_count": parseInt(that.get("comment_likes_count")) - 1
+          });
+        }
+
+        var data = {
+          type: "comment_unlike",
+          comment_id: that.id,
+          from_user_id: like_socket.user_id,
+          to_user_id: that.get("user").id
+        }
+
+        like_socket.send(data);
+
+        if (callback) {
+          callback();
+        }
+      },
+      error: function () {
+
+      }
+    });
+  },
 });

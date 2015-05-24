@@ -1,5 +1,5 @@
 var CommentView = Backbone.View.extend({
-  tagName: "li",
+  tagName:   "li",
   className: "item",
   events: {
     "click .like-btn":           "like",
@@ -33,72 +33,11 @@ var CommentView = Backbone.View.extend({
   },
   like: function (e) {
     e.stopPropagation();
-
-    var that = this;
-    var data = {
-      "post_comment_like": {
-        "post_comment_id": this.model.id,
-        "user_id": null,
-        "to_user_id": this.model.get("user").id
-      }
-    };
-
-    $.ajax({
-      type: "POST",
-        url: "/api/post_comment_likes",
-        data: data,
-        success: function (data) {
-          if (data) {
-            that.model.set({
-              "i_liked": true,
-              "comment_likes_count": parseInt(that.model.get("comment_likes_count")) + 1
-            });
-          }
-
-          var data = {
-            type: "comment_like",
-            comment_id: that.model.id,
-            from_user_id: like_socket.user_id,
-            to_user_id: that.model.get("user").id
-          }
-
-          like_socket.send(data);
-        },
-        error: function () {
-
-        }
-    });
+    this.model.like();
   },
   unlike: function (e) {
     e.stopPropagation();
-
-    var that = this;
-
-    $.ajax({
-      type: "DELETE",
-      url: "/api/post_comment_likes/" + this.model.id,
-      data: {},
-      success: function (data) {
-        if (data) {
-          that.model.set({
-            "i_liked": false,
-            "comment_likes_count": parseInt(that.model.get("comment_likes_count")) - 1
-          });
-        }
-
-        var data = {
-          type: "comment_unlike",
-          comment_id: that.model.id,
-          from_user_id: like_socket.user_id,
-          to_user_id: that.model.get("user").id
-        }
-
-        like_socket.send(data);
-      },
-      error: function () {
-
-      }
-    });
+    this.model.unlike();
   },
   showDeleteConfirm: function () {
     var custom_modal_view = new CustomModalView({
