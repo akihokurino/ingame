@@ -1,0 +1,19 @@
+%script{type: "text/template", id: "review-template"}
+  .reviewBox
+    .reviewHeader
+      %a.reviewHeaderLink{href: "##userProfile##"}
+        %img.profileImage{width: 30, src: "/user_photos/default.png"}
+        %span.userName username
+        %span.starBox ★★★☆☆ 3
+    .reviewBody
+      .reviewText レビュー本文。レビュー本文。レビュー本文。レビュー本文。レビュー本文。レビュー本文。レビュー本文。レビュー本文。レビュー本文。レビュー本文。レビュー本文。レビュー本文。レビュー本文。レビュー本文。レビュー本文。
+      .reviewMeta
+        .reviewTime.icon-time 投稿時間
+        %a.readMore{href: "##reviewDetail##"} もっと見る
+      .reviewFooter
+        %ul.actionList
+          %li
+            %span.like-btn.favBtn.icon-like
+              %span.likeCnt
+          %li
+            %span.icon-option.delete-btn

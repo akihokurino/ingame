@@ -1,5 +1,7 @@
 //= require ../../views/post_view.js
 //= require ../../views/posts_view.js
+//= require ../../views/review_view.js
+//= require ../../views/reviews_view.js
 
 (function () {
 
@@ -89,7 +91,12 @@
     initialize: function () {
       this.setCurrentTab();
 
+      this.review_collection = new Reviews();
+      this.reviews_view      = new ReviewsView({el: ".review-list", collection: this.review_collection});
+
       this.game_id = $(".game-page").data("gameid");
+
+      this.reviews_view.render({type: "all_of_game", game_id: this.game_id, page: 1});
     },
     setCurrentTab: function () {
       this.$el.find("ul.navigation-box li").removeClass("current");
