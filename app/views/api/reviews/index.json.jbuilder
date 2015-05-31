@@ -1,7 +1,13 @@
 json.reviews do |json|
   json.array!(@reviews) do |review|
-    json.extract! review, :id, :title, :review_likes_count, :review_comments_count, :view_count, :created_at
-
+    json.extract! review, :id, :title, :review_likes_count, :review_comments_count, :view_count
+    json.created_at review.datetime
+    json.contents do |json|
+      json.array!(review.review_contents) do |contents|
+        json.extract! contents, :body, :order
+        json.content_type contents.review_content_type[:name]
+      end
+    end
     json.game do |json|
       json.extract! review.game, :id, :title, :photo_url, :photo_path, :device
     end

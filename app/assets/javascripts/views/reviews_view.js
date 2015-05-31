@@ -8,6 +8,8 @@ var ReviewsView = Backbone.View.extend({
   },
   addReview: function (review) {
     if (review.id) {
+      this.settingModel(review);
+
       var review_view = new ReviewView({model: review});
       this.$el.append(review_view.render().el);
     }
@@ -46,4 +48,10 @@ var ReviewsView = Backbone.View.extend({
 
     $(".loading-gif").css("display", "none");
   },
+  settingModel: function (review) {
+    review
+    .strimTextWidth(200)
+    .sanitize()
+    .getRelativeTime();
+  }
 });

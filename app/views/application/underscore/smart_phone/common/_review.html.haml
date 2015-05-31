@@ -1,19 +1,41 @@
 %script{type: "text/template", id: "review-template"}
-  .reviewBox
-    .reviewHeader
-      %a.reviewHeaderLink{href: "##userProfile##"}
-        %img.profileImage{width: 30, src: "/user_photos/default.png"}
-        %span.userName username
-        %span.starBox ★★★☆☆ 3
-    .reviewBody
-      .reviewText レビュー本文。レビュー本文。レビュー本文。レビュー本文。レビュー本文。レビュー本文。レビュー本文。レビュー本文。レビュー本文。レビュー本文。レビュー本文。レビュー本文。レビュー本文。レビュー本文。レビュー本文。
-      .reviewMeta
-        .reviewTime.icon-time 投稿時間
-        %a.readMore{href: "##reviewDetail##"} もっと見る
-      .reviewFooter
-        %ul.actionList
-          %li
-            %span.like-btn.favBtn.icon-like
-              %span.likeCnt
-          %li
-            %span.icon-option.delete-btn
+  .reviewHeader
+    %a.reviewHeaderLink{href: "/users/{{= user.id }}#logs"}
+      %img.profileImage{width: 30, src: "/user_photos/{{= user.photo_path }}"}
+      %span.userName {{= user.username }}
+      {{ if (rate == 1) { }}
+      %span.starBox ★☆☆☆☆ 1
+      {{ } else if (rate == 2) { }}
+      %span.starBox ★★☆☆☆ 2
+      {{ } else if (rate == 3) { }}
+      %span.starBox ★★★☆☆ 3
+      {{ } else if (rate == 4) { }}
+      %span.starBox ★★★★☆ 4
+      {{ } else if (rate == 5) { }}
+      %span.starBox ★★★★★ 5
+      {{ } }}
+  .reviewBody
+    {{ for (var i = 0; i < contents.length; i++) { }}
+    {{ if (contents[i].content_type == "text") { }}
+    .reviewText {{= contents[i].body }}
+    {{ } }}
+    {{ } }}
+    .reviewMeta
+      .reviewTime.icon-time {{= created_at }}
+      %a.readMore{href: "/games/{{= game.id}}/reviews/{{= id }}"} もっと見る
+    .reviewFooter
+      %ul.actionList
+        %li
+          {{ if (!i_liked) { }}
+          %span.like-btn.favBtn.icon-like
+            %span.likeCnt
+              {{= review_likes_count }}
+          {{ } else { }}
+          %span.unlike-btn.favBtn.on.icon-like
+            %span.likeCnt
+              {{= review_likes_count }}
+          {{ } }}
+        %li
+          {{ if (is_my_review) { }}
+          %span.icon-option.delete-btn
+          {{ } }}
