@@ -39,6 +39,14 @@
           - @game.gametags.each do |gametag|
             %span.gametag
               = gametag.name
+
+      - if @game.wiki && @game.wiki != "0"
+        .gameSummary
+          %label{for: "summary"} 概要
+          %input.expand{type: "checkbox", id: "summary"}
+          %p
+            = @game.wiki
+
       %ul.linkList
         - @game.game_urls.each_with_index do |url, index|
           - if index == 0
@@ -49,38 +57,22 @@
               = link_to "公式サイト(#{index + 1})", url.text, target: "blank", class: "officialLink"
         %li
           %a.youtubeLink{href: "https://www.youtube.com/results?search_query=#{@game.title}", target: "blank"} Youtube
-        / - if @game.wiki
-        /   .gameSummary
-        /     %label{for: "summary"} 概要
-        /     %input.expand{type: "checkbox", id: "summary"}
-        /     %p
-        /       = @game.wiki
       - unless @current_user[:id].nil?
         %ul.gameBtnList
           %li.item.review-li
           %li.item.status-li
+          %li.item.createReviewBtn
+            = link_to "レビューを書く", new_game_review_path(@game)
         %span.delete-log-btn.deleteBtn マイゲームから削除
-      / .gameInfoWrap
-      /   %ul.gameInfo
-      /     %li.item.review
-      /       .itemName 全体の評価
-      /       .itemContent
-      /         %ul.starList
-      /           - diff = 5 - @game.avg_rate.to_i
-      /           - @game.avg_rate.to_i.times do |i|
-      /             %li.starOn.icon-star
-      /           - diff.times do |i|
-      /             %li.starOff.icon-star
-      /     %span.value
-      /       = @game.avg_rate
-      /   %ul.linkBtnWrap
-      /     %li
-      /       %a.amazonBtn{href: "http://www.amazon.co.jp/s/ref=nb_sb_noss_1?__mk_ja_JP=カタカナ&url=search-alias%3Daps&field-keywords=#{@game.title}", target: "blank"} Amazonで検索
-      /     %li
-      /       %a.youtubeBtn{href: "https://www.youtube.com/results?search_query=#{@game.title}", target: "blank"} Youtubeで検索
-  .boxTtl
-    %h2 このゲームに対するポスト#{@game.posts_count}件
-  .sortBoxWrap
+
+    .navigationBoxWrap
+      %ul.navigationBox.navigation-box
+        %li.item.current.post-timeline
+          %a{href: "/games/#{@game[:id]}#all"} つぶやき
+        %li.item.review-timeline
+          %a{href: "/games/#{@game[:id]}#review"} レビュー
+
+  .sortBoxWrap.sort-box-wrap
     %ul.sortBox.sort-box
       %li.item.current.follower-posts
         %a.follow{href: "/games/#{@game[:id]}#follower"} フォロー中
@@ -90,7 +82,7 @@
         %a.star{href: "/games/#{@game[:id]}#liker"} いいね！順
 
   .game-timeline
-    .post-list
+    .post-list.review-list
     = image_tag "gif-load.gif", class: "loading-gif"
 
 = render partial: "application/underscore/smart_phone/common/flash"

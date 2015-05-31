@@ -21,8 +21,6 @@ Pagenation.prototype = {
         data: this.params,
         success: function (model, response, options) {
           that.callback(model, response, options);
-
-          $(".loading-gif").css("display", "none");
         },
         error: function () {
 

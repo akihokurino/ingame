@@ -1,0 +1,77 @@
+@import "../_function.css.scss";
+
+.mainCnt {
+  .gameInfo {
+    padding-top: 44px;
+    background: #fff;
+    h3 {
+      width: 90%;
+      margin: 10px auto;
+      padding-left: 15px;
+      border-left: solid 3px $main_color;
+    }
+  }
+  .formGroup {
+    margin-bottom: 20px;
+  }
+  .reviewForm {
+    width: 90%;
+    margin: 10px auto;
+    .label {
+      color: $color_textGray;
+      margin-bottom: 5px;
+    }
+    .reviewBtn {
+      @include appearance;
+      width: 100%;
+      padding: 0 36%;
+      line-height: 3;
+      text-align: center;
+      background: #fff;
+      border: 1px solid $color_border;
+      color: $color_textBlack;
+    }
+    input, textarea {
+      outline: 0;
+      @include appearance;
+      @include box-sizing;
+      width: 100%;
+      border: solid 1px #e6e6e6;
+      padding: 6px 10px;
+    }
+    textarea {
+      height: 150px;
+    }
+    .btnList {
+      @include clearfix;
+      .cancelBtn {
+        float: left;
+        width: 48%;
+        height: 35px;
+        background-color: $color_cancel;
+        @include border-radius(3px);
+        a {
+          display: block;
+          text-align: center;
+          height: 100%;
+          line-height: 35px;
+          color: #fff;
+        }
+      }
+      .createBtn {
+        float: right;
+        width: 48%;
+        height: 35px;
+        background-color: $main_color;
+        @include border-radius(3px);
+        a {
+          display: block;
+          text-align: center;
+          height: 100%;
+          line-height: 35px;
+          color: #fff;
+        }
+      }
+    }
+  }
+}

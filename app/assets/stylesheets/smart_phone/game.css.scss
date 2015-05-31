@@ -1,40 +1,14 @@
 @import "../_function.css.scss";
 @import "component/_postBox.css.scss";
 @import "component/_activityPost.css.scss";
+@import "component/_message_dialog.css.scss";
 
-/*---   .mainCnt   ---------------------------*/
 .mainCnt {
-  .messageDialog {
-    display: none;
-    &.show{
-      position: fixed;
-      display: block;
-      top: 80px;
-      left: 50%;
-      display: block;
-      padding: 10px 30px;
-      margin-left: -150px;
-      width: 300px;
-      box-sizing: border-box;
-      border-radius: 4px;
-      background: rgba(0, 0, 0, 0.73);
-      box-shadow: 0 0 10px rgba(0,0,0,.5);
-      color: #eee;
-      font-size: 14px;
-      text-align: center;
-      line-height: 2.5;
-      z-index: 10;
-      &:after{
-        font-family: "icomoon"
-      }
-    }
-  }
-  /*---   .gameBox   ----------*/
   .gameWrap {
     padding-top: 44px;
     background: #fff;
 
-    .imgWrap{
+    .imgWrap {
       width: 100%;
       background: #431e99; /* Old browsers */
       background: -moz-linear-gradient(-45deg, #431e99 0%, #2989d8 50%, #207cca 51%, #af23a6 100%); /* FF3.6+ */
@@ -46,7 +20,7 @@
       filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#431e99', endColorstr='#af23a6',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
       text-align: center;
 
-      .gameImg{
+      .gameImg {
         margin-top: 5px;
         max-width: 100%;
         height: auto;
@@ -56,24 +30,24 @@
       }
     }
 
-    .gameInfo{
+    .gameInfo {
       padding: 5px 10px;
-      .source{
-            margin-bottom: 10px;
-            text-align: center;
-            line-height: 1;
-            a{
-              color: $color_textGray;
-              font-size: 10px;
-            }
-          }
+      .source {
+        margin-bottom: 10px;
+        text-align: center;
+        line-height: 1;
+        a {
+          color: $color_textGray;
+          font-size: 10px;
+        }
+      }
       .ttl {
         color: $color_textBlack;
         font-size: 24px;
         line-height: 1.2;
         text-align: center;
       }
-      .maker{
+      .maker {
         margin-bottom: 15px;
         color: $color_textBlack;
         font-size: 14px;
@@ -84,61 +58,61 @@
           padding-right: 10px;
         }
       }
-      .gameCap{
+      .gameCap {
         width: 90%;
         margin: 0 auto;
         font-size: 0;
-        .device,.releaseDay,.gameTag{
+        .device, .releaseDay, .gameTag{
           display: inline-block;
           @include box-sizing;
           color: $color_textGray;
           font-size: 14px;
           line-height: 2;
           vertical-align: top;
-          &:before{
+          &:before {
             font-family: "icomoon";
             display: inline-block;
             font-size: 14px;
           }
         }
-        .device{
+        .device {
           width: 50%;
-          &:before{
+          &:before {
             content:"\e613";
           }
         }
-        .releaseDay{
+        .releaseDay {
           width: 50%;
-          &:before{
+          &:before {
             content:"\e616";
           }
         }
-        .gameTag{
+        .gameTag {
           width: 100%;
-          &:before{
+          &:before {
             content:"\e618";
           }
         }
       }
-      .linkList{
+      .linkList {
         width: 90%;
         margin: 10px auto;
         text-align: center;
-        li{
+        li {
           display: inline-block;
-              width: 49%;
+          width: 49%;
         }
-        .officialLink,.youtubeLink{
-              display: inline-block;
-              width: 98%;
-              padding: 0 10px;
-              margin: 5px 0;
-              border: solid 1px $color_border;
-              @include box-sizing;
-              @include border-radius(2px);
-              color: $color_textGray;
-              font-size: 14px;
-              line-height: 2;
+        .officialLink, .youtubeLink {
+          display: inline-block;
+          width: 98%;
+          padding: 0 10px;
+          margin: 5px 0;
+          border: solid 1px $color_border;
+          @include box-sizing;
+          @include border-radius(2px);
+          color: $color_textGray;
+          font-size: 14px;
+          line-height: 2;
         }
       }
     }
@@ -156,7 +130,7 @@
         margin:5px 0;
       }
     }
-    .reviewBtn,.statusBtn{
+    .reviewBtn, .statusBtn {
       @include appearance;
       width: 100%;
       padding: 0 36%;
@@ -172,6 +146,18 @@
       background: #fff;
       border: solid 1px $main_color;
       color: $main_color;
+    }
+    .createReviewBtn {
+      width: 100%;
+      line-height: 3;
+      text-align: center;
+      background: #fff;
+      border: 1px solid $color_border;
+      @include border-radius(3px);
+      a {
+        color: $color_textBlack;
+        display: block;
+      }
     }
     .registed{
       background:$main_color;
@@ -192,93 +178,17 @@
         color: #fff;
       }
     }
-    .gameInfo {
-      font-size: 0;
-      line-height: 1.5;
-
-      .item {
-        display:table;
-        width: 100%;
-        font-size: 14px;
-        &:last-child {
-          border:none;
-        }
-
-        .itemName, .officialLink {
-          display:table-cell;
-          width: 30%;
-          padding:4px 4px 4px 4px;
-          @include box-sizing;
-          color:$color_textBlack;
-          vertical-align: top;        }
-        .itemContent {
-          display:table-cell;
-          width: 65%;
-          padding:4px 4px 4px 0;
-          color:$color_textBlack;
-          text-align:left;
-        }
-        .starList {
-          vertical-align: middle;
-          display:inline-block;
-          font-size:1rem;
-        }
-        .icon-star{
-          float:left;
-          display:inline-block;
-          font-size:20px;
-        }
-        .starOn {
-          display: inline-block;
-          color:orange;
-        }
-        .starOff {
-          display: inline-block;
-        }
-      }
-    }
-
-    .linkBtnWrap {
-      margin:5px 0;
-      border: 1px solid $color_border;
-      @include border-radius(2px);
-      font-size:0;
-      li {
-        position: relative;
-        display:inline-block;
-        width: 50%;
-        font-size:14px;
-        @include box-sizing;
-        &:nth-child(odd) {
-          border-right: 1px solid $color_border;
-        }
-        a {
-          display:block;
-          padding:8px 10px;
-          color:$color_textBlack;
-          &:after {
-            position:absolute;
-            top:10px;
-            right:10px;
-            display:inline-block;
-            margin-left:5px;
-            font-family: 'icomoon';
-            content: "\e60c";
-            color: $color_textGray;
-            font-size: 16px;
-          }
-        }
-      }
-    }
     .gameSummary {
+      width: 90%;
+      margin: 5px auto;
       label {
         position: relative;
         display: inline-block;
-        padding-left: 20px;
+        padding-left: 17px;
         margin: 4px;
         width:100%;
         @include box-sizing;
-        color: $color_textBlack;
+        color: $color_textGray;
         font-size:14px;
         text-align:left;
         &:before {
@@ -333,22 +243,34 @@
     color: #ffffff;
     text-align: center;
   }
-  /*---   .sortBox   ----------*/
-  .boxTtl{
-    h2{
-      border-top: 1px solid #f1f1f1;
-      border-bottom: 1px solid #ddd;
-      background-color: #f7f7f7;
-      color: $color_textGray;
-      font-size:14px;
-      text-align:center;
-      line-height:3;
-      text-shadow:1px 1px 0 #f2f2f2;
+  .navigationBoxWrap {
+    .navigationBox {
+      @include clearfix;
+      .item {
+        width: 50%;
+        float: left;
+        @include box-sizing;
+        padding-left: 10px;
+        padding-right: 10px;
+        a {
+          color: $color_textGray;
+          display: inline-block;
+          width: 100%;
+          text-align: center;
+        }
+        &.current {
+          a {
+            color: $main_color;
+            border-bottom: solid 3px $main_color;
+          }
+        }
+      }
     }
   }
   .sortBoxWrap {
-    margin-bottom: 14px;
+    padding-bottom: 15px;
     padding-top: 15px;
+    background-color: #eeeeee;;
   }
   .sortBox {
     width: 300px;

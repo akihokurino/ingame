@@ -91,6 +91,8 @@ var PostsView = Backbone.View.extend({
 
       $(window).bind("scroll", this.pagenation.load);
     }
+
+    $(".loading-gif").css("display", "none");
   },
   removePosts: function () {
     this.$el.html("");

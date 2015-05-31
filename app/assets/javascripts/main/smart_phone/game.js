@@ -19,6 +19,11 @@
       this.posts_view.render({type: "all_of_game", game_id: this.game_id, page: 1});
     },
     setCurrentTab: function () {
+      this.$el.find("ul.navigation-box li").removeClass("current");
+      this.$el.find("ul.navigation-box li.post-timeline").addClass("current");
+
+      this.$el.find(".sort-box-wrap").css("display", "block");
+
       this.$el.find("ul.sort-box li").removeClass("current");
       this.$el.find("ul.sort-box li.all-posts").addClass("current");
     }
@@ -40,6 +45,11 @@
       this.posts_view.render({type: "follower_of_game", game_id: this.game_id, page: 1});
     },
     setCurrentTab: function () {
+      this.$el.find("ul.navigation-box li").removeClass("current");
+      this.$el.find("ul.navigation-box li.post-timeline").addClass("current");
+
+      this.$el.find(".sort-box-wrap").css("display", "block");
+
       this.$el.find("ul.sort-box li").removeClass("current");
       this.$el.find("ul.sort-box li.follower-posts").addClass("current");
     }
@@ -61,8 +71,31 @@
       this.posts_view.render({type: "liker_of_game", game_id: this.game_id, page: 1});
     },
     setCurrentTab: function () {
+      this.$el.find("ul.navigation-box li").removeClass("current");
+      this.$el.find("ul.navigation-box li.post-timeline").addClass("current");
+
+      this.$el.find(".sort-box-wrap").css("display", "block");
+
       this.$el.find("ul.sort-box li").removeClass("current");
       this.$el.find("ul.sort-box li.liker-posts").addClass("current");
+    }
+  });
+
+  var ReviewListView = Backbone.View.extend({
+    el: ".game-page",
+    events: {
+
+    },
+    initialize: function () {
+      this.setCurrentTab();
+
+      this.game_id = $(".game-page").data("gameid");
+    },
+    setCurrentTab: function () {
+      this.$el.find("ul.navigation-box li").removeClass("current");
+      this.$el.find("ul.navigation-box li.review-timeline").addClass("current");
+
+      this.$el.find(".sort-box-wrap").css("display", "none");
     }
   });
 
@@ -264,12 +297,12 @@
     }
   });
 
-
   var Router = Backbone.Router.extend({
     routes: {
       "all":      "all",
       "follower": "follower",
-      "liker":    "liker"
+      "liker":    "liker",
+      "review":   "review"
     },
     all: function () {
       this.current_list = new AllPostListView();
@@ -279,6 +312,9 @@
     },
     liker: function () {
       this.current_list = new LikerPostListView();
+    },
+    review: function () {
+      this.current_list = new ReviewListView();
     }
   });
 
