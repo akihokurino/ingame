@@ -12,6 +12,7 @@ var PostView = Backbone.View.extend({
   },
   normal_template:   _.template($("#post-template").html()),
   activity_template: _.template($("#post-activity-template").html()),
+  review_template:   _.template($("#post-review-template").html()),
   initialize: function () {
     _.bindAll(this, "destroy", "realtimeUpdate");
 
@@ -32,7 +33,18 @@ var PostView = Backbone.View.extend({
     });
   },
   render: function (type) {
-    var template = (this.model.get("post_type") == "activity") ? this.activity_template(this.model.toJSON()) : this.normal_template(this.model.toJSON());
+    switch (this.model.get("post_type")) {
+      case "normal":
+        var template = this.normal_template(this.model.toJSON());
+        break;
+      case "activity":
+        var template = this.activity_template(this.model.toJSON());
+        break;
+      case "review":
+        var template = this.review_template(this.model.toJSON());
+        break;
+    }
+
     this.$el.html(template);
 
     if (type !== "silent") {

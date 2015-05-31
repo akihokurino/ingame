@@ -1,5 +1,5 @@
 class Api::ReviewsController < ApplicationController
-  before_action :set_review, only: [:destroy]
+  before_action :set_review, only: [:update, :destroy]
 
   def index
     @reviews = Review.custom_query @current_user, params
@@ -8,6 +8,11 @@ class Api::ReviewsController < ApplicationController
   def create
     review_registerer = ReviewRegisterer.new review_params, @current_user[:id]
     @result           = review_registerer.save
+  end
+
+  def update
+    review_updater = ReviewUpdater.new @review, review_params, @current_user[:id]
+    @result        = review_updater.save
   end
 
   def destroy

@@ -105,5 +105,11 @@ var PostsView = Backbone.View.extend({
     .sanitizeComment()
     .getRelativeTime()
     .getCommentRelativeTime();
+
+    if (post.get("post_type") == "review") {
+      post
+      .strimReviewTextWidth(100)
+      .sanitizeReviewText();
+    }
   }
 });

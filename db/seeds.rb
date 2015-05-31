@@ -33,6 +33,7 @@ unless PostType.count > 0
   %w(
     normal
     activity
+    review
   ).each do |type|
     PostType.create name: type
   end

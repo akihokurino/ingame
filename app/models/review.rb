@@ -25,6 +25,11 @@ class Review < ActiveRecord::Base
     end
   end
 
+  def update_contents!(contents)
+    self.review_contents.each { |content| content.destroy }
+    self.create_contents! contents
+  end
+
   def i_like?(current_user_id)
     self.i_liked = self.review_likes.pluck(:user_id).include?(current_user_id) ? true : false
   end

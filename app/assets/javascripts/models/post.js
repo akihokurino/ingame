@@ -26,7 +26,12 @@ var Post = Backbone.Model.extend({
     post_photos:     [],
     post_comments:   [],
     post_urls:       [],
-    current_user_id: ""
+    current_user_id: "",
+    review: {
+      id:       "",
+      title:    "",
+      contents: []
+    }
   },
   url: "/api/posts/",
   strimGameTitleWidth: function (limit) {
@@ -52,10 +57,39 @@ var Post = Backbone.Model.extend({
 
     return this;
   },
+  strimReviewTextWidth: function (limit) {
+    for (var i = 0; i < this.get("review").contents.length; i++) {
+      if (this.get("review").contents[i].content_type == "text") {
+        var text = this.get("review").contents[i].body;
+        if (text.length > limit) {
+          var new_text = text.slice(0, limit);
+          new_text    += "...";
+          this.get("review").contents[i].body = new_text;
+          this.set("isMore", true);
+        } else {
+          this.set("isMore", false);
+        }
+
+        break;
+      }
+    }
+    return this;
+  },
   sanitize: function () {
     var text = this.get("text").replace(/\n/g, '<br>');
     text     = text.replace(/((http:|https:)\/\/[\x21-\x26\x28-\x7e]+)/gi, "<a class='link-text' target='_blank' href='$1'>$1</a>");
     this.set("text", text);
+
+    return this;
+  },
+  sanitizeReviewText: function () {
+    for (var i = 0; i < this.get("review").contents.length; i++) {
+      if (this.get("review").contents[i].content_type == "text") {
+        var text = this.get("review").contents[i].body.replace(/\n/g, '<br>');
+        text     = text.replace(/((http:|https:)\/\/[\x21-\x26\x28-\x7e]+)/gi, "<a class='link-text' target='_blank' href='$1'>$1</a>");
+        this.get("review").contents[i].body = text;
+      }
+    }
 
     return this;
   },

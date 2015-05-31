@@ -53,5 +53,17 @@ json.posts do |json|
       end
     end
     json.current_user_id @current_user[:id]
+    if post.post_type[:name] == "review"
+      json.review do |json|
+        json.id post.log.review[:id]
+        json.title post.log.review[:title]
+        json.contents do |json|
+          json.array!(post.log.review.review_contents) do |contents|
+            json.extract! contents, :id, :body, :order
+            json.content_type contents.review_content_type[:name]
+          end
+        end
+      end
+    end
   end
 end

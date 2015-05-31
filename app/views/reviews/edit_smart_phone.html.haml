@@ -1,0 +1,10 @@
+= content_for :head do
+  = stylesheet_link_tag    "smart_phone/review_edit"
+
+= content_for :last do
+  = javascript_include_tag "main/smart_phone/review_edit"
+
+= render partial: "application/smart_phone/default_header"
+
+.review-edit-page.mainCnt{"data-gameid" => @game[:id], "data-reviewid" => @review[:id]}
+  = render partial: "form", locals: {method: "edit"}

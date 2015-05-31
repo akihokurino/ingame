@@ -17,7 +17,7 @@ class Game < ActiveRecord::Base
   has_many :game_gametags, dependent: :destroy
   has_many :gametags, through: :game_gametags
   has_many :game_urls, dependent: :destroy
-  has_one :review, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 
 	validates :title,
 		presence: true,

@@ -1,0 +1,59 @@
+%script{type: "text/template", id: "post-review-template"}
+  .postHeader
+    %a.postHeaderLink{href: "/users/{{= user.id }}#logs"}
+      %img.profileImage{width: 30, src: "/user_photos/{{= user.photo_path }}"}
+      %span.userName {{= user.username }}
+      %span.statusBox
+        {{ if (status.id == 1) { }}
+        %span.moodReady
+          {{= status.name }}
+        {{ } else if (status.id == 2) { }}
+        %span.moodPlaying
+          {{= status.name }}
+        {{ } else if (status.id == 3) { }}
+        %span.moodPlayed
+          {{= status.name }}
+        {{ } else if (status.id == 4) { }}
+        %span.moodStock
+          {{= status.name }}
+        {{ } }}
+  .gameBox
+    %a.gameBoxLink{href: "/games/{{= game.id}}#all"}
+      {{ if (game.photo_path) { }}
+      %img.gamePhoto{src: "/game_photos/{{= game.photo_path }}", width: 55}
+      {{ } else if (game.photo_url) { }}
+      %img.gamePhoto{src: "{{= game.photo_url }}", width: 55}
+      {{ } else { }}
+      %img.gamePhoto{src: "/game_photos/default.png", width: 55}
+      {{ } }}
+      %h2{href: "/games/{{= game.id }}#all"} {{= game.title }}
+  .postBody
+    .reviewTitle
+      %h3 {{= review.title }}
+    {{ for (var i = 0; i < review.contents.length; i++) { }}
+    {{ if (review.contents[i].content_type == "text") { }}
+    .reviewText {{= review.contents[i].body }}
+    {{ } }}
+    {{ } }}
+    .postMeta
+      .postTime.icon-time {{= created_at }}
+      {{ if (isMore) { }}
+      %a.readMore{href: "/posts/{{= id }}"} もっと見る
+      {{ } }}
+    .postFooter
+      %ul.actionList
+        - unless @current_user[:id].nil?
+          %li
+            {{ if (!i_liked) { }}
+            %span.like-btn.favBtn.icon-like
+              %span.likeCnt
+                {{= post_likes_count }}
+            {{ } else { }}
+            %span.unlike-btn.favBtn.on.icon-like
+              %span.likeCnt
+                {{= post_likes_count }}
+            {{ } }}
+        %li
+          {{ if (current_user_id == user.id) { }}
+          %span.icon-option.delete-btn
+          {{ } }}

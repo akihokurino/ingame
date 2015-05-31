@@ -36,7 +36,6 @@ var ReviewsView = Backbone.View.extend({
     });
   },
   setCollection: function (model, response, option) {
-    console.log(response);
     if (response.reviews && response.reviews.length > 0) {
       for (var i = 0; i < response.reviews.length; i++) {
         var review = new Review(response.reviews[i]);
@@ -50,7 +49,7 @@ var ReviewsView = Backbone.View.extend({
   },
   settingModel: function (review) {
     review
-    .strimTextWidth(200)
+    .strimTextWidth(100)
     .sanitize()
     .getRelativeTime();
   }

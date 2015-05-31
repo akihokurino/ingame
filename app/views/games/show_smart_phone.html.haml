@@ -61,8 +61,9 @@
         %ul.gameBtnList
           %li.item.review-li
           %li.item.status-li
-          %li.item.createReviewBtn
-            = link_to "レビューを書く", new_game_review_path(@game)
+          - if @game.i_registed
+            %li.item.createReviewBtn
+              = link_to "レビューを書く", new_game_review_path(@game)
         %span.delete-log-btn.deleteBtn マイゲームから削除
 
     .navigationBoxWrap
@@ -90,5 +91,6 @@
 = render partial: "application/underscore/smart_phone/common/post"
 = render partial: "application/underscore/smart_phone/common/post_activity"
 = render partial: "application/underscore/smart_phone/common/review"
+= render partial: "application/underscore/smart_phone/common/post_review"
 = render partial: "application/underscore/smart_phone/game/review_select"
 = render partial: "application/underscore/smart_phone/game/status_select"

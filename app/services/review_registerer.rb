@@ -12,8 +12,8 @@ class ReviewRegisterer
       current_log.update! rate: self.params[:rate]
 
       review = Review.create! user_id: self.current_user_id, log_id: current_log[:id], game_id: self.params[:game_id], title: self.params[:title]
-
       review.create_contents! self.params[:contents]
+      Post.create_review review, self.current_user_id
     end
 
     true

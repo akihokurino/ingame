@@ -105,6 +105,15 @@
 		color: $color_textBlack;
 		word-break: break-all;
 		@include box-sizing;
+		.reviewTitle {
+			h3 {
+				font-size: 16px;
+				width: 90%;
+	      margin: 10px auto;
+	      padding-left: 15px;
+	      border-left: solid 3px $main_color;
+			}
+		}
 		.postThumnail{
 			width: 100%;
 		}
