@@ -1,7 +1,8 @@
 class ReviewsController < ApplicationController
   skip_before_action :auth, only: [:show]
   before_action :open_page, only: [:show]
-  before_action :set_game, only: [:new]
+  before_action :set_game, only: [:new, :show]
+  before_action :set_review, only: [:show]
 
   def show
 
@@ -13,12 +14,12 @@ class ReviewsController < ApplicationController
     @game.check_rate @current_user
   end
 
-  def create
-
-  end
-
   private
   def set_game
     @game = Game.find params[:game_id]
+  end
+
+  def set_review
+    @review = Review.find params[:id]
   end
 end

@@ -5,3 +5,72 @@
   = javascript_include_tag "main/smart_phone/review_detail"
 
 = render partial: "application/smart_phone/default_header"
+
+.review-page.mainCnt{"data-gameid" => @game[:id]}
+  .gameWrap
+    %figure.imgWrap
+      - url = @game.amazon_url ? @game.amazon_url : ""
+      %a{href: url, target: "blank"}
+        - if @game.photo_path
+          = image_tag "/game_photos/#{@game.photo_path}", height: "100%", class: "gameImg"
+        - elsif @game.photo_url
+          = image_tag @game.photo_url, height:"100%", class: "gameImg"
+        - else
+          = image_tag "/game_photos/default.png", height:"100%", class: "gameImg"
+    .gameInfo
+      .source
+        - case @game.provider
+        - when "famituu"
+          %a{href: @game.provider_url, target: "blank"} 出典：ファミ通
+        - when "steam"
+          %a{href: @game.provider_url, target: "blank"} 出典：STEAM
+      %h1.ttl
+        = @game.title
+      %h2.maker
+        %span by
+        %span.makerName
+          = @game.maker
+  %article.reviewBox
+    .reviewHeader
+      %a.reviewHeaderLink{href: "/users/#{@review.user[:id]}#logs"}
+        %img.profileImage{width: 30, src: "/user_photos/#{@review.user[:photo_path]}"}
+        %span.userName
+          = @review.user[:username]
+        - case @review.log.rate.to_i
+        - when 1
+          %span.starBox ★☆☆☆☆ 1
+        - when 2
+          %span.starBox ★★☆☆☆ 2
+        - when 3
+          %span.starBox ★★★☆☆ 3
+        - when 4
+          %span.starBox ★★★★☆ 4
+        - when 5
+          %span.starBox ★★★★★ 5
+    .reviewTitle
+      %h3
+        = @review.title
+    .reviewBody
+      - @review.review_contents.each do |content|
+        - case content.review_content_type[:name]
+        - when "header"
+        - when "text"
+          .reviewText
+            = content[:body]
+        - when "photo"
+        - when "quote"
+        - when "url"
+        - when "youtube"
+
+      .reviewMeta
+        .reviewTime.icon-time
+          = @review.relative_time
+      .reviewFooter
+        %ul.actionList
+          %li
+            %span.favBtn.icon-like{class: @review.i_liked ? "unlike-btn on" : "like-btn"}
+              %span.likeCnt
+                = @review[:review_likes_count]
+          %li
+            - if @review[:user_id] == @current_user[:id]
+              %span.icon-option.delete-btn

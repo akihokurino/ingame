@@ -32,7 +32,7 @@ Ingame::Application.routes.draw do
     collection do
       get "devices"
     end
-    resources :reviews, only: ["show", "new", "create"]
+    resources :reviews, only: ["show", "new"]
   end
 
   resources :gametags, only: ["index"]
