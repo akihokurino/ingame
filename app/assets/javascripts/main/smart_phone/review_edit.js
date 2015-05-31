@@ -60,6 +60,8 @@
 
       if (this.text_input.val() == "") {
         error.text = "empty";
+      } else if (this.text_input.val().length <= 100) {
+        error.text = "tooshort";
       } else if (this.text_input.val().length > 2000) {
         error.text = "toolong";
       }
@@ -83,6 +85,9 @@
             case "text":
               if (error[key] == "empty") {
                 this.$el.find(".text-error").html("本文を入力して下さい。");
+              }
+              if (error[key] == "tooshort") {
+                this.$el.find(".text-error").html("本文は100文字以上で入力して下さい。");
               }
               if (error[key] == "toolong") {
                 this.$el.find(".text-error").html("本文は2000文字以内で入力して下さい。");

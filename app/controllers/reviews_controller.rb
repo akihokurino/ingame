@@ -21,7 +21,9 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-
+    @game.format_datetime
+    @game.check_regist @current_user
+    @game.check_rate @current_user
   end
 
   private

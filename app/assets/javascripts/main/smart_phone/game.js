@@ -119,10 +119,11 @@
     initialize: function () {
       _.bindAll(this, "destroyLog", "setDialog");
 
-      this.game_id        = $(".game-page").data("gameid");
-      this.review_list    = $(".review-li");
-      this.status_list    = $(".status-li");
-      this.delete_log_btn = $(".delete-log-btn");
+      this.game_id            = $(".game-page").data("gameid");
+      this.review_list        = $(".review-li");
+      this.status_list        = $(".status-li");
+      this.create_review_btn  = $(".create-review-btn");
+      this.delete_log_btn     = $(".delete-log-btn");
 
       this.getCurrentGame();
     },
@@ -237,10 +238,12 @@
         }
 
         this.delete_log_btn.css("display", "block");
+        this.create_review_btn.css("display", "block");
       } else {
         this.new_status_select = $(".new-status");
 
         this.delete_log_btn.css("display", "none");
+        this.create_review_btn.css("display", "none");
       }
     },
     setRegistedStatus: function (status) {
@@ -249,6 +252,7 @@
       this.my_status_select = $(".my-status");
       this.my_rate_select   = $(".my-rate");
       this.delete_log_btn.css("display", "block");
+      this.create_review_btn.css("display", "block");
 
       if (status.my_status_id) {
         this.my_status_select.val(status.my_status_id);
@@ -259,6 +263,7 @@
       this.review_list.html("");
       this.new_status_select = $(".new-status");
       this.delete_log_btn.css("display", "none");
+      this.create_review_btn.css("display", "none");
     },
     destroyLog: function () {
       var that = this;

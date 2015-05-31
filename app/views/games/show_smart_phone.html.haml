@@ -61,9 +61,8 @@
         %ul.gameBtnList
           %li.item.review-li
           %li.item.status-li
-          - if @game.i_registed
-            %li.item.createReviewBtn
-              = link_to "レビューを書く", new_game_review_path(@game)
+          %li.item.create-review-btn.createReviewBtn
+            = link_to "レビューを書く", new_game_review_path(@game)
         %span.delete-log-btn.deleteBtn マイゲームから削除
 
     .navigationBoxWrap

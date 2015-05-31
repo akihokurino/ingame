@@ -38,21 +38,10 @@
     .postMeta
       .postTime.icon-time {{= created_at }}
       {{ if (isMore) { }}
-      %a.readMore{href: "/posts/{{= id }}"} もっと見る
+      %a.readMore{href: "/games/{{= game.id }}/reviews/{{= review.id }}"} もっと見る
       {{ } }}
     .postFooter
       %ul.actionList
-        - unless @current_user[:id].nil?
-          %li
-            {{ if (!i_liked) { }}
-            %span.like-btn.favBtn.icon-like
-              %span.likeCnt
-                {{= post_likes_count }}
-            {{ } else { }}
-            %span.unlike-btn.favBtn.on.icon-like
-              %span.likeCnt
-                {{= post_likes_count }}
-            {{ } }}
         %li
           {{ if (current_user_id == user.id) { }}
           %span.icon-option.delete-btn

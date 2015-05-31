@@ -56,7 +56,7 @@
     %p.error-log.title-error.errorMassage
 
   .formGroup
-    .label レビュー本文 (2000文字以内)
+    .label レビュー本文 (100文字以上2000文字以内)
     - text = @review.review_contents.blank? ? "" : @review.review_contents[0][:body];
     = text_area_tag "review[text]", text, class: "reviewTextInput text-input"
     %p.error-log.text-error.errorMassage
