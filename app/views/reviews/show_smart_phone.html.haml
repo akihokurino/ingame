@@ -6,7 +6,7 @@
 
 = render partial: "application/smart_phone/default_header"
 
-.review-page.mainCnt{"data-gameid" => @game[:id]}
+.review-detail-page.mainCnt{"data-gameid" => @game[:id], "data-reviewid" => @review[:id]}
   .gameWrap
     %figure.imgWrap
       - url = @game.amazon_url ? @game.amazon_url : ""
@@ -69,8 +69,10 @@
         %ul.actionList
           %li
             %span.favBtn.icon-like{class: @review.i_liked ? "unlike-btn on" : "like-btn"}
-              %span.likeCnt
+              %span.likeCnt.like-count
                 = @review[:review_likes_count]
           %li
             - if @review[:user_id] == @current_user[:id]
               %span.icon-option.delete-btn
+
+= render partial: "application/underscore/smart_phone/common/delete_confirm"
