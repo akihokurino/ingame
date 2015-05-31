@@ -43,6 +43,9 @@ var PostView = Backbone.View.extend({
       case "review":
         var template = this.review_template(this.model.toJSON());
         break;
+      default:
+        var template = this.normal_template(this.model.toJSON());
+        break;
     }
 
     this.$el.html(template);

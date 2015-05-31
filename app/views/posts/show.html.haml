@@ -18,7 +18,9 @@
           = @post.game[:maker]
       .gameWrap
         %figure.gameMainWrap
-          %a
+          - url    = @post.game[:amazon_url] ? @post.game[:amazon_url] : ""
+          - target = @post.game[:amazon_url] ? "blank" : ""
+          %a{href: url, target: target}
             - if @post.game[:photo_path]
               = image_tag "/game_photos/#{@post.game[:photo_path]}", width: 200, class: "gameImg", alt: "ゲームパッケージ画像"
             - elsif @post.game[:photo_url]

@@ -16,8 +16,9 @@
         = @game[:maker]
   .contentWrap
     .gameWrap
-      - url = @game.amazon_url ? @game.amazon_url : ""
-      %a.gameImgWrap{href: url, target: "blank"}
+      - url    = @game.amazon_url ? @game.amazon_url : ""
+      - target = @game.amazon_url ? "blank" : ""
+      %a.gameImgWrap{href: url, target: target}
         - if @game.photo_path
           = image_tag "/game_photos/#{@game.photo_path}", width: 240, class: "gameImg", alt: "ゲームパッケージ画像"
         - elsif @game.photo_url

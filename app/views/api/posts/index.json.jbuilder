@@ -53,7 +53,7 @@ json.posts do |json|
       end
     end
     json.current_user_id @current_user[:id]
-    if post.post_type[:name] == "review"
+    if post.post_type && post.post_type[:name] == "review"
       json.review do |json|
         json.id post.log.review[:id]
         json.title post.log.review[:title]
