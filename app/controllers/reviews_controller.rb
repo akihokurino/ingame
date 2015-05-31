@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: [:show]
 
   def show
-
+    @review.i_like? @current_user[:id]
   end
 
   def new

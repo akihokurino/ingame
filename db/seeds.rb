@@ -23,6 +23,7 @@ unless NotificationType.count > 0
     の投稿にいいね！と言っています
     の投稿にコメントしました
     のコメントにいいね！と言っています
+    のレビューにいいね！と言っています
   ).each do |value|
     NotificationType.create value: value
   end

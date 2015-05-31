@@ -25,6 +25,10 @@ class Review < ActiveRecord::Base
     end
   end
 
+  def i_like?(current_user_id)
+    self.i_liked = self.review_likes.pluck(:user_id).include?(current_user_id) ? true : false
+  end
+
   def datetime
     self[:created_at].strftime "%Y/%m/%d %H:%M:%S"
   end

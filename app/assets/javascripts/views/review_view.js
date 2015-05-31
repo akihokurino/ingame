@@ -35,11 +35,11 @@ var ReviewView = Backbone.View.extend({
   },
   like: function () {
     var that = this;
-    // this.model.like(function () { that.render("silent"); });
+    this.model.like(function () { that.render("silent"); });
   },
   unlike: function () {
     var that = this;
-    // this.model.unlike(function () { that.render("silent"); });
+    this.model.unlike(function () { that.render("silent"); });
   },
   showDeleteConfirm: function () {
     var custom_modal_view = new CustomModalView({

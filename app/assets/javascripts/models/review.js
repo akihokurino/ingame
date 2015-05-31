@@ -37,9 +37,8 @@ var Review = Backbone.Model.extend({
   },
   strimTextWidth: function (limit) {
     for (var i = 0; i < this.get("contents").length; i++) {
-      if (this.get("contents")[i].type == "text") {
+      if (this.get("contents")[i].content_type == "text") {
         var text = this.get("contents")[i].body;
-
         if (text.length > limit) {
           var new_text = text.slice(0, limit);
           new_text    += "...";
@@ -57,7 +56,7 @@ var Review = Backbone.Model.extend({
   },
   sanitize: function () {
     for (var i = 0; i < this.get("contents").length; i++) {
-      if (this.get("contents")[i].type == "text") {
+      if (this.get("contents")[i].content_type == "text") {
         var text = this.get("contents")[i].body.replace(/\n/g, '<br>');
         text     = text.replace(/((http:|https:)\/\/[\x21-\x26\x28-\x7e]+)/gi, "<a class='link-text' target='_blank' href='$1'>$1</a>");
         this.get("contents")[i].body = text;
@@ -65,5 +64,60 @@ var Review = Backbone.Model.extend({
     }
 
     return this;
+  },
+  like: function (callback) {
+    var that = this;
+    var data = {
+      review_like: {
+        review_id: this.id,
+        user_id: null,
+        to_user_id: this.get("user").id
+      }
+    };
+
+    $.ajax({
+      type: "POST",
+      url: "/api/review_likes",
+      data: data,
+      success: function (data) {
+        if (data) {
+          that.set({
+            i_liked: true,
+            review_likes_count: parseInt(that.get("review_likes_count")) + 1
+          }, {silent: true});
+
+          if (callback) {
+            callback();
+          }
+        }
+      },
+      error: function () {
+
+      }
+    });
+  },
+  unlike: function (callback) {
+    var that = this;
+
+    $.ajax({
+      type: "DELETE",
+      url: "/api/review_likes/" + this.id,
+      data: {},
+      success: function (data) {
+        if (data) {
+          that.set({
+            i_liked: false,
+            review_likes_count: parseInt(that.get("review_likes_count")) - 1
+          }, {silent: true});
+
+          if (callback) {
+            callback();
+          }
+        }
+      },
+      error: function () {
+
+      }
+    });
   },
 });

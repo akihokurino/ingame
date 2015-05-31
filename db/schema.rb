@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150520131151) do
+ActiveRecord::Schema.define(version: 20150531095102) do
 
   create_table "admins", force: true do |t|
     t.string   "username"
@@ -104,9 +104,11 @@ ActiveRecord::Schema.define(version: 20150520131151) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "post_id"
+    t.integer  "review_id"
   end
 
   add_index "notifications", ["post_id"], name: "index_notifications_on_post_id", using: :btree
+  add_index "notifications", ["review_id"], name: "index_notifications_on_review_id", using: :btree
 
   create_table "post_comment_likes", force: true do |t|
     t.integer  "post_comment_id"

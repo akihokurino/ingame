@@ -20,5 +20,6 @@ json.reviews do |json|
     end
     json.rate review.log[:rate]
     json.is_my_review @current_user[:id] == review.user[:id]
+    json.i_liked review.i_liked
   end
 end
